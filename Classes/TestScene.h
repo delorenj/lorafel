@@ -10,18 +10,22 @@
 #define ____TestScene____
 
 #include "cocos2d.h"
+#include "SwappyGrid.h"
 
-class TestScene : public cocos2d::Layer {
+USING_NS_CC;
+
+class TestScene : public Node {
 
 public:
-    static cocos2d::Scene* createScene();
+    static Scene *createScene();
 
     virtual bool init();
 
     CREATE_FUNC(TestScene);
-    
+
 protected:
-    cocos2d::Sprite* pSprBackground;
+    Sprite* pSprBackground;
+    lorafel::SwappyGrid* swappyGrid;
 };
 
 #endif /* defined(____TestScene____) */

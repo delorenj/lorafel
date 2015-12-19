@@ -62,6 +62,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(screenSize.width == ultra4kResolutionSize.height || screenSize.height == ultra4kResolutionSize.height
        ) {
         CCLOG("ultra4kResolutionSize");
+
         resDirOrders.push_back("ultra4k");
         resDirOrders.push_back("ipadhd");
         resDirOrders.push_back("ipad");
@@ -71,7 +72,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview->setDesignResolutionSize(ultra4kResolutionSize.width, ultra4kResolutionSize.height, ResolutionPolicy::NO_BORDER);
     }
 
-    if(screenSize.width == ipadHDResolutionSize.height || screenSize.height == ipadHDResolutionSize.height
+    if(screenSize.width == ipadHDResolutionSize.height ||
+       screenSize.height == ipadHDResolutionSize.height
+//       ||
+//       (screenSize.width < ipadHDResolutionSize.height && screenSize.width > ipadResolutionSize.height) ||
+//       (screenSize.height < ipadHDResolutionSize.height && screenSize.height > ipadResolutionSize.height)
        ) {
         CCLOG("ipadHDResolutionSize");
         resDirOrders.push_back("ipadhd");
@@ -124,6 +129,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     fileUtils->setSearchPaths(resDirOrders);
 
     register_all_packages();
+
+    // load the Sprite Sheet
+    auto spritecache = SpriteFrameCache::getInstance();
+    
+    // the .plist file can be generated with any of the tools mentioned below
+    spritecache->addSpriteFramesWithFile("sprites.plist");
 
     // create a scene. it's an autorelease object
     auto scene = TestScene::createScene();
