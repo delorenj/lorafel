@@ -9,3 +9,11 @@ using namespace lorafel;
 bool Tile::init() {
     return true;
 }
+
+std::string Tile::getSpriteName() {
+    return spriteName;
+}
+
+void Tile::setSpriteName(std::string name) {
+    spriteName = name;
+}

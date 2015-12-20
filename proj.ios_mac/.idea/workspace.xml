@@ -2,29 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06cd9bbe-039c-4ecf-b21d-24fc6b7b9196" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/AvocadoTile.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/AvocadoTile.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/InvalidTileDropLocationException.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/InvalidTileDropLocationException.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/Tile.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/Tile.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/TileFactory.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Classes/TileFactory.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/delorenj.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipad/bg1.png" afterPath="$PROJECT_DIR$/../Resources/ipad/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipadhd/bg1.png" afterPath="$PROJECT_DIR$/../Resources/ipadhd/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphone/bg1.png" afterPath="$PROJECT_DIR$/../Resources/iphone/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/bg1.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd5/bg1.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd5/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ultra4k/bg1.png" afterPath="$PROJECT_DIR$/../Resources/ultra4k/bg1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/AppDelegate.cpp" afterPath="$PROJECT_DIR$/../Classes/AppDelegate.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipad/avocado.png" afterPath="$PROJECT_DIR$/../Resources/ipad/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipad/carrot.png" afterPath="$PROJECT_DIR$/../Resources/ipad/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipad/grapes.png" afterPath="$PROJECT_DIR$/../Resources/ipad/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipadhd/avocado.png" afterPath="$PROJECT_DIR$/../Resources/ipadhd/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipadhd/carrot.png" afterPath="$PROJECT_DIR$/../Resources/ipadhd/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ipadhd/grapes.png" afterPath="$PROJECT_DIR$/../Resources/ipadhd/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphone/avocado.png" afterPath="$PROJECT_DIR$/../Resources/iphone/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphone/carrot.png" afterPath="$PROJECT_DIR$/../Resources/iphone/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphone/grapes.png" afterPath="$PROJECT_DIR$/../Resources/iphone/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/avocado.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/carrot.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/grapes.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/sprites.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd/sprites.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd5/avocado.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd5/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd5/carrot.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd5/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd5/grapes.png" afterPath="$PROJECT_DIR$/../Resources/iphonehd5/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ultra4k/avocado.png" afterPath="$PROJECT_DIR$/../Resources/ultra4k/avocado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ultra4k/carrot.png" afterPath="$PROJECT_DIR$/../Resources/ultra4k/carrot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/ultra4k/grapes.png" afterPath="$PROJECT_DIR$/../Resources/ultra4k/grapes.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/AvocadoTile.cpp" afterPath="$PROJECT_DIR$/../Classes/AvocadoTile.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/AvocadoTile.h" afterPath="$PROJECT_DIR$/../Classes/AvocadoTile.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/SwappyGrid.cpp" afterPath="$PROJECT_DIR$/../Classes/SwappyGrid.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/SwappyGrid.h" afterPath="$PROJECT_DIR$/../Classes/SwappyGrid.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/TestScene.cpp" afterPath="$PROJECT_DIR$/../Classes/TestScene.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/TestScene.h" afterPath="$PROJECT_DIR$/../Classes/TestScene.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../proj.android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../proj.android/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../proj.android/jni/Android.mk" afterPath="$PROJECT_DIR$/../proj.android/jni/Android.mk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../proj.android/project.properties" afterPath="$PROJECT_DIR$/../proj.android/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lorafel.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Lorafel.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/Tile.cpp" afterPath="$PROJECT_DIR$/../Classes/Tile.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/Tile.h" afterPath="$PROJECT_DIR$/../Classes/Tile.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/TileFactory.cpp" afterPath="$PROJECT_DIR$/../Classes/TileFactory.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/TileFactory.h" afterPath="$PROJECT_DIR$/../Classes/TileFactory.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Resources/iphonehd/sprites.plist" afterPath="$PROJECT_DIR$/../Resources/iphonehd/sprites.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="proj.ios_mac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,19 +56,17 @@
         <entry file="file://$PROJECT_DIR$/../Classes/AppDelegate.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
-              <folding>
-                <element signature="e#1494#1533#0" expanded="true" />
-              </folding>
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SwappyGrid.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SwappyGrid.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.62222224">
+              <caret line="40" column="31" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -71,19 +76,19 @@
         <entry file="file://$PROJECT_DIR$/../Classes/TileFactory.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
-                <element signature="e#112#130#0" expanded="true" />
+                <element signature="e#111#128#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tile.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Classes/Tile.h">
+      <file leaf-file-name="SwappyGrid.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -93,49 +98,19 @@
         <entry file="file://$PROJECT_DIR$/../Classes/Tile.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TileFactory.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TileFactory.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/TileFactory.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20987654">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Level.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Classes/Level.cpp">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Level.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Classes/Level.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestScene.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Classes/TestScene.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
               <folding>
-                <element signature="e#117#137#0" expanded="true" />
+                <element signature="e#50#74#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,10 +120,38 @@
         <entry file="file://$PROJECT_DIR$/../Classes/TestScene.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-              <folding>
-                <element signature="e#78#100#0" expanded="true" />
-              </folding>
+              <caret line="41" column="31" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestScene.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Classes/TestScene.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AvocadoTile.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AvocadoTile.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.6296296">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,18 +165,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../Classes/InvalidTileDropLocationException.h" />
-        <option value="$PROJECT_DIR$/../Classes/Tile.h" />
-        <option value="$PROJECT_DIR$/../Classes/SwappyGrid.h" />
         <option value="$PROJECT_DIR$/../Classes/Level.h" />
-        <option value="$PROJECT_DIR$/../Classes/AvocadoTile.h" />
         <option value="$PROJECT_DIR$/../Classes/AppDelegate.cpp" />
-        <option value="$PROJECT_DIR$/../Classes/TestScene.cpp" />
         <option value="$PROJECT_DIR$/../Classes/TestScene.h" />
         <option value="$PROJECT_DIR$/../Classes/Level.cpp" />
-        <option value="$PROJECT_DIR$/../Classes/SwappyGrid.cpp" />
-        <option value="$PROJECT_DIR$/../Classes/Tile.cpp" />
         <option value="$PROJECT_DIR$/../Classes/TileFactory.h" />
+        <option value="$PROJECT_DIR$/../Classes/AvocadoTile.h" />
+        <option value="$PROJECT_DIR$/../Classes/Tile.h" />
+        <option value="$PROJECT_DIR$/../Classes/Tile.cpp" />
         <option value="$PROJECT_DIR$/../Classes/TileFactory.cpp" />
+        <option value="$PROJECT_DIR$/../Classes/AvocadoTile.cpp" />
+        <option value="$PROJECT_DIR$/../Classes/TestScene.cpp" />
+        <option value="$PROJECT_DIR$/../Classes/SwappyGrid.h" />
+        <option value="$PROJECT_DIR$/../Classes/SwappyGrid.cpp" />
       </list>
     </option>
   </component>
@@ -222,6 +226,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Lorafel" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lorafel" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Frameworks" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -357,7 +375,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -366,7 +386,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1494#1533#0" expanded="true" />
+            <element signature="e#1494#1533#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -400,53 +420,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/InvalidTileDropLocationException.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/InvalidTileDropLocationException.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22042139">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/platform/CCPlatformMacros.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="109" column="12" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding>
-            <element signature="e#109#129#0" expanded="true" />
-            <marker date="1450541458000" expanded="true" signature="211:628" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -459,33 +436,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/AppDelegate.cpp">
+    <entry file="file://$PROJECT_DIR$/../Classes/Level.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
-          <folding>
-            <element signature="e#1494#1533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/TestScene.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-          <folding>
-            <element signature="e#78#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/TestScene.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#117#137#0" expanded="true" />
-          </folding>
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -497,26 +452,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/Level.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/Tile.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -524,7 +463,15 @@
     <entry file="file://$PROJECT_DIR$/../Classes/Tile.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/random">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="3640" column="43" selection-start-line="3640" selection-start-column="43" selection-end-line="3640" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -532,17 +479,75 @@
     <entry file="file://$PROJECT_DIR$/../Classes/TileFactory.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <element signature="e#112#130#0" expanded="true" />
+            <element signature="e#111#128#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/AvocadoTile.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6296296">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/TileFactory.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20987654">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding>
+            <element signature="e#50#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/TestScene.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/AppDelegate.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/TestScene.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/SwappyGrid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62222224">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="31" />
           <folding />
         </state>
       </provider>

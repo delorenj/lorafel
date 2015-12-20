@@ -15,6 +15,12 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
+        std::string getSpriteName();
+        void setSpriteName(std::string name);
+
+    protected:
+        std::string spriteName;
+
     };
 }
 

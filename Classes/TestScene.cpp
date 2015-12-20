@@ -36,8 +36,10 @@ bool TestScene::init() {
     swappyGrid = lorafel::SwappyGrid::create();
     
     auto level =  new lorafel::Level(); //Level__TestLevelOne();
+
+    addChild(swappyGrid, 1);
+
     swappyGrid->loadLevel(level);
-    addChild(swappyGrid);
-    
+
     return true;
 }

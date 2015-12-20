@@ -9,6 +9,12 @@
 
 namespace lorafel {
     class AvocadoTile : public Tile {
+    public:
+        AvocadoTile();
+        ~AvocadoTile();
+
+        static AvocadoTile* create();
+        void initOptions();
 
     };
 }

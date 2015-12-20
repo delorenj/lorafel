@@ -25,6 +25,8 @@ namespace lorafel {
         TileFactory *tileFactory;
         const int NUM_COLUMNS = 9;
         const int NUM_ROWS = 9;
+        cocos2d::Size visibleSize;
+        cocos2d::Point origin;
 
         void dropTile(int column, Tile *pTile);
 
