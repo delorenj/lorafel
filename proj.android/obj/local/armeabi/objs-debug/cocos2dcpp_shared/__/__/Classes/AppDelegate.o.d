@@ -347,7 +347,9 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCString.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/TestScene.h
+ jni/../../Classes/TestScene.h jni/../../Classes/SwappyGrid.h \
+ jni/../../Classes/Level.h jni/../../Classes/Tile.h \
+ jni/../../Classes/IRandomizerStrategy.h
 
 jni/../../Classes/AppDelegate.h:
 
@@ -1046,3 +1048,11 @@ jni/../../Classes/AppDelegate.h:
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
 jni/../../Classes/TestScene.h:
+
+jni/../../Classes/SwappyGrid.h:
+
+jni/../../Classes/Level.h:
+
+jni/../../Classes/Tile.h:
+
+jni/../../Classes/IRandomizerStrategy.h:

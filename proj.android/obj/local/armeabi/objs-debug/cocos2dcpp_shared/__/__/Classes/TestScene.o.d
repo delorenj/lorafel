@@ -346,7 +346,10 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/TestScene.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCString.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../Classes/SwappyGrid.h jni/../../Classes/Level.h \
+ jni/../../Classes/Tile.h jni/../../Classes/IRandomizerStrategy.h \
+ jni/../../Classes/Level__TestLevelOne.h
 
 jni/../../Classes/TestScene.h:
 
@@ -1043,3 +1046,13 @@ jni/../../Classes/TestScene.h:
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCString.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
+
+jni/../../Classes/SwappyGrid.h:
+
+jni/../../Classes/Level.h:
+
+jni/../../Classes/Tile.h:
+
+jni/../../Classes/IRandomizerStrategy.h:
+
+jni/../../Classes/Level__TestLevelOne.h:
