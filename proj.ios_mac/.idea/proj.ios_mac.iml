@@ -20,16 +20,19 @@
       <sourceFolder url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../Classes">
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AvocadoTile.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/IRandomizerStrategy.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelOne.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SwappyGrid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Tile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Tile.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/TileFactory.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/TileFactory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelOne.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SwappyGrid.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AvocadoTile.h" isTestSource="false" />

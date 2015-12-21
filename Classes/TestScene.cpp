@@ -7,7 +7,7 @@
 //
 
 #include "TestScene.h"
-#include "SwappyGrid.h"
+#include "Level__TestLevelOne.h"
 
 USING_NS_CC;
 
@@ -35,7 +35,7 @@ bool TestScene::init() {
     
     swappyGrid = lorafel::SwappyGrid::create();
     
-    auto level =  new lorafel::Level(); //Level__TestLevelOne();
+    auto level =  new lorafel::Level__TestLevelOne(); //Level__TestLevelOne();
 
     addChild(swappyGrid, 1);
 

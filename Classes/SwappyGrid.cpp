@@ -8,10 +8,9 @@
 using namespace lorafel;
 
 bool SwappyGrid::init() {
-    tileFactory = TileFactory::getInstance();
     visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     origin = cocos2d::Director::getInstance()->getVisibleOrigin();
-
+    
     return true;
 }
 
@@ -23,7 +22,7 @@ void SwappyGrid::loadLevel(Level *level) {
         // Generate a tile using the TileFactory
         // Pass in the level which includes this
         // level's Tile Distribution
-        Tile* tile = tileFactory->getTile(level);
+        Tile* tile = level->getRandomTile();
 
         // Drop the random tile in the given column
         dropTile(i, tile);

@@ -7,21 +7,21 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{59,78}}</string>
+				<string>{{46,0},{42,56}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{59,78}}</string>
+				<string>{{0,0},{42,56}}</string>
 				<key>sourceSize</key>
-				<string>{59,78}</string>
+				<string>{42,56}</string>
 			</dict>
 
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,158},{38,78}}</string>
+				<string>{{89,0},{38,78}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +35,7 @@
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,79},{45,78}}</string>
+				<string>{{0,0},{45,78}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -53,7 +53,7 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{64,256}</string>
+			<string>{128,128}</string>
 			<key>textureFileName</key>
 			<string>sprites.png</string>
 			</dict>

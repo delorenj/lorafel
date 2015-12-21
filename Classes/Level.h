@@ -5,14 +5,28 @@
 #ifndef LORAFEL_LEVEL_H
 #define LORAFEL_LEVEL_H
 
+#include "Tile.h"
+#include "IRandomizerStrategy.h"
+
+
 namespace lorafel {
+    typedef struct {Tile* tile; float frequency;} TileConfig;
+    typedef std::list<TileConfig*> TileConfigs;
+
     class Level {
 
     public:
         Level();
+        virtual ~Level();
 
-        ~Level();
+        TileConfigs* getTileConfigs() { return tileConfigs; }
 
+
+        virtual Tile* getRandomTile() = 0;
+
+    protected:
+        TileConfigs* tileConfigs;
+        IRandomizerStrategy* randomizer;
     };
 }
 

@@ -7,7 +7,6 @@
 
 #include "cocos2d.h"
 #include "Level.h"
-#include "TileFactory.h"
 #include "Tile.h"
 
 namespace lorafel {
@@ -22,7 +21,6 @@ namespace lorafel {
 
     protected:
         Level *level;
-        TileFactory *tileFactory;
         const int NUM_COLUMNS = 9;
         const int NUM_ROWS = 9;
         cocos2d::Size visibleSize;
