@@ -18,14 +18,15 @@ class TestScene : public Node {
 
 public:
     static Scene *createScene();
-
     virtual bool init();
-
     CREATE_FUNC(TestScene);
+    void setPhysicsWorld(PhysicsWorld* world){m_world = world;}
+
 
 protected:
     Sprite* pSprBackground;
     lorafel::SwappyGrid* swappyGrid;
+    PhysicsWorld* m_world;
 };
 
 #endif /* defined(____TestScene____) */

@@ -10,7 +10,9 @@
 
 namespace lorafel {
     class Level__TestLevelOne : public Level {
-        virtual Tile *getRandomTile();
+    public:
+        Level__TestLevelOne();
+        virtual ~Level__TestLevelOne();
     };
 }
 

@@ -5,12 +5,10 @@
 #ifndef LORAFEL_IRANDOMIZERSTRATEGY_H
 #define LORAFEL_IRANDOMIZERSTRATEGY_H
 
-#include "Level.h"
-
 namespace lorafel {
     class IRandomizerStrategy {
     public:
-        virtual int randomize(std::list<float>) = 0;
+        virtual int randomize(std::vector<int>) = 0;
     };
 }
 

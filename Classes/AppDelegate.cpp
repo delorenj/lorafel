@@ -70,7 +70,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphonehd");
         resDirOrders.push_back("iphone");
         glview->setDesignResolutionSize(ultra4kResolutionSize.width, ultra4kResolutionSize.height, ResolutionPolicy::NO_BORDER);
-    }
+    } else
 
     if(screenSize.width == ipadHDResolutionSize.height ||
        screenSize.height == ipadHDResolutionSize.height
@@ -86,7 +86,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/ipadHDResolutionSize.width);
         glview->setDesignResolutionSize(1366,2048, ResolutionPolicy::NO_BORDER);
-    }
+    } else
 
     if(screenSize.width == ipadResolutionSize.height || screenSize.height == ipadResolutionSize.height
        ) {// iPad
@@ -97,7 +97,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/ipadResolutionSize.width);
         glview->setDesignResolutionSize(911,1365, ResolutionPolicy::NO_BORDER);
-    }
+    } else
 
     if(screenSize.width == iphoneHD5ResolutionSize.height || screenSize.height == iphoneHD5ResolutionSize.height
        ) {
@@ -107,7 +107,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/iphoneHD5ResolutionSize.width);
         glview->setDesignResolutionSize(759,1138, ResolutionPolicy::NO_BORDER);
-    }
+    } else
 
     if(screenSize.width == iphoneHDResolutionSize.height || screenSize.height == iphoneHDResolutionSize.height
        ) {
@@ -116,7 +116,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/iphoneHDResolutionSize.width);
         glview->setDesignResolutionSize(759, 1138, ResolutionPolicy::NO_BORDER);
-    }
+    } else
 
     if(screenSize.width == iphoneResolutionSize.height || screenSize.height == iphoneResolutionSize.height
        ) {
@@ -124,6 +124,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.height/iphoneResolutionSize.height);
         glview->setDesignResolutionSize(iphoneResolutionSize.width, iphoneResolutionSize.height, ResolutionPolicy::NO_BORDER);
+    } else {
+        CCLOG("else Size");
+        resDirOrders.push_back("iphone");
+        glview->setContentScaleFactor(screenSize.height/iphoneResolutionSize.height);
+        glview->setDesignResolutionSize(iphoneResolutionSize.width, iphoneResolutionSize.height, ResolutionPolicy::NO_BORDER);
+
     }
 
     fileUtils->setSearchPaths(resDirOrders);

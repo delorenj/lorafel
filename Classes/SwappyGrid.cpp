@@ -10,7 +10,19 @@ using namespace lorafel;
 bool SwappyGrid::init() {
     visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     origin = cocos2d::Director::getInstance()->getVisibleOrigin();
-    
+
+    // Set physics bounds
+//    auto body = cocos2d::PhysicsBody::createEdgeSegment(
+//            cocos2d::Vec2(origin.x, origin.y+visibleSize.height),
+//            cocos2d::Vec2(origin.x+visibleSize.width, origin.y+visibleSize.height),
+//            cocos2d::PHYSICSBODY_MATERIAL_DEFAULT,
+//            3
+//    );
+    auto body = cocos2d::PhysicsBody::createEdgeBox(visibleSize, cocos2d::PHYSICSBODY_MATERIAL_DEFAULT, 3);
+    auto edgeNode = cocos2d::Node::create();
+    edgeNode->setPhysicsBody(body);
+    edgeNode->setPosition(cocos2d::Point(origin.x + visibleSize.width/2,origin.y + visibleSize.height/2));
+    addChild(edgeNode);
     return true;
 }
 
@@ -27,12 +39,25 @@ void SwappyGrid::loadLevel(Level *level) {
         // Drop the random tile in the given column
         dropTile(i, tile);
     }
+
+    for(int i=0; i<NUM_COLUMNS; i++) {
+        for(int j=0; j<4; j++) {
+            Tile* tile = level->getRandomTile();
+            dropTile(cocos2d::Point(i*tile->getContentSize().width, j*tile->getContentSize().height), tile);
+        }
+    }
 }
 
 void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
     tile->setPosition(getColumnDropPosition(column));
+    addChild(tile,2);
+}
+
+void SwappyGrid::dropTile(cocos2d::Point pos, Tile *tile) {
+    // Make sure we're dropping a tile at a valid location
+    tile->setPosition(pos);
     addChild(tile,2);
 }
 

@@ -7,25 +7,32 @@
 
 #include "Tile.h"
 #include "IRandomizerStrategy.h"
+#include "TileFactory.h"
 
 
 namespace lorafel {
-    typedef struct {Tile* tile; float frequency;} TileConfig;
-    typedef std::list<TileConfig*> TileConfigs;
+    class TileFactory;
+
+    typedef struct {TileFactory* factory; int frequency;} TileConfig;
+    typedef std::vector<TileConfig*> TileConfigs;
 
     class Level {
 
     public:
         Level();
+        Level(TileConfigs* configs) {
+            this->m_pTileConfigs = configs;
+        }
+
         virtual ~Level();
 
-        TileConfigs* getTileConfigs() { return tileConfigs; }
+        TileConfigs* getTileConfigs() { return m_pTileConfigs; }
+        void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
-
-        virtual Tile* getRandomTile() = 0;
+        virtual Tile* getRandomTile();
 
     protected:
-        TileConfigs* tileConfigs;
+        TileConfigs* m_pTileConfigs;
         IRandomizerStrategy* randomizer;
     };
 }

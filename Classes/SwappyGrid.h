@@ -20,6 +20,7 @@ namespace lorafel {
         void loadLevel(Level *level);
 
     protected:
+        cpSpace* m_pWorld;
         Level *level;
         const int NUM_COLUMNS = 9;
         const int NUM_ROWS = 9;
@@ -27,6 +28,7 @@ namespace lorafel {
         cocos2d::Point origin;
 
         void dropTile(int column, Tile *pTile);
+        void dropTile(cocos2d::Point pos, Tile *pTile);
 
         cocos2d::Vec2 getColumnDropPosition(int column);
     };

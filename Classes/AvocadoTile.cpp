@@ -18,9 +18,7 @@ AvocadoTile* AvocadoTile::create() {
     if (sprite->initWithSpriteFrameName("avocado.png"))
     {
         sprite->setSpriteName("Avocado");
-
         sprite->autorelease();
-
         sprite->initOptions();
 
         return sprite;
@@ -30,8 +28,4 @@ AvocadoTile* AvocadoTile::create() {
 
 
     return NULL;
-}
-
-void AvocadoTile::initOptions() {
-    // do things here like setTag(), setPosition(), any custom logic.
 }

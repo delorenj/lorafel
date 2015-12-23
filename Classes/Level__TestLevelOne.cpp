@@ -3,11 +3,34 @@
 //
 
 #include "Level__TestLevelOne.h"
-#include "AvocadoTile.h"
+#include "AvocadoFactory.h"
+#include "CarrotFactory.h"
+#include "GrapeFactory.h"
+#include "NormalDistributionRandomizer.h"
 
 using namespace lorafel;
 
-Tile* Level__TestLevelOne::getRandomTile() {
-    Tile* tile = AvocadoTile::create();
-    return tile;
+Level__TestLevelOne::Level__TestLevelOne() {
+
+    m_pTileConfigs = new TileConfigs();
+    randomizer = new NormalDistributionRandomizer();
+    TileConfig* config = new TileConfig();
+    config->factory = new AvocadoFactory();
+    config->frequency = 5;
+    m_pTileConfigs->push_back(config);
+
+    config = new TileConfig();
+    config->factory = new CarrotFactory();
+    config->frequency = 7;
+    m_pTileConfigs->push_back(config);
+
+    config = new TileConfig();
+    config->factory = new GrapeFactory();
+    config->frequency = 10;
+    m_pTileConfigs->push_back(config);
+
+}
+
+Level__TestLevelOne::~Level__TestLevelOne() {
+    while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
 }

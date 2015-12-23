@@ -14,7 +14,6 @@ namespace lorafel {
         ~AvocadoTile();
 
         static AvocadoTile* create();
-        void initOptions();
 
     };
 }

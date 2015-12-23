@@ -12,8 +12,11 @@
 USING_NS_CC;
 
 Scene* TestScene::createScene() {
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
     auto layer = TestScene::create();
+    layer->setPhysicsWorld(scene->getPhysicsWorld());
     scene->addChild(layer);
     return scene;
 }

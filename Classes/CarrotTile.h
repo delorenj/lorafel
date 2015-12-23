@@ -14,7 +14,6 @@ namespace lorafel {
         ~CarrotTile();
 
         static CarrotTile* create();
-        void initOptions();
 
     };
 }

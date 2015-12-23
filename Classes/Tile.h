@@ -17,6 +17,7 @@ namespace lorafel {
 
         std::string getSpriteName();
         void setSpriteName(std::string name);
+        void initOptions();
 
     protected:
         std::string spriteName;

@@ -17,3 +17,9 @@ std::string Tile::getSpriteName() {
 void Tile::setSpriteName(std::string name) {
     spriteName = name;
 }
+void Tile::initOptions() {
+    this->setTag(1);
+    auto body = cocos2d::PhysicsBody::createBox(this->getContentSize());
+    body->setRotationEnable(false);
+    this->setPhysicsBody(body);
+}
