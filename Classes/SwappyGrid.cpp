@@ -10,14 +10,6 @@ using namespace lorafel;
 bool SwappyGrid::init() {
     visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     origin = cocos2d::Director::getInstance()->getVisibleOrigin();
-
-    // Set physics bounds
-//    auto body = cocos2d::PhysicsBody::createEdgeSegment(
-//            cocos2d::Vec2(origin.x, origin.y+visibleSize.height),
-//            cocos2d::Vec2(origin.x+visibleSize.width, origin.y+visibleSize.height),
-//            cocos2d::PHYSICSBODY_MATERIAL_DEFAULT,
-//            3
-//    );
     auto body = cocos2d::PhysicsBody::createEdgeBox(visibleSize, cocos2d::PHYSICSBODY_MATERIAL_DEFAULT, 3);
     auto edgeNode = cocos2d::Node::create();
     edgeNode->setPhysicsBody(body);

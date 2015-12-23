@@ -23,7 +23,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AppDelegate.h" isTestSource="false" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeFactory.cpp" isTestSource="false" />
+=======
+>>>>>>> febb8afffb533c86d03998ee2d1648ef2e57061e
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AvocadoTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AvocadoFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.cpp" isTestSource="false" />
@@ -34,9 +37,14 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Tile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotFactory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelOne.h" isTestSource="false" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TileFactory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TileFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.h" isTestSource="false" />
+=======
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.h" isTestSource="false" />
+>>>>>>> febb8afffb533c86d03998ee2d1648ef2e57061e
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SwappyGrid.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Tile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NormalDistributionRandomizer.cpp" isTestSource="false" />
@@ -45,9 +53,13 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NormalDistributionRandomizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AvocadoTile.h" isTestSource="false" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.h" isTestSource="false" />
+=======
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.h" isTestSource="false" />
+>>>>>>> febb8afffb533c86d03998ee2d1648ef2e57061e
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AppDelegate.cpp" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../Resources">
