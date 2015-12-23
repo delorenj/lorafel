@@ -1,4 +1,8 @@
-
+*.apk
+dexedLibs
+cocos2d/cocos/platform/android/java/bin/classes.jar
+objs-debug/*/**
+*.o.d
 #xcode specific
 build/*
 *.pbxuser
