@@ -6,6 +6,7 @@
 #define LORAFEL_NORMALDISTRIBUTIONRANDOMIZER_H
 
 #include "IRandomizerStrategy.h"
+#include <vector>
 
 namespace lorafel {
     class NormalDistributionRandomizer : public IRandomizerStrategy {

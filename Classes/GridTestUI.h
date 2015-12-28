@@ -5,7 +5,8 @@
 #ifndef LORAFEL_GRIDTESTUI_H
 #define LORAFEL_GRIDTESTUI_H
 
-#include "CocosGUI.h"
+#include <sstream>
+#include "ui/CocosGUI.h"
 #include "SwappyGrid.h"
 
 namespace lorafel {

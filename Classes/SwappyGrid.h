@@ -23,13 +23,13 @@ namespace lorafel {
         void loadLevel(Level *level);
         void dropTile(int column, Tile *pTile); // Drop a specific tile
         void dropTile(int column);              // Drop a random tile
+        static const int NUM_COLUMNS = 9;
+        static const int NUM_ROWS = 9;
 
 
     protected:
         cpSpace* m_pWorld;
         Level *level;
-        const int NUM_COLUMNS = 9;
-        const int NUM_ROWS = 9;
         cocos2d::Size m_gridSize;
         int m_gridBaseY;
         cocos2d::Size visibleSize;

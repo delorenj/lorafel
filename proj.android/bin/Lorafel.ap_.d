@@ -6,6 +6,11 @@
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-hdpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-ldpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-mdpi/icon.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Bold.otf \
+/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Book.otf \
+/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Light.otf \
+/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Regular.otf \
+/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Thin.otf \
 /Users/delorenj/code/Lorafel/proj.android/assets/CloseNormal.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/CloseSelected.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts \
@@ -18,6 +23,11 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/res \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts/arial.ttf \
+/Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Bold.ttf \
+/Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Book.ttf \
+/Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Light.ttf \
+/Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Regular.ttf \
+/Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Thin.ttf \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts/Marker Felt.ttf \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/avocado.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg1.png \

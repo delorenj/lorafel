@@ -21,12 +21,11 @@ bool SwappyGrid::init() {
     m_tileScaleFactor = m_tileSize.width/tileWidth;
 
     // Physics Bounds
-    m_gridBaseY = origin.y;
     auto body = cocos2d::PhysicsBody::createEdgeSegment(
-            // MAKE THIS RELATIVE TO ITSELF !!!
-            cocos2d::Vec2(origin.x,m_gridBaseY),
-            cocos2d::Vec2(origin.x + visibleSize.width,m_gridBaseY),
-            cocos2d::PHYSICSBODY_MATERIAL_DEFAULT, 3
+            cocos2d::Vec2(0, 0),
+            cocos2d::Vec2(tileWidth*NUM_COLUMNS,0),
+            cocos2d::PHYSICSBODY_MATERIAL_DEFAULT,
+            3
     );
 
     auto edgeNode = cocos2d::Node::create();
@@ -36,7 +35,7 @@ bool SwappyGrid::init() {
     // Create Tile Grid
     m_pGrid = new TileGrid();
     this->setPosition(
-            origin.x,
+            origin.x + visibleSize.width/2 - m_tileSize.width*NUM_COLUMNS/2,
             visibleSize.height - maxGridHeight - m_tileSize.height*0.25
     );
     return true;
@@ -77,10 +76,6 @@ void SwappyGrid::dropTile(int column) {
     dropTile(column, tile);
 }
 
-cocos2d::Vec2 SwappyGrid::getColumnDropPosition(int column) {
-    return cocos2d::Vec2(origin.x + m_tileSize.width*column + m_tileSize.width/2, origin.y + visibleSize.height + 100);
-}
-
 void SwappyGrid::addTile(cocos2d::Point pos, Tile *tile) {
 
 }
@@ -102,19 +97,20 @@ cocos2d::Point SwappyGrid::screenToGrid(cocos2d::Point pos) {
 }
 
 cocos2d::Point SwappyGrid::gridToScreen(int x, int y) {
-    int screenX = origin.x + m_tileSize.width*x + m_tileSize.width/2;
-
+    int screenX = m_tileSize.width*x + m_tileSize.width/2;
     if(y == 0) {
+
         // special case.
         // off-screen, above grid
+        cocos2d::Point topOfScreen = this->convertToNodeSpace(cocos2d::Vec2(0,visibleSize.height));
         return cocos2d::Vec2(
                 screenX,
-                origin.y + visibleSize.height + m_tileSize.height
+                topOfScreen.y + m_tileSize.height
         );
     } else {
         return cocos2d::Vec2(
                 screenX,
-                m_gridBaseY + m_tileSize.height*y/2
+                m_tileSize.height*y/2
         );
     }
 }

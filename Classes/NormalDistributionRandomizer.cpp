@@ -3,6 +3,9 @@
 //
 
 #include "NormalDistributionRandomizer.h"
+#include <vector>
+#include <random>
+#include "cocos2d.h"
 
 using namespace lorafel;
 

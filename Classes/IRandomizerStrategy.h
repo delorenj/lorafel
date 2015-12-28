@@ -5,6 +5,8 @@
 #ifndef LORAFEL_IRANDOMIZERSTRATEGY_H
 #define LORAFEL_IRANDOMIZERSTRATEGY_H
 
+#include <vector>
+
 namespace lorafel {
     class IRandomizerStrategy {
     public:

@@ -14,7 +14,7 @@ USING_NS_CC;
 
 Scene* TestScene::createScene() {
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 
     auto layer = TestScene::create();
     layer->setPhysicsWorld(scene->getPhysicsWorld());
@@ -46,7 +46,8 @@ bool TestScene::init() {
 
     // Create the grid debug panel
     lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
-    gridTestUI->setPosition(origin.x + visibleSize.width - 300, origin.y + 200);
+    gridTestUI->setAnchorPoint(Vec2(0,1));
+    gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
     addChild(gridTestUI);
 
 //    auto textField = ::TextTextField::create("input words here","fonts/Marker Felt.ttf",30);
