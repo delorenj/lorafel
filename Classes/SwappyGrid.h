@@ -21,6 +21,9 @@ namespace lorafel {
         CREATE_FUNC(SwappyGrid);
 
         void loadLevel(Level *level);
+        void dropTile(int column, Tile *pTile); // Drop a specific tile
+        void dropTile(int column);              // Drop a random tile
+
 
     protected:
         cpSpace* m_pWorld;
@@ -28,6 +31,7 @@ namespace lorafel {
         const int NUM_COLUMNS = 9;
         const int NUM_ROWS = 9;
         cocos2d::Size m_gridSize;
+        int m_gridBaseY;
         cocos2d::Size visibleSize;
         cocos2d::Point origin;
         TileGrid* m_pGrid;
@@ -42,8 +46,6 @@ namespace lorafel {
         cocos2d::Point gridToScreen(cocos2d::Point pos);
         cocos2d::Point gridToScreen(int x, int y);
         cocos2d::Point screenToGrid(cocos2d::Point pos);
-
-        void dropTile(int column, Tile *pTile);
 
         cocos2d::Vec2 getColumnDropPosition(int column);
     };

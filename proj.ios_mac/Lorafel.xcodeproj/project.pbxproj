@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		3167D027EE7C4D681CE79592 /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
+		3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
 		3167D0A2E824C106763BC208 /* GrapeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */; };
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D2B9A68682B12A96FF10 /* CarrotTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFE4A2A239E7D5BC8444 /* CarrotTile.cpp */; };
@@ -26,6 +27,7 @@
 		3167D8E221EAAE2AA91A9178 /* Level__TestLevelOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */; };
 		3167DA46CB5758E70CA6A838 /* GrapeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */; };
 		3167DA6BD270B9F88832DF0C /* GrapeTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D278D399D66F395F05FA /* GrapeTile.cpp */; };
+		3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
 		3167DBB09AD123F6B5333418 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
 		3167DC076D1FBA3CE0C2E495 /* CarrotFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD05DF9A580BA682C40A /* CarrotFactory.cpp */; };
 		3167DC3A59695F62FF008FDB /* AvocadoTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */; };
@@ -154,6 +156,7 @@
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
 		3167D2F1AB967E5816B7F045 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		3167D3C5652E9C08FAD14D4B /* IRandomizerStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRandomizerStrategy.h; sourceTree = "<group>"; };
+		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D6BF39D1E520BFFD7883 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		3167D6E377EE617933CF68D6 /* TileFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileFactory.cpp; sourceTree = "<group>"; };
 		3167D71961895D1BDB0213EF /* CarrotFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotFactory.h; sourceTree = "<group>"; };
@@ -162,6 +165,7 @@
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
 		3167D808D5906C0F6DF89297 /* CarrotTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotTile.h; sourceTree = "<group>"; };
 		3167D8097512943BF474377C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level__TestLevelOne.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
@@ -405,6 +409,8 @@
 				3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */,
 				3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */,
 				3167D8097512943BF474377C /* Singleton.h */,
+				3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */,
+				3167D83138851224CC3DF240 /* GridTestUI.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -629,6 +635,7 @@
 				3167DC076D1FBA3CE0C2E495 /* CarrotFactory.cpp in Sources */,
 				3167DA46CB5758E70CA6A838 /* GrapeFactory.cpp in Sources */,
 				3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */,
+				3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +658,7 @@
 				3167DCF49EE189E0A95B923E /* CarrotFactory.cpp in Sources */,
 				3167D0A2E824C106763BC208 /* GrapeFactory.cpp in Sources */,
 				3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */,
+				3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

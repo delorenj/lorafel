@@ -8,6 +8,7 @@
 
 #include "TestScene.h"
 #include "Level__TestLevelOne.h"
+#include "GridTestUI.h"
 
 USING_NS_CC;
 
@@ -32,17 +33,29 @@ bool TestScene::init() {
     pSprBackground = Sprite::create("bg1.png");
     CCLOG("visibleSize: (%f,%f)", visibleSize.width, visibleSize.height);
     CCLOG("bg size: (%f,%f)", pSprBackground->getContentSize().width, pSprBackground->getContentSize().height);
+    CCLOG("origin: (%f, %f)", origin.x, origin.y);
 
     pSprBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
     this->addChild(pSprBackground);
-    
+
+    // Create the grid
     swappyGrid = lorafel::SwappyGrid::create();
-    
     auto level =  new lorafel::Level__TestLevelOne(); //Level__TestLevelOne();
-
     addChild(swappyGrid, 1);
-
     swappyGrid->loadLevel(level);
 
+    // Create the grid debug panel
+    lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
+    gridTestUI->setPosition(origin.x + visibleSize.width - 300, origin.y + 200);
+    addChild(gridTestUI);
+
+//    auto textField = ::TextTextField::create("input words here","fonts/Marker Felt.ttf",30);
+//    textField->ignoreContentAdaptWithSize(false);
+//    textField->setContentSize(Size(240, 160));
+//    textField->setTextHorizontalAlignment(TextHAlignment::CENTER);
+//    textField->setTextVerticalAlignment(TextVAlignment::CENTER);
+//    textField->setPosition(Vec2(widgetSize.width / 2.0f, widgetSize.height / 2.0f));
+//    textField->addEventListener(CC_CALLBACK_2(UITextFieldTest_LineWrap::textFieldEvent, this));
+//    _uiLayer->addChild(textField);
     return true;
 }
