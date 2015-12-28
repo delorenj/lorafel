@@ -50,13 +50,5 @@ bool TestScene::init() {
     gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
     addChild(gridTestUI);
 
-//    auto textField = ::TextTextField::create("input words here","fonts/Marker Felt.ttf",30);
-//    textField->ignoreContentAdaptWithSize(false);
-//    textField->setContentSize(Size(240, 160));
-//    textField->setTextHorizontalAlignment(TextHAlignment::CENTER);
-//    textField->setTextVerticalAlignment(TextVAlignment::CENTER);
-//    textField->setPosition(Vec2(widgetSize.width / 2.0f, widgetSize.height / 2.0f));
-//    textField->addEventListener(CC_CALLBACK_2(UITextFieldTest_LineWrap::textFieldEvent, this));
-//    _uiLayer->addChild(textField);
     return true;
 }
