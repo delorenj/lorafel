@@ -5,10 +5,10 @@
 //  Created by Jarad DeLorenzo on 11/23/15.
 //
 //
-
 #include "TestScene.h"
 #include "Level__TestLevelOne.h"
 #include "GridTestUI.h"
+#include "GameStates.h"
 
 USING_NS_CC;
 
@@ -26,6 +26,8 @@ bool TestScene::init() {
     if(!Node::init()) {
         return false;
     }
+
+    initStateMachine();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -51,4 +53,15 @@ bool TestScene::init() {
     addChild(gridTestUI);
 
     return true;
+}
+
+void TestScene::initStateMachine() {
+    m_pStateMachine = lorafel::StateMachine::create();
+    m_pStateMachine->addState<lorafel::GameState>();
+//    m_pStateMachine->addState<lorafel::BusyState>();
+//    m_pStateMachine->addState<lorafel::TileSwappingState>();
+//    m_pStateMachine->addState<lorafel::TileFallingState>();
+//    m_pStateMachine->addState<lorafel::MatchFoundState>();
+//
+//    m_pStateMachine->enterState<lorafel::BusyState>();
 }

@@ -61,7 +61,7 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
     tile->setPosition(gridToScreen(column, 0));
-    tile->getPhysicsBody()->setVelocity(cocos2d::Vec2(0,-150.0));
+    tile->getPhysicsBody()->setVelocity(cocos2d::Vec2(0,-200.0));
     addChild(tile,2);
 
 

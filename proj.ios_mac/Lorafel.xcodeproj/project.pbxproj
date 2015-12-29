@@ -25,14 +25,18 @@
 		3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D8D3905CE44C43CFEBA0 /* Level__TestLevelOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */; };
 		3167D8E221EAAE2AA91A9178 /* Level__TestLevelOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */; };
+		3167D9D8D40D65F649D196A1 /* StateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D951D178CA70DB91EF2F /* StateMachine.cpp */; };
+		3167DA01EF812294F9C1D591 /* GameStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D07B9EB51E82506FE89C /* GameStates.cpp */; };
 		3167DA46CB5758E70CA6A838 /* GrapeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */; };
 		3167DA6BD270B9F88832DF0C /* GrapeTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D278D399D66F395F05FA /* GrapeTile.cpp */; };
+		3167DAB3F8EEC94D802B9C0F /* GameStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D07B9EB51E82506FE89C /* GameStates.cpp */; };
 		3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
 		3167DBB09AD123F6B5333418 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
 		3167DC076D1FBA3CE0C2E495 /* CarrotFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD05DF9A580BA682C40A /* CarrotFactory.cpp */; };
 		3167DC3A59695F62FF008FDB /* AvocadoTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */; };
 		3167DCF49EE189E0A95B923E /* CarrotFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD05DF9A580BA682C40A /* CarrotFactory.cpp */; };
 		3167DD1DC8FE58A7F4E8800A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
+		3167DD1F1425591A2CEDF321 /* StateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D951D178CA70DB91EF2F /* StateMachine.cpp */; };
 		3167DD571708BA508C361A49 /* GrapeTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D278D399D66F395F05FA /* GrapeTile.cpp */; };
 		3167DD584567F68E4A07C521 /* AvocadoTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */; };
 		3167DE511FD9D32C4D9DE8A1 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D836466E117847AC4CFA /* Tile.cpp */; };
@@ -149,9 +153,12 @@
 		1D6058910D05DD3D006BFB54 /* Lorafel-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lorafel-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3167D07B9EB51E82506FE89C /* GameStates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStates.cpp; sourceTree = "<group>"; };
+		3167D080272FAB8E8AC62DAC /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateMachine.h; sourceTree = "<group>"; };
 		3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvocadoTile.cpp; sourceTree = "<group>"; };
 		3167D095ED6055C527532BCC /* GrapeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeFactory.h; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
+		3167D2432814485577EB6E9F /* GameStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStates.h; sourceTree = "<group>"; };
 		3167D278D399D66F395F05FA /* GrapeTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrapeTile.cpp; sourceTree = "<group>"; };
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
 		3167D2F1AB967E5816B7F045 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -167,11 +174,13 @@
 		3167D8097512943BF474377C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
+		3167D951D178CA70DB91EF2F /* StateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateMachine.cpp; sourceTree = "<group>"; };
 		3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level__TestLevelOne.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
 		3167DD05DF9A580BA682C40A /* CarrotFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarrotFactory.cpp; sourceTree = "<group>"; };
 		3167DD68E372D03B83F63E89 /* AvocadoFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvocadoFactory.h; sourceTree = "<group>"; };
 		3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrapeFactory.cpp; sourceTree = "<group>"; };
+		3167DD920CFEA341E70456EB /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvocadoFactory.cpp; sourceTree = "<group>"; };
 		3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalDistributionRandomizer.cpp; sourceTree = "<group>"; };
 		3167DE78A23A2C4122F283E0 /* AvocadoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvocadoTile.h; sourceTree = "<group>"; };
@@ -411,6 +420,11 @@
 				3167D8097512943BF474377C /* Singleton.h */,
 				3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */,
 				3167D83138851224CC3DF240 /* GridTestUI.h */,
+				3167DD920CFEA341E70456EB /* State.h */,
+				3167D951D178CA70DB91EF2F /* StateMachine.cpp */,
+				3167D080272FAB8E8AC62DAC /* StateMachine.h */,
+				3167D07B9EB51E82506FE89C /* GameStates.cpp */,
+				3167D2432814485577EB6E9F /* GameStates.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -636,6 +650,8 @@
 				3167DA46CB5758E70CA6A838 /* GrapeFactory.cpp in Sources */,
 				3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */,
 				3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */,
+				3167D9D8D40D65F649D196A1 /* StateMachine.cpp in Sources */,
+				3167DA01EF812294F9C1D591 /* GameStates.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +675,8 @@
 				3167D0A2E824C106763BC208 /* GrapeFactory.cpp in Sources */,
 				3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */,
 				3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */,
+				3167DD1F1425591A2CEDF321 /* StateMachine.cpp in Sources */,
+				3167DAB3F8EEC94D802B9C0F /* GameStates.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
