@@ -3,6 +3,7 @@
 //
 
 #include "Tile.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -23,7 +24,17 @@ void Tile::initOptions() {
     body->setRotationEnable(false);
     body->setDynamic(true);
     body->setEnabled(true);
+    body->setPositionOffset(cocos2d::Vec2(0,-10));
     body->setGravityEnable(true);
     body->setMass(1.0);
     this->setPhysicsBody(body);
+    this->scheduleUpdate();
+}
+
+void Tile::update(float delta) {
+    if(
+            getPhysicsBody()->getVelocity().y > 0 &&
+            getPhysicsBody()->isDynamic()) {
+        getPhysicsBody()->setDynamic(false);
+    }
 }

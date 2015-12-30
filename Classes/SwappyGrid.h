@@ -8,6 +8,8 @@
 #include "cocos2d.h"
 #include "Level.h"
 #include "Tile.h"
+#include "StateMachine.h"
+#include "GameStates.h"
 
 namespace lorafel {
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
@@ -16,7 +18,8 @@ namespace lorafel {
     class SwappyGrid : public cocos2d::Node {
     public:
 
-        virtual bool init();
+        bool init() override;
+        void update(float delta) override;
 
         CREATE_FUNC(SwappyGrid);
 
@@ -37,6 +40,7 @@ namespace lorafel {
         TileGrid* m_pGrid;
         cocos2d::Size m_tileSize;
         float m_tileScaleFactor;
+        StateMachine* m_pGameStateMachine;
 
         // Grid Data Structure Helpers
         void addTile(cocos2d::Point pos, Tile*); // Insert a tile into the grid ds

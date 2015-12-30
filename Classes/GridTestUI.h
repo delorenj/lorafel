@@ -35,7 +35,6 @@ namespace lorafel {
         SwappyGrid* m_pGrid;
         cocos2d::ui::Text* m_title;
 
-
     };
 }
 

@@ -11,7 +11,9 @@ namespace lorafel {
     class Tile : public cocos2d::Sprite {
 
     public:
-        virtual bool init();
+        bool init() override;
+
+        void update(float delta) override;
 
         CREATE_FUNC(Tile);
 

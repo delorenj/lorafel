@@ -3,13 +3,16 @@
 //
 
 #include "SwappyGrid.h"
-
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
 bool SwappyGrid::init() {
     visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+
+    // Get a reference to the state machine
+    m_pGameStateMachine = GameStateMachine::getInstance();
 
     // Calculate the Tile size so we know how
     // big to make the grid
@@ -38,12 +41,15 @@ bool SwappyGrid::init() {
             origin.x + visibleSize.width/2 - m_tileSize.width*NUM_COLUMNS/2,
             visibleSize.height - maxGridHeight - m_tileSize.height*0.25
     );
+
+    this->scheduleUpdate();
     return true;
 }
 
 void SwappyGrid::loadLevel(Level *level) {
     //Set the grid's level
     this->level = level;
+    m_pGameStateMachine->enterState<LoadingLevelState>();
 
 //    while()
     for(int i=0; i<NUM_COLUMNS; i++) {
@@ -55,13 +61,19 @@ void SwappyGrid::loadLevel(Level *level) {
         // Drop the random tile in the given column
         dropTile(i, tile);
     }
+    m_pGameStateMachine->enterState<IdleState>();
+}
+
+void SwappyGrid::update(float delta) {
+
 }
 
 void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
+
     tile->setPosition(gridToScreen(column, 0));
-    tile->getPhysicsBody()->setVelocity(cocos2d::Vec2(0,-200.0));
+    tile->getPhysicsBody()->setVelocity(cocos2d::Vec2(0,-100.0));
     addChild(tile,2);
 
 

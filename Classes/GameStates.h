@@ -43,6 +43,8 @@ namespace lorafel {
 //        virtual bool isValidNextState(State* state);
     };
 
+    class LoadingLevelState : public BusyState { };
+
     class TileSwappingState : public BusyState
     {
     public:
