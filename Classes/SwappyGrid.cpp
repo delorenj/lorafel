@@ -41,6 +41,12 @@ bool SwappyGrid::init() {
         m_pGrid->push_back(new TileColumn());
     }
 
+    // Create Tile Drop Queues
+    m_pTileDropQueues = new std::vector<TileDropQueue*>();
+    for (int j = 0; j < NUM_COLUMNS; ++j) {
+        m_pTileDropQueues->push_back(new TileDropQueue());
+    }
+
     this->setPosition(
             origin.x + visibleSize.width/2 - m_tileSize.width*NUM_COLUMNS/2,
             visibleSize.height - maxGridHeight - m_tileSize.height*3
@@ -60,10 +66,8 @@ void SwappyGrid::loadLevel(Level *level) {
         // Generate a tile using the TileFactory
         // Pass in the level which includes this
         // level's Tile Distribution
-        Tile* tile = level->getRandomTile();
-
         // Drop the random tile in the given column
-        dropTile(i, tile);
+        addToTileDropQueue(i);
     }
     m_pGameStateMachine->enterState<IdleState>();
 }
@@ -76,8 +80,17 @@ void SwappyGrid::update(float delta) {
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
         for (int j = 0; j < counts[i]; ++j) {
-            dropTile(i);
+            addToTileDropQueue(i);
         }
+    }
+
+    for (int k = 0; k < m_pTileDropQueues->size(); k++) {
+        TileDropQueue* queue = m_pTileDropQueues->at(k);
+        if(queue->empty()) continue;
+        if(!columnReadyToDropTile(k)) continue;
+        Tile* tile = queue->front();
+        queue->pop();
+        dropTile(k, tile);
     }
 }
 
@@ -85,17 +98,8 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
     int tileRowIndex = insertTileIntoColumn(column, tile);
-    tile->setPosition(gridToScreen(column, -1));
     auto action = cocos2d::MoveTo::create(1.0, gridToScreen(column, tileRowIndex));
-    addChild(tile,2);
     tile->runAction(action);
-}
-
-void SwappyGrid::dropTile(int column) {
-    Tile* tile = level->getRandomTile();
-
-    // Drop the random tile in the given column
-    dropTile(column, tile);
 }
 
 void SwappyGrid::insertTile(cocos2d::Point pos, Tile *tile) {
@@ -162,3 +166,30 @@ std::vector<int> SwappyGrid::getTileVacancyCounts() {
     }
     return counts;
 }
+
+void SwappyGrid::addToTileDropQueue(int column, Tile *pTile) {
+    CC_ASSERT(column >= 0 && column < NUM_COLUMNS && column < m_pTileDropQueues->size());
+    TileDropQueue* q = m_pTileDropQueues->at(column);
+    q->push(pTile);
+}
+
+void SwappyGrid::addToTileDropQueue(int column) {
+    Tile* tile = level->getRandomTile();
+
+    // Put tile in the correct place
+    // but don't drop it yet.
+    cocos2d::Vec2 newPos = gridToScreen(column, -1);
+    tile->setPosition(newPos);
+    addChild(tile,2);
+
+    // Drop the random tile in the given column
+    // using the drop queue to ensure it only
+    // drops when allowed
+    addToTileDropQueue(column, tile);
+
+}
+
+bool SwappyGrid::columnReadyToDropTile(int column) {
+    return true;
+}
+
