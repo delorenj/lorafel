@@ -13,8 +13,6 @@ namespace lorafel {
     public:
         bool init() override;
 
-        void update(float delta) override;
-
         CREATE_FUNC(Tile);
 
         std::string getSpriteName();

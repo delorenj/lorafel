@@ -13,7 +13,23 @@
 
 namespace lorafel {
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
-    typedef std::vector<TileRow*> TileGrid;
+    typedef std::vector<TileColumn*> TileGrid;
+
+//    Tile* begin(TileColumn* el) {
+//        return el->at(0);
+//    }
+//
+//    Tile* end(TileColumn* el) {
+//        return el->at(8);
+//    }
+//
+//    TileColumn* begin(TileGrid* el) {
+//        return el->at(0);
+//    }
+//
+//    TileColumn* end(TileGrid* el) {
+//        return el->at(8);
+//    }
 
     class SwappyGrid : public cocos2d::Node {
     public:
@@ -43,15 +59,19 @@ namespace lorafel {
         StateMachine* m_pGameStateMachine;
 
         // Grid Data Structure Helpers
-        void addTile(cocos2d::Point pos, Tile*); // Insert a tile into the grid ds
+        void insertTile(cocos2d::Point pos, Tile*); // Insert a tile into the grid ds
         void removeTile(cocos2d::Point);         // Remove a tile from the grid ds
         void swapTiles(cocos2d::Point pos1, cocos2d::Point pos2); // Swap the pos of two tiles
-
+        int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Point gridToScreen(cocos2d::Point pos);
         cocos2d::Point gridToScreen(int x, int y);
         cocos2d::Point screenToGrid(cocos2d::Point pos);
 
         cocos2d::Vec2 getColumnDropPosition(int column);
+
+        bool overflow();
+
+        std::vector<int> getTileVacancyCounts();
     };
 }
 

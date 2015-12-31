@@ -37,9 +37,13 @@ bool SwappyGrid::init() {
 
     // Create Tile Grid
     m_pGrid = new TileGrid();
+    for (int i = 0; i < NUM_COLUMNS; ++i) {
+        m_pGrid->push_back(new TileColumn());
+    }
+
     this->setPosition(
             origin.x + visibleSize.width/2 - m_tileSize.width*NUM_COLUMNS/2,
-            visibleSize.height - maxGridHeight - m_tileSize.height*0.25
+            visibleSize.height - maxGridHeight - m_tileSize.height*3
     );
 
     this->scheduleUpdate();
@@ -65,30 +69,36 @@ void SwappyGrid::loadLevel(Level *level) {
 }
 
 void SwappyGrid::update(float delta) {
+    if(overflow()) {
+        CCLOG("DEAD !");
+    }
 
+    auto counts = getTileVacancyCounts();
+    for (int i = 0; i < counts.size(); ++i) {
+        for (int j = 0; j < counts[i]; ++j) {
+            dropTile(i);
+        }
+    }
 }
 
 void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
-
-    tile->setPosition(gridToScreen(column, 0));
-    tile->getPhysicsBody()->setVelocity(cocos2d::Vec2(0,-100.0));
+    int tileRowIndex = insertTileIntoColumn(column, tile);
+    tile->setPosition(gridToScreen(column, -1));
+    auto action = cocos2d::MoveTo::create(1.0, gridToScreen(column, tileRowIndex));
     addChild(tile,2);
-
-
+    tile->runAction(action);
 }
 
 void SwappyGrid::dropTile(int column) {
-    // Make sure we're dropping a tile at a valid location
-    CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
     Tile* tile = level->getRandomTile();
 
     // Drop the random tile in the given column
     dropTile(column, tile);
 }
 
-void SwappyGrid::addTile(cocos2d::Point pos, Tile *tile) {
+void SwappyGrid::insertTile(cocos2d::Point pos, Tile *tile) {
 
 }
 
@@ -109,8 +119,8 @@ cocos2d::Point SwappyGrid::screenToGrid(cocos2d::Point pos) {
 }
 
 cocos2d::Point SwappyGrid::gridToScreen(int x, int y) {
-    int screenX = m_tileSize.width*x + m_tileSize.width/2;
-    if(y == 0) {
+    int screenX = m_tileSize.width*x;
+    if(y < 0) {
 
         // special case.
         // off-screen, above grid
@@ -122,7 +132,33 @@ cocos2d::Point SwappyGrid::gridToScreen(int x, int y) {
     } else {
         return cocos2d::Vec2(
                 screenX,
-                m_tileSize.height*y/2
+                m_tileSize.height*y
         );
     }
+}
+
+int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {
+    TileColumn* col = m_pGrid->at(columnNumber);
+    col->push_back(tile);
+    return col->size()-1;
+}
+
+bool SwappyGrid::overflow() {
+    for(auto col : *m_pGrid) {
+        if(col->size() > NUM_ROWS) return true;
+    }
+
+    return false;
+}
+
+/**
+ * Returns the number of free spots available to
+ * drop tiles in each column
+ */
+std::vector<int> SwappyGrid::getTileVacancyCounts() {
+    auto counts = std::vector<int>();
+    for (auto col : *m_pGrid) {
+        counts.push_back(NUM_ROWS - col->size());
+    }
+    return counts;
 }
