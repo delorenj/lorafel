@@ -11,7 +11,7 @@
 #include "Tile.h"
 
 namespace lorafel {
-
+    class Tile;
     class TileFactory {
 
     public:

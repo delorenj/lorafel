@@ -3,7 +3,6 @@
 //
 
 #include "Tile.h"
-#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -28,5 +27,16 @@ void Tile::initOptions() {
     body->setGravityEnable(true);
     body->setMass(1.0);
     this->setPhysicsBody(body);
+//    this->scheduleUpdate();
 }
 
+void Tile::update(float delta) {
+}
+
+void Tile::setGrid(SwappyGrid *pGrid) {
+    m_pSwappyGrid = pGrid;
+}
+
+SwappyGrid* Tile::getGrid() {
+    return m_pSwappyGrid;
+}

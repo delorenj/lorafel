@@ -56,7 +56,7 @@ bool GridTestUI::init() {
             cocos2d::ui::Button* target = (cocos2d::ui::Button*) sender;
             cocos2d::ui::Layout* layout = (cocos2d::ui::Layout*) target->getParent();
             int column = target->getActionTag();
-            ((GridTestUI*)layout->getParent()->getParent())->getGrid()->addToTileDropQueue(column);
+            ((GridTestUI *) layout->getParent()->getParent())->getGrid()->addRandomTileToDropQueue(column);
         });
 
         layoutButtons->addChild(button);

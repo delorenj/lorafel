@@ -12,6 +12,9 @@
 #include "GameStates.h"
 
 namespace lorafel {
+    class Tile;
+    class Level;
+
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;
     typedef std::queue<Tile*> TileDropQueue;
@@ -26,12 +29,18 @@ namespace lorafel {
         CREATE_FUNC(SwappyGrid);
 
         void loadLevel(Level *level);
-        void addToTileDropQueue(int column, Tile *pTile);
-        void addToTileDropQueue(int column);
+        void addTileToDropQueue(int column, Tile *pTile);
+        void addRandomTileToDropQueue(int column);
+        std::vector<StateMachine*>* getColumnStateMachines() { return m_pColumnStateMachines; }
+        cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos);
+        cocos2d::Vec2 gridToScreen(int x, int y);
+        cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos);
 
         static const int NUM_COLUMNS = 9;
         static const int NUM_ROWS = 9;
 
+
+        int getTopOffscreenTileSlot();
 
     protected:
         cpSpace* m_pWorld;
@@ -39,26 +48,26 @@ namespace lorafel {
         cocos2d::Size m_gridSize;
         int m_gridBaseY;
         cocos2d::Size visibleSize;
-        cocos2d::Point origin;
+        cocos2d::Vec2 origin;
         TileGrid* m_pGrid;
         cocos2d::Size m_tileSize;
         float m_tileScaleFactor;
         StateMachine* m_pGameStateMachine;
+        std::vector<StateMachine*>* m_pColumnStateMachines;
         std::vector<TileDropQueue*>* m_pTileDropQueues;
 
         // Grid Data Structure Helpers
-        void insertTile(cocos2d::Point pos, Tile*); // Insert a tile into the grid ds
-        void removeTile(cocos2d::Point);         // Remove a tile from the grid ds
-        void swapTiles(cocos2d::Point pos1, cocos2d::Point pos2); // Swap the pos of two tiles
+        void insertTile(cocos2d::Vec2 pos, Tile*); // Insert a tile into the grid ds
+        void removeTile(cocos2d::Vec2);         // Remove a tile from the grid ds
+        void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap the pos of two tiles
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
-        cocos2d::Point gridToScreen(cocos2d::Point pos);
-        cocos2d::Point gridToScreen(int x, int y);
-        cocos2d::Point screenToGrid(cocos2d::Point pos);
         cocos2d::Vec2 getColumnDropPosition(int column);
         void dropTile(int column, Tile *pTile); // Drop a specific tile
         bool overflow();
         std::vector<int> getTileVacancyCounts();
         bool columnReadyToDropTile(int column);
+
+        cocos2d::Vec2 getTopOfScreen() const;
     };
 }
 

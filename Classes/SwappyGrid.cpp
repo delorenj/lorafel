@@ -13,11 +13,20 @@ bool SwappyGrid::init() {
 
     // Get a reference to the state machine
     m_pGameStateMachine = GameStateMachine::getInstance();
-
+    m_pColumnStateMachines = new std::vector<StateMachine*>();
+    for (int k = 0; k < NUM_COLUMNS; ++k) {
+        auto fsm = StateMachine::create();
+        fsm->addState<ColumnReadyToDropState>();
+        fsm->addState<ColumnBusyState>();
+        fsm->enterState<ColumnReadyToDropState>();
+        m_pColumnStateMachines->push_back(fsm);
+    }
     // Calculate the Tile size so we know how
     // big to make the grid
     auto spritecache = cocos2d::SpriteFrameCache::getInstance();
     m_tileSize = spritecache->getSpriteFrameByName("avocado.png")->getOriginalSizeInPixels();
+    m_tileSize.width += 5;
+    m_tileSize.height += 5;
     auto maxGridHeight = m_tileSize.height * NUM_ROWS;
 
     auto tileWidth = m_tileSize.width;
@@ -59,28 +68,14 @@ bool SwappyGrid::init() {
 void SwappyGrid::loadLevel(Level *level) {
     //Set the grid's level
     this->level = level;
-    m_pGameStateMachine->enterState<LoadingLevelState>();
-
-//    while()
-    for(int i=0; i<NUM_COLUMNS; i++) {
-        // Generate a tile using the TileFactory
-        // Pass in the level which includes this
-        // level's Tile Distribution
-        // Drop the random tile in the given column
-        addToTileDropQueue(i);
-    }
-    m_pGameStateMachine->enterState<IdleState>();
 }
 
 void SwappyGrid::update(float delta) {
-    if(overflow()) {
-        CCLOG("DEAD !");
-    }
 
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
         for (int j = 0; j < counts[i]; ++j) {
-            addToTileDropQueue(i);
+            addRandomTileToDropQueue(i);
         }
     }
 
@@ -97,48 +92,51 @@ void SwappyGrid::update(float delta) {
 void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
+    StateMachine* fsm = m_pColumnStateMachines->at(column);
+    fsm->enterState<ColumnBusyState>();
     int tileRowIndex = insertTileIntoColumn(column, tile);
-    auto action = cocos2d::MoveTo::create(1.0, gridToScreen(column, tileRowIndex));
-    tile->runAction(action);
+    float dropTime = (float)(0.75);
+    auto move = cocos2d::MoveTo::create(dropTime, gridToScreen(column, tileRowIndex));
+    auto easeAction = cocos2d::EaseBounceOut::create(move->clone());
+    tile->runAction(easeAction);
 }
 
-void SwappyGrid::insertTile(cocos2d::Point pos, Tile *tile) {
-
-}
-
-void SwappyGrid::removeTile(cocos2d::Point point) {
-
-}
-
-void SwappyGrid::swapTiles(cocos2d::Point pos1, cocos2d::Point pos2) {
+void SwappyGrid::insertTile(cocos2d::Vec2 pos, Tile *tile) {
 
 }
 
-cocos2d::Point SwappyGrid::gridToScreen(cocos2d::Point pos) {
+void SwappyGrid::removeTile(cocos2d::Vec2 point) {
+
+}
+
+void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
+
+}
+
+cocos2d::Vec2 SwappyGrid::gridToScreen(cocos2d::Vec2 pos) {
     return gridToScreen(pos.x, pos.y);
 }
 
-cocos2d::Point SwappyGrid::screenToGrid(cocos2d::Point pos) {
-    return cocos2d::Vec2();
+cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) {
+    return cocos2d::Vec2(
+            m_tileSize.width*x,
+            m_tileSize.height*y
+    );
 }
 
-cocos2d::Point SwappyGrid::gridToScreen(int x, int y) {
-    int screenX = m_tileSize.width*x;
-    if(y < 0) {
+cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) {
+    return cocos2d::Vec2(
+            (int)std::ceil(pos.x/m_tileSize.width),
+            (int)std::ceil(pos.y/m_tileSize.height)
+    );
+}
 
-        // special case.
-        // off-screen, above grid
-        cocos2d::Point topOfScreen = this->convertToNodeSpace(cocos2d::Vec2(0,visibleSize.height));
-        return cocos2d::Vec2(
-                screenX,
-                topOfScreen.y + m_tileSize.height
-        );
-    } else {
-        return cocos2d::Vec2(
-                screenX,
-                m_tileSize.height*y
-        );
-    }
+cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
+    return convertToNodeSpace(cocos2d::Vec2(0, visibleSize.height));
+}
+
+int SwappyGrid::getTopOffscreenTileSlot() {
+    return (int)std::ceil((getTopOfScreen().y/m_tileSize.height));
 }
 
 int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {
@@ -157,39 +155,63 @@ bool SwappyGrid::overflow() {
 
 /**
  * Returns the number of free spots available to
- * drop tiles in each column
+ * drop tiles in each column. This is number of
+ * tiles in the grid, and tiles waiting to be
+ * dropped in the TileDropQueue.
  */
 std::vector<int> SwappyGrid::getTileVacancyCounts() {
     auto counts = std::vector<int>();
-    for (auto col : *m_pGrid) {
-        counts.push_back(NUM_ROWS - col->size());
+    for (int i = 0; i < NUM_COLUMNS; ++i) {
+        int numTilesInGridCol = m_pGrid->at(i)->size();
+        int numTilesWaitingToDropInCol = m_pTileDropQueues->at(i)->size();
+        counts.push_back(NUM_ROWS - numTilesWaitingToDropInCol - numTilesInGridCol);
     }
+
     return counts;
 }
 
-void SwappyGrid::addToTileDropQueue(int column, Tile *pTile) {
+void SwappyGrid::addTileToDropQueue(int column, Tile *pTile) {
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS && column < m_pTileDropQueues->size());
+    if(pTile->getGrid() == nullptr) {
+        pTile->setGrid(this);
+    }
     TileDropQueue* q = m_pTileDropQueues->at(column);
     q->push(pTile);
 }
 
-void SwappyGrid::addToTileDropQueue(int column) {
+void SwappyGrid::addRandomTileToDropQueue(int column) {
     Tile* tile = level->getRandomTile();
+    tile->setGrid(this);
 
     // Put tile in the correct place
     // but don't drop it yet.
-    cocos2d::Vec2 newPos = gridToScreen(column, -1);
+    cocos2d::Vec2 newPos = gridToScreen(column, getTopOffscreenTileSlot());
     tile->setPosition(newPos);
     addChild(tile,2);
 
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
     // drops when allowed
-    addToTileDropQueue(column, tile);
+    addTileToDropQueue(column, tile);
 
 }
 
 bool SwappyGrid::columnReadyToDropTile(int column) {
+    /**
+     * Loop through all sprites in that column
+     * If any are in the top slot, then hold off
+     * on dropping any more
+     */
+    auto fsm = (StateMachine *) m_pColumnStateMachines->at(column);
+    for(cocos2d::Sprite* sprite : *m_pGrid->at(1)) {
+        auto bb = sprite->getBoundingBox();
+        if(bb.containsPoint(gridToScreen(column, getTopOffscreenTileSlot()-1))) {
+            fsm->enterState<BusyState>();
+            return false;
+        }
+    }
+    fsm->enterState<ColumnReadyToDropState>();
     return true;
-}
 
+//    return colState->canDropTile();
+}

@@ -9,15 +9,30 @@
 
 namespace lorafel {
 
+    class ColumnState : public State {
+    public:
+        ColumnState()  {};
+        ~ColumnState() {};
+        virtual bool canDropTile() = 0;
+        bool isValidNextState(State* state) override { return true; }
+    };
+
+    class ColumnReadyToDropState : public ColumnState {
+        virtual bool canDropTile() { return true; }
+    };
+
+    class ColumnBusyState : public ColumnState {
+        virtual bool canDropTile() { return false; }
+    };
+
     class GameState : public State {
     public:
         GameState()  {};
         ~GameState() {};
-
+        bool isValidNextState(State* state) override { return true; }
 //        virtual void didEnterWithPreviousState(State *previousState);
 //        virtual void updateWithDeltaTime(float delta);
 //        virtual void willExitWithNextState(State *nextState);
-//        virtual bool isValidNextState(State *state);
     };
 
     // Waiting for player's move
