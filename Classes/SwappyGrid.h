@@ -10,6 +10,8 @@
 #include "Tile.h"
 #include "StateMachine.h"
 #include "GameStates.h"
+#include "EventData.h"
+#include "TileSwapEventData.h"
 
 namespace lorafel {
     class Tile;
@@ -48,6 +50,8 @@ namespace lorafel {
         void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds
         void swapTiles(Tile *pTile, cocos2d::Vec2 vec2);    // Swap tiles using tile and vec
         void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap tiles using two positions
+        TileSwapEventData* getTileSwapEventData() const { return m_pTileSwapEventData; }
+
     protected:
         cpSpace* m_pWorld;
         Level *level;
@@ -68,6 +72,7 @@ namespace lorafel {
         bool overflow();
         std::vector<int> getTileVacancyCounts();
         bool columnReadyToDropTile(int column);
+        TileSwapEventData* m_pTileSwapEventData;
     };
 }
 

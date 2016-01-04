@@ -77,5 +77,11 @@ void Tile::addEvents() {
 }
 
 cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
-    return cocos2d::Vec2(0,1);
+    cocos2d::Vec2 delta = pTouch->getDelta();
+    cocos2d::Vec2 result;
+    result.x = std::abs(delta.x) > std::abs(delta.y) ? delta.x : 0;
+    result.y = std::abs(delta.y) > std::abs(delta.x) ? delta.y : 0;
+    result.x = result.x < 0 ? -1 : 1;
+    result.y = result.y < 0 ? -1 : 1;
+    return result;
 }

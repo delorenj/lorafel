@@ -4,6 +4,8 @@
 
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
+#include "EventData.h"
+#include "TileSwapEventData.h"
 
 using namespace lorafel;
 
@@ -110,7 +112,7 @@ void SwappyGrid::removeTile(cocos2d::Vec2 point) {
 }
 
 void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
-    CCLOG("Swapping (%f, %f) <--> (%f, %f)", pos1.x, pos1.y, pos2.x, pos2.y);
+    CCLOG("Swapping (%f, %f) <-> (%f, %f)", pos1.x, pos1.y, pos2.x, pos2.y);
     m_pGameStateMachine->enterState<TileSwappingState>();
     auto move1 = cocos2d::MoveTo::create(0.2, gridToScreen(pos2));
     auto move2 = cocos2d::MoveTo::create(0.2, gridToScreen(pos1));
@@ -119,8 +121,11 @@ void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
     auto tile1 = m_pGrid->at(pos1.x)->at(pos1.y);
     auto tile2 = m_pGrid->at(pos2.x)->at(pos2.y);
 
-    auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         CCLOG("Complete swap");
+        Tile* tempTile =  m_pGrid->at(pos1.x)->at(pos1.y);
+        m_pGrid->at(pos1.x)->at(pos1.y) = m_pGrid->at(pos2.x)->at(pos2.y);
+        m_pGrid->at(pos2.x)->at(pos2.y) = tempTile;
         m_pGameStateMachine->enterState<IdleState>();
     });
 
