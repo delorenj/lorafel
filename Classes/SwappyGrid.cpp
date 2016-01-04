@@ -110,21 +110,44 @@ void SwappyGrid::removeTile(cocos2d::Vec2 point) {
 }
 
 void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
+    CCLOG("Swapping (%f, %f) <--> (%f, %f)", pos1.x, pos1.y, pos2.x, pos2.y);
+    m_pGameStateMachine->enterState<TileSwappingState>();
+    auto move1 = cocos2d::MoveTo::create(0.2, gridToScreen(pos2));
+    auto move2 = cocos2d::MoveTo::create(0.2, gridToScreen(pos1));
+    auto ease1 = cocos2d::EaseQuadraticActionOut::create(move1->clone());
+    auto ease2 = cocos2d::EaseQuadraticActionOut::create(move2->clone());
+    auto tile1 = m_pGrid->at(pos1.x)->at(pos1.y);
+    auto tile2 = m_pGrid->at(pos2.x)->at(pos2.y);
 
+    auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
+        CCLOG("Complete swap");
+        m_pGameStateMachine->enterState<IdleState>();
+    });
+
+    auto sequence = cocos2d::Sequence::create(ease1,callback, NULL);
+    tile1->runAction(sequence);
+    tile2->runAction(ease2);
 }
 
-cocos2d::Vec2 SwappyGrid::gridToScreen(cocos2d::Vec2 pos) {
+void SwappyGrid::swapTiles(Tile *pTile, cocos2d::Vec2 vec2) {
+    cocos2d::Vec2 gridPos1 = screenToGrid(pTile->getPosition());
+    cocos2d::Vec2 gridPos2 = gridPos1 + vec2;
+    swapTiles(gridPos1, gridPos2);
+}
+
+
+cocos2d::Vec2 SwappyGrid::gridToScreen(cocos2d::Vec2 pos) const {
     return gridToScreen(pos.x, pos.y);
 }
 
-cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) {
+cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
     return cocos2d::Vec2(
             m_tileSize.width*x,
             m_tileSize.height*y
     );
 }
 
-cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) {
+cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
             (int)std::ceil(pos.x/m_tileSize.width),
             (int)std::ceil(pos.y/m_tileSize.height)
@@ -135,7 +158,7 @@ cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
     return convertToNodeSpace(cocos2d::Vec2(0, visibleSize.height));
 }
 
-int SwappyGrid::getTopOffscreenTileSlot() {
+int SwappyGrid::getTopOffscreenTileSlot() const {
     return (int)std::ceil((getTopOfScreen().y/m_tileSize.height));
 }
 

@@ -20,6 +20,7 @@ AvocadoTile* AvocadoTile::create() {
         sprite->setSpriteName("Avocado");
         sprite->autorelease();
         sprite->initOptions();
+        sprite->addEvents();
 
         return sprite;
     }

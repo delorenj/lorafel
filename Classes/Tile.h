@@ -24,11 +24,13 @@ namespace lorafel {
         void setGrid(SwappyGrid* pGrid);
         SwappyGrid* getGrid();
         void initOptions();
+        void addEvents();
 
     protected:
         std::string spriteName;
         SwappyGrid* m_pSwappyGrid;
 
+        cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
     };
 }
 

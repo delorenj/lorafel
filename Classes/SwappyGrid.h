@@ -32,16 +32,22 @@ namespace lorafel {
         void addTileToDropQueue(int column, Tile *pTile);
         void addRandomTileToDropQueue(int column);
         std::vector<StateMachine*>* getColumnStateMachines() { return m_pColumnStateMachines; }
-        cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos);
-        cocos2d::Vec2 gridToScreen(int x, int y);
-        cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos);
+        cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos) const;
+        cocos2d::Vec2 gridToScreen(int x, int y) const;
+        cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos) const;
 
         static const int NUM_COLUMNS = 9;
         static const int NUM_ROWS = 9;
 
 
-        int getTopOffscreenTileSlot();
+        int getTopOffscreenTileSlot() const;
+        cocos2d::Vec2 getTopOfScreen() const;
 
+        // Grid Data Structure Helpers
+        void insertTile(cocos2d::Vec2 pos, Tile*);          // Insert a tile into the grid ds
+        void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds
+        void swapTiles(Tile *pTile, cocos2d::Vec2 vec2);    // Swap tiles using tile and vec
+        void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap tiles using two positions
     protected:
         cpSpace* m_pWorld;
         Level *level;
@@ -56,18 +62,12 @@ namespace lorafel {
         std::vector<StateMachine*>* m_pColumnStateMachines;
         std::vector<TileDropQueue*>* m_pTileDropQueues;
 
-        // Grid Data Structure Helpers
-        void insertTile(cocos2d::Vec2 pos, Tile*); // Insert a tile into the grid ds
-        void removeTile(cocos2d::Vec2);         // Remove a tile from the grid ds
-        void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap the pos of two tiles
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
         void dropTile(int column, Tile *pTile); // Drop a specific tile
         bool overflow();
         std::vector<int> getTileVacancyCounts();
         bool columnReadyToDropTile(int column);
-
-        cocos2d::Vec2 getTopOfScreen() const;
     };
 }
 

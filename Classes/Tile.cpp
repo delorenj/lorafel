@@ -3,6 +3,7 @@
 //
 
 #include "Tile.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -39,4 +40,42 @@ void Tile::setGrid(SwappyGrid *pGrid) {
 
 SwappyGrid* Tile::getGrid() {
     return m_pSwappyGrid;
+}
+
+void Tile::addEvents() {
+    auto listener = cocos2d::EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+
+    listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+    {
+        cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
+        cocos2d::Rect rect = this->getBoundingBox();
+
+        if(rect.containsPoint(p))
+        {
+            return true; // to indicate that we have consumed it.
+        }
+
+        return false; // we did not consume this event, pass thru.
+    };
+
+    listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
+        GameState* state = (GameState*) GameStateMachine::getInstance()->getState();
+        if(state->isBusy()) {
+            return;
+        }
+
+        cocos2d::Vec2 swapVec = getSwapVec(touch);
+        m_pSwappyGrid->swapTiles(this, swapVec);
+    };
+
+    listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
+
+    };
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
+    return cocos2d::Vec2(0,1);
 }

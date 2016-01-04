@@ -15,14 +15,13 @@ namespace lorafel {
         static StateMachine* _instance;
 
         static void initStates() {
-            _instance->addState<GameState>();
-                _instance->addState<IdleState>();
-                _instance->addState<BusyState>();
-                    _instance->addState<TileSwappingState>();
-                    _instance->addState<TileFallingState>();
-                    _instance->addState<MatchFoundState>();
+            _instance->addState<IdleState>();
+            _instance->addState<BusyState>();
+                _instance->addState<TileSwappingState>();
+                _instance->addState<TileFallingState>();
+                _instance->addState<MatchFoundState>();
 
-            _instance->enterState<BusyState>();
+            _instance->enterState<IdleState>();
 
         }
 

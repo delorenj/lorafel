@@ -58,6 +58,9 @@ namespace lorafel {
         }
 
         virtual ~State(){};
+
+        virtual const std::string getName() const = 0;
+
     protected:
         StateMachine* _stateMachine;
     };

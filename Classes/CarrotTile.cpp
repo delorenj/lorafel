@@ -20,6 +20,7 @@ CarrotTile* CarrotTile::create() {
         sprite->setSpriteName("Carrot");
         sprite->autorelease();
         sprite->initOptions();
+        sprite->addEvents();
         return sprite;
     }
 

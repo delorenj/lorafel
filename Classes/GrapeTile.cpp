@@ -20,6 +20,7 @@ GrapeTile* GrapeTile::create() {
         sprite->setSpriteName("Grapes");
         sprite->autorelease();
         sprite->initOptions();
+        sprite->addEvents();
         return sprite;
     }
 
