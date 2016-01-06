@@ -110,11 +110,21 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
     StateMachine* fsm = m_pColumnStateMachines->at(column);
     fsm->enterState<ColumnBusyState>();
+    m_pGameStateMachine->enterState<TileFallingState>();
     int tileRowIndex = insertTileIntoColumn(column, tile);
     float dropTime = (float)(0.75);
     auto move = cocos2d::MoveTo::create(dropTime, gridToScreen(column, tileRowIndex));
     auto easeAction = cocos2d::EaseBounceOut::create(move->clone());
-    tile->runAction(easeAction);
+
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        if(tileDropQueuesEmpty() && getNumberOfRunningActions() == 0) {
+            m_pGameStateMachine->enterState<TileQueueEmptyMatchStartState>();
+        }
+    });
+
+    auto sequence = cocos2d::Sequence::create(easeAction,callback, NULL);
+
+    tile->runAction(sequence);
 }
 
 void SwappyGrid::insertTile(cocos2d::Vec2 pos, Tile *tile) {
@@ -315,4 +325,12 @@ Tile* SwappyGrid::getTileAt(cocos2d::Vec2 pos) {
     } else {
         return col->at(pos.y);
     }
+}
+
+bool SwappyGrid::tileDropQueuesEmpty() {
+    bool count = 0;
+    for(auto q : *m_pTileDropQueues) {
+        count += q->size();
+    }
+    return count == 0;
 }
