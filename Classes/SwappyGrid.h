@@ -92,6 +92,7 @@ namespace lorafel {
 
         void ProcessMatches();
 
+        bool tileDropQueuesEmpty();
     };
 }
 

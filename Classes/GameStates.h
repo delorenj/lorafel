@@ -45,17 +45,19 @@ namespace lorafel {
     };
 
     // Waiting for player's move
-    class IdleState : public GameState
-    {
+    class IdleState : public GameState {
     public:
         IdleState() { };
         const std::string getName() const override { return "IdleState"; }
         bool isBusy() const override { return false; }
         virtual bool canCheckForMatches() const override { return false; }
+        virtual bool isValidNextState(State* state) override {
+            if(state->getName() == "TileFallingState") { return true; }
+            if(state->getName() == "TileSwappingStartState") { return true; }
+        }
     };
 
-    class BusyState : public GameState
-    {
+    class BusyState : public GameState {
     public:
         BusyState() {};
         const std::string getName() const override { return "BusyState"; }
@@ -64,16 +66,14 @@ namespace lorafel {
     };
 
 
-    class TileSwappingState : public BusyState
-    {
+    class TileSwappingState : public BusyState {
     public:
         TileSwappingState() {} ;
         virtual ~TileSwappingState() {} ;
         virtual const std::string getName() const override { return "TileSwappingState"; }
     };
 
-    class TileSwappingStartState : public TileSwappingState
-    {
+    class TileSwappingStartState : public TileSwappingState {
     public:
         TileSwappingStartState() {} ;
         const std::string getName() const override { return "TileSwappingStartState"; }
@@ -83,8 +83,7 @@ namespace lorafel {
         }
     };
 
-    class TileSwappingEndState : public TileSwappingState
-    {
+    class TileSwappingEndState : public TileSwappingState{
     public:
         TileSwappingEndState() {} ;
         const std::string getName() const override { return "TileSwappingEndState"; }
@@ -92,8 +91,7 @@ namespace lorafel {
     };
 
     class TileSwappingReverseEndState;
-    class TileSwappingReverseStartState : public TileSwappingState
-    {
+    class TileSwappingReverseStartState : public TileSwappingState {
     public:
         TileSwappingReverseStartState() {} ;
         const std::string getName() const override { return "TileSwappingReverseStartState"; }
@@ -103,8 +101,7 @@ namespace lorafel {
         }
     };
 
-    class TileSwappingReverseEndState : public TileSwappingState
-    {
+    class TileSwappingReverseEndState : public TileSwappingState {
     public:
         TileSwappingReverseEndState() {} ;
         const std::string getName() const override { return "TileSwappingReverseEndState"; }
@@ -114,27 +111,38 @@ namespace lorafel {
         }
     };
 
-    class MatchFoundState : public BusyState
-    {
+    class MatchFoundState : public BusyState {
     public:
         MatchFoundState() {};
         const std::string getName() const override { return "MatchFoundState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleState") { return true; }
+            return false;
+        }
     };
 
-    class TileFallingState : public BusyState
-    {
+    class TileFallingState : public BusyState {
     public:
         TileFallingState() {} ;
         const std::string getName() const override { return "TileFallingState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileQueueEmptyMatchStartState") { return true; }
+            return false;
+        }
     };
 
-    class TileQueueEmptiedState : public BusyState
-    {
+    class TileQueueEmptyMatchStartState : public BusyState {
     public:
-        TileQueueEmptiedState() {} ;
-        const std::string getName() const override { return "TileQueueEmptiedState"; }
-        virtual bool canCheckForMatches() const override { return true; }
+        TileQueueEmptyMatchStartState() {};
+        const std::string getName() const override { return "TileQueueEmptyMatchStartState"; }
+        bool canCheckForMatches() const override { return true; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleState") { return true; }
+            if(state->getName() == "MatchFoundState") { return true; }
+            return false;
+        }
     };
+
 
 }
 
