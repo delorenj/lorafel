@@ -13,6 +13,7 @@ namespace lorafel {
     class GridTestUI : public cocos2d::Node{
     public:
         virtual bool init();
+        virtual void update(float delta) override;
 
         static GridTestUI* create(SwappyGrid* grid) {
             GridTestUI *pRet = new(std::nothrow) GridTestUI();
@@ -33,7 +34,9 @@ namespace lorafel {
 
     protected:
         SwappyGrid* m_pGrid;
-        cocos2d::ui::Text* m_title;
+        cocos2d::ui::Text* m_pTitle;
+
+        cocos2d::ui::Text* m_pState;
 
     };
 }

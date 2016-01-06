@@ -4,6 +4,7 @@
 
 #include "ui/CocosGUI.h"
 #include "GridTestUI.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -21,13 +22,21 @@ bool GridTestUI::init() {
     addChild(layout);
 
     cocos2d::ui::LinearLayoutParameter* lp;
-    m_title = cocos2d::ui::Text::create("Grid Test","fonts/BebasNeue Bold.ttf", 24);
-    m_title->setColor(cocos2d::Color3B::BLACK);
+    m_pTitle = cocos2d::ui::Text::create("Grid Test","fonts/BebasNeue Bold.ttf", 24);
+    m_pTitle->setColor(cocos2d::Color3B::BLACK);
     lp = cocos2d::ui::LinearLayoutParameter::create();
     lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
     lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
-    m_title->setLayoutParameter(lp);
-    layout->addChild(m_title);
+    m_pTitle->setLayoutParameter(lp);
+    layout->addChild(m_pTitle);
+
+    m_pState = cocos2d::ui::Text::create(GameStateMachine::getInstance()->getState()->getName().c_str(),"fonts/BebasNeue Bold.ttf", 24);
+    m_pState->setColor(cocos2d::Color3B::BLACK);
+    lp = cocos2d::ui::LinearLayoutParameter::create();
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
+    lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
+    m_pState->setLayoutParameter(lp);
+    layout->addChild(m_pState);
 
     auto layoutButtons = cocos2d::ui::Layout::create();
     layoutButtons->setLayoutType(cocos2d::ui::Layout::Type::HORIZONTAL);
@@ -62,5 +71,10 @@ bool GridTestUI::init() {
         layoutButtons->addChild(button);
     }
 
+    this->scheduleUpdate();
     return true;
+}
+
+void GridTestUI::update(float delta) {
+    m_pState->setString(GameStateMachine::getInstance()->getState()->getName().c_str());
 }

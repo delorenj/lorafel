@@ -6,6 +6,8 @@
 #include "GameStateMachine.h"
 #include "EventData.h"
 #include "TileSwapEventData.h"
+#include "PlayerMove.h"
+#include "BasicPlayerMove.h"
 
 using namespace lorafel;
 
@@ -16,6 +18,8 @@ bool SwappyGrid::init() {
     // Get a reference to the state machine
     m_pGameStateMachine = GameStateMachine::getInstance();
     m_pColumnStateMachines = new std::vector<StateMachine*>();
+    m_pMoveStack = new std::stack<PlayerMove*>();
+
     for (int k = 0; k < NUM_COLUMNS; ++k) {
         auto fsm = StateMachine::create();
         fsm->addState<ColumnReadyToDropState>();
@@ -74,13 +78,14 @@ void SwappyGrid::loadLevel(Level *level) {
 
 void SwappyGrid::update(float delta) {
 
-    auto counts = getTileVacancyCounts();
-    for (int i = 0; i < counts.size(); ++i) {
-        for (int j = 0; j < counts[i]; ++j) {
-            addRandomTileToDropQueue(i);
-        }
-    }
+    ReplenishTiles();
 
+    DropTiles();
+
+    ProcessMatches();
+}
+
+void SwappyGrid::DropTiles() {
     for (int k = 0; k < m_pTileDropQueues->size(); k++) {
         TileDropQueue* queue = m_pTileDropQueues->at(k);
         if(queue->empty()) continue;
@@ -88,6 +93,15 @@ void SwappyGrid::update(float delta) {
         Tile* tile = queue->front();
         queue->pop();
         dropTile(k, tile);
+    }
+}
+
+void SwappyGrid::ReplenishTiles() {
+    auto counts = getTileVacancyCounts();
+    for (int i = 0; i < counts.size(); ++i) {
+        for (int j = 0; j < counts[i]; ++j) {
+            addRandomTileToDropQueue(i);
+        }
     }
 }
 
@@ -112,24 +126,34 @@ void SwappyGrid::removeTile(cocos2d::Vec2 point) {
 }
 
 void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
-    CCLOG("Swapping (%f, %f) <-> (%f, %f)", pos1.x, pos1.y, pos2.x, pos2.y);
-    m_pGameStateMachine->enterState<TileSwappingState>();
+
+    if(m_pGameStateMachine->getState()->getName() == "IdleState") {
+        m_pGameStateMachine->enterState<TileSwappingStartState>();
+    } else {
+        m_pGameStateMachine->enterState<TileSwappingReverseStartState>();
+    }
+
     auto move1 = cocos2d::MoveTo::create(0.2, gridToScreen(pos2));
     auto move2 = cocos2d::MoveTo::create(0.2, gridToScreen(pos1));
     auto ease1 = cocos2d::EaseQuadraticActionOut::create(move1->clone());
     auto ease2 = cocos2d::EaseQuadraticActionOut::create(move2->clone());
     auto tile1 = m_pGrid->at(pos1.x)->at(pos1.y);
     auto tile2 = m_pGrid->at(pos2.x)->at(pos2.y);
-
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        CCLOG("Complete swap");
         Tile* tempTile =  m_pGrid->at(pos1.x)->at(pos1.y);
         m_pGrid->at(pos1.x)->at(pos1.y) = m_pGrid->at(pos2.x)->at(pos2.y);
         m_pGrid->at(pos2.x)->at(pos2.y) = tempTile;
-        m_pGameStateMachine->enterState<IdleState>();
+
+        if(m_pGameStateMachine->getState()->getName() == "TileSwappingStartState") {
+            m_pGameStateMachine->enterState<TileSwappingEndState>();
+        } else {
+            m_pGameStateMachine->setState<IdleState>();
+        }
+
     });
 
     auto sequence = cocos2d::Sequence::create(ease1,callback, NULL);
+    move1->setTag(SWAPPING_ACTION_TAG);
     tile1->runAction(sequence);
     tile2->runAction(ease2);
 }
@@ -242,4 +266,53 @@ bool SwappyGrid::columnReadyToDropTile(int column) {
     return true;
 
 //    return colState->canDropTile();
+}
+
+void SwappyGrid::setCurrentTouchId(unsigned int eventTouchId) {
+    this->m_currentTouchId = eventTouchId;
+}
+
+unsigned int SwappyGrid::getCurrentTouchId() {
+    return this->m_currentTouchId;
+}
+
+void SwappyGrid::ProcessMatches() {
+    GET_GAME_STATE
+    if(!state->canCheckForMatches()) {
+        return;
+    }
+
+    CCLOG("Finding Matches!");
+    bool matchesFound = false;
+
+    if(matchesFound) {
+        CCLOG("Found a match");
+    } else if(!m_pMoveStack->empty()) {
+        CCLOG("Reverting tiles");
+        auto playerMove = m_pMoveStack->top();
+        m_pMoveStack->pop();
+        playerMove->cancel();
+
+    } else {
+        GameStateMachine::getInstance()->enterState<IdleState>();
+    }
+}
+
+bool SwappyGrid::isTilePresentAt(cocos2d::Vec2 pos) {
+    Tile* tile = getTileAt(pos);
+    return tile == nullptr ? false : true;
+
+}
+
+Tile* SwappyGrid::getTileAt(cocos2d::Vec2 pos) {
+    if(pos.x >= m_pGrid->size()) {
+        return nullptr;
+    }
+    
+    TileColumn* col = m_pGrid->at(pos.x);
+    if(pos.y >= col->size()) {
+        return nullptr;
+    } else {
+        return col->at(pos.y);
+    }
 }

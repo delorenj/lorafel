@@ -6,6 +6,7 @@
 #define LORAFEL_STATEMACHINE_H
 
 #include <unordered_map>
+#include <typeinfo>
 #include "State.h"
 
 namespace lorafel {

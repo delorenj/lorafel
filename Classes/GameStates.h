@@ -9,6 +9,9 @@
 
 namespace lorafel {
 
+    // Column States
+    //
+    //
     class ColumnState : public State {
     public:
         ColumnState()  {};
@@ -28,17 +31,17 @@ namespace lorafel {
         const std::string getName() const override { return "ColumnBusyState"; }
     };
 
+    // GameStates
+    //
+    //
     class GameState : public State {
     public:
         GameState()  {};
         ~GameState() {};
         const std::string getName() const override { return "GameState"; }
-        bool isValidNextState(State* state) override { return true; }
+        virtual bool isValidNextState(State* state) override { return true; }
         virtual bool isBusy() const = 0;
-
-//        virtual void didEnterWithPreviousState(State *previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State *nextState);
+        virtual bool canCheckForMatches() const = 0;
     };
 
     // Waiting for player's move
@@ -48,11 +51,7 @@ namespace lorafel {
         IdleState() { };
         const std::string getName() const override { return "IdleState"; }
         bool isBusy() const override { return false; }
-
-//        virtual void didEnterWithPreviousState(State* previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State* nextState);
-//        virtual bool isValidNextState(State* state);
+        virtual bool canCheckForMatches() const override { return false; }
     };
 
     class BusyState : public GameState
@@ -61,22 +60,58 @@ namespace lorafel {
         BusyState() {};
         const std::string getName() const override { return "BusyState"; }
         bool isBusy() const override { return true; }
-//        virtual void didEnterWithPreviousState(State* previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State* nextState);
-//        virtual bool isValidNextState(State* state);
+        virtual bool canCheckForMatches() const override { return false; }
     };
+
 
     class TileSwappingState : public BusyState
     {
     public:
         TileSwappingState() {} ;
-        const std::string getName() const override { return "TileSwappingState"; }
+        virtual ~TileSwappingState() {} ;
+        virtual const std::string getName() const override { return "TileSwappingState"; }
+    };
 
-//        virtual void didEnterWithPreviousState(State* previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State* nextState);
-//        virtual bool isValidNextState(State* state)
+    class TileSwappingStartState : public TileSwappingState
+    {
+    public:
+        TileSwappingStartState() {} ;
+        const std::string getName() const override { return "TileSwappingStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileSwappingEndState") { return true; }
+            return false;
+        }
+    };
+
+    class TileSwappingEndState : public TileSwappingState
+    {
+    public:
+        TileSwappingEndState() {} ;
+        const std::string getName() const override { return "TileSwappingEndState"; }
+        virtual bool canCheckForMatches() const override { return true; }
+    };
+
+    class TileSwappingReverseEndState;
+    class TileSwappingReverseStartState : public TileSwappingState
+    {
+    public:
+        TileSwappingReverseStartState() {} ;
+        const std::string getName() const override { return "TileSwappingReverseStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileSwappingReverseEndState") { return true; }
+            return false;
+        }
+    };
+
+    class TileSwappingReverseEndState : public TileSwappingState
+    {
+    public:
+        TileSwappingReverseEndState() {} ;
+        const std::string getName() const override { return "TileSwappingReverseEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleState") { return true; }
+            return false;
+        }
     };
 
     class MatchFoundState : public BusyState
@@ -84,11 +119,6 @@ namespace lorafel {
     public:
         MatchFoundState() {};
         const std::string getName() const override { return "MatchFoundState"; }
-
-//        virtual void didEnterWithPreviousState(State* previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State* nextState);
-//        virtual bool isValidNextState(State* state);
     };
 
     class TileFallingState : public BusyState
@@ -96,11 +126,14 @@ namespace lorafel {
     public:
         TileFallingState() {} ;
         const std::string getName() const override { return "TileFallingState"; }
+    };
 
-//        virtual void didEnterWithPreviousState(State* previousState);
-//        virtual void updateWithDeltaTime(float delta);
-//        virtual void willExitWithNextState(State* nextState);
-//        virtual bool isValidNextState(State* state);
+    class TileQueueEmptiedState : public BusyState
+    {
+    public:
+        TileQueueEmptiedState() {} ;
+        const std::string getName() const override { return "TileQueueEmptiedState"; }
+        virtual bool canCheckForMatches() const override { return true; }
     };
 
 }

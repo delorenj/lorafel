@@ -4,6 +4,7 @@
 
 #include "Tile.h"
 #include "GameStateMachine.h"
+#include "BasicPlayerMove.h"
 
 using namespace lorafel;
 
@@ -61,16 +62,21 @@ void Tile::addEvents() {
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
         GameState* state = (GameState*) GameStateMachine::getInstance()->getState();
-        if(state->isBusy()) {
+        if(state->isBusy() || touch->_ID == m_pSwappyGrid->getCurrentTouchId()) {
             return;
+        } else {
+            m_pSwappyGrid->setCurrentTouchId(touch->_ID);
+            cocos2d::Vec2 swapVec = getSwapVec(touch);
+            auto playerMove = new BasicPlayerMove(m_pSwappyGrid, this, swapVec);
+            if(playerMove->isValid()) {
+                m_pSwappyGrid->getMoveStack()->push(playerMove);
+                m_pSwappyGrid->getMoveStack()->top()->run();
+            }
         }
-
-        cocos2d::Vec2 swapVec = getSwapVec(touch);
-        m_pSwappyGrid->swapTiles(this, swapVec);
     };
 
     listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-
+        // Nothing, yet.
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -79,9 +85,22 @@ void Tile::addEvents() {
 cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
     cocos2d::Vec2 delta = pTouch->getDelta();
     cocos2d::Vec2 result;
-    result.x = std::abs(delta.x) > std::abs(delta.y) ? delta.x : 0;
-    result.y = std::abs(delta.y) > std::abs(delta.x) ? delta.y : 0;
-    result.x = result.x < 0 ? -1 : 1;
-    result.y = result.y < 0 ? -1 : 1;
+
+    bool horizontal = std::abs(delta.x) > std::abs(delta.y);
+    if (horizontal && delta.x > 0) {
+        result.set(1, 0);
+    } else if (horizontal && delta.x < 0) {
+        result.set(-1, 0);
+    } else if (!horizontal && delta.y < 0) {
+        result.set(0, -1);
+    } else if (!horizontal && delta.y > 0) {
+        result.set(0, 1);
+    } else {
+        result.setZero();
+    }
     return result;
+}
+
+bool Tile::isSwappable() {
+    return true;
 }

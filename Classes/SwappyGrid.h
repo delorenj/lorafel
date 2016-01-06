@@ -12,10 +12,14 @@
 #include "GameStates.h"
 #include "EventData.h"
 #include "TileSwapEventData.h"
+#include "PlayerMove.h"
+
+#define GET_GAME_STATE GameState* state = static_cast<GameState*>(m_pGameStateMachine->getState());
 
 namespace lorafel {
     class Tile;
     class Level;
+    class PlayerMove;
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;
@@ -40,7 +44,7 @@ namespace lorafel {
 
         static const int NUM_COLUMNS = 9;
         static const int NUM_ROWS = 9;
-
+        static const int SWAPPING_ACTION_TAG = 1;
 
         int getTopOffscreenTileSlot() const;
         cocos2d::Vec2 getTopOfScreen() const;
@@ -51,6 +55,12 @@ namespace lorafel {
         void swapTiles(Tile *pTile, cocos2d::Vec2 vec2);    // Swap tiles using tile and vec
         void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap tiles using two positions
         TileSwapEventData* getTileSwapEventData() const { return m_pTileSwapEventData; }
+
+        void setCurrentTouchId(unsigned int i);
+        unsigned int getCurrentTouchId();
+        std::stack<PlayerMove*>* getMoveStack() { return m_pMoveStack; }
+        bool isTilePresentAt(cocos2d::Vec2 pos);
+        Tile* getTileAt(cocos2d::Vec2 pos);
 
     protected:
         cpSpace* m_pWorld;
@@ -65,6 +75,7 @@ namespace lorafel {
         StateMachine* m_pGameStateMachine;
         std::vector<StateMachine*>* m_pColumnStateMachines;
         std::vector<TileDropQueue*>* m_pTileDropQueues;
+        std::stack<PlayerMove*>* m_pMoveStack;
 
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
@@ -73,6 +84,14 @@ namespace lorafel {
         std::vector<int> getTileVacancyCounts();
         bool columnReadyToDropTile(int column);
         TileSwapEventData* m_pTileSwapEventData;
+        unsigned int m_currentTouchId;
+
+        void ReplenishTiles();
+
+        void DropTiles();
+
+        void ProcessMatches();
+
     };
 }
 

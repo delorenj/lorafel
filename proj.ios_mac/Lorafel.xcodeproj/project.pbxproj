@@ -20,6 +20,7 @@
 		3167D2B9A68682B12A96FF10 /* CarrotTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFE4A2A239E7D5BC8444 /* CarrotTile.cpp */; };
 		3167D33134DB4BC3867306BE /* AvocadoFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */; };
 		3167D374877889A44BCB8F9F /* AvocadoFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */; };
+		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
 		3167D5B847C02E4FBA982CAE /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
 		3167D63A412618F25ACA118B /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
@@ -29,6 +30,7 @@
 		3167D8E221EAAE2AA91A9178 /* Level__TestLevelOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */; };
 		3167DA01EF812294F9C1D591 /* GameStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D07B9EB51E82506FE89C /* GameStates.cpp */; };
 		3167DA46CB5758E70CA6A838 /* GrapeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */; };
+		3167DA6853233E9DCA430057 /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167DA6BD270B9F88832DF0C /* GrapeTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D278D399D66F395F05FA /* GrapeTile.cpp */; };
 		3167DAB3F8EEC94D802B9C0F /* GameStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D07B9EB51E82506FE89C /* GameStates.cpp */; };
 		3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
@@ -164,10 +166,12 @@
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
 		3167D2EA20DB699433739D20 /* GameStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateMachine.h; sourceTree = "<group>"; };
 		3167D2F1AB967E5816B7F045 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMove.h; sourceTree = "<group>"; };
 		3167D3C5652E9C08FAD14D4B /* IRandomizerStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRandomizerStrategy.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D6BF39D1E520BFFD7883 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		3167D6E377EE617933CF68D6 /* TileFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileFactory.cpp; sourceTree = "<group>"; };
+		3167D7107F6E585B0E9D0DFD /* PlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMove.h; sourceTree = "<group>"; };
 		3167D71961895D1BDB0213EF /* CarrotFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotFactory.h; sourceTree = "<group>"; };
 		3167D7496BDEFAAC3CD161CF /* GrapeTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeTile.h; sourceTree = "<group>"; };
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
+		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DB8A1778A7F8DB9A6B97 /* Level__TestLevelOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level__TestLevelOne.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
@@ -431,6 +436,9 @@
 				3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */,
 				3167D158E63BA8AB24BBA71F /* EventData.h */,
 				3167DA1A7283678A11151C32 /* TileSwapEventData.h */,
+				3167D7107F6E585B0E9D0DFD /* PlayerMove.h */,
+				3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */,
+				3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -658,6 +666,7 @@
 				3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */,
 				3167DA01EF812294F9C1D591 /* GameStates.cpp in Sources */,
 				3167D0BE2B7D0E9F49ACBE25 /* GameStateMachine.cpp in Sources */,
+				3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +692,7 @@
 				3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */,
 				3167DAB3F8EEC94D802B9C0F /* GameStates.cpp in Sources */,
 				3167D7CC9497333290968E19 /* GameStateMachine.cpp in Sources */,
+				3167DA6853233E9DCA430057 /* BasicPlayerMove.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

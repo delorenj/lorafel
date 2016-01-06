@@ -26,6 +26,8 @@ namespace lorafel {
         void initOptions();
         void addEvents();
 
+        virtual bool isSwappable();
+
     protected:
         std::string spriteName;
         SwappyGrid* m_pSwappyGrid;

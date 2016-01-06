@@ -25,7 +25,9 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GrapeFactory.cpp \
                    ../../Classes/AvocadoFactory.cpp \
                    ../../Classes/GridTestUI.cpp \
-                   ../../Classes/NormalDistributionRandomizer.cpp
+                   ../../Classes/GameStateMachine.cpp \
+                   ../../Classes/NormalDistributionRandomizer.cpp \
+                   ../../Classes/BasicPlayerMove.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
