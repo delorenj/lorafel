@@ -19,6 +19,7 @@ bool SwappyGrid::init() {
     m_pGameStateMachine = GameStateMachine::getInstance();
     m_pColumnStateMachines = new std::vector<StateMachine*>();
     m_pMoveStack = new std::stack<PlayerMove*>();
+    m_pTileMatcher = new TileMatcher(this);
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
         auto fsm = StateMachine::create();
@@ -111,13 +112,17 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     StateMachine* fsm = m_pColumnStateMachines->at(column);
     fsm->enterState<ColumnBusyState>();
     m_pGameStateMachine->enterState<TileFallingState>();
+    m_numberOfFallingTiles++;
     int tileRowIndex = insertTileIntoColumn(column, tile);
     float dropTime = (float)(0.75);
     auto move = cocos2d::MoveTo::create(dropTime, gridToScreen(column, tileRowIndex));
     auto easeAction = cocos2d::EaseBounceOut::create(move->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        if(tileDropQueuesEmpty() && getNumberOfRunningActions() == 0) {
+        Tile* tile = static_cast<Tile*>(sender);
+        SwappyGrid* obj = static_cast<SwappyGrid*>(tile->getParent());
+        obj->setNumberOfFallingTiles(obj->getNumberOfFallingTiles()-1);
+        if(tileDropQueuesEmpty() && obj->getNumberOfFallingTiles() == 0) {
             m_pGameStateMachine->enterState<TileQueueEmptyMatchStartState>();
         }
     });
@@ -288,15 +293,19 @@ unsigned int SwappyGrid::getCurrentTouchId() {
 
 void SwappyGrid::ProcessMatches() {
     GET_GAME_STATE
-    if(!state->canCheckForMatches()) {
+    if(state->getName() != "TileQueueEmptyMatchStartState") {
         return;
     }
 
     CCLOG("Finding Matches!");
-    bool matchesFound = false;
+    auto matches = m_pTileMatcher->findMatches();
 
-    if(matchesFound) {
-        CCLOG("Found a match");
+    if(matches.size() > 0) {
+        CCLOG("Found matches");
+        m_pGameStateMachine->enterState<MatchFoundState>();
+        for(auto match : matches) {
+            match->run();
+        }
     } else if(!m_pMoveStack->empty()) {
         CCLOG("Reverting tiles");
         auto playerMove = m_pMoveStack->top();
@@ -333,4 +342,14 @@ bool SwappyGrid::tileDropQueuesEmpty() {
         count += q->size();
     }
     return count == 0;
+}
+
+unsigned int SwappyGrid::getNumberOfFallingTiles() const {
+    return m_numberOfFallingTiles;
+}
+
+TileSwapEventData *SwappyGrid::getTileSwapEventData() const { return m_pTileSwapEventData; }
+
+void SwappyGrid::setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles) {
+    SwappyGrid::m_numberOfFallingTiles = m_numberOfFallingTiles;
 }

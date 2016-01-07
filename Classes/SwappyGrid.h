@@ -13,6 +13,7 @@
 #include "EventData.h"
 #include "TileSwapEventData.h"
 #include "PlayerMove.h"
+#include "TileMatcher.h"
 
 #define GET_GAME_STATE GameState* state = static_cast<GameState*>(m_pGameStateMachine->getState());
 
@@ -20,11 +21,11 @@ namespace lorafel {
     class Tile;
     class Level;
     class PlayerMove;
+    class TileMatcher;
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;
     typedef std::queue<Tile*> TileDropQueue;
-
 
     class SwappyGrid : public cocos2d::Node {
     public:
@@ -54,7 +55,9 @@ namespace lorafel {
         void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds
         void swapTiles(Tile *pTile, cocos2d::Vec2 vec2);    // Swap tiles using tile and vec
         void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap tiles using two positions
-        TileSwapEventData* getTileSwapEventData() const { return m_pTileSwapEventData; }
+        TileSwapEventData * getTileSwapEventData() const;
+        unsigned int getNumberOfFallingTiles() const;
+        void setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles);
 
         void setCurrentTouchId(unsigned int i);
         unsigned int getCurrentTouchId();
@@ -93,6 +96,10 @@ namespace lorafel {
         void ProcessMatches();
 
         bool tileDropQueuesEmpty();
+
+        TileMatcher* m_pTileMatcher;
+
+        unsigned int m_numberOfFallingTiles = 0;
     };
 }
 
