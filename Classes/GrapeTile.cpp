@@ -17,7 +17,7 @@ GrapeTile* GrapeTile::create() {
 
     if (sprite->initWithSpriteFrameName("grapes.png"))
     {
-        sprite->setSpriteName("Grapes");
+        sprite->setTileName("Grapes");
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

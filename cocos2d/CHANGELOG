@@ -957,7 +957,7 @@ cocos2d-x-3.2rc0  Jul.7 2014
     [NEW]           Lua-binding: Animation3D supported
     [NEW]           Lua-binding: UIEditor test cases added
     [NEW]           Lua-binding: UI focus test cases added
-    [NEW]           Node: added getName(), setName(), getChildByName(), enumerateChildren()
+    [NEW]           Node: added getTileName(), setName(), getChildByName(), enumerateChildren()
     and addChild(Node* node, int localZOrder, const std::string &name)
     [NEW]           Node: physical body supports rotation
     [NEW]           Sprite3D: support c3b binary format

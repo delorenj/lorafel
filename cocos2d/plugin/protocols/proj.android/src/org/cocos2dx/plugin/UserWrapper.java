@@ -35,7 +35,7 @@ public class UserWrapper {
 		PluginWrapper.runOnGLThread(new Runnable() {
 			@Override
 			public void run() {
-				String name = curAdapter.getClass().getName();
+				String name = curAdapter.getClass().getTileName();
 				name = name.replace('.', '/');
 				nativeOnActionResult(name, curRet, curMsg);
 			}

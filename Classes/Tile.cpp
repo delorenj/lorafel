@@ -12,12 +12,12 @@ bool Tile::init() {
     return true;
 }
 
-std::string Tile::getSpriteName() {
-    return spriteName;
+const std::string& Tile::getTileName() const{
+    return m_tileName;
 }
 
-void Tile::setSpriteName(std::string name) {
-    spriteName = name;
+void Tile::setTileName(const std::string name) {
+    m_tileName = name;
 }
 void Tile::initOptions() {
     this->setTag(1);
@@ -104,3 +104,4 @@ cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
 bool Tile::isSwappable() {
     return true;
 }
+

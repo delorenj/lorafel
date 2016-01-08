@@ -17,7 +17,7 @@ AvocadoTile* AvocadoTile::create() {
 
     if (sprite->initWithSpriteFrameName("avocado.png"))
     {
-        sprite->setSpriteName("Avocado");
+        sprite->setTileName("Avocado");
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

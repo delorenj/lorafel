@@ -20,7 +20,8 @@ namespace lorafel {
 
         virtual std::set<Match *> findMatches();
     protected:
-        SwappyGrid* m_pSwappyGrid;
+        SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
+
     };
 }
 

@@ -63,7 +63,8 @@ namespace lorafel {
         unsigned int getCurrentTouchId();
         std::stack<PlayerMove*>* getMoveStack() { return m_pMoveStack; }
         bool isTilePresentAt(cocos2d::Vec2 pos);
-        Tile* getTileAt(cocos2d::Vec2 pos);
+        Tile* getTileAt(const cocos2d::Vec2 pos) const;
+        Tile* getTileAt(const int x, const int y) const;
 
     protected:
         cpSpace* m_pWorld;

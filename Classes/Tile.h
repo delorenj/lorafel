@@ -7,6 +7,7 @@
 
 #include "cocos2d.h"
 #include "SwappyGrid.h"
+#include "MatchPattern.h"
 
 namespace lorafel {
     class SwappyGrid;
@@ -19,8 +20,9 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
-        std::string getSpriteName();
-        void setSpriteName(std::string name);
+        const unsigned int MIN_MATCH_SIZE = 3;
+        const std::string& getTileName() const;
+        void setTileName(const std::string name);
         void setGrid(SwappyGrid* pGrid);
         SwappyGrid* getGrid();
         void initOptions();
@@ -28,9 +30,21 @@ namespace lorafel {
 
         virtual bool isSwappable();
 
+        // Default tile matching algorithm is simple...
+        // If the tiles have the same name, they match
+        virtual bool isMatch(Tile *const &pTile) const { return pTile->getTileName() == this->getTileName(); };
+        virtual const unsigned int getMinMatchSize() const { return Tile::MIN_MATCH_SIZE; };
+
     protected:
-        std::string spriteName;
+        std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
+
+        /**
+         *  Set of patterns to match against.
+         *  i.e. Straight lines, Solid blocks,
+         *  border blocks, etc..
+         */
+        std::set<MatchPattern*>* m_pMatchPatterns;
 
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
     };

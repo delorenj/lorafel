@@ -17,7 +17,7 @@ CarrotTile* CarrotTile::create() {
 
     if (sprite->initWithSpriteFrameName("carrot.png"))
     {
-        sprite->setSpriteName("Carrot");
+        sprite->setTileName("Carrot");
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

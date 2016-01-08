@@ -328,19 +328,6 @@ bool SwappyGrid::isTilePresentAt(cocos2d::Vec2 pos) {
 
 }
 
-Tile* SwappyGrid::getTileAt(cocos2d::Vec2 pos) {
-    if(pos.x >= m_pGrid->size()) {
-        return nullptr;
-    }
-    
-    TileColumn* col = m_pGrid->at(pos.x);
-    if(pos.y >= col->size()) {
-        return nullptr;
-    } else {
-        return col->at(pos.y);
-    }
-}
-
 bool SwappyGrid::tileDropQueuesEmpty() {
     bool count = 0;
     for(auto q : *m_pTileDropQueues) {
@@ -357,4 +344,21 @@ TileSwapEventData *SwappyGrid::getTileSwapEventData() const { return m_pTileSwap
 
 void SwappyGrid::setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles) {
     SwappyGrid::m_numberOfFallingTiles = m_numberOfFallingTiles;
+}
+
+Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
+    if(pos.x >= m_pGrid->size()) {
+        return nullptr;
+    }
+
+    TileColumn* col = m_pGrid->at(pos.x);
+    if(pos.y >= col->size()) {
+        return nullptr;
+    } else {
+        return col->at(pos.y);
+    }
+}
+
+Tile* SwappyGrid::getTileAt(const int x, const int y) const {
+    return getTileAt(cocos2d::Vec2(x,y));
 }

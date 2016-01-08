@@ -80,7 +80,7 @@ public class MobileSecurePayer {
 			// 如果绑定不成功使用mActivity.getApplicationContext().bindService
 			// 解绑时同理
 			mActivity.getApplicationContext().bindService(
-					new Intent(IAlixPay.class.getName()), mAlixPayConnection,
+					new Intent(IAlixPay.class.getTileName()), mAlixPayConnection,
 					Context.BIND_AUTO_CREATE);
 		}
 		// else ok.
