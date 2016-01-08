@@ -3,6 +3,7 @@
 //
 
 #include "Match.h"
+#include "XpMatchResult.h"
 
 using namespace lorafel;
 
@@ -14,8 +15,13 @@ Match::~Match() {
 
 }
 
-const std::vector<MatchResult<int>*> &Match::getStatResults() const {
-    return m_pMatchResults;
+const std::vector<StatResult*> Match::getStatResults() const {
+    auto xp = new XpMatchResult(5);
+    auto xxp = new XpMatchResult(10);
+    std::vector<StatResult*> res;
+    res.push_back(xp);
+    res.push_back(xxp);
+    return res;
 }
 
 void Match::addTile(Tile* tile) {
@@ -32,8 +38,9 @@ const std::set<Tile *> &Match::getTileSet() const {
 
 void Match::run() {
     CCLOG("APPLYING Match Results");
-    std::vector<MatchResult<int>*> results = getStatResults();
-    for(MatchResult<int>* mr : results) {
+    std::vector<StatResult*> results = getStatResults();
+    for(StatResult* mr : results) {
         mr->apply();
+        CC_SAFE_DELETE(mr);
     }
 }

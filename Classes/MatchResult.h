@@ -9,7 +9,7 @@ namespace lorafel {
     template <typename T>
     class MatchResult {
     public:
-        MatchResult(T val) { };
+        MatchResult<T>(T val) : m_val(val) { };
         virtual ~MatchResult() { };
 
         virtual void apply() = 0;

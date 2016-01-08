@@ -19,7 +19,7 @@ namespace lorafel {
         virtual void run();
         // Getters
         const std::set<Tile *> & getTileSet() const;
-        const std::vector<StatResult*> &getStatResults() const;
+        const std::vector<StatResult*> getStatResults() const;
 
         // Setters
         void setTileSet(const std::set<Tile *> &tileSet);
@@ -27,7 +27,6 @@ namespace lorafel {
 
     protected:
         std::set<Tile*> m_pTileSet;
-        std::vector<MatchResult<int>*> m_pMatchResults;
     };
 }
 
