@@ -293,7 +293,11 @@ unsigned int SwappyGrid::getCurrentTouchId() {
 
 void SwappyGrid::ProcessMatches() {
     GET_GAME_STATE
-    if(state->getName() != "TileQueueEmptyMatchStartState") {
+    // Checking for matches can happen at a couple of places
+    // 1. After all the tiles that are going to fall, are done falling
+    // 2. After a user's valid move
+    // TODO: Refactor state to have a member function canCheckForMatches(). This may be cleaner
+    if(state->getName() != "TileQueueEmptyMatchStartState" && state->getName() != "TileSwappingEndState") {
         return;
     }
 
@@ -306,6 +310,7 @@ void SwappyGrid::ProcessMatches() {
         for(auto match : matches) {
             match->run();
         }
+        GameStateMachine::getInstance()->enterState<IdleState>();
     } else if(!m_pMoveStack->empty()) {
         CCLOG("Reverting tiles");
         auto playerMove = m_pMoveStack->top();
