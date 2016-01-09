@@ -28,6 +28,7 @@ std::set<Match *> lorafel::TileMatcher::findMatches() {
             auto topTile = tile->getTop();
             auto bottomTile = tile->getBottom();
             auto leftTile = tile->getLeft();
+            
         }
         // After iterating through a column, persist
     }
