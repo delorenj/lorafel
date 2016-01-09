@@ -27,6 +27,11 @@ namespace lorafel {
         SwappyGrid* getGrid();
         void initOptions();
         void addEvents();
+        Tile* getLeft() const;
+        Tile* getTop() const;
+        Tile* getBottom() const;
+        Tile* getRight() const;
+        const cocos2d::Vec2 getGridPos() const;
 
         virtual bool isSwappable();
 

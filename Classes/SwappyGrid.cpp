@@ -180,36 +180,36 @@ void SwappyGrid::swapTiles(Tile *pTile, cocos2d::Vec2 vec2) {
 }
 
 
-cocos2d::Vec2 SwappyGrid::gridToScreen(cocos2d::Vec2 pos) const {
-    return gridToScreen(pos.x, pos.y);
+const cocos2d::Vec2 SwappyGrid::gridToScreen(cocos2d::Vec2 pos) const {
+    return gridToScreen((int) pos.x, (int) pos.y);
 }
 
-cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
+const cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
     return cocos2d::Vec2(
             m_tileSize.width*x,
             m_tileSize.height*y
     );
 }
 
-cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
+const cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
             (int)std::ceil(pos.x/m_tileSize.width),
             (int)std::ceil(pos.y/m_tileSize.height)
     );
 }
 
-cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
+const cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
     return convertToNodeSpace(cocos2d::Vec2(0, visibleSize.height));
 }
 
-int SwappyGrid::getTopOffscreenTileSlot() const {
+const int SwappyGrid::getTopOffscreenTileSlot() const {
     return (int)std::ceil((getTopOfScreen().y/m_tileSize.height));
 }
 
 int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {
-    TileColumn* col = m_pGrid->at(columnNumber);
+    TileColumn* col = m_pGrid->at((unsigned long) columnNumber);
     col->push_back(tile);
-    return col->size()-1;
+    return (int) (col->size()-1);
 }
 
 bool SwappyGrid::overflow() {

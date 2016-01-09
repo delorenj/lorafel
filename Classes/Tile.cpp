@@ -105,3 +105,32 @@ bool Tile::isSwappable() {
     return true;
 }
 
+
+Tile *Tile::getLeft() const {
+    auto pos = getGridPos();
+    if(pos.x == 0) return nullptr;
+    return m_pSwappyGrid->getTileAt((const int) pos.x-1, (const int) (pos.y));
+}
+
+Tile *Tile::getTop() const {
+    auto pos = getGridPos();
+    if(pos.y == SwappyGrid::NUM_ROWS-1) return nullptr;
+    return m_pSwappyGrid->getTileAt((const int) pos.x, (const int) (pos.y+1));
+
+}
+
+Tile *Tile::getBottom() const {
+    auto pos = getGridPos();
+    if(pos.y == 0) return nullptr;
+    return m_pSwappyGrid->getTileAt((const int) pos.x, (const int) (pos.y-1));
+}
+
+Tile *Tile::getRight() const {
+    auto pos = getGridPos();
+    if(pos.x == SwappyGrid::NUM_COLUMNS-1) return nullptr;
+    return m_pSwappyGrid->getTileAt((const int) pos.x+1, (const int) (pos.y));
+}
+
+const cocos2d::Vec2 Tile::getGridPos() const {
+    return m_pSwappyGrid->screenToGrid(m_pSwappyGrid->convertToNodeSpace(this->convertToWorldSpace(getPosition())));
+}

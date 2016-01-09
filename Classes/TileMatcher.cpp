@@ -24,37 +24,13 @@ std::set<Match *> lorafel::TileMatcher::findMatches() {
     for (int x = 0; x < SwappyGrid::NUM_COLUMNS; ++x) {
         for (int y = 0; y < SwappyGrid::NUM_ROWS; ++y) {
             auto tile = m_pSwappyGrid->getTileAt(x,y);
-
-            if(currSet.empty()) {
-                // If set has no members
-                // start a new possible set match
-                // and continue on.
-
-                currSet.insert(tile);
-                continue;
-            } else {
-                // If current tile does not match the
-                // ones in the current set (which now
-                // has at least one tile),then check if
-                // the current set meets the minimum
-                // requirements for a complete match. If
-                // so, then create a Match object for it
-                // and insert it into a match result set.
-                // Then clear the set.
-                // In all cases, insert the newest tile
-                // into the set.
-                if(!tile->isMatch(*currSet.begin())) {
-                    auto setTile = *currSet.begin();
-                    if(currSet.size() >= setTile->getMinMatchSize()) {
-                        // We have a complete match!
-                        std::set<Tile*>* completeSet = new std::set<Tile*>(currSet);
-                        matches->push_back(completeSet);
-                    }
-                    currSet.clear();
-                }
-                currSet.insert(tile);
-            }
+            auto rightTile = tile->getRight();
+            auto topTile = tile->getTop();
+            auto bottomTile = tile->getBottom();
+            auto leftTile = tile->getLeft();
         }
         // After iterating through a column, persist
     }
+    auto matchSets = std::set<Match*>();
+    return matchSets;
 }

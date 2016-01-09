@@ -39,16 +39,16 @@ namespace lorafel {
         void addTileToDropQueue(int column, Tile *pTile);
         void addRandomTileToDropQueue(int column);
         std::vector<StateMachine*>* getColumnStateMachines() { return m_pColumnStateMachines; }
-        cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos) const;
-        cocos2d::Vec2 gridToScreen(int x, int y) const;
-        cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos) const;
+        const cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos) const;
+        const cocos2d::Vec2 gridToScreen(int x, int y) const;
+        const cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos) const;
 
         static const int NUM_COLUMNS = 9;
         static const int NUM_ROWS = 9;
         static const int SWAPPING_ACTION_TAG = 1;
 
-        int getTopOffscreenTileSlot() const;
-        cocos2d::Vec2 getTopOfScreen() const;
+        const int getTopOffscreenTileSlot() const;
+        const cocos2d::Vec2 getTopOfScreen() const;
 
         // Grid Data Structure Helpers
         void insertTile(cocos2d::Vec2 pos, Tile*);          // Insert a tile into the grid ds
