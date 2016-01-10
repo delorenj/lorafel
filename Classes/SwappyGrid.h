@@ -65,7 +65,7 @@ namespace lorafel {
         bool isTilePresentAt(cocos2d::Vec2 pos);
         Tile* getTileAt(const cocos2d::Vec2 pos) const;
         Tile* getTileAt(const int x, const int y) const;
-
+        void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
     protected:
         cpSpace* m_pWorld;
         Level *level;

@@ -21,6 +21,7 @@ void Tile::setTileName(const std::string name) {
 }
 void Tile::initOptions() {
     this->setTag(1);
+    this->setVisitColor(NONE);
     this->setAnchorPoint(cocos2d::Vec2(0,0));
 //    auto body = cocos2d::PhysicsBody::createBox(this->getContentSize(), cocos2d::PhysicsMaterial(1.0,0.3,1.0));
 //    body->setRotationEnable(false);
@@ -106,31 +107,33 @@ bool Tile::isSwappable() {
 }
 
 
-Tile *Tile::getLeft() const {
+Tile* Tile::getLeft() const {
     auto pos = getGridPos();
     if(pos.x == 0) return nullptr;
     return m_pSwappyGrid->getTileAt((const int) pos.x-1, (const int) (pos.y));
 }
 
-Tile *Tile::getTop() const {
+Tile* Tile::getTop() const {
     auto pos = getGridPos();
     if(pos.y == SwappyGrid::NUM_ROWS-1) return nullptr;
     return m_pSwappyGrid->getTileAt((const int) pos.x, (const int) (pos.y+1));
 
 }
 
-Tile *Tile::getBottom() const {
+Tile* Tile::getBottom() const {
     auto pos = getGridPos();
     if(pos.y == 0) return nullptr;
     return m_pSwappyGrid->getTileAt((const int) pos.x, (const int) (pos.y-1));
 }
 
-Tile *Tile::getRight() const {
+Tile* Tile::getRight() const {
     auto pos = getGridPos();
     if(pos.x == SwappyGrid::NUM_COLUMNS-1) return nullptr;
     return m_pSwappyGrid->getTileAt((const int) pos.x+1, (const int) (pos.y));
 }
 
 const cocos2d::Vec2 Tile::getGridPos() const {
-    return m_pSwappyGrid->screenToGrid(m_pSwappyGrid->convertToNodeSpace(this->convertToWorldSpace(getPosition())));
+//    auto ws = this->convertToWorldSpace(getPosition());
+//    auto ns = m_pSwappyGrid->convertToNodeSpace(ws);
+    return m_pSwappyGrid->screenToGrid(getPosition());
 }

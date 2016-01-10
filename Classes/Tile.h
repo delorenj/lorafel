@@ -15,6 +15,14 @@ namespace lorafel {
     class Tile : public cocos2d::Sprite {
 
     public:
+        enum Color {
+            NONE,       // Has not been visited
+            RED,        // Has been visited
+            YELLOW,     // Is part of an incomplete match set
+            GREEN,      // Is part of a complete match set
+            BLACK       // Is not part of a match set
+        };
+
         bool init() override;
         void update(float delta) override;
 
@@ -27,6 +35,10 @@ namespace lorafel {
         SwappyGrid* getGrid();
         void initOptions();
         void addEvents();
+        Color getVisitColor() const { return m_color; }
+        void setVisitColor(const Color color) { m_color = color; }
+        cocos2d::Vec2 getContiguousCount() const { return m_contiguousCount; }
+        void setContiguousCount(const cocos2d::Vec2 count) { m_contiguousCount = count; }
         Tile* getLeft() const;
         Tile* getTop() const;
         Tile* getBottom() const;
@@ -43,6 +55,8 @@ namespace lorafel {
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
+        Color m_color = NONE;
+        cocos2d::Vec2 m_contiguousCount = cocos2d::Vec2(0,0);
 
         /**
          *  Set of patterns to match against.

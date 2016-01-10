@@ -22,6 +22,7 @@ namespace lorafel {
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
 
+        bool _findMatch(Tile *pTile, std::set<Tile*> &inOutResult);
     };
 }
 

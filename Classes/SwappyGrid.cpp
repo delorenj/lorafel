@@ -362,3 +362,13 @@ Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
 Tile* SwappyGrid::getTileAt(const int x, const int y) const {
     return getTileAt(cocos2d::Vec2(x,y));
 }
+
+void SwappyGrid::clearVisitStates() {
+    for (int i = 0; i < NUM_COLUMNS; ++i) {
+        for (int j = 0; j < NUM_ROWS; ++j) {
+            auto tile = getTileAt(i,j);
+            tile->setVisitColor(Tile::NONE);
+            tile->setContiguousCount(cocos2d::Vec2(0,0));
+        }
+    }
+}
