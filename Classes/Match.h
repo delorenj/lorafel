@@ -18,15 +18,15 @@ namespace lorafel {
         virtual ~Match();
         virtual void run();
         // Getters
-        const std::set<Tile *> & getTileSet() const;
+        std::set<Tile *>* getTileSet() const;
         const std::vector<StatResult*> getStatResults() const;
 
         // Setters
-        void setTileSet(const std::set<Tile *> &tileSet);
+        void setTileSet(std::set<Tile *>* tileSet);
         void addTile(Tile* tile);
 
     protected:
-        std::set<Tile*> m_pTileSet;
+        std::set<Tile*>* m_pTileSet;
     };
 }
 

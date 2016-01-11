@@ -19,9 +19,12 @@ namespace lorafel {
         virtual ~TileMatcher() {} ;
 
         virtual std::set<Match *> findMatches();
+        bool getDebugDraw() const { return m_debugDraw; }
+        void setDebugDraw(const bool val) { m_debugDraw = val; }
+
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
-
+        bool m_debugDraw = 0;
         bool _findMatch(Tile *pTile, std::set<Tile*> &inOutResult);
     };
 }

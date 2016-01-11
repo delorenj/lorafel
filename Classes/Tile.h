@@ -37,8 +37,10 @@ namespace lorafel {
         void addEvents();
         Color getVisitColor() const { return m_color; }
         void setVisitColor(const Color color) { m_color = color; }
-        cocos2d::Vec2 getContiguousCount() const { return m_contiguousCount; }
-        void setContiguousCount(const cocos2d::Vec2 count) { m_contiguousCount = count; }
+        cocos2d::Vec2 getAdjacencyCount() const { return m_adjacencyCount; }
+        void setAdjacencyCount(const cocos2d::Vec2 count) { m_adjacencyCount = count; }
+        cocos2d::Vec2 incrementAdjacencyCountBy(int x, int y);
+
         Tile* getLeft() const;
         Tile* getTop() const;
         Tile* getBottom() const;
@@ -52,11 +54,13 @@ namespace lorafel {
         virtual bool isMatch(Tile *const &pTile) const { return pTile->getTileName() == this->getTileName(); };
         virtual const unsigned int getMinMatchSize() const { return Tile::MIN_MATCH_SIZE; };
 
+
+
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
         Color m_color = NONE;
-        cocos2d::Vec2 m_contiguousCount = cocos2d::Vec2(0,0);
+        cocos2d::Vec2 m_adjacencyCount = cocos2d::Vec2(1,1);
 
         /**
          *  Set of patterns to match against.
@@ -66,6 +70,7 @@ namespace lorafel {
         std::set<MatchPattern*>* m_pMatchPatterns;
 
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
+
     };
 }
 

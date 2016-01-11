@@ -22,10 +22,10 @@ std::set<Match *> TileMatcher::findMatches() {
             _findMatch(tile, tileSet);
             if(tileSet.size() > 0) {
                 // Create copy of the local tileSet
-                auto tileSetCopy = new std::set<Tile*>(tileSet);
-                auto match = new Match();
-                match->setTileSet((const std::set<Tile *> &) tileSetCopy);
-                matchSets.insert(match);
+//                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
+//                auto match = new Match();
+//                match->setTileSet(tileSetCopy);
+//                matchSets.insert(match);
             }
         }
     }
@@ -40,55 +40,98 @@ bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult) {
     // Set current tile to RED so no sub-calls act upon it
     pTile->setVisitColor(Tile::RED);
 
-    // Increase the count of current tile to account for self
-    pTile->setContiguousCount(cocos2d::Vec2(pTile->getContiguousCount().x+1, pTile->getContiguousCount().y+1));
+    auto left = pTile->getLeft();
+    auto right = pTile->getRight();
+    auto bottom = pTile->getBottom();
+    auto top = pTile->getTop();
+
+    // First, calculate all adjacency counts
+    if(right && right->isMatch(pTile)) {
+        pTile->incrementAdjacencyCountBy(1, 0);
+    }
+
+    if(left && left->isMatch(pTile)) {
+        pTile->incrementAdjacencyCountBy(1, 0);
+    }
+
+    if(bottom && bottom->isMatch(pTile)) {
+        pTile->incrementAdjacencyCountBy(0, 1);
+    }
+
+    if(top && top->isMatch(pTile)) {
+        pTile->incrementAdjacencyCountBy(0, 1);
+    }
 
     // Find the matches for the tile to the right
     // When it returns, use the cumulative directional
     // contiguity count to determine the current tile's
     // consecutive tile count and set it.
-    if(pTile->getRight() && pTile->getRight()->isMatch(pTile)) {             // If right tile matches
-        _findMatch(pTile->getRight(), inOutResult);     // then find its matches
-        auto counts = pTile->getContiguousCount();      // then increase x-axis count
-        counts.x += pTile->getRight()->getContiguousCount().x;
-        pTile->setContiguousCount(counts);
+    if(right && right->isMatch(pTile)) {             // If right tile matches
+        if(_findMatch(right, inOutResult)) {         // then find its matches
+            pTile->incrementAdjacencyCountBy(right->getAdjacencyCount().x - 1, 0);
+        }
     }
 
     // Find the matches for the tile to the bottom
-    if(pTile->getBottom() && pTile->getBottom()->isMatch(pTile)) {
-        _findMatch(pTile->getBottom(), inOutResult);
-        auto counts = pTile->getContiguousCount();
-        counts.y += pTile->getBottom()->getContiguousCount().y;
-        pTile->setContiguousCount(counts);
+    if(bottom && bottom->isMatch(pTile)) {
+        if(_findMatch(bottom, inOutResult)) {
+            pTile->incrementAdjacencyCountBy(0, bottom->getAdjacencyCount().y - 1);
+        }
     }
 
     // Find the matches for the tile to the left
-    if(pTile->getLeft() && pTile->getLeft()->isMatch(pTile)) {
-        _findMatch(pTile->getLeft(), inOutResult);
-        auto counts = pTile->getContiguousCount();
-        counts.x += pTile->getLeft()->getContiguousCount().x;
-        pTile->setContiguousCount(counts);
+    if(left && left->isMatch(pTile)) {
+        if(_findMatch(left, inOutResult)) {
+            pTile->incrementAdjacencyCountBy(left->getAdjacencyCount().x - 1, 0);
+        }
     }
 
-    // Find the matches for the tile to the bottom
-    if(pTile->getTop() && pTile->getTop()->isMatch(pTile)) {
-        _findMatch(pTile->getTop(), inOutResult);
-        auto counts = pTile->getContiguousCount();
-        counts.y += pTile->getTop()->getContiguousCount().y;
-        pTile->setContiguousCount(counts);
+    // Find the matches for the tile to the top
+    if(top && top->isMatch(pTile)) {
+        if(_findMatch(top, inOutResult)) {
+            pTile->incrementAdjacencyCountBy(0, top->getAdjacencyCount().y - 1);
+        }
     }
 
     // If counts in either direction meet or exceed the
     // minimum match length, then the set color to GREEN
     // otherwise, set it to BLACK indication no match is possible
-    auto counts = pTile->getContiguousCount();
-
-    if(pTile->getContiguousCount().x >= pTile->getMinMatchSize() || pTile->getContiguousCount().y >= pTile->getMinMatchSize()) {
+    auto counts = pTile->getAdjacencyCount();
+    bool result;
+    if(counts.x >= pTile->getMinMatchSize() || counts.y >= pTile->getMinMatchSize()) {
         pTile->setVisitColor(Tile::GREEN);
         inOutResult.insert(pTile);
-        return true;
+        result = true;
     } else {
         pTile->setVisitColor(Tile::BLACK);
-        return false;
+        result = false;
     }
+
+    // If debug draw is on, then draw out current
+    // tile matching state
+    cocos2d::Color4F color;
+    switch(pTile->getVisitColor()) {
+        case Tile::BLACK:
+            color = cocos2d::Color4F(0,0,0,0.7);
+            break;
+        case Tile::GREEN:
+            color = cocos2d::Color4F(0,1,0,0.7);
+            break;
+        case Tile::RED:
+            color = cocos2d::Color4F(1,0,0,0.7);
+            break;
+        default:
+            color = cocos2d::Color4F(1,1,1,0.7);
+    }
+
+    if(getDebugDraw()) {
+        auto dn = cocos2d::DrawNode::create();
+        dn->setLineWidth(7);
+        GLubyte op = 5;
+        dn->setOpacity(op);
+        dn->drawSolidRect(cocos2d::Vec2(0,0), pTile->getContentSize(), color);
+        pTile->addChild(dn);
+
+    }
+    return result;
 }

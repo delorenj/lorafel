@@ -20,6 +20,7 @@ bool SwappyGrid::init() {
     m_pColumnStateMachines = new std::vector<StateMachine*>();
     m_pMoveStack = new std::stack<PlayerMove*>();
     m_pTileMatcher = new TileMatcher(this);
+    m_pTileMatcher->setDebugDraw(true);
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
         auto fsm = StateMachine::create();
@@ -368,7 +369,7 @@ void SwappyGrid::clearVisitStates() {
         for (int j = 0; j < NUM_ROWS; ++j) {
             auto tile = getTileAt(i,j);
             tile->setVisitColor(Tile::NONE);
-            tile->setContiguousCount(cocos2d::Vec2(0,0));
+            tile->setAdjacencyCount(cocos2d::Vec2(1, 1));
         }
     }
 }

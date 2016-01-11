@@ -25,14 +25,14 @@ const std::vector<StatResult*> Match::getStatResults() const {
 }
 
 void Match::addTile(Tile* tile) {
-    m_pTileSet.insert(tile);
+    m_pTileSet->insert(tile);
 }
 
-void Match::setTileSet(const std::set<Tile *> &tileSet) {
+void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_pTileSet = tileSet;
 }
 
-const std::set<Tile *> &Match::getTileSet() const {
+std::set<Tile *>* Match::getTileSet() const {
     return m_pTileSet;
 }
 
