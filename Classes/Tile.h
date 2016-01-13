@@ -51,7 +51,7 @@ namespace lorafel {
 
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
-        virtual bool isMatch(Tile *const &pTile) const { return pTile->getTileName() == this->getTileName(); };
+        virtual bool isMatch(Tile* pTile) const { return pTile->getTileName() == this->getTileName(); };
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
 
 
