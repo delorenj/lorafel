@@ -128,8 +128,6 @@ const cocos2d::Vec2 Tile::getGridPos() const {
     return m_pSwappyGrid->screenToGrid(getPosition());
 }
 
-cocos2d::Vec2 Tile::incrementAdjacencyCountBy(int x, int y) {
-    m_adjacencyCount.x += (float) x;
-    m_adjacencyCount.y += (float) y;
-    return m_adjacencyCount;
+std::string Tile::getVisitCountAsString() const {
+    return std::to_string(m_firstVisit);
 }

@@ -10,7 +10,7 @@
 
 using namespace lorafel;
 
-Level__TestLevelOne::Level__TestLevelOne() {
+Level__TestLevelOne::Level__TestLevelOne(SwappyGrid* grid) : Level(grid) {
 
     m_pTileConfigs = new TileConfigs();
     randomizer = new NormalDistributionRandomizer();
@@ -29,8 +29,133 @@ Level__TestLevelOne::Level__TestLevelOne() {
     config->frequency = 10;
     m_pTileConfigs->push_back(config);
 
+    // Col1
+    auto col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col2
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col3
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col4
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col5
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col6
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col7
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col8
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    m_initialGrid.push_back(col);
+
+    // Col9
+    col = new TileColumn();
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    m_initialGrid.push_back(col);
+
 }
 
 Level__TestLevelOne::~Level__TestLevelOne() {
     while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
+}
+
+void Level__TestLevelOne::load() {
+    for (int i = 0; i < SwappyGrid::NUM_COLUMNS; ++i) {
+        for (int j = 0; j < SwappyGrid::NUM_ROWS; ++j) {
+            m_pSwappyGrid->addTileToDropQueue(i, m_initialGrid.at(i)->at(j));
+        }
+    }
 }

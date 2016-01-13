@@ -12,26 +12,29 @@
 
 namespace lorafel {
     class TileFactory;
-
+    class SwappyGrid;
     typedef struct {TileFactory* factory; int frequency;} TileConfig;
     typedef std::vector<TileConfig*> TileConfigs;
 
     class Level {
 
     public:
-        Level();
+        Level(SwappyGrid* grid) : m_pSwappyGrid(grid) { };
+
+        virtual ~Level() { };
+
         Level(TileConfigs* configs) {
             this->m_pTileConfigs = configs;
         }
-
-        virtual ~Level();
 
         TileConfigs* getTileConfigs() { return m_pTileConfigs; }
         void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
         virtual Tile* getRandomTile();
+        virtual void load() { };
 
     protected:
+        SwappyGrid* m_pSwappyGrid;
         TileConfigs* m_pTileConfigs;
         IRandomizerStrategy* randomizer;
     };

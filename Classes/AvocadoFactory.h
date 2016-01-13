@@ -12,7 +12,7 @@ using namespace lorafel;
 class AvocadoFactory : public TileFactory {
 
 public:
-    virtual Tile* createTile();
+    virtual lorafel::Tile* createTile();
 };
 
 

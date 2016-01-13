@@ -73,11 +73,6 @@ bool SwappyGrid::init() {
     return true;
 }
 
-void SwappyGrid::loadLevel(Level *level) {
-    //Set the grid's level
-    this->level = level;
-}
-
 void SwappyGrid::update(float delta) {
 
     ReplenishTiles();
@@ -240,28 +235,25 @@ std::vector<int> SwappyGrid::getTileVacancyCounts() {
 
 void SwappyGrid::addTileToDropQueue(int column, Tile *pTile) {
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS && column < m_pTileDropQueues->size());
-    if(pTile->getGrid() == nullptr) {
-        pTile->setGrid(this);
-    }
-    TileDropQueue* q = m_pTileDropQueues->at(column);
-    q->push(pTile);
-}
-
-void SwappyGrid::addRandomTileToDropQueue(int column) {
-    Tile* tile = level->getRandomTile();
-    tile->setGrid(this);
+    pTile->setGrid(this);
 
     // Put tile in the correct place
     // but don't drop it yet.
     cocos2d::Vec2 newPos = gridToScreen(column, getTopOffscreenTileSlot());
-    tile->setPosition(newPos);
-    addChild(tile,2);
+    pTile->setPosition(newPos);
+    addChild(pTile,2);
 
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
     // drops when allowed
-    addTileToDropQueue(column, tile);
+    TileDropQueue* q = m_pTileDropQueues->at(column);
+    q->push(pTile);
 
+}
+
+void SwappyGrid::addRandomTileToDropQueue(int column) {
+    Tile* tile = getLevel()->getRandomTile();
+    addTileToDropQueue(column, tile);
 }
 
 bool SwappyGrid::columnReadyToDropTile(int column) {
@@ -369,7 +361,16 @@ void SwappyGrid::clearVisitStates() {
         for (int j = 0; j < NUM_ROWS; ++j) {
             auto tile = getTileAt(i,j);
             tile->setVisitColor(Tile::NONE);
-            tile->setAdjacencyCount(cocos2d::Vec2(1, 1));
+            tile->setVisitOrder(0);
+            tile->removeAllChildrenWithCleanup(true);
         }
     }
+}
+
+void SwappyGrid::setLevel(Level *pLevel) {
+    m_pLevel = pLevel;
+}
+
+Level *SwappyGrid::getLevel() {
+    return m_pLevel;
 }

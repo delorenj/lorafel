@@ -3,6 +3,7 @@
 //
 
 #include "TileMatcher.h"
+#include "ui/CocosGUI.h"
 
 using namespace lorafel;
 
@@ -19,7 +20,7 @@ std::set<Match *> TileMatcher::findMatches() {
             if(tile->getVisitColor() == Tile::BLACK) continue;
 
             std::set<Tile*> tileSet;
-            _findMatch(tile, tileSet);
+            _findMatch(tile, tileSet, 0);
             if(tileSet.size() > 0) {
                 // Create copy of the local tileSet
 //                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
@@ -33,105 +34,131 @@ std::set<Match *> TileMatcher::findMatches() {
     return matchSets;
 }
 
-bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult) {
+bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int order = 0) {
     if(pTile == nullptr) return false;                      // no tile in this pos
     if(pTile->getVisitColor() != Tile::NONE) return false; // another stack already processing
 
     // Set current tile to RED so no sub-calls act upon it
     pTile->setVisitColor(Tile::RED);
+    pTile->setVisitOrder(order+1);
 
     auto left = pTile->getLeft();
     auto right = pTile->getRight();
     auto bottom = pTile->getBottom();
     auto top = pTile->getTop();
 
-    // First, calculate all adjacency counts
     if(right && right->isMatch(pTile)) {
-        pTile->incrementAdjacencyCountBy(1, 0);
-    }
-
-    if(left && left->isMatch(pTile)) {
-        pTile->incrementAdjacencyCountBy(1, 0);
+        _findMatch(right, inOutResult, order+1);
     }
 
     if(bottom && bottom->isMatch(pTile)) {
-        pTile->incrementAdjacencyCountBy(0, 1);
+        _findMatch(bottom, inOutResult, order+1);
     }
 
-    if(top && top->isMatch(pTile)) {
-        pTile->incrementAdjacencyCountBy(0, 1);
-    }
-
-    // Find the matches for the tile to the right
-    // When it returns, use the cumulative directional
-    // contiguity count to determine the current tile's
-    // consecutive tile count and set it.
-    if(right && right->isMatch(pTile)) {             // If right tile matches
-        if(_findMatch(right, inOutResult)) {         // then find its matches
-            pTile->incrementAdjacencyCountBy(right->getAdjacencyCount().x - 1, 0);
-        }
-    }
-
-    // Find the matches for the tile to the bottom
-    if(bottom && bottom->isMatch(pTile)) {
-        if(_findMatch(bottom, inOutResult)) {
-            pTile->incrementAdjacencyCountBy(0, bottom->getAdjacencyCount().y - 1);
-        }
-    }
-
-    // Find the matches for the tile to the left
     if(left && left->isMatch(pTile)) {
-        if(_findMatch(left, inOutResult)) {
-            pTile->incrementAdjacencyCountBy(left->getAdjacencyCount().x - 1, 0);
-        }
+        _findMatch(left, inOutResult, order+1);
     }
 
-    // Find the matches for the tile to the top
     if(top && top->isMatch(pTile)) {
-        if(_findMatch(top, inOutResult)) {
-            pTile->incrementAdjacencyCountBy(0, top->getAdjacencyCount().y - 1);
-        }
+        _findMatch(top, inOutResult, order+1);
     }
 
-    // If counts in either direction meet or exceed the
-    // minimum match length, then the set color to GREEN
-    // otherwise, set it to BLACK indication no match is possible
-    auto counts = pTile->getAdjacencyCount();
-    bool result;
-    if(counts.x >= pTile->getMinMatchSize() || counts.y >= pTile->getMinMatchSize()) {
+    int matches = 1;
+    auto t = pTile;
+    while((t = t->getRight()) && t->isMatch(pTile) && matches <= pTile->getMinMatchSize()) {
+        matches++;
+    }
+    if(matches == pTile->getMinMatchSize()) {
         pTile->setVisitColor(Tile::GREEN);
         inOutResult.insert(pTile);
-        result = true;
-    } else {
-        pTile->setVisitColor(Tile::BLACK);
-        result = false;
+        t = pTile;
+        while((t = t->getRight()) && t->isMatch(pTile)) {
+            t->setVisitColor(Tile::GREEN);
+            inOutResult.insert(t);
+        }
     }
+
+    matches = 1;
+    t = pTile;
+    while((t = t->getBottom()) && t->isMatch(pTile) && matches <= pTile->getMinMatchSize()) {
+        matches++;
+    }
+    if(matches == pTile->getMinMatchSize()) {
+        pTile->setVisitColor(Tile::GREEN);
+        inOutResult.insert(pTile);
+        t = pTile;
+        while((t = t->getBottom()) && t->isMatch(pTile)) {
+            t->setVisitColor(Tile::GREEN);
+            inOutResult.insert(t);
+        }
+    }
+
+    matches = 1;
+    t = pTile;
+    while((t = t->getLeft()) && t->isMatch(pTile) && matches <= pTile->getMinMatchSize()) {
+        matches++;
+    }
+    if(matches == pTile->getMinMatchSize()) {
+        pTile->setVisitColor(Tile::GREEN);
+        inOutResult.insert(pTile);
+        t = pTile;
+        while((t = t->getLeft()) && t->isMatch(pTile)) {
+            t->setVisitColor(Tile::GREEN);
+            inOutResult.insert(t);
+        }
+    }
+
+    matches = 1;
+    t = pTile;
+    while((t = t->getTop()) && t->isMatch(pTile) && matches <= pTile->getMinMatchSize()) {
+        matches++;
+    }
+    if(matches == pTile->getMinMatchSize()) {
+        pTile->setVisitColor(Tile::GREEN);
+        inOutResult.insert(pTile);
+        t = pTile;
+        while((t = t->getTop()) && t->isMatch(pTile)) {
+            t->setVisitColor(Tile::GREEN);
+            inOutResult.insert(t);
+        }
+    }
+
 
     // If debug draw is on, then draw out current
     // tile matching state
     cocos2d::Color4F color;
+    float opacity = 0.6;
     switch(pTile->getVisitColor()) {
         case Tile::BLACK:
-            color = cocos2d::Color4F(0,0,0,0.7);
+            color = cocos2d::Color4F(0,0,0,opacity);
             break;
         case Tile::GREEN:
-            color = cocos2d::Color4F(0,1,0,0.7);
+            color = cocos2d::Color4F(0,1,0,opacity);
             break;
         case Tile::RED:
-            color = cocos2d::Color4F(1,0,0,0.7);
+            color = cocos2d::Color4F(1,0,0,opacity);
             break;
+        case Tile::YELLOW:
+            color = cocos2d::Color4F(1,1,0.6,opacity);
+            break;
+
         default:
-            color = cocos2d::Color4F(1,1,1,0.7);
+            color = cocos2d::Color4F(1,1,1,opacity);
     }
 
     if(getDebugDraw()) {
+        pTile->removeChildByTag(TileMatcher::DEBUG_TAG);
         auto dn = cocos2d::DrawNode::create();
         dn->setLineWidth(7);
-        GLubyte op = 5;
-        dn->setOpacity(op);
+        dn->setTag(TileMatcher::DEBUG_TAG);
         dn->drawSolidRect(cocos2d::Vec2(0,0), pTile->getContentSize(), color);
         pTile->addChild(dn);
 
+        auto orderText = cocos2d::ui::Text::create(pTile->getVisitCountAsString(),"fonts/BebasNeue Bold.ttf", 24);
+        orderText->setPosition(cocos2d::Vec2(25,25));
+        dn->addChild(orderText);
+
+
     }
-    return result;
+    return true;
 }

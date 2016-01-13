@@ -18,8 +18,8 @@ namespace lorafel {
         enum Color {
             NONE,       // Has not been visited
             RED,        // Has been visited
-            YELLOW,     // Is part of an incomplete match set
-            GREEN,      // Is part of a complete match set
+            YELLOW,     // Is part of a complete axis match set
+            GREEN,      // Is part of a match set
             BLACK       // Is not part of a match set
         };
 
@@ -37,9 +37,9 @@ namespace lorafel {
         void addEvents();
         Color getVisitColor() const { return m_color; }
         void setVisitColor(const Color color) { m_color = color; }
-        cocos2d::Vec2 getAdjacencyCount() const { return m_adjacencyCount; }
-        void setAdjacencyCount(const cocos2d::Vec2 count) { m_adjacencyCount = count; }
-        cocos2d::Vec2 incrementAdjacencyCountBy(int x, int y);
+        virtual int getVisitOrder() const { return m_firstVisit; }
+        virtual void setVisitOrder(int firstVisit) { Tile::m_firstVisit = firstVisit; }
+        virtual std::string getVisitCountAsString() const;
 
         Tile* getLeft() const;
         Tile* getTop() const;
@@ -52,7 +52,7 @@ namespace lorafel {
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
         virtual bool isMatch(Tile *const &pTile) const { return pTile->getTileName() == this->getTileName(); };
-        virtual const unsigned int getMinMatchSize() const { return Tile::MIN_MATCH_SIZE; };
+        virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
 
 
 
@@ -60,7 +60,7 @@ namespace lorafel {
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
         Color m_color = NONE;
-        cocos2d::Vec2 m_adjacencyCount = cocos2d::Vec2(1,1);
+        int m_firstVisit = 0;
 
         /**
          *  Set of patterns to match against.

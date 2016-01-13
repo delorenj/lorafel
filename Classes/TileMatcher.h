@@ -22,10 +22,12 @@ namespace lorafel {
         bool getDebugDraw() const { return m_debugDraw; }
         void setDebugDraw(const bool val) { m_debugDraw = val; }
 
+        static const int DEBUG_TAG = 15515;
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
         bool m_debugDraw = 0;
-        bool _findMatch(Tile *pTile, std::set<Tile*> &inOutResult);
+        bool _findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int order);
+
     };
 }
 

@@ -66,9 +66,11 @@ namespace lorafel {
         Tile* getTileAt(const cocos2d::Vec2 pos) const;
         Tile* getTileAt(const int x, const int y) const;
         void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
+        void setLevel(Level *pLevel);
+
     protected:
         cpSpace* m_pWorld;
-        Level *level;
+        Level *m_pLevel;
         cocos2d::Size m_gridSize;
         int m_gridBaseY;
         cocos2d::Size visibleSize;
@@ -101,6 +103,8 @@ namespace lorafel {
         TileMatcher* m_pTileMatcher;
 
         unsigned int m_numberOfFallingTiles = 0;
+
+        Level *getLevel();
     };
 }
 
