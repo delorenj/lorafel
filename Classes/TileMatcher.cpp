@@ -16,19 +16,16 @@ std::set<Match *> TileMatcher::findMatches() {
     for (int x = 0; x < SwappyGrid::NUM_COLUMNS; ++x) {
         for (int y = 0; y < SwappyGrid::NUM_ROWS; ++y) {
             auto tile = m_pSwappyGrid->getTileAt(x,y);
-            if(x == 0 && y == 5) {
-                CCLOG("Break!");
-            }
             if(tile->getVisitColor() == Tile::BLACK) continue;
 
             std::set<Tile*> tileSet;
             _findMatch(tile, tileSet, 0);
             if(tileSet.size() > 0) {
                 // Create copy of the local tileSet
-//                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
-//                auto match = new Match();
-//                match->setTileSet(tileSetCopy);
-//                matchSets.insert(match);
+                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
+                auto match = new Match();
+                match->setTileSet(tileSetCopy);
+                matchSets.insert(match);
             }
         }
     }
@@ -37,9 +34,6 @@ std::set<Match *> TileMatcher::findMatches() {
 }
 
 bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int order = 0) {
-    if(pTile->getGridPos() == cocos2d::Vec2(0,2)) {
-        CCLOG("HERE");
-    }
     if(pTile == nullptr) return false;                      // no tile in this pos
     if(pTile->getVisitColor() == Tile::NONE) {
 

@@ -43,4 +43,8 @@ void Match::run() {
         mr->apply();
         CC_SAFE_DELETE(mr);
     }
+
+    for(auto tile : *m_pTileSet) {
+        tile->getGrid()->removeChild(tile, true);
+    }
 }
