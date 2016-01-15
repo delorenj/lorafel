@@ -131,3 +131,21 @@ const cocos2d::Vec2 Tile::getGridPos() const {
 std::string Tile::getVisitCountAsString() const {
     return std::to_string(m_firstVisit);
 }
+
+void Tile::remove() {
+    m_pSwappyGrid->removeTile(this);
+}
+
+void Tile::moveToGridPos(int x, int y) {
+    auto move = cocos2d::MoveTo::create(0.5, m_pSwappyGrid->gridToScreen(x,y));
+//    auto ease = cocos2d::EaseBounceOut::create(move->clone());
+
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        m_pSwappyGrid->setNumberOfFallingTiles(m_pSwappyGrid->getNumberOfFallingTiles()-1);
+
+    });
+
+    auto sequence = cocos2d::Sequence::create(move,callback, NULL);
+    this->runAction(sequence);
+
+}

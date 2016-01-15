@@ -4,6 +4,7 @@
 
 #include "Match.h"
 #include "XpMatchResult.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -45,6 +46,9 @@ void Match::run() {
     }
 
     for(auto tile : *m_pTileSet) {
-        tile->getGrid()->removeChild(tile, true);
+        tile->remove();
     }
+
+    GameStateMachine::getInstance()->enterState<TileRemovedState>();
+
 }

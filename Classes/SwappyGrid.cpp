@@ -20,7 +20,7 @@ bool SwappyGrid::init() {
     m_pColumnStateMachines = new std::vector<StateMachine*>();
     m_pMoveStack = new std::stack<PlayerMove*>();
     m_pTileMatcher = new TileMatcher(this);
-    m_pTileMatcher->setDebugDraw(true);
+    m_pTileMatcher->setDebugDraw(false);
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
         auto fsm = StateMachine::create();
@@ -40,22 +40,10 @@ bool SwappyGrid::init() {
     auto tileWidth = m_tileSize.width;
     m_tileScaleFactor = m_tileSize.width/tileWidth;
 
-    // Physics Bounds
-    auto body = cocos2d::PhysicsBody::createEdgeSegment(
-            cocos2d::Vec2(0, 0),
-            cocos2d::Vec2(tileWidth*NUM_COLUMNS,0),
-            cocos2d::PHYSICSBODY_MATERIAL_DEFAULT,
-            3
-    );
-
-    auto edgeNode = cocos2d::Node::create();
-    edgeNode->setPhysicsBody(body);
-    addChild(edgeNode);
-
     // Create Tile Grid
     m_pGrid = new TileGrid();
     for (int i = 0; i < NUM_COLUMNS; ++i) {
-        m_pGrid->push_back(new TileColumn());
+        m_pGrid->push_back(new TileColumn(NUM_COLUMNS*2));
     }
 
     // Create Tile Drop Queues
@@ -80,6 +68,8 @@ void SwappyGrid::update(float delta) {
     DropTiles();
 
     ProcessMatches();
+
+    FillInMissingTileGaps();
 }
 
 void SwappyGrid::DropTiles() {
@@ -203,9 +193,10 @@ const int SwappyGrid::getTopOffscreenTileSlot() const {
 }
 
 int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {
-    TileColumn* col = m_pGrid->at((unsigned long) columnNumber);
-    col->push_back(tile);
-    return (int) (col->size()-1);
+    TileColumn* col = m_pGrid->at(columnNumber);
+    auto lowest = lowestVacancyInColumn(columnNumber);
+    col->at(lowest) = tile;
+    return lowest;
 }
 
 bool SwappyGrid::overflow() {
@@ -225,7 +216,14 @@ bool SwappyGrid::overflow() {
 std::vector<int> SwappyGrid::getTileVacancyCounts() {
     auto counts = std::vector<int>();
     for (int i = 0; i < NUM_COLUMNS; ++i) {
-        int numTilesInGridCol = m_pGrid->at(i)->size();
+        int count = 0;
+        for (int j = 0; j < NUM_ROWS; ++j) {
+            if(getTileAt(i,j)) {
+                count++;
+            }
+        }
+
+        int numTilesInGridCol = count;
         int numTilesWaitingToDropInCol = m_pTileDropQueues->at(i)->size();
         counts.push_back(NUM_ROWS - numTilesWaitingToDropInCol - numTilesInGridCol);
     }
@@ -263,17 +261,20 @@ bool SwappyGrid::columnReadyToDropTile(int column) {
      * on dropping any more
      */
     auto fsm = (StateMachine *) m_pColumnStateMachines->at(column);
-    for(cocos2d::Sprite* sprite : *m_pGrid->at(1)) {
-        auto bb = sprite->getBoundingBox();
-        if(bb.containsPoint(gridToScreen(column, getTopOffscreenTileSlot()-1))) {
-            fsm->enterState<BusyState>();
-            return false;
+    for (int i = 0; i < NUM_COLUMNS; i++) {
+        for (int j = 0; j < NUM_ROWS; ++j) {
+            auto tile = getTileAt(i, j);
+            if(!tile) continue;
+            auto bb = tile->getBoundingBox();
+            if(bb.containsPoint(gridToScreen(column, getTopOffscreenTileSlot()-1))) {
+                fsm->enterState<BusyState>();
+                return false;
+            }
         }
+
     }
     fsm->enterState<ColumnReadyToDropState>();
     return true;
-
-//    return colState->canDropTile();
 }
 
 void SwappyGrid::setCurrentTouchId(unsigned int eventTouchId) {
@@ -373,4 +374,43 @@ void SwappyGrid::setLevel(Level *pLevel) {
 
 Level *SwappyGrid::getLevel() {
     return m_pLevel;
+}
+
+void SwappyGrid::FillInMissingTileGaps() {
+    GET_GAME_STATE
+    if(state->getName() != "TileRemovedState") return;
+
+    for (int i = 0; i < NUM_COLUMNS; ++i) {
+        for (int j = 1; j < NUM_ROWS; ++j) {    // no need to check the lowest row
+            auto tile = getTileAt(i, j);
+            // if tile exists and has empty space below it
+            // the fill in the gap
+            if(tile && !tile->getBottom()) {
+                int lowest = lowestVacancyInColumn(i);
+                m_pGrid->at(i)->at(lowest) = tile;
+                m_pGrid->at(i)->at(j) = nullptr;
+                setNumberOfFallingTiles(getNumberOfFallingTiles() + 1);
+                tile->moveToGridPos(i, lowest);
+            }
+        }
+    }
+    if(getNumberOfFallingTiles() == 0) {
+        GameStateMachine::getInstance()->enterState<IdleState>();
+    }
+}
+
+int SwappyGrid::lowestVacancyInColumn(int i) {
+    Tile* tile;
+    int j = 0;
+    do {
+        tile = getTileAt(i,j++);
+    } while(tile != nullptr);
+
+    return j-1;
+}
+
+void SwappyGrid::removeTile(Tile *tile) {
+    auto pos = tile->getGridPos();
+    m_pGrid->at(pos.x)->at(pos.y) = nullptr;
+    removeChild(tile);
 }

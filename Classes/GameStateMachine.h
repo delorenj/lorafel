@@ -24,6 +24,7 @@ namespace lorafel {
                 _instance->addState<TileSwappingReverseEndState>();
                 _instance->addState<TileFallingState>();
                 _instance->addState<MatchFoundState>();
+                _instance->addState<TileRemovedState>();
                 _instance->addState<TileQueueEmptyMatchStartState>();
 
             _instance->enterState<IdleState>();

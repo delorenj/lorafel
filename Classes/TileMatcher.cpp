@@ -124,6 +124,8 @@ bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int orde
 
     }
 
+    if(pTile->getVisitColor() != Tile::GREEN) pTile->setVisitColor(Tile::BLACK);
+
     if(getDebugDraw()) {
 
         // If debug draw is on, then draw out current

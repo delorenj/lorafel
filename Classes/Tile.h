@@ -55,6 +55,9 @@ namespace lorafel {
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
 
 
+        void remove();
+
+        void moveToGridPos(int x, int y);
 
     protected:
         std::string m_tileName;
