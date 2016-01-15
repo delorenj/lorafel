@@ -12,22 +12,23 @@ std::set<Match *> TileMatcher::findMatches() {
     auto matchSets = std::set<Match*>();
 
     m_pSwappyGrid->clearVisitStates();
+    std::set<Tile*> tileSet;
 
     for (int x = 0; x < SwappyGrid::NUM_COLUMNS; ++x) {
         for (int y = 0; y < SwappyGrid::NUM_ROWS; ++y) {
             auto tile = m_pSwappyGrid->getTileAt(x,y);
             if(tile->getVisitColor() == Tile::BLACK) continue;
 
-            std::set<Tile*> tileSet;
+
             _findMatch(tile, tileSet, 0);
-            if(tileSet.size() > 0) {
-                // Create copy of the local tileSet
-                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
-                auto match = new Match();
-                match->setTileSet(tileSetCopy);
-                matchSets.insert(match);
-            }
         }
+    }
+    if(tileSet.size() > 0) {
+        // Create copy of the local tileSet
+        std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
+        auto match = new Match();
+        match->setTileSet(tileSetCopy);
+        matchSets.insert(match);
     }
 
     return matchSets;

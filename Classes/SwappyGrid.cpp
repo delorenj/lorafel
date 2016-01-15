@@ -4,10 +4,6 @@
 
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
-#include "EventData.h"
-#include "TileSwapEventData.h"
-#include "PlayerMove.h"
-#include "BasicPlayerMove.h"
 
 using namespace lorafel;
 
@@ -291,7 +287,8 @@ void SwappyGrid::ProcessMatches() {
     // 1. After all the tiles that are going to fall, are done falling
     // 2. After a user's valid move
     // TODO: Refactor state to have a member function canCheckForMatches(). This may be cleaner
-    if(state->getName() != "TileQueueEmptyMatchStartState" && state->getName() != "TileSwappingEndState") {
+    if(state->getName() != "TileQueueEmptyMatchStartState" &&
+            state->getName() != "TileSwappingEndState") {
         return;
     }
 
@@ -300,12 +297,18 @@ void SwappyGrid::ProcessMatches() {
 
     if(matches.size() > 0) {
         CCLOG("Found matches");
+        if(!m_pMoveStack->empty()) {
+            m_pMoveStack->top()->setMatched(true);
+        }
         m_pGameStateMachine->enterState<MatchFoundState>();
         for(auto match : matches) {
             match->run();
         }
         GameStateMachine::getInstance()->enterState<IdleState>();
-    } else if(!m_pMoveStack->empty()) {
+    } else if(!m_pMoveStack->empty() && !m_pMoveStack->top()->isMatched()) {
+        // Only revert tiles when no match is found AND the match was
+        // initiated by player move. If match initiated by falling tiles
+        // then that means the player move was valid and no need to revert
         CCLOG("Reverting tiles");
         auto playerMove = m_pMoveStack->top();
         m_pMoveStack->pop();
@@ -361,6 +364,7 @@ void SwappyGrid::clearVisitStates() {
     for (int i = 0; i < NUM_COLUMNS; ++i) {
         for (int j = 0; j < NUM_ROWS; ++j) {
             auto tile = getTileAt(i,j);
+            if(!tile) continue;
             tile->setVisitColor(Tile::NONE);
             tile->setVisitOrder(0);
             tile->removeAllChildrenWithCleanup(true);
@@ -410,6 +414,7 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
 }
 
 void SwappyGrid::removeTile(Tile *tile) {
+    if(!tile) return;
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
     removeChild(tile);

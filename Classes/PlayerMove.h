@@ -21,11 +21,14 @@ namespace lorafel {
         virtual void cancel() = 0;
         virtual bool isValid() = 0;
 
+        bool isMatched() { return m_isMatched; }
+        bool setMatched(bool matched) { m_isMatched = matched; }
         const std::vector<cocos2d::Action*>* getActions() const { return m_pActions; }
 
     protected:
         SwappyGrid* m_pSwappyGrid;
         std::vector<cocos2d::Action*>* m_pActions;
+        bool m_isMatched = 0;
     };
 }
 

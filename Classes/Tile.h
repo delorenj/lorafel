@@ -28,7 +28,7 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
-        const unsigned int MIN_MATCH_SIZE = 3;
+        const unsigned int MIN_MATCH_SIZE = 5;
         const std::string& getTileName() const;
         void setTileName(const std::string name);
         void setGrid(SwappyGrid* pGrid);

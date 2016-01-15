@@ -32,5 +32,5 @@ AvocadoTile* AvocadoTile::create() {
 }
 
 bool AvocadoTile::isSwappable() {
-    return false;
+    return true;
 }
