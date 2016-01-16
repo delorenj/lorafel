@@ -7,43 +7,57 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,281},{152,200}}</string>
+				<string>{{0,201},{200,200}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{152,200}}</string>
+				<string>{{0,0},{200,200}}</string>
 				<key>sourceSize</key>
-				<string>{152,200}</string>
+				<string>{200,200}</string>
+			</dict>
+
+			<key>bear.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{201,0},{200,200}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{200,200}}</string>
+				<key>sourceSize</key>
+				<string>{200,200}</string>
 			</dict>
 
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{163,0},{138,280}}</string>
+				<string>{{201,201},{200,200}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{138,280}}</string>
+				<string>{{0,0},{200,200}}</string>
 				<key>sourceSize</key>
-				<string>{138,280}</string>
+				<string>{200,200}</string>
 			</dict>
 
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{162,280}}</string>
+				<string>{{0,0},{200,200}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{162,280}}</string>
+				<string>{{0,0},{200,200}}</string>
 				<key>sourceSize</key>
-				<string>{162,280}</string>
+				<string>{200,200}</string>
 			</dict>
 
 		</dict>

@@ -8,6 +8,8 @@
 #include "cocos2d.h"
 #include "SwappyGrid.h"
 #include "MatchPattern.h"
+#include <string>
+#include <sstream>
 
 namespace lorafel {
     class SwappyGrid;
@@ -28,7 +30,7 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
-        const unsigned int MIN_MATCH_SIZE = 5;
+        const unsigned int MIN_MATCH_SIZE = 3;
         const std::string& getTileName() const;
         void setTileName(const std::string name);
         void setGrid(SwappyGrid* pGrid);
@@ -39,7 +41,8 @@ namespace lorafel {
         void setVisitColor(const Color color) { m_color = color; }
         virtual int getVisitOrder() const { return m_firstVisit; }
         virtual void setVisitOrder(int firstVisit) { Tile::m_firstVisit = firstVisit; }
-        virtual std::string getVisitCountAsString() const;
+        virtual std::string getVisitCountAsString();
+        template < typename T > std::string to_string( T& n );
 
         Tile* getLeft() const;
         Tile* getTop() const;

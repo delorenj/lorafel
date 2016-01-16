@@ -12,22 +12,29 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/TestScene.cpp \
+                   ../../Classes/AvocadoFactory.cpp \
                    ../../Classes/AvocadoTile.cpp \
+                   ../../Classes/BasicPlayerMove.cpp \
+                   ../../Classes/BearFactory.cpp \
+                   ../../Classes/BearTile.cpp \
+                   ../../Classes/CarrotFactory.cpp \
                    ../../Classes/CarrotTile.cpp \
+                   ../../Classes/GameStateMachine.cpp \
+                   ../../Classes/GrapeFactory.cpp \
                    ../../Classes/GrapeTile.cpp \
+                   ../../Classes/GridTestUI.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Level__TestLevelOne.cpp \
+                   ../../Classes/Level__TestLevelTwo.cpp \
+                   ../../Classes/Level__TestRandom.cpp \
+                   ../../Classes/Match.cpp \
+                   ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/SwappyGrid.cpp \
+                   ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileFactory.cpp \
-                   ../../Classes/CarrotFactory.cpp \
-                   ../../Classes/GrapeFactory.cpp \
-                   ../../Classes/AvocadoFactory.cpp \
-                   ../../Classes/GridTestUI.cpp \
-                   ../../Classes/GameStateMachine.cpp \
-                   ../../Classes/NormalDistributionRandomizer.cpp \
-                   ../../Classes/BasicPlayerMove.cpp
+                   ../../Classes/TileMatcher.cpp \
+                   ../../Classes/XPMatchResult.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

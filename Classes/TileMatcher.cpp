@@ -7,6 +7,10 @@
 
 using namespace lorafel;
 
+TileMatcher::TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) {
+
+}
+
 std::set<Match *> TileMatcher::findMatches() {
     auto matches = new std::vector<std::set<Tile*> *>();
     auto matchSets = std::set<Match*>();

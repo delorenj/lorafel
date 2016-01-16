@@ -30,6 +30,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts/BebasNeue Thin.ttf \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts/Marker Felt.ttf \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg_debug_wider.png \
@@ -38,6 +39,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug_wider.png \
@@ -46,6 +48,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug_wider.png \
@@ -54,6 +57,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg_debug_wider.png \
@@ -62,6 +66,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug_wider.png \
@@ -70,6 +75,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/avocado.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bear.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug_wider.png \

@@ -12,6 +12,12 @@ bool Tile::init() {
     return true;
 }
 
+template < typename T > std::string Tile::to_string( T& n ) {
+    std::ostringstream stm ;
+    stm << n ;
+    return stm.str() ;
+}
+
 const std::string& Tile::getTileName() const{
     return m_tileName;
 }
@@ -128,11 +134,18 @@ const cocos2d::Vec2 Tile::getGridPos() const {
     return m_pSwappyGrid->screenToGrid(getPosition());
 }
 
-std::string Tile::getVisitCountAsString() const {
-    return std::to_string(m_firstVisit);
+std::string Tile::getVisitCountAsString() {
+    return to_string(m_firstVisit);
 }
 
 void Tile::remove() {
+    auto explode = cocos2d::ParticleExplosion::create();
+    explode->setAutoRemoveOnFinish(true);
+    explode->setScale(1);
+    explode->setTotalParticles(300);
+    explode->setDuration(0.05);
+    explode->setPosition(getPosition());
+    m_pSwappyGrid->addChild(explode);
     m_pSwappyGrid->removeTile(this);
 }
 

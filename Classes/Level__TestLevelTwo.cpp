@@ -7,6 +7,7 @@
 #include "CarrotFactory.h"
 #include "GrapeFactory.h"
 #include "NormalDistributionRandomizer.h"
+#include "BearFactory.h"
 
 using namespace lorafel;
 
@@ -29,6 +30,11 @@ Level__TestLevelTwo::Level__TestLevelTwo(SwappyGrid* grid) : Level(grid) {
     config->frequency = 7;
     m_pTileConfigs->push_back(config);
 
+    config = new TileConfig();
+    config->factory = new BearFactory();
+    config->frequency = 7;
+    m_pTileConfigs->push_back(config);
+
     // Col0
     auto col = new TileColumn();
     col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
@@ -38,7 +44,7 @@ Level__TestLevelTwo::Level__TestLevelTwo(SwappyGrid* grid) : Level(grid) {
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
-    col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
     m_initialGrid.push_back(col);
 
@@ -59,7 +65,7 @@ Level__TestLevelTwo::Level__TestLevelTwo(SwappyGrid* grid) : Level(grid) {
     col = new TileColumn();
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
-    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
@@ -115,7 +121,7 @@ Level__TestLevelTwo::Level__TestLevelTwo(SwappyGrid* grid) : Level(grid) {
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
-    col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     m_initialGrid.push_back(col);
@@ -140,7 +146,7 @@ Level__TestLevelTwo::Level__TestLevelTwo(SwappyGrid* grid) : Level(grid) {
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
-    col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
+    col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
     col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
