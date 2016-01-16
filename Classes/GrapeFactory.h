@@ -7,13 +7,12 @@
 
 #include "TileFactory.h"
 
-using namespace lorafel;
+namespace lorafel {
+    class GrapeFactory : public TileFactory {
 
-class GrapeFactory : public TileFactory {
-
-public:
-    virtual Tile* createTile();
-};
-
+    public:
+        virtual Tile *createTile();
+    };
+}
 
 #endif //LORAFEL_GRAPEFACTORY_H

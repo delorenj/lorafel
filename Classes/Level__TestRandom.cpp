@@ -34,10 +34,3 @@ Level__TestRandom::~Level__TestRandom() {
     while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
 }
 
-void Level__TestRandom::load() {
-    for (int i = 0; i < SwappyGrid::NUM_COLUMNS; ++i) {
-        for (int j = 0; j < SwappyGrid::NUM_ROWS; ++j) {
-            m_pSwappyGrid->addRandomTileToDropQueue(i);
-        }
-    }
-}

@@ -61,11 +61,12 @@ void Tile::addEvents() {
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
         GameState* state = (GameState*) GameStateMachine::getInstance()->getState();
-        if(state->isBusy() || touch->_ID == m_pSwappyGrid->getCurrentTouchId()) {
+        if(state->isBusy()) {
             return;
         } else {
             m_pSwappyGrid->setCurrentTouchId(touch->_ID);
             cocos2d::Vec2 swapVec = getSwapVec(touch);
+            if(swapVec.isZero()) return;
             auto playerMove = new BasicPlayerMove(m_pSwappyGrid, this, swapVec);
             if(playerMove->isValid()) {
                 m_pSwappyGrid->getMoveStack()->push(playerMove);
@@ -84,16 +85,24 @@ void Tile::addEvents() {
 cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
     cocos2d::Vec2 delta = pTouch->getDelta();
     cocos2d::Vec2 result;
-
+    CCLOG("%f, %f", delta.x, delta.y);
     bool horizontal = std::abs(delta.x) > std::abs(delta.y);
-    if (horizontal && delta.x > 0) {
+    if (horizontal && delta.x > 20) {
         result.set(1, 0);
-    } else if (horizontal && delta.x < 0) {
+    } else if (horizontal && delta.x < -20) {
         result.set(-1, 0);
-    } else if (!horizontal && delta.y < 0) {
+    } else if(horizontal) {
+        setPosition(getPosition().x + delta.x, getPosition().y);
+    }
+
+    else if (!horizontal && delta.y < -20) {
         result.set(0, -1);
-    } else if (!horizontal && delta.y > 0) {
+    } else if (!horizontal && delta.y > 20) {
         result.set(0, 1);
+    } else if(!horizontal) {
+        setPosition(getPosition().x, getPosition().y + delta.y);
+
+
     } else {
         result.setZero();
     }

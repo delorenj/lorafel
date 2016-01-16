@@ -8,6 +8,7 @@
 #include "TestScene.h"
 #include "Level__TestLevelOne.h"
 #include "Level__TestLevelTwo.h"
+#include "Level__TestLevelThree.h"
 #include "Level__TestRandom.h"
 #include "GridTestUI.h"
 #include "GameStateMachine.h"
@@ -42,7 +43,7 @@ bool TestScene::init() {
 
     // Create the grid
     swappyGrid = lorafel::SwappyGrid::create();
-    auto level =  new lorafel::Level__TestLevelTwo(swappyGrid); //Level__TestLevelOne();
+    auto level =  new lorafel::Level__TestLevelThree(swappyGrid); //Level__TestLevelOne();
     swappyGrid->setLevel(level);
     addChild(swappyGrid, 1);
     level->load();

@@ -8,11 +8,11 @@
 #include "Tile.h"
 #include "IRandomizerStrategy.h"
 #include "TileFactory.h"
+#include "SwappyGrid.h"
 
 
 namespace lorafel {
     class TileFactory;
-    class SwappyGrid;
     typedef struct {TileFactory* factory; int frequency;} TileConfig;
     typedef std::vector<TileConfig*> TileConfigs;
 
@@ -31,7 +31,15 @@ namespace lorafel {
         void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
         virtual Tile* getRandomTile();
-        virtual void load() { };
+
+        virtual void load() {
+            for (int i = 0; i < SwappyGrid::NUM_COLUMNS; ++i) {
+                for (int j = 0; j < SwappyGrid::NUM_ROWS; ++j) {
+                    m_pSwappyGrid->addRandomTileToDropQueue(i);
+                }
+            }
+        }
+
 
     protected:
         SwappyGrid* m_pSwappyGrid;

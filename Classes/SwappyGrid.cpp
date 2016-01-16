@@ -4,6 +4,7 @@
 
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
+#include "Level.h"
 
 using namespace lorafel;
 

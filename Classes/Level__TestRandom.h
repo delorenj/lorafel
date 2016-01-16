@@ -8,16 +8,39 @@
 #include "Level.h"
 #include "Tile.h"
 #include "AvocadoFactory.h"
+#include "CarrotFactory.h"
+#include "GrapeFactory.h"
+#include "BearFactory.h"
+#include "NormalDistributionRandomizer.h"
 
 namespace lorafel {
     class Level__TestRandom : public Level {
     public:
-        Level__TestRandom(SwappyGrid* grid);
-        virtual ~Level__TestRandom();
+        Level__TestRandom(SwappyGrid* grid) : Level(grid) {
+            m_pTileConfigs = new TileConfigs();
+            randomizer = new NormalDistributionRandomizer();
 
-        void load() override;
-    protected:
-        TileGrid m_initialGrid;
+            TileConfig* config = new TileConfig();
+            config->factory = new AvocadoFactory();
+            config->frequency = 5;
+            m_pTileConfigs->push_back(config);
+
+            config = new TileConfig();
+            config->factory = new CarrotFactory();
+            config->frequency = 7;
+            m_pTileConfigs->push_back(config);
+
+            config = new TileConfig();
+            config->factory = new GrapeFactory();
+            config->frequency = 10;
+            m_pTileConfigs->push_back(config);
+
+            config = new TileConfig();
+            config->factory = new BearFactory();
+            config->frequency = 9;
+            m_pTileConfigs->push_back(config);
+
+        };
     };
 }
 

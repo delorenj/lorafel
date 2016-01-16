@@ -6,7 +6,6 @@
 #define LORAFEL_SWAPPYGRID_H
 
 #include "cocos2d.h"
-#include "Level.h"
 #include "Tile.h"
 #include "StateMachine.h"
 #include "GameStates.h"
