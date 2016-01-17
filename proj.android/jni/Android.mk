@@ -24,9 +24,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/Level.cpp \
-                   ../../Classes/Level__TestLevelOne.cpp \
-                   ../../Classes/Level__TestLevelTwo.cpp \
-                   ../../Classes/Level__TestRandom.cpp \
                    ../../Classes/Match.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/SwappyGrid.cpp \

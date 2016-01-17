@@ -5,6 +5,7 @@
 #ifndef LORAFEL_GAMESTATES_H
 #define LORAFEL_GAMESTATES_H
 
+#include "cocos2d.h"
 #include "State.h"
 
 namespace lorafel {
