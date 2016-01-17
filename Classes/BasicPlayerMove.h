@@ -12,7 +12,8 @@ namespace lorafel {
     public:
         BasicPlayerMove(SwappyGrid *pGrid, cocos2d::Vec2 pos1, cocos2d::Vec2 pos2)
                 : PlayerMove(pGrid) {
-
+            m_pos1 = pos1;
+            m_pos2 = pos2;
         }
 
         BasicPlayerMove(SwappyGrid *pGrid, Tile* tile, cocos2d::Vec2 swapVec)

@@ -125,7 +125,8 @@ void SwappyGrid::removeTile(cocos2d::Vec2 point) {
 
 void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
 
-    if(m_pGameStateMachine->getState()->getName() == "IdleState") {
+    if(m_pGameStateMachine->getState()->getName() == "IdleState" ||
+            m_pGameStateMachine->getState()->getName() == "TileTouchMoveState") {
         m_pGameStateMachine->enterState<TileSwappingStartState>();
     } else {
         m_pGameStateMachine->enterState<TileSwappingReverseStartState>();

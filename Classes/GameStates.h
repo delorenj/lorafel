@@ -14,8 +14,6 @@ namespace lorafel {
     //
     class ColumnState : public State {
     public:
-        ColumnState()  {};
-        ~ColumnState() {};
         virtual bool canDropTile() = 0;
         bool isValidNextState(State* state) override { return true; }
         const std::string getName() const override { return "ColumnState"; }
@@ -31,128 +29,167 @@ namespace lorafel {
         const std::string getName() const override { return "ColumnBusyState"; }
     };
 
+
+
     // GameStates
     //
     //
     class GameState : public State {
     public:
-        GameState()  {};
-        ~GameState() {};
-        const std::string getName() const override { return "GameState"; }
+        virtual const std::string getName() const override { return "GameState"; }
         virtual bool isValidNextState(State* state) override { return true; }
         virtual bool isBusy() const = 0;
-        virtual bool canCheckForMatches() const = 0;
     };
 
     // Waiting for player's move
     class IdleState : public GameState {
     public:
-        IdleState() { };
-        const std::string getName() const override { return "IdleState"; }
-        bool isBusy() const override { return false; }
-        virtual bool canCheckForMatches() const override { return false; }
+        virtual const std::string getName() const override { return "IdleState"; }
+        virtual bool isBusy() const override { return false; }
         virtual bool isValidNextState(State* state) override {
-            if(state->getName() == "TileFallingState") { return true; }
-            if(state->getName() == "TileSwappingStartState") { return true; }
+            if(state->getName() == "TileFallingState")      return true;
+            if(state->getName() == "TileTouchStartState")   return true;
         }
     };
 
     class BusyState : public GameState {
     public:
-        BusyState() {};
         const std::string getName() const override { return "BusyState"; }
-        bool isBusy() const override { return true; }
-        virtual bool canCheckForMatches() const override { return false; }
+        virtual bool isBusy() const override { return true; }
     };
 
-
-    class TileSwappingState : public BusyState {
+    class TileTouchState : public BusyState {
     public:
-        TileSwappingState() {} ;
-        virtual ~TileSwappingState() {} ;
+        virtual const std::string getName() const override { return "TileTouchState"; }
+        cocos2d::Vec2 getTouchStartPos() const { return m_touchStartPos; }
+        void setTouchStartPos(const cocos2d::Vec2 &pos) { m_touchStartPos = pos; }
+        cocos2d::Vec2 getTileStartPos() const { return m_tileStartPos; }
+        void setTileStartPos(const cocos2d::Vec2 &pos) { m_tileStartPos = pos; }
+
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileSwappingStartState") return true;
+            if(state->getName() == "TileTouchEndState") return true;
+        }
+
+    protected:
+        cocos2d::Vec2 m_touchStartPos;
+        cocos2d::Vec2 m_tileStartPos;
+
+    };
+
+    class TileTouchStartState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "TileTouchStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileSwappingStartState") return true;
+            if(state->getName() == "TileTouchMoveState") return true;
+            if(state->getName() == "TileTouchEndState") return true;
+            if(state->getName() == "IdleState") return true;
+        }
+    };
+
+    class TileTouchEndState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "TileTouchEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleState") return true;
+        }
+
+    };
+
+    class TileTouchMoveState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "TileTouchMoveState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleState") return true;
+            if(state->getName() == "TileSwappingStartState") return true;
+        }
+    };
+
+    class TileSwappingState : public TileTouchMoveState {
+    public:
         virtual const std::string getName() const override { return "TileSwappingState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileTouchEndState") return true;
+        }
+
     };
 
     class TileSwappingStartState : public TileSwappingState {
     public:
-        TileSwappingStartState() {} ;
-        const std::string getName() const override { return "TileSwappingStartState"; }
+        virtual const std::string getName() const override { return "TileSwappingStartState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "TileSwappingEndState") { return true; }
+            if(state->getName() == "TileSwappingEndState") return true;
             return false;
         }
     };
 
     class TileSwappingEndState : public TileSwappingState{
     public:
-        TileSwappingEndState() {} ;
-        const std::string getName() const override { return "TileSwappingEndState"; }
-        virtual bool canCheckForMatches() const override { return true; }
+        virtual const std::string getName() const override { return "TileSwappingEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileSwappingReverseStartState") return true;
+            if(state->getName() == "MatchFoundState") return true;
+            return false;
+        }
+
     };
 
     class TileSwappingReverseEndState;
-    class TileSwappingReverseStartState : public TileSwappingState {
+    class TileSwappingReverseStartState : public TileTouchEndState {
     public:
-        TileSwappingReverseStartState() {} ;
-        const std::string getName() const override { return "TileSwappingReverseStartState"; }
+        virtual const std::string getName() const override { return "TileSwappingReverseStartState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "TileSwappingReverseEndState") { return true; }
+            if(state->getName() == "TileSwappingReverseEndState") return true;
             return false;
         }
     };
 
-    class TileSwappingReverseEndState : public TileSwappingState {
+    class TileSwappingReverseEndState : public TileTouchEndState {
     public:
-        TileSwappingReverseEndState() {} ;
-        const std::string getName() const override { return "TileSwappingReverseEndState"; }
+        virtual const std::string getName() const override { return "TileSwappingReverseEndState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "IdleState") { return true; }
+            if(state->getName() == "IdleState") return true;
             return false;
         }
     };
 
     class MatchFoundState : public BusyState {
     public:
-        MatchFoundState() {};
         const std::string getName() const override { return "MatchFoundState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "TileRemovedState") { return true; }
+            if(state->getName() == "TileRemovedState") return true;
             return false;
         }
     };
 
     class TileRemovedState : public BusyState {
     public:
-        TileRemovedState() {};
         const std::string getName() const override { return "TileRemovedState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "TileFallingState") { return true; }
+            if(state->getName() == "TileFallingState") return true;
             return false;
         }
     };
 
     class TileFallingState : public BusyState {
     public:
-        TileFallingState() {} ;
         const std::string getName() const override { return "TileFallingState"; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "TileQueueEmptyMatchStartState") { return true; }
+            if(state->getName() == "TileQueueEmptyMatchStartState") return true;
             return false;
         }
     };
 
     class TileQueueEmptyMatchStartState : public BusyState {
     public:
-        TileQueueEmptyMatchStartState() {};
         const std::string getName() const override { return "TileQueueEmptyMatchStartState"; }
-        bool canCheckForMatches() const override { return true; }
         bool isValidNextState(State* state) override {
-            if(state->getName() == "IdleState") { return true; }
-            if(state->getName() == "MatchFoundState") { return true; }
+            if(state->getName() == "IdleState") return true;
+            if(state->getName() == "MatchFoundState") return true;
             return false;
         }
     };
-
 
 }
 

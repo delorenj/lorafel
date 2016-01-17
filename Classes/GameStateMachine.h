@@ -17,16 +17,19 @@ namespace lorafel {
         static void initStates() {
             _instance->addState<IdleState>();
             _instance->addState<BusyState>();
-                _instance->addState<TileSwappingState>();
-                _instance->addState<TileSwappingStartState>();
-                _instance->addState<TileSwappingEndState>();
-                _instance->addState<TileSwappingReverseStartState>();
-                _instance->addState<TileSwappingReverseEndState>();
+                _instance->addState<TileTouchState>();
+                    _instance->addState<TileTouchStartState>();
+                    _instance->addState<TileTouchEndState>();
+                        _instance->addState<TileSwappingReverseStartState>();
+                        _instance->addState<TileSwappingReverseEndState>();
+                    _instance->addState<TileTouchMoveState>();
+                        _instance->addState<TileSwappingState>();
+                        _instance->addState<TileSwappingStartState>();
+                        _instance->addState<TileSwappingEndState>();
                 _instance->addState<TileFallingState>();
                 _instance->addState<MatchFoundState>();
                 _instance->addState<TileRemovedState>();
                 _instance->addState<TileQueueEmptyMatchStartState>();
-
             _instance->enterState<IdleState>();
 
         }

@@ -48,11 +48,21 @@ void Tile::addEvents() {
 
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {
+        auto state = (GameState*) GameStateMachine::getInstance()->getState();
+        if(state->isBusy()) {
+            return false;
+        }
+
         cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
         cocos2d::Rect rect = this->getBoundingBox();
+        m_pSwappyGrid->setCurrentTouchId(touch->_ID);
 
         if(rect.containsPoint(p))
         {
+            GameStateMachine::getInstance()->enterState<TileTouchStartState>();
+            auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+            touchState->setTouchStartPos(p);
+            touchState->setTileStartPos(getPosition());
             return true; // to indicate that we have consumed it.
         }
 
@@ -60,53 +70,61 @@ void Tile::addEvents() {
     };
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-        GameState* state = (GameState*) GameStateMachine::getInstance()->getState();
-        if(state->isBusy()) {
-            return;
-        } else {
-            m_pSwappyGrid->setCurrentTouchId(touch->_ID);
+        auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+        if("TileTouchStartState" == touchState->getName()) {
+            auto tilePos = touchState->getTileStartPos();
+            auto touchPos = touchState->getTouchStartPos();
+            GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
+            touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+            touchState->setTileStartPos(tilePos);
+            touchState->setTouchStartPos(touchPos);
+        }
+        if("TileTouchMoveState" == touchState->getName()) {
             cocos2d::Vec2 swapVec = getSwapVec(touch);
             if(swapVec.isZero()) return;
-            auto playerMove = new BasicPlayerMove(m_pSwappyGrid, this, swapVec);
-            if(playerMove->isValid()) {
+            auto playerMove = new BasicPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), m_pSwappyGrid->screenToGrid(touchState->getTileStartPos())+swapVec);
+            if (playerMove->isValid()) {
                 m_pSwappyGrid->getMoveStack()->push(playerMove);
                 m_pSwappyGrid->getMoveStack()->top()->run();
             }
         }
     };
 
-    listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-        // Nothing, yet.
+    listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+        auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+        if(touchState->getName() == "TileTouchMoveState") {
+            GameStateMachine::getInstance()->enterState<IdleState>();
+            auto move = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
+            runAction(move);
+        }
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
-    cocos2d::Vec2 delta = pTouch->getDelta();
-    cocos2d::Vec2 result;
-    CCLOG("%f, %f", delta.x, delta.y);
+    auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+
+    cocos2d::Vec2 delta = _parent->convertToNodeSpace(pTouch->getLocation()) - touchState->getTouchStartPos();
+    float thresh = getContentSize().width/2;
     bool horizontal = std::abs(delta.x) > std::abs(delta.y);
-    if (horizontal && delta.x > 20) {
-        result.set(1, 0);
-    } else if (horizontal && delta.x < -20) {
-        result.set(-1, 0);
+    if (horizontal && delta.x > thresh) {
+        return cocos2d::Vec2(1, 0);
+    } else if (horizontal && delta.x < -thresh) {
+        return cocos2d::Vec2(-1, 0);
     } else if(horizontal) {
-        setPosition(getPosition().x + delta.x, getPosition().y);
+        setPosition(touchState->getTileStartPos().x + delta.x, getPosition().y);
     }
 
-    else if (!horizontal && delta.y < -20) {
-        result.set(0, -1);
-    } else if (!horizontal && delta.y > 20) {
-        result.set(0, 1);
+    else if (!horizontal && delta.y < -thresh) {
+        return cocos2d::Vec2(0, -1);
+    } else if (!horizontal && delta.y > thresh) {
+       return cocos2d::Vec2(0, 1);
     } else if(!horizontal) {
-        setPosition(getPosition().x, getPosition().y + delta.y);
+        setPosition(getPosition().x, touchState->getTileStartPos().y + delta.y);
 
-
-    } else {
-        result.setZero();
     }
-    return result;
+    return cocos2d::Vec2(0,0);
 }
 
 bool Tile::isSwappable() {
