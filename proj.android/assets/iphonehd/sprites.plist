@@ -7,13 +7,13 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,57},{56,56}}</string>
+				<string>{{0,0},{40,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{56,56}}</string>
+				<string>{{8,1},{40,54}}</string>
 				<key>sourceSize</key>
 				<string>{56,56}</string>
 			</dict>
@@ -21,13 +21,13 @@
 			<key>bear.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{57,0},{56,56}}</string>
+				<string>{{0,55},{40,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{56,56}}</string>
+				<string>{{8,1},{40,54}}</string>
 				<key>sourceSize</key>
 				<string>{56,56}</string>
 			</dict>
@@ -35,13 +35,13 @@
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{57,57},{56,56}}</string>
+				<string>{{41,55},{27,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{56,56}}</string>
+				<string>{{13,1},{27,54}}</string>
 				<key>sourceSize</key>
 				<string>{56,56}</string>
 			</dict>
@@ -49,13 +49,13 @@
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{56,56}}</string>
+				<string>{{41,0},{32,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{56,56}}</string>
+				<string>{{12,1},{32,54}}</string>
 				<key>sourceSize</key>
 				<string>{56,56}</string>
 			</dict>

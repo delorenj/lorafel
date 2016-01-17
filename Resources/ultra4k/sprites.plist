@@ -7,13 +7,13 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,201},{200,200}}</string>
+				<string>{{0,0},{142,188}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{200,200}}</string>
+				<string>{{29,6},{142,188}}</string>
 				<key>sourceSize</key>
 				<string>{200,200}</string>
 			</dict>
@@ -21,13 +21,13 @@
 			<key>bear.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{201,0},{200,200}}</string>
+				<string>{{143,0},{142,190}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{200,200}}</string>
+				<string>{{29,5},{142,190}}</string>
 				<key>sourceSize</key>
 				<string>{200,200}</string>
 			</dict>
@@ -35,13 +35,13 @@
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{201,201},{200,200}}</string>
+				<string>{{398,0},{94,192}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{200,200}}</string>
+				<string>{{49,4},{94,192}}</string>
 				<key>sourceSize</key>
 				<string>{200,200}</string>
 			</dict>
@@ -49,13 +49,13 @@
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{200,200}}</string>
+				<string>{{286,0},{111,190}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{200,200}}</string>
+				<string>{{46,5},{111,190}}</string>
 				<key>sourceSize</key>
 				<string>{200,200}</string>
 			</dict>
@@ -67,7 +67,7 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{512,512}</string>
+			<string>{512,256}</string>
 			<key>textureFileName</key>
 			<string>sprites.png</string>
 			</dict>

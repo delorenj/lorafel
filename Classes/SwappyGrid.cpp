@@ -30,11 +30,11 @@ bool SwappyGrid::init() {
     // big to make the grid
     auto spritecache = cocos2d::SpriteFrameCache::getInstance();
     m_tileSize = spritecache->getSpriteFrameByName("avocado.png")->getOriginalSizeInPixels();
-    m_tileSize.width += 5;
-    m_tileSize.height += 5;
+//    m_tileSize.width += 5;
+//    m_tileSize.height += 5;
     auto maxGridHeight = m_tileSize.height * NUM_ROWS;
 
-    auto tileWidth = m_tileSize.width;
+    auto tileWidth = m_tileSize.width+5;
     m_tileScaleFactor = m_tileSize.width/tileWidth;
 
     // Create Tile Grid
