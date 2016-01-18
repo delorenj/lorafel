@@ -173,8 +173,8 @@ const cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
 
 const cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
-            (int)std::ceil(pos.x/m_tileSize.width),
-            (int)std::ceil(pos.y/m_tileSize.height)
+            (int)pos.x/(int)m_tileSize.width,
+            (int)pos.y/(int)m_tileSize.height
     );
 }
 
@@ -183,7 +183,7 @@ const cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
 }
 
 const int SwappyGrid::getTopOffscreenTileSlot() const {
-    return (int)std::ceil((getTopOfScreen().y/m_tileSize.height));
+    return (int)(getTopOfScreen().y/m_tileSize.height);
 }
 
 int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {

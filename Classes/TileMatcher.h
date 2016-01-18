@@ -14,7 +14,7 @@ namespace lorafel {
     class Match;
     class TileMatcher {
     public:
-        TileMatcher(SwappyGrid* pGrid);
+        TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
 
         virtual ~TileMatcher() {} ;
 

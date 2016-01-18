@@ -107,7 +107,7 @@ cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
 
     cocos2d::Vec2 delta = _parent->convertToNodeSpace(pTouch->getLocation()) - touchState->getTouchStartPos();
-    float thresh = getContentSize().width/2;
+    float thresh = getContentSize().width*1.15/2;
     bool horizontal = std::abs(delta.x) > std::abs(delta.y);
     if (horizontal && delta.x > thresh) {
         return cocos2d::Vec2(1, 0);
