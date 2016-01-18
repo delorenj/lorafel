@@ -26,6 +26,7 @@ namespace lorafel {
     protected:
         T m_val;
 
+
     };
 }
 

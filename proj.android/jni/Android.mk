@@ -31,7 +31,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
-                   ../../Classes/XPMatchResult.cpp
+                   ../../Classes/XPStatResult.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

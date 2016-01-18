@@ -3,6 +3,7 @@
 //
 
 #include "BearTile.h"
+#include "XpStatResult.h"
 
 using namespace lorafel;
 
@@ -21,7 +22,7 @@ BearTile* BearTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-
+        sprite->addStatResult(new XpStatResult(25));
         return sprite;
     }
 

@@ -3,6 +3,7 @@
 //
 
 #include "GrapeTile.h"
+#include "XpStatResult.h"
 
 using namespace lorafel;
 
@@ -21,6 +22,7 @@ GrapeTile* GrapeTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
+        sprite->addStatResult(new XpStatResult(5));
         return sprite;
     }
 

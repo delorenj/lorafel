@@ -8,6 +8,7 @@
 #include "cocos2d.h"
 #include "SwappyGrid.h"
 #include "MatchPattern.h"
+#include "StatResult.h"
 #include <string>
 #include <sstream>
 
@@ -31,6 +32,9 @@ namespace lorafel {
         CREATE_FUNC(Tile);
 
         const unsigned int MIN_MATCH_SIZE = 3;
+        void addStatResult(StatResult* pStatResult) { m_pStatResults->insert(pStatResult); }
+        std::set<StatResult *>* getStatResults() const { return m_pStatResults; };
+
         const std::string& getTileName() const;
         void setTileName(const std::string name);
         void setGrid(SwappyGrid* pGrid);
@@ -56,10 +60,7 @@ namespace lorafel {
         // If the tiles have the same name, they match
         virtual bool isMatch(Tile* pTile) const { return pTile->getTileName() == this->getTileName(); };
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
-
-
         void remove();
-
         void moveToGridPos(int x, int y);
 
     protected:
@@ -67,7 +68,7 @@ namespace lorafel {
         SwappyGrid* m_pSwappyGrid;
         Color m_color = NONE;
         int m_firstVisit = 0;
-
+        std::set<StatResult*>* m_pStatResults;
         /**
          *  Set of patterns to match against.
          *  i.e. Straight lines, Solid blocks,

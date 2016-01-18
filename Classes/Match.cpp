@@ -3,31 +3,10 @@
 //
 
 #include "Match.h"
-#include "XpMatchResult.h"
+#include "XpStatResult.h"
 #include "GameStateMachine.h"
 
 using namespace lorafel;
-
-Match::Match() {
-
-}
-
-Match::~Match() {
-
-}
-
-const std::vector<StatResult*> Match::getStatResults() const {
-    auto xp = new XpMatchResult(5);
-    auto xxp = new XpMatchResult(10);
-    std::vector<StatResult*> res;
-    res.push_back(xp);
-    res.push_back(xxp);
-    return res;
-}
-
-void Match::addTile(Tile* tile) {
-    m_pTileSet->insert(tile);
-}
 
 void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_pTileSet = tileSet;
@@ -39,12 +18,20 @@ std::set<Tile *>* Match::getTileSet() const {
 
 void Match::run() {
     CCLOG("APPLYING Match Results");
-    std::vector<StatResult*> results = getStatResults();
-    for(StatResult* mr : results) {
+    // Get a single tile from the set
+    // to extract reward stats
+    auto tile = *m_pTileSet->begin();
+    std::set<StatResult*>* results = tile->getStatResults();
+
+    // Iterate through all tile stat results
+    // and apply them to your score/XP/HP/etc...
+    for(StatResult* mr : *results) {
+        mr->setMultiplier(m_pTileSet->size());
         mr->apply();
-        CC_SAFE_DELETE(mr);
     }
 
+    // Iterate through each tile in the match
+    // set and remove it from the grid
     for(auto tile : *m_pTileSet) {
         tile->remove();
     }

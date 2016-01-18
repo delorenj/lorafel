@@ -22,14 +22,14 @@
 		3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D33134DB4BC3867306BE /* AvocadoFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */; };
 		3167D374877889A44BCB8F9F /* AvocadoFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */; };
-		3167D40C299C7B181AE565DB /* XpMatchResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpMatchResult.cpp */; };
+		3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D411F3CDC55B86FDA984 /* BearFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE47A344AECAED9F649E /* BearFactory.cpp */; };
 		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167D539DEA9A8375E11C349 /* BearFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE47A344AECAED9F649E /* BearFactory.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
 		3167D5B847C02E4FBA982CAE /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
 		3167D63A412618F25ACA118B /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
-		3167D6FA578BF45EF2769E7C /* XpMatchResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpMatchResult.cpp */; };
+		3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D7CC9497333290968E19 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */; };
 		3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
@@ -181,7 +181,7 @@
 		3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMove.h; sourceTree = "<group>"; };
 		3167D3C34CB07BFEB5D0910D /* MatchPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchPattern.h; sourceTree = "<group>"; };
 		3167D3C5652E9C08FAD14D4B /* IRandomizerStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRandomizerStrategy.h; sourceTree = "<group>"; };
-		3167D506937A45C22D96B536 /* XpMatchResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpMatchResult.cpp; sourceTree = "<group>"; };
+		3167D506937A45C22D96B536 /* XpStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpStatResult.cpp; sourceTree = "<group>"; };
 		3167D5122B83D0371E4F615B /* SeededLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeededLevel.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D5FBC9B03370290E3593 /* BearTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BearTile.cpp; sourceTree = "<group>"; };
@@ -200,6 +200,7 @@
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
+		3167D95C7DE012999F5D29C6 /* StatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatResult.h; sourceTree = "<group>"; };
 		3167D98A0DDDFA707C4D382D /* BearTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearTile.h; sourceTree = "<group>"; };
 		3167D9CC1F5BE0A42846EC41 /* BearFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearFactory.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
@@ -210,7 +211,7 @@
 		3167DD7997B79EB1B67E66ED /* GrapeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrapeFactory.cpp; sourceTree = "<group>"; };
 		3167DD920CFEA341E70456EB /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		3167DE1708553899CDFC1828 /* AvocadoFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvocadoFactory.cpp; sourceTree = "<group>"; };
-		3167DE3CB4BB5A04DCE6916F /* XpMatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpMatchResult.h; sourceTree = "<group>"; };
+		3167DE3CB4BB5A04DCE6916F /* XpStatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpStatResult.h; sourceTree = "<group>"; };
 		3167DE47A344AECAED9F649E /* BearFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BearFactory.cpp; sourceTree = "<group>"; };
 		3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalDistributionRandomizer.cpp; sourceTree = "<group>"; };
 		3167DE78A23A2C4122F283E0 /* AvocadoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvocadoTile.h; sourceTree = "<group>"; };
@@ -467,8 +468,8 @@
 				3167D26E887DBACCBB1454C8 /* Match.cpp */,
 				3167D03D08B83228CFDF2A27 /* Match.h */,
 				3167D7564FDA1E75B77C2270 /* MatchResult.h */,
-				3167D506937A45C22D96B536 /* XpMatchResult.cpp */,
-				3167DE3CB4BB5A04DCE6916F /* XpMatchResult.h */,
+				3167D506937A45C22D96B536 /* XpStatResult.cpp */,
+				3167DE3CB4BB5A04DCE6916F /* XpStatResult.h */,
 				3167D3C34CB07BFEB5D0910D /* MatchPattern.h */,
 				3167D74728B7D5D4FADC213D /* Level__TestLevelTwo.h */,
 				3167DE47A344AECAED9F649E /* BearFactory.cpp */,
@@ -477,6 +478,7 @@
 				3167D98A0DDDFA707C4D382D /* BearTile.h */,
 				3167D5122B83D0371E4F615B /* SeededLevel.h */,
 				3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */,
+				3167D95C7DE012999F5D29C6 /* StatResult.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -706,7 +708,7 @@
 				3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */,
 				3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */,
 				3167DF790D24EFE39E1056FC /* Match.cpp in Sources */,
-				3167D40C299C7B181AE565DB /* XpMatchResult.cpp in Sources */,
+				3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */,
 				3167D539DEA9A8375E11C349 /* BearFactory.cpp in Sources */,
 				3167D0DAEC202AF63530A399 /* BearTile.cpp in Sources */,
 			);
@@ -736,7 +738,7 @@
 				3167DA6853233E9DCA430057 /* BasicPlayerMove.cpp in Sources */,
 				3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */,
 				3167DAF457F0F7E0BA939DB5 /* Match.cpp in Sources */,
-				3167D6FA578BF45EF2769E7C /* XpMatchResult.cpp in Sources */,
+				3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */,
 				3167D411F3CDC55B86FDA984 /* BearFactory.cpp in Sources */,
 				3167DDF7D1632A5DE9B96B00 /* BearTile.cpp in Sources */,
 			);

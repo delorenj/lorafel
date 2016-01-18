@@ -30,6 +30,7 @@ void Tile::initOptions() {
     this->setVisitColor(NONE);
     this->setAnchorPoint(cocos2d::Vec2(0,0));
     this->setScale(1.15);
+    m_pStatResults = new std::set<StatResult*>();
 }
 
 void Tile::update(float delta) {

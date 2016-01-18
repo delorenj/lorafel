@@ -3,6 +3,7 @@
 //
 
 #include "AvocadoTile.h"
+#include "XpStatResult.h"
 
 using namespace lorafel;
 
@@ -21,7 +22,7 @@ AvocadoTile* AvocadoTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-
+        sprite->addStatResult(new XpStatResult(20));
         return sprite;
     }
 

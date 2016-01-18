@@ -3,6 +3,7 @@
 //
 
 #include "CarrotTile.h"
+#include "XpStatResult.h"
 
 using namespace lorafel;
 
@@ -21,6 +22,7 @@ CarrotTile* CarrotTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
+        sprite->addStatResult(new XpStatResult(10));
         return sprite;
     }
 
