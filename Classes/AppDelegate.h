@@ -36,6 +36,7 @@ public:
     virtual void applicationWillEnterForeground();
 
     void initStateMachine();
+    void initPlayer();
 };
 
 #endif // _APP_DELEGATE_H_

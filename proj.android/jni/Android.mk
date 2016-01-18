@@ -11,6 +11,7 @@ LOCAL_MODULE := cocos2dcpp_shared
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
+                   ../../Classes/Achievements.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/AvocadoFactory.cpp \
                    ../../Classes/AvocadoTile.cpp \
@@ -19,13 +20,18 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotFactory.cpp \
                    ../../Classes/CarrotTile.cpp \
+                   ../../Classes/ExponentialLevelManager.cpp \
                    ../../Classes/GameStateMachine.cpp \
                    ../../Classes/GrapeFactory.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
+                   ../../Classes/Inventory.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
+                   ../../Classes/Player.cpp \
+                   ../../Classes/PlayerManager.cpp \
+                   ../../Classes/Progress.cpp \
                    ../../Classes/SwappyGrid.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \

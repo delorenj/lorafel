@@ -3,6 +3,7 @@
 //
 
 #include "XpStatResult.h"
+#include "cocos2d.h"
 
 using namespace lorafel;
 

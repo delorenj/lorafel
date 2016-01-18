@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
 #include "TestScene.h"
+#include "PlayerManager.h"
+
 USING_NS_CC;
 
 static cocos2d::Size ultra4kResolutionSize = cocos2d::Size(2160,4096);
@@ -141,6 +143,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // the .plist file can be generated with any of the tools mentioned below
     spritecache->addSpriteFramesWithFile("sprites.plist");
+
+    auto userEmail = UserDefault::getInstance()->getStringForKey("email");
+
+    // load the player data
+    // TODO: Make secure using server-side code and encryption
+    auto player = lorafel::PlayerManager::getInstance()->loadPlayer(userEmail);
+
+    // No player found!
+    // make a new one!
+    // Or...wrong email?
+    CCASSERT(player, "Player not found!");
 
     // create a scene. it's an autorelease object
     auto scene = TestScene::createScene();
