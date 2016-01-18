@@ -29,6 +29,7 @@ void Tile::initOptions() {
     this->setTag(1);
     this->setVisitColor(NONE);
     this->setAnchorPoint(cocos2d::Vec2(0,0));
+    this->setScale(1.15);
 }
 
 void Tile::update(float delta) {

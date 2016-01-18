@@ -67,6 +67,7 @@ namespace lorafel {
         Tile* getTileAt(const int x, const int y) const;
         void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
         void setLevel(Level *pLevel);
+        float getTileScaleFactor() const { return m_tileScaleFactor; }
 
     protected:
         cpSpace* m_pWorld;
