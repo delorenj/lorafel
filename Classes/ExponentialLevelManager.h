@@ -10,6 +10,10 @@
 namespace lorafel {
 
     class ExponentialLevelManager : public LevelManager {
+    public:
+        ExponentialLevelManager() : LevelManager(0) {} ;
+        ExponentialLevelManager(unsigned long xp) : LevelManager(xp) {} ;
+
 
     };
 

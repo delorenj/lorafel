@@ -27,7 +27,7 @@ bool TestScene::init() {
     if(!Node::init()) {
         return false;
     }
-
+    ignoreAnchorPointForPosition(false);
     m_pGameStateMachine = lorafel::GameStateMachine::getInstance();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -48,11 +48,16 @@ bool TestScene::init() {
     addChild(swappyGrid, 1);
     level->load();
 
+    m_pGridUI = lorafel::GridUI::create(swappyGrid);
+    m_pGridUI->ignoreAnchorPointForPosition(false);
+    addChild(m_pGridUI);
+
     // Create the grid debug panel
-    lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
-    gridTestUI->setAnchorPoint(Vec2(0,1));
-    gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
-    addChild(gridTestUI);
+//    lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
+//    gridTestUI->setAnchorPoint(Vec2(0,1));
+//    gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
+//    addChild(gridTestUI);
+
 
     return true;
 }

@@ -12,9 +12,11 @@
 #include "cocos2d.h"
 #include "SwappyGrid.h"
 #include "StateMachine.h"
+#include "GridUI.h"
 
 USING_NS_CC;
 
+class GridUI;
 class TestScene : public Node {
 
 public:
@@ -28,7 +30,7 @@ protected:
     lorafel::SwappyGrid* swappyGrid;
     PhysicsWorld* m_world;
     lorafel::StateMachine* m_pGameStateMachine;
-
+    lorafel::GridUI *m_pGridUI;
     void initStateMachine();
 };
 

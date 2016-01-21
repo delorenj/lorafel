@@ -22,7 +22,7 @@ AvocadoTile* AvocadoTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(20));
+        sprite->addStatResult(new XpStatResult(2));
         return sprite;
     }
 

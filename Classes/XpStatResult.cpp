@@ -4,9 +4,15 @@
 
 #include "XpStatResult.h"
 #include "cocos2d.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
 void XpStatResult::apply() {
-    CCLOG("+%d XP", m_multiplier*m_val);
+    auto amount = m_multiplier*m_val;
+    auto lm = PlayerManager::getInstance()->getPlayer()->getLevelManager();
+    lm->incrementXpBy(amount);
+    CCLOG("+%d XP", amount);
+
+
 }

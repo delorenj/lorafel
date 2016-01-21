@@ -22,7 +22,7 @@ CarrotTile* CarrotTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(10));
+        sprite->addStatResult(new XpStatResult(2));
         return sprite;
     }
 

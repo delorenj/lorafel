@@ -22,7 +22,7 @@ GrapeTile* GrapeTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(5));
+        sprite->addStatResult(new XpStatResult(2));
         return sprite;
     }
 

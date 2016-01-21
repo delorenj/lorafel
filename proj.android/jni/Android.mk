@@ -20,11 +20,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotFactory.cpp \
                    ../../Classes/CarrotTile.cpp \
-                   ../../Classes/ExponentialLevelManager.cpp \
                    ../../Classes/GameStateMachine.cpp \
                    ../../Classes/GrapeFactory.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
+                   ../../Classes/GridUI.cpp \
                    ../../Classes/Inventory.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
@@ -37,7 +37,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
-                   ../../Classes/XPStatResult.cpp
+                   ../../Classes/XPStatResult.cpp \
+                   ../../Classes/XpUI.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

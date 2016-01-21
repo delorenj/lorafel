@@ -22,7 +22,7 @@ BearTile* BearTile::create() {
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(25));
+        sprite->addStatResult(new XpStatResult(4));
         return sprite;
     }
 

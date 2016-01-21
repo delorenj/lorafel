@@ -21,6 +21,7 @@ namespace lorafel {
     class Level;
     class PlayerMove;
     class TileMatcher;
+    class GridUI;
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;

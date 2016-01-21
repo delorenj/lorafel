@@ -5,6 +5,7 @@
 #include "Tile.h"
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
+#include "String.h"
 
 using namespace lorafel;
 
@@ -12,11 +13,6 @@ bool Tile::init() {
     return true;
 }
 
-template < typename T > std::string Tile::to_string( T& n ) {
-    std::ostringstream stm ;
-    stm << n ;
-    return stm.str() ;
-}
 
 const std::string& Tile::getTileName() const{
     return m_tileName;
@@ -98,6 +94,8 @@ void Tile::addEvents() {
             GameStateMachine::getInstance()->enterState<IdleState>();
             auto move = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
             runAction(move);
+        } else if(touchState->getName() == "TileTouchStartState") {
+            GameStateMachine::getInstance()->enterState<IdleState>();
         }
     };
 
@@ -164,7 +162,7 @@ const cocos2d::Vec2 Tile::getGridPos() const {
 }
 
 std::string Tile::getVisitCountAsString() {
-    return to_string(m_firstVisit);
+    return String::to_string(m_firstVisit);
 }
 
 void Tile::remove() {

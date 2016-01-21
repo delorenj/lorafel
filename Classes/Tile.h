@@ -46,7 +46,6 @@ namespace lorafel {
         virtual int getVisitOrder() const { return m_firstVisit; }
         virtual void setVisitOrder(int firstVisit) { Tile::m_firstVisit = firstVisit; }
         virtual std::string getVisitCountAsString();
-        template < typename T > std::string to_string( T& n );
 
         Tile* getLeft() const;
         Tile* getTop() const;

@@ -8,11 +8,11 @@
 using namespace lorafel;
 
 Player::Player() {
-
+    m_pLevelManager = new LinearLevelManager();
 }
 
 Player::~Player() {
-
+    CC_SAFE_DELETE(m_pLevelManager);
 }
 
 void Player::initFromServer() {
