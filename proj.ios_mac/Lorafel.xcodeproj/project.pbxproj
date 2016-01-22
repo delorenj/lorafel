@@ -20,6 +20,7 @@
 		3167D0EBE0FB0D2FB0C6A480 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D1CD1C77F0756A1BD69C /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
+		3167D253A8E8474396383D3B /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
 		3167D2B9A68682B12A96FF10 /* CarrotTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFE4A2A239E7D5BC8444 /* CarrotTile.cpp */; };
 		3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D3281444C6E14E34C116 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
@@ -35,6 +36,7 @@
 		3167D5B847C02E4FBA982CAE /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
 		3167D63A412618F25ACA118B /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6E377EE617933CF68D6 /* TileFactory.cpp */; };
+		3167D687ED8F745DC9DB6618 /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
 		3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D7CC9497333290968E19 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */; };
 		3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
@@ -177,6 +179,7 @@
 		1D6058910D05DD3D006BFB54 /* Lorafel-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lorafel-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3167D017A46EA6946EAFC531 /* Floatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floatie.h; sourceTree = "<group>"; };
 		3167D02CD9A763C3231B9AF8 /* GridUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridUI.cpp; sourceTree = "<group>"; };
 		3167D03D08B83228CFDF2A27 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
 		3167D07B9EB51E82506FE89C /* GameStates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStates.cpp; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 		3167D3C34CB07BFEB5D0910D /* MatchPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchPattern.h; sourceTree = "<group>"; };
 		3167D3C5652E9C08FAD14D4B /* IRandomizerStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRandomizerStrategy.h; sourceTree = "<group>"; };
 		3167D401384F1525922B53D2 /* Progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Progress.cpp; sourceTree = "<group>"; };
+		3167D4214B4637FF17045DC5 /* Floatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floatie.cpp; sourceTree = "<group>"; };
 		3167D43152C240F722DEE01C /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
 		3167D506937A45C22D96B536 /* XpStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpStatResult.cpp; sourceTree = "<group>"; };
 		3167D509392B9AE47F44A368 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 				3167D53F7A6E35A701E5B1BA /* XpUI.h */,
 				3167D2D4485795E3FC0CC6B7 /* String.h */,
 				3167D7411B55CD0C1499942D /* EventDataInteger.h */,
+				3167D4214B4637FF17045DC5 /* Floatie.cpp */,
+				3167D017A46EA6946EAFC531 /* Floatie.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -770,6 +776,7 @@
 				3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */,
 				3167DDA1EEB0A3C66E8599C6 /* GridUI.cpp in Sources */,
 				3167D504F192517D21351ACE /* XpUI.cpp in Sources */,
+				3167D687ED8F745DC9DB6618 /* Floatie.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +814,7 @@
 				3167DD565943EAC37EC854CF /* Inventory.cpp in Sources */,
 				3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */,
 				3167D4E9F84B1EE8F292825B /* XpUI.cpp in Sources */,
+				3167D253A8E8474396383D3B /* Floatie.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

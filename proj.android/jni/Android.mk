@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotFactory.cpp \
                    ../../Classes/CarrotTile.cpp \
+                   ../../Classes/Floaties.cpp \
                    ../../Classes/GameStateMachine.cpp \
                    ../../Classes/GrapeFactory.cpp \
                    ../../Classes/GrapeTile.cpp \
