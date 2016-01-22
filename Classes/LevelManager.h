@@ -5,12 +5,18 @@
 #ifndef LORAFEL_LEVELMANAGER_H
 #define LORAFEL_LEVELMANAGER_H
 
+#include "EventDataInteger.h"
+
 namespace lorafel {
 
     class LevelManager {
     public:
-        LevelManager() : m_xp(1) { };
-        LevelManager(unsigned long xp) : m_xp(xp) { };
+        LevelManager() : m_xp(1) {
+                m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
+        };
+        LevelManager(unsigned long xp) : m_xp(xp) {
+                m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
+        };
 
         // Returns amount until next level
         virtual const unsigned long getLevelUpIn() const {
@@ -30,8 +36,12 @@ namespace lorafel {
 
         // Increase the current XP amount by 'xp'
         virtual const unsigned long incrementXpBy(const unsigned long xp) {
-                cocos2d::Event::
                 m_xp += xp;
+                cocos2d::EventCustom e("xp");
+                EventData* val = new EventDataInteger(xp);
+                e.setUserData(val);
+                m_pDispatcher->dispatchEvent(&e);
+                CC_SAFE_DELETE(val);
         }
 
         // Converts xp to level
@@ -42,6 +52,7 @@ namespace lorafel {
 
     protected:
         unsigned long m_xp;
+        cocos2d::EventDispatcher* m_pDispatcher;
     };
 
 }

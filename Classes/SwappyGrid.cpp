@@ -290,11 +290,9 @@ void SwappyGrid::ProcessMatches() {
         return;
     }
 
-    CCLOG("Finding Matches!");
     auto matches = m_pTileMatcher->findMatches();
 
     if(matches.size() > 0) {
-        CCLOG("Found matches");
         if(!m_pMoveStack->empty()) {
             m_pMoveStack->top()->setMatched(true);
         }
@@ -307,7 +305,6 @@ void SwappyGrid::ProcessMatches() {
         // Only revert tiles when no match is found AND the match was
         // initiated by player move. If match initiated by falling tiles
         // then that means the player move was valid and no need to revert
-        CCLOG("Reverting tiles");
         auto playerMove = m_pMoveStack->top();
         m_pMoveStack->pop();
         playerMove->cancel();

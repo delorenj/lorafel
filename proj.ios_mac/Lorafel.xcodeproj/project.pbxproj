@@ -215,6 +215,7 @@
 		3167D6E377EE617933CF68D6 /* TileFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileFactory.cpp; sourceTree = "<group>"; };
 		3167D7107F6E585B0E9D0DFD /* PlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMove.h; sourceTree = "<group>"; };
 		3167D71961895D1BDB0213EF /* CarrotFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotFactory.h; sourceTree = "<group>"; };
+		3167D7411B55CD0C1499942D /* EventDataInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataInteger.h; sourceTree = "<group>"; };
 		3167D74728B7D5D4FADC213D /* Level__TestLevelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelTwo.h; sourceTree = "<group>"; };
 		3167D7496BDEFAAC3CD161CF /* GrapeTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeTile.h; sourceTree = "<group>"; };
 		3167D7564FDA1E75B77C2270 /* MatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResult.h; sourceTree = "<group>"; };
@@ -529,6 +530,7 @@
 				3167DAC741FD073259B4C5B8 /* XpUI.cpp */,
 				3167D53F7A6E35A701E5B1BA /* XpUI.h */,
 				3167D2D4485795E3FC0CC6B7 /* String.h */,
+				3167D7411B55CD0C1499942D /* EventDataInteger.h */,
 			);
 			name = Classes;
 			path = ../Classes;

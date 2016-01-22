@@ -5,13 +5,11 @@
 #include "BasicPlayerMove.h"
 
 void lorafel::BasicPlayerMove::run() {
-    CCLOG("Running Basic Move");
     m_pSwappyGrid->swapTiles(m_pos1, m_pos2);
 
 }
 
 void lorafel::BasicPlayerMove::cancel() {
-    CCLOG("Canceling Basic Move");
     m_pSwappyGrid->swapTiles(m_pos2, m_pos1);
 }
 

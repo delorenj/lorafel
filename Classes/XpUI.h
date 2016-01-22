@@ -14,15 +14,15 @@ namespace lorafel {
     public:
         CREATE_FUNC(XpUI);
         virtual bool init() override;
-        virtual void update(float delta) override;
+        void tweenXp(float dt);
 
     protected:
         Player* m_pPlayer;
         LevelManager* m_pLevelMananger;
         cocos2d::ui::Text* m_pXpText;
         cocos2d::ui::Text* m_pNextXpText;
-        cocos2d::ui::LoadingBar *m_pXpBar;
-        cocos2d::ui::Text *m_pLvlText;
+        cocos2d::ui::LoadingBar* m_pXpBar;
+        cocos2d::ui::Text* m_pLvlText;
     };
 }
 

@@ -12,7 +12,4 @@ void XpStatResult::apply() {
     auto amount = m_multiplier*m_val;
     auto lm = PlayerManager::getInstance()->getPlayer()->getLevelManager();
     lm->incrementXpBy(amount);
-    CCLOG("+%d XP", amount);
-
-
 }

@@ -17,7 +17,6 @@ std::set<Tile *>* Match::getTileSet() const {
 }
 
 void Match::run() {
-    CCLOG("APPLYING Match Results");
     // Get a single tile from the set
     // to extract reward stats
     auto tile = *m_pTileSet->begin();
