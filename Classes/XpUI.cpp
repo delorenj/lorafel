@@ -67,10 +67,15 @@ bool XpUI::init() {
         m_pXpText->setString(String::to_string<const unsigned long>(m_pLevelMananger->getXp()) + " xp");
         m_pNextXpText->setString(String::to_string<const unsigned long>(m_pLevelMananger->levelToXp(m_pLevelMananger->getLevel()+1)) + " xp");
         m_pLvlText->setString("Level " + String::to_string<const int>(m_pLevelMananger->getLevel()));
-
         schedule(schedule_selector(XpUI::tweenXp), 0.025);
     });
+    _eventDispatcher->addEventListenerWithFixedPriority(_listener, 1);
 
+    _listener = cocos2d::EventListenerCustom::create("levelup", [=](cocos2d::EventCustom* event){
+        auto val = static_cast<EventDataInteger*>(event->getUserData())->val;
+        CCLOG("Level Up!: %d ", val);
+        m_pXpBar->setPercent(0);
+    });
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 1);
 
     return true;
