@@ -14,7 +14,7 @@
 
 namespace lorafel {
     class SwappyGrid;
-
+    class StatResult;
     class Tile : public cocos2d::Sprite {
 
     public:

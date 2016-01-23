@@ -45,13 +45,19 @@ namespace lorafel {
     public:
         cocos2d::Node* getFloatie() const { return m_pFloatie; }
         cocos2d::Node* getTarget() const { return m_pTarget; }
+        cocos2d::Vec2 getOrigin() const { return m_origin; }
 
         void setFloatie(cocos2d::Node* node) { m_pFloatie = node; }
         void setTarget(cocos2d::Node* node) { m_pTarget = node; }
+        void setOrigin(cocos2d::Vec2 pos) {
+            m_origin = pos;
+            m_pFloatie->setPosition(m_origin);
+        }
 
     protected:
         cocos2d::Node* m_pFloatie;  // The actual floatie node
         cocos2d::Node* m_pTarget;   // Which node the floatie will float towards
+        cocos2d::Vec2 m_origin;     // Start postion of the floatie
     };
 }
 

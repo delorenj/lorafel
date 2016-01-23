@@ -6,9 +6,11 @@
 #define LORAFEL_LEVELMANAGER_H
 
 #include "EventDataInteger.h"
+#include "EventDataFloatie.h"
+#include "Match.h"
 
 namespace lorafel {
-
+    class Match;
     class LevelManager {
     public:
         LevelManager() : m_xp(1) {
@@ -35,7 +37,7 @@ namespace lorafel {
         virtual const unsigned long getXp() const  { return m_xp; }
 
         // Increase the current XP amount by 'xp'
-        virtual const unsigned long incrementXpBy(const int xp) {
+        virtual const unsigned long incrementXpBy(int xp, Match *pMatch) {
                 // If XP was enough to level player
                 // then fire off a levelup event
                 if(xp >= getLevelUpIn()) {
@@ -45,13 +47,13 @@ namespace lorafel {
                         m_pDispatcher->dispatchEvent(&levelEvent);
                         CC_SAFE_DELETE(levelVal);
                 }
-                
+
                 // Increment player xp
                 m_xp += xp;
 
                 // Fire off an XP event
                 cocos2d::EventCustom e("xp");
-                EventData* val = new EventDataInteger(xp);
+                EventData* val = new EventDataFloatie(xp, pMatch->getTileSetCenter());
                 e.setUserData(val);
                 m_pDispatcher->dispatchEvent(&e);
                 CC_SAFE_DELETE(val);

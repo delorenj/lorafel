@@ -26,6 +26,7 @@ void Match::run() {
     // and apply them to your score/XP/HP/etc...
     for(StatResult* mr : *results) {
         mr->setMultiplier(m_pTileSet->size());
+        mr->setMatch(this);
         mr->apply();
     }
 
@@ -37,4 +38,9 @@ void Match::run() {
 
     GameStateMachine::getInstance()->enterState<TileRemovedState>();
 
+}
+
+cocos2d::Vec2 Match::getTileSetCenter() {
+    auto tile = *m_pTileSet->begin();
+    return tile->getGrid()->convertToWorldSpace(cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2));
 }

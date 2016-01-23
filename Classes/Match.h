@@ -17,6 +17,8 @@ namespace lorafel {
         std::set<Tile *>* getTileSet() const;
         void setTileSet(std::set<Tile *>* tileSet);
 
+        cocos2d::Vec2 getTileSetCenter();
+
     protected:
         std::set<Tile*>* m_pTileSet;
     };
