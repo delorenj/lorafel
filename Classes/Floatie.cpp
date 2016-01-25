@@ -3,7 +3,6 @@
 //
 
 #include "Floatie.h"
-#include "ui/CocosGUI.h"
 
 using namespace lorafel;
 
@@ -12,8 +11,9 @@ bool Floatie::init() {
 }
 
 bool Floatie::initWithString(const char *string) {
-    m_pFloatie = cocos2d::ui::Text::create(string,"fonts/BebasNeue Bold.ttf", 24);
-    addChild(m_pFloatie);
+//    m_pFloatie = cocos2d::ui::Text::create(string,"fonts/BebasNeue Bold.ttf", 28);
+    m_pFloatie = cocos2d::Label::createWithTTF(string, "fonts/BebasNeue Bold.ttf", 28);
+    addChild(m_pFloatie,1);
     return true;
 }
 

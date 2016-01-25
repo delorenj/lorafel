@@ -50,7 +50,7 @@ bool TestScene::init() {
 
     m_pGridUI = lorafel::GridUI::create(swappyGrid);
     m_pGridUI->ignoreAnchorPointForPosition(false);
-    addChild(m_pGridUI);
+    addChild(m_pGridUI,10);
 
     // Create the grid debug panel
 //    lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
