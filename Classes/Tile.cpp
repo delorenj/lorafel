@@ -2,10 +2,12 @@
 // Created by Jarad DeLorenzo on 12/19/15.
 //
 
+#include <iostream>
 #include "Tile.h"
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
-#include "String.h"
+#include "StringPatch.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -162,7 +164,7 @@ const cocos2d::Vec2 Tile::getGridPos() const {
 }
 
 std::string Tile::getVisitCountAsString() {
-    return String::to_string(m_firstVisit);
+    return lorafel::to_string(m_firstVisit);
 }
 
 void Tile::remove() {
@@ -188,4 +190,17 @@ void Tile::moveToGridPos(int x, int y) {
     auto sequence = cocos2d::Sequence::create(move,callback, NULL);
     this->runAction(sequence);
 
+}
+
+bool Tile::isStackable() {
+    return true;
+}
+
+int Tile::getRandHit(EnemyTile *pEnemyTile) {
+    auto player = PlayerManager::getInstance()->getPlayer();
+    return 10;
+}
+
+void Tile::onMatch(Match *pMatch) {
+    remove();
 }

@@ -6,12 +6,24 @@
 #define LORAFEL_GRAPEFACTORY_H
 
 #include "TileFactory.h"
+#include "GrapeTile.h"
 
 namespace lorafel {
     class GrapeFactory : public TileFactory {
+    protected:
+        GrapeFactory() {} ;
+        static TileFactory* m_pInstance;
 
     public:
-        virtual Tile *createTile();
+        static TileFactory* getInstance() {
+            if(m_pInstance != nullptr) return m_pInstance;
+            m_pInstance = new GrapeFactory();
+            return m_pInstance;
+        }
+
+        virtual Tile* createTile() override {
+            return GrapeTile::create();
+        }
     };
 }
 

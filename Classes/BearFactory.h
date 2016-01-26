@@ -6,15 +6,26 @@
 #define LORAFEL_BEARFACTORY_H
 
 #include "TileFactory.h"
+#include "BearTile.h"
 
-using namespace lorafel;
+namespace lorafel {
+    class BearFactory : public TileFactory {
+    protected:
+        BearFactory() {} ;
+        static TileFactory* m_pInstance;
 
-class BearFactory : public TileFactory{
+    public:
+        static TileFactory* getInstance() {
+            if(m_pInstance != nullptr) return m_pInstance;
+            m_pInstance = new BearFactory();
+            return m_pInstance;
+        }
 
-public:
-    virtual lorafel::Tile* createTile();
-
-};
+        virtual Tile* createTile() override {
+            return BearTile::create();
+        }
+    };
+}
 
 
 #endif //LORAFEL_BEARFACTORY_H

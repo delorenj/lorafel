@@ -19,17 +19,17 @@ namespace lorafel {
             m_pTileConfigs = new TileConfigs();
             randomizer = new NormalDistributionRandomizer();
             TileConfig *config = new TileConfig();
-            config->factory = new AvocadoFactory();
+            config->factory = AvocadoFactory::getInstance();
             config->frequency = 5;
             m_pTileConfigs->push_back(config);
 
             config = new TileConfig();
-            config->factory = new CarrotFactory();
+            config->factory = CarrotFactory::getInstance();
             config->frequency = 7;
             m_pTileConfigs->push_back(config);
 
             config = new TileConfig();
-            config->factory = new GrapeFactory();
+            config->factory = GrapeFactory::getInstance();
             config->frequency = 10;
             m_pTileConfigs->push_back(config);
 

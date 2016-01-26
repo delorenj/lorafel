@@ -5,7 +5,8 @@
 #ifndef LORAFEL_EVENTDATAFLOATIE_H
 #define LORAFEL_EVENTDATAFLOATIE_H
 
-#import "EventData.h"
+#include "cocos2d.h"
+#include "EventData.h"
 
 namespace lorafel {
     class EventDataFloatie : public EventData {

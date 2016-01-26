@@ -5,16 +5,18 @@
 #ifndef LORAFEL_TILE_H
 #define LORAFEL_TILE_H
 
+#include <iostream>
 #include "cocos2d.h"
 #include "SwappyGrid.h"
 #include "MatchPattern.h"
 #include "StatResult.h"
-#include <string>
-#include <sstream>
+#include "Match.h"
 
 namespace lorafel {
     class SwappyGrid;
     class StatResult;
+    class EnemyTile;
+    class Match;
     class Tile : public cocos2d::Sprite {
 
     public:
@@ -28,6 +30,8 @@ namespace lorafel {
 
         bool init() override;
         void update(float delta) override;
+
+        virtual void onMatch(Match* pMatch);
 
         CREATE_FUNC(Tile);
 
@@ -52,8 +56,10 @@ namespace lorafel {
         Tile* getBottom() const;
         Tile* getRight() const;
         const cocos2d::Vec2 getGridPos() const;
-
+        virtual bool isEnemy() const { return false; }
         virtual bool isSwappable();
+        virtual bool isStackable();
+        virtual int getRandHit(EnemyTile* pEnemyTile);
 
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
@@ -61,8 +67,10 @@ namespace lorafel {
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
         void remove();
         void moveToGridPos(int x, int y);
+        TileFactory* getFactory() const { return m_pFactory; }
 
     protected:
+        TileFactory* m_pFactory;
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
         Color m_color = NONE;
@@ -74,9 +82,7 @@ namespace lorafel {
          *  border blocks, etc..
          */
         std::set<MatchPattern*>* m_pMatchPatterns;
-
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
-
     };
 }
 

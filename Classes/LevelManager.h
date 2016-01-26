@@ -13,9 +13,6 @@ namespace lorafel {
     class Match;
     class LevelManager {
     public:
-        LevelManager() : m_xp(1) {
-                m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
-        };
         LevelManager(unsigned long xp) : m_xp(xp) {
                 m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
         };

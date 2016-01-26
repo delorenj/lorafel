@@ -13,16 +13,12 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Achievements.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/AvocadoFactory.cpp \
                    ../../Classes/AvocadoTile.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
-                   ../../Classes/BearFactory.cpp \
                    ../../Classes/BearTile.cpp \
-                   ../../Classes/CarrotFactory.cpp \
                    ../../Classes/CarrotTile.cpp \
-                   ../../Classes/Floaties.cpp \
+                   ../../Classes/Floatie.cpp \
                    ../../Classes/GameStateMachine.cpp \
-                   ../../Classes/GrapeFactory.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridUI.cpp \
@@ -33,11 +29,12 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/PlayerManager.cpp \
                    ../../Classes/Progress.cpp \
+                   ../../Classes/StickMan.cpp \
                    ../../Classes/SwappyGrid.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
-                   ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
+                   ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
                    ../../Classes/XpUI.cpp
 

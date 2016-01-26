@@ -6,14 +6,25 @@
 #define LORAFEL_AVOCADOFACTORY_H
 
 #include "TileFactory.h"
+#include "AvocadoTile.h"
 
-using namespace lorafel;
+namespace lorafel {
+    class AvocadoFactory : public TileFactory {
+    protected:
+        AvocadoFactory() {} ;
+        static TileFactory* m_pInstance;
 
-class AvocadoFactory : public TileFactory {
+    public:
+        static TileFactory* getInstance() {
+            if(m_pInstance != nullptr) return m_pInstance;
+            m_pInstance = new AvocadoFactory();
+            return m_pInstance;
+        }
 
-public:
-    virtual lorafel::Tile* createTile();
-};
-
+        virtual Tile* createTile() override {
+            return AvocadoTile::create();
+        }
+    };
+}
 
 #endif //LORAFEL_AVOCADOFACTORY_H

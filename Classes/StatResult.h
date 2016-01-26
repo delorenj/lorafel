@@ -5,7 +5,7 @@
 #ifndef LORAFEL_STATRESULT_H
 #define LORAFEL_STATRESULT_H
 
-#import "MatchResult.h"
+#include "MatchResult.h"
 #include "Match.h"
 
 namespace lorafel {

@@ -4,10 +4,12 @@
 
 #include "AvocadoTile.h"
 #include "XpStatResult.h"
+#include "AvocadoFactory.h"
 
 using namespace lorafel;
 
 AvocadoTile::AvocadoTile() {
+    m_pFactory = AvocadoFactory::;
 }
 
 AvocadoTile::~AvocadoTile() {
