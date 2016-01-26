@@ -10,7 +10,6 @@
 #include "SwappyGrid.h"
 #include "MatchPattern.h"
 #include "StatResult.h"
-#include "Match.h"
 
 namespace lorafel {
     class SwappyGrid;
@@ -57,9 +56,6 @@ namespace lorafel {
         Tile* getRight() const;
         const cocos2d::Vec2 getGridPos() const;
         virtual bool isEnemy() const { return false; }
-        virtual bool isSwappable();
-        virtual bool isStackable();
-        virtual int getRandHit(EnemyTile* pEnemyTile);
 
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
@@ -67,10 +63,12 @@ namespace lorafel {
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
         void remove();
         void moveToGridPos(int x, int y);
-        TileFactory* getFactory() const { return m_pFactory; }
+
+        virtual bool isSwappable();
+        virtual bool isStackable();
+        virtual int getRandHit(EnemyTile* pEnemyTile);
 
     protected:
-        TileFactory* m_pFactory;
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
         Color m_color = NONE;

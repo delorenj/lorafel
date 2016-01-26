@@ -25,5 +25,8 @@ namespace lorafel {
             return CarrotTile::create();
         }
     };
+
+    TileFactory* CarrotFactory::m_pInstance;
+
 }
 #endif //LORAFEL_CARROTFACTORY_H

@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 12/19/15.
 //
 
+#include "TileFactory.h"
 #include <iostream>
 #include "Tile.h"
 #include "GameStateMachine.h"
@@ -129,10 +130,6 @@ cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
     return cocos2d::Vec2(0,0);
 }
 
-bool Tile::isSwappable() {
-    return true;
-}
-
 
 Tile* Tile::getLeft() const {
     auto pos = getGridPos();
@@ -192,6 +189,14 @@ void Tile::moveToGridPos(int x, int y) {
 
 }
 
+void Tile::onMatch(Match *pMatch) {
+    remove();
+}
+
+bool Tile::isSwappable() {
+    return true;
+}
+
 bool Tile::isStackable() {
     return true;
 }
@@ -199,8 +204,4 @@ bool Tile::isStackable() {
 int Tile::getRandHit(EnemyTile *pEnemyTile) {
     auto player = PlayerManager::getInstance()->getPlayer();
     return 10;
-}
-
-void Tile::onMatch(Match *pMatch) {
-    remove();
 }

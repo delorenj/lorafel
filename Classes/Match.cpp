@@ -46,10 +46,10 @@ cocos2d::Vec2 Match::getTileSetCenter() {
     return tile->getGrid()->convertToWorldSpace(cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2));
 }
 
-TileFactory* Match::getPrimaryTileFactory() const {
+Tile* Match::getPrimaryTile() const {
     // If it's set, return it
-    if(m_pPrimaryTileFactory != nullptr) {
-        return m_pPrimaryTileFactory;
+    if(m_pPrimaryTile != nullptr) {
+        return m_pPrimaryTile;
     }
 
     // If not set yet, then find it
@@ -68,9 +68,7 @@ TileFactory* Match::getPrimaryTileFactory() const {
         }
     }
 
-    return *tileIter->getFactory();
-
-    }
+    return *tileIter;
 }
 
 unsigned long Match::getTileSetSize() {

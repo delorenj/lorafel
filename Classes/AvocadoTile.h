@@ -14,9 +14,6 @@ namespace lorafel {
         ~AvocadoTile();
 
         static AvocadoTile* create();
-
-        bool isSwappable() override;
-
     };
 }
 

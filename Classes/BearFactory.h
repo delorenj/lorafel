@@ -25,6 +25,9 @@ namespace lorafel {
             return BearTile::create();
         }
     };
+
+    TileFactory* BearFactory::m_pInstance;
+
 }
 
 

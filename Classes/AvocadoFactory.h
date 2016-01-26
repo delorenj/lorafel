@@ -25,6 +25,8 @@ namespace lorafel {
             return AvocadoTile::create();
         }
     };
+
+    TileFactory* AvocadoFactory::m_pInstance;
 }
 
 #endif //LORAFEL_AVOCADOFACTORY_H

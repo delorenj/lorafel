@@ -10,7 +10,6 @@
 #include "Match.h"
 
 namespace lorafel {
-    class Match;
     class LevelManager {
     public:
         LevelManager(unsigned long xp) : m_xp(xp) {

@@ -6,12 +6,9 @@
 #ifndef LORAFEL_TILEFACTORY_H
 #define LORAFEL_TILEFACTORY_H
 
-
-#include "Level.h"
-#include "Tile.h"
-
 namespace lorafel {
     class Tile;
+    class EnemyTile;
     class TileFactory {
 
     public:

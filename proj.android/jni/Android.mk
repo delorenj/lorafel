@@ -33,6 +33,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/SwappyGrid.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
+                   ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \

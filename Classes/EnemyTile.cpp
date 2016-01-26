@@ -7,7 +7,6 @@
 //
 
 #include "EnemyTile.h"
-#include "EventDataInteger.h"
 #include "EventDataFloatie.h"
 
 using namespace lorafel;

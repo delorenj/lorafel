@@ -37,7 +37,7 @@ namespace lorafel {
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = GrapeFactory::getInstance()
+                config->factory = GrapeFactory::getInstance();
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 

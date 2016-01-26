@@ -25,6 +25,9 @@ namespace lorafel {
             return GrapeTile::create();
         }
     };
+
+    TileFactory* GrapeFactory::m_pInstance;
+
 }
 
 #endif //LORAFEL_GRAPEFACTORY_H
