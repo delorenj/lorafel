@@ -17,7 +17,7 @@ StickMan* StickMan::create() {
         sprite->initOptions();
         sprite->addEvents();
         sprite->addStatResult(new XpStatResult(50));
-        sprite->setHp(30);
+        sprite->setHp(100);
         return sprite;
     }
 

@@ -29,7 +29,7 @@ namespace lorafel {
             return true;
         };
 
-        virtual bool isEnemy() const override {
+        virtual bool isEnemy() override {
             return true;
         }
 

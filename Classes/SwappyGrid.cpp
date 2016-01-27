@@ -40,9 +40,15 @@ bool SwappyGrid::init() {
     }
 
     // Create Tile Drop Queues
-    m_pTileDropQueues = new std::vector<TileDropQueue*>();
+    m_pTileDropQueues = new std::vector<TileQueue *>();
+
+    // Create Tile Remove Queues
+    // We need a queue so we only remove tiles in one
+    // section of the update() loop
+    m_pTileRemoveQueue = new TileQueue();
+
     for (int j = 0; j < NUM_COLUMNS; ++j) {
-        m_pTileDropQueues->push_back(new TileDropQueue());
+        m_pTileDropQueues->push_back(new TileQueue());
     }
 
     this->setPosition(
@@ -56,6 +62,8 @@ bool SwappyGrid::init() {
 
 void SwappyGrid::update(float delta) {
 
+    RemoveDeadTiles();
+
     ReplenishTiles();
 
     DropTiles();
@@ -67,13 +75,21 @@ void SwappyGrid::update(float delta) {
 
 void SwappyGrid::DropTiles() {
     for (int k = 0; k < m_pTileDropQueues->size(); k++) {
-        TileDropQueue* queue = m_pTileDropQueues->at(k);
+        TileQueue * queue = m_pTileDropQueues->at(k);
         if(queue->empty()) continue;
         if(!columnReadyToDropTile(k)) continue;
         Tile* tile = queue->front();
         queue->pop();
         dropTile(k, tile);
     }
+}
+
+void SwappyGrid::RemoveDeadTiles() {
+    TileQueue* queue = m_pTileRemoveQueue;
+    if(queue->empty()) return;
+    Tile* tile = queue->front();
+    queue->pop();
+    removeTile(tile);
 }
 
 void SwappyGrid::ReplenishTiles() {
@@ -238,7 +254,7 @@ void SwappyGrid::addTileToDropQueue(int column, Tile *pTile) {
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
     // drops when allowed
-    TileDropQueue* q = m_pTileDropQueues->at(column);
+    TileQueue * q = m_pTileDropQueues->at(column);
     q->push(pTile);
 
 }
@@ -413,4 +429,8 @@ void SwappyGrid::removeTile(Tile *tile) {
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
     removeChild(tile);
+}
+
+void SwappyGrid::addTileToRemoveQueue(Tile *pTile) {
+    m_pTileRemoveQueue->push(pTile);
 }

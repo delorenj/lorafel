@@ -25,7 +25,7 @@ namespace lorafel {
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;
-    typedef std::queue<Tile*> TileDropQueue;
+    typedef std::queue<Tile*> TileQueue;
 
     class SwappyGrid : public cocos2d::Node {
     public:
@@ -70,6 +70,8 @@ namespace lorafel {
         void setLevel(Level *pLevel);
         float getTileScaleFactor() const { return m_tileScaleFactor; }
 
+        void addTileToRemoveQueue(Tile *pTile);
+
     protected:
         cpSpace* m_pWorld;
         Level *m_pLevel;
@@ -82,7 +84,8 @@ namespace lorafel {
         float m_tileScaleFactor;
         StateMachine* m_pGameStateMachine;
         std::vector<StateMachine*>* m_pColumnStateMachines;
-        std::vector<TileDropQueue*>* m_pTileDropQueues;
+        std::vector<TileQueue *>* m_pTileDropQueues;
+        TileQueue* m_pTileRemoveQueue;
         std::stack<PlayerMove*>* m_pMoveStack;
 
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
@@ -111,6 +114,8 @@ namespace lorafel {
         void FillInMissingTileGaps();
 
         int lowestVacancyInColumn(int i);
+
+        void RemoveDeadTiles();
     };
 }
 

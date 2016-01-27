@@ -12,6 +12,7 @@ namespace lorafel {
     class Tile;
     class Match {
     public:
+        virtual ~Match();
         virtual void run();
         std::set<Tile *>* getTileSet() const;
         void setTileSet(std::set<Tile *>* tileSet);
@@ -20,12 +21,12 @@ namespace lorafel {
         Tile* getPrimaryTile() const;
 
         unsigned long getTileSetSize();
-
-        unsigned int getNumEnemies();
-
+        unsigned long getNumEnemies();
+        std::set<Tile*>* getEnemies() const;
     protected:
         std::set<Tile*>* m_pTileSet;
         Tile* m_pPrimaryTile;
+        std::set<Tile *>* m_pEnemies;
     };
 }
 

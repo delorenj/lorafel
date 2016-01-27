@@ -2,8 +2,8 @@
 // Created by Jarad DeLorenzo on 12/19/15.
 //
 
-#include "TileFactory.h"
 #include <iostream>
+#include "TileFactory.h"
 #include "Tile.h"
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
@@ -172,7 +172,8 @@ void Tile::remove() {
     explode->setDuration(0.05);
     explode->setPosition(getPosition());
     m_pSwappyGrid->addChild(explode);
-    m_pSwappyGrid->removeTile(this);
+    setVisible(false);
+    m_pSwappyGrid->addTileToRemoveQueue(this);
 }
 
 void Tile::moveToGridPos(int x, int y) {
@@ -193,15 +194,8 @@ void Tile::onMatch(Match *pMatch) {
     remove();
 }
 
-bool Tile::isSwappable() {
-    return true;
-}
-
-bool Tile::isStackable() {
-    return true;
-}
-
 int Tile::getRandHit(EnemyTile *pEnemyTile) {
-    auto player = PlayerManager::getInstance()->getPlayer();
+    Player* player;
+    player = PlayerManager::getInstance()->getPlayer();
     return 10;
 }

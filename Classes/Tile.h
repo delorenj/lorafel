@@ -55,7 +55,6 @@ namespace lorafel {
         Tile* getBottom() const;
         Tile* getRight() const;
         const cocos2d::Vec2 getGridPos() const;
-        virtual bool isEnemy() const { return false; }
 
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
@@ -64,9 +63,10 @@ namespace lorafel {
         void remove();
         void moveToGridPos(int x, int y);
 
-        virtual bool isSwappable();
-        virtual bool isStackable();
+        virtual bool isSwappable() { return true; }
+        virtual bool isStackable() { return true; }
         virtual int getRandHit(EnemyTile* pEnemyTile);
+        virtual bool isEnemy() { return false; }
 
     protected:
         std::string m_tileName;

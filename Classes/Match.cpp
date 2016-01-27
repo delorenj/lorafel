@@ -5,12 +5,30 @@
 #include "Match.h"
 #include "XpStatResult.h"
 #include "GameStateMachine.h"
-#include "EnemyTile.h"
 
 using namespace lorafel;
 
+Match::~Match() {
+    for(auto it : *m_pTileSet) {
+        CC_SAFE_DELETE(it);
+    }
+}
+
 void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_pTileSet = tileSet;
+    m_pEnemies = new std::set<Tile*>();
+
+    auto it = m_pTileSet->begin();
+    while(it != m_pTileSet->end()) {
+        auto t = static_cast<Tile*>(*it);
+        if(t->isEnemy()) {
+            m_pEnemies->insert(*it);
+        } else if(m_pPrimaryTile == nullptr) {
+            m_pPrimaryTile = *it;
+        }
+        it++;
+    }
+    CCLOG("EnemyCount: %d", m_pEnemies->size());
 }
 
 std::set<Tile *>* Match::getTileSet() const {
@@ -47,42 +65,17 @@ cocos2d::Vec2 Match::getTileSetCenter() {
 }
 
 Tile* Match::getPrimaryTile() const {
-    // If it's set, return it
-    if(m_pPrimaryTile != nullptr) {
-        return m_pPrimaryTile;
-    }
-
-    // If not set yet, then find it
-    // Get a single tile from the set
-    // to extract reward stats
-    auto tileIter = m_pTileSet->begin();
-
-    // Make sure we get a non-enemy
-    // Todo: Handle only-enemy matches
-    while(tileIter != m_pTileSet->end()) {
-        auto tile = *tileIter;
-        if(!tile->isEnemy()) {
-            break;
-        } else {
-            tileIter++;
-        }
-    }
-
-    return *tileIter;
+    return m_pPrimaryTile;
 }
 
 unsigned long Match::getTileSetSize() {
     return m_pTileSet->size();
 }
 
-unsigned int Match::getNumEnemies() {
-    auto it = m_pTileSet->begin();
-    int numEnemies = 0;
-    while(it != m_pTileSet->end()) {
-        auto tile = *it;
-        if(tile->isEnemy()) {
-            numEnemies++;
-        }
-    }
-    return numEnemies;
+unsigned long Match::getNumEnemies() {
+    return m_pEnemies->size();
+}
+
+std::set<Tile*>* Match::getEnemies() const {
+    return m_pEnemies;
 }
