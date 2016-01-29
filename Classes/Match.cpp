@@ -61,7 +61,7 @@ void Match::run() {
 
 cocos2d::Vec2 Match::getTileSetCenter() {
     auto tile = *m_pTileSet->begin();
-    return tile->getGrid()->convertToWorldSpace(cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2));
+    return tile->getGrid()->convertToWorldSpace(PTILE_CENTER(tile));
 }
 
 Tile* Match::getPrimaryTile() const {

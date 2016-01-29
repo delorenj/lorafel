@@ -11,7 +11,10 @@
 #include "MatchPattern.h"
 #include "StatResult.h"
 
+#define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
+#define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
 namespace lorafel {
+
     class SwappyGrid;
     class StatResult;
     class EnemyTile;
@@ -60,7 +63,7 @@ namespace lorafel {
         // If the tiles have the same name, they match
         virtual bool isMatch(Tile* pTile) const { return pTile->getTileName() == this->getTileName(); };
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
-        void remove();
+        virtual void remove();
         void moveToGridPos(int x, int y);
 
         virtual bool isSwappable() { return true; }

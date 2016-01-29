@@ -11,7 +11,6 @@ namespace lorafel {
     class XpFloatie : public Floatie {
     public:
         bool init(const int val);
-        void update(float dt) override;
 
         static XpFloatie* create(const int val) {
             XpFloatie *pRet = new(std::nothrow) XpFloatie();

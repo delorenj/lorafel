@@ -7,6 +7,7 @@
 
 using namespace lorafel;
 
+
 StickMan* StickMan::create() {
     StickMan* sprite = new StickMan();
 

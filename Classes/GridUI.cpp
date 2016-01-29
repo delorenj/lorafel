@@ -5,6 +5,7 @@
 #include "GridUI.h"
 #include "XpFloatie.h"
 #include "Globals.h"
+#include "EnemyHitFloatie.h"
 
 bool lorafel::GridUI::init() {
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -25,6 +26,14 @@ bool lorafel::GridUI::init() {
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
         auto floatie = XpFloatie::create(data->val);
         floatie->setTarget(m_pXpUI);
+        floatie->setOrigin(data->origin);
+        addChild(floatie);
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
+
+    _listener = cocos2d::EventListenerCustom::create("enemy_damaged", [=](cocos2d::EventCustom* event){
+        EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
+        auto floatie = EnemyHitFloatie::create(data->val);
         floatie->setOrigin(data->origin);
         addChild(floatie);
     });

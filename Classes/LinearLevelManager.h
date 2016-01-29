@@ -24,7 +24,7 @@ namespace lorafel {
             return (std::pow(level, 2)+level)/2*100-(level*100);
         }
 
-        virtual const int getLevelUpInPercent() const {
+        virtual const int getLevelUpInPercent() const override {
             auto val = (std::sqrt(100 * (2 * m_xp +25))+50)/100;
             auto pc = (val - std::floor(val)) * 100;
             return pc;

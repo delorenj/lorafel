@@ -108,7 +108,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphonehd");
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/iphoneHD5ResolutionSize.width);
-        glview->setDesignResolutionSize(759,1138, ResolutionPolicy::NO_BORDER);
+        glview->setDesignResolutionSize(iphoneHD5ResolutionSize.width,iphoneHD5ResolutionSize.height, ResolutionPolicy::NO_BORDER);
     } else
 
     if(screenSize.width == iphoneHDResolutionSize.height || screenSize.height == iphoneHDResolutionSize.height
@@ -117,20 +117,23 @@ bool AppDelegate::applicationDidFinishLaunching() {
         resDirOrders.push_back("iphonehd");
         resDirOrders.push_back("iphone");
         glview->setContentScaleFactor(screenSize.width/iphoneHDResolutionSize.width);
-        glview->setDesignResolutionSize(759, 1138, ResolutionPolicy::NO_BORDER);
+        glview->setDesignResolutionSize(iphoneHDResolutionSize.width, iphoneHDResolutionSize.height, ResolutionPolicy::NO_BORDER);
     } else
 
     if(screenSize.width == iphoneResolutionSize.height || screenSize.height == iphoneResolutionSize.height
        ) {
         CCLOG("iphoneResolutionSize");
         resDirOrders.push_back("iphone");
-        glview->setContentScaleFactor(screenSize.height/iphoneResolutionSize.height);
+        glview->setContentScaleFactor(screenSize.width/iphoneResolutionSize.width);
         glview->setDesignResolutionSize(iphoneResolutionSize.width, iphoneResolutionSize.height, ResolutionPolicy::NO_BORDER);
     } else {
-        CCLOG("else Size");
-        resDirOrders.push_back("iphone");
-        glview->setContentScaleFactor(screenSize.height/iphoneResolutionSize.height);
-        glview->setDesignResolutionSize(iphoneResolutionSize.width, iphoneResolutionSize.height, ResolutionPolicy::NO_BORDER);
+        // If we got here, that means we've found a resolution that is not
+        // explicitly defined. We need to now find the most perfectest ratio.
+        CCLOG("Jojo. Not a pre-defined resolution. Calculating the best-fit.");
+//        if(screenSize.width)
+        resDirOrders.push_back("iphonehd");
+        glview->setContentScaleFactor(screenSize.width/iphoneHDResolutionSize.width);
+        glview->setDesignResolutionSize(iphoneHDResolutionSize.width, iphoneHDResolutionSize.height, ResolutionPolicy::NO_BORDER);
 
     }
 

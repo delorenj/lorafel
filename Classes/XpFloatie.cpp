@@ -29,7 +29,3 @@ bool XpFloatie::init(const int val) {
     m_pFloatie->runAction(seq);
     return true;
 }
-
-void XpFloatie::update(float dt) {
-
-}

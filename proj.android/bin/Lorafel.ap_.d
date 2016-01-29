@@ -6,13 +6,6 @@
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-hdpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-ldpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-mdpi/icon.png \
-/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Bold.otf \
-/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Book.otf \
-/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Light.otf \
-/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Regular.otf \
-/Users/delorenj/code/Lorafel/proj.android/assets/BebasNeue Thin.otf \
-/Users/delorenj/code/Lorafel/proj.android/assets/CloseNormal.png \
-/Users/delorenj/code/Lorafel/proj.android/assets/CloseSelected.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts \
 /Users/delorenj/code/Lorafel/proj.android/assets/HelloWorld.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad \
@@ -35,6 +28,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/grapes.png \
@@ -46,6 +40,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/grapes.png \
@@ -57,6 +52,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/grapes.png \
@@ -68,6 +64,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_color_smoke.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/grapes.png \
@@ -79,6 +77,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/grapes.png \
@@ -91,6 +90,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug_wider.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/grapes.png \

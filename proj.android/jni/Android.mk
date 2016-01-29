@@ -17,6 +17,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotTile.cpp \
+                   ../../Classes/EnemyHitFloatie.cpp \
+                   ../../Classes/EnemyTile.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameStateMachine.cpp \
                    ../../Classes/GrapeTile.cpp \

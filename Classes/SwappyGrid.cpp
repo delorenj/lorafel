@@ -29,8 +29,15 @@ bool SwappyGrid::init() {
     // Calculate the Tile size so we know how
     // big to make the grid
     auto spritecache = cocos2d::SpriteFrameCache::getInstance();
-    m_tileScaleFactor = 1.15;
-    m_tileSize = spritecache->getSpriteFrameByName("avocado.png")->getOriginalSizeInPixels() * m_tileScaleFactor;
+    auto originalTileSize = spritecache->getSpriteFrameByName("avocado.png")->getOriginalSizeInPixels();
+
+    /**
+     * m_tileScaleFactor = visibleSize.width/(NUM_COLUMNS * originalTileSize)
+     */
+    m_tileScaleFactor = (visibleSize.width-100)/(NUM_COLUMNS * originalTileSize.width);
+    m_tileSize = originalTileSize * 1.15;
+    setScale(m_tileScaleFactor);
+
     auto maxGridHeight = m_tileSize.height * NUM_ROWS;
 
     // Create Tile Grid
@@ -47,13 +54,16 @@ bool SwappyGrid::init() {
     // section of the update() loop
     m_pTileRemoveQueue = new TileQueue();
 
+    int padding = 25;
+
     for (int j = 0; j < NUM_COLUMNS; ++j) {
         m_pTileDropQueues->push_back(new TileQueue());
     }
-
-    this->setPosition(
-            origin.x + visibleSize.width/2 - m_tileSize.width*NUM_COLUMNS/2,
-            visibleSize.height - maxGridHeight - m_tileSize.height*3
+    setContentSize(cocos2d::Size(visibleSize.width+padding*4, visibleSize.width+padding*4));
+    setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    setPosition(
+            origin.x + visibleSize.width/2 + padding,
+            visibleSize.height/2
     );
 
     this->scheduleUpdate();
