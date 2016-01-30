@@ -116,6 +116,8 @@ namespace lorafel {
         int lowestVacancyInColumn(int i);
 
         void RemoveDeadTiles();
+
+        Tile *getNextTileAbove(int x, int y) const;
     };
 }
 

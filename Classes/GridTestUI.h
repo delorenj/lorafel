@@ -38,6 +38,7 @@ namespace lorafel {
 
         cocos2d::ui::Text* m_pState;
 
+        cocos2d::ui::Text *m_pNumFallingTiles;
     };
 }
 

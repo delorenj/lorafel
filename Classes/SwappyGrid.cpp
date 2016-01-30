@@ -80,7 +80,7 @@ void SwappyGrid::update(float delta) {
 
     ProcessMatches();
 
-    FillInMissingTileGaps();
+//    FillInMissingTileGaps();
 }
 
 void SwappyGrid::DropTiles() {
@@ -95,11 +95,46 @@ void SwappyGrid::DropTiles() {
 }
 
 void SwappyGrid::RemoveDeadTiles() {
+    GET_GAME_STATE
+    if(state->getName() != "TileRemovedState") return;
+
     TileQueue* queue = m_pTileRemoveQueue;
-    if(queue->empty()) return;
-    Tile* tile = queue->front();
-    queue->pop();
-    removeTile(tile);
+
+    if(queue->empty() && getNumberOfFallingTiles() == 0) {
+        GameStateMachine::getInstance()->enterState<IdleState>();
+        return;
+    }
+
+    while(!queue->empty()) {
+        Tile* tile = queue->front();
+        queue->pop();
+        removeTile(tile);
+    }
+
+    for(auto x = 0; x < NUM_COLUMNS; x++) {
+        for(auto y = 0; y < NUM_ROWS; y++) {
+            auto tile = getTileAt(x, y);
+            if(tile == nullptr) {
+                // blank spot. let's fill in the blank
+                Tile* nextTileAbove = getNextTileAbove(x, y);
+
+                if(nextTileAbove == nullptr) continue; // nothing to slide down
+                m_pGrid->at(x)->at(nextTileAbove->getGridPos().y) = nullptr;
+                m_pGrid->at(x)->at(y) = nextTileAbove;
+                nextTileAbove->moveToGridPos(x, y);
+            }
+        }
+    }
+}
+
+Tile *SwappyGrid::getNextTileAbove(int x, int y) const {
+    auto numberOfSlotsToSlideDown = 1;
+    auto result = getTileAt(x, y+numberOfSlotsToSlideDown);
+    while(result == nullptr && y+numberOfSlotsToSlideDown < NUM_ROWS) {
+        numberOfSlotsToSlideDown++;
+        result = getTileAt(x, y+numberOfSlotsToSlideDown);
+    }
+    return result;
 }
 
 void SwappyGrid::ReplenishTiles() {
@@ -119,7 +154,7 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     m_pGameStateMachine->enterState<TileFallingState>();
     m_numberOfFallingTiles++;
     int tileRowIndex = insertTileIntoColumn(column, tile);
-    float dropTime = (float)(0.75);
+    float dropTime = (float)(0.5);
     auto move = cocos2d::MoveTo::create(dropTime, gridToScreen(column, tileRowIndex));
     auto easeAction = cocos2d::EaseBounceOut::create(move->clone());
 

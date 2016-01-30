@@ -5,6 +5,7 @@
 #include "ui/CocosGUI.h"
 #include "GridTestUI.h"
 #include "GameStateMachine.h"
+#include "StringPatch.h"
 
 using namespace lorafel;
 
@@ -37,6 +38,14 @@ bool GridTestUI::init() {
     lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
     m_pState->setLayoutParameter(lp);
     layout->addChild(m_pState);
+
+    m_pNumFallingTiles = cocos2d::ui::Text::create(to_string(0),"fonts/BebasNeue Bold.ttf", 24);
+    m_pNumFallingTiles->setColor(cocos2d::Color3B::BLACK);
+    lp = cocos2d::ui::LinearLayoutParameter::create();
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
+    lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
+    m_pNumFallingTiles->setLayoutParameter(lp);
+    layout->addChild(m_pNumFallingTiles);
 
     auto layoutButtons = cocos2d::ui::Layout::create();
     layoutButtons->setLayoutType(cocos2d::ui::Layout::Type::HORIZONTAL);
@@ -77,4 +86,5 @@ bool GridTestUI::init() {
 
 void GridTestUI::update(float delta) {
     m_pState->setString(GameStateMachine::getInstance()->getState()->getName().c_str());
+    if(m_pGrid != nullptr) m_pNumFallingTiles->setString(lorafel::to_string(m_pGrid->getNumberOfFallingTiles()));
 }

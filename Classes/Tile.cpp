@@ -176,15 +176,16 @@ void Tile::remove() {
 }
 
 void Tile::moveToGridPos(int x, int y) {
+    m_pSwappyGrid->setNumberOfFallingTiles(m_pSwappyGrid->getNumberOfFallingTiles()+1);
     auto move = cocos2d::MoveTo::create(0.5, m_pSwappyGrid->gridToScreen(x,y));
-//    auto ease = cocos2d::EaseBounceOut::create(move->clone());
+    auto ease = cocos2d::EaseBounceOut::create(move->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         m_pSwappyGrid->setNumberOfFallingTiles(m_pSwappyGrid->getNumberOfFallingTiles()-1);
 
     });
 
-    auto sequence = cocos2d::Sequence::create(move,callback, NULL);
+    auto sequence = cocos2d::Sequence::create(ease,callback, NULL);
     this->runAction(sequence);
 
 }
