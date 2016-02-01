@@ -87,6 +87,11 @@ namespace lorafel {
         std::vector<TileQueue *>* m_pTileDropQueues;
         TileQueue* m_pTileRemoveQueue;
         std::stack<PlayerMove*>* m_pMoveStack;
+        cocos2d::DrawNode* m_pDebugDraw;
+        TileMatcher* m_pTileMatcher;
+        unsigned int m_numberOfFallingTiles = 0;
+        TileSwapEventData* m_pTileSwapEventData;
+        unsigned int m_currentTouchId;
 
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
@@ -94,30 +99,16 @@ namespace lorafel {
         bool overflow();
         std::vector<int> getTileVacancyCounts();
         bool columnReadyToDropTile(int column);
-        TileSwapEventData* m_pTileSwapEventData;
-        unsigned int m_currentTouchId;
 
         void ReplenishTiles();
-
         void DropTiles();
-
         void ProcessMatches();
-
         bool tileDropQueuesEmpty();
-
-        TileMatcher* m_pTileMatcher;
-
-        unsigned int m_numberOfFallingTiles = 0;
-
         Level *getLevel();
-
-        void FillInMissingTileGaps();
-
         int lowestVacancyInColumn(int i);
-
         void RemoveDeadTiles();
-
         Tile *getNextTileAbove(int x, int y) const;
+        void DrawDebugData();
     };
 }
 

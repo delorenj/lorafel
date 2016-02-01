@@ -40,6 +40,10 @@ bool SwappyGrid::init() {
 
     auto maxGridHeight = m_tileSize.height * NUM_ROWS;
 
+    // Create the debug drawing node
+    m_pDebugDraw = cocos2d::DrawNode::create();
+    addChild(m_pDebugDraw);
+
     // Create Tile Grid
     m_pGrid = new TileGrid();
     for (int i = 0; i < NUM_COLUMNS; ++i) {
@@ -66,11 +70,14 @@ bool SwappyGrid::init() {
             visibleSize.height/2
     );
 
-    this->scheduleUpdate();
+
+    scheduleUpdate();
     return true;
 }
 
 void SwappyGrid::update(float delta) {
+
+    DrawDebugData();
 
     RemoveDeadTiles();
 
@@ -80,7 +87,6 @@ void SwappyGrid::update(float delta) {
 
     ProcessMatches();
 
-//    FillInMissingTileGaps();
 }
 
 void SwappyGrid::DropTiles() {
@@ -436,29 +442,6 @@ Level *SwappyGrid::getLevel() {
     return m_pLevel;
 }
 
-void SwappyGrid::FillInMissingTileGaps() {
-    GET_GAME_STATE
-    if(state->getName() != "TileRemovedState") return;
-
-    for (int i = 0; i < NUM_COLUMNS; ++i) {
-        for (int j = 1; j < NUM_ROWS; ++j) {    // no need to check the lowest row
-            auto tile = getTileAt(i, j);
-            // if tile exists and has empty space below it
-            // the fill in the gap
-            if(tile && !tile->getBottom()) {
-                int lowest = lowestVacancyInColumn(i);
-                m_pGrid->at(i)->at(lowest) = tile;
-                m_pGrid->at(i)->at(j) = nullptr;
-                setNumberOfFallingTiles(getNumberOfFallingTiles() + 1);
-                tile->moveToGridPos(i, lowest);
-            }
-        }
-    }
-    if(getNumberOfFallingTiles() == 0) {
-        GameStateMachine::getInstance()->enterState<IdleState>();
-    }
-}
-
 int SwappyGrid::lowestVacancyInColumn(int i) {
     Tile* tile;
     int j = 0;
@@ -478,4 +461,14 @@ void SwappyGrid::removeTile(Tile *tile) {
 
 void SwappyGrid::addTileToRemoveQueue(Tile *pTile) {
     m_pTileRemoveQueue->push(pTile);
+}
+
+void SwappyGrid::DrawDebugData() {
+    m_pDebugDraw->drawRect(
+            getBoundingBox().origin,
+            cocos2d::Vec2(
+                    getBoundingBox().size.width,
+                    getBoundingBox().size.height),
+            cocos2d::Color4F::RED);
+
 }

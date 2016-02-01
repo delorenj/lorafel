@@ -35,17 +35,18 @@ namespace lorafel {
     protected:
         SwappyGrid* m_pGrid;
         cocos2d::ui::Text* m_pTitle;
-
         cocos2d::ui::Text* m_pState;
-
         cocos2d::ui::Text *m_pNumFallingTiles;
         cocos2d::ui::Layout *m_pLayout;
+        cocos2d::DrawNode* m_bg;
 
         void addStateName();
 
         void addFallingTileCount();
 
         void addDropTileButtons() const;
+
+        void addGridCenteringKit();
     };
 }
 

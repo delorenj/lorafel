@@ -28,8 +28,10 @@ bool GridTestUI::init() {
 
     addDropTileButtons();
 
+//    addGridCenteringKit();
 
-    this->scheduleUpdate();
+    scheduleUpdate();
+
     return true;
 }
 
@@ -92,4 +94,14 @@ void GridTestUI::addStateName() {
 void GridTestUI::update(float delta) {
     if(m_pState != nullptr) m_pState->setString(GameStateMachine::getInstance()->getState()->getName().c_str());
     if(m_pGrid != nullptr && m_pNumFallingTiles != nullptr) m_pNumFallingTiles->setString(lorafel::to_string(m_pGrid->getNumberOfFallingTiles()));
+//    if(m_pGrid != nullptr) {
+//        m_bg->setContentSize(m_pGrid->getContentSize());
+//        m_bg->drawRect(m_pGrid->getBoundingBox().origin, cocos2d::Vec2(m_pGrid->getBoundingBox().size.width, m_pGrid->getBoundingBox().size.height), cocos2d::Color4F::RED);
+//        m_bg->setPosition(convertToNodeSpace(m_pGrid->getPosition()));
+//    }
+}
+
+void GridTestUI::addGridCenteringKit() {
+    m_bg = cocos2d::DrawNode::create();
+    addChild(m_bg);
 }
