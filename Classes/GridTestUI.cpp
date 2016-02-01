@@ -48,8 +48,8 @@ void GridTestUI::addDropTileButtons() const {
 
     for(int i=0; i< SwappyGrid::NUM_COLUMNS; i++) {
 
-        std::__1::string iString;
-        std::__1::stringstream ss;
+        std::string iString;
+        std::stringstream ss;
         ss << i;
         iString = ss.str();
         cocos2d::ui::Button* button = cocos2d::ui::Button::create();
@@ -99,9 +99,4 @@ void GridTestUI::update(float delta) {
 //        m_bg->drawRect(m_pGrid->getBoundingBox().origin, cocos2d::Vec2(m_pGrid->getBoundingBox().size.width, m_pGrid->getBoundingBox().size.height), cocos2d::Color4F::RED);
 //        m_bg->setPosition(convertToNodeSpace(m_pGrid->getPosition()));
 //    }
-}
-
-void GridTestUI::addGridCenteringKit() {
-    m_bg = cocos2d::DrawNode::create();
-    addChild(m_bg);
 }

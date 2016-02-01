@@ -42,6 +42,8 @@ bool SwappyGrid::init() {
 
     // Create the debug drawing node
     m_pDebugDraw = cocos2d::DrawNode::create();
+    m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0,0));
+    m_pDebugDraw->setPosition(0,0);
     addChild(m_pDebugDraw);
 
     // Create Tile Grid
@@ -58,15 +60,20 @@ bool SwappyGrid::init() {
     // section of the update() loop
     m_pTileRemoveQueue = new TileQueue();
 
-    int padding = 25;
-
     for (int j = 0; j < NUM_COLUMNS; ++j) {
         m_pTileDropQueues->push_back(new TileQueue());
     }
-    setContentSize(cocos2d::Size(visibleSize.width+padding*4, visibleSize.width+padding*4));
+
     setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    setContentSize(cocos2d::Size(m_tileSize.width*NUM_COLUMNS, m_tileSize.height*NUM_ROWS));
+
+    CCLOG("tileSize: %f,%f", m_tileSize.width, m_tileSize.height);
+    CCLOG("tileSize * NUM_COLUMNS: %f", m_tileSize.width * NUM_COLUMNS);
+    CCLOG("grid contentSize: %f,%f", getContentSize().width, getContentSize().height);
+    CCLOG("boundingBox: w=%f,h=%f", getBoundingBox().size.width, getBoundingBox().size.height);
+
     setPosition(
-            origin.x + visibleSize.width/2 + padding,
+            origin.x + visibleSize.width/2,
             visibleSize.height/2
     );
 
@@ -77,7 +84,7 @@ bool SwappyGrid::init() {
 
 void SwappyGrid::update(float delta) {
 
-    DrawDebugData();
+//    DrawDebugData();
 
     RemoveDeadTiles();
 
@@ -465,10 +472,10 @@ void SwappyGrid::addTileToRemoveQueue(Tile *pTile) {
 
 void SwappyGrid::DrawDebugData() {
     m_pDebugDraw->drawRect(
-            getBoundingBox().origin,
-            cocos2d::Vec2(
-                    getBoundingBox().size.width,
-                    getBoundingBox().size.height),
+            cocos2d::Vec2(0, 0),
+            cocos2d::Vec2(getContentSize().width, getContentSize().height),
             cocos2d::Color4F::RED);
 
+    m_pDebugDraw->drawLine(cocos2d::Vec2(getAnchorPointInPoints().x, getAnchorPointInPoints().y+10),cocos2d::Vec2(getAnchorPointInPoints().x, getAnchorPointInPoints().y-10), cocos2d::Color4F::YELLOW);
+    m_pDebugDraw->drawLine(cocos2d::Vec2(getAnchorPointInPoints().x+10, getAnchorPointInPoints().y),cocos2d::Vec2(getAnchorPointInPoints().x-10, getAnchorPointInPoints().y), cocos2d::Color4F::YELLOW);
 }

@@ -45,8 +45,6 @@ namespace lorafel {
         void addFallingTileCount();
 
         void addDropTileButtons() const;
-
-        void addGridCenteringKit();
     };
 }
 
