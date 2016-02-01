@@ -11,11 +11,10 @@
 
 using namespace lorafel;
 
-EnemyTile::EnemyTile() {
+bool EnemyTile::init() {
     // Add event listener for onHit()
     auto _listenter = cocos2d::EventListenerCustom::create("enemy_damaged", CC_CALLBACK_1(EnemyTile::onHit, this));
     _eventDispatcher->addEventListenerWithSceneGraphPriority(_listenter, this);
-
 }
 
 void EnemyTile::applyHit(Match* pMatch) {
@@ -35,7 +34,6 @@ void EnemyTile::applyHit(Match* pMatch) {
     _eventDispatcher->dispatchEvent(&e);
     auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
     particle->setAutoRemoveOnFinish(true);
-    particle->setScale(0.75);
     particle->setPosition(TILE_CENTER);
     m_pSwappyGrid->addChild(particle);
     CC_SAFE_DELETE(val);
@@ -70,6 +68,6 @@ void EnemyTile::remove() {
     particle->setPosition(TILE_CENTER);
     m_pSwappyGrid->addChild(particle);
     setVisible(false);
-    m_pSwappyGrid->addTileToRemoveQueue(this);
+    m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 
 }

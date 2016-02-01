@@ -7,12 +7,6 @@
 
 using namespace lorafel;
 
-AvocadoTile::AvocadoTile() {
-}
-
-AvocadoTile::~AvocadoTile() {
-}
-
 AvocadoTile* AvocadoTile::create() {
     AvocadoTile* sprite = new AvocadoTile();
 

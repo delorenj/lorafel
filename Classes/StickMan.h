@@ -11,6 +11,7 @@ namespace lorafel {
     class StickMan : public EnemyTile {
     public:
         static StickMan* create();
+
         virtual void applyHit(Match* pMatch) override;
     };
 }

@@ -71,6 +71,9 @@ namespace lorafel {
         virtual int getRandHit(EnemyTile* pEnemyTile);
         virtual bool isEnemy() { return false; }
 
+        void setHp(int hp) { m_hp = hp; }
+        int getHp() const { return m_hp; }
+
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
@@ -84,6 +87,8 @@ namespace lorafel {
          */
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
+
+        int m_hp = 0;
     };
 }
 

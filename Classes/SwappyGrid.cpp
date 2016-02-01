@@ -108,7 +108,7 @@ void SwappyGrid::RemoveDeadTiles() {
     while(!queue->empty()) {
         Tile* tile = queue->front();
         queue->pop();
-        removeTile(tile);
+        if(tile->getReferenceCount() == 1) removeTile(tile);
     }
 
     for(auto x = 0; x < NUM_COLUMNS; x++) {
@@ -470,7 +470,7 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
 }
 
 void SwappyGrid::removeTile(Tile *tile) {
-    if(!tile) return;
+    if(tile == nullptr) return;
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
     removeChild(tile);

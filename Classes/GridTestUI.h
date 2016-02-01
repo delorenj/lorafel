@@ -39,6 +39,13 @@ namespace lorafel {
         cocos2d::ui::Text* m_pState;
 
         cocos2d::ui::Text *m_pNumFallingTiles;
+        cocos2d::ui::Layout *m_pLayout;
+
+        void addStateName();
+
+        void addFallingTileCount();
+
+        void addDropTileButtons() const;
     };
 }
 

@@ -27,6 +27,7 @@ StickMan* StickMan::create() {
     return NULL;
 }
 
+
 void StickMan::applyHit(Match* pMatch) {
     lorafel::EnemyTile::applyHit(pMatch);
 }

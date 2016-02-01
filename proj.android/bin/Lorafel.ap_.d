@@ -69,6 +69,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/carrot.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/grapes.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/green_beam.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/xp_bar.png \
