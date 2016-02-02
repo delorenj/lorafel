@@ -6,6 +6,7 @@
 #include "GridTestUI.h"
 #include "GameStateMachine.h"
 #include "StringPatch.h"
+#include "InGameSettings.h"
 
 using namespace lorafel;
 
@@ -28,7 +29,7 @@ bool GridTestUI::init() {
 
     addDropTileButtons();
 
-//    addGridCenteringKit();
+    addSettingsButton();
 
     scheduleUpdate();
 
@@ -36,15 +37,16 @@ bool GridTestUI::init() {
 }
 
 void GridTestUI::addDropTileButtons() const {
+    auto lp = cocos2d::ui::LinearLayoutParameter::create();
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
     auto layoutButtons = cocos2d::ui::Layout::create();
     layoutButtons->setLayoutType(cocos2d::ui::Layout::Type::HORIZONTAL);
     layoutButtons->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
     layoutButtons->setBackGroundColor(cocos2d::Color3B(200, 200, 200));
     layoutButtons->setBackGroundColorOpacity(5);
     layoutButtons->setName("layoutButtons");
+    layoutButtons->setLayoutParameter(lp);
     m_pLayout->addChild(layoutButtons);
-
-    auto lp = cocos2d::ui::LinearLayoutParameter::create();
 
     for(int i=0; i< SwappyGrid::NUM_COLUMNS; i++) {
 
@@ -99,4 +101,22 @@ void GridTestUI::update(float delta) {
 //        m_bg->drawRect(m_pGrid->getBoundingBox().origin, cocos2d::Vec2(m_pGrid->getBoundingBox().size.width, m_pGrid->getBoundingBox().size.height), cocos2d::Color4F::RED);
 //        m_bg->setPosition(convertToNodeSpace(m_pGrid->getPosition()));
 //    }
+}
+
+void GridTestUI::addSettingsButton() {
+    auto lp = cocos2d::ui::LinearLayoutParameter::create();
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
+    m_pSettingsButton = cocos2d::ui::Button::create();
+    m_pSettingsButton->setTitleFontSize(20);
+    m_pSettingsButton->setLayoutParameter(lp);
+    m_pSettingsButton->setScale(2.0);
+    m_pSettingsButton->setTitleText("S");
+    m_pSettingsButton->setPosition(cocos2d::Vec2(0,0));
+    m_pSettingsButton->addClickEventListener([](cocos2d::Ref* sender) {
+        auto scene = InGameSettings::createScene();
+        cocos2d::Director::getInstance()->pushScene(TransitionFlipX::create(0.3, scene) );
+    });
+
+    m_pLayout->addChild(m_pSettingsButton);
+
 }

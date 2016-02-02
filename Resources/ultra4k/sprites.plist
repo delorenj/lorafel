@@ -7,7 +7,7 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{142,188}}</string>
+				<string>{{414,234},{142,188}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +21,7 @@
 			<key>bear.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{143,0},{142,190}}</string>
+				<string>{{493,41},{142,190}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +35,7 @@
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{398,0},{94,192}}</string>
+				<string>{{687,232},{94,192}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -46,10 +46,52 @@
 				<string>{200,200}</string>
 			</dict>
 
+			<key>checkbox-empty.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{207,234},{206,206}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{206,206}}</string>
+				<key>sourceSize</key>
+				<string>{206,206}</string>
+			</dict>
+
+			<key>checkbox-filled.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,234},{206,206}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{206,206}}</string>
+				<key>sourceSize</key>
+				<string>{206,206}</string>
+			</dict>
+
+			<key>enemy1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{557,232},{129,194}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{33,2},{129,194}}</string>
+				<key>sourceSize</key>
+				<string>{200,200}</string>
+			</dict>
+
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{286,0},{111,190}}</string>
+				<string>{{636,41},{111,190}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -60,6 +102,34 @@
 				<string>{200,200}</string>
 			</dict>
 
+			<key>sprites.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,41},{492,192}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{492,192}}</string>
+				<key>sourceSize</key>
+				<string>{512,256}</string>
+			</dict>
+
+			<key>xp_bar.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{900,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{900,40}}</string>
+				<key>sourceSize</key>
+				<string>{900,40}</string>
+			</dict>
+
 		</dict>
 
 		<key>metadata</key>
@@ -67,7 +137,7 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{512,256}</string>
+			<string>{1024,512}</string>
 			<key>textureFileName</key>
 			<string>sprites.png</string>
 			</dict>

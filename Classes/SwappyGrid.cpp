@@ -77,7 +77,6 @@ bool SwappyGrid::init() {
             visibleSize.height/2
     );
 
-
     scheduleUpdate();
     return true;
 }
