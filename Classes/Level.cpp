@@ -14,3 +14,12 @@ Tile* Level::getRandomTile() {
     int result = randomizer->randomize(probs);
     return m_pTileConfigs->at(result)->factory->createTile();
 }
+
+/**
+ * Basic levelCleared test: no monsters left
+ * Other strategies could be "killed 10 monsters
+ * in 5 tries", or "killed all monsters in under X time"
+ */
+bool Level::isCleared() const {
+    return m_pSwappyGrid->getNumberOfRemainingMonsters() == 0;
+}

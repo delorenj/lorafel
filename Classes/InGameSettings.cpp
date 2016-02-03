@@ -34,7 +34,7 @@ bool InGameSettings::init() {
     m_pLayout->setContentSize(visibleSize);
     m_pLayout->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
     m_pLayout->setBackGroundColor(cocos2d::Color3B(0,0,0));
-    m_pLayout->setBackGroundColorOpacity(50);
+    m_pLayout->setBackGroundColorOpacity(90);
     m_pLayout->setName("m_pLayout");
 
 

@@ -187,7 +187,16 @@ namespace lorafel {
         const std::string getName() const override { return "TileQueueEmptyMatchStartState"; }
         bool isValidNextState(State* state) override {
             if(state->getName() == "IdleState") return true;
+            if(state->getName() == "LevelCleared") return true;
             if(state->getName() == "MatchFoundState") return true;
+            return false;
+        }
+    };
+
+    class LevelClearedState : public BusyState {
+    public:
+        const std::string getName() const override { return "LevelCleared"; }
+        bool isValidNextState(State* state) override {
             return false;
         }
     };

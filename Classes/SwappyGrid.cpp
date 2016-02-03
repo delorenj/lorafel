@@ -382,6 +382,11 @@ void SwappyGrid::ProcessMatches() {
         m_pMoveStack->pop();
         playerMove->cancel();
 
+    } else if(m_pLevel->isCleared()) {
+        // Check to see if level is cleared
+        // If so, fire off the end level state
+        onLevelCleared();
+
     } else {
         GameStateMachine::getInstance()->enterState<IdleState>();
     }
@@ -477,4 +482,26 @@ void SwappyGrid::DrawDebugData() {
 
     m_pDebugDraw->drawLine(cocos2d::Vec2(getAnchorPointInPoints().x, getAnchorPointInPoints().y+10),cocos2d::Vec2(getAnchorPointInPoints().x, getAnchorPointInPoints().y-10), cocos2d::Color4F::YELLOW);
     m_pDebugDraw->drawLine(cocos2d::Vec2(getAnchorPointInPoints().x+10, getAnchorPointInPoints().y),cocos2d::Vec2(getAnchorPointInPoints().x-10, getAnchorPointInPoints().y), cocos2d::Color4F::YELLOW);
+}
+
+int SwappyGrid::getNumberOfRemainingMonsters() {
+    return (int) getEnemyTiles().size();
+}
+
+std::set<Tile *> SwappyGrid::getEnemyTiles() {
+    std::set<Tile*> enemies;
+    for(int i=0; i<NUM_COLUMNS; i++) {
+        for(int j=0; j<NUM_ROWS; j++) {
+            auto t = getTileAt(i,j);
+            if(t != nullptr && t->isEnemy()) {
+                enemies.insert(t);
+            }
+        }
+    }
+    return enemies;
+}
+
+void SwappyGrid::onLevelCleared() {
+    GameStateMachine::getInstance()->enterState<LevelClearedState>();
+    CCLOG("YAY!");
 }

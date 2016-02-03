@@ -32,6 +32,7 @@ namespace lorafel {
 
         bool init() override;
         void update(float delta) override;
+        void onLevelCleared();
 
         CREATE_FUNC(SwappyGrid);
 
@@ -69,8 +70,9 @@ namespace lorafel {
         void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
         void setLevel(Level *pLevel);
         float getTileScaleFactor() const { return m_tileScaleFactor; }
-
         void addTileToRemoveQueue(Tile *pTile);
+
+        int getNumberOfRemainingMonsters();
 
     protected:
         cpSpace* m_pWorld;
@@ -109,6 +111,8 @@ namespace lorafel {
         void RemoveDeadTiles();
         Tile *getNextTileAbove(int x, int y) const;
         void DrawDebugData();
+
+        std::set<Tile *> getEnemyTiles();
     };
 }
 

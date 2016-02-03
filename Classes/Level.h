@@ -27,6 +27,8 @@ namespace lorafel {
             this->m_pTileConfigs = configs;
         }
 
+        virtual bool isCleared() const;
+
         TileConfigs* getTileConfigs() { return m_pTileConfigs; }
         void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
