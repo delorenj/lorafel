@@ -30,6 +30,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/bg_debug_wider.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.plist \
@@ -42,6 +44,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug_wider.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.plist \
@@ -54,6 +58,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug_wider.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.plist \
@@ -67,6 +73,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/green_beam.plist \
@@ -81,11 +89,15 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug_wider.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/xp_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/nexus5/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/nexus5/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/nexus5/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/avocado.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bear.png \
@@ -94,6 +106,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug_wider.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/carrot.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/checkbox-empty.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sprites.plist \

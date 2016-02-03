@@ -25,6 +25,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridUI.cpp \
                    ../../Classes/Inventory.cpp \
+                   ../../Classes/InGameSettings.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \

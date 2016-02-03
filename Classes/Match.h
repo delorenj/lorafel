@@ -10,7 +10,7 @@
 
 namespace lorafel {
     class Tile;
-    class Match {
+    class Match : public cocos2d::Node {
     public:
         virtual ~Match();
         virtual void run();
@@ -27,6 +27,8 @@ namespace lorafel {
         std::set<Tile*>* m_pTileSet;
         Tile* m_pPrimaryTile;
         std::set<Tile *>* m_pEnemies;
+        cocos2d::Vec2 m_anchorBottomLeft;
+        cocos2d::Vec2 m_anchorTopRight;
     };
 }
 

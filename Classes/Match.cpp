@@ -3,7 +3,6 @@
 //
 
 #include "Match.h"
-#include "XpStatResult.h"
 #include "GameStateMachine.h"
 
 using namespace lorafel;
@@ -18,15 +17,25 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_pTileSet = tileSet;
     m_pEnemies = new std::set<Tile*>();
 
+    // Initialize the first tile
     auto it = m_pTileSet->begin();
-    while(it != m_pTileSet->end()) {
-        auto t = static_cast<Tile*>(*it);
+    auto t = static_cast<Tile*>(*it);
+    m_anchorBottomLeft = PTILE_CENTER(t);
+    m_anchorTopRight = m_anchorBottomLeft;
+
+    while(++it != m_pTileSet->end()) {
+        t = static_cast<Tile*>(*it);
+        auto p = PTILE_CENTER(t);
+        if(p.x < m_anchorBottomLeft.x ) m_anchorBottomLeft.x = p.x;
+        if(p.y < m_anchorBottomLeft.y ) m_anchorBottomLeft.y = p.y;
+        if(p.x > m_anchorTopRight.x ) m_anchorTopRight.x = p.x;
+        if(p.y > m_anchorTopRight.y ) m_anchorTopRight.y = p.y;
+
         if(t->isEnemy()) {
             m_pEnemies->insert(*it);
         } else if(m_pPrimaryTile == nullptr) {
             m_pPrimaryTile = *it;
         }
-        it++;
     }
     CCLOG("EnemyCount: %d", m_pEnemies->size());
 }
@@ -61,7 +70,8 @@ void Match::run() {
 
 cocos2d::Vec2 Match::getTileSetCenter() {
     auto tile = *m_pTileSet->begin();
-    return tile->getGrid()->convertToWorldSpace(PTILE_CENTER(tile));
+    auto center = cocos2d::Vec2((m_anchorBottomLeft.x + m_anchorTopRight.x)/2, (m_anchorBottomLeft.y + m_anchorTopRight.y)/2);
+    return tile->getGrid()->convertToWorldSpace(center);
 }
 
 Tile* Match::getPrimaryTile() const {
