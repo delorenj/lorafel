@@ -85,9 +85,7 @@ void Tile::addEvents() {
             if(swapVec.isZero()) return;
             auto playerMove = new BasicPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), m_pSwappyGrid->screenToGrid(touchState->getTileStartPos())+swapVec);
             if (playerMove->isValid()) {
-                m_pSwappyGrid->getMoveStack()->push(playerMove);
-                m_pSwappyGrid->getMoveStack()->top()->run();
-                m_pSwappyGrid->getLevel()->getTurnManager()->addMove(playerMove);
+                m_pSwappyGrid->executePlayerMove(playerMove);
             }
         }
     };

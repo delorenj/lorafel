@@ -115,6 +115,10 @@ namespace lorafel {
         std::set<Tile *> getEnemyTiles();
 
         void ProcessTurnManager();
+
+        void ProcessEnemyTurns();
+
+        void executePlayerMove(PlayerMove *pMove);
     };
 }
 

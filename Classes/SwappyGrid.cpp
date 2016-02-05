@@ -96,6 +96,7 @@ void SwappyGrid::update(float delta) {
 
     ProcessTurnManager();
 
+    ProcessEnemyTurns();
 }
 
 void SwappyGrid::DropTiles() {
@@ -534,4 +535,30 @@ void SwappyGrid::ProcessTurnManager() {
         }
     }
 
+}
+
+void SwappyGrid::ProcessEnemyTurns() {
+    GET_GAME_STATE
+
+    /**
+     * If the game is in an EnemyTurnState then do enemy stuff.
+     * If idle state, then just continue on and wait for the user
+     * to make a move.
+     */
+    if(state->getName() != "EnemyTurnState") {
+        return;
+    }
+
+    // Ok, so it's enemy time!
+    // Let's get the active enemy tile
+    auto tile = getLevel()->getTurnManager()->getActivePlayerTile();
+    AIStrategy* strategy = tile->getStrategy();
+    PlayerMove* playerMove = findOptimalMove(tile, strategy);
+    executePlayerMove(playerMove);
+}
+
+void SwappyGrid::executePlayerMove(PlayerMove *pMove) {
+    getMoveStack()->push(pMove);
+    getMoveStack()->top()->run();
+    getLevel()->getTurnManager()->addMove(pMove);
 }
