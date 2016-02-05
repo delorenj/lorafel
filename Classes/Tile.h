@@ -10,6 +10,7 @@
 #include "SwappyGrid.h"
 #include "MatchPattern.h"
 #include "StatResult.h"
+#include "AIStrategy.h"
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
@@ -74,11 +75,17 @@ namespace lorafel {
         void setHp(int hp) { m_hp = hp; }
         int getHp() const { return m_hp; }
 
+        AIStrategy* getStrategy() const { return m_pStrategy; };
+        void setStrategy(AIStrategy* strategy) { m_pStrategy = strategy; }
+
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
+        AIStrategy* m_pStrategy;
         Color m_color = NONE;
         int m_firstVisit = 0;
+        int m_hp = 0;
+
         std::set<StatResult*>* m_pStatResults;
         /**
          *  Set of patterns to match against.
@@ -88,7 +95,6 @@ namespace lorafel {
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
 
-        int m_hp = 0;
     };
 }
 

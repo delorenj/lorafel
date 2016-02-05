@@ -206,6 +206,7 @@ namespace lorafel {
     public:
         const std::string getName() const override { return "EnemyTurnState"; }
         bool isValidNextState(State* state) override {
+            if(state->getName() == "TileTouchMoveState") return true;
             return false;
         }
     };

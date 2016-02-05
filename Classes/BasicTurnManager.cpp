@@ -23,6 +23,7 @@ lorafel::Tile* BasicTurnManager::getNextPlayerTile() {
         m_playerTileIndex = 0;
     }
 
+    m_activePlayerTileIndex = m_playerTileIndex;
     return m_pPlayerTiles->at(m_playerTileIndex++);
 
 }
@@ -31,4 +32,5 @@ BasicTurnManager::BasicTurnManager() {
     m_pPlayerTiles = new std::vector<Tile*>(0);
     m_pTurnStack = new std::stack<PlayerMove*>();
     m_playerTileIndex = 0;
+    m_activePlayerTileIndex = m_playerTileIndex;
 }
