@@ -75,6 +75,8 @@ namespace lorafel {
 
         int getNumberOfRemainingMonsters();
 
+        void executePlayerMove(lorafel::PlayerMove *pMove);
+
     protected:
         cpSpace* m_pWorld;
         Level *m_pLevel;
@@ -115,6 +117,8 @@ namespace lorafel {
         std::set<Tile *> getEnemyTiles();
 
         void ProcessTurnManager();
+
+        void ProcessEnemyTurns();
     };
 }
 

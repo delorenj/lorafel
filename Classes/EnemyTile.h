@@ -6,30 +6,16 @@
 #define LORAFEL_ENEMYTILE_H
 
 #include "Tile.h"
+#include "CharacterTile.h"
 
 namespace lorafel {
-    class EnemyTile : public Tile {
+    class EnemyTile : public CharacterTile {
     public:
-        bool init() override;
-
-        virtual void onMatch(Match* pMatch) override;
-        virtual void onHit(cocos2d::EventCustom* event);
-        virtual void remove() override;
-
-        void decreaseHpBy(int amount);
-
-        virtual void applyHit(Match* pMatch);
-
-        virtual bool isSwappable() { return false; }
-        virtual bool isMatch(Tile* pTile) const override {
-            // Enemy tile matches all tiles for now
-            return true;
-        };
-
-        virtual bool isEnemy() override { return true; }
-
+        virtual bool init() override;
+        virtual bool isEnemy() override {
+                return true;
+        }
     };
-
 }
 
 #endif //LORAFEL_ENEMYTILE_H

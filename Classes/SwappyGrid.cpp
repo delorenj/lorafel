@@ -6,6 +6,7 @@
 #include "GameStateMachine.h"
 #include "Level.h"
 #include "Globals.h"
+#include "AIStrategy.h"
 
 using namespace lorafel;
 
@@ -95,6 +96,8 @@ void SwappyGrid::update(float delta) {
     ProcessMatches();
 
     ProcessTurnManager();
+
+    ProcessEnemyTurns();
 
 }
 
@@ -528,10 +531,37 @@ void SwappyGrid::ProcessTurnManager() {
     if(!state->isBusy()) {
         auto turnManager = m_pLevel->getTurnManager();
         auto tile = turnManager->getNextPlayerTile();
-        CCLOG("Current Turn: %s", tile->getTileName().c_str());
+
         if(tile->getTag() == Tag::ENEMY) {
+            CCLOG("Current Turn: %s", tile->getTileName().c_str());
             GameStateMachine::getInstance()->enterState<EnemyTurnState>();
         }
     }
 
+}
+
+void SwappyGrid::ProcessEnemyTurns() {
+    GET_GAME_STATE
+
+    /**
+     * If the game is in an EnemyTurnState then do enemy stuff.
+     * If idle state, then just continue on and wait for the user
+     * to make a move.
+     */
+    if(state->getName() != "EnemyTurnState") {
+        return;
+    }
+
+    // Ok, so it's enemy time!
+    // Let's get the active enemy tile
+    auto tile = getLevel()->getTurnManager()->getActivePlayerTile();
+    AIStrategy* strategy = tile->getStrategy();
+    PlayerMove* playerMove = findOptimalMove(tile, strategy);
+    executePlayerMove(playerMove);
+}
+
+void SwappyGrid::executePlayerMove(PlayerMove *pMove) {
+    getMoveStack()->push(pMove);
+    getMoveStack()->top()->run();
+    getLevel()->getTurnManager()->addMove(pMove);
 }
