@@ -5,6 +5,7 @@
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
 #include "Level.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -93,6 +94,8 @@ void SwappyGrid::update(float delta) {
 
     ProcessMatches();
 
+    ProcessTurnManager();
+
 }
 
 void SwappyGrid::DropTiles() {
@@ -161,7 +164,7 @@ void SwappyGrid::ReplenishTiles() {
 void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
-    StateMachine* fsm = m_pColumnStateMachines->at(column);
+    StateMachine* fsm = m_pColumnStateMachines->at((unsigned long)column);
     fsm->enterState<ColumnBusyState>();
     m_pGameStateMachine->enterState<TileFallingState>();
     m_numberOfFallingTiles++;
@@ -173,6 +176,12 @@ void SwappyGrid::dropTile(int column, Tile *tile) {
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         Tile* tile = static_cast<Tile*>(sender);
         SwappyGrid* obj = static_cast<SwappyGrid*>(tile->getParent());
+
+        // Add the active player and enemy tiles to the TurnManager
+        if(tile->getTag() == Tag::HERO || tile->getTag() == Tag::ENEMY) {
+            m_pLevel->getTurnManager()->addPlayerTile(tile);
+        }
+
         obj->setNumberOfFallingTiles(obj->getNumberOfFallingTiles()-1);
         if(tileDropQueuesEmpty() && obj->getNumberOfFallingTiles() == 0) {
             m_pGameStateMachine->enterState<TileQueueEmptyMatchStartState>();
@@ -504,4 +513,25 @@ std::set<Tile *> SwappyGrid::getEnemyTiles() {
 void SwappyGrid::onLevelCleared() {
     GameStateMachine::getInstance()->enterState<LevelClearedState>();
     CCLOG("YAY!");
+}
+
+void SwappyGrid::ProcessTurnManager() {
+    GET_GAME_STATE
+
+    /**
+     * If the game is in an idle state, it's time to cycle to
+     * the next player's turn. If the next turn is the HERO, then
+     * stay in IdleState and let the turn take place. If the next
+     * turn is the ENEMY, transition to enemy turn state and
+     * and don't allow the HERO to make any moves until 'idle' again
+     */
+    if(!state->isBusy()) {
+        auto turnManager = m_pLevel->getTurnManager();
+        auto tile = turnManager->getNextPlayerTile();
+        CCLOG("Current Turn: %s", tile->getTileName().c_str());
+        if(tile->getTag() == Tag::ENEMY) {
+            GameStateMachine::getInstance()->enterState<EnemyTurnState>();
+        }
+    }
+
 }

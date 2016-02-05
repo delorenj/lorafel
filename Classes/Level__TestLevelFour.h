@@ -13,6 +13,8 @@
 #include "CarrotFactory.h"
 #include "BearFactory.h"
 #include "StickMan.h"
+#include "PlayerManager.h"
+#include "BasicTurnManager.h"
 
 namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
@@ -20,10 +22,18 @@ namespace lorafel {
 #define GRAPE col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
 #define BEAR col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
 #define STICKMAN col->emplace_back(StickMan::create());
+#define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
     class Level__TestLevelFour : public SeededLevel {
     public:
+        virtual ~Level__TestLevelFour() {
+            CC_SAFE_DELETE(m_pTurnManager);
+        }
+
         Level__TestLevelFour(SwappyGrid* grid) : SeededLevel(grid) {
+                m_pTurnManager = new BasicTurnManager();
+                m_pTurnManager->setSwappyGrid(m_pSwappyGrid);
+
                 m_pTileConfigs = new TileConfigs();
                 randomizer = new NormalDistributionRandomizer();
                 TileConfig* config = new TileConfig();
@@ -78,7 +88,7 @@ namespace lorafel {
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO CARROT AVOCADO GRAPE BEAR BEAR AVOCADO BEAR GRAPE
+                AVOCADO CARROT HERO GRAPE BEAR BEAR AVOCADO BEAR GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col8
@@ -91,6 +101,7 @@ namespace lorafel {
                 CARROT BEAR CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
                 m_initialGrid.push_back(col);
         }
+
     };
 }
 

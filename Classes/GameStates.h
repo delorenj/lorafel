@@ -50,6 +50,7 @@ namespace lorafel {
         virtual bool isValidNextState(State* state) override {
             if(state->getName() == "TileFallingState")      return true;
             if(state->getName() == "TileTouchStartState")   return true;
+            if(state->getName() == "EnemyTurnState")   return true;
         }
     };
 
@@ -187,7 +188,7 @@ namespace lorafel {
         const std::string getName() const override { return "TileQueueEmptyMatchStartState"; }
         bool isValidNextState(State* state) override {
             if(state->getName() == "IdleState") return true;
-            if(state->getName() == "LevelCleared") return true;
+            if(state->getName() == "LevelClearedState") return true;
             if(state->getName() == "MatchFoundState") return true;
             return false;
         }
@@ -195,7 +196,15 @@ namespace lorafel {
 
     class LevelClearedState : public BusyState {
     public:
-        const std::string getName() const override { return "LevelCleared"; }
+        const std::string getName() const override { return "LevelClearedState"; }
+        bool isValidNextState(State* state) override {
+            return false;
+        }
+    };
+
+    class EnemyTurnState : public BusyState {
+    public:
+        const std::string getName() const override { return "EnemyTurnState"; }
         bool isValidNextState(State* state) override {
             return false;
         }

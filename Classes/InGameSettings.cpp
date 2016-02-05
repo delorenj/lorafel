@@ -23,7 +23,6 @@ bool InGameSettings::init() {
     Point origin = Director::getInstance()->getVisibleOrigin();
 
     auto pSprBackground = cocos2d::Sprite::create("bg1.png");
-    CCLOG("chome");
     pSprBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
     addChild(pSprBackground);
 

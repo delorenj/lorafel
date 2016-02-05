@@ -71,6 +71,7 @@ namespace lorafel {
         void setLevel(Level *pLevel);
         float getTileScaleFactor() const { return m_tileScaleFactor; }
         void addTileToRemoveQueue(Tile *pTile);
+        Level *getLevel();
 
         int getNumberOfRemainingMonsters();
 
@@ -106,13 +107,14 @@ namespace lorafel {
         void DropTiles();
         void ProcessMatches();
         bool tileDropQueuesEmpty();
-        Level *getLevel();
         int lowestVacancyInColumn(int i);
         void RemoveDeadTiles();
         Tile *getNextTileAbove(int x, int y) const;
         void DrawDebugData();
 
         std::set<Tile *> getEnemyTiles();
+
+        void ProcessTurnManager();
     };
 }
 

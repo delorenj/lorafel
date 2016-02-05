@@ -1,17 +1,17 @@
 //
-// Created by Jarad DeLorenzo on 1/25/16.
+// Created by Jarad DeLorenzo on 2/3/16.
 //
 
-#ifndef LORAFEL_ENEMYTILE_H
-#define LORAFEL_ENEMYTILE_H
+#ifndef LORAFEL_AVATAR_H
+#define LORAFEL_AVATAR_H
 
 #include "Tile.h"
 
 namespace lorafel {
-    class EnemyTile : public Tile {
+    class HeroTile : public Tile {
     public:
         bool init() override;
-
+        static HeroTile* create(const char string[100]);
         virtual void onMatch(Match* pMatch) override;
         virtual void onHit(cocos2d::EventCustom* event);
         virtual void remove() override;
@@ -20,16 +20,12 @@ namespace lorafel {
 
         virtual void applyHit(Match* pMatch);
 
-        virtual bool isSwappable() { return false; }
         virtual bool isMatch(Tile* pTile) const override {
             // Enemy tile matches all tiles for now
             return true;
         };
 
-        virtual bool isEnemy() override { return true; }
-
     };
-
 }
 
-#endif //LORAFEL_ENEMYTILE_H
+#endif //LORAFEL_AVATAR_H

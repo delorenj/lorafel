@@ -35,7 +35,7 @@
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{123,68},{27,54}}</string>
+				<string>{{128,12},{27,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -91,13 +91,27 @@
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{90,68},{32,54}}</string>
+				<string>{{124,68},{32,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
 				<string>{{12,1},{32,54}}</string>
+				<key>sourceSize</key>
+				<string>{56,56}</string>
+			</dict>
+
+			<key>player.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{90,68},{33,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{15,2},{33,52}}</string>
 				<key>sourceSize</key>
 				<string>{56,56}</string>
 			</dict>

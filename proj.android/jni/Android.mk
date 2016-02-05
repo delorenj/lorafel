@@ -15,6 +15,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/AvocadoTile.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
+                   ../../Classes/BasicTurnManager.cpp \
                    ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotTile.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
@@ -24,6 +25,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridUI.cpp \
+                   ../../Classes/HeroTile.cpp \
                    ../../Classes/Inventory.cpp \
                    ../../Classes/InGameSettings.cpp \
                    ../../Classes/Level.cpp \

@@ -5,13 +5,13 @@
 #ifndef LORAFEL_LEVEL_H
 #define LORAFEL_LEVEL_H
 
-#include "Tile.h"
 #include "IRandomizerStrategy.h"
 #include "TileFactory.h"
 #include "SwappyGrid.h"
-
+#include "TurnManager.h"
 
 namespace lorafel {
+    class Tile;
     class TileFactory;
     typedef struct {TileFactory* factory; int frequency;} TileConfig;
     typedef std::vector<TileConfig*> TileConfigs;
@@ -42,11 +42,13 @@ namespace lorafel {
             }
         }
 
+        TurnManager* getTurnManager();
 
     protected:
         SwappyGrid* m_pSwappyGrid;
         TileConfigs* m_pTileConfigs;
         IRandomizerStrategy* randomizer;
+        TurnManager* m_pTurnManager;
     };
 }
 

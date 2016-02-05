@@ -57,6 +57,5 @@ bool TestScene::init() {
     gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
     addChild(gridTestUI);
 
-
     return true;
 }

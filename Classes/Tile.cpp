@@ -9,6 +9,7 @@
 #include "BasicPlayerMove.h"
 #include "StringPatch.h"
 #include "PlayerManager.h"
+#include "Level.h"
 
 using namespace lorafel;
 
@@ -25,7 +26,6 @@ void Tile::setTileName(const std::string name) {
     m_tileName = name;
 }
 void Tile::initOptions() {
-    this->setTag(1);
     this->setVisitColor(NONE);
     this->setAnchorPoint(cocos2d::Vec2(0,0));
     this->setScale(1.15);
@@ -87,6 +87,7 @@ void Tile::addEvents() {
             if (playerMove->isValid()) {
                 m_pSwappyGrid->getMoveStack()->push(playerMove);
                 m_pSwappyGrid->getMoveStack()->top()->run();
+                m_pSwappyGrid->getLevel()->getTurnManager()->addMove(playerMove);
             }
         }
     };

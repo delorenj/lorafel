@@ -23,3 +23,7 @@ Tile* Level::getRandomTile() {
 bool Level::isCleared() const {
     return m_pSwappyGrid->getNumberOfRemainingMonsters() == 0;
 }
+
+TurnManager* Level::getTurnManager() {
+    return m_pTurnManager;
+}

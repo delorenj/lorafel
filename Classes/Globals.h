@@ -9,6 +9,8 @@ namespace lorafel {
     struct Tag {
         static const int TILE = 2;
         static const int UI = 3;
+        static const int HERO = 4;
+        static const int ENEMY = 5;
     };
 }
 

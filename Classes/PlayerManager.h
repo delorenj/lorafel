@@ -23,7 +23,8 @@ namespace lorafel {
             // For now, just make a default player
             // upon each load
             m_pPlayer = new Player();
-            //TODO: Load from server
+            //TODO: Load from server, including player avatar image
+            m_pPlayer->setTile(HeroTile::create("player.png"));
             return m_pPlayer;
         }
 

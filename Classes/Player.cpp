@@ -13,6 +13,7 @@ Player::Player() {
 
 Player::~Player() {
     CC_SAFE_DELETE(m_pLevelManager);
+    CC_SAFE_DELETE(m_pTile);
 }
 
 void Player::initFromServer() {

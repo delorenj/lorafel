@@ -18,12 +18,10 @@ USING_NS_CC;
 
 class GridUI;
 class TestScene : public Node {
-
 public:
     static Scene *createScene();
-    virtual bool init();
+    virtual bool init() override;
     CREATE_FUNC(TestScene);
-    void setPhysicsWorld(PhysicsWorld* world){m_world = world;}
 
 protected:
     Sprite* pSprBackground;
@@ -31,7 +29,6 @@ protected:
     PhysicsWorld* m_world;
     lorafel::StateMachine* m_pGameStateMachine;
     lorafel::GridUI *m_pGridUI;
-    void initStateMachine();
 };
 
 #endif /* defined(____TestScene____) */

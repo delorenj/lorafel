@@ -4,6 +4,7 @@
 
 #include "StickMan.h"
 #include "XpStatResult.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -15,10 +16,11 @@ StickMan* StickMan::create() {
     {
         sprite->setTileName("Stick Man");
         sprite->autorelease();
+        sprite->setTag(Tag::ENEMY);
         sprite->initOptions();
         sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(50));
-        sprite->setHp(100);
+        sprite->addStatResult(new XpStatResult(200));
+        sprite->setHp(500);
         return sprite;
     }
 

@@ -9,6 +9,7 @@
 #include "Achievements.h"
 #include "Inventory.h"
 #include "LinearLevelManager.h"
+#include "HeroTile.h"
 
 namespace lorafel {
     class Player {
@@ -51,6 +52,14 @@ namespace lorafel {
 
         void setMp(unsigned long val) { m_mp = std::max(val, m_maxMp); }
 
+        Tile* getTile() const {
+            return m_pTile;
+        }
+
+        void setTile(Tile* tile) {
+            m_pTile = tile;
+        }
+
     protected:
         // Current Stats
         unsigned long m_gold = 0;
@@ -66,6 +75,9 @@ namespace lorafel {
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
+
+    protected:
+        Tile* m_pTile;
 
     };
 }
