@@ -13,20 +13,16 @@
 #include "TileSwapEventData.h"
 #include "PlayerMove.h"
 #include "TileMatcher.h"
-#include "AIStrategy.h"
 
 #define GET_GAME_STATE GameState* state = static_cast<GameState*>(m_pGameStateMachine->getState());
 
 namespace lorafel {
     class Tile;
-
     class Level;
-
     class PlayerMove;
-
     class TileMatcher;
-
     class GridUI;
+    class AIStrategy;
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
     typedef std::vector<TileColumn*> TileGrid;
@@ -108,6 +104,8 @@ namespace lorafel {
 
         void executePlayerMove(PlayerMove* pMove);
 
+        Tile* getActivePlayerTile();
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;
@@ -162,7 +160,7 @@ namespace lorafel {
 
         void ProcessEnemyTurns();
 
-        PlayerMove* findOptimalMove(Tile* pTile, AIStrategy* pStrategy);
+        std::vector<PlayerMove*> getValidMoves(Tile* pTile);
     };
 }
 

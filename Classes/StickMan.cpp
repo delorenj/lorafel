@@ -5,6 +5,7 @@
 #include "StickMan.h"
 #include "XpStatResult.h"
 #include "Globals.h"
+#include "RandomAIStrategy.h"
 
 using namespace lorafel;
 
@@ -21,6 +22,7 @@ StickMan* StickMan::create() {
         sprite->addEvents();
         sprite->addStatResult(new XpStatResult(200));
         sprite->setHp(500);
+        sprite->setStrategy(new RandomAIStrategy());
         return sprite;
     }
 

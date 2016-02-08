@@ -73,3 +73,7 @@ void EnemyTile::remove() {
     m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 
 }
+
+bool EnemyTile::isSwappable() {
+    return m_pSwappyGrid->getActivePlayerTile()->getTag() == Tag::ENEMY;
+}

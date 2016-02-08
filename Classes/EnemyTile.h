@@ -20,7 +20,7 @@ namespace lorafel {
 
         virtual void applyHit(Match* pMatch);
 
-        virtual bool isSwappable() { return false; }
+        virtual bool isSwappable();
         virtual bool isMatch(Tile* pTile) const override {
             // Enemy tile matches all tiles for now
             return true;

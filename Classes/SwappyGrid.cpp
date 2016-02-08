@@ -5,8 +5,7 @@
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
 #include "Level.h"
-#include "Globals.h"#include "AIStrategy.h"
-#include "BasicPlayerMove.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -556,7 +555,7 @@ void SwappyGrid::ProcessEnemyTurns() {
     // Let's get the active enemy tile
     auto tile = getLevel()->getTurnManager()->getActivePlayerTile();
     AIStrategy* strategy = tile->getStrategy();
-    PlayerMove* playerMove = findOptimalMove(tile, strategy);
+    PlayerMove* playerMove = strategy->apply(tile);
     executePlayerMove(playerMove);
 }
 
@@ -567,7 +566,6 @@ void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
     getLevel()->getTurnManager()->addMove(pMove);
 }
 
-PlayerMove* SwappyGrid::findOptimalMove(Tile* pTile, AIStrategy* pStrategy) {
-    auto move = new BasicPlayerMove(this, pTile, cocos2d::Vec2(0,-1));
-    return move;
+Tile* SwappyGrid::getActivePlayerTile() {
+    return m_pLevel->getTurnManager()->getActivePlayerTile();
 }
