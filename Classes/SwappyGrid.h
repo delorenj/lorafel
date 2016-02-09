@@ -106,6 +106,8 @@ namespace lorafel {
 
         Tile* getActivePlayerTile();
 
+        void setActivePlayerTile(Tile* pTile);
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;
@@ -161,6 +163,8 @@ namespace lorafel {
         void ProcessEnemyTurns();
 
         std::vector<PlayerMove*> getValidMoves(Tile* pTile);
+
+        Tile* m_pActivePlayerTile;
     };
 }
 

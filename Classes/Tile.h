@@ -70,7 +70,6 @@ namespace lorafel {
         virtual bool isSwappable() { return true; }
         virtual bool isStackable() { return true; }
         virtual int getRandHit(EnemyTile* pEnemyTile);
-        virtual bool isEnemy() { return false; }
 
         void setHp(int hp) { m_hp = hp; }
         int getHp() const { return m_hp; }

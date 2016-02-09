@@ -77,3 +77,7 @@ void EnemyTile::remove() {
 bool EnemyTile::isSwappable() {
     return m_pSwappyGrid->getActivePlayerTile()->getTag() == Tag::ENEMY;
 }
+
+Tile* EnemyTile::getRandomGlyph() {
+    return m_pGlyphFactory->createTile();
+}

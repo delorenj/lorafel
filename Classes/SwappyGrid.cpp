@@ -6,6 +6,7 @@
 #include "GameStateMachine.h"
 #include "Level.h"
 #include "Globals.h"
+#include "EnemyTile.h"
 
 using namespace lorafel;
 
@@ -154,10 +155,23 @@ Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
 }
 
 void SwappyGrid::ReplenishTiles() {
+    if(m_pActivePlayerTile == nullptr)
+        m_pActivePlayerTile = m_pLevel->getTurnManager()->getNextPlayerTile();
+
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
         for (int j = 0; j < counts[i]; ++j) {
-            addRandomTileToDropQueue(i);
+            /**
+             * If the current turn is the enemie's turn
+             * make sure enemy glyphs drop instead of
+             * normal tiles.
+             */
+            if(m_pActivePlayerTile->getTag() == Tag::ENEMY) {
+                auto tile = static_cast<EnemyTile*>(m_pActivePlayerTile);
+                addTileToDropQueue(i, tile->getRandomGlyph());
+            } else {
+                addRandomTileToDropQueue(i);
+            }
         }
     }
 }
@@ -505,7 +519,7 @@ std::set<Tile*> SwappyGrid::getEnemyTiles() {
     for (int i = 0; i < NUM_COLUMNS; i++) {
         for (int j = 0; j < NUM_ROWS; j++) {
             auto t = getTileAt(i, j);
-            if (t != nullptr && t->isEnemy()) {
+            if (t != nullptr && t->getTag() == Tag::ENEMY) {
                 enemies.insert(t);
             }
         }
@@ -531,6 +545,7 @@ void SwappyGrid::ProcessTurnManager() {
     if (!state->isBusy()) {
         auto turnManager = m_pLevel->getTurnManager();
         auto tile = turnManager->getNextPlayerTile();
+        m_pActivePlayerTile = tile;  // set this for faster access in the game loop
         CCLOG("Current Turn: %s", tile->getTileName().c_str());
         if (tile->getTag() == Tag::ENEMY) {
             GameStateMachine::getInstance()->enterState<EnemyTurnState>();
@@ -553,7 +568,7 @@ void SwappyGrid::ProcessEnemyTurns() {
 
     // Ok, so it's enemy time!
     // Let's get the active enemy tile
-    auto tile = getLevel()->getTurnManager()->getActivePlayerTile();
+    auto tile = m_pActivePlayerTile;
     AIStrategy* strategy = tile->getStrategy();
     PlayerMove* playerMove = strategy->apply(tile);
     executePlayerMove(playerMove);
@@ -567,5 +582,9 @@ void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
 }
 
 Tile* SwappyGrid::getActivePlayerTile() {
-    return m_pLevel->getTurnManager()->getActivePlayerTile();
+    return m_pActivePlayerTile;
+}
+
+void SwappyGrid::setActivePlayerTile(Tile* pTile) {
+    m_pActivePlayerTile = pTile;
 }

@@ -4,6 +4,7 @@
 
 #include "Match.h"
 #include "GameStateMachine.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -31,7 +32,7 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
         if(p.x > m_anchorTopRight.x ) m_anchorTopRight.x = p.x;
         if(p.y > m_anchorTopRight.y ) m_anchorTopRight.y = p.y;
 
-        if(t->isEnemy()) {
+        if(t->getTag() == Tag::ENEMY) {
             m_pEnemies->insert(*it);
         } else if(m_pPrimaryTile == nullptr) {
             m_pPrimaryTile = *it;

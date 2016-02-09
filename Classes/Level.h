@@ -13,9 +13,6 @@
 namespace lorafel {
     class Tile;
     class TileFactory;
-    typedef struct {TileFactory* factory; int frequency;} TileConfig;
-    typedef std::vector<TileConfig*> TileConfigs;
-
     class Level {
 
     public:

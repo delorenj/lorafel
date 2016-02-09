@@ -13,6 +13,9 @@ namespace lorafel {
         static StickMan* create();
 
         virtual void applyHit(Match* pMatch) override;
+
+    protected:
+        StickMan();
     };
 }
 

@@ -6,6 +6,8 @@
 #define LORAFEL_ENEMYTILE_H
 
 #include "Tile.h"
+#include "GlyphFactory.h"
+
 
 namespace lorafel {
     class EnemyTile : public Tile {
@@ -19,17 +21,16 @@ namespace lorafel {
         void decreaseHpBy(int amount);
 
         virtual void applyHit(Match* pMatch);
-
+        virtual Tile* getRandomGlyph();
         virtual bool isSwappable();
         virtual bool isMatch(Tile* pTile) const override {
             // Enemy tile matches all tiles for now
             return true;
         };
 
-        virtual bool isEnemy() override { return true; }
-
+    protected:
+        GlyphFactory* m_pGlyphFactory;
     };
-
 }
 
 #endif //LORAFEL_ENEMYTILE_H

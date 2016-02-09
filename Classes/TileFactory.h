@@ -10,11 +10,14 @@ namespace lorafel {
     class Tile;
     class EnemyTile;
     class TileFactory {
-
     public:
         virtual Tile *createTile() = 0;
 
     };
+
+    typedef struct {TileFactory* factory; int frequency;} TileConfig;
+    typedef std::vector<TileConfig*> TileConfigs;
+
 }
 
 

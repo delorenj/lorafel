@@ -6,9 +6,17 @@
 #include "XpStatResult.h"
 #include "Globals.h"
 #include "RandomAIStrategy.h"
+#include "PoisonGlyphFactory.h"
 
 using namespace lorafel;
 
+// Create a constructor to set the GlyphFactory for poison tiles
+// and other Glyphs
+
+StickMan::StickMan() {
+    m_pGlyphFactory = new GlyphFactory();
+    m_pGlyphFactory->addTileFactory(PoisonGlyphFactory::getInstance(), 9);
+}
 
 StickMan* StickMan::create() {
     StickMan* sprite = new StickMan();
@@ -35,3 +43,4 @@ StickMan* StickMan::create() {
 void StickMan::applyHit(Match* pMatch) {
     lorafel::EnemyTile::applyHit(pMatch);
 }
+
