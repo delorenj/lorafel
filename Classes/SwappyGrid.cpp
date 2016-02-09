@@ -546,7 +546,6 @@ void SwappyGrid::ProcessTurnManager() {
         auto turnManager = m_pLevel->getTurnManager();
         auto tile = turnManager->getNextPlayerTile();
         m_pActivePlayerTile = tile;  // set this for faster access in the game loop
-        CCLOG("Current Turn: %s", tile->getTileName().c_str());
         if (tile->getTag() == Tag::ENEMY) {
             GameStateMachine::getInstance()->enterState<EnemyTurnState>();
         }

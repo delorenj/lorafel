@@ -4,6 +4,7 @@
 
 #include "GrapeTile.h"
 #include "XpStatResult.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -19,6 +20,7 @@ GrapeTile* GrapeTile::create() {
     if (sprite->initWithSpriteFrameName("grapes.png"))
     {
         sprite->setTileName("Grapes");
+        sprite->setTag(Tag::TILE);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

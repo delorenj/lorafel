@@ -4,6 +4,7 @@
 
 #include "BearTile.h"
 #include "XpStatResult.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -19,6 +20,7 @@ BearTile* BearTile::create() {
     if (sprite->initWithSpriteFrameName("bear.png"))
     {
         sprite->setTileName("Bear");
+        sprite->setTag(Tag::TILE);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

@@ -7,6 +7,7 @@
 #include "Globals.h"
 #include "RandomAIStrategy.h"
 #include "PoisonGlyphFactory.h"
+#include "StormGlyphFactory.h"
 
 using namespace lorafel;
 
@@ -16,6 +17,7 @@ using namespace lorafel;
 StickMan::StickMan() {
     m_pGlyphFactory = new GlyphFactory();
     m_pGlyphFactory->addTileFactory(PoisonGlyphFactory::getInstance(), 9);
+    m_pGlyphFactory->addTileFactory(StormGlyphFactory::getInstance(), 9);
 }
 
 StickMan* StickMan::create() {
@@ -41,6 +43,7 @@ StickMan* StickMan::create() {
 
 
 void StickMan::applyHit(Match* pMatch) {
-    lorafel::EnemyTile::applyHit(pMatch);
+    if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
+        lorafel::EnemyTile::applyHit(pMatch);
 }
 

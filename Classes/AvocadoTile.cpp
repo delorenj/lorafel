@@ -4,6 +4,7 @@
 
 #include "AvocadoTile.h"
 #include "XpStatResult.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -13,6 +14,7 @@ AvocadoTile* AvocadoTile::create() {
     if (sprite->initWithSpriteFrameName("avocado.png"))
     {
         sprite->setTileName("Avocado");
+        sprite->setTag(Tag::TILE);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

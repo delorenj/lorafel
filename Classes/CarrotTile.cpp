@@ -4,6 +4,7 @@
 
 #include "CarrotTile.h"
 #include "XpStatResult.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -19,6 +20,7 @@ CarrotTile* CarrotTile::create() {
     if (sprite->initWithSpriteFrameName("carrot.png"))
     {
         sprite->setTileName("Carrot");
+        sprite->setTag(Tag::TILE);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

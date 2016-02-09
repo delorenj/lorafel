@@ -25,7 +25,19 @@ std::set<Match *> TileMatcher::findMatches() {
                 std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
                 auto match = new Match();
                 match->setTileSet(tileSetCopy);
-                matchSets.insert(match);
+
+                /**
+                 * If match set contains an enemy, filter out
+                 * match sets that don't meet the minimum
+                 * match number criteria.
+                 *
+                 * Add 1 to min match length IFF there is at least
+                 * 1 enemy
+                 */
+                auto matchModifier = match->getNumEnemies() > 0 ? 1 : 0;
+                if(match->getTileSetSize() >= match->getPrimaryTile()->getMinMatchSize() + matchModifier) {
+                    matchSets.insert(match);
+                }
             }
         }
     }
@@ -64,6 +76,7 @@ bool TileMatcher::_findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int orde
 
         int matches = 1;
         auto t = pTile;
+        // MinMatch should be largest minmatch in match group
         while ((t = t->getRight()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
