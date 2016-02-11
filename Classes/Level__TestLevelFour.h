@@ -73,7 +73,7 @@ namespace lorafel {
 
                 // Col4
                 col = new TileColumn();
-                CARROT CARROT GRAPE BEAR GRAPE AVOCADO AVOCADO BEAR CARROT
+                CARROT CARROT GRAPE BEAR GRAPE AVOCADO AVOCADO STICKMAN CARROT
                 m_initialGrid.push_back(col);
 
                 // Col5
@@ -88,7 +88,7 @@ namespace lorafel {
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO CARROT HERO GRAPE BEAR BEAR AVOCADO BEAR GRAPE
+                AVOCADO HERO CARROT GRAPE BEAR BEAR AVOCADO BEAR GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col8

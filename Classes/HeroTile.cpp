@@ -5,6 +5,8 @@
 #include "HeroTile.h"
 #include "EventDataFloatie.h"
 #include "Globals.h"
+#include "GameStateMachine.h"
+#include "BasicPlayerMove.h"
 
 using namespace lorafel;
 
@@ -86,4 +88,67 @@ void HeroTile::remove() {
     setVisible(false);
     m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 
+}
+
+void HeroTile::addEvents() {
+    auto listener = cocos2d::EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+
+    listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+    {
+        auto state = (GameState*) GameStateMachine::getInstance()->getState();
+        if(state->isBusy()) {
+            return false;
+        }
+
+        cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
+        cocos2d::Rect rect = this->getBoundingBox();
+        m_pSwappyGrid->setCurrentTouchId(touch->_ID);
+
+        if(rect.containsPoint(p))
+        {
+            GameStateMachine::getInstance()->enterState<TileTouchStartState>();
+            auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+            touchState->setTouchStartPos(p);
+            touchState->setTileStartPos(getPosition());
+            TileList* validMoves = new TileList();
+            validMoves->push_back(getTop());
+            validMoves->push_back(getLeft());
+            validMoves->push_back(getRight());
+            m_pSwappyGrid->highlightTiles(validMoves);
+            return true; // to indicate that we have consumed it.
+        }
+
+        return false; // we did not consume this event, pass thru.
+    };
+
+    listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
+        auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+        if("TileTouchStartState" == touchState->getName()) {
+            auto tilePos = touchState->getTileStartPos();
+            auto touchPos = touchState->getTouchStartPos();
+            GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
+            touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+            touchState->setTileStartPos(tilePos);
+            touchState->setTouchStartPos(touchPos);
+        }
+        if("TileTouchMoveState" == touchState->getName()) {
+            cocos2d::Vec2 delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
+            setPosition(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
+        }
+    };
+
+    listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+        auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
+        m_pSwappyGrid->getChildByTag(Tag::HIGHLIGHT)->removeFromParentAndCleanup(true);
+        if(touchState->getName() == "TileTouchMoveState") {
+            GameStateMachine::getInstance()->enterState<IdleState>();
+            auto move = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
+            runAction(move);
+        } else if(touchState->getName() == "TileTouchStartState") {
+            GameStateMachine::getInstance()->enterState<IdleState>();
+        }
+    };
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }

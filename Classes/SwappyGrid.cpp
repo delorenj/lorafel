@@ -587,3 +587,22 @@ Tile* SwappyGrid::getActivePlayerTile() {
 void SwappyGrid::setActivePlayerTile(Tile* pTile) {
     m_pActivePlayerTile = pTile;
 }
+
+void SwappyGrid::highlightTiles(TileList* pVector) {
+    auto glow = cocos2d::DrawNode::create();
+    for (auto tile : *pVector) {
+        glow->drawSolidRect(
+                tile->getPosition(),
+                cocos2d::Vec2(
+                        tile->getPosition().x+m_tileSize.width,
+                        tile->getPosition().y+m_tileSize.height),
+                cocos2d::Color4F(1,1,0,1)
+        );
+    }
+    glow->setTag(Tag::HIGHLIGHT);
+    glow->setOpacity(0);
+    glow->setOpacityModifyRGB(0);
+    addChild(glow);
+    auto a = cocos2d::FadeIn::create(10);
+    glow->runAction(a);
+}

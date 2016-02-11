@@ -12,6 +12,7 @@ namespace lorafel {
         static const int HERO = 4;
         static const int ENEMY = 5;
         static const int GLYPH = 6;
+        static const int HIGHLIGHT = 7;
     };
 }
 

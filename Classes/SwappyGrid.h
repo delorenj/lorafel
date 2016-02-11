@@ -108,6 +108,8 @@ namespace lorafel {
 
         void setActivePlayerTile(Tile* pTile);
 
+        void highlightTiles(TileList* pVector);
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;

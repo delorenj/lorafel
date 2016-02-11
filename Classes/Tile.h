@@ -47,7 +47,7 @@ namespace lorafel {
         void setGrid(SwappyGrid* pGrid);
         SwappyGrid* getGrid();
         void initOptions();
-        void addEvents();
+        virtual void addEvents();
         Color getVisitColor() const { return m_color; }
         void setVisitColor(const Color color) { m_color = color; }
         virtual int getVisitOrder() const { return m_firstVisit; }
