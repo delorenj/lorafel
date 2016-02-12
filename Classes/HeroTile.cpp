@@ -7,6 +7,7 @@
 #include "Globals.h"
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
+#include "DragDropSwapPlayerMove.h"
 
 using namespace lorafel;
 
@@ -137,6 +138,8 @@ void HeroTile::addEvents() {
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
 
+        // No matter what, get rid of all the particle
+        // tile highlight effects
         for(auto node : m_pSwappyGrid->getChildren()) {
             if(node->getTag() == Tag::HIGHLIGHT) {
                 auto pe = (cocos2d::ParticleSystem*) node;
@@ -147,9 +150,22 @@ void HeroTile::addEvents() {
 
         if(touchState->getName() == "TileTouchMoveState") {
             GameStateMachine::getInstance()->enterState<IdleState>();
-            auto move = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
-            runAction(move);
+
+            // Only perform the move if the finger is over
+            // a valid move position. Otherwise, move the
+            // tile back to its origin.
+            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(_parent->convertToNodeSpace(touch->getLocation())));
+            auto move = new DragDropSwapPlayerMove(m_pSwappyGrid,this, t, touchState->getTileStartPos());
+            if(move->isValid()) {
+                move->run();
+            } else {
+                auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
+                runAction(resetMove);
+            }
+
         } else if(touchState->getName() == "TileTouchStartState") {
+            // Didn't even try to move
+            // Just do nothing, go back to idle
             GameStateMachine::getInstance()->enterState<IdleState>();
         }
     };

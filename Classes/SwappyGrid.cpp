@@ -40,8 +40,6 @@ bool SwappyGrid::init() {
     m_tileSize = originalTileSize * 1.15;
     setScale(m_tileScaleFactor);
 
-    auto maxGridHeight = m_tileSize.height * NUM_ROWS;
-
     // Create the debug drawing node
     m_pDebugDraw = cocos2d::DrawNode::create();
     m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0, 0));
@@ -598,4 +596,12 @@ void SwappyGrid::highlightTiles(TileList* pVector) {
         p->setAutoRemoveOnFinish(true);
         addChild(p);
     }
+}
+
+cocos2d::DrawNode* SwappyGrid::getDebugDraw() {
+    return m_pDebugDraw;
+}
+
+TileGrid* SwappyGrid::getGrid() {
+    return m_pGrid;
 }

@@ -110,6 +110,10 @@ namespace lorafel {
 
         void highlightTiles(TileList* pVector);
 
+        cocos2d::DrawNode* getDebugDraw();
+
+        TileGrid* getGrid();
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;
