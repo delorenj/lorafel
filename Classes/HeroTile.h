@@ -25,6 +25,9 @@ namespace lorafel {
             return true;
         };
 
+        TileList* getValidMoves(Tile* pTile, int distance);
+
+        int getMaxMoveDistance();
     };
 }
 

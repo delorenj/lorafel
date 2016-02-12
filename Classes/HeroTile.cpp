@@ -111,11 +111,7 @@ void HeroTile::addEvents() {
             auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTouchStartPos(p);
             touchState->setTileStartPos(getPosition());
-            TileList* validMoves = new TileList();
-            validMoves->push_back(getTop());
-            validMoves->push_back(getLeft());
-            validMoves->push_back(getRight());
-            m_pSwappyGrid->highlightTiles(validMoves);
+            m_pSwappyGrid->highlightTiles(getValidMoves(this, 0));
             return true; // to indicate that we have consumed it.
         }
 
@@ -140,7 +136,15 @@ void HeroTile::addEvents() {
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
-        m_pSwappyGrid->getChildByTag(Tag::HIGHLIGHT)->removeFromParentAndCleanup(true);
+
+        for(auto node : m_pSwappyGrid->getChildren()) {
+            if(node->getTag() == Tag::HIGHLIGHT) {
+                auto pe = (cocos2d::ParticleSystem*) node;
+                pe->stopSystem();
+                pe->setDuration(0.1f);
+            }
+        }
+
         if(touchState->getName() == "TileTouchMoveState") {
             GameStateMachine::getInstance()->enterState<IdleState>();
             auto move = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
@@ -151,4 +155,32 @@ void HeroTile::addEvents() {
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+TileList* HeroTile::getValidMoves(Tile* pTile, int distance) {
+    TileList* moves = new TileList();
+
+    if(pTile == nullptr) {
+        return moves;
+    }
+
+    // If we're here, then def this
+    // tile is a proper move (maybe)
+    moves->push_back(pTile);
+
+    if(distance < getMaxMoveDistance()) {
+        auto top = getValidMoves(pTile->getTop(), distance+1);
+        auto bottom = getValidMoves(pTile->getBottom(), distance+1);
+        auto left = getValidMoves(pTile->getLeft(), distance+1);
+        auto right = getValidMoves(pTile->getRight(), distance+1);
+        moves->insert(std::end(*moves), std::begin(*top), std::end(*top));
+        moves->insert(std::end(*moves), std::begin(*bottom), std::end(*bottom));
+        moves->insert(std::end(*moves), std::begin(*left), std::end(*left));
+        moves->insert(std::end(*moves), std::begin(*right), std::end(*right));
+    }
+    return moves;
+}
+
+int HeroTile::getMaxMoveDistance() {
+    return 2;
 }
