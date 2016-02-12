@@ -17,15 +17,14 @@ void lorafel::DragDropSwapPlayerMove::run() {
     }
 
     auto move1 = cocos2d::MoveTo::create(0.2, m_pSwappyGrid->gridToScreen(m_pTile2->getGridPos()));
-    auto move2 = cocos2d::MoveTo::create(0.2, m_pSwappyGrid->gridToScreen(m_pTile1->getGridPos()));
+    auto move2 = cocos2d::MoveTo::create(0.2, m_origin);
     auto ease1 = cocos2d::EaseQuadraticActionOut::create(move1->clone());
     auto ease2 = cocos2d::EaseQuadraticActionOut::create(move2->clone());
     auto tile1 = m_pTile1;
     auto tile2 = m_pTile2;
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        Tile* tempTile = m_pSwappyGrid->getGrid()->at(m_pTile1->getGridPos().x)->at(m_pTile1->getGridPos().y);
-        m_pSwappyGrid->getGrid()->at(m_pTile1->getGridPos().x)->at(m_pTile1->getGridPos().y) = m_pSwappyGrid->getGrid()->at(m_pTile2->getGridPos().x)->at(m_pTile2->getGridPos().y);
-        m_pSwappyGrid->getGrid()->at(m_pTile2->getGridPos().x)->at(m_pTile2->getGridPos().y) = tempTile;
+        m_pSwappyGrid->getGrid()->at(m_pSwappyGrid->screenToGrid(m_origin).x)->at(m_pSwappyGrid->screenToGrid(m_origin).y) = m_pTile2;
+        m_pSwappyGrid->getGrid()->at(m_pTile2->getGridPos().x)->at(m_pTile2->getGridPos().y) = m_pTile1;
 
         if (state->getName() == "TileSwappingStartState") {
             gsm->enterState<TileSwappingEndState>();
