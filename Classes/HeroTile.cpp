@@ -112,6 +112,7 @@ void HeroTile::addEvents() {
             auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTouchStartPos(p);
             touchState->setTileStartPos(getPosition());
+            m_pSwappyGrid->clearVisitStates();
             m_pSwappyGrid->highlightTiles(getValidMoves(this, 0));
             return true; // to indicate that we have consumed it.
         }
@@ -127,11 +128,17 @@ void HeroTile::addEvents() {
             GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
             touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTileStartPos(tilePos);
-            touchState->setTouchStartPos(touchPos);
+            touchState->setTouchStartPos(tilePos);
         }
         if("TileTouchMoveState" == touchState->getName()) {
             cocos2d::Vec2 delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
-            setPosition(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
+
+            auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
+            setPosition(newPos);
+
+            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
+            CCLOG("%s", t->getTileName().c_str());
+
         }
     };
 
@@ -168,31 +175,45 @@ void HeroTile::addEvents() {
             // Just do nothing, go back to idle
             GameStateMachine::getInstance()->enterState<IdleState>();
         }
+
+        // Valid tiles are marked Tile::Color::YELLOW
+        // Clear that shit out.
+        m_pSwappyGrid->clearVisitStates();
+
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-TileList* HeroTile::getValidMoves(Tile* pTile, int distance) {
-    TileList* moves = new TileList();
+TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
+    TileSet* moves = new TileSet();
 
     if(pTile == nullptr) {
         return moves;
     }
 
+    if(pTile->getVisitOrder() > 0) {
+        return moves;
+    }
+
     // If we're here, then def this
     // tile is a proper move (maybe)
-    moves->push_back(pTile);
+    if(pTile == this) {
+        pTile->setVisitOrder(1000); // arbitrary >0 number
+    } else {
+        pTile->setVisitOrder(distance);
+        moves->insert(pTile);
+    }
 
     if(distance < getMaxMoveDistance()) {
         auto top = getValidMoves(pTile->getTop(), distance+1);
         auto bottom = getValidMoves(pTile->getBottom(), distance+1);
         auto left = getValidMoves(pTile->getLeft(), distance+1);
         auto right = getValidMoves(pTile->getRight(), distance+1);
-        moves->insert(std::end(*moves), std::begin(*top), std::end(*top));
-        moves->insert(std::end(*moves), std::begin(*bottom), std::end(*bottom));
-        moves->insert(std::end(*moves), std::begin(*left), std::end(*left));
-        moves->insert(std::end(*moves), std::begin(*right), std::end(*right));
+        moves->insert(std::begin(*top), std::end(*top));
+        moves->insert(std::begin(*bottom), std::end(*bottom));
+        moves->insert(std::begin(*left), std::end(*left));
+        moves->insert(std::begin(*right), std::end(*right));
     }
     return moves;
 }

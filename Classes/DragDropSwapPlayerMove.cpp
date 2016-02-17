@@ -23,8 +23,13 @@ void lorafel::DragDropSwapPlayerMove::run() {
     auto tile1 = m_pTile1;
     auto tile2 = m_pTile2;
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        m_pSwappyGrid->getGrid()->at(m_pSwappyGrid->screenToGrid(m_origin).x)->at(m_pSwappyGrid->screenToGrid(m_origin).y) = m_pTile2;
-        m_pSwappyGrid->getGrid()->at(m_pTile2->getGridPos().x)->at(m_pTile2->getGridPos().y) = m_pTile1;
+        auto pos1 = m_pTile1->getGridPos();
+        auto pos2 = m_pTile2->getGridPos();
+        auto grid = m_pSwappyGrid->getGrid();
+
+        Tile* tempTile = grid->at(pos1.x)->at(pos1.y);
+        grid->at(pos1.x)->at(pos1.y) = grid->at(pos2.x)->at(pos2.y);
+        grid->at(pos2.x)->at(pos2.y) = tempTile;
 
         if (state->getName() == "TileSwappingStartState") {
             gsm->enterState<TileSwappingEndState>();
@@ -40,7 +45,7 @@ void lorafel::DragDropSwapPlayerMove::run() {
 }
 
 bool lorafel::DragDropSwapPlayerMove::isValid() {
-    return true;
+    return m_pTile2->getVisitColor() == Tile::Color::YELLOW;
 }
 
 void lorafel::DragDropSwapPlayerMove::cancel() {

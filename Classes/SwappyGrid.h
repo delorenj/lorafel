@@ -25,6 +25,7 @@ namespace lorafel {
     class AIStrategy;
 
     typedef std::vector<Tile*> TileList, TileRow, TileColumn;
+    typedef std::set<Tile*> TileSet;
     typedef std::vector<TileColumn*> TileGrid;
     typedef std::queue<Tile*> TileQueue;
 
@@ -108,11 +109,13 @@ namespace lorafel {
 
         void setActivePlayerTile(Tile* pTile);
 
-        void highlightTiles(TileList* pVector);
+        void highlightTiles(TileSet* pSet);
 
         cocos2d::DrawNode* getDebugDraw();
 
         TileGrid* getGrid();
+
+        TileSet* getHighlightSet();
 
     protected:
         cpSpace* m_pWorld;

@@ -10,6 +10,7 @@
 #include "StringPatch.h"
 #include "PlayerManager.h"
 #include "Level.h"
+#include "Globals.h"
 
 using namespace lorafel;
 

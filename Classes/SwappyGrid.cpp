@@ -268,8 +268,8 @@ const cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
 
 const cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
-            (int) pos.x / (int) m_tileSize.width,
-            (int) pos.y / (int) m_tileSize.height
+            ROUND_2_INT(pos.x / m_tileSize.width),
+            ROUND_2_INT(pos.y / m_tileSize.height)
     );
 }
 
@@ -278,7 +278,7 @@ const cocos2d::Vec2 SwappyGrid::getTopOfScreen() const {
 }
 
 const int SwappyGrid::getTopOffscreenTileSlot() const {
-    return (int) (getTopOfScreen().y / m_tileSize.height);
+    return ROUND_2_INT(getTopOfScreen().y / m_tileSize.height);
 }
 
 int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile* tile, bool fromTop) {
@@ -586,15 +586,14 @@ void SwappyGrid::setActivePlayerTile(Tile* pTile) {
     m_pActivePlayerTile = pTile;
 }
 
-void SwappyGrid::highlightTiles(TileList* pVector) {
-    for (auto tile : *pVector) {
-        auto p = cocos2d::ParticleGalaxy::create();
+void SwappyGrid::highlightTiles(TileSet* pSet) {
+    for (auto tile : *pSet) {
+        auto p = cocos2d::ParticleSystemQuad::create("flame.plist");
+        tile->setVisitColor(Tile::Color::YELLOW);
         p->setTag(Tag::HIGHLIGHT);
         p->setPosition(PTILE_CENTER(tile));
-        p->setStartSize(15.0f);
-        p->setEndSize(5.0f);
         p->setAutoRemoveOnFinish(true);
-        addChild(p);
+        addChild(p,3);
     }
 }
 

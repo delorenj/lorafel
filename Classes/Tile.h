@@ -93,7 +93,6 @@ namespace lorafel {
          */
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
-
     };
 }
 
