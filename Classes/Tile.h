@@ -38,7 +38,7 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
-        const unsigned int MIN_MATCH_SIZE = 5;
+        const unsigned int MIN_MATCH_SIZE = 3;
         void addStatResult(StatResult* pStatResult) { m_pStatResults->insert(pStatResult); }
         std::set<StatResult *>* getStatResults() const { return m_pStatResults; };
 

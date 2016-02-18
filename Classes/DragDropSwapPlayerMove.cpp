@@ -9,11 +9,8 @@ void lorafel::DragDropSwapPlayerMove::run() {
     auto gsm = GameStateMachine::getInstance();
     auto state = gsm->getState();
 
-    if (state->getName() == "IdleState" ||
-            state->getName() == "TileTouchMoveState") {
+    if (state->getName() == "IdleState" || state->getName() == "TileTouchMoveState") {
         gsm->enterState<TileSwappingStartState>();
-    } else {
-        gsm->enterState<TileSwappingReverseStartState>();
     }
 
     auto move1 = cocos2d::MoveTo::create(0.2, m_pSwappyGrid->gridToScreen(m_pTile2->getGridPos()));
@@ -23,6 +20,7 @@ void lorafel::DragDropSwapPlayerMove::run() {
     auto tile1 = m_pTile1;
     auto tile2 = m_pTile2;
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        auto callBackState = gsm->getState();
         auto pos1 = m_pTile1->getGridPos();
         auto pos2 = m_pTile2->getGridPos();
         auto grid = m_pSwappyGrid->getGrid();
@@ -31,7 +29,7 @@ void lorafel::DragDropSwapPlayerMove::run() {
         grid->at(pos1.x)->at(pos1.y) = grid->at(pos2.x)->at(pos2.y);
         grid->at(pos2.x)->at(pos2.y) = tempTile;
 
-        if (state->getName() == "TileSwappingStartState") {
+        if (callBackState->getName() == "TileSwappingStartState") {
             gsm->enterState<TileSwappingEndState>();
         } else {
             gsm->setState<IdleState>();

@@ -128,17 +128,12 @@ void HeroTile::addEvents() {
             GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
             touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTileStartPos(tilePos);
-            touchState->setTouchStartPos(tilePos);
+            touchState->setTouchStartPos(touchPos);
         }
         if("TileTouchMoveState" == touchState->getName()) {
             cocos2d::Vec2 delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
-
             auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
             setPosition(newPos);
-
-            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
-            CCLOG("%s", t->getTileName().c_str());
-
         }
     };
 
@@ -156,15 +151,16 @@ void HeroTile::addEvents() {
         }
 
         if(touchState->getName() == "TileTouchMoveState") {
-            GameStateMachine::getInstance()->enterState<IdleState>();
-
             // Only perform the move if the finger is over
             // a valid move position. Otherwise, move the
             // tile back to its origin.
-            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(_parent->convertToNodeSpace(touch->getLocation())));
+            auto delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
+            auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
+            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
             auto move = new DragDropSwapPlayerMove(m_pSwappyGrid,this, t, touchState->getTileStartPos());
+
             if(move->isValid()) {
-                move->run();
+                m_pSwappyGrid->executePlayerMove(move);
             } else {
                 auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
                 runAction(resetMove);
