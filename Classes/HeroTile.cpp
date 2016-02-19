@@ -158,9 +158,14 @@ void HeroTile::addEvents() {
             auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
             auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
             auto move = new DragDropSwapPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), t->getGridPos());
-
-            if(move->isValid()) {
-                m_pSwappyGrid->executePlayerMove(move);
+            if(t != this) {
+                if(move->isValid()) {
+                    m_pSwappyGrid->executePlayerMove(move);
+                }
+            } else {
+                auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
+                runAction(resetMove);
+                GameStateMachine::getInstance()->enterState<IdleState>();
             }
 
         } else if(touchState->getName() == "TileTouchStartState") {
