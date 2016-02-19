@@ -157,13 +157,10 @@ void HeroTile::addEvents() {
             auto delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
             auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
             auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
-            auto move = new DragDropSwapPlayerMove(m_pSwappyGrid,this, t, touchState->getTileStartPos());
+            auto move = new DragDropSwapPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), t->getGridPos());
 
             if(move->isValid()) {
                 m_pSwappyGrid->executePlayerMove(move);
-            } else {
-                auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
-                runAction(resetMove);
             }
 
         } else if(touchState->getName() == "TileTouchStartState") {
@@ -194,12 +191,13 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
 
     // If we're here, then def this
     // tile is a proper move (maybe)
-    if(pTile == this) {
-        pTile->setVisitOrder(1000); // arbitrary >0 number
-    } else {
-        pTile->setVisitOrder(distance);
-        moves->insert(pTile);
-    }
+//    if(pTile == this) {
+//        pTile->setVisitOrder(1000); // arbitrary >0 number
+//    } else {
+
+    pTile->setVisitOrder(distance);
+    moves->insert(pTile);
+//    }
 
     if(distance < getMaxMoveDistance()) {
         auto top = getValidMoves(pTile->getTop(), distance+1);

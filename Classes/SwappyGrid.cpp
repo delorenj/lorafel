@@ -588,12 +588,49 @@ void SwappyGrid::setActivePlayerTile(Tile* pTile) {
 
 void SwappyGrid::highlightTiles(TileSet* pSet) {
     for (auto tile : *pSet) {
-        auto p = cocos2d::ParticleSystemQuad::create("flame.plist");
+        // Mark tile as valid move distance
+        // Not necessarily a valid match though
         tile->setVisitColor(Tile::Color::YELLOW);
-        p->setTag(Tag::HIGHLIGHT);
-        p->setPosition(PTILE_CENTER(tile));
-        p->setAutoRemoveOnFinish(true);
-        addChild(p,3);
+
+        if(tile->getLeft() == nullptr || pSet->find(tile->getLeft()) == pSet->end()) {
+            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+            p->setAnchorPoint(cocos2d::Vec2(0,0));
+            p->setTag(Tag::HIGHLIGHT);
+            p->setPosition(PTILE_LEFT(tile));
+            p->setContentSize(cocos2d::Size(5,tile->getContentSize().height));
+            p->setAutoRemoveOnFinish(true);
+            addChild(p,3);
+        }
+        if(tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
+            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+            p->setAnchorPoint(cocos2d::Vec2(0,0));
+            p->setTag(Tag::HIGHLIGHT);
+            p->setPosition(PTILE_TOP(tile));
+            p->setRotation(90.0f);
+            p->setContentSize(cocos2d::Size(tile->getContentSize().width, 5));
+            p->setAutoRemoveOnFinish(true);
+            addChild(p,3);
+        }
+        if(tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
+            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+            p->setAnchorPoint(cocos2d::Vec2(0,0));
+            p->setTag(Tag::HIGHLIGHT);
+            p->setPosition(PTILE_LEFT(tile));
+            p->setRotation(90.0f);
+            p->setContentSize(cocos2d::Size(tile->getContentSize().width, 5));
+            p->setAutoRemoveOnFinish(true);
+            addChild(p,3);
+        }
+        if(tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
+            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+            p->setAnchorPoint(cocos2d::Vec2(0,0));
+            p->setTag(Tag::HIGHLIGHT);
+            p->setPosition(PTILE_RIGHT(tile));
+            p->setContentSize(cocos2d::Size(5,tile->getContentSize().height));
+            p->setAutoRemoveOnFinish(true);
+            addChild(p,3);
+        }
+
     }
 }
 

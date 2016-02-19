@@ -10,11 +10,10 @@
 namespace lorafel {
     class DragDropSwapPlayerMove : public PlayerMove {
     public:
-        DragDropSwapPlayerMove(SwappyGrid *pGrid, Tile* tile1, Tile* tile2, cocos2d::Vec2 origin)
+        DragDropSwapPlayerMove(SwappyGrid* pGrid, cocos2d::Vec2 originGridPos, cocos2d::Vec2 destGridPos)
         : PlayerMove(pGrid) {
-                m_pTile1 = tile1;
-                m_pTile2 = tile2;
-                m_origin = origin;
+                m_destGridPos = destGridPos;
+                m_originGridPos = originGridPos;
         }
 
 
@@ -23,9 +22,8 @@ namespace lorafel {
         void cancel() override;
 
     protected:
-        Tile* m_pTile1;
-        Tile* m_pTile2;
-        cocos2d::Vec2 m_origin;
+        cocos2d::Vec2 m_destGridPos;
+        cocos2d::Vec2 m_originGridPos;
     };
 }
 

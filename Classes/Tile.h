@@ -14,6 +14,9 @@
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
+#define PTILE_LEFT(tile) tile->getPosition()
+#define PTILE_TOP(tile) cocos2d::Vec2(tile->getPosition().x, tile->getPosition().y + tile->getContentSize().height)
+#define PTILE_RIGHT(tile) cocos2d::Vec2(tile->getPosition().x+tile->getContentSize().width, tile->getPosition().y)
 namespace lorafel {
 
     class SwappyGrid;
@@ -38,7 +41,7 @@ namespace lorafel {
 
         CREATE_FUNC(Tile);
 
-        const unsigned int MIN_MATCH_SIZE = 3;
+        const unsigned int MIN_MATCH_SIZE = 5;
         void addStatResult(StatResult* pStatResult) { m_pStatResults->insert(pStatResult); }
         std::set<StatResult *>* getStatResults() const { return m_pStatResults; };
 
