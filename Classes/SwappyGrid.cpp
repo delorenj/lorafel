@@ -593,19 +593,19 @@ void SwappyGrid::highlightTiles(TileSet* pSet) {
         tile->setVisitColor(Tile::Color::YELLOW);
 
         if(tile->getLeft() == nullptr || pSet->find(tile->getLeft()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, PTILE_LEFT_CENTER(tile), 0);
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x, tile->getPosition().y + m_tileSize.height/2), 0);
         }
 
         if(tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, PTILE_TOP_CENTER(tile), 90);
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width/2, tile->getPosition().y + m_tileSize.height), 90);
         }
 
         if(tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, PTILE_BOTTOM_CENTER(tile), 90);
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width/2, tile->getPosition().y), 90);
         }
 
         if(tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, PTILE_RIGHT_CENTER(tile), 0);
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width, tile->getPosition().y + m_tileSize.height/2), 0);
         }
     }
 }
@@ -617,6 +617,7 @@ void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d
     p->setPosition(anchorPos);
     p->setRotation(rotation);
     p->setAutoRemoveOnFinish(true);
+    p->setPosVar(cocos2d::Vec2(0, m_tileSize.height-38));
     addChild(p,3);
 }
 
