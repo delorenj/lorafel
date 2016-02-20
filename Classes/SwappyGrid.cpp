@@ -593,45 +593,31 @@ void SwappyGrid::highlightTiles(TileSet* pSet) {
         tile->setVisitColor(Tile::Color::YELLOW);
 
         if(tile->getLeft() == nullptr || pSet->find(tile->getLeft()) == pSet->end()) {
-            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-            p->setAnchorPoint(cocos2d::Vec2(0,0));
-            p->setTag(Tag::HIGHLIGHT);
-            p->setPosition(PTILE_LEFT(tile));
-            p->setContentSize(cocos2d::Size(5,tile->getContentSize().height));
-            p->setAutoRemoveOnFinish(true);
-            addChild(p,3);
-        }
-        if(tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
-            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-            p->setAnchorPoint(cocos2d::Vec2(0,0));
-            p->setTag(Tag::HIGHLIGHT);
-            p->setPosition(PTILE_TOP(tile));
-            p->setRotation(90.0f);
-            p->setContentSize(cocos2d::Size(tile->getContentSize().width, 5));
-            p->setAutoRemoveOnFinish(true);
-            addChild(p,3);
-        }
-        if(tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
-            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-            p->setAnchorPoint(cocos2d::Vec2(0,0));
-            p->setTag(Tag::HIGHLIGHT);
-            p->setPosition(PTILE_LEFT(tile));
-            p->setRotation(90.0f);
-            p->setContentSize(cocos2d::Size(tile->getContentSize().width, 5));
-            p->setAutoRemoveOnFinish(true);
-            addChild(p,3);
-        }
-        if(tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
-            auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-            p->setAnchorPoint(cocos2d::Vec2(0,0));
-            p->setTag(Tag::HIGHLIGHT);
-            p->setPosition(PTILE_RIGHT(tile));
-            p->setContentSize(cocos2d::Size(5,tile->getContentSize().height));
-            p->setAutoRemoveOnFinish(true);
-            addChild(p,3);
+            addTileBorderHighlight(pSet, tile, PTILE_LEFT_CENTER(tile), 0);
         }
 
+        if(tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, PTILE_TOP_CENTER(tile), 90);
+        }
+
+        if(tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, PTILE_BOTTOM_CENTER(tile), 90);
+        }
+
+        if(tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, PTILE_RIGHT_CENTER(tile), 0);
+        }
     }
+}
+
+void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation) {
+    auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+    p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    p->setTag(Tag::HIGHLIGHT);
+    p->setPosition(anchorPos);
+    p->setRotation(rotation);
+    p->setAutoRemoveOnFinish(true);
+    addChild(p,3);
 }
 
 cocos2d::DrawNode* SwappyGrid::getDebugDraw() {
