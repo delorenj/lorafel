@@ -33,7 +33,7 @@ bool TestScene::init() {
     Point origin = Director::getInstance()->getVisibleOrigin();
 
     // Create the background
-    pSprBackground = Sprite::create("bg_debug.png");
+    pSprBackground = Sprite::create("bg1.png");
     CCLOG("visibleSize: (%f,%f)", visibleSize.width, visibleSize.height);
     CCLOG("bg size: (%f,%f)", pSprBackground->getContentSize().width, pSprBackground->getContentSize().height);
     CCLOG("origin: (%f, %f)", origin.x, origin.y);
