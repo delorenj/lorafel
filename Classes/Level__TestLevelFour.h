@@ -12,6 +12,7 @@
 #include "GrapeFactory.h"
 #include "CarrotFactory.h"
 #include "BearFactory.h"
+#include "MoneyBagFactory.h"
 #include "StickMan.h"
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
@@ -21,6 +22,7 @@ namespace lorafel {
 #define CARROT col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
 #define GRAPE col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
 #define BEAR col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
+#define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->factory->createTile());
 #define STICKMAN col->emplace_back(StickMan::create());
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
@@ -56,6 +58,11 @@ namespace lorafel {
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
+                config = new TileConfig();
+                config->factory = MoneyBagFactory::getInstance();
+                config->frequency = 1;
+                m_pTileConfigs->push_back(config);
+
                 // Col0
                 auto col = new TileColumn();
                 CARROT GRAPE BEAR AVOCADO CARROT BEAR CARROT AVOCADO GRAPE
@@ -73,7 +80,7 @@ namespace lorafel {
 
                 // Col4
                 col = new TileColumn();
-                CARROT CARROT GRAPE BEAR GRAPE AVOCADO AVOCADO STICKMAN CARROT
+                CARROT CARROT GRAPE BEAR MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
                 m_initialGrid.push_back(col);
 
                 // Col5

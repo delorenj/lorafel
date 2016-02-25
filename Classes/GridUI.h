@@ -9,7 +9,7 @@
 #include "ui/CocosGUI.h"
 #include "SwappyGrid.h"
 #include "XpUI.h"
-#include "CoinUI.h"
+#include "GoldUI.h"
 
 namespace lorafel {
     class GridUI : public cocos2d::Node {
@@ -34,13 +34,12 @@ namespace lorafel {
         void setGrid(SwappyGrid* grid) { m_pSwappyGrid = grid; }
         SwappyGrid* getGrid() const { return m_pSwappyGrid; }
         XpUI* getXpUI() const { return m_pXpUI; }
-//        UIComponent<unsigned long>* getGoldUI() const { return m_pGoldUI; }
+        GoldUI* getGoldUI() const { return m_pGoldUI; }
 
     protected:
         SwappyGrid* m_pSwappyGrid;
         XpUI* m_pXpUI;
-//        UIComponent<unsigned long>* m_pGoldUI;
-        CoinUI* m_pCoinUI;
+        GoldUI* m_pGoldUI;
     };
 }
 

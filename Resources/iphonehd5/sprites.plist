@@ -35,7 +35,7 @@
 			<key>avocado.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{113,12},{40,54}}</string>
+				<string>{{113,67},{40,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -49,7 +49,7 @@
 			<key>bear.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{113,67},{40,54}}</string>
+				<string>{{154,12},{40,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -63,7 +63,7 @@
 			<key>carrot.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{192,12},{27,54}}</string>
+				<string>{{228,12},{27,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -102,10 +102,24 @@
 				<string>{57,57}</string>
 			</dict>
 
+			<key>coin.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{226,67},{27,28}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{27,28}}</string>
+				<key>sourceSize</key>
+				<string>{27,28}</string>
+			</dict>
+
 			<key>enemy1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{154,12},{37,55}}</string>
+				<string>{{154,67},{37,55}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -119,7 +133,7 @@
 			<key>grapes.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{188,68},{32,54}}</string>
+				<string>{{195,12},{32,54}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -130,10 +144,24 @@
 				<string>{56,56}</string>
 			</dict>
 
+			<key>money_bag_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{113,12},{40,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{8,1},{40,54}}</string>
+				<key>sourceSize</key>
+				<string>{56,56}</string>
+			</dict>
+
 			<key>player.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{154,68},{33,52}}</string>
+				<string>{{192,67},{33,52}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>

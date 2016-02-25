@@ -6,7 +6,6 @@
 #include "XpFloatie.h"
 #include "Globals.h"
 #include "EnemyHitFloatie.h"
-#include "CoinUI.h"
 
 bool lorafel::GridUI::init() {
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -21,13 +20,13 @@ bool lorafel::GridUI::init() {
     m_pXpUI->setName("XpBar");
     addChild(m_pXpUI);
 
-    m_pCoinUI = CoinUI::create();
-    m_pCoinUI->setAnchorPoint(cocos2d::Vec2(1,1));
+    m_pGoldUI = GoldUI::create();
+    m_pGoldUI->setAnchorPoint(cocos2d::Vec2(1,1));
 
-    m_pCoinUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width-130, visibleSize.height-5));
-    m_pCoinUI->setTag(Tag::UI);
-    m_pCoinUI->setName("CoinUI");
-    addChild(m_pCoinUI);
+    m_pGoldUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width - 5, visibleSize.height - 5));
+    m_pGoldUI->setTag(Tag::UI);
+    m_pGoldUI->setName("GoldUI");
+    addChild(m_pGoldUI);
 
     auto _listener = cocos2d::EventListenerCustom::create("xp", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());

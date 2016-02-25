@@ -9,11 +9,13 @@ using namespace lorafel;
 
 Player::Player() {
     m_pLevelManager = new LinearLevelManager();
+    m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
 }
 
 Player::~Player() {
     CC_SAFE_DELETE(m_pLevelManager);
     CC_SAFE_DELETE(m_pTile);
+    CC_SAFE_DELETE(m_pDispatcher);
 }
 
 void Player::initFromServer() {

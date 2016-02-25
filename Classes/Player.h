@@ -16,20 +16,28 @@ namespace lorafel {
 
     public:
         Player();
+
         virtual ~Player();
 
         void initFromServer();
 
         LevelManager* getLevelManager() const { return m_pLevelManager; }
 
-        unsigned long updateGoldBy(unsigned long val) {
-            val = val > m_maxGold - m_gold ? m_maxGold : val;
-            m_gold += val;
+        unsigned long updateGoldBy(int amount, Match* pMatch) {
+            amount = amount > m_maxGold - m_gold ? m_maxGold : amount;
+            m_gold += amount;
+
+            // Fire off an XP event
+            cocos2d::EventCustom e("gold");
+            EventData* val = new EventDataFloatie(amount, pMatch->getTileSetCenter());
+            e.setUserData(val);
+            m_pDispatcher->dispatchEvent(&e);
+            CC_SAFE_DELETE(val);
+
             return m_gold;
         }
 
         unsigned long getGold() const { return m_gold; }
-
         void setGold(unsigned long val) { m_gold = std::max(val, m_maxGold); }
 
         unsigned long updateHpBy(unsigned long val) {
@@ -67,9 +75,11 @@ namespace lorafel {
         unsigned long m_mp = 20;
 
         // Stat Ranges
-        unsigned long m_maxGold = 5000;
+        unsigned long m_maxGold = 5000000;
         unsigned long m_maxHp = 100;
         unsigned long m_maxMp = 20;
+
+        cocos2d::EventDispatcher* m_pDispatcher;
 
         LinearLevelManager* m_pLevelManager;
         Progress*   m_pProgress;

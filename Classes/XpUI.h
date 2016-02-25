@@ -14,7 +14,7 @@ namespace lorafel {
     public:
         CREATE_FUNC(XpUI);
         virtual bool init() override;
-        void tweenXp(float dt);
+        void tween(float dt);
 
     protected:
         Player* m_pPlayer;
