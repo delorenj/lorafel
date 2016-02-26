@@ -65,7 +65,7 @@ bool lorafel::GoldUI::init() {
     m_pMeter->addChild(m_pText);
 
     layout->setContentSize(cocos2d::Size(
-            m_pCoin->getContentSize().width + m_pMeterContainer->getContentSize().width + 10,
+            m_pCoin->getContentSize().width + m_pMeterContainer->getContentSize().width,
             m_pCoin->getContentSize().height));
     setContentSize(layout->getContentSize());
 
@@ -73,7 +73,9 @@ bool lorafel::GoldUI::init() {
     CCLOG("Meter Size: %f, %f", m_pMeter->getContentSize().width, m_pMeter->getContentSize().height);
     CCLOG("Coin Size: %f, %f", m_pCoin->getContentSize().width, m_pCoin->getContentSize().height);
 
-
+//    auto d = cocos2d::DrawNode::create();
+//    d->drawCircle(getAnchorPointInPoints(),5,0,5,0,1,1,cocos2d::Color4F::MAGENTA);
+//    addChild(d);
 
 
     auto _listener = cocos2d::EventListenerCustom::create("gold", [=](cocos2d::EventCustom* event){
