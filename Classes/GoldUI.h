@@ -21,6 +21,8 @@ namespace lorafel {
         cocos2d::ui::Text* m_pText;
         cocos2d::Sprite* m_pCoin;
         int m_modifyBy = 0;
+        cocos2d::ui::LoadingBar* m_pMeter;
+        cocos2d::Sprite* m_pMeterContainer;
     };
 }
 
