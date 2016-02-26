@@ -22,6 +22,7 @@ namespace lorafel {
         cocos2d::ui::Text* m_pXpText;
         cocos2d::ui::Text* m_pNextXpText;
         cocos2d::ui::LoadingBar* m_pXpBar;
+        cocos2d::Sprite* m_pXpBarContainer;
         cocos2d::ui::Text* m_pLvlText;
     };
 }

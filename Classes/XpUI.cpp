@@ -31,10 +31,14 @@ bool XpUI::init() {
 
     auto lp = cocos2d::ui::RelativeLayoutParameter::create();
     lp->setAlign(cocos2d::ui::RelativeLayoutParameter::RelativeAlign::PARENT_TOP_CENTER_HORIZONTAL);
-    lp->setMargin(cocos2d::ui::Margin(0,3,0,8));
+    lp->setMargin(cocos2d::ui::Margin(0,0,0,0));
     m_pXpBar = cocos2d::ui::LoadingBar::create("xp_bar.png");
     m_pXpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
     m_pXpBar->setLayoutParameter(lp);
+    m_pXpBarContainer = cocos2d::Sprite::create("xp_bar_container.png");
+    m_pXpBarContainer->setAnchorPoint(cocos2d::Vec2(0,0));
+    m_pXpBarContainer->setPosition(cocos2d::Vec2(0,0));
+    m_pXpBar->addChild(m_pXpBarContainer);
     layout->addChild(m_pXpBar);
 
     lp = cocos2d::ui::RelativeLayoutParameter::create();
@@ -53,14 +57,13 @@ bool XpUI::init() {
     m_pNextXpText->setLayoutParameter(lp);
 //    layout->addChild(m_pNextXpText);
 
-    lp = cocos2d::ui::RelativeLayoutParameter::create();
-    lp->setAlign(cocos2d::ui::RelativeLayoutParameter::RelativeAlign::PARENT_BOTTOM_CENTER_HORIZONTAL);
-    lp->setMargin(cocos2d::ui::Margin(0,15,0,0));
     m_pLvlText = cocos2d::ui::Text::create("LVL","fonts/BebasNeue Bold.ttf", 33);
     m_pLvlText->setColor(cocos2d::Color3B::WHITE);
     m_pLvlText->setString("Level " + lorafel::to_string<const int>(m_pLevelMananger->getLevel()));
-    m_pLvlText->setLayoutParameter(lp);
-    layout->addChild(m_pLvlText);
+    m_pLvlText->setAnchorPoint(cocos2d::Vec2(0.5,1));
+    m_pLvlText->enableOutline(cocos2d::Color4B::BLACK, 2);
+    m_pLvlText->setPosition(cocos2d::Vec2(m_pXpBarContainer->getContentSize().width/2, -5));
+    m_pXpBarContainer->addChild(m_pLvlText);
 
     auto _listener = cocos2d::EventListenerCustom::create("xp", [=](cocos2d::EventCustom* event){
         auto val = static_cast<EventDataInteger*>(event->getUserData())->val;

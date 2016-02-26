@@ -18,21 +18,21 @@ bool lorafel::GoldUI::init() {
     m_pCoin->setAnchorPoint(cocos2d::Vec2(0,0));
     m_pCoin->setPosition(cocos2d::Vec2(0,0));
 
-    m_pText = cocos2d::ui::Text::create("0", "fonts/BebasNeue Bold.ttf", 33);
-    m_pText->setAnchorPoint(cocos2d::Vec2(0,0));
+    m_pText = cocos2d::ui::Text::create("0", "fonts/BebasNeue Bold.ttf", 50);
+    m_pText->setAnchorPoint(cocos2d::Vec2(1,0));
     m_pText->setPosition(cocos2d::Vec2(
-            m_pCoin->getContentSize().width+5,
-            -6
+            m_pCoin->getPosition().x - 10,
+            -13
     ));
+
     m_pText->setUnifySizeEnabled(true);
     m_pText->setTextColor(cocos2d::Color4B(252,238,33,255));
-    m_pText->enableOutline(cocos2d::Color4B(126,119,17,255));
+    m_pText->enableOutline(cocos2d::Color4B::BLACK, 1);
     m_pText->enableShadow(cocos2d::Color4B(63,60,8,100));
-    m_pText->enableGlow(cocos2d::Color4B(255,245,40,255));
+//    m_pText->enableGlow(cocos2d::Color4B(255,245,40,255));
 
-    CCLOG("Gold text size: %f,%f", m_pText->getContentSize().width, m_pText->getContentSize().height);
     setContentSize(cocos2d::Size(
-            m_pCoin->getContentSize().width + m_pText->getContentSize().width*7 + 20,
+            m_pCoin->getContentSize().width + m_pText->getContentSize().width + 10,
             m_pCoin->getContentSize().height));
 
     m_pText->setString(to_string(m_pPlayer->getGold()));

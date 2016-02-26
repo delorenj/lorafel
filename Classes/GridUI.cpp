@@ -23,7 +23,7 @@ bool lorafel::GridUI::init() {
     m_pGoldUI = GoldUI::create();
     m_pGoldUI->setAnchorPoint(cocos2d::Vec2(1,1));
 
-    m_pGoldUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width - 5, visibleSize.height - 5));
+    m_pGoldUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width, visibleSize.height - 5));
     m_pGoldUI->setTag(Tag::UI);
     m_pGoldUI->setName("GoldUI");
     addChild(m_pGoldUI);
