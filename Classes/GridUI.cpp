@@ -15,18 +15,27 @@ bool lorafel::GridUI::init() {
     m_pXpUI = XpUI::create();
     m_pXpUI->setAnchorPoint(cocos2d::Vec2(0,1));
 
-    m_pXpUI->setPosition(cocos2d::Vec2(origin.x+5, visibleSize.height-5));
+    m_pXpUI->setPosition(cocos2d::Vec2(origin.x+5, visibleSize.height-13));
     m_pXpUI->setTag(Tag::UI);
     m_pXpUI->setName("XpBar");
     addChild(m_pXpUI);
 
+    m_pHpUI = HpUI::create();
+    m_pHpUI->setAnchorPoint(cocos2d::Vec2(1,1));
+
+    m_pHpUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width, visibleSize.height - 13));
+    m_pHpUI->setTag(Tag::UI);
+    m_pHpUI->setName("HpUI");
+    addChild(m_pHpUI);
+
     m_pGoldUI = GoldUI::create();
     m_pGoldUI->setAnchorPoint(cocos2d::Vec2(1,1));
 
-    m_pGoldUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width, visibleSize.height - 5));
+    m_pGoldUI->setPosition(cocos2d::Vec2(origin.x+visibleSize.width, visibleSize.height - m_pHpUI->getContentSize().height - 26));
     m_pGoldUI->setTag(Tag::UI);
     m_pGoldUI->setName("GoldUI");
     addChild(m_pGoldUI);
+
 
     auto _listener = cocos2d::EventListenerCustom::create("xp", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());

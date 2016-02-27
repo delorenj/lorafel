@@ -21,3 +21,29 @@ Player::~Player() {
 void Player::initFromServer() {
     CCASSERT(0, "Load player from server not yet implemented");
 }
+
+unsigned long Player::updateGoldBy(int amount, Match* pMatch) {
+    amount = amount > m_maxGold - m_gold ? m_maxGold : amount;
+    m_gold += amount;
+
+    // Fire off an XP event
+    cocos2d::EventCustom e("gold");
+    EventData* val = new EventDataFloatie(amount, pMatch->getTileSetCenter());
+    e.setUserData(val);
+    m_pDispatcher->dispatchEvent(&e);
+    CC_SAFE_DELETE(val);
+
+    return m_gold;
+}
+
+unsigned long Player::updateHpBy(unsigned long val) {
+    val = val > m_maxHp - m_hp ? m_maxHp : val;
+    m_hp += val;
+    return m_hp;
+}
+
+unsigned long Player::updateMpBy(unsigned long val) {
+    val = val > m_maxMp - m_mp ? m_maxMp : val;
+    m_mp += val;
+    return m_mp;
+}

@@ -144,6 +144,7 @@
 		BA078CEC1C22E89E00B0E1EA /* res in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDF1C22E89E00B0E1EA /* res */; };
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
+		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B31C7DE555000AF703 /* MoneyBagTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B11C7DE555000AF703 /* MoneyBagTile.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -351,6 +352,8 @@
 		BA078CDE1C22E89E00B0E1EA /* iphonehd5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphonehd5; sourceTree = "<group>"; };
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
+		BABFB8A31C815A7700AFD266 /* HpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpUI.cpp; sourceTree = "<group>"; };
+		BABFB8A41C815A7700AFD266 /* HpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpUI.h; sourceTree = "<group>"; };
 		BACEE7B11C7DE555000AF703 /* MoneyBagTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoneyBagTile.cpp; sourceTree = "<group>"; };
 		BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyBagTile.h; sourceTree = "<group>"; };
 		BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldStatResult.cpp; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BABFB8A31C815A7700AFD266 /* HpUI.cpp */,
+				BABFB8A41C815A7700AFD266 /* HpUI.h */,
 				BACEE7B81C7DE967000AF703 /* MoneyBagFactory.h */,
 				BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */,
 				BACEE7B61C7DE889000AF703 /* GoldStatResult.h */,
@@ -834,6 +839,7 @@
 				BACEE7B31C7DE555000AF703 /* MoneyBagTile.cpp in Sources */,
 				3167DE511FD9D32C4D9DE8A1 /* Tile.cpp in Sources */,
 				3167D2B9A68682B12A96FF10 /* CarrotTile.cpp in Sources */,
+				BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */,
 				3167DD571708BA508C361A49 /* GrapeTile.cpp in Sources */,
 				BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */,
 				3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */,

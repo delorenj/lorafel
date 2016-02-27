@@ -16,57 +16,23 @@ namespace lorafel {
 
     public:
         Player();
-
         virtual ~Player();
 
         void initFromServer();
-
         LevelManager* getLevelManager() const { return m_pLevelManager; }
-
-        unsigned long updateGoldBy(int amount, Match* pMatch) {
-            amount = amount > m_maxGold - m_gold ? m_maxGold : amount;
-            m_gold += amount;
-
-            // Fire off an XP event
-            cocos2d::EventCustom e("gold");
-            EventData* val = new EventDataFloatie(amount, pMatch->getTileSetCenter());
-            e.setUserData(val);
-            m_pDispatcher->dispatchEvent(&e);
-            CC_SAFE_DELETE(val);
-
-            return m_gold;
-        }
-
+        unsigned long updateGoldBy(int amount, Match* pMatch);
         unsigned long getGold() const { return m_gold; }
+        unsigned long getMaxGold() const { return m_maxGold; }
+        unsigned long getMaxHp() const { return m_maxHp; }
         void setGold(unsigned long val) { m_gold = std::max(val, m_maxGold); }
-
-        unsigned long updateHpBy(unsigned long val) {
-            val = val > m_maxHp - m_hp ? m_maxHp : val;
-            m_hp += val;
-            return m_hp;
-        }
-
-        unsigned long getHp() const { return m_gold; }
-
+        unsigned long updateHpBy(unsigned long val);
+        unsigned long getHp() const { return m_hp; }
         void setHp(unsigned long val) { m_hp = std::max(val, m_maxHp); }
-
-        unsigned long updateMpBy(unsigned long val) {
-            val = val > m_maxMp - m_mp ? m_maxMp : val;
-            m_mp += val;
-            return m_mp;
-        }
-
+        unsigned long updateMpBy(unsigned long val);
         unsigned long getMp() const { return m_mp; }
-
         void setMp(unsigned long val) { m_mp = std::max(val, m_maxMp); }
-
-        Tile* getTile() const {
-            return m_pTile;
-        }
-
-        void setTile(Tile* tile) {
-            m_pTile = tile;
-        }
+        Tile* getTile() const { return m_pTile; }
+        void setTile(Tile* tile) { m_pTile = tile; }
 
     protected:
         // Current Stats
@@ -75,7 +41,7 @@ namespace lorafel {
         unsigned long m_mp = 20;
 
         // Stat Ranges
-        unsigned long m_maxGold = 5000000;
+        unsigned long m_maxGold = 1000;
         unsigned long m_maxHp = 100;
         unsigned long m_maxMp = 20;
 

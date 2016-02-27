@@ -10,6 +10,7 @@
 #include "SwappyGrid.h"
 #include "XpUI.h"
 #include "GoldUI.h"
+#include "HpUI.h"
 
 namespace lorafel {
     class GridUI : public cocos2d::Node {
@@ -40,6 +41,7 @@ namespace lorafel {
         SwappyGrid* m_pSwappyGrid;
         XpUI* m_pXpUI;
         GoldUI* m_pGoldUI;
+        HpUI* m_pHpUI;
     };
 }
 
