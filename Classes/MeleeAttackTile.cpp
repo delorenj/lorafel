@@ -4,6 +4,8 @@
 
 #include "MeleeAttackTile.h"
 #include "Globals.h"
+#include "EnemyTile.h"
+#include "HeroTile.h"
 
 using namespace lorafel;
 
@@ -33,6 +35,8 @@ MeleeAttackTile* MeleeAttackTile::create() {
 }
 
 void MeleeAttackTile::onMatch(Match* pMatch) {
+    auto activePlayerTile = m_pSwappyGrid->getActivePlayerTile();
+    auto isEnemyTurn = activePlayerTile->getTag() == Tag::ENEMY;
     /*
      * if enemy is part of the match, only attack
      * that enemy. Attack is always critical
@@ -40,14 +44,24 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
      * Otherwise, pick an enemy at random
      * and apply a regular hit
      */
-    if(pMatch->getNumEnemies() > 0) {
-        auto enemies = pMatch->getEnemies();
-        for(auto elem : *enemies) {
-            EnemyTile* enemy = static_cast<EnemyTile*>(elem);
-            enemy->applyHit(pMatch);
+
+    // If it's the hero's turn, hurt the enemy
+    if(!isEnemyTurn) {
+        if(pMatch->getNumEnemies() > 0) {
+            for(auto elem : *pMatch->getEnemies()) {
+                EnemyTile* enemy = static_cast<EnemyTile*>(elem);
+                if(enemy != nullptr) {
+                    enemy->applyHit(pMatch);
+                }
+            }
+        } else {
+            auto enemy = m_pSwappyGrid->getRandomEnemy();
+            if(enemy != nullptr) {
+                static_cast<EnemyTile*>(enemy)->applyHit(pMatch);
+            }
         }
     } else {
-        auto enemy = m_pSwappyGrid->getRandomEnemy();
-        enemy->applyHit(pMatch);
+        static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
     }
+    remove();
 }

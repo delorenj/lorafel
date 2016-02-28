@@ -118,6 +118,10 @@ namespace lorafel {
 
         TileSet* getHighlightSet();
 
+        Tile* getRandomEnemy();
+
+        Tile* getHeroTile();
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;

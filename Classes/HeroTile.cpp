@@ -36,7 +36,6 @@ bool HeroTile::init() {
 }
 
 void HeroTile::applyHit(Match* pMatch) {
-    //TODO
 //    auto primaryTile = pMatch->getPrimaryTile();
 //    bool isStackable = primaryTile->isStackable();
 //    int hitAmount = primaryTile->getRandHit(this);
@@ -61,7 +60,7 @@ void HeroTile::applyHit(Match* pMatch) {
 //        //game over
 //        remove();
 //    }
-
+//
 }
 
 void HeroTile::onHit(cocos2d::EventCustom* event) {

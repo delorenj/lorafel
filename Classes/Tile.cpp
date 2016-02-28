@@ -194,7 +194,7 @@ void Tile::onMatch(Match *pMatch) {
     remove();
 }
 
-int Tile::getRandHit(EnemyTile *pEnemyTile) {
+int Tile::getRandHit(Tile* pTile) {
     Player* player;
     player = PlayerManager::getInstance()->getPlayer();
     return 10;

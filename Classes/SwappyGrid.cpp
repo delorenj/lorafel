@@ -7,6 +7,7 @@
 #include "Level.h"
 #include "Globals.h"
 #include "EnemyTile.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -634,4 +635,22 @@ cocos2d::DrawNode* SwappyGrid::getDebugDraw() {
 
 TileGrid* SwappyGrid::getGrid() {
     return m_pGrid;
+}
+
+Tile* SwappyGrid::getRandomEnemy() {
+    auto numEnemies = getNumberOfRemainingEnemies();
+
+    if(numEnemies == 0) return nullptr;
+
+    auto enemies = getEnemyTiles();
+    TileSet::const_iterator it(enemies.begin());
+
+    if(numEnemies == 1) return *it;
+
+    std::advance(it,std::rand()%(enemies.size()-1));
+    return *it;
+}
+
+Tile* SwappyGrid::getHeroTile() {
+    return PlayerManager::getInstance()->getPlayer()->getTile();
 }

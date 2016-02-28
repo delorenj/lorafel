@@ -55,7 +55,7 @@ namespace lorafel {
 
                 config = new TileConfig();
                 config->factory = MeleeAttackFactory::getInstance();
-                config->frequency = 7;
+                config->frequency = 2;
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
@@ -65,47 +65,47 @@ namespace lorafel {
 
                 // Col0
                 auto col = new TileColumn();
-                CARROT GRAPE MELEE_ATTACK AVOCADO CARROT MELEE_ATTACK CARROT AVOCADO GRAPE
+                CARROT GRAPE CARROT AVOCADO CARROT CARROT CARROT AVOCADO GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col1
                 col = new TileColumn();
-                GRAPE AVOCADO CARROT GRAPE AVOCADO CARROT AVOCADO MELEE_ATTACK CARROT
+                GRAPE AVOCADO CARROT GRAPE AVOCADO CARROT AVOCADO CARROT CARROT
                 m_initialGrid.push_back(col);
 
                 // Col2
                 col = new TileColumn();
-                AVOCADO CARROT AVOCADO MELEE_ATTACK MELEE_ATTACK GRAPE GRAPE AVOCADO MELEE_ATTACK
+                AVOCADO CARROT AVOCADO CARROT CARROT GRAPE GRAPE AVOCADO CARROT
                 m_initialGrid.push_back(col);
 
                 // Col4
                 col = new TileColumn();
-                CARROT CARROT GRAPE MELEE_ATTACK MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
+                CARROT CARROT GRAPE CARROT MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
                 m_initialGrid.push_back(col);
 
                 // Col5
                 col = new TileColumn();
-                AVOCADO AVOCADO CARROT CARROT AVOCADO MELEE_ATTACK AVOCADO AVOCADO GRAPE
+                AVOCADO AVOCADO CARROT CARROT AVOCADO CARROT AVOCADO AVOCADO GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col6
                 col = new TileColumn();
-                CARROT GRAPE CARROT AVOCADO MELEE_ATTACK AVOCADO STICKMAN GRAPE MELEE_ATTACK
+                CARROT GRAPE CARROT AVOCADO CARROT AVOCADO STICKMAN GRAPE CARROT
                 m_initialGrid.push_back(col);
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO HERO CARROT GRAPE MELEE_ATTACK MELEE_ATTACK AVOCADO MELEE_ATTACK GRAPE
+                AVOCADO HERO CARROT GRAPE CARROT CARROT AVOCADO CARROT GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col8
                 col = new TileColumn();
-                GRAPE GRAPE MELEE_ATTACK CARROT GRAPE CARROT CARROT GRAPE AVOCADO
+                GRAPE GRAPE CARROT CARROT GRAPE CARROT CARROT GRAPE AVOCADO
                 m_initialGrid.push_back(col);
 
                 // Col9
                 col = new TileColumn();
-                CARROT MELEE_ATTACK CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
+                CARROT CARROT CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
                 m_initialGrid.push_back(col);
         }
 
