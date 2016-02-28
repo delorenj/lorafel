@@ -515,7 +515,7 @@ void SwappyGrid::DrawDebugData() {
     m_pDebugDraw->drawLine(cocos2d::Vec2(getAnchorPointInPoints().x + 10, getAnchorPointInPoints().y), cocos2d::Vec2(getAnchorPointInPoints().x - 10, getAnchorPointInPoints().y), cocos2d::Color4F::YELLOW);
 }
 
-int SwappyGrid::getNumberOfRemainingMonsters() {
+int SwappyGrid::getNumberOfRemainingEnemies() {
     return (int) getEnemyTiles().size();
 }
 

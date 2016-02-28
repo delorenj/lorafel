@@ -21,7 +21,7 @@ Tile* Level::getRandomTile() {
  * in 5 tries", or "killed all monsters in under X time"
  */
 bool Level::isCleared() const {
-    return m_pSwappyGrid->getNumberOfRemainingMonsters() == 0;
+    return m_pSwappyGrid->getNumberOfRemainingEnemies() == 0;
 }
 
 TurnManager* Level::getTurnManager() {

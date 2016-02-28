@@ -7,7 +7,7 @@
 #include "AvocadoFactory.h"
 #include "GrapeFactory.h"
 #include "CarrotFactory.h"
-#include "BearFactory.h"
+#include "MeleeAttackFactory.h"
 
 namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
@@ -36,7 +36,7 @@ namespace lorafel {
                     m_pTileConfigs->push_back(config);
 
                     config = new TileConfig();
-                    config->factory = BearFactory::getInstance();
+                    config->factory = MeleeAttackFactory::getInstance();
                     config->frequency = 7;
                     m_pTileConfigs->push_back(config);
 

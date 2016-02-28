@@ -9,7 +9,7 @@
 #include "Tile.h"
 #include "AvocadoFactory.h"
 #include "CarrotFactory.h"
-#include "BearFactory.h"
+#include "MeleeAttackFactory.h"
 #include "GrapeFactory.h"
 #include "NormalDistributionRandomizer.h"
 
@@ -35,7 +35,7 @@ namespace lorafel {
             m_pTileConfigs->push_back(config);
 
             config = new TileConfig();
-            config->factory = BearFactory::getInstance();
+            config->factory = MeleeAttackFactory::getInstance();
             config->frequency = 7;
             m_pTileConfigs->push_back(config);
 

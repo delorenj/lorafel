@@ -6,27 +6,27 @@
 #define LORAFEL_BEARFACTORY_H
 
 #include "TileFactory.h"
-#include "BearTile.h"
+#include "MeleeAttackTile.h"
 
 namespace lorafel {
-    class BearFactory : public TileFactory {
+    class MeleeAttackFactory : public TileFactory {
     protected:
-        BearFactory() {} ;
+        MeleeAttackFactory() {} ;
         static TileFactory* m_pInstance;
 
     public:
         static TileFactory* getInstance() {
             if(m_pInstance != nullptr) return m_pInstance;
-            m_pInstance = new BearFactory();
+            m_pInstance = new MeleeAttackFactory();
             return m_pInstance;
         }
 
         virtual Tile* createTile() override {
-            return BearTile::create();
+            return MeleeAttackTile::create();
         }
     };
 
-    TileFactory* BearFactory::m_pInstance;
+    TileFactory* MeleeAttackFactory::m_pInstance;
 
 }
 

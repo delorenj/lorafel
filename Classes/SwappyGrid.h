@@ -101,7 +101,8 @@ namespace lorafel {
 
         Level* getLevel();
 
-        int getNumberOfRemainingMonsters();
+        int getNumberOfRemainingEnemies();
+        std::set<Tile*> getEnemyTiles();
 
         void executePlayerMove(PlayerMove* pMove);
 
@@ -164,8 +165,6 @@ namespace lorafel {
         Tile* getNextTileAbove(int x, int y) const;
 
         void DrawDebugData();
-
-        std::set<Tile*> getEnemyTiles();
 
         void ProcessTurnManager();
 

@@ -11,7 +11,7 @@
 #include "AvocadoFactory.h"
 #include "GrapeFactory.h"
 #include "CarrotFactory.h"
-#include "BearFactory.h"
+#include "MeleeAttackFactory.h"
 #include "MoneyBagFactory.h"
 #include "StickMan.h"
 #include "PlayerManager.h"
@@ -21,7 +21,7 @@ namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
 #define CARROT col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
 #define GRAPE col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
-#define BEAR col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
+#define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
 #define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->factory->createTile());
 #define STICKMAN col->emplace_back(StickMan::create());
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
@@ -54,7 +54,7 @@ namespace lorafel {
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = BearFactory::getInstance();
+                config->factory = MeleeAttackFactory::getInstance();
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
@@ -65,47 +65,47 @@ namespace lorafel {
 
                 // Col0
                 auto col = new TileColumn();
-                CARROT GRAPE BEAR AVOCADO CARROT BEAR CARROT AVOCADO GRAPE
+                CARROT GRAPE MELEE_ATTACK AVOCADO CARROT MELEE_ATTACK CARROT AVOCADO GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col1
                 col = new TileColumn();
-                GRAPE AVOCADO CARROT GRAPE AVOCADO CARROT AVOCADO BEAR CARROT
+                GRAPE AVOCADO CARROT GRAPE AVOCADO CARROT AVOCADO MELEE_ATTACK CARROT
                 m_initialGrid.push_back(col);
 
                 // Col2
                 col = new TileColumn();
-                AVOCADO CARROT AVOCADO BEAR BEAR GRAPE GRAPE AVOCADO BEAR
+                AVOCADO CARROT AVOCADO MELEE_ATTACK MELEE_ATTACK GRAPE GRAPE AVOCADO MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col4
                 col = new TileColumn();
-                CARROT CARROT GRAPE BEAR MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
+                CARROT CARROT GRAPE MELEE_ATTACK MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
                 m_initialGrid.push_back(col);
 
                 // Col5
                 col = new TileColumn();
-                AVOCADO AVOCADO CARROT CARROT AVOCADO BEAR AVOCADO AVOCADO GRAPE
+                AVOCADO AVOCADO CARROT CARROT AVOCADO MELEE_ATTACK AVOCADO AVOCADO GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col6
                 col = new TileColumn();
-                CARROT GRAPE CARROT AVOCADO BEAR AVOCADO STICKMAN GRAPE BEAR
+                CARROT GRAPE CARROT AVOCADO MELEE_ATTACK AVOCADO STICKMAN GRAPE MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO HERO CARROT GRAPE BEAR BEAR AVOCADO BEAR GRAPE
+                AVOCADO HERO CARROT GRAPE MELEE_ATTACK MELEE_ATTACK AVOCADO MELEE_ATTACK GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col8
                 col = new TileColumn();
-                GRAPE GRAPE BEAR CARROT GRAPE CARROT CARROT GRAPE AVOCADO
+                GRAPE GRAPE MELEE_ATTACK CARROT GRAPE CARROT CARROT GRAPE AVOCADO
                 m_initialGrid.push_back(col);
 
                 // Col9
                 col = new TileColumn();
-                CARROT BEAR CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
+                CARROT MELEE_ATTACK CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
                 m_initialGrid.push_back(col);
         }
 

@@ -8,12 +8,14 @@
 #include "Tile.h"
 
 namespace lorafel {
-    class BearTile : public Tile {
+    class MeleeAttackTile : public Tile {
     public:
-        BearTile();
-        ~BearTile();
+        MeleeAttackTile();
+        ~MeleeAttackTile();
 
-        static BearTile* create();
+        static MeleeAttackTile* create();
+
+        void onMatch(Match* pMatch) override;
     };
 }
 #endif //LORAFEL_BEARTILE_H

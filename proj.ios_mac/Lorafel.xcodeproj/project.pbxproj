@@ -19,7 +19,7 @@
 		3167D0582326F2B81A8A7A76 /* PoisonGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */; };
 		3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
 		3167D0BE2B7D0E9F49ACBE25 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */; };
-		3167D0DAEC202AF63530A399 /* BearTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* BearTile.cpp */; };
+		3167D0DAEC202AF63530A399 /* MeleeAttackTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */; };
 		3167D0EBE0FB0D2FB0C6A480 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D1A85CFB9057E83AA562 /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
@@ -75,7 +75,7 @@
 		3167DD584567F68E4A07C521 /* AvocadoTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */; };
 		3167DD59027337A1D754F1B5 /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
 		3167DDA1EEB0A3C66E8599C6 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
-		3167DDF7D1632A5DE9B96B00 /* BearTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* BearTile.cpp */; };
+		3167DDF7D1632A5DE9B96B00 /* MeleeAttackTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */; };
 		3167DE511FD9D32C4D9DE8A1 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D836466E117847AC4CFA /* Tile.cpp */; };
 		3167DE8014349C819649EA4B /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
 		3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
@@ -242,7 +242,7 @@
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
-		3167D5FBC9B03370290E3593 /* BearTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BearTile.cpp; sourceTree = "<group>"; };
+		3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeleeAttackTile.cpp; sourceTree = "<group>"; };
 		3167D644A16126625AD28D6C /* AIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStrategy.h; sourceTree = "<group>"; };
 		3167D67C7D373CBDF45F687F /* StormGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StormGlyph.cpp; sourceTree = "<group>"; };
 		3167D6BF39D1E520BFFD7883 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
@@ -266,9 +266,9 @@
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
 		3167D95C7DE012999F5D29C6 /* StatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatResult.h; sourceTree = "<group>"; };
 		3167D97C25C0022BB33E3A87 /* HeroTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroTile.h; sourceTree = "<group>"; };
-		3167D98A0DDDFA707C4D382D /* BearTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearTile.h; sourceTree = "<group>"; };
+		3167D98A0DDDFA707C4D382D /* MeleeAttackTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackTile.h; sourceTree = "<group>"; };
 		3167D9BC91A1230BCD87B710 /* XpFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpFloatie.h; sourceTree = "<group>"; };
-		3167D9CC1F5BE0A42846EC41 /* BearFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearFactory.h; sourceTree = "<group>"; };
+		3167D9CC1F5BE0A42846EC41 /* MeleeAttackFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackFactory.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
@@ -563,9 +563,9 @@
 				3167DE3CB4BB5A04DCE6916F /* XpStatResult.h */,
 				3167D3C34CB07BFEB5D0910D /* MatchPattern.h */,
 				3167D74728B7D5D4FADC213D /* Level__TestLevelTwo.h */,
-				3167D9CC1F5BE0A42846EC41 /* BearFactory.h */,
-				3167D5FBC9B03370290E3593 /* BearTile.cpp */,
-				3167D98A0DDDFA707C4D382D /* BearTile.h */,
+				3167D9CC1F5BE0A42846EC41 /* MeleeAttackFactory.h */,
+				3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */,
+				3167D98A0DDDFA707C4D382D /* MeleeAttackTile.h */,
 				3167D5122B83D0371E4F615B /* SeededLevel.h */,
 				3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */,
 				3167D95C7DE012999F5D29C6 /* StatResult.h */,
@@ -850,7 +850,7 @@
 				3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */,
 				3167DF790D24EFE39E1056FC /* Match.cpp in Sources */,
 				3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */,
-				3167D0DAEC202AF63530A399 /* BearTile.cpp in Sources */,
+				3167D0DAEC202AF63530A399 /* MeleeAttackTile.cpp in Sources */,
 				3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */,
 				3167DF6A2051958CDE171A31 /* Player.cpp in Sources */,
 				3167D1CD1C77F0756A1BD69C /* Progress.cpp in Sources */,
@@ -898,7 +898,7 @@
 				3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */,
 				3167DAF457F0F7E0BA939DB5 /* Match.cpp in Sources */,
 				3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */,
-				3167DDF7D1632A5DE9B96B00 /* BearTile.cpp in Sources */,
+				3167DDF7D1632A5DE9B96B00 /* MeleeAttackTile.cpp in Sources */,
 				3167DADDF5EF06EAFB9F4B36 /* PlayerManager.cpp in Sources */,
 				3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */,
 				3167DE8014349C819649EA4B /* Progress.cpp in Sources */,
