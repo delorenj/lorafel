@@ -72,6 +72,7 @@ namespace lorafel {
         virtual bool isMatch(Tile* pTile) const { return pTile->getTileName() == this->getTileName(); };
         virtual const unsigned int getMinMatchSize() const { return MIN_MATCH_SIZE; };
         virtual void remove();
+        virtual bool freelyMovable();
         void moveToGridPos(int x, int y);
 
         virtual bool isSwappable() { return true; }

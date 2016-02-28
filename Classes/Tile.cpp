@@ -199,3 +199,7 @@ int Tile::getRandHit(EnemyTile *pEnemyTile) {
     player = PlayerManager::getInstance()->getPlayer();
     return 10;
 }
+
+bool Tile::freelyMovable() {
+    return false;
+}

@@ -28,6 +28,7 @@ namespace lorafel {
             // Enemy tile matches all tiles for now
             return true;
         };
+        virtual bool freelyMovable() override { return true; }
 
     protected:
         GlyphFactory* m_pGlyphFactory;

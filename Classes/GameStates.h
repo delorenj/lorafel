@@ -132,6 +132,7 @@ namespace lorafel {
         bool isValidNextState(State* state) override {
             if(state->getName() == "TileSwappingReverseStartState") return true;
             if(state->getName() == "MatchFoundState") return true;
+            if(state->getName() == "IdleState") return true;
             return false;
         }
 

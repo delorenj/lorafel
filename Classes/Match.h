@@ -23,12 +23,16 @@ namespace lorafel {
         unsigned long getTileSetSize();
         unsigned long getNumEnemies();
         std::set<Tile*>* getEnemies() const;
+
+        bool containsHero();
+
     protected:
         std::set<Tile*>* m_pTileSet;
         Tile* m_pPrimaryTile;
         std::set<Tile *>* m_pEnemies;
         cocos2d::Vec2 m_anchorBottomLeft;
         cocos2d::Vec2 m_anchorTopRight;
+        Tile* m_pHero;
     };
 }
 

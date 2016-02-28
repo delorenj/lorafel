@@ -400,9 +400,16 @@ void SwappyGrid::ProcessMatches() {
         // Only revert tiles when no match is found AND the match was
         // initiated by player move. If match initiated by falling tiles
         // then that means the player move was valid and no need to revert
+        //
+        // Also, now we should check the tile moved to see if it has a
+        // property that allows it to move without matches (2/27/16)
         auto playerMove = m_pMoveStack->top();
-        m_pMoveStack->pop();
-        playerMove->cancel();
+        if(!getActivePlayerTile()->freelyMovable()) {
+            m_pMoveStack->pop();
+            playerMove->cancel();
+        } else {
+            GameStateMachine::getInstance()->enterState<IdleState>();
+        }
 
     } else if (m_pLevel->isCleared()) {
         // Check to see if level is cleared

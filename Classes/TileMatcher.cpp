@@ -8,6 +8,7 @@
 using namespace lorafel;
 
 std::set<Match *> TileMatcher::findMatches() {
+    CCLOG("<enter> findMatches()");
     auto matchSets = std::set<Match*>();
 
     m_pSwappyGrid->clearVisitStates();
@@ -32,16 +33,16 @@ std::set<Match *> TileMatcher::findMatches() {
                  * match number criteria.
                  *
                  * Add 1 to min match length IFF there is at least
-                 * 1 enemy
+                 * one enemy
                  */
-                auto matchModifier = match->getNumEnemies() > 0 ? 1 : 0;
-                if(match->getTileSetSize() >= match->getPrimaryTile()->getMinMatchSize() + matchModifier) {
+                auto matchLength = (match->getNumEnemies() > 0 ? 1 : 0) + (match->containsHero() ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
+                if(match->getTileSetSize() >= matchLength) {
                     matchSets.insert(match);
                 }
             }
         }
     }
-
+    CCLOG("<exit> findMatches()");
     return matchSets;
 }
 

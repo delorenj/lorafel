@@ -9,9 +9,9 @@
 using namespace lorafel;
 
 Match::~Match() {
-    for(auto it : *m_pTileSet) {
-        CC_SAFE_DELETE(it);
-    }
+//    for(auto it : *m_pTileSet) {
+//        CC_SAFE_DELETE(it);
+//    }
 }
 
 void Match::setTileSet(std::set<Tile *>* tileSet) {
@@ -34,11 +34,21 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
 
         if(t->getTag() == Tag::ENEMY) {
             m_pEnemies->insert(*it);
+        } else if(t->getTag() == Tag::HERO) {
+            m_pHero = *it;
         } else if(m_pPrimaryTile == nullptr) {
             m_pPrimaryTile = *it;
         }
     }
-    CCLOG("EnemyCount: %d", m_pEnemies->size());
+
+    if(m_pEnemies->size() > 0) {
+        CCLOG("Enemies in match: %d", (int)m_pEnemies->size());
+    }
+
+    if(m_pHero != nullptr) {
+        CCLOG("Hero in match");
+    }
+
 }
 
 std::set<Tile *>* Match::getTileSet() const {
@@ -89,4 +99,8 @@ unsigned long Match::getNumEnemies() {
 
 std::set<Tile*>* Match::getEnemies() const {
     return m_pEnemies;
+}
+
+bool Match::containsHero() {
+    return m_pHero != nullptr;
 }
