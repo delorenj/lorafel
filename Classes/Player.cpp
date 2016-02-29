@@ -47,3 +47,8 @@ unsigned long Player::updateMpBy(unsigned long val) {
     m_mp += val;
     return m_mp;
 }
+
+Tile* Player::getTile() const {
+    if(m_hp <=0) return nullptr;
+    return m_pTile;
+}

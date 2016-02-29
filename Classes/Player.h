@@ -57,10 +57,6 @@ namespace lorafel {
 
     };
 
-    Tile* Player::getTile() const {
-        if(m_hp <= 0) return nullptr;
-        return m_pTile;
-    }
 }
 
 #endif //LORAFEL_PLAYER_H
