@@ -61,7 +61,10 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
             }
         }
     } else {
-        static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
+        auto hero = m_pSwappyGrid->getHeroTile();
+        if(hero != nullptr) {
+            static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
+        }
     }
     remove();
 }

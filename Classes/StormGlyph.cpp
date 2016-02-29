@@ -3,6 +3,7 @@
 //
 
 #include "StormGlyph.h"
+#include "HeroTile.h"
 
 using namespace lorafel;
 
@@ -24,5 +25,9 @@ lorafel::StormGlyph* StormGlyph::create() {
 }
 
 void StormGlyph::onMatch(Match* pMatch) {
-    Tile::onMatch(pMatch);
+    auto hero = m_pSwappyGrid->getHeroTile();
+    if(hero != nullptr) {
+        static_cast<HeroTile*>(hero)->applyHit(pMatch);
+        Tile::onMatch(pMatch);
+    }
 }

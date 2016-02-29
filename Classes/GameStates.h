@@ -190,6 +190,7 @@ namespace lorafel {
         bool isValidNextState(State* state) override {
             if(state->getName() == "IdleState") return true;
             if(state->getName() == "LevelClearedState") return true;
+            if(state->getName() == "GameOverState") return true;
             if(state->getName() == "MatchFoundState") return true;
             return false;
         }
@@ -198,6 +199,14 @@ namespace lorafel {
     class LevelClearedState : public BusyState {
     public:
         const std::string getName() const override { return "LevelClearedState"; }
+        bool isValidNextState(State* state) override {
+            return false;
+        }
+    };
+
+    class GameOverState : public BusyState {
+    public:
+        const std::string getName() const override { return "GameOverState"; }
         bool isValidNextState(State* state) override {
             return false;
         }

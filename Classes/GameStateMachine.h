@@ -32,6 +32,7 @@ namespace lorafel {
                 _instance->addState<TileRemovedState>();
                 _instance->addState<TileQueueEmptyMatchStartState>();
                 _instance->addState<LevelClearedState>();
+                _instance->addState<GameOverState>();
             _instance->enterState<IdleState>();
 
         }

@@ -31,7 +31,7 @@ namespace lorafel {
         unsigned long updateMpBy(unsigned long val);
         unsigned long getMp() const { return m_mp; }
         void setMp(unsigned long val) { m_mp = std::max(val, m_maxMp); }
-        Tile* getTile() const { return m_pTile; }
+        Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
 
     protected:
@@ -56,6 +56,11 @@ namespace lorafel {
         Tile* m_pTile;
 
     };
+
+    Tile* Player::getTile() const {
+        if(m_hp <= 0) return nullptr;
+        return m_pTile;
+    }
 }
 
 #endif //LORAFEL_PLAYER_H

@@ -8,6 +8,7 @@
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
 #include "DragDropSwapPlayerMove.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -36,31 +37,31 @@ bool HeroTile::init() {
 }
 
 void HeroTile::applyHit(Match* pMatch) {
-//    auto primaryTile = pMatch->getPrimaryTile();
-//    bool isStackable = primaryTile->isStackable();
-//    int hitAmount = primaryTile->getRandHit(this);
-//    if(isStackable) {
-//        hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
-//    }
-//
-//    decreaseHpBy(hitAmount);
-//
-//    // Fire off an Hit event
-//    cocos2d::EventCustom e("hero_damaged");
-//    EventData* val = new EventDataFloatie(hitAmount, getGrid()->convertToWorldSpace(TILE_CENTER) + cocos2d::Vec2(0,40));
-//    e.setUserData(val);
-//    _eventDispatcher->dispatchEvent(&e);
-//    auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
-//    particle->setAutoRemoveOnFinish(true);
-//    particle->setPosition(TILE_CENTER);
-//    m_pSwappyGrid->addChild(particle);
-//    CC_SAFE_DELETE(val);
-//
-//    if(m_hp <= 0) {
-//        //game over
-//        remove();
-//    }
-//
+    auto primaryTile = pMatch->getPrimaryTile();
+    bool isStackable = primaryTile->isStackable();
+    int hitAmount = primaryTile->getRandHit(this);
+    if(isStackable) {
+        hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
+    }
+
+    PlayerManager::getInstance()->getPlayer()->updateHpBy(-hitAmount);
+
+    // Fire off an Hit event
+    cocos2d::EventCustom e("hero_damaged");
+    EventData* val = new EventDataFloatie(hitAmount, getGrid()->convertToWorldSpace(TILE_CENTER) + cocos2d::Vec2(0,40));
+    e.setUserData(val);
+    _eventDispatcher->dispatchEvent(&e);
+    auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
+    particle->setAutoRemoveOnFinish(true);
+    particle->setPosition(TILE_CENTER);
+    m_pSwappyGrid->addChild(particle);
+    CC_SAFE_DELETE(val);
+
+    if(m_hp <= 0) {
+        //game over
+        remove();
+    }
+
 }
 
 void HeroTile::onHit(cocos2d::EventCustom* event) {
@@ -70,10 +71,10 @@ void HeroTile::onHit(cocos2d::EventCustom* event) {
 }
 
 void HeroTile::onMatch(Match *pMatch) {
-    applyHit(pMatch);
+//    applyHit(pMatch);
 }
 
-void HeroTile::decreaseHpBy(int amount) {
+void HeroTile::updateHpBy(int amount) {
     m_hp -= amount;
 }
 

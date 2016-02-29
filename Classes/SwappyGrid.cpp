@@ -416,6 +416,10 @@ void SwappyGrid::ProcessMatches() {
         // Check to see if level is cleared
         // If so, fire off the end level state
         onLevelCleared();
+    } else if (PlayerManager::getInstance()->getPlayer()->getHp() <= 0) {
+        // Check to see if player is dead
+        // If so, fire off the game over state
+        onGameOver();
 
     } else {
         GameStateMachine::getInstance()->enterState<IdleState>();
@@ -653,4 +657,10 @@ Tile* SwappyGrid::getRandomEnemy() {
 
 Tile* SwappyGrid::getHeroTile() {
     return PlayerManager::getInstance()->getPlayer()->getTile();
+}
+
+void SwappyGrid::onGameOver() {
+    GameStateMachine::getInstance()->enterState<GameOverState>();
+    CCLOG("Boo =(");
+
 }

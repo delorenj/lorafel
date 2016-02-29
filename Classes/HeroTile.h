@@ -16,7 +16,7 @@ namespace lorafel {
         virtual void onHit(cocos2d::EventCustom* event);
         virtual void remove() override;
         virtual void addEvents() override;
-        void decreaseHpBy(int amount);
+        void updateHpBy(int amount);
 
         virtual void applyHit(Match* pMatch);
 

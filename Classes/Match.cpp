@@ -17,6 +17,7 @@ Match::~Match() {
 void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_pTileSet = tileSet;
     m_pEnemies = new std::set<Tile*>();
+    m_pPrimaryTile = nullptr;
 
     // Initialize the first tile
     auto it = m_pTileSet->begin();
@@ -24,8 +25,8 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
     m_anchorBottomLeft = PTILE_CENTER(t);
     m_anchorTopRight = m_anchorBottomLeft;
 
-    while(++it != m_pTileSet->end()) {
-        t = static_cast<Tile*>(*it);
+    while(it != m_pTileSet->end()) {
+        t = static_cast<Tile*>(*it++);
         auto p = PTILE_CENTER(t);
         if(p.x < m_anchorBottomLeft.x ) m_anchorBottomLeft.x = p.x;
         if(p.y < m_anchorBottomLeft.y ) m_anchorBottomLeft.y = p.y;
@@ -33,11 +34,11 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
         if(p.y > m_anchorTopRight.y ) m_anchorTopRight.y = p.y;
 
         if(t->getTag() == Tag::ENEMY) {
-            m_pEnemies->insert(*it);
+            m_pEnemies->insert(t);
         } else if(t->getTag() == Tag::HERO) {
-            m_pHero = *it;
+            m_pHero = t;
         } else if(m_pPrimaryTile == nullptr) {
-            m_pPrimaryTile = *it;
+            m_pPrimaryTile = t;
         }
     }
 

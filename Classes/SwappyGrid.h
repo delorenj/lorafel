@@ -179,6 +179,8 @@ namespace lorafel {
         Tile* m_pActivePlayerTile;
 
         void addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation);
+
+        void onGameOver();
     };
 }
 

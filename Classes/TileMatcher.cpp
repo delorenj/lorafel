@@ -33,9 +33,9 @@ std::set<Match *> TileMatcher::findMatches() {
                  * match number criteria.
                  *
                  * Add 1 to min match length IFF there is at least
-                 * one enemy
+                 * one enemy and hero in match
                  */
-                auto matchLength = (match->getNumEnemies() > 0 ? 1 : 0) + (match->containsHero() ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
+                auto matchLength = (match->getNumEnemies() > 0 && match->containsHero() > 0 ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
                 if(match->getTileSetSize() >= matchLength) {
                     matchSets.insert(match);
                 }
