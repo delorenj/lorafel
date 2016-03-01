@@ -26,6 +26,10 @@ namespace lorafel {
 
         bool containsHero();
 
+        void setPrimaryTileProcessed(bool i);
+
+        bool processPrimaryTile();
+
     protected:
         std::set<Tile*>* m_pTileSet;
         Tile* m_pPrimaryTile;
@@ -33,6 +37,7 @@ namespace lorafel {
         cocos2d::Vec2 m_anchorBottomLeft;
         cocos2d::Vec2 m_anchorTopRight;
         Tile* m_pHero;
+        bool m_primaryTileProcessed = 0;
     };
 }
 

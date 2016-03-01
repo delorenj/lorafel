@@ -416,11 +416,6 @@ void SwappyGrid::ProcessMatches() {
         // Check to see if level is cleared
         // If so, fire off the end level state
         onLevelCleared();
-    } else if (PlayerManager::getInstance()->getPlayer()->getHp() <= 0) {
-        // Check to see if player is dead
-        // If so, fire off the game over state
-        onGameOver();
-
     } else {
         GameStateMachine::getInstance()->enterState<IdleState>();
     }
@@ -553,11 +548,19 @@ void SwappyGrid::ProcessTurnManager() {
      * and don't allow the HERO to make any moves until 'idle' again
      */
     if (!state->isBusy()) {
-        auto turnManager = m_pLevel->getTurnManager();
-        auto tile = turnManager->getNextPlayerTile();
-        m_pActivePlayerTile = tile;  // set this for faster access in the game loop
-        if (tile->getTag() == Tag::ENEMY) {
-            GameStateMachine::getInstance()->enterState<EnemyTurnState>();
+        /*
+         * If it's game over, then there are no more
+         * turns to manager
+         */
+        if(PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
+            onGameOver();
+        } else {
+            auto turnManager = m_pLevel->getTurnManager();
+            auto tile = turnManager->getNextPlayerTile();
+            m_pActivePlayerTile = tile;  // set this for faster access in the game loop
+            if (tile->getTag() == Tag::ENEMY) {
+                GameStateMachine::getInstance()->enterState<EnemyTurnState>();
+            }
         }
     }
 
@@ -662,5 +665,8 @@ Tile* SwappyGrid::getHeroTile() {
 void SwappyGrid::onGameOver() {
     GameStateMachine::getInstance()->enterState<GameOverState>();
     CCLOG("Boo =(");
+    cocos2d::EventCustom gameOver("game_over");
+    _eventDispatcher->dispatchEvent(&gameOver);
+
 
 }

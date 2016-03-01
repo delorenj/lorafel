@@ -25,7 +25,7 @@ namespace lorafel {
         unsigned long getMaxGold() const { return m_maxGold; }
         unsigned long getMaxHp() const { return m_maxHp; }
         void setGold(unsigned long val) { m_gold = std::max(val, m_maxGold); }
-        unsigned long updateHpBy(unsigned long val);
+        unsigned long updateHpBy(long val);
         unsigned long getHp() const { return m_hp; }
         void setHp(unsigned long val) { m_hp = std::max(val, m_maxHp); }
         unsigned long updateMpBy(unsigned long val);

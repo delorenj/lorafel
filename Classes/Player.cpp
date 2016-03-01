@@ -36,9 +36,10 @@ unsigned long Player::updateGoldBy(int amount, Match* pMatch) {
     return m_gold;
 }
 
-unsigned long Player::updateHpBy(unsigned long val) {
-    val = val > m_maxHp - m_hp ? m_maxHp : val;
-    m_hp += val;
+unsigned long Player::updateHpBy(long val) {
+    unsigned long newVal = m_hp + val;
+    newVal = (unsigned long) std::min(newVal, m_maxHp);
+    m_hp = (unsigned long) std::max((unsigned long)0, newVal);
     return m_hp;
 }
 

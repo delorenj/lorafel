@@ -37,6 +37,7 @@ bool HeroTile::init() {
 }
 
 void HeroTile::applyHit(Match* pMatch) {
+    auto player = PlayerManager::getInstance()->getPlayer();
     auto primaryTile = pMatch->getPrimaryTile();
     bool isStackable = primaryTile->isStackable();
     int hitAmount = primaryTile->getRandHit(this);
@@ -44,7 +45,7 @@ void HeroTile::applyHit(Match* pMatch) {
         hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
     }
 
-    PlayerManager::getInstance()->getPlayer()->updateHpBy(-hitAmount);
+    player->updateHpBy(-hitAmount);
 
     // Fire off an Hit event
     cocos2d::EventCustom e("hero_damaged");
@@ -57,8 +58,10 @@ void HeroTile::applyHit(Match* pMatch) {
     m_pSwappyGrid->addChild(particle);
     CC_SAFE_DELETE(val);
 
-    if(m_hp <= 0) {
+    if(player->getHp() == 0) {
         //game over
+//        cocos2d::EventCustom gameOver("game_over");
+//        _eventDispatcher->dispatchEvent(&gameOver);
         remove();
     }
 

@@ -54,7 +54,7 @@ void EnemyTile::onHit(cocos2d::EventCustom* event) {
 }
 
 void EnemyTile::onMatch(Match *pMatch) {
-    applyHit(pMatch);
+//    applyHit(pMatch);
 }
 
 void EnemyTile::decreaseHpBy(int amount) {

@@ -6,12 +6,17 @@
 #define LORAFEL_TURNMANAGER_H
 
 #include "Tile.h"
+#include "GameStateMachine.h"
 
 namespace lorafel {
     class TurnManager {
     public:
         virtual Tile* getNextPlayerTile() = 0;
-        virtual Tile* getActivePlayerTile() const { return m_pPlayerTiles->at(m_activePlayerTileIndex); }
+        virtual Tile* getActivePlayerTile() const {
+            auto state = GameStateMachine::getInstance()->getState();
+            if(state->getName() == "GameOverState") return nullptr;
+            return m_pPlayerTiles->at(m_activePlayerTileIndex);
+        }
 
         void setSwappyGrid(SwappyGrid* grid) { m_pSwappyGrid = grid; }
         void addPlayerTile(Tile* tile) { m_pPlayerTiles->push_back(tile); }

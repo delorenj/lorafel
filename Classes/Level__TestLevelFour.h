@@ -65,47 +65,47 @@ namespace lorafel {
 
                 // Col0
                 auto col = new TileColumn();
-                CARROT GRAPE CARROT AVOCADO CARROT CARROT CARROT AVOCADO GRAPE
+                CARROT GRAPE CARROT AVOCADO CARROT MELEE_ATTACK AVOCADO AVOCADO CARROT
                 m_initialGrid.push_back(col);
 
                 // Col1
                 col = new TileColumn();
-                GRAPE AVOCADO CARROT GRAPE AVOCADO CARROT AVOCADO CARROT CARROT
+                GRAPE CARROT AVOCADO AVOCADO CARROT CARROT AVOCADO GRAPE GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col2
                 col = new TileColumn();
-                AVOCADO CARROT AVOCADO CARROT CARROT GRAPE GRAPE AVOCADO CARROT
+                AVOCADO GRAPE MONEYBAG CARROT GRAPE AVOCADO CARROT AVOCADO CARROT
+                m_initialGrid.push_back(col);
+
+                // Col3
+                col = new TileColumn();
+                MONEYBAG MONEYBAG CARROT GRAPE GRAPE AVOCADO AVOCADO GRAPE AVOCADO
                 m_initialGrid.push_back(col);
 
                 // Col4
                 col = new TileColumn();
-                CARROT CARROT GRAPE CARROT MONEYBAG MONEYBAG AVOCADO MONEYBAG CARROT
+                AVOCADO GRAPE MELEE_ATTACK MELEE_ATTACK CARROT MELEE_ATTACK CARROT MELEE_ATTACK GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col5
                 col = new TileColumn();
-                AVOCADO AVOCADO CARROT CARROT AVOCADO CARROT AVOCADO AVOCADO GRAPE
+                STICKMAN AVOCADO MELEE_ATTACK GRAPE AVOCADO GRAPE AVOCADO MELEE_ATTACK GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col6
                 col = new TileColumn();
-                CARROT GRAPE CARROT AVOCADO CARROT AVOCADO STICKMAN GRAPE CARROT
+                HERO GRAPE CARROT MELEE_ATTACK CARROT CARROT GRAPE CARROT CARROT
                 m_initialGrid.push_back(col);
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO HERO CARROT GRAPE CARROT CARROT AVOCADO CARROT GRAPE
+                MELEE_ATTACK AVOCADO CARROT MELEE_ATTACK CARROT AVOCADO CARROT AVOCADO GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col8
                 col = new TileColumn();
-                GRAPE GRAPE CARROT CARROT GRAPE CARROT CARROT GRAPE AVOCADO
-                m_initialGrid.push_back(col);
-
-                // Col9
-                col = new TileColumn();
-                CARROT CARROT CARROT GRAPE AVOCADO GRAPE CARROT GRAPE GRAPE
+                AVOCADO CARROT GRAPE AVOCADO GRAPE GRAPE AVOCADO GRAPE CARROT
                 m_initialGrid.push_back(col);
         }
 

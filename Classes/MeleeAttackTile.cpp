@@ -35,36 +35,41 @@ MeleeAttackTile* MeleeAttackTile::create() {
 }
 
 void MeleeAttackTile::onMatch(Match* pMatch) {
-    auto activePlayerTile = m_pSwappyGrid->getActivePlayerTile();
-    auto isEnemyTurn = activePlayerTile->getTag() == Tag::ENEMY;
-    /*
-     * if enemy is part of the match, only attack
-     * that enemy. Attack is always critical
-     *
-     * Otherwise, pick an enemy at random
-     * and apply a regular hit
-     */
+    // Only do the primary tile stuff once!
+    if(pMatch->processPrimaryTile()) {
+        auto activePlayerTile = m_pSwappyGrid->getActivePlayerTile();
+        auto isEnemyTurn = activePlayerTile->getTag() == Tag::ENEMY;
+        /*
+         * if enemy is part of the match, only attack
+         * that enemy. Attack is always critical
+         *
+         * Otherwise, pick an enemy at random
+         * and apply a regular hit
+         */
 
-    // If it's the hero's turn, hurt the enemy
-    if(!isEnemyTurn) {
-        if(pMatch->getNumEnemies() > 0) {
-            for(auto elem : *pMatch->getEnemies()) {
-                EnemyTile* enemy = static_cast<EnemyTile*>(elem);
+        // If it's the hero's turn, hurt the enemy
+        if(!isEnemyTurn) {
+            if(pMatch->getNumEnemies() > 0) {
+                for(auto elem : *pMatch->getEnemies()) {
+                    EnemyTile* enemy = static_cast<EnemyTile*>(elem);
+                    if(enemy != nullptr) {
+                        enemy->applyHit(pMatch);
+                    }
+                }
+            } else {
+                auto enemy = m_pSwappyGrid->getRandomEnemy();
                 if(enemy != nullptr) {
-                    enemy->applyHit(pMatch);
+                    static_cast<EnemyTile*>(enemy)->applyHit(pMatch);
                 }
             }
         } else {
-            auto enemy = m_pSwappyGrid->getRandomEnemy();
-            if(enemy != nullptr) {
-                static_cast<EnemyTile*>(enemy)->applyHit(pMatch);
+            auto hero = m_pSwappyGrid->getHeroTile();
+            if(hero != nullptr) {
+                static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
             }
         }
-    } else {
-        auto hero = m_pSwappyGrid->getHeroTile();
-        if(hero != nullptr) {
-            static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
-        }
+        pMatch->setPrimaryTileProcessed(true);
     }
+
     remove();
 }

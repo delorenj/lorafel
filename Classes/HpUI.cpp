@@ -73,7 +73,10 @@ void HpUI::tween(float dt) {
     unsigned long to = m_pPlayer->getHp();
     auto maxHp = m_pPlayer->getMaxHp();
 
-    if(from == to) unschedule(schedule_selector(HpUI::tween));
+    if(from == to) {
+        unschedule(schedule_selector(HpUI::tween));
+        return;
+    }
 
     unsigned long val;
 

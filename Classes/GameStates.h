@@ -171,6 +171,7 @@ namespace lorafel {
         const std::string getName() const override { return "TileRemovedState"; }
         bool isValidNextState(State* state) override {
             if(state->getName() == "TileFallingState") return true;
+            if(state->getName() == "GameOverState") return true;
             return false;
         }
     };

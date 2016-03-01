@@ -105,3 +105,11 @@ std::set<Tile*>* Match::getEnemies() const {
 bool Match::containsHero() {
     return m_pHero != nullptr;
 }
+
+void Match::setPrimaryTileProcessed(bool i) {
+    m_primaryTileProcessed = i;
+}
+
+bool Match::processPrimaryTile() {
+    return !m_primaryTileProcessed;
+}
