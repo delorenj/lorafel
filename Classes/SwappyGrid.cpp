@@ -386,6 +386,11 @@ void SwappyGrid::ProcessMatches() {
         return;
     }
 
+    if(state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
+        onGameOver();
+        return;
+    }
+
     auto matches = m_pTileMatcher->findMatches();
 
     if (matches.size() > 0) {
@@ -551,19 +556,22 @@ void SwappyGrid::ProcessTurnManager() {
         /*
          * If it's game over, then there are no more
          * turns to manager
+         *
+         * If you have no HP left, and game is not yet marked
+         * as 'over', then call the onGameOver() method
          */
-        if(PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
+        if(state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
             onGameOver();
-        } else {
-            auto turnManager = m_pLevel->getTurnManager();
-            auto tile = turnManager->getNextPlayerTile();
-            m_pActivePlayerTile = tile;  // set this for faster access in the game loop
-            if (tile->getTag() == Tag::ENEMY) {
-                GameStateMachine::getInstance()->enterState<EnemyTurnState>();
-            }
+            return;
+        }
+
+        auto turnManager = m_pLevel->getTurnManager();
+        auto tile = turnManager->getNextPlayerTile();
+        m_pActivePlayerTile = tile;  // set this for faster access in the game loop
+        if (tile->getTag() == Tag::ENEMY) {
+            GameStateMachine::getInstance()->enterState<EnemyTurnState>();
         }
     }
-
 }
 
 void SwappyGrid::ProcessEnemyTurns() {
@@ -664,9 +672,13 @@ Tile* SwappyGrid::getHeroTile() {
 
 void SwappyGrid::onGameOver() {
     GameStateMachine::getInstance()->enterState<GameOverState>();
-    CCLOG("Boo =(");
-    cocos2d::EventCustom gameOver("game_over");
-    _eventDispatcher->dispatchEvent(&gameOver);
 
+    // Wait a few seconds, and then instantiate the game over screen
+    schedule(schedule_selector(SwappyGrid::initGameOverScreen), 3);
 
+}
+
+void SwappyGrid::initGameOverScreen(float dt) {
+    CCLOG("JOE!");
+    unschedule(schedule_selector(SwappyGrid::initGameOverScreen));
 }

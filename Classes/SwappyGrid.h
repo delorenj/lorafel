@@ -122,6 +122,8 @@ namespace lorafel {
 
         Tile* getHeroTile();
 
+        void initGameOverScreen(float dt);
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;
