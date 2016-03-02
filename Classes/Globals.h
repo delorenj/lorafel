@@ -16,6 +16,15 @@ namespace lorafel {
         static const int GLYPH = 6;
         static const int HIGHLIGHT = 7;
     };
+
+    struct LayerOrder {
+        static const int BACKGROUND = 1;
+        static const int TILES = 10;
+        static const int PARTICLES = 20;
+        static const int UX = 30;
+        static const int GAMEOVER = 40;
+        static const int DEBUG = 100;
+    };
 }
 
 #endif //LORAFEL_GLOBALS_H

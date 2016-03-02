@@ -5,6 +5,7 @@
 //  Created by Jarad DeLorenzo on 11/23/15.
 //
 //
+#include "Globals.h"
 #include "TestScene.h"
 #include "Level__TestLevelOne.h"
 #include "Level__TestLevelTwo.h"
@@ -38,24 +39,24 @@ bool TestScene::init() {
     CCLOG("bg size: (%f,%f)", pSprBackground->getContentSize().width, pSprBackground->getContentSize().height);
     CCLOG("origin: (%f, %f)", origin.x, origin.y);
     pSprBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
-    this->addChild(pSprBackground);
+    this->addChild(pSprBackground, lorafel::LayerOrder::BACKGROUND);
 
     // Create the grid
     swappyGrid = lorafel::SwappyGrid::create();
     auto level =  new lorafel::Level__TestLevelFour(swappyGrid);
     swappyGrid->setLevel(level);
-    addChild(swappyGrid, 1);
+    addChild(swappyGrid, lorafel::LayerOrder::TILES);
     level->load();
 
     m_pGridUI = lorafel::GridUI::create(swappyGrid);
     m_pGridUI->ignoreAnchorPointForPosition(false);
-    addChild(m_pGridUI,10);
+    addChild(m_pGridUI,lorafel::LayerOrder::UX);
 
     // Create the grid debug panel
     lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
     gridTestUI->setAnchorPoint(Vec2(0,1));
     gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
-    addChild(gridTestUI);
+    addChild(gridTestUI, lorafel::LayerOrder::DEBUG);
 
     return true;
 }

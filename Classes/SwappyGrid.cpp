@@ -8,6 +8,7 @@
 #include "Globals.h"
 #include "EnemyTile.h"
 #include "PlayerManager.h"
+#include "GameOverUI.h"
 
 using namespace lorafel;
 
@@ -45,7 +46,7 @@ bool SwappyGrid::init() {
     m_pDebugDraw = cocos2d::DrawNode::create();
     m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0, 0));
     m_pDebugDraw->setPosition(0, 0);
-    addChild(m_pDebugDraw);
+    addChild(m_pDebugDraw, LayerOrder::DEBUG);
 
     // Create Tile Grid
     m_pGrid = new TileGrid();
@@ -329,7 +330,7 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
     // but don't drop it yet.
     cocos2d::Vec2 newPos = gridToScreen(column, getTopOffscreenTileSlot());
     pTile->setPosition(newPos);
-    addChild(pTile, 2);
+    addChild(pTile, LayerOrder::TILES);
 
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
@@ -641,7 +642,7 @@ void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d
     p->setRotation(rotation);
     p->setAutoRemoveOnFinish(true);
     p->setPosVar(cocos2d::Vec2(0, m_tileSize.height-38));
-    addChild(p,3);
+    addChild(p,lorafel::LayerOrder::PARTICLES);
 }
 
 cocos2d::DrawNode* SwappyGrid::getDebugDraw() {
@@ -674,11 +675,12 @@ void SwappyGrid::onGameOver() {
     GameStateMachine::getInstance()->enterState<GameOverState>();
 
     // Wait a few seconds, and then instantiate the game over screen
-    schedule(schedule_selector(SwappyGrid::initGameOverScreen), 3);
+    schedule(schedule_selector(SwappyGrid::initGameOverScreen), 1.5);
 
 }
 
 void SwappyGrid::initGameOverScreen(float dt) {
-    CCLOG("JOE!");
     unschedule(schedule_selector(SwappyGrid::initGameOverScreen));
+    auto gameOverUI = GameOverUI::create();
+    gameOverUI->show();
 }
