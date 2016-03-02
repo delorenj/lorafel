@@ -40,6 +40,7 @@ void GameOverUI::show() {
     runAction(cocos2d::Sequence::create(
             cocos2d::FadeIn::create(0.25f),
             cocos2d::CallFunc::create(CC_CALLBACK_0(GameOverUI::tweenText, this)),
+            cocos2d::CallFunc::create(CC_CALLBACK_0(GameOverUI::showButtons, this)),
             NULL)
     );
 
@@ -48,26 +49,50 @@ void GameOverUI::show() {
 void GameOverUI::tweenText() {
     auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     auto size = cocos2d::Director::getInstance()->getVisibleSize();
-    auto gameOver = cocos2d::ui::Text::create("GAME OVER", "fonts/BebasNeue Bold.ttf", 120);
-    auto tryAgain = cocos2d::ui::Text::create("TRY AGAIN", "fonts/BebasNeue Regular.ttf", 60);
-    auto quit = cocos2d::ui::Text::create("QUIT", "fonts/BebasNeue Regular.ttf", 60);
+    m_gameOverText = cocos2d::ui::Text::create("GAME OVER", "fonts/BebasNeue Bold.ttf", 120);
+    m_tryAgainText = cocos2d::ui::Text::create("TRY AGAIN", "fonts/BebasNeue Regular.ttf", 60);
+    m_quitText = cocos2d::ui::Text::create("QUIT", "fonts/BebasNeue Regular.ttf", 60);
 
-    gameOver->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    m_gameOverText->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
     auto gameOverToPos = cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height/2);
-    gameOver->setPosition(cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height+gameOver->getContentSize().height));
-    gameOver->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, gameOverToPos)));
-    addChild(gameOver);
+    m_gameOverText->setPosition(cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height+ m_gameOverText->getContentSize().height));
+    m_gameOverText->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, gameOverToPos)));
+    addChild(m_gameOverText);
 
-    tryAgain->setAnchorPoint(cocos2d::Vec2(0,1));
-    auto tryAgainToPos = cocos2d::Vec2(gameOverToPos.x-gameOver->getContentSize().width/2, gameOverToPos.y - gameOver->getContentSize().height - 10);
-    tryAgain->setPosition(cocos2d::Vec2(gameOverToPos.x-gameOver->getContentSize().width/2, origin.y + size.height+tryAgain->getContentSize().height));
-    tryAgain->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, tryAgainToPos)));
-    addChild(tryAgain);
+    m_tryAgainText->setAnchorPoint(cocos2d::Vec2(0,1));
+    auto tryAgainToPos = cocos2d::Vec2(gameOverToPos.x- m_gameOverText->getContentSize().width/2, gameOverToPos.y - m_gameOverText->getContentSize().height - 10);
+    m_tryAgainText->setPosition(cocos2d::Vec2(gameOverToPos.x- m_gameOverText->getContentSize().width/2, origin.y + size.height+ m_tryAgainText->getContentSize().height));
+    m_tryAgainText->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, tryAgainToPos)));
+    addChild(m_tryAgainText);
 
-    quit->setAnchorPoint(cocos2d::Vec2(1,1));
-    auto quitToPos = cocos2d::Vec2(gameOverToPos.x+gameOver->getContentSize().width/2, gameOverToPos.y - gameOver->getContentSize().height - 10);
-    quit->setPosition(cocos2d::Vec2(gameOverToPos.x+gameOver->getContentSize().width/2, origin.y + size.height+quit->getContentSize().height));
-    quit->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, quitToPos)));
-    addChild(quit);
+    m_quitText->setAnchorPoint(cocos2d::Vec2(1,1));
+    auto quitToPos = cocos2d::Vec2(gameOverToPos.x+ m_gameOverText->getContentSize().width/2, gameOverToPos.y - m_gameOverText->getContentSize().height - 10);
+    m_quitText->setPosition(cocos2d::Vec2(gameOverToPos.x+ m_gameOverText->getContentSize().width/2, origin.y + size.height+ m_quitText->getContentSize().height));
+    m_quitText->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, quitToPos)));
+    addChild(m_quitText);
+
+}
+
+void GameOverUI::showButtons() {
+    auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    auto size = cocos2d::Director::getInstance()->getVisibleSize();
+
+    m_tryAgainButton = cocos2d::ui::Button::create("try_again_button.png");
+    m_tryAgainButton->setAnchorPoint(cocos2d::Vec2(0,1));
+    auto tryAgainToPos = cocos2d::Vec2(m_gameOverText->getPosition().x - m_gameOverText->getContentSize().width/2, m_gameOverText->getPosition().y - m_gameOverText->getContentSize().height);
+    m_tryAgainButton->setPosition(tryAgainToPos);
+    m_tryAgainButton->setScale(0);
+    m_tryAgainButton->setTitleText("Retry");
+    m_tryAgainButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.2f, 1)));
+    addChild(m_tryAgainButton);
+
+    m_quitButton = cocos2d::ui::Button::create("quit_button.png");
+    m_quitButton->setAnchorPoint(cocos2d::Vec2(1,1));
+    auto quitToPos = cocos2d::Vec2(m_gameOverText->getPosition().x + m_gameOverText->getContentSize().width/2, m_gameOverText->getPosition().y - m_gameOverText->getContentSize().height);
+    m_quitButton->setPosition(quitToPos);
+    m_quitButton->setScale(0);
+    m_quitButton->setTitleText("Quit");
+    m_tryAgainButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.2f, 1)));
+    addChild(m_quitButton);
 
 }
