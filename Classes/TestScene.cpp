@@ -12,7 +12,6 @@
 #include "Level__TestLevelThree.h"
 #include "Level__TestLevelFour.h"
 #include "GridTestUI.h"
-#include "GameStateMachine.h"
 
 USING_NS_CC;
 
