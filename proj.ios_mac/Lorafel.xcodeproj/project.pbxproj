@@ -36,6 +36,7 @@
 		3167D433E3AA7638CEE883E1 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
 		3167D4529143497A6EF69C6E /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
 		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
+		3167D4B06AAC1D06E119952A /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167D4DA44740D81CEBBBD78 /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
 		3167D4E9F84B1EE8F292825B /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D504F192517D21351ACE /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
@@ -82,6 +83,7 @@
 		3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
 		3167DEB39657802EA6DE783F /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
 		3167DF0C3253478ADD37E00C /* CarrotTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFE4A2A239E7D5BC8444 /* CarrotTile.cpp */; };
+		3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167DF6A2051958CDE171A31 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
 		3167DF77FADCFEBDF48F06B9 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D836466E117847AC4CFA /* Tile.cpp */; };
 		3167DF790D24EFE39E1056FC /* Match.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D26E887DBACCBB1454C8 /* Match.cpp */; };
@@ -239,6 +241,7 @@
 		3167D506937A45C22D96B536 /* XpStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpStatResult.cpp; sourceTree = "<group>"; };
 		3167D509392B9AE47F44A368 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		3167D5122B83D0371E4F615B /* SeededLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeededLevel.h; sourceTree = "<group>"; };
+		3167D53672DC56EAFD01531E /* SwappyGridScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGridScene.h; sourceTree = "<group>"; };
 		3167D53F7A6E35A701E5B1BA /* XpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpUI.h; sourceTree = "<group>"; };
 		3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldUI.h; sourceTree = "<group>"; };
 		3167D57F44E44D04FA0913E8 /* HeroTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroTile.cpp; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		3167DF67F8EC669975DF5874 /* BasicTurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTurnManager.h; sourceTree = "<group>"; };
 		3167DF8F1806DED0DD6B27C0 /* GlyphFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphFactory.cpp; sourceTree = "<group>"; };
 		3167DF9921A93AA17D12B6C8 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGridScene.cpp; sourceTree = "<group>"; };
 		3167DFE4A2A239E7D5BC8444 /* CarrotTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarrotTile.cpp; sourceTree = "<group>"; };
 		3167DFF164097D4A82449B44 /* EnemyHitFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyHitFloatie.h; sourceTree = "<group>"; };
 		3167DFFA821FDCDD595EF4C2 /* RandomAIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomAIStrategy.h; sourceTree = "<group>"; };
@@ -631,6 +635,8 @@
 				3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */,
 				3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */,
 				3167D094F10916B85FB7B0FC /* GameOverUI.h */,
+				3167D53672DC56EAFD01531E /* SwappyGridScene.h */,
+				3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -881,6 +887,7 @@
 				3167D433E3AA7638CEE883E1 /* DragDropSwapPlayerMove.cpp in Sources */,
 				3167DA40E20AEE55BCE869CA /* GoldUI.cpp in Sources */,
 				3167DA75CE3224EEDFFF726C /* GameOverUI.cpp in Sources */,
+				3167D4B06AAC1D06E119952A /* SwappyGridScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,6 +936,7 @@
 				3167DC66920A4A70EA6E9678 /* DragDropSwapPlayerMove.cpp in Sources */,
 				3167D7A01B7361FFC75BE1C7 /* GoldUI.cpp in Sources */,
 				3167DFCAA663048D856BB755 /* GameOverUI.cpp in Sources */,
+				3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

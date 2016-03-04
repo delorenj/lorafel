@@ -14,6 +14,7 @@ namespace lorafel {
     class BasicTurnManager : public TurnManager {
     public:
         BasicTurnManager();
+        virtual ~BasicTurnManager();
         virtual Tile *getNextPlayerTile() override;
     };
 }

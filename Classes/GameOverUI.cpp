@@ -5,6 +5,8 @@
 #include <cocos/ui/UIText.h>
 #include "GameOverUI.h"
 #include "Globals.h"
+#include "SwappyGridScene.h"
+#include "TestScene.h"
 
 using namespace lorafel;
 
@@ -72,6 +74,9 @@ void GameOverUI::showButtons() {
     m_tryAgainButton->setScale(0.1);
     m_tryAgainButton->setTitleText("Retry");
     m_tryAgainButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.5f, 1.0f)));
+
+    m_tryAgainButton->addTouchEventListener(CC_CALLBACK_2(GameOverUI::tryAgain, this));
+
     addChild(m_tryAgainButton);
 
     m_quitButton = cocos2d::ui::Button::create("quit_button.png","quit_button_pressed.png");
@@ -82,5 +87,15 @@ void GameOverUI::showButtons() {
     m_quitButton->setTitleText("Quit");
     m_quitButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.5f, 1.0f)));
     addChild(m_quitButton);
+
+}
+
+void GameOverUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
+    if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+        auto newScene = TestScene::createScene();
+        cocos2d::Director::getInstance()->replaceScene(
+                cocos2d::TransitionFade::create(0.5, newScene, cocos2d::Color3B(0,0,0))
+        );
+    }
 
 }

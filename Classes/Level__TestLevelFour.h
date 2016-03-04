@@ -29,7 +29,6 @@ namespace lorafel {
     class Level__TestLevelFour : public SeededLevel {
     public:
         virtual ~Level__TestLevelFour() {
-            CC_SAFE_DELETE(m_pTurnManager);
         }
 
         Level__TestLevelFour(SwappyGrid* grid) : SeededLevel(grid) {

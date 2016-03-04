@@ -11,12 +11,12 @@
 #include "Level__TestLevelTwo.h"
 #include "Level__TestLevelThree.h"
 #include "Level__TestLevelFour.h"
-#include "GridTestUI.h"
 
-USING_NS_CC;
 
-Scene* TestScene::createScene() {
-    auto scene = Scene::create();
+using namespace lorafel;
+
+cocos2d::Scene* TestScene::createScene() {
+    auto scene = cocos2d::Scene::create();
     auto layer = TestScene::create();
     scene->addChild(layer);
     return scene;
@@ -26,36 +26,15 @@ bool TestScene::init() {
     if(!Node::init()) {
         return false;
     }
-    ignoreAnchorPointForPosition(false);
-    m_pGameStateMachine = lorafel::GameStateMachine::getInstance();
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-
-    // Create the background
-    pSprBackground = Sprite::create("bg1.png");
-    CCLOG("visibleSize: (%f,%f)", visibleSize.width, visibleSize.height);
-    CCLOG("bg size: (%f,%f)", pSprBackground->getContentSize().width, pSprBackground->getContentSize().height);
-    CCLOG("origin: (%f, %f)", origin.x, origin.y);
-    pSprBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
-    this->addChild(pSprBackground, lorafel::LayerOrder::BACKGROUND);
+    // Set the background
+    m_pBackground = Sprite::create("bg1.png");
 
     // Create the grid
-    swappyGrid = lorafel::SwappyGrid::create();
-    auto level =  new lorafel::Level__TestLevelFour(swappyGrid);
-    swappyGrid->setLevel(level);
-    addChild(swappyGrid, lorafel::LayerOrder::TILES);
-    level->load();
+    m_pSwappyGrid = SwappyGrid::create();
 
-    m_pGridUI = lorafel::GridUI::create(swappyGrid);
-    m_pGridUI->ignoreAnchorPointForPosition(false);
-    addChild(m_pGridUI,lorafel::LayerOrder::UX);
+    // Load the level
+    m_pLevel =  new Level__TestLevelFour(m_pSwappyGrid);
 
-    // Create the grid debug panel
-    lorafel::GridTestUI* gridTestUI = lorafel::GridTestUI::create(swappyGrid);
-    gridTestUI->setAnchorPoint(Vec2(0,1));
-    gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
-    addChild(gridTestUI, lorafel::LayerOrder::DEBUG);
-
-    return true;
+    return SwappyGridScene::init();
 }

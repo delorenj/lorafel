@@ -159,7 +159,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCASSERT(player, "Player not found!");
 
     // create a scene. it's an autorelease object
-    auto scene = TestScene::createScene();
+    auto scene = lorafel::TestScene::createScene();
 
     // run
     director->runWithScene(scene);

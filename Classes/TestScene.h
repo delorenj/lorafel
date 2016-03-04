@@ -9,26 +9,16 @@
 #ifndef ____TestScene____
 #define ____TestScene____
 
-#include "cocos2d.h"
-#include "SwappyGrid.h"
-#include "StateMachine.h"
-#include "GridUI.h"
+#include "SwappyGridScene.h"
 
-USING_NS_CC;
+namespace lorafel {
+    class TestScene : public SwappyGridScene {
+    public:
+        static cocos2d::Scene* createScene();
+        virtual bool init() override;
+        CREATE_FUNC(TestScene);
 
-class GridUI;
-class TestScene : public Node {
-public:
-    static Scene *createScene();
-    virtual bool init() override;
-    CREATE_FUNC(TestScene);
-
-protected:
-    Sprite* pSprBackground;
-    lorafel::SwappyGrid* swappyGrid;
-    PhysicsWorld* m_world;
-    lorafel::StateMachine* m_pGameStateMachine;
-    lorafel::GridUI *m_pGridUI;
-};
+    };
+}
 
 #endif /* defined(____TestScene____) */

@@ -34,6 +34,8 @@ namespace lorafel {
         cocos2d::ui::Text* m_quitText;
         cocos2d::ui::Button* m_tryAgainButton;
         cocos2d::ui::Button* m_quitButton;
+
+        void tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
     };
 }
 

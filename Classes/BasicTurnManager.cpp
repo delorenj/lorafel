@@ -34,3 +34,7 @@ BasicTurnManager::BasicTurnManager() {
     m_playerTileIndex = 0;
     m_activePlayerTileIndex = m_playerTileIndex;
 }
+
+BasicTurnManager::~BasicTurnManager() {
+
+}
