@@ -14,8 +14,6 @@ Player::Player() {
 
 Player::~Player() {
     CC_SAFE_DELETE(m_pLevelManager);
-    CC_SAFE_DELETE(m_pTile);
-    CC_SAFE_DELETE(m_pDispatcher);
 }
 
 void Player::initFromServer() {

@@ -16,7 +16,8 @@ namespace lorafel {
     class GridUI;
     class SwappyGridScene : public cocos2d::Node {
     public:
-        virtual bool init();
+        virtual bool init() override;
+        virtual ~SwappyGridScene();
 
     protected:
         cocos2d::Sprite* m_pBackground;

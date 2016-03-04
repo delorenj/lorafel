@@ -20,6 +20,10 @@ namespace lorafel {
         }
 
         Player* loadPlayer(std::string email) {
+            if(m_pPlayer != nullptr) {
+                delete m_pPlayer;
+                m_pPlayer = nullptr;
+            }
             // For now, just make a default player
             // upon each load
             m_pPlayer = new Player();

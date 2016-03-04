@@ -14,6 +14,7 @@ namespace lorafel {
         PlayerMove(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
 
         virtual ~PlayerMove() {
+            CCLOG("~PlayerMove()");
             if(m_pActions != nullptr) {
                 if(m_pActions->size() > 0) {
                     for( auto it : *m_pActions) {

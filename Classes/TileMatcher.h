@@ -16,7 +16,9 @@ namespace lorafel {
     public:
         TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
 
-        virtual ~TileMatcher() {} ;
+        virtual ~TileMatcher() {
+            CCLOG("~TileMatcher()");
+        } ;
 
         virtual std::set<Match *> findMatches();
         bool getDebugDraw() const { return m_debugDraw; }

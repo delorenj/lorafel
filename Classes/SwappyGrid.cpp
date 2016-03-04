@@ -372,10 +372,6 @@ void SwappyGrid::setCurrentTouchId(unsigned int eventTouchId) {
     this->m_currentTouchId = eventTouchId;
 }
 
-unsigned int SwappyGrid::getCurrentTouchId() {
-    return this->m_currentTouchId;
-}
-
 void SwappyGrid::ProcessMatches() {
     GET_GAME_STATE
     // Checking for matches can happen at a couple of places
@@ -683,4 +679,19 @@ void SwappyGrid::initGameOverScreen(float dt) {
     unschedule(schedule_selector(SwappyGrid::initGameOverScreen));
     auto gameOverUI = GameOverUI::create();
     gameOverUI->show();
+}
+
+SwappyGrid::~SwappyGrid() {
+    CCLOG("~SwappyGrid()");
+    CC_SAFE_DELETE(m_pMoveStack);
+    CC_SAFE_DELETE(m_pColumnStateMachines);
+
+    for(auto q : *m_pTileDropQueues) {
+        CC_SAFE_DELETE(q);
+    }
+
+    CC_SAFE_DELETE(m_pTileRemoveQueue);
+    CC_SAFE_DELETE(m_pGrid);
+//    CC_SAFE_DELETE(m_pLevel);
+    CC_SAFE_DELETE(m_pTileMatcher);
 }

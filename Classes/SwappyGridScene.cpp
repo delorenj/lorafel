@@ -10,7 +10,7 @@ bool SwappyGridScene::init() {
     }
     ignoreAnchorPointForPosition(false);
     m_pGameStateMachine = GameStateMachine::getInstance();
-
+    m_pGameStateMachine->setState<IdleState>();
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     cocos2d::Point origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
@@ -36,4 +36,8 @@ bool SwappyGridScene::init() {
     addChild(gridTestUI, lorafel::LayerOrder::DEBUG);
 
     return true;
+}
+
+SwappyGridScene::~SwappyGridScene() {
+    CCLOG("~SwappyGridScene()");
 }
