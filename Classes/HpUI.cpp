@@ -78,12 +78,13 @@ void HpUI::tween(float dt) {
         return;
     }
 
-    unsigned long val;
+    unsigned long val = to;
 
+    auto mag = (from - to) * (1-dt);
     if(from < to) {
-        val = from+1;
+        val = from+mag;
     } else if(from > to) {
-        val = from - 1;
+        val = from-mag;
     }
 
     m_pText->setString(to_string(val));

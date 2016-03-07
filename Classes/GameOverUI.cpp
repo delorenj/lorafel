@@ -93,12 +93,13 @@ void GameOverUI::showButtons() {
 
 void GameOverUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
     if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
-        PlayerManager::getInstance()->loadPlayer("some_email@balls.net");
-        cocos2d::Director::getInstance()->getRunningScene()->pause();
+        cocos2d::Director::getInstance()->getRunningScene()->removeFromParentAndCleanup(true);
         cocos2d::Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
+        PlayerManager::getInstance()->loadPlayer("some_email@balls.net");
+
         auto newScene = TestScene::createScene();
         cocos2d::Director::getInstance()->replaceScene(
-                cocos2d::TransitionFade::create(0.5, newScene, cocos2d::Color3B(0,0,0))
+                cocos2d::TransitionFade::create(0.1, newScene, cocos2d::Color3B(0,0,0))
         );
     }
 

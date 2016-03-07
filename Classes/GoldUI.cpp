@@ -69,13 +69,13 @@ bool lorafel::GoldUI::init() {
 }
 
 void GoldUI::tween(float dt) {
-    unsigned long from = (unsigned long)(std::stoi(m_pText->getString().c_str()));
-    unsigned long to = m_pPlayer->getGold();
+    int from = (int)(std::stoi(m_pText->getString().c_str()));
+    int to = m_pPlayer->getGold();
     auto maxGold = m_pPlayer->getMaxGold();
 
     if(from == to) unschedule(schedule_selector(GoldUI::tween));
 
-    unsigned long val;
+    int val = to;
 
     if(from < to) {
         val = from+1;

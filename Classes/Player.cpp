@@ -20,8 +20,9 @@ void Player::initFromServer() {
     CCASSERT(0, "Load player from server not yet implemented");
 }
 
-unsigned long Player::updateGoldBy(int amount, Match* pMatch) {
-    amount = amount > m_maxGold - m_gold ? m_maxGold : amount;
+int Player::updateGoldBy(int amount, Match* pMatch) {
+    amount = amount > m_maxGold - m_gold ? m_maxGold - m_gold : amount;
+    if(amount == 0) return m_gold;
     m_gold += amount;
 
     // Fire off an XP event

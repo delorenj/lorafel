@@ -29,6 +29,7 @@ namespace lorafel {
     class Level__TestLevelFour : public SeededLevel {
     public:
         virtual ~Level__TestLevelFour() {
+                CCLOG("~Level__TetsLevelFour()");
         }
 
         Level__TestLevelFour(SwappyGrid* grid) : SeededLevel(grid) {

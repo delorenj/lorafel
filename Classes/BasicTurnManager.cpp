@@ -24,7 +24,9 @@ lorafel::Tile* BasicTurnManager::getNextPlayerTile() {
     }
 
     m_activePlayerTileIndex = m_playerTileIndex;
-    return m_pPlayerTiles->at(m_playerTileIndex++);
+
+    auto tile = m_pPlayerTiles->at(m_playerTileIndex++);
+    return tile->getGrid() == nullptr ? nullptr : tile;
 
 }
 

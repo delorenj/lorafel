@@ -500,7 +500,13 @@ void SwappyGrid::removeTile(Tile* tile) {
     if (tile == nullptr) return;
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
-    removeChild(tile);
+
+    /**
+     * Don't remove Hero tile. Causes some shit!
+     */
+    if(tile->getTag() != Tag::HERO) {
+        removeChild(tile);
+    }
 }
 
 void SwappyGrid::addTileToRemoveQueue(Tile* pTile) {

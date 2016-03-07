@@ -20,11 +20,10 @@ namespace lorafel {
 
         void initFromServer();
         LevelManager* getLevelManager() const { return m_pLevelManager; }
-        unsigned long updateGoldBy(int amount, Match* pMatch);
-        unsigned long getGold() const { return m_gold; }
-        unsigned long getMaxGold() const { return m_maxGold; }
+        int updateGoldBy(int amount, Match* pMatch);
+        int getGold() const { return m_gold; }
+        int getMaxGold() const { return m_maxGold; }
         unsigned long getMaxHp() const { return m_maxHp; }
-        void setGold(unsigned long val) { m_gold = std::max(val, m_maxGold); }
         unsigned long updateHpBy(long val);
         unsigned long getHp() const { return m_hp; }
         void setHp(unsigned long val) { m_hp = std::max(val, m_maxHp); }
@@ -36,13 +35,13 @@ namespace lorafel {
 
     protected:
         // Current Stats
-        unsigned long m_gold = 0;
-        unsigned long m_hp = 100;
+        int m_gold = 0;
+        unsigned long m_hp = 10000;
         unsigned long m_mp = 20;
 
         // Stat Ranges
-        unsigned long m_maxGold = 1000;
-        unsigned long m_maxHp = 100;
+        int m_maxGold = 1000;
+        unsigned long m_maxHp = 10000;
         unsigned long m_maxMp = 20;
 
         cocos2d::EventDispatcher* m_pDispatcher;
