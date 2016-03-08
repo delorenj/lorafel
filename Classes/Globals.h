@@ -8,6 +8,10 @@
 namespace lorafel {
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
 
+    template <typename T>
+    T clamp(const T& n, const T& lower, const T& upper) {
+        return std::max(lower, std::min(n, upper));
+    }
     struct Tag {
         static const int UI = 2;
         static const int TILE = 3;

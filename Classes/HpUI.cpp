@@ -7,6 +7,7 @@
 #include "HpUI.h"
 #include "PlayerManager.h"
 #include "StringPatch.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -69,8 +70,8 @@ bool lorafel::HpUI::init() {
 }
 
 void HpUI::tween(float dt) {
-    unsigned long from = (unsigned long)(std::stoi(m_pText->getString().c_str()));
-    unsigned long to = m_pPlayer->getHp();
+    auto from = (int)(std::stoi(m_pText->getString().c_str()));
+    auto to = m_pPlayer->getHp();
     auto maxHp = m_pPlayer->getMaxHp();
 
     if(from == to) {
@@ -78,13 +79,13 @@ void HpUI::tween(float dt) {
         return;
     }
 
-    unsigned long val = to;
+    auto val = to;
+    auto mag = (double)(from - to) * (1-dt);
 
-    auto mag = (from - to) * (1-dt);
     if(from < to) {
-        val = from+mag;
+        val = clamp<int>(from+mag, 0, m_pPlayer->getMaxHp());
     } else if(from > to) {
-        val = from-mag;
+        val = clamp<int>(from-mag, 0, m_pPlayer->getMaxHp());
     }
 
     m_pText->setString(to_string(val));

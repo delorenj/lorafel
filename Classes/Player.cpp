@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "cocos2d.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -35,20 +36,16 @@ int Player::updateGoldBy(int amount, Match* pMatch) {
     return m_gold;
 }
 
-unsigned long Player::updateHpBy(long val) {
-    unsigned long newVal = m_hp + val;
-    newVal = (unsigned long) std::min(newVal, m_maxHp);
-    m_hp = (unsigned long) std::max((unsigned long)0, newVal);
+int Player::updateHpBy(int val) {
+    m_hp = clamp<int>(m_hp + val, 0, m_maxHp);
     return m_hp;
 }
 
-unsigned long Player::updateMpBy(unsigned long val) {
-    val = val > m_maxMp - m_mp ? m_maxMp : val;
-    m_mp += val;
+int Player::updateMpBy(int val) {
+    m_mp = clamp<int>(m_mp + val, 0, m_maxMp);
     return m_mp;
 }
 
 Tile* Player::getTile() const {
-    if(m_hp <=0) return nullptr;
-    return m_pTile;
+    return m_hp <=0  ?  nullptr : m_pTile;
 }

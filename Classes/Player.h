@@ -23,26 +23,26 @@ namespace lorafel {
         int updateGoldBy(int amount, Match* pMatch);
         int getGold() const { return m_gold; }
         int getMaxGold() const { return m_maxGold; }
-        unsigned long getMaxHp() const { return m_maxHp; }
-        unsigned long updateHpBy(long val);
-        unsigned long getHp() const { return m_hp; }
-        void setHp(unsigned long val) { m_hp = std::max(val, m_maxHp); }
-        unsigned long updateMpBy(unsigned long val);
-        unsigned long getMp() const { return m_mp; }
-        void setMp(unsigned long val) { m_mp = std::max(val, m_maxMp); }
+        int getMaxHp() const { return m_maxHp; }
+        int updateHpBy(int val);
+        int getHp() const { return m_hp; }
+        void setHp(int val) { m_hp = std::max(val, m_maxHp); }
+        int updateMpBy(int val);
+        int getMp() const { return m_mp; }
+        void setMp(int val) { m_mp = std::max(val, m_maxMp); }
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
 
     protected:
         // Current Stats
         int m_gold = 0;
-        unsigned long m_hp = 10000;
-        unsigned long m_mp = 20;
+        int m_hp = 1000;
+        int m_mp = 20;
 
         // Stat Ranges
         int m_maxGold = 1000;
-        unsigned long m_maxHp = 10000;
-        unsigned long m_maxMp = 20;
+        int m_maxHp = 1000;
+        int m_maxMp = 20;
 
         cocos2d::EventDispatcher* m_pDispatcher;
 
