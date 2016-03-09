@@ -9,6 +9,7 @@
 #include "EnemyTile.h"
 #include "PlayerManager.h"
 #include "GameOverUI.h"
+#include "EventDataTile.h"
 
 using namespace lorafel;
 
@@ -195,6 +196,11 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
         // Add the active player and enemy tiles to the TurnManager
         if (tile->getTag() == Tag::HERO || tile->getTag() == Tag::ENEMY) {
             m_pLevel->getTurnManager()->addPlayerTile(tile);
+
+            if(tile->getTag() == Tag::ENEMY) {
+                auto eventData = new EventDataTile(tile);
+                getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
+            }
         }
 
         obj->setNumberOfFallingTiles(obj->getNumberOfFallingTiles() - 1);

@@ -32,6 +32,7 @@ StickMan* StickMan::create() {
         sprite->addEvents();
         sprite->addStatResult(new XpStatResult(200));
         sprite->setHp(5000);
+        sprite->setMaxHp(5000);
         sprite->setStrategy(new RandomAIStrategy());
         return sprite;
     }

@@ -6,6 +6,7 @@
 #include "XpFloatie.h"
 #include "Globals.h"
 #include "EnemyHitFloatie.h"
+#include "EventDataTile.h"
 
 bool lorafel::GridUI::init() {
     cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -20,6 +21,7 @@ bool lorafel::GridUI::init() {
     m_pXpUI->setName("XpBar");
     addChild(m_pXpUI);
 
+
     m_pHpUI = HpUI::create();
     m_pHpUI->setAnchorPoint(cocos2d::Vec2(1,1));
 
@@ -28,6 +30,7 @@ bool lorafel::GridUI::init() {
     m_pHpUI->setName("HpUI");
     addChild(m_pHpUI);
 
+
     m_pGoldUI = GoldUI::create();
     m_pGoldUI->setAnchorPoint(cocos2d::Vec2(1,1));
 
@@ -35,7 +38,6 @@ bool lorafel::GridUI::init() {
     m_pGoldUI->setTag(Tag::UI);
     m_pGoldUI->setName("GoldUI");
     addChild(m_pGoldUI);
-
 
     auto _listener = cocos2d::EventListenerCustom::create("xp", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
@@ -51,8 +53,29 @@ bool lorafel::GridUI::init() {
         auto floatie = EnemyHitFloatie::create(data->val);
         floatie->setOrigin(data->origin);
         addChild(floatie);
+        _eventDispatcher->dispatchCustomEvent("stat_change", nullptr);
     });
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
 
+    _listener = cocos2d::EventListenerCustom::create("new_enemy", [=](cocos2d::EventCustom* event){
+        auto eventData = static_cast<EventDataTile*>(event->getUserData());
+        auto tile = eventData->data;
+        auto guage = StatGuage::create(
+                "stick_man_avatar.png",
+                "enemy_bar.png",
+                std::bind([](){ return 0;}),
+                std::bind([=](){ return tile->getMaxHp();}),
+                std::bind([=](){ return tile->getHp();})
+        );
+
+        m_vecEnemyHpUI.push_back(guage);
+        guage->setAnchorPoint(cocos2d::Vec2(1,1));
+        guage->setPosition(cocos2d::Vec2(origin.x+visibleSize.width, visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (getContentSize().height * m_vecEnemyHpUI.size())));
+        guage->setTag(Tag::UI);
+        guage->setName("EnemyHpUI");
+        addChild(guage);
+    });
+
+    _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
     return true;
 }

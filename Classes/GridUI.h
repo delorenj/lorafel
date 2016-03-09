@@ -11,6 +11,7 @@
 #include "XpUI.h"
 #include "GoldUI.h"
 #include "HpUI.h"
+#include "StatGuage.h"
 
 namespace lorafel {
     class GridUI : public cocos2d::Node {
@@ -20,8 +21,8 @@ namespace lorafel {
 
         static GridUI* create(SwappyGrid* grid) {
             GridUI *pRet = new(std::nothrow) GridUI();
+            pRet->setGrid(grid);
             if (pRet && pRet->init()) {
-                pRet->setGrid(grid);
                 pRet->autorelease();
                 return pRet;
             }
@@ -36,12 +37,12 @@ namespace lorafel {
         SwappyGrid* getGrid() const { return m_pSwappyGrid; }
         XpUI* getXpUI() const { return m_pXpUI; }
         GoldUI* getGoldUI() const { return m_pGoldUI; }
-
     protected:
         SwappyGrid* m_pSwappyGrid;
         XpUI* m_pXpUI;
         GoldUI* m_pGoldUI;
         HpUI* m_pHpUI;
+        std::vector<StatGuage*> m_vecEnemyHpUI;
     };
 }
 

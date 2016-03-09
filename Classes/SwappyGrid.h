@@ -80,6 +80,8 @@ namespace lorafel {
         Tile* getHeroTile();
         void initGameOverScreen(float dt);
 
+        std::set<Tile*> getEnemyTilesFromDropQueue();
+
     protected:
         cpSpace* m_pWorld;
         Level* m_pLevel;

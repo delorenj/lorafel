@@ -80,7 +80,9 @@ namespace lorafel {
         virtual int getRandHit(Tile* pTile);
 
         void setHp(int hp) { m_hp = hp; }
+        void setMaxHp(int hp) { m_maxHp = hp; }
         int getHp() const { return m_hp; }
+        int getMaxHp() const { return m_maxHp; }
 
         AIStrategy* getStrategy() const { return m_pStrategy; };
         void setStrategy(AIStrategy* strategy) { m_pStrategy = strategy; }
@@ -92,6 +94,7 @@ namespace lorafel {
         Color m_color = NONE;
         int m_firstVisit = 0;
         int m_hp = 0;
+        int m_maxHp = 0;
 
         std::set<StatResult*>* m_pStatResults;
         /**

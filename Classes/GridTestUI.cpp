@@ -25,9 +25,9 @@ bool GridTestUI::init() {
 
     addStateName();
 
-    addFallingTileCount();
+//    addFallingTileCount();
 
-    addDropTileButtons();
+//    addDropTileButtons();
 
     addSettingsButton();
 
