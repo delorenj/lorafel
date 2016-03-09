@@ -10,6 +10,7 @@
 #include "PlayerManager.h"
 #include "GameOverUI.h"
 #include "EventDataTile.h"
+#include "GridTransparency.h"
 
 using namespace lorafel;
 
@@ -48,6 +49,10 @@ bool SwappyGrid::init() {
     m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0, 0));
     m_pDebugDraw->setPosition(0, 0);
     addChild(m_pDebugDraw, LayerOrder::DEBUG);
+
+    // Create the Grid Transparency;
+    m_pGridTransparency = new GridTransparency();
+    addChild(m_pGridTransparency, LayerOrder::TILES-1);
 
     // Create Tile Grid
     m_pGrid = new TileGrid();
@@ -706,4 +711,8 @@ SwappyGrid::~SwappyGrid() {
     CC_SAFE_DELETE(m_pGrid);
 //    CC_SAFE_DELETE(m_pLevel);
     CC_SAFE_DELETE(m_pTileMatcher);
+}
+
+GridTransparency* SwappyGrid::getGridTransparency() {
+    return m_pGridTransparency;
 }

@@ -32,6 +32,8 @@
 		3167D3222AC906FBB2C0702D /* StickMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */; };
 		3167D3281444C6E14E34C116 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D369DE6FA8305B0DFA5F /* GlyphFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8F1806DED0DD6B27C0 /* GlyphFactory.cpp */; };
+		3167D3E989B19440DE3B4297 /* GridTransparency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */; };
+		3167D4048E9806496EF2F6F7 /* GridTransparency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */; };
 		3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D433E3AA7638CEE883E1 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
 		3167D4529143497A6EF69C6E /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
@@ -256,6 +258,7 @@
 		3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverUI.cpp; sourceTree = "<group>"; };
 		3167D6BF39D1E520BFFD7883 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		3167D6C48A8D16D57213B01D /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		3167D6CDF6C1BC634E8E1BEE /* GridTransparency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTransparency.h; sourceTree = "<group>"; };
 		3167D6D9B2387600CAD15347 /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = "<group>"; };
 		3167D7107F6E585B0E9D0DFD /* PlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMove.h; sourceTree = "<group>"; };
 		3167D71961895D1BDB0213EF /* CarrotFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotFactory.h; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 		3167D7564FDA1E75B77C2270 /* MatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResult.h; sourceTree = "<group>"; };
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
+		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
 		3167D808D5906C0F6DF89297 /* CarrotTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotTile.h; sourceTree = "<group>"; };
 		3167D8097512943BF474377C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
@@ -645,6 +649,8 @@
 				3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */,
 				3167D99F1FE72B60EC072B22 /* StatGuage.h */,
 				3167D87F51E76C8213EF5A5C /* EventDataTile.h */,
+				3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */,
+				3167D6CDF6C1BC634E8E1BEE /* GridTransparency.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -897,6 +903,7 @@
 				3167DA75CE3224EEDFFF726C /* GameOverUI.cpp in Sources */,
 				3167D4B06AAC1D06E119952A /* SwappyGridScene.cpp in Sources */,
 				3167D79C492BD952CEAC2A15 /* StatGuage.cpp in Sources */,
+				3167D4048E9806496EF2F6F7 /* GridTransparency.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +954,7 @@
 				3167DFCAA663048D856BB755 /* GameOverUI.cpp in Sources */,
 				3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */,
 				3167DB04447FED7FAB894B4B /* StatGuage.cpp in Sources */,
+				3167D3E989B19440DE3B4297 /* GridTransparency.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

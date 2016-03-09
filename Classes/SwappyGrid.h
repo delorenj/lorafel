@@ -13,6 +13,7 @@
 #include "TileSwapEventData.h"
 #include "PlayerMove.h"
 #include "TileMatcher.h"
+#include "GridTransparency.h"
 
 #define GET_GAME_STATE GameState* state = static_cast<GameState*>(m_pGameStateMachine->getState());
 
@@ -24,12 +25,19 @@ namespace lorafel {
     class GridUI;
     class AIStrategy;
 
-    typedef std::vector<Tile*> TileList, TileRow, TileColumn;
+    typedef std::vector<Tile*> TileColumn;
     typedef std::set<Tile*> TileSet;
     typedef std::vector<TileColumn*> TileGrid;
     typedef std::queue<Tile*> TileQueue;
 
     class SwappyGrid : public cocos2d::Node {
+    public:
+        static const int NUM_COLUMNS = 9;
+        static const int NUM_ROWS = 9;
+        static const int SWAPPING_ACTION_TAG = 1;
+
+        GridTransparency* getGridTransparency();
+
     public:
         virtual ~SwappyGrid();
         bool init() override;
@@ -43,9 +51,6 @@ namespace lorafel {
         const cocos2d::Vec2 gridToScreen(cocos2d::Vec2 pos) const;
         const cocos2d::Vec2 gridToScreen(int x, int y) const;
         const cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos) const;
-        static const int NUM_COLUMNS = 9;
-        static const int NUM_ROWS = 9;
-        static const int SWAPPING_ACTION_TAG = 1;
         const int getTopOffscreenTileSlot() const;
         const cocos2d::Vec2 getTopOfScreen() const;
         // Grid Data Structure Helpers
@@ -79,17 +84,14 @@ namespace lorafel {
         Tile* getRandomEnemy();
         Tile* getHeroTile();
         void initGameOverScreen(float dt);
-
         std::set<Tile*> getEnemyTilesFromDropQueue();
 
     protected:
-        cpSpace* m_pWorld;
         Level* m_pLevel;
-        cocos2d::Size m_gridSize;
-        int m_gridBaseY;
         cocos2d::Size visibleSize;
         cocos2d::Vec2 origin;
         TileGrid* m_pGrid;
+        GridTransparency* m_pGridTransparency;
         cocos2d::Size m_tileSize;
         float m_tileScaleFactor;
         StateMachine* m_pGameStateMachine;
@@ -101,7 +103,9 @@ namespace lorafel {
         TileMatcher* m_pTileMatcher;
         unsigned int m_numberOfFallingTiles = 0;
         TileSwapEventData* m_pTileSwapEventData;
-        unsigned int m_currentTouchId;
+        Tile* m_pActivePlayerTile;
+        int m_currentTouchId;
+
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
         void dropTile(int column, Tile* pTile); // Drop a specific tile
@@ -119,7 +123,6 @@ namespace lorafel {
         void ProcessTurnManager();
         void ProcessEnemyTurns();
         std::vector<PlayerMove*> getValidMoves(Tile* pTile);
-        Tile* m_pActivePlayerTile;
         void addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation);
         void onGameOver();
     };

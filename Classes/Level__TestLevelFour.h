@@ -16,6 +16,7 @@
 #include "StickMan.h"
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
+#include "GridTransparency.h"
 
 namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
@@ -28,9 +29,6 @@ namespace lorafel {
 
     class Level__TestLevelFour : public SeededLevel {
     public:
-        virtual ~Level__TestLevelFour() {
-                CCLOG("~Level__TetsLevelFour()");
-        }
 
         Level__TestLevelFour(SwappyGrid* grid) : SeededLevel(grid) {
                 m_pTurnManager = new BasicTurnManager();
@@ -63,6 +61,20 @@ namespace lorafel {
                 config->frequency = 1;
                 m_pTileConfigs->push_back(config);
 
+                /**
+                 * Insert background transparency tiles
+                 */
+                for(int i=0; i< SwappyGrid::NUM_COLUMNS; i++) {
+                    for(int j=0; j < SwappyGrid::NUM_ROWS; j++) {
+                        m_pSwappyGrid->getGridTransparency()->insertTile(
+                                m_pSwappyGrid->gridToScreen(i,j),
+                                GridTransparency::Tile(
+                                        (i+j) % 2 == 0 ? GridTransparency::Tile::Color::LIGHT : GridTransparency::Tile::Color::DARK,
+                                        GridTransparency::Tile::Type::CENTER)
+                        );
+
+                    }
+                }
                 // Col0
                 auto col = new TileColumn();
                 CARROT GRAPE CARROT AVOCADO CARROT MELEE_ATTACK AVOCADO AVOCADO CARROT
