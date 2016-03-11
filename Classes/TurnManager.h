@@ -7,6 +7,7 @@
 
 #include "Tile.h"
 #include "GameStateMachine.h"
+#include "Globals.h"
 
 namespace lorafel {
     class TurnManager {
@@ -22,6 +23,15 @@ namespace lorafel {
         void addPlayerTile(Tile* tile) { m_pPlayerTiles->push_back(tile); }
         void addMove(PlayerMove* move) { m_pTurnStack->push(move); }
         int getTurnIndex() const { return m_turnIndex; }
+
+        void setHeroAsNextTurn() {
+            for(int i=0; i<m_pPlayerTiles->size(); i++) {
+                if(m_pPlayerTiles->at(i)->getTag() == Tag::HERO) {
+                    m_playerTileIndex = i;
+                    break;
+                }
+            }
+        };
 
 
     protected:

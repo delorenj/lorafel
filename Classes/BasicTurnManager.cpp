@@ -13,6 +13,10 @@ lorafel::Tile* BasicTurnManager::getNextPlayerTile() {
 
     // If player didn't move yet,
     // return the current player
+    if(m_turnIndex == 0) {
+        setHeroAsNextTurn();
+    }
+
     if(m_turnIndex > m_pTurnStack->size()) {
         return m_pPlayerTiles->at(m_playerTileIndex-1 < 0 ? m_pPlayerTiles->size()-1 : m_playerTileIndex-1);
     }
