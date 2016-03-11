@@ -16,6 +16,12 @@ namespace lorafel {
 
     protected:
         StickMan();
+
+        /**
+         * Overriding this so this enemy is easier. He will sometimes
+         * drop normal tiles mixed in with the mean glyphs
+         */
+        Tile* getRandomGlyph();
     };
 }
 

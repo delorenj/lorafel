@@ -5,6 +5,7 @@
 #include "StickMan.h"
 #include "XpStatResult.h"
 #include "Globals.h"
+#include "Level.h"
 #include "RandomAIStrategy.h"
 #include "PoisonGlyphFactory.h"
 #include "StormGlyphFactory.h"
@@ -47,4 +48,9 @@ void StickMan::applyHit(Match* pMatch) {
     if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
         lorafel::EnemyTile::applyHit(pMatch);
 }
+
+Tile* StickMan::getRandomGlyph() {
+    return CCRANDOM_0_1() < 0.5f ? m_pSwappyGrid->getLevel()->getRandomTile() : EnemyTile::getRandomGlyph();
+}
+
 
