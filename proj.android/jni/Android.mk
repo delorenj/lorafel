@@ -16,25 +16,38 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AvocadoTile.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
-                   ../../Classes/BearTile.cpp \
                    ../../Classes/CarrotTile.cpp \
+                   ../../Classes/DragDropSwapPlayerMove \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
                    ../../Classes/Floatie.cpp \
+                   ../../Classes/GameOverUI.cpp \
                    ../../Classes/GameStateMachine.cpp \
+                   ../../Classes/GlyphFactory.cpp \
+                   ../../Classes/GlyphTile.cpp \
+                   ../../Classes/GoldStatResult.cpp \
+                   ../../Classes/GoldUI.cpp \
                    ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
+                   ../../Classes/GridTransparency.cpp \
                    ../../Classes/GridUI.cpp \
                    ../../Classes/HeroTile.cpp \
-                   ../../Classes/Inventory.cpp \
+                   ../../Classes/HpUI.cpp \
                    ../../Classes/InGameSettings.cpp \
+                   ../../Classes/Inventory.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
+                   ../../Classes/MeleeAttackTile.cpp \
+                   ../../Classes/MoneyBagTile.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/PlayerManager.cpp \
+                   ../../Classes/PoisonGlyph.cpp \
                    ../../Classes/Progress.cpp \
+                   ../../Classes/RandomAIStrategy.cpp \
+                   ../../Classes/SeededLevel.cpp \
                    ../../Classes/StickMan.cpp \
+                   ../../Classes/StormGlyph.cpp \
                    ../../Classes/SwappyGrid.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
