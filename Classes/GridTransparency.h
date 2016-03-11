@@ -42,6 +42,8 @@ namespace lorafel {
             Type m_type;
         };
 
+        static const GLubyte opacity = 80;
+
         virtual bool init() override;
         CREATE_FUNC(GridTransparency);
 
