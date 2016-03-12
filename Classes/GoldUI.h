@@ -5,6 +5,7 @@
 #ifndef LORAFEL_GOLDUI_H
 #define LORAFEL_GOLDUI_H
 
+#include <string>
 #include "cocos/ui/UIText.h"
 #include "cocos2d.h"
 #include "Player.h"

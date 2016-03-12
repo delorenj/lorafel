@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 2/8/16.
 //
 
+#include "cocos2d.h"
 #include "GlyphFactory.h"
 #include "NormalDistributionRandomizer.h"
 

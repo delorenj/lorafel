@@ -17,7 +17,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
                    ../../Classes/CarrotTile.cpp \
-                   ../../Classes/DragDropSwapPlayerMove \
+                   ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
                    ../../Classes/Floatie.cpp \
@@ -46,9 +46,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Progress.cpp \
                    ../../Classes/RandomAIStrategy.cpp \
                    ../../Classes/SeededLevel.cpp \
+                   ../../Classes/StatGuage.cpp \
                    ../../Classes/StickMan.cpp \
                    ../../Classes/StormGlyph.cpp \
                    ../../Classes/SwappyGrid.cpp \
+                   ../../Classes/SwappyGridScene.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileFactory.cpp \

@@ -7,6 +7,7 @@
 #include "GoldUI.h"
 #include "PlayerManager.h"
 #include "StringPatch.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -69,7 +70,7 @@ bool lorafel::GoldUI::init() {
 }
 
 void GoldUI::tween(float dt) {
-    int from = (int)(std::stoi(m_pText->getString().c_str()));
+    int from = (int)(parseInt(m_pText->getString().c_str()));
     int to = m_pPlayer->getGold();
     auto maxGold = m_pPlayer->getMaxGold();
 

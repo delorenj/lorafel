@@ -5,8 +5,26 @@
 #ifndef LORAFEL_GLOBALS_H
 #define LORAFEL_GLOBALS_H
 
+#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+
+extern "C" {
+    int	 atoi(const char *);
+};
+
 namespace lorafel {
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
+
+    static int parseInt(const std::string& value)
+    {
+        // Android NDK 10 doesn't support std::stoi a/ std::stoul
+        #if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+            return std::stoi(value);
+        #else
+            return atoi(value.c_str());
+        #endif
+    }
 
     template <typename T>
     T clamp(const T& n, const T& lower, const T& upper) {

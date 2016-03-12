@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 3/7/16.
 //
 
+#include <string>
 #include "StatGuage.h"
 #include "StringPatch.h"
 #include "Globals.h"
@@ -77,7 +78,7 @@ bool StatGuage::init(
 }
 
 void StatGuage::tween(float dt) {
-    auto from = (int)(std::stoi(m_pText->getString().c_str()));
+    auto from = (int)(parseInt(m_pText->getString().c_str()));
     auto to = m_callbackCurrent();
     auto maxVal = m_callbackMax();
     auto minVal = m_callbackMin();

@@ -6,8 +6,8 @@
 #define LORAFEL_POISONGLYPHFACTORY_H
 
 
-#import "TileFactory.h"
-#import "PoisonGlyph.h"
+#include "TileFactory.h"
+#include "PoisonGlyph.h"
 
 namespace lorafel {
     class PoisonGlyphFactory : TileFactory {

@@ -6,6 +6,8 @@
 #ifndef LORAFEL_TILEFACTORY_H
 #define LORAFEL_TILEFACTORY_H
 
+#include <vector>
+
 namespace lorafel {
     class Tile;
     class EnemyTile;

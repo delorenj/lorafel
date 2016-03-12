@@ -70,7 +70,7 @@ bool lorafel::HpUI::init() {
 }
 
 void HpUI::tween(float dt) {
-    auto from = (int)(std::stoi(m_pText->getString().c_str()));
+    auto from = (int)(parseInt(m_pText->getString().c_str()));
     auto to = m_pPlayer->getHp();
     auto maxHp = m_pPlayer->getMaxHp();
 
