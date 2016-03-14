@@ -716,3 +716,7 @@ SwappyGrid::~SwappyGrid() {
 GridTransparency* SwappyGrid::getGridTransparency() {
     return m_pGridTransparency;
 }
+
+const cocos2d::Vec2& SwappyGrid::getBottomOfGrid() {
+    return gridToScreen(0,0);
+}

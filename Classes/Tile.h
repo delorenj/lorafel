@@ -39,7 +39,6 @@ namespace lorafel {
         };
 
         bool init() override;
-        void update(float delta) override;
 
         virtual void onMatch(Match* pMatch);
 

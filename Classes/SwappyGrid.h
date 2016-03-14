@@ -38,6 +38,8 @@ namespace lorafel {
 
         GridTransparency* getGridTransparency();
 
+        const cocos2d::Vec2& getBottomOfGrid();
+
     public:
         virtual ~SwappyGrid();
         bool init() override;

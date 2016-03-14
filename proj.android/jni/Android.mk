@@ -12,6 +12,7 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Achievements.cpp \
+                   ../../Classes/ActionTile.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/AvocadoTile.cpp \
                    ../../Classes/BasicPlayerMove.cpp \

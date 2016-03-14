@@ -12,6 +12,7 @@
 #include "GoldUI.h"
 #include "HpUI.h"
 #include "StatGuage.h"
+#include "ActionTile.h"
 
 namespace lorafel {
     class GridUI : public cocos2d::Node {
@@ -38,11 +39,22 @@ namespace lorafel {
         XpUI* getXpUI() const { return m_pXpUI; }
         GoldUI* getGoldUI() const { return m_pGoldUI; }
     protected:
+        cocos2d::Size m_visibleSize;
+        cocos2d::Point m_origin;
+
         SwappyGrid* m_pSwappyGrid;
         XpUI* m_pXpUI;
         GoldUI* m_pGoldUI;
         HpUI* m_pHpUI;
         std::vector<StatGuage*> m_vecEnemyHpUI;
+        ActionTile* m_pAction1;
+
+        void initXpUI();
+        void initHpUI();
+        void initGoldUI();
+        void initEnemyUIs();
+
+        void initActionBar();
     };
 }
 
