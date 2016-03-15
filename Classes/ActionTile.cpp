@@ -52,24 +52,17 @@ void ActionTile::addEvents() {
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
         if("TileTouchStartState" == touchState->getName()) {
-            auto tilePos = touchState->getTileStartPos();
-            auto touchPos = touchState->getTouchStartPos();
-            m_pParticle = cocos2d::ParticleSystemQuad::create("fireball.plist");
-            m_pParticle->setScale(0.5f);
-            m_pParticle->setPosition(touchPos);
+            m_pParticle = cocos2d::ParticleSystemQuad::create("fireball_action.plist");
+            m_pParticle->setScale(1.0f);
+            m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(touch->getLocation()));
             m_pParticle->setAutoRemoveOnFinish(true);
             m_pParticle->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
             m_pParticle->setTag(Tag::HIGHLIGHT);
             m_pSwappyGrid->addChild(m_pParticle, LayerOrder::PARTICLES);
             GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
-            touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
-            touchState->setTileStartPos(tilePos);
-            touchState->setTouchStartPos(touchPos);
         }
         if("TileTouchMoveState" == touchState->getName()) {
-            cocos2d::Vec2 delta = touch->getLocation() - touchState->getTouchStartPos();
-            auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
-            m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(newPos));
+            m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(touch->getLocation()));
         }
     };
 
@@ -88,25 +81,9 @@ void ActionTile::addEvents() {
 
         if(touchState->getName() == "TileTouchMoveState") {
             // Only perform the move if the finger is over
-            // a valid move position. Otherwise, move the
-            // tile back to its origin.
-            auto delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
-            auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
-            auto t = m_pSwappyGrid->getTileAt(m_pSwappyGrid->screenToGrid(newPos));
-//            auto move = new DragDropSwapPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), t->getGridPos());
-//            if(t != this) {
-//                if(move->isValid()) {
-//                    m_pSwappyGrid->executePlayerMove(move);
-//                }
-//            } else {
-//                auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
-//                runAction(resetMove);
-//                GameStateMachine::getInstance()->enterState<IdleState>();
-//            }
-
-            auto resetMove = cocos2d::MoveTo::create(0.2, touchState->getTileStartPos());
-            runAction(resetMove);
+            // a valid move position.
             GameStateMachine::getInstance()->enterState<IdleState>();
+
         } else if(touchState->getName() == "TileTouchStartState") {
             // Didn't even try to move
             // Just do nothing, go back to idle
