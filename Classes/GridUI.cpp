@@ -41,9 +41,9 @@ void GridUI::initEnemyUIs() {
         auto guage = StatGuage::create(
                 "stick_man_avatar.png",
                 "enemy_bar.png",
-                std::__1::bind([](){ return 0;}),
-                std::__1::bind([=](){ return tile->getMaxHp();}),
-                std::__1::bind([=](){ return tile->getHp();})
+                std::bind([](){ return 0;}),
+                std::bind([=](){ return tile->getMaxHp();}),
+                std::bind([=](){ return tile->getHp();})
         );
 
         m_vecEnemyHpUI.push_back(guage);

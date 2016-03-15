@@ -46,6 +46,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/fireball.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/gold_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/heart.png \
@@ -97,6 +98,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/fireball.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/gold_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/heart.png \
@@ -148,6 +150,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/fireball.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/gold_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/heart.png \
@@ -200,6 +204,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/fireball.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glitter_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/gold_bar.png \
@@ -257,6 +263,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/fireball.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/gold_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/heart.png \
@@ -312,6 +320,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/dark_bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy_bar.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/fireball.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/gold_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/grapes.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/heart.png \
