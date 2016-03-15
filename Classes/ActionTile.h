@@ -15,6 +15,9 @@ namespace lorafel {
         bool init() override;
 
         void setSwappyGrid(SwappyGrid* pSwappyGrid) { m_pSwappyGrid = pSwappyGrid; }
+        virtual bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
+        virtual void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
+        virtual void onTouchMoved(cocos2d::Touch*, cocos2d::Event*);
 
     protected:
         virtual void addEvents();

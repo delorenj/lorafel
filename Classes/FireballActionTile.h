@@ -12,6 +12,7 @@ namespace lorafel {
     public:
         bool init() override;
         CREATE_FUNC(FireballActionTile);
+        void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) override;
     };
 }
 
