@@ -54,15 +54,22 @@ void ActionTile::addEvents() {
         if("TileTouchStartState" == touchState->getName()) {
             auto tilePos = touchState->getTileStartPos();
             auto touchPos = touchState->getTouchStartPos();
+            m_pParticle = cocos2d::ParticleSystemQuad::create("fireball.plist");
+            m_pParticle->setScale(0.5f);
+            m_pParticle->setPosition(touchPos);
+            m_pParticle->setAutoRemoveOnFinish(true);
+            m_pParticle->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+            m_pParticle->setTag(Tag::HIGHLIGHT);
+            m_pSwappyGrid->addChild(m_pParticle, LayerOrder::PARTICLES);
             GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
             touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTileStartPos(tilePos);
             touchState->setTouchStartPos(touchPos);
         }
         if("TileTouchMoveState" == touchState->getName()) {
-            cocos2d::Vec2 delta = _parent->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
+            cocos2d::Vec2 delta = touch->getLocation() - touchState->getTouchStartPos();
             auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
-            setPosition(newPos);
+            m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(newPos));
         }
     };
 

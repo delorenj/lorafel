@@ -19,7 +19,7 @@ namespace lorafel {
     protected:
         virtual void addEvents();
         SwappyGrid* m_pSwappyGrid;
-
+        cocos2d::ParticleSystemQuad* m_pParticle;
     };
 }
 
