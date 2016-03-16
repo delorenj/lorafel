@@ -21,6 +21,8 @@ namespace lorafel {
         void decreaseHpBy(int amount);
 
         virtual void applyHit(Match* pMatch);
+        virtual void applyHit(int hitAmount);
+
         virtual const unsigned int getMinMatchSize() const override { return MIN_MATCH_SIZE+1; }
         virtual Tile* getRandomGlyph();
         virtual bool isSwappable();

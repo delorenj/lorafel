@@ -23,6 +23,8 @@ namespace lorafel {
         virtual void addEvents();
         SwappyGrid* m_pSwappyGrid;
         cocos2d::ParticleSystemQuad* m_pParticle;
+
+        virtual void instantiatePlayerMove(Tile* pTile) = 0;
     };
 }
 

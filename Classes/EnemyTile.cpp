@@ -27,6 +27,10 @@ void EnemyTile::applyHit(Match* pMatch) {
         hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
     }
 
+    applyHit(hitAmount);
+}
+
+void EnemyTile::applyHit(int hitAmount) {
     decreaseHpBy(hitAmount);
 
     // Fire off an Hit event

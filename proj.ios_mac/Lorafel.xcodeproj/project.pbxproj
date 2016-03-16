@@ -47,6 +47,7 @@
 		3167D5A540E9B6193A66BB3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
 		3167D5CEFCFD7C8EAF2759A3 /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
+		3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167D64077AEEE55678E4EFD /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
 		3167D65F57002125C096ED0A /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
 		3167D687ED8F745DC9DB6618 /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
@@ -97,6 +98,7 @@
 		3167DF790D24EFE39E1056FC /* Match.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D26E887DBACCBB1454C8 /* Match.cpp */; };
 		3167DF89E4936C83626B56C4 /* GlyphFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8F1806DED0DD6B27C0 /* GlyphFactory.cpp */; };
 		3167DFCAA663048D856BB755 /* GameOverUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */; };
+		3167DFE1F535647944F4D7E5 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167DFF8737A98857B7869FF /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
@@ -249,6 +251,7 @@
 		3167D506937A45C22D96B536 /* XpStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpStatResult.cpp; sourceTree = "<group>"; };
 		3167D509392B9AE47F44A368 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		3167D5122B83D0371E4F615B /* SeededLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeededLevel.h; sourceTree = "<group>"; };
+		3167D523EF8CC40BE6285CC9 /* FireballAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireballAction.h; sourceTree = "<group>"; };
 		3167D53672DC56EAFD01531E /* SwappyGridScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGridScene.h; sourceTree = "<group>"; };
 		3167D53F7A6E35A701E5B1BA /* XpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpUI.h; sourceTree = "<group>"; };
 		3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldUI.h; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
+		3167D5D9966B9101A21E90BF /* FireballAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballAction.cpp; sourceTree = "<group>"; };
 		3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeleeAttackTile.cpp; sourceTree = "<group>"; };
 		3167D644A16126625AD28D6C /* AIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStrategy.h; sourceTree = "<group>"; };
 		3167D67C7D373CBDF45F687F /* StormGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StormGlyph.cpp; sourceTree = "<group>"; };
@@ -663,6 +667,8 @@
 				3167DB81C65E9CCE8D2657AF /* ActionTile.h */,
 				3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */,
 				3167DE13874404229C92BF04 /* FireballActionTile.h */,
+				3167D5D9966B9101A21E90BF /* FireballAction.cpp */,
+				3167D523EF8CC40BE6285CC9 /* FireballAction.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -918,6 +924,7 @@
 				3167D4048E9806496EF2F6F7 /* GridTransparency.cpp in Sources */,
 				3167D15716CB1410EE06B9DA /* ActionTile.cpp in Sources */,
 				3167D5A540E9B6193A66BB3C /* FireballActionTile.cpp in Sources */,
+				3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,6 +978,7 @@
 				3167D3E989B19440DE3B4297 /* GridTransparency.cpp in Sources */,
 				3167DD9D019CAA55E69B3F40 /* ActionTile.cpp in Sources */,
 				3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */,
+				3167DFE1F535647944F4D7E5 /* FireballAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

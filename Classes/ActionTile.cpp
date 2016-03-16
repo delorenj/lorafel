@@ -93,7 +93,7 @@ void ActionTile::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
         /**
          * Now we have a tile to apply the action to. Let's apply it
          */
-        CCLOG("%s", t->getTileName().c_str());
+        instantiatePlayerMove(t);
 
         GameStateMachine::getInstance()->enterState<IdleState>();
 

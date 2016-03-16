@@ -4,8 +4,11 @@
 
 #include "FireballActionTile.h"
 #include "GameStateMachine.h"
+#include "FireballAction.h"
 
-bool lorafel::FireballActionTile::init() {
+using namespace lorafel;
+
+bool FireballActionTile::init() {
     if(!ActionTile::init()) {
         return false;
     }
@@ -14,10 +17,17 @@ bool lorafel::FireballActionTile::init() {
     return true;
 }
 
-void lorafel::FireballActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
+void FireballActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
     if("TileTouchStartState" == touchState->getName()) {
         m_pParticle = cocos2d::ParticleSystemQuad::create("fireball_action.plist");
     }
     ActionTile::onTouchMoved(touch, event);
+}
+
+void FireballActionTile::instantiatePlayerMove(lorafel::Tile* pTile) {
+    auto move = new FireballAction(m_pSwappyGrid, pTile);
+    if(move->isValid()) {
+        m_pSwappyGrid->executePlayerMove(move);
+    }
 }
