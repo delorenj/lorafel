@@ -33,6 +33,7 @@ void Tile::initOptions() {
     m_pStatResults = new std::set<StatResult*>();
 }
 
+
 void Tile::setGrid(SwappyGrid *pGrid) {
     m_pSwappyGrid = pGrid;
 }

@@ -95,8 +95,6 @@ void ActionTile::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
          */
         instantiatePlayerMove(t);
 
-        GameStateMachine::getInstance()->enterState<IdleState>();
-
     /**
      * If the last state happened to be the start state, then we didn't
      * move our finger anywhere and the move is essentially canceled.

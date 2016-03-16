@@ -179,6 +179,8 @@ namespace lorafel {
             _state = nullptr;
         }
 
+        bool setState(float i);
+
     private:
         std::unordered_map<std::string, State*> _states;
         State* _state;

@@ -4,6 +4,7 @@
 
 #include "StormGlyph.h"
 #include "HeroTile.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -13,6 +14,7 @@ lorafel::StormGlyph* StormGlyph::create() {
     if (sprite->initWithSpriteFrameName("Storm.png"))
     {
         sprite->setTileName("StormGlyph");
+        sprite->setTag(Tag::GLYPH);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

@@ -4,6 +4,7 @@
 
 #include "PoisonGlyph.h"
 #include "HeroTile.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -13,6 +14,7 @@ lorafel::PoisonGlyph* PoisonGlyph::create() {
     if (sprite->initWithSpriteFrameName("PoisonGlyph.png"))
     {
         sprite->setTileName("PoisonGlyph");
+        sprite->setTag(Tag::GLYPH);
         sprite->autorelease();
         sprite->initOptions();
         sprite->addEvents();

@@ -5,12 +5,20 @@
 #include "FireballAction.h"
 #include "EnemyTile.h"
 #include "Globals.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
 void FireballAction::run() {
-    auto t = static_cast<EnemyTile*>(m_pTile);
-    t->applyHit(1000);
+    if(m_pTile->getTag() == Tag::ENEMY) {
+        auto t = static_cast<EnemyTile*>(m_pTile);
+        t->applyHit(1000);
+        GameStateMachine::getInstance()->setState<IdleState>();
+    } else if(m_pTile->getTag() == Tag::TILE || m_pTile->getTag() == Tag::GLYPH) {
+        m_pTile->remove();
+        GameStateMachine::getInstance()->setState<TileRemovedState>();
+    }
+
 }
 
 void FireballAction::cancel() {
@@ -18,7 +26,5 @@ void FireballAction::cancel() {
 }
 
 bool FireballAction::isValid() {
-    if(m_pTile->getTag() == Tag::ENEMY) {
-        return true;
-    }
+    return true;
 }
