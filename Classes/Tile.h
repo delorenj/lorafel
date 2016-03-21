@@ -85,6 +85,9 @@ namespace lorafel {
 
         AIStrategy* getStrategy() const { return m_pStrategy; };
         void setStrategy(AIStrategy* strategy) { m_pStrategy = strategy; }
+        void showTrajectoryLine(cocos2d::Vec2 dest);
+        void hideTrajectoryLine();
+        double getAngleToPoint(cocos2d::Vec2 vec2);
 
     protected:
         std::string m_tileName;
@@ -103,6 +106,7 @@ namespace lorafel {
          */
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
+        cocos2d::ParticleSystemQuad* m_pTrajectoryLine = nullptr;
     };
 }
 

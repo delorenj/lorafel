@@ -80,7 +80,7 @@ void HpUI::tween(float dt) {
     }
 
     auto val = to;
-    auto mag = (double)(from - to) * (1-dt);
+    auto mag = (double)(from - to)/60/dt;
 
     if(from < to) {
         val = clamp<int>(from+mag, 0, m_pPlayer->getMaxHp());

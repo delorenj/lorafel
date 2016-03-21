@@ -4,6 +4,7 @@
 
 #include "ActionTile.h"
 #include "GameStateMachine.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -35,6 +36,12 @@ bool ActionTile::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
         return false;
     }
 
+    auto player = PlayerManager::getInstance()->getPlayer();
+
+    if(getMpCost() > player->getMp()) {
+        return false;
+    }
+
     cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
     cocos2d::Rect rect = this->getBoundingBox();
     m_pSwappyGrid->setCurrentTouchId(touch->_ID);
@@ -46,7 +53,6 @@ bool ActionTile::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
         touchState->setTouchStartPos(p);
         touchState->setTileStartPos(getPosition());
         m_pSwappyGrid->clearVisitStates();
-//            m_pSwappyGrid->highlightTiles(getValidMoves(this, 0));
         return true; // to indicate that we have consumed it.
     }
 
@@ -72,23 +78,13 @@ void ActionTile::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
      * If the last state was a move state after release the finger,
      * then we want to make a move.
      */
-    cocos2d::Rect rect = m_pSwappyGrid->getBoundingBox();
-    if(touchState->getName() == "TileTouchMoveState" && rect.containsPoint((touch->getLocation()))) {
+    if(touchState->getName() == "TileTouchMoveState" && m_pSwappyGrid->isPointInsideGrid(FINGER_OFFSET_TOUCH)) {
         /**
          * The reason this is crazy is because the grid positions have an anchor of 0,0
          * and the particle has an anchor of 0.5,0.5. We need to keep the particle
          * in the center of the finger, and then recalculate the intersect point on release
          */
-        auto t = m_pSwappyGrid->getTileAt(
-                m_pSwappyGrid->screenToGrid(
-                        m_pSwappyGrid->convertToNodeSpace(
-                                cocos2d::Vec2(
-                                        touch->getLocation().x-(getContentSize().width*1.15/2),
-                                        touch->getLocation().y-(getContentSize().height*1.15/2)
-                                )
-                        )
-                )
-        );
+        auto t = getTile(touch);
 
         /**
          * Now we have a tile to apply the action to. Let's apply it
@@ -120,15 +116,45 @@ void ActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
 
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
     if("TileTouchStartState" == touchState->getName()) {
-        m_pParticle->setScale(1.0f);
-        m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(touch->getLocation()));
+        m_pParticle->setScale(1.15f);
+        m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(FINGER_OFFSET_TOUCH));
         m_pParticle->setAutoRemoveOnFinish(true);
-        m_pParticle->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+        m_pParticle->setAnchorPoint(cocos2d::Vec2(0,0));
         m_pParticle->setTag(Tag::HIGHLIGHT);
         m_pSwappyGrid->addChild(m_pParticle, LayerOrder::PARTICLES);
         GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
     }
     if("TileTouchMoveState" == touchState->getName()) {
-        m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(touch->getLocation()));
+        if(m_pSwappyGrid->isPointInsideGrid(FINGER_OFFSET_TOUCH)) {
+            /**
+             * Create a trajectory line
+             */
+            PlayerManager::getInstance()->getPlayer()->getTile()->showTrajectoryLine(cocos2d::Vec2(FINGER_OFFSET_TOUCH.x-m_pSwappyGrid->getTileSize().width/2, FINGER_OFFSET_TOUCH.y-m_pSwappyGrid->getTileSize().height/2));
+        } else {
+            /**
+             * Remove all trajectory lines
+             */
+            PlayerManager::getInstance()->getPlayer()->getTile()->hideTrajectoryLine();
+        }
+        /**
+         * Make ActionTile particle follow the finger
+         */
+        m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(FINGER_OFFSET_TOUCH));
     }
 }
+
+
+Tile* ActionTile::getTile(const cocos2d::Touch* touch) const {
+    return m_pSwappyGrid->getTileAt(
+            m_pSwappyGrid->screenToGrid(
+                    m_pSwappyGrid->convertToNodeSpace(
+                            FINGER_OFFSET_TOUCH -
+                                    cocos2d::Vec2(
+                                            getContentSize().width*1.15/2,
+                                            getContentSize().height*1.15/2
+                                    )
+                    )
+            )
+    );
+}
+

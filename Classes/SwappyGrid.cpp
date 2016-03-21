@@ -725,6 +725,10 @@ GridTransparency* SwappyGrid::getGridTransparency() {
     return m_pGridTransparency;
 }
 
-const cocos2d::Vec2& SwappyGrid::getBottomOfGrid() {
-    return gridToScreen(0,0);
+bool SwappyGrid::isPointInsideGrid(cocos2d::Vec2 pos) {
+    return getBoundingBox().containsPoint(pos);
+}
+
+cocos2d::Size SwappyGrid::getTileSize() {
+    return m_tileSize;
 }

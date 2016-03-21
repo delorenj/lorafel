@@ -20,7 +20,7 @@ bool FireballActionTile::init() {
 void FireballActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
     if("TileTouchStartState" == touchState->getName()) {
-        m_pParticle = cocos2d::ParticleSystemQuad::create("fireball_action.plist");
+            m_pParticle = cocos2d::ParticleSystemQuad::create("fireball_action.plist");
     }
     ActionTile::onTouchMoved(touch, event);
 }
@@ -30,4 +30,8 @@ void FireballActionTile::instantiatePlayerMove(lorafel::Tile* pTile) {
     if(move->isValid()) {
         m_pSwappyGrid->executePlayerMove(move);
     }
+}
+
+int FireballActionTile::getMpCost() {
+    return 1;
 }

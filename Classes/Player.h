@@ -29,6 +29,7 @@ namespace lorafel {
         void setHp(int val) { m_hp = std::max(val, m_maxHp); }
         int updateMpBy(int val);
         int getMp() const { return m_mp; }
+        int getMaxMp() const { return m_maxMp; }
         void setMp(int val) { m_mp = std::max(val, m_maxMp); }
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
@@ -37,12 +38,12 @@ namespace lorafel {
         // Current Stats
         int m_gold = 0;
         int m_hp = 1000;
-        int m_mp = 20;
+        int m_mp = 3;
 
         // Stat Ranges
         int m_maxGold = 1000;
         int m_maxHp = 1000;
-        int m_maxMp = 20;
+        int m_maxMp = 3;
 
         cocos2d::EventDispatcher* m_pDispatcher;
 

@@ -30,6 +30,7 @@ bool StatGuage::init(
     // Create meter glass
     m_pMeterContainer = cocos2d::Sprite::create("xp_bar_container.png");
     m_pMeterContainer->setAnchorPoint(cocos2d::Vec2(0,0));
+    m_pMeterContainer->setName("xp_bar_container");
 
     // Parent the liquid to the glass container
     addChild(m_pMeterContainer);
@@ -69,7 +70,7 @@ bool StatGuage::init(
     );
 
     auto _listener = cocos2d::EventListenerCustom::create("stat_change", [=](cocos2d::EventCustom* event){
-        schedule(schedule_selector(StatGuage::tween));
+        schedule(schedule_selector(StatGuage::tween),0.1f);
     });
 
     getEventDispatcher()->addEventListenerWithFixedPriority(_listener, 2);
@@ -89,7 +90,7 @@ void StatGuage::tween(float dt) {
     }
 
     auto val = to;
-    auto mag = (double)(from - to) * (1-dt);
+    auto mag = std::pow(10,std::log10(std::abs((float)(from-to))))/cocos2d::Director::getInstance()->getFrameRate()/0.1f;
 
     if(from < to) {
         val = clamp<int>(from+mag, minVal, maxVal);

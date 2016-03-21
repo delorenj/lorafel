@@ -36,9 +36,8 @@ namespace lorafel {
         static const int NUM_ROWS = 9;
         static const int SWAPPING_ACTION_TAG = 1;
 
-        GridTransparency* getGridTransparency();
 
-        const cocos2d::Vec2& getBottomOfGrid();
+        cocos2d::Size getTileSize();
 
     public:
         virtual ~SwappyGrid();
@@ -47,6 +46,7 @@ namespace lorafel {
         void onLevelCleared();
         CREATE_FUNC(SwappyGrid);
         void loadLevel(Level* level);
+        GridTransparency* getGridTransparency();
         void addTileToDropQueue(int column, Tile* pTile);
         void addRandomTileToDropQueue(int column);
         std::vector<StateMachine*>* getColumnStateMachines() {return m_pColumnStateMachines;}
@@ -87,6 +87,7 @@ namespace lorafel {
         Tile* getHeroTile();
         void initGameOverScreen(float dt);
         std::set<Tile*> getEnemyTilesFromDropQueue();
+        bool isPointInsideGrid(cocos2d::Vec2 pos);
 
     protected:
         Level* m_pLevel;

@@ -8,6 +8,7 @@
 #include "EnemyHitFloatie.h"
 #include "EventDataTile.h"
 #include "FireballActionTile.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -21,6 +22,7 @@ bool GridUI::init() {
     initGoldUI();
     initEnemyUIs();
     initActionBar();
+    initMpUI();
 
     auto _listener = cocos2d::EventListenerCustom::create("enemy_damaged", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
@@ -55,6 +57,28 @@ void GridUI::initEnemyUIs() {
     });
 
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
+}
+
+void GridUI::initMpUI() {
+    auto player = PlayerManager::getInstance()->getPlayer();
+
+    m_pMpUI = StatGuage::create(
+            "PoisonGlyph.png",
+            "xp_bar.png",
+            std::bind([](){ return 0;}),
+            std::bind([=](){ return player->getMaxMp();}),
+            std::bind([=]() {return player->getMp();})
+    );
+
+    m_pMpUI->setAnchorPoint(cocos2d::Vec2(1,1));
+    m_pMpUI->setTag(Tag::UI);
+    m_pMpUI->setName("MpUI");
+    m_pMpUI->setPosition(cocos2d::Vec2(
+            m_origin.x+m_visibleSize.width,
+            convertToNodeSpace(
+                    m_pSwappyGrid->convertToWorldSpace(
+                            m_pSwappyGrid->gridToScreen(0,0))).y - 20));
+    addChild(m_pMpUI);
 }
 
 void GridUI::initGoldUI() {

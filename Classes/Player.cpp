@@ -43,6 +43,7 @@ int Player::updateHpBy(int val) {
 
 int Player::updateMpBy(int val) {
     m_mp = clamp<int>(m_mp + val, 0, m_maxMp);
+    m_pDispatcher->dispatchCustomEvent("stat_change", nullptr);
     return m_mp;
 }
 

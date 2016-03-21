@@ -21,6 +21,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
+                   ../../Classes/FireballAction.cpp \
                    ../../Classes/FireballActionTile.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameOverUI.cpp \

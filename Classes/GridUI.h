@@ -46,14 +46,15 @@ namespace lorafel {
         XpUI* m_pXpUI;
         GoldUI* m_pGoldUI;
         HpUI* m_pHpUI;
+        StatGuage* m_pMpUI;
         std::vector<StatGuage*> m_vecEnemyHpUI;
         ActionTile* m_pAction1;
 
         void initXpUI();
         void initHpUI();
         void initGoldUI();
+        void initMpUI();
         void initEnemyUIs();
-
         void initActionBar();
     };
 }
