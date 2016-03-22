@@ -58,6 +58,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
+                   ../../Classes/TrajectoryParticle.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
                    ../../Classes/XpUI.cpp

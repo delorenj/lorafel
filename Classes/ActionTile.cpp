@@ -73,6 +73,7 @@ void ActionTile::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
             pe->setDuration(0.1f);
         }
     }
+    PlayerManager::getInstance()->getPlayer()->getTile()->hideTrajectoryLine();
 
     /**
      * If the last state was a move state after release the finger,

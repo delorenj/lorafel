@@ -204,35 +204,27 @@ bool Tile::freelyMovable() {
 
 void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
     if(m_pTrajectoryLine == nullptr) {
-        m_pTrajectoryLine = cocos2d::ParticleSystemQuad::create("dashed-line.plist");
-        m_pTrajectoryLine->setAnchorPoint(cocos2d::Vec2(0,0));
+        m_pTrajectoryLine = TrajectoryParticle::create();
         m_pTrajectoryLine->setPosition(TILE_CENTER);
-        m_pTrajectoryLine->setScaleY(0.25f);
-        m_pTrajectoryLine->setAutoRemoveOnFinish(true);
         m_pSwappyGrid->addChild(m_pTrajectoryLine,LayerOrder::PARTICLES);
+
+        /**
+         * Fast-forward the particle system to make it seem there are
+         * many particles to begin with
+         */
+        for(int i=0; i<300; i++) m_pTrajectoryLine->update(0.1);
     }
 
-//    CCLOG("Dest: %f,%f --> Angle: %f", dest.x, dest.y, getAngleToPoint(dest));
-    CCLOG("Node Dest: %f,%f --> Origin: %f,%f --> Angle: %f", convertToNodeSpace(dest).x, convertToNodeSpace(dest).y, getPosition().x, getPosition().y, getAngleToPoint(convertToNodeSpace(dest)));
-//    CCLOG("World Dest: %f,%f --> Angle: %f", convertToWorldSpace(dest).x, convertToWorldSpace(dest).y), getAngleToPoint(convertToWorldSpace(dest));
+    m_pTrajectoryLine->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(dest)));
 
-    m_pTrajectoryLine->setRotation(getAngleToPoint(convertToNodeSpace(dest)));
 
 }
 
 void Tile::hideTrajectoryLine() {
     if(m_pTrajectoryLine != nullptr) {
         m_pTrajectoryLine->stopSystem();
+        m_pTrajectoryLine->setVisible(false);
         m_pTrajectoryLine->setDuration(0.01f);
         m_pTrajectoryLine = nullptr;
     }
-}
-
-double Tile::getAngleToPoint(cocos2d::Vec2 vec2) {
-    auto bearingRadians = atan2f(-vec2.y, vec2.x);
-    auto bearingDegrees = bearingRadians * (180 / M_PI);
-    while(bearingDegrees < 0) {
-        bearingDegrees += 360;
-    }
-    return bearingDegrees;
 }

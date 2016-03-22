@@ -11,6 +11,7 @@
 #include "MatchPattern.h"
 #include "StatResult.h"
 #include "AIStrategy.h"
+#include "TrajectoryParticle.h"
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
@@ -87,7 +88,6 @@ namespace lorafel {
         void setStrategy(AIStrategy* strategy) { m_pStrategy = strategy; }
         void showTrajectoryLine(cocos2d::Vec2 dest);
         void hideTrajectoryLine();
-        double getAngleToPoint(cocos2d::Vec2 vec2);
 
     protected:
         std::string m_tileName;
@@ -106,7 +106,7 @@ namespace lorafel {
          */
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
-        cocos2d::ParticleSystemQuad* m_pTrajectoryLine = nullptr;
+        TrajectoryParticle* m_pTrajectoryLine = nullptr;
     };
 }
 

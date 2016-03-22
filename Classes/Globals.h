@@ -16,6 +16,15 @@ extern "C" {
 namespace lorafel {
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
 
+    static float getAngleToPoint(cocos2d::Vec2 vec2) {
+        auto bearingRadians = atan2f(-vec2.y, vec2.x);
+        auto bearingDegrees = (float)(bearingRadians * (180 / M_PI));
+        while(bearingDegrees < 0) {
+            bearingDegrees += 360;
+        }
+        return bearingDegrees;
+    }
+
     static int parseInt(const std::string& value)
     {
         // Android NDK 10 doesn't support std::stoi a/ std::stoul
