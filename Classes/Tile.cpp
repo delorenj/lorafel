@@ -205,9 +205,7 @@ bool Tile::freelyMovable() {
 void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
     if(m_pTrajectoryLine == nullptr) {
         m_pTrajectoryLine = TrajectoryParticle::create();
-        m_pTrajectoryLine->setPosition(TILE_CENTER);
-        m_pSwappyGrid->addChild(m_pTrajectoryLine,LayerOrder::PARTICLES);
-
+        m_pTrajectoryLine->setAnchorPoint(cocos2d::Vec2(0,0.5f));
         /**
          * Fast-forward the particle system to make it seem there are
          * many particles to begin with
@@ -215,6 +213,26 @@ void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
         for(int i=0; i<300; i++) m_pTrajectoryLine->update(0.1);
     }
 
+    if(m_pClippingMask == nullptr) {
+        m_pClippingMask = cocos2d::ClippingRectangleNode::create();
+        m_pClippingMask->addChild(m_pTrajectoryLine,LayerOrder::PARTICLES);
+        addChild(m_pClippingMask,LayerOrder::PARTICLES);
+    }
+
+    auto clippingSize = cocos2d::Size(
+            std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y)),
+            std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y))
+    );
+
+    CCLOG("Clipping Center=(%f,%f) | Size=(%f,%f) | Dest=(%f,%f)", getPositionX(), getPositionY(), clippingSize.width, clippingSize.height, dest.x, dest.y);
+    m_pClippingMask->setContentSize(clippingSize);
+    m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+    m_pClippingMask->setColor(cocos2d::Color3B::BLUE);
+    m_pClippingMask->setPosition(cocos2d::Vec2(m_pSwappyGrid->getTileSize().width/2,m_pSwappyGrid->getTileSize().height/2));
+    m_pClippingMask->setClippingRegion(
+            cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize)
+    );
+    m_pTrajectoryLine->setPosition(m_pClippingMask->getContentSize().width/2, m_pClippingMask->getContentSize().height/2);
     m_pTrajectoryLine->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(dest)));
 
 
@@ -225,6 +243,7 @@ void Tile::hideTrajectoryLine() {
         m_pTrajectoryLine->stopSystem();
         m_pTrajectoryLine->setVisible(false);
         m_pTrajectoryLine->setDuration(0.01f);
-        m_pTrajectoryLine = nullptr;
     }
+    m_pTrajectoryLine = nullptr;
+    m_pClippingMask = nullptr;
 }

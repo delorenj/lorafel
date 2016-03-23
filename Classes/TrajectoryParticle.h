@@ -10,7 +10,6 @@
 namespace lorafel {
 
     class TrajectoryParticle : public cocos2d::ParticleSystemQuad {
-
     public:
         virtual bool init() override;
         CREATE_FUNC(TrajectoryParticle);

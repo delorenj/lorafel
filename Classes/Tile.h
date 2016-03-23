@@ -97,6 +97,7 @@ namespace lorafel {
         int m_firstVisit = 0;
         int m_hp = 0;
         int m_maxHp = 0;
+        cocos2d::ClippingRectangleNode* m_pClippingMask = nullptr;
 
         std::set<StatResult*>* m_pStatResults;
         /**
