@@ -117,7 +117,7 @@ void ActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
 
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
     if("TileTouchStartState" == touchState->getName()) {
-        m_pParticle->setScale(1.15f);
+        m_pParticle->setScale(1.0f);
         m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(FINGER_OFFSET_TOUCH));
         m_pParticle->setAutoRemoveOnFinish(true);
         m_pParticle->setAnchorPoint(cocos2d::Vec2(0,0));
@@ -130,7 +130,14 @@ void ActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
             /**
              * Create a trajectory line
              */
-            PlayerManager::getInstance()->getPlayer()->getTile()->showTrajectoryLine(cocos2d::Vec2(FINGER_OFFSET_TOUCH.x-m_pSwappyGrid->getTileSize().width/2, FINGER_OFFSET_TOUCH.y-m_pSwappyGrid->getTileSize().height/2));
+            PlayerManager::getInstance()->getPlayer()->getTile()->showTrajectoryLine(
+                    cocos2d::Vec2(
+                            FINGER_OFFSET_TOUCH.x-(
+                                    m_pSwappyGrid->getTileSize().width*m_pSwappyGrid->getTileScaleFactor()/2),
+                            FINGER_OFFSET_TOUCH.y-(
+                                    m_pSwappyGrid->getTileSize().height*m_pSwappyGrid->getTileScaleFactor()/2)
+                    )
+            );
         } else {
             /**
              * Remove all trajectory lines

@@ -203,9 +203,34 @@ bool Tile::freelyMovable() {
 }
 
 void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
+    /**
+     * We need to keep the clipping area an exact square for the case
+     * where either x or y is close to zero on either axis. This will
+     * cause everything to be clipped and we never want that.
+     */
+    auto clippingSize = cocos2d::Size(
+            2*std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y)),
+            2*std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y))
+    );
+
+    /**
+     * Only create the clipping mask and the trajectory
+     * line the first time.
+     */
+    if(m_pClippingMask == nullptr) {
+        m_pClippingMask = cocos2d::ClippingRectangleNode::create();
+        m_pClippingMask->setPosition(TILE_CENTER);
+        m_pClippingMask->setClippingRegion(cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize));
+        m_pClippingMask->setContentSize(clippingSize);
+        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+        m_pSwappyGrid->addChild(m_pClippingMask,LayerOrder::PARTICLES);
+    }
+
     if(m_pTrajectoryLine == nullptr) {
         m_pTrajectoryLine = TrajectoryParticle::create();
         m_pTrajectoryLine->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+        m_pTrajectoryLine->setPosition(cocos2d::Vec2(clippingSize.width/2,clippingSize.height/2));
+        m_pClippingMask->addChild(m_pTrajectoryLine,LayerOrder::PARTICLES);
         /**
          * Fast-forward the particle system to make it seem there are
          * many particles to begin with
@@ -213,29 +238,16 @@ void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
         for(int i=0; i<300; i++) m_pTrajectoryLine->update(0.1);
     }
 
-    if(m_pClippingMask == nullptr) {
-        m_pClippingMask = cocos2d::ClippingRectangleNode::create();
-        m_pClippingMask->addChild(m_pTrajectoryLine,LayerOrder::PARTICLES);
-        addChild(m_pClippingMask,LayerOrder::PARTICLES);
-    }
-
-    auto clippingSize = cocos2d::Size(
-            std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y)),
-            std::max(std::abs(convertToNodeSpace(dest).x),std::abs(convertToNodeSpace(dest).y))
-    );
-
-    CCLOG("Clipping Center=(%f,%f) | Size=(%f,%f) | Dest=(%f,%f)", getPositionX(), getPositionY(), clippingSize.width, clippingSize.height, dest.x, dest.y);
+    /**
+     * We now need to calculate the trajectory line angle and the clipping
+     * area based on the current finger position (dest). Since the line is
+     * a child of the clipping area, we also need to position the line each
+     * time the clipping size is recalculated.
+     */
+    m_pClippingMask->setClippingRegion(cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize));
     m_pClippingMask->setContentSize(clippingSize);
-    m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    m_pClippingMask->setColor(cocos2d::Color3B::BLUE);
-    m_pClippingMask->setPosition(cocos2d::Vec2(m_pSwappyGrid->getTileSize().width/2,m_pSwappyGrid->getTileSize().height/2));
-    m_pClippingMask->setClippingRegion(
-            cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize)
-    );
-    m_pTrajectoryLine->setPosition(m_pClippingMask->getContentSize().width/2, m_pClippingMask->getContentSize().height/2);
+    m_pTrajectoryLine->setPosition(cocos2d::Vec2(clippingSize.width/2,clippingSize.height/2));
     m_pTrajectoryLine->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(dest)));
-
-
 }
 
 void Tile::hideTrajectoryLine() {
