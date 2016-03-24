@@ -7,6 +7,8 @@
 using namespace lorafel;
 
 lorafel::Tile* BasicTurnManager::getNextPlayerTile() {
+    auto state = (GameState*)GameStateMachine::getInstance()->getState();
+
     if(m_pPlayerTiles->empty()) {
         return nullptr;
     }

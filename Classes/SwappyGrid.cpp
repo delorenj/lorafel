@@ -198,16 +198,6 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
         Tile* tile = static_cast<Tile*>(sender);
         SwappyGrid* obj = static_cast<SwappyGrid*>(tile->getParent());
 
-        // Add the active player and enemy tiles to the TurnManager
-        if (tile->getTag() == Tag::HERO || tile->getTag() == Tag::ENEMY) {
-            m_pLevel->getTurnManager()->addPlayerTile(tile);
-
-            if(tile->getTag() == Tag::ENEMY) {
-                auto eventData = new EventDataTile(tile);
-                getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
-            }
-        }
-
         obj->setNumberOfFallingTiles(obj->getNumberOfFallingTiles() - 1);
         if (tileDropQueuesEmpty() && obj->getNumberOfFallingTiles() == 0) {
             m_pGameStateMachine->enterState<TileQueueEmptyMatchStartState>();
@@ -342,6 +332,19 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
     cocos2d::Vec2 newPos = gridToScreen(column, getTopOffscreenTileSlot());
     pTile->setPosition(newPos);
     addChild(pTile, LayerOrder::TILES);
+
+    /**
+     * If the tile is a PlayerTile,
+     * add it to the turn manager
+     */
+    if (pTile->getTag() == Tag::HERO || pTile->getTag() == Tag::ENEMY) {
+        m_pLevel->getTurnManager()->addPlayerTile(pTile);
+
+        if(pTile->getTag() == Tag::ENEMY) {
+            auto eventData = new EventDataTile(pTile);
+            getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
+        }
+    }
 
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
