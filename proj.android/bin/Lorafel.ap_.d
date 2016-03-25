@@ -44,6 +44,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/fireball.png \
@@ -96,6 +97,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/fireball.png \
@@ -148,6 +150,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/fireball.png \
@@ -202,6 +205,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/fireball.png \
@@ -261,6 +265,8 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/dashed-line copy.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/fireball.png \
@@ -318,6 +324,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/checkbox-filled.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/coin.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/dark_bg.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/dashed-line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/enemy_bar.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/fireball.png \

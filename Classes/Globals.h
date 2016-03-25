@@ -8,6 +8,7 @@
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
+#include "cocos2d.h"
 
 extern "C" {
     int	 atoi(const char *);
@@ -39,6 +40,7 @@ namespace lorafel {
     T clamp(const T& n, const T& lower, const T& upper) {
         return std::max(lower, std::min(n, upper));
     }
+
     struct Tag {
         static const int UI = 2;
         static const int TILE = 3;
