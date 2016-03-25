@@ -1,4 +1,5 @@
 .idea
+node_modules
 *.apk
 dexedLibs
 cocos2d/cocos/platform/android/java/bin/classes.jar

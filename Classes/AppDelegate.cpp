@@ -142,10 +142,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // load the Sprite Sheet
-    auto spritecache = SpriteFrameCache::getInstance();
-    
-    // the .plist file can be generated with any of the tools mentioned below
-    spritecache->addSpriteFramesWithFile("sprites.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprites.plist");
 
     auto userEmail = UserDefault::getInstance()->getStringForKey("email");
 

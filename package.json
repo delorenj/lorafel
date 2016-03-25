@@ -1,0 +1,23 @@
+{
+  "name": "Lorafel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delorenj/lorafel.git"
+  },
+  "author": "Jarad DeLorenzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delorenj/lorafel/issues"
+  },
+  "homepage": "https://github.com/delorenj/lorafel",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-sprite-glue": "^0.1.1",
+    "gulp-spritesmith": "0.0.2",
+    "spritesmith-texturepacker": "^1.0.0"
+  }
+}
