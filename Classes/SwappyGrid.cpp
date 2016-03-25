@@ -588,7 +588,7 @@ void SwappyGrid::ProcessTurnManager() {
         if (tile->getTag() == Tag::ENEMY) {
             GameStateMachine::getInstance()->setState<BusyState>();
             auto seq = cocos2d::Sequence::create(
-                    cocos2d::DelayTime::create(0.5f),
+                    cocos2d::DelayTime::create(1.0f),
                     cocos2d::CallFunc::create([=](){
                         GameStateMachine::getInstance()->setState<EnemyTurnState>();
                     }),

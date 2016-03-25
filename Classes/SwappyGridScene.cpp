@@ -20,14 +20,14 @@ bool SwappyGridScene::init() {
     m_pBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
     addChild(m_pBackground, LayerOrder::BACKGROUND);
 
-    m_pSwappyGrid->setLevel(m_pLevel);
-    addChild(m_pSwappyGrid, LayerOrder::TILES);
-    m_pLevel->load();
-
     // Instantiate the GridUI
     m_pGridUI = GridUI::create(m_pSwappyGrid);
     m_pGridUI->ignoreAnchorPointForPosition(false);
     addChild(m_pGridUI,LayerOrder::UX);
+
+    m_pSwappyGrid->setLevel(m_pLevel);
+    addChild(m_pSwappyGrid, LayerOrder::TILES);
+    m_pLevel->load();
 
     // Create the grid debug panel
     GridTestUI* gridTestUI = GridTestUI::create(m_pSwappyGrid);
