@@ -14,8 +14,12 @@
   },
   "homepage": "https://github.com/delorenj/lorafel",
   "devDependencies": {
+    "glue": "^3.2.0",
     "gulp": "^3.9.1",
+    "gulp-glue": "^1.1.1",
     "gulp-imagemin": "^2.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.2",
     "gulp-sprite-glue": "^0.1.1",
     "gulp-spritesmith": "0.0.2",
     "spritesmith-texturepacker": "^1.0.0"
