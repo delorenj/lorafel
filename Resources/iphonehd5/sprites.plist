@@ -597,13 +597,13 @@
 		<key>hash</key>
 		<string>639c605a52</string>
 		<key>name</key>
-		<string>iphonehd5</string>
+		<string>sprites</string>
 		<key>realTextureFileName</key>
-		<string>iphonehd5.png</string>
+		<string>sprites.png</string>
 		<key>size</key>
 		<string>{466, 425}</string>
 		<key>textureFileName</key>
-		<string>iphonehd5.png</string>
+		<string>sprites.png</string>
 		<key>version</key>
 		<string>0.11.1</string>
 	</dict>

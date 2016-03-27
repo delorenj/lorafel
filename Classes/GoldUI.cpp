@@ -15,14 +15,15 @@ bool lorafel::GoldUI::init() {
     m_pPlayer = PlayerManager::getInstance()->getPlayer();
 
     // Create meter liquid
-    m_pMeter = cocos2d::ui::LoadingBar::create("gold_bar.png");
+    m_pMeter = cocos2d::ui::LoadingBar::create();
+    m_pMeter->loadTexture("gold_bar.png", cocos2d::ui::Widget::TextureResType::PLIST);
     m_pMeter->setDirection(cocos2d::ui::LoadingBar::Direction::RIGHT);
     m_pMeter->setAnchorPoint(cocos2d::Vec2(0,0));
     m_pMeter->setPercent((float)(m_pPlayer->getGold())/(float)(m_pPlayer->getMaxGold())*100);
     addChild(m_pMeter);
 
     // Create meter glass
-    m_pMeterContainer = cocos2d::Sprite::create("xp_bar_container.png");
+    m_pMeterContainer = cocos2d::Sprite::createWithSpriteFrameName("xp_bar_container.png");
     m_pMeterContainer->setAnchorPoint(cocos2d::Vec2(0,0));
 
     // Parent the liquid to the glass container
@@ -30,7 +31,7 @@ bool lorafel::GoldUI::init() {
 
 
     // Create the coin and position at the end of the meter
-    m_pCoin = cocos2d::Sprite::create("coin.png");
+    m_pCoin = cocos2d::Sprite::createWithSpriteFrameName("coin.png");
     m_pCoin->setAnchorPoint(cocos2d::Vec2(0,0.5));
     m_pCoin->setPosition(cocos2d::Vec2(
             m_pMeterContainer->getPosition().x+m_pMeterContainer->getContentSize().width + 5,

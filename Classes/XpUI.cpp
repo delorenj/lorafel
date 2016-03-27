@@ -11,7 +11,8 @@ using namespace lorafel;
 bool XpUI::init() {
     m_pPlayer = PlayerManager::getInstance()->getPlayer();
     m_pLevelMananger = m_pPlayer->getLevelManager();
-    m_pXpBar = cocos2d::ui::LoadingBar::create("xp_bar.png");
+    m_pXpBar = cocos2d::ui::LoadingBar::create();
+    m_pXpBar->loadTexture("xp_bar.png",cocos2d::ui::Widget::TextureResType::PLIST);
     m_pXpText = cocos2d::ui::Text::create("XP","fonts/BebasNeue Bold.ttf", 14);
     m_pNextXpText = cocos2d::ui::Text::create("NEXT","fonts/BebasNeue Bold.ttf", 14);
     m_pLvlText = cocos2d::ui::Text::create("LVL","fonts/BebasNeue Bold.ttf", 33);
@@ -34,7 +35,7 @@ bool XpUI::init() {
     lp->setMargin(cocos2d::ui::Margin(0,0,0,0));
     m_pXpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
     m_pXpBar->setLayoutParameter(lp);
-    m_pXpBarContainer = cocos2d::Sprite::create("xp_bar_container.png");
+    m_pXpBarContainer = cocos2d::Sprite::createWithSpriteFrameName("xp_bar_container.png");
     m_pXpBarContainer->setAnchorPoint(cocos2d::Vec2(0,0));
     m_pXpBarContainer->setPosition(cocos2d::Vec2(0,0));
     m_pXpBar->addChild(m_pXpBarContainer);

@@ -22,13 +22,14 @@ bool StatGuage::init(
 
     // Create meter liquid
     m_pMeter = cocos2d::ui::LoadingBar::create(container);
+    m_pMeter->loadTexture(container, cocos2d::ui::Widget::TextureResType::PLIST);
     m_pMeter->setDirection(cocos2d::ui::LoadingBar::Direction::RIGHT);
     m_pMeter->setAnchorPoint(cocos2d::Vec2(0,0));
     m_pMeter->setPercent(100);
     addChild(m_pMeter);
 
     // Create meter glass
-    m_pMeterContainer = cocos2d::Sprite::create("xp_bar_container.png");
+    m_pMeterContainer = cocos2d::Sprite::createWithSpriteFrameName("xp_bar_container.png");
     m_pMeterContainer->setAnchorPoint(cocos2d::Vec2(0,0));
     m_pMeterContainer->setName("xp_bar_container");
 
@@ -37,7 +38,7 @@ bool StatGuage::init(
 
 
     // add the icon and position at the end of the meter
-    m_pIcon = cocos2d::Sprite::create(icon);
+    m_pIcon = cocos2d::Sprite::createWithSpriteFrameName(icon);
     m_pIcon->setAnchorPoint(cocos2d::Vec2(0,0.5));
     m_pIcon->setPosition(cocos2d::Vec2(
             m_pMeterContainer->getPosition().x+m_pMeterContainer->getContentSize().width + 5,

@@ -68,7 +68,8 @@ void GameOverUI::showButtons() {
     auto size = cocos2d::Director::getInstance()->getVisibleSize();
     auto center = cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height/2);
 
-    m_tryAgainButton = cocos2d::ui::Button::create("try_again_button.png","try_again_button_pressed.png");
+    m_tryAgainButton = cocos2d::ui::Button::create();
+    m_tryAgainButton->loadTextures("try_again_button.png","try_again_button_pressed.png","", cocos2d::ui::Widget::TextureResType::PLIST);
     m_tryAgainButton->setAnchorPoint(cocos2d::Vec2(0.5,1));
     auto tryAgainToPos = cocos2d::Vec2(center.x, center.y - m_gameOverText->getContentSize().height/2 - 10);
     m_tryAgainButton->setPosition(tryAgainToPos);
@@ -80,7 +81,8 @@ void GameOverUI::showButtons() {
 
     addChild(m_tryAgainButton);
 
-    m_quitButton = cocos2d::ui::Button::create("quit_button.png","quit_button_pressed.png");
+    m_quitButton = cocos2d::ui::Button::create();
+    m_quitButton->loadTextures("quit_button.png","quit_button_pressed.png", "", cocos2d::ui::Widget::TextureResType::PLIST);
     m_quitButton->setAnchorPoint(cocos2d::Vec2(0.5,1));
     auto quitToPos = cocos2d::Vec2(center.x, m_tryAgainButton->getPosition().y - m_tryAgainButton->getContentSize().height - 10);
     m_quitButton->setPosition(quitToPos);

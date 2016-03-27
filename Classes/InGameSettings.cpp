@@ -39,7 +39,8 @@ bool InGameSettings::init() {
 
     auto lp = cocos2d::ui::LinearLayoutParameter::create();
     lp->setMargin(cocos2d::ui::Margin(origin.x+5, origin.y+5,origin.x+5, origin.y+5));
-    auto checkBox = cocos2d::ui::CheckBox::create("checkbox-empty.png", "checkbox-filled.png");
+    auto checkBox = cocos2d::ui::CheckBox::create();
+    checkBox->loadTextures("checkbox-empty.png", "checkbox-filled.png", "", "", "", cocos2d::ui::Widget::TextureResType::PLIST);
     lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
     checkBox->setLayoutParameter(lp);
     checkBox->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type) {

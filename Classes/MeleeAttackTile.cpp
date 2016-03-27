@@ -18,7 +18,7 @@ MeleeAttackTile::~MeleeAttackTile() {
 MeleeAttackTile* MeleeAttackTile::create() {
     MeleeAttackTile* sprite = new MeleeAttackTile();
 
-    if (sprite->initWithFile("sword.png"))
+    if (sprite->initWithSpriteFrameName("sword.png"))
     {
         sprite->setTileName("Melee Attack");
         sprite->setTag(Tag::TILE);
