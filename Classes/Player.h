@@ -10,15 +10,24 @@
 #include "Inventory.h"
 #include "LinearLevelManager.h"
 #include "HeroTile.h"
+#include "Consumable.h"
 
 namespace lorafel {
     class Player {
+    public:
+        static const int UNLOCK_CONSUMABLE_SLOT_2 = 15;
+        static const int UNLOCK_CONSUMABLE_SLOT_3 = 40;
 
     public:
         Player();
         virtual ~Player();
 
         void initFromServer();
+
+        /**
+         * Getters and Setters
+        */
+        const int getNumConsumableSlots() const;
         LevelManager* getLevelManager() const { return m_pLevelManager; }
         int updateGoldBy(int amount, Match* pMatch);
         int getGold() const { return m_gold; }
@@ -33,6 +42,7 @@ namespace lorafel {
         void setMp(int val) { m_mp = std::max(val, m_maxMp); }
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
+        Inventory* getInventory() const { return m_pInventory; }
 
     protected:
         // Current Stats
@@ -51,6 +61,7 @@ namespace lorafel {
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
+        std::vector<Consumable*> m_pActiveConsumables;
 
     protected:
         Tile* m_pTile;

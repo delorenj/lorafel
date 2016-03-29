@@ -10,6 +10,7 @@ using namespace lorafel;
 
 Player::Player() {
     m_pLevelManager = new LinearLevelManager();
+    m_pInventory = new Inventory();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
 }
 
@@ -49,4 +50,16 @@ int Player::updateMpBy(int val) {
 
 Tile* Player::getTile() const {
     return m_hp <=0  ?  nullptr : m_pTile;
+}
+
+const int Player::getNumConsumableSlots() const {
+    auto level = getLevelManager()->getLevel();
+
+    if (level < Player::UNLOCK_CONSUMABLE_SLOT_2) {
+        return 1;
+    } else if (level < Player::UNLOCK_CONSUMABLE_SLOT_3) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
