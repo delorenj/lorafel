@@ -12,6 +12,7 @@ Player::Player() {
     m_pLevelManager = new LinearLevelManager();
     m_pInventory = new Inventory();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
+    m_activeConsumables.reserve(3);
 }
 
 Player::~Player() {
@@ -62,4 +63,40 @@ const int Player::getNumConsumableSlots() const {
     } else {
         return 3;
     }
+}
+
+bool Player::equipConsumableSlot(const char* itemName) {
+    return equipConsumableSlot(itemName, 0);
+}
+
+bool Player::equipConsumableSlot(const char* itemName, int slot) {
+    Item* pItem = getInventory()->getItem(itemName);
+
+    /**
+     * Item doesn't exist.
+     * Can't equip it!
+     */
+    if(pItem == nullptr) {
+        CCLOG("Item not found!");
+        return false;
+    }
+
+    /**
+     * Item is not a consumable.
+     * Can't equip it!
+     */
+    if(pItem->getTag() != Tag::CONSUMABLE) {
+        return false;
+    }
+
+    /**
+     * Player doesn't have enough slots equipped
+     * Can't equip it!
+     */
+    if(slot >= getNumConsumableSlots()) {
+        return false;
+    }
+
+    m_activeConsumables[slot] = static_cast<Consumable*>(pItem);
+    return true;
 }

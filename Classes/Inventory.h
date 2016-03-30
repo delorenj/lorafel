@@ -13,12 +13,15 @@ namespace lorafel {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;
         typedef std::unordered_map<char *, ItemQuantityPair> ItemDictionary;
+
+        Item* getItem(const char* itemName);
+
     public:
         Inventory();
         virtual ~Inventory();
 
         const int addItem(char* itemName, int quantity = 1);
-        const int addItem(char* itemName, Item* pItem, int quantity = 1);
+        const int addItem(const char* itemName, Item* pItem, int quantity = 1);
     protected:
         ItemDictionary m_items;
 

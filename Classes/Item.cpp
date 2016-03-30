@@ -3,3 +3,13 @@
 //
 
 #include "Item.h"
+
+using namespace lorafel;
+
+bool Item::init() {
+    if(!cocos2d::Sprite::init()) {
+        return false;
+    }
+
+    return true;
+}

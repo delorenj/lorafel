@@ -127,3 +127,23 @@ void GridUI::initActionBar() {
     m_pAction1->setSwappyGrid(m_pSwappyGrid);
     addChild(m_pAction1);
 }
+
+void GridUI::initConsumableBar() {
+    auto player = PlayerManager::getInstance()->getPlayer();
+
+    for(int i=0; i<player->getNumConsumableSlots(); i++) {
+        auto item = player->getConsumableSlotItem(i);
+        /**
+         * Nothing equipped in this slot
+         * Let's show an empty slot
+         */
+        if(item == nullptr) {
+            m_consumableSlots.at(i)->createWithSpriteFrameName("empty-tile.png");
+        } else {
+            
+        }
+    }
+    for(int i=player->getNumConsumableSlots(); i<Player::MAX_CONSUMABLE_SLOTS; i++) {
+        m_consumableSlots.at(i)->createWithSpriteFrameName("locked-tile.png");
+    }
+}

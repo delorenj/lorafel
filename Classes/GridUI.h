@@ -13,6 +13,7 @@
 #include "HpUI.h"
 #include "StatGuage.h"
 #include "ActionTile.h"
+#include "Consumable.h"
 
 namespace lorafel {
     class GridUI : public cocos2d::Node {
@@ -49,6 +50,7 @@ namespace lorafel {
         StatGuage* m_pMpUI;
         std::vector<StatGuage*> m_vecEnemyHpUI;
         ActionTile* m_pAction1;
+        std::vector<cocos2d::Sprite*> m_consumableSlots;
 
         void initXpUI();
         void initHpUI();
@@ -56,6 +58,7 @@ namespace lorafel {
         void initMpUI();
         void initEnemyUIs();
         void initActionBar();
+        void initConsumableBar();
     };
 }
 

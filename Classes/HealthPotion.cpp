@@ -4,7 +4,9 @@
 
 #include "HealthPotion.h"
 
-bool lorafel::HealthPotion::init(double amount) {
+using namespace lorafel;
+
+bool HealthPotion::init(double amount) {
     if(!Consumable::init()) {
         return false;
     }

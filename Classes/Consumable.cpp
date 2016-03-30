@@ -3,9 +3,18 @@
 //
 
 #include "Consumable.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
 void Consumable::use(lorafel::Tile* pTarget) {
 
+}
+
+bool Consumable::init() {
+    if(!Item::init()) {
+        return false;
+    }
+    setTag(Tag::CONSUMABLE);
+    return true;
 }

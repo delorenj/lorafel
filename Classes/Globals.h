@@ -48,6 +48,7 @@ namespace lorafel {
         static const int ENEMY = 5;
         static const int GLYPH = 6;
         static const int HIGHLIGHT = 7;
+        static const int CONSUMABLE = 8;
     };
 
     struct LayerOrder {

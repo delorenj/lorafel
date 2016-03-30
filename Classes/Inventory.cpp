@@ -24,7 +24,7 @@ const int Inventory::addItem(char* itemName, int quantity) {
     return count;
 }
 
-const int Inventory::addItem(char* itemName, Item* pItem, int quantity) {
+const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     if(itemExists(itemName)) {
         return addItem(itemName, quantity);
     }
@@ -51,4 +51,12 @@ bool Inventory::itemExists(char* itemName) {
         return false;
     }
     return true;
+}
+
+Item* Inventory::getItem(const char* itemName) {
+    if(itemExists(itemName)) {
+        return m_items.at(itemName);
+    } else {
+        return nullptr;
+    }
 }

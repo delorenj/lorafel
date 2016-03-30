@@ -17,6 +17,7 @@ namespace lorafel {
     public:
         static const int UNLOCK_CONSUMABLE_SLOT_2 = 15;
         static const int UNLOCK_CONSUMABLE_SLOT_3 = 40;
+        static const int MAX_CONSUMABLE_SLOTS = 3;
 
     public:
         Player();
@@ -28,6 +29,7 @@ namespace lorafel {
          * Getters and Setters
         */
         const int getNumConsumableSlots() const;
+
         LevelManager* getLevelManager() const { return m_pLevelManager; }
         int updateGoldBy(int amount, Match* pMatch);
         int getGold() const { return m_gold; }
@@ -43,6 +45,8 @@ namespace lorafel {
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
         Inventory* getInventory() const { return m_pInventory; }
+        bool equipConsumableSlot(const char* itemName);
+        bool equipConsumableSlot(const char* itemName, int slot);
 
     protected:
         // Current Stats
@@ -61,7 +65,7 @@ namespace lorafel {
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
-        std::vector<Consumable*> m_pActiveConsumables;
+        std::vector<Consumable*> m_activeConsumables;
 
     protected:
         Tile* m_pTile;
