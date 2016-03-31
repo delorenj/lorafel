@@ -100,3 +100,7 @@ bool Player::equipConsumableSlot(const char* itemName, int slot) {
     m_activeConsumables[slot] = static_cast<Consumable*>(pItem);
     return true;
 }
+
+Consumable* Player::getConsumableSlotItem(int i) {
+    return m_activeConsumables[i];
+}

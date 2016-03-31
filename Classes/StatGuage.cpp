@@ -21,7 +21,7 @@ bool StatGuage::init(
     m_callbackCurrent = current;
 
     // Create meter liquid
-    m_pMeter = cocos2d::ui::LoadingBar::create(container);
+    m_pMeter = cocos2d::ui::LoadingBar::create();
     m_pMeter->loadTexture(container, cocos2d::ui::Widget::TextureResType::PLIST);
     m_pMeter->setDirection(cocos2d::ui::LoadingBar::Direction::RIGHT);
     m_pMeter->setAnchorPoint(cocos2d::Vec2(0,0));

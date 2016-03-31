@@ -15,6 +15,7 @@ using namespace lorafel;
 bool GridUI::init() {
     m_visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     m_origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    m_consumableSlots.reserve(10);
     ignoreAnchorPointForPosition(false);
 
     initXpUI();
@@ -23,6 +24,7 @@ bool GridUI::init() {
     initEnemyUIs();
     initActionBar();
     initMpUI();
+    initConsumableBar();
 
     auto _listener = cocos2d::EventListenerCustom::create("enemy_damaged", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
@@ -131,6 +133,7 @@ void GridUI::initActionBar() {
 void GridUI::initConsumableBar() {
     auto player = PlayerManager::getInstance()->getPlayer();
 
+    //TODO: Refactor this loop logic!
     for(int i=0; i<player->getNumConsumableSlots(); i++) {
         auto item = player->getConsumableSlotItem(i);
         /**
@@ -138,12 +141,25 @@ void GridUI::initConsumableBar() {
          * Let's show an empty slot
          */
         if(item == nullptr) {
-            m_consumableSlots.at(i)->createWithSpriteFrameName("empty-tile.png");
+            auto sprite = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
+            m_consumableSlots[i] = sprite;
+
         } else {
-            
+            m_consumableSlots[i] = item;
         }
+        auto slot = m_consumableSlots[i];
+        slot->setAnchorPoint(cocos2d::Vec2(0,1));
+        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y+5));
+        addChild(slot);
     }
+
     for(int i=player->getNumConsumableSlots(); i<Player::MAX_CONSUMABLE_SLOTS; i++) {
-        m_consumableSlots.at(i)->createWithSpriteFrameName("locked-tile.png");
+        auto sprite = cocos2d::Sprite::createWithSpriteFrameName("lock-tile.png");
+        m_consumableSlots[i] = sprite;
+        auto slot = m_consumableSlots[i];
+        slot->setAnchorPoint(cocos2d::Vec2(1,1));
+        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y+5));
+        addChild(slot);
+
     }
 }

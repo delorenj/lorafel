@@ -15,7 +15,7 @@ Inventory::~Inventory() {
 
 
 
-const int Inventory::addItem(char* itemName, int quantity) {
+const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
     auto itemPair = m_items[itemName];
     count += quantity;
@@ -33,18 +33,17 @@ const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     return quantity;
 }
 
-int Inventory::getItemCount(char* itemName) {
-    ItemQuantityPair pair;
+int Inventory::getItemCount(const char* itemName) {
     try {
-        pair = m_items.at(itemName);
+        auto pair = m_items[itemName];
+        return pair.second;
     } catch(std::out_of_range e) {
         CCLOG("Item not found in inventory");
         throw new std::out_of_range("Balls");
     }
-    return pair.second;
 }
 
-bool Inventory::itemExists(char* itemName) {
+bool Inventory::itemExists(const char* itemName) {
     try {
         m_items.at(itemName);
     }catch(std::out_of_range e) {
@@ -55,7 +54,8 @@ bool Inventory::itemExists(char* itemName) {
 
 Item* Inventory::getItem(const char* itemName) {
     if(itemExists(itemName)) {
-        return m_items.at(itemName);
+        auto itemPair = m_items[itemName];
+        return itemPair.first;
     } else {
         return nullptr;
     }

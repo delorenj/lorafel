@@ -12,22 +12,21 @@ namespace lorafel {
     class Inventory {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;
-        typedef std::unordered_map<char *, ItemQuantityPair> ItemDictionary;
+        typedef std::unordered_map<const char *, ItemQuantityPair> ItemDictionary;
 
-        Item* getItem(const char* itemName);
 
     public:
         Inventory();
         virtual ~Inventory();
 
-        const int addItem(char* itemName, int quantity = 1);
+        const int addItem(const char* itemName, int quantity = 1);
         const int addItem(const char* itemName, Item* pItem, int quantity = 1);
+        Item* getItem(const char* itemName);
+
     protected:
         ItemDictionary m_items;
-
-        int getItemCount(char* itemName);
-
-        bool itemExists(char* itemName);
+        int getItemCount(const char* itemName);
+        bool itemExists(const char* itemName);
     };
 
 }

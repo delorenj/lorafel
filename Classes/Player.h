@@ -19,6 +19,8 @@ namespace lorafel {
         static const int UNLOCK_CONSUMABLE_SLOT_3 = 40;
         static const int MAX_CONSUMABLE_SLOTS = 3;
 
+        Consumable* getConsumableSlotItem(int i);
+
     public:
         Player();
         virtual ~Player();
