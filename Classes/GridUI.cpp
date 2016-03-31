@@ -136,30 +136,31 @@ void GridUI::initConsumableBar() {
     //TODO: Refactor this loop logic!
     for(int i=0; i<player->getNumConsumableSlots(); i++) {
         auto item = player->getConsumableSlotItem(i);
-        /**
-         * Nothing equipped in this slot
-         * Let's show an empty slot
-         */
-        if(item == nullptr) {
-            auto sprite = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
-            m_consumableSlots[i] = sprite;
+        auto sprite = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
+        m_consumableSlots[i] = sprite;
 
-        } else {
-            //TODO: Item is a little misaligned. contentSize maybe is off??
-            m_consumableSlots[i] = item;
-        }
         auto slot = m_consumableSlots[i];
         slot->setAnchorPoint(cocos2d::Vec2(0,1));
-        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y+5));
+        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y-5));
         addChild(slot);
+
+        /**
+         * Something's equipped in this slot
+         * Let's fill the empty slot
+         */
+        if(item != nullptr) {
+            item->setAnchorPoint(cocos2d::Vec2(0, 1));
+            item->setPosition(slot->convertToNodeSpace(slot->getPosition()));
+            m_consumableSlots[i]->addChild(item, LayerOrder::UX);
+        }
     }
 
     for(int i=player->getNumConsumableSlots(); i<Player::MAX_CONSUMABLE_SLOTS; i++) {
         auto sprite = cocos2d::Sprite::createWithSpriteFrameName("lock-tile.png");
         m_consumableSlots[i] = sprite;
         auto slot = m_consumableSlots[i];
-        slot->setAnchorPoint(cocos2d::Vec2(1,1));
-        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y+5));
+        slot->setAnchorPoint(cocos2d::Vec2(0,1));
+        slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y-5));
         addChild(slot);
 
     }
