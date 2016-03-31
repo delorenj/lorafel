@@ -145,6 +145,7 @@ void GridUI::initConsumableBar() {
             m_consumableSlots[i] = sprite;
 
         } else {
+            //TODO: Item is a little misaligned. contentSize maybe is off??
             m_consumableSlots[i] = item;
         }
         auto slot = m_consumableSlots[i];
