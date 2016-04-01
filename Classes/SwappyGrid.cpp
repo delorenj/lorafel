@@ -88,7 +88,7 @@ bool SwappyGrid::init() {
      *
      * Nope...I'm pretty sure that's not the right solution.
      */
-    PlayerManager::getInstance()->getPlayer()->getInventory()->addEvents(nullptr);
+    PlayerManager::getInstance()->getPlayer()->getInventory()->addEvents(this);
 
     CCLOG("tileSize: %f,%f", m_tileSize.width, m_tileSize.height);
     CCLOG("tileSize * NUM_COLUMNS: %f", m_tileSize.width * NUM_COLUMNS);
