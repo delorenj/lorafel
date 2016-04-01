@@ -9,6 +9,7 @@
 #include "EventDataTile.h"
 #include "FireballActionTile.h"
 #include "PlayerManager.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -151,7 +152,7 @@ void GridUI::initConsumableBar() {
         if(item != nullptr) {
             item->setAnchorPoint(cocos2d::Vec2(0, 1));
             item->setPosition(slot->convertToNodeSpace(slot->getPosition()));
-            m_consumableSlots[i]->addChild(item, LayerOrder::UX);
+            slot->addChild(item, LayerOrder::UX);
         }
     }
 
@@ -162,6 +163,5 @@ void GridUI::initConsumableBar() {
         slot->setAnchorPoint(cocos2d::Vec2(0,1));
         slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y-5));
         addChild(slot);
-
     }
 }

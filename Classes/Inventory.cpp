@@ -60,3 +60,11 @@ Item* Inventory::getItem(const char* itemName) {
         return nullptr;
     }
 }
+
+void Inventory::addEvents(cocos2d::Node* pSwappyGrid) {
+    for(auto itemDictionary : m_items) {
+        auto itemPair = itemDictionary.second;
+        auto item = itemPair.first;
+        item->addEvents(pSwappyGrid);
+    }
+}

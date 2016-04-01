@@ -4,6 +4,8 @@
 
 #include "Consumable.h"
 #include "Globals.h"
+#include "GameStateMachine.h"
+#include "SwappyGridScene.h"
 
 using namespace lorafel;
 
@@ -18,3 +20,4 @@ bool Consumable::init() {
     setTag(Tag::CONSUMABLE);
     return true;
 }
+

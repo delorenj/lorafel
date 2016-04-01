@@ -24,6 +24,7 @@ bool SwappyGrid::init() {
     m_pMoveStack = new std::stack<PlayerMove*>();
     m_pTileMatcher = new TileMatcher(this);
     m_pTileMatcher->setDebugDraw(false);
+    setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
         auto fsm = StateMachine::create();
@@ -74,6 +75,20 @@ bool SwappyGrid::init() {
 
     setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
     setContentSize(cocos2d::Size(m_tileSize.width * NUM_COLUMNS, m_tileSize.height * NUM_ROWS));
+
+    /**
+     * Initialize all the events for each inventory item.
+     * Can't do this on create because the items get created
+     * before the scene starts running and each item
+     * needs a reference to the SwappyGrid to handle
+     * touch events
+     *
+     * Wait...maybe not. Gonna try adding the touch events to
+     * the slots themselves.
+     *
+     * Nope...I'm pretty sure that's not the right solution.
+     */
+    PlayerManager::getInstance()->getPlayer()->getInventory()->addEvents(nullptr);
 
     CCLOG("tileSize: %f,%f", m_tileSize.width, m_tileSize.height);
     CCLOG("tileSize * NUM_COLUMNS: %f", m_tileSize.width * NUM_COLUMNS);

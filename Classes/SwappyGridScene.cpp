@@ -34,7 +34,7 @@ bool SwappyGridScene::init() {
     gridTestUI->setAnchorPoint(cocos2d::Vec2(0,1));
     gridTestUI->setPosition(origin.x + visibleSize.width/2, origin.y + 30);
     addChild(gridTestUI, lorafel::LayerOrder::DEBUG);
-
+    setName("SwappyGridScene");
     return true;
 }
 

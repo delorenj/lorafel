@@ -14,14 +14,15 @@ namespace lorafel {
         typedef std::pair<Item*, int> ItemQuantityPair;
         typedef std::unordered_map<const char *, ItemQuantityPair> ItemDictionary;
 
-
     public:
         Inventory();
         virtual ~Inventory();
+        void addEvents(cocos2d::Node* pSwappyGrid);
 
         const int addItem(const char* itemName, int quantity = 1);
         const int addItem(const char* itemName, Item* pItem, int quantity = 1);
         Item* getItem(const char* itemName);
+
 
     protected:
         ItemDictionary m_items;

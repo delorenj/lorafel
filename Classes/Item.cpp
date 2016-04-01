@@ -13,3 +13,7 @@ bool Item::init() {
 
     return true;
 }
+
+void Item::addEvents(cocos2d::Node* pNode) {
+
+}
