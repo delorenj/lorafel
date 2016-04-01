@@ -12,7 +12,9 @@ namespace lorafel {
     class Consumable : public Item {
     public:
         virtual bool init() override;
-        void use(Tile* pTarget);
+        virtual void addEvents(cocos2d::Node* pNode) override;
+
+        virtual void use(Tile* pTarget);
     };
 }
 

@@ -25,6 +25,7 @@
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D1A85CFB9057E83AA562 /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
 		3167D1CD1C77F0756A1BD69C /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
+		3167D21B7A109F9FF7203CB3 /* HealthPotionPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */; };
 		3167D253A8E8474396383D3B /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
 		3167D28D91E967FABB57B55C /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7233A0AA901871761E8 /* Item.cpp */; };
 		3167D2903E512367412739EC /* StormGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D67C7D373CBDF45F687F /* StormGlyph.cpp */; };
@@ -107,6 +108,7 @@
 		3167DF89E4936C83626B56C4 /* GlyphFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8F1806DED0DD6B27C0 /* GlyphFactory.cpp */; };
 		3167DFCAA663048D856BB755 /* GameOverUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */; };
 		3167DFE1F535647944F4D7E5 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
+		3167DFE43A7F387D45C2E166 /* HealthPotionPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */; };
 		3167DFF8737A98857B7869FF /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
@@ -229,6 +231,7 @@
 		3167D0941468F8F2EFBEF897 /* AvocadoTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvocadoTile.cpp; sourceTree = "<group>"; };
 		3167D094F10916B85FB7B0FC /* GameOverUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverUI.h; sourceTree = "<group>"; };
 		3167D095ED6055C527532BCC /* GrapeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeFactory.h; sourceTree = "<group>"; };
+		3167D0A88374F8248BC58E79 /* HealthPotionPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotionPlayerMove.h; sourceTree = "<group>"; };
 		3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrajectoryParticle.cpp; sourceTree = "<group>"; };
 		3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Achievements.cpp; sourceTree = "<group>"; };
 		3167D158E63BA8AB24BBA71F /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 		3167D9CC1F5BE0A42846EC41 /* MeleeAttackFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackFactory.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
@@ -693,6 +697,8 @@
 				3167DD81C73EF6CDF3B800CD /* Item.h */,
 				3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */,
 				3167D8FD5B6617C26519A0D4 /* HealthPotion.h */,
+				3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */,
+				3167D0A88374F8248BC58E79 /* HealthPotionPlayerMove.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -953,6 +959,7 @@
 				3167D4C7C3A21F5625157529 /* Consumable.cpp in Sources */,
 				3167D28D91E967FABB57B55C /* Item.cpp in Sources */,
 				3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */,
+				3167DFE43A7F387D45C2E166 /* HealthPotionPlayerMove.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1018,7 @@
 				3167DCC0B85739D1C7FA47BB /* Consumable.cpp in Sources */,
 				3167DF223816C31DB6724D37 /* Item.cpp in Sources */,
 				3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */,
+				3167D21B7A109F9FF7203CB3 /* HealthPotionPlayerMove.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

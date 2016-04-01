@@ -13,7 +13,7 @@ namespace lorafel {
     public:
         virtual bool init() override;
 
-        void addEvents(cocos2d::Node* pNode);
+        virtual void addEvents(cocos2d::Node* pNode);
 
     protected:
         SwappyGrid* m_pSwappyGrid;

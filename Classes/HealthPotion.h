@@ -28,6 +28,9 @@ namespace lorafel {
             }
         }
 
+        virtual void addEvents(cocos2d::Node* pNode) override;
+        virtual void use(Tile* pTarget) override;
+
     protected:
         double m_amount;
 

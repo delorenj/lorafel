@@ -34,6 +34,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridTransparency.cpp \
                    ../../Classes/GridUI.cpp \
+                   ../../Classes/HealthPotionPlayerMove.cpp \
                    ../../Classes/HeroTile.cpp \
                    ../../Classes/HpUI.cpp \
                    ../../Classes/InGameSettings.cpp \
