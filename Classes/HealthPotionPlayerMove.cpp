@@ -8,10 +8,11 @@
 using namespace lorafel;
 
 void HealthPotionPlayerMove::run() {
-    auto particle = cocos2d::ParticleFlower::create();
-    particle->setDuration(3);
+    auto particle = cocos2d::ParticleSystemQuad::create("hearts.plist");
+    particle->setDuration(1);
     particle->setAutoRemoveOnFinish(true);
-    particle->setPosition(m_pTarget->convertToNodeSpace(PTILE_CENTER(m_pTarget)));
+    particle->setAnchorPoint(cocos2d::Vec2(0,0));
+    particle->setPosition(cocos2d::Vec2(m_pSwappyGrid->getTileSize().width/2, m_pSwappyGrid->getTileSize().width/2));
     m_pTarget->addChild(particle);
 
     PlayerManager::getInstance()->getPlayer()->updateHpBy(m_increaseHealthBy);
