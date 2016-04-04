@@ -7,6 +7,7 @@
 
 #include "PlayerMove.h"
 #include "HealthPotion.h"
+#include "Globals.h"
 
 namespace lorafel {
     class HealthPotionPlayerMove : public PlayerMove {
@@ -20,6 +21,7 @@ namespace lorafel {
         HealthPotionPlayerMove(SwappyGrid* pGrid, int increaseHealthBy, Tile* pTarget) : PlayerMove(pGrid) {
             m_pTarget = pTarget;
             m_increaseHealthBy = increaseHealthBy;
+            setTag(Tag::CONSUMABLE);
         }
 
     protected:

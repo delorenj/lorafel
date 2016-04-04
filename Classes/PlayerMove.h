@@ -31,11 +31,16 @@ namespace lorafel {
         bool isMatched() { return m_isMatched; }
         bool setMatched(bool matched) { m_isMatched = matched; }
         const std::vector<cocos2d::Action*>* getActions() const { return m_pActions; }
+        int getTag() const { return m_tag; }
+        void setTag(int tag) { m_tag = tag; }
 
     protected:
         SwappyGrid* m_pSwappyGrid;
         std::vector<cocos2d::Action*>* m_pActions;
         bool m_isMatched = 0;
+
+    protected:
+        int m_tag;
     };
 }
 

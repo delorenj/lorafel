@@ -53,7 +53,7 @@ namespace lorafel {
     protected:
         // Current Stats
         int m_gold = 0;
-        int m_hp = 1000;
+        int m_hp = 800;
         int m_mp = 3;
 
         // Stat Ranges

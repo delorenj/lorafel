@@ -428,6 +428,13 @@ void SwappyGrid::ProcessMatches() {
             match->run();
         }
         GameStateMachine::getInstance()->enterState<IdleState>();
+    } else if(!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
+        /**
+         * If the player clicked on a consumable, process that
+         * as a move here
+         */
+        GameStateMachine::getInstance()->enterState<IdleState>();
+
     } else if (!m_pMoveStack->empty() && !m_pMoveStack->top()->isMatched()) {
         // Only revert tiles when no match is found AND the match was
         // initiated by player move. If match initiated by falling tiles

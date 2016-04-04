@@ -6,6 +6,7 @@
 #include "GameStateMachine.h"
 #include "PlayerManager.h"
 #include "HealthPotionPlayerMove.h"
+#include "Level.h"
 
 using namespace lorafel;
 
@@ -39,6 +40,7 @@ void HealthPotion::addEvents(cocos2d::Node* pNode) {
         if(rect.containsPoint(p))
         {
             use(PlayerManager::getInstance()->getPlayer()->getTile());
+            _eventDispatcher->dispatchCustomEvent("used_consumable", new EventDataInteger(0));
             return true; // to indicate that we have consumed it.
         }
 
@@ -67,10 +69,8 @@ void HealthPotion::use(Tile* pTarget) {
     }
 
     HealthPotionPlayerMove* playerMove = new HealthPotionPlayerMove(m_pSwappyGrid, toIncreaseBy, pTarget);
-    m_pSwappyGrid->getMoveStack()->push(playerMove);
     if(playerMove->isValid()) {
-        playerMove->run();
-        GameStateMachine::getInstance()->setState<TileQueueEmptyMatchStartState>();
+        m_pSwappyGrid->executePlayerMove(playerMove);
     }
 
 }

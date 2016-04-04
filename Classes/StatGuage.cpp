@@ -25,7 +25,7 @@ bool StatGuage::init(
     m_pMeter->loadTexture(container, cocos2d::ui::Widget::TextureResType::PLIST);
     m_pMeter->setDirection(cocos2d::ui::LoadingBar::Direction::RIGHT);
     m_pMeter->setAnchorPoint(cocos2d::Vec2(0,0));
-    m_pMeter->setPercent(100);
+    m_pMeter->setPercent((float)(current())/(float)(max())*100);
     addChild(m_pMeter);
 
     // Create meter glass
