@@ -61,8 +61,6 @@ bool lorafel::HpUI::init() {
     setContentSize(cocos2d::Size(m_pMeterContainer->getContentSize().width + m_pIcon->getContentSize().width + 10, m_pMeterContainer->getContentSize().height));
 
     auto _listener = cocos2d::EventListenerCustom::create("hero_damaged", [=](cocos2d::EventCustom* event){
-        auto val = static_cast<EventDataInteger*>(event->getUserData())->val;
-        m_modifyBy = val;
         schedule(schedule_selector(HpUI::tween));
     });
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 1);

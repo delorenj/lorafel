@@ -91,7 +91,7 @@ void StatGuage::tween(float dt) {
     }
 
     auto val = to;
-    auto mag = std::pow(10,std::log10(std::abs((float)(from-to))))/cocos2d::Director::getInstance()->getFrameRate()/0.1f;
+    int mag = ROUND_2_INT(std::pow(10,std::log10(std::abs((float)(from-to))))/cocos2d::Director::getInstance()->getFrameRate()/0.1f);
 
     if(from < to) {
         val = clamp<int>(from+mag, minVal, maxVal);

@@ -94,12 +94,20 @@ void GridUI::initGoldUI() {
 }
 
 void GridUI::initHpUI() {
-    m_pHpUI = HpUI::create();
-    m_pHpUI->setAnchorPoint(cocos2d::Vec2(1,1));
+    auto player = PlayerManager::getInstance()->getPlayer();
 
-    m_pHpUI->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height - 13));
+    m_pHpUI = StatGuage::create(
+            "heart.png",
+            "hp_bar.png",
+            std::bind([](){ return 0;}),
+            std::bind([=](){ return player->getMaxHp();}),
+            std::bind([=]() {return player->getHp();})
+    );
+
+    m_pHpUI->setAnchorPoint(cocos2d::Vec2(1,1));
     m_pHpUI->setTag(Tag::UI);
     m_pHpUI->setName("HpUI");
+    m_pHpUI->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height - 13));
     addChild(m_pHpUI);
 }
 

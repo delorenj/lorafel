@@ -10,7 +10,6 @@
 #include "SwappyGrid.h"
 #include "XpUI.h"
 #include "GoldUI.h"
-#include "HpUI.h"
 #include "StatGuage.h"
 #include "ActionTile.h"
 #include "Consumable.h"
@@ -37,8 +36,7 @@ namespace lorafel {
 
         void setGrid(SwappyGrid* grid) { m_pSwappyGrid = grid; }
         SwappyGrid* getGrid() const { return m_pSwappyGrid; }
-        XpUI* getXpUI() const { return m_pXpUI; }
-        GoldUI* getGoldUI() const { return m_pGoldUI; }
+
     protected:
         cocos2d::Size m_visibleSize;
         cocos2d::Point m_origin;
@@ -46,7 +44,7 @@ namespace lorafel {
         SwappyGrid* m_pSwappyGrid;
         XpUI* m_pXpUI;
         GoldUI* m_pGoldUI;
-        HpUI* m_pHpUI;
+        StatGuage* m_pHpUI;
         StatGuage* m_pMpUI;
         std::vector<StatGuage*> m_vecEnemyHpUI;
         ActionTile* m_pAction1;

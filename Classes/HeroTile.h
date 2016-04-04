@@ -13,10 +13,8 @@ namespace lorafel {
         bool init() override;
         static HeroTile* create(const char string[100]);
         virtual void onMatch(Match* pMatch) override;
-        virtual void onHit(cocos2d::EventCustom* event);
         virtual void remove() override;
         virtual void addEvents() override;
-        void updateHpBy(int amount);
 
         virtual void applyHit(Match* pMatch);
 

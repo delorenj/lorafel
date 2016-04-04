@@ -70,6 +70,7 @@ void HealthPotion::use(Tile* pTarget) {
     m_pSwappyGrid->getMoveStack()->push(playerMove);
     if(playerMove->isValid()) {
         playerMove->run();
+        GameStateMachine::getInstance()->setState<TileQueueEmptyMatchStartState>();
     }
 
 }

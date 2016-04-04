@@ -16,6 +16,8 @@ void HealthPotionPlayerMove::run() {
     m_pTarget->addChild(particle);
 
     PlayerManager::getInstance()->getPlayer()->updateHpBy(m_increaseHealthBy);
+    m_pSwappyGrid->getEventDispatcher()->dispatchCustomEvent("stat_change");
+
 }
 
 bool HealthPotionPlayerMove::isValid() {

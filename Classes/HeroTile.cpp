@@ -31,9 +31,7 @@ HeroTile* HeroTile::create(const char string[100]){
 }
 
 bool HeroTile::init() {
-    // Add event listener for onHit()
-    auto _listenter = cocos2d::EventListenerCustom::create("hero_damaged", CC_CALLBACK_1(HeroTile::onHit, this));
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(_listenter, this);
+    return Tile::init();
 }
 
 void HeroTile::applyHit(Match* pMatch) {
@@ -48,37 +46,22 @@ void HeroTile::applyHit(Match* pMatch) {
     player->updateHpBy(-hitAmount);
 
     // Fire off an Hit event
-    cocos2d::EventCustom e("hero_damaged");
-    EventData* val = new EventDataFloatie(hitAmount, getGrid()->convertToWorldSpace(TILE_CENTER) + cocos2d::Vec2(0,40));
-    e.setUserData(val);
-    _eventDispatcher->dispatchEvent(&e);
+    _eventDispatcher->dispatchCustomEvent("stat_change");
+
     auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
     m_pSwappyGrid->addChild(particle);
-    CC_SAFE_DELETE(val);
 
     if(player->getHp() == 0) {
-        //game over
-//        cocos2d::EventCustom gameOver("game_over");
-//        _eventDispatcher->dispatchEvent(&gameOver);
+        cocos2d::EventCustom gameOver("game_over");
+        _eventDispatcher->dispatchEvent(&gameOver);
         remove();
     }
 
 }
 
-void HeroTile::onHit(cocos2d::EventCustom* event) {
-    EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
-
-    CCLOG("Hit for %d HP", data->val);
-}
-
 void HeroTile::onMatch(Match *pMatch) {
-//    applyHit(pMatch);
-}
-
-void HeroTile::updateHpBy(int amount) {
-    m_hp -= amount;
 }
 
 void HeroTile::remove() {
@@ -197,15 +180,8 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
         return moves;
     }
 
-    // If we're here, then def this
-    // tile is a proper move (maybe)
-//    if(pTile == this) {
-//        pTile->setVisitOrder(1000); // arbitrary >0 number
-//    } else {
-
     pTile->setVisitOrder(distance);
     moves->insert(pTile);
-//    }
 
     if(distance < getMaxMoveDistance()) {
         auto top = getValidMoves(pTile->getTop(), distance+1);
