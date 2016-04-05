@@ -20,12 +20,12 @@ void FireballAction::run() {
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         if(m_pTile->getTag() == Tag::ENEMY) {
             auto t = static_cast<EnemyTile*>(m_pTile);
-            auto explode = cocos2d::ParticleExplosion::create();
+            auto explode = cocos2d::ParticleExplosion::create(); //TODO: Tweak
             explode->setAutoRemoveOnFinish(true);
             explode->setPosition(PTILE_CENTER(m_pTile));
             m_pSwappyGrid->addChild(explode, LayerOrder::PARTICLES);
 
-            t->applyHit(1000);
+            t->applyHit(1000); //TODO: Tweak
             if(t->getHp() == 0) {
                 GameStateMachine::getInstance()->setState<TileRemovedState>();
             } else {
@@ -38,7 +38,7 @@ void FireballAction::run() {
         }
         particle->stopSystem();
         particle->setDuration(0.01f);
-        PlayerManager::getInstance()->getPlayer()->updateMpBy(-1);
+        PlayerManager::getInstance()->getPlayer()->updateMpBy(-1); //TODO: Tweak
     });
 
     auto seq = cocos2d::Sequence::create(tween, callback, NULL);

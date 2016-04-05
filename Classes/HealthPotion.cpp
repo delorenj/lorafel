@@ -40,7 +40,7 @@ void HealthPotion::addEvents(cocos2d::Node* pNode) {
         if(rect.containsPoint(p))
         {
             use(PlayerManager::getInstance()->getPlayer()->getTile());
-            _eventDispatcher->dispatchCustomEvent("used_consumable", new EventDataInteger(0));
+            removeFromParentAndCleanup(true);
             return true; // to indicate that we have consumed it.
         }
 

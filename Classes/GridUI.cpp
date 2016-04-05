@@ -172,12 +172,4 @@ void GridUI::initConsumableBar() {
         addChild(slot);
 
     }
-
-    auto _listener = cocos2d::EventListenerCustom::create("used_consumable",[=](cocos2d::EventCustom* event){
-        EventDataInteger* data = static_cast<EventDataInteger*>(event->getUserData());
-        auto slot = data->val;
-        m_consumableSlots[slot]->removeAllChildrenWithCleanup(true);
-    });
-
-    _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
 }
