@@ -29,8 +29,8 @@ void FireballAction::run() {
 
         } else if(m_pTile->getTag() == Tag::TILE || m_pTile->getTag() == Tag::GLYPH) {
             m_pTile->remove();
-//            GameStateMachine::getInstance()->setState<TileRemovedState>();
-            GameStateMachine::getInstance()->setState<TileSwappingEndState>();
+            GameStateMachine::getInstance()->setState<TileRemovedState>();
+//            GameStateMachine::getInstance()->setState<TileSwappingEndState>();
         }
         particle->stopSystem();
         particle->setDuration(0.01f);
@@ -46,5 +46,6 @@ void FireballAction::cancel() {
 }
 
 bool FireballAction::isValid() {
+    m_isMatched = 1;
     return true;
 }

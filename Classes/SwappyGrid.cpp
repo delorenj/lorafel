@@ -608,16 +608,16 @@ void SwappyGrid::ProcessTurnManager() {
         auto tile = turnManager->getNextPlayerTile();
         m_pActivePlayerTile = tile;  // set this for faster access in the game loop
         if (tile->getTag() == Tag::ENEMY) {
-            GameStateMachine::getInstance()->setState<EnemyTurnState>();
-//            GameStateMachine::getInstance()->setState<BusyState>();
-//            auto seq = cocos2d::Sequence::create(
-//                    cocos2d::DelayTime::create(0.01f),
-//                    cocos2d::CallFunc::create([=](){
-//                        GameStateMachine::getInstance()->setState<EnemyTurnState>();
-//                    }),
-//                    NULL
-//            );
-//            cocos2d::Director::getInstance()->getRunningScene()->runAction(seq);
+//            GameStateMachine::getInstance()->setState<EnemyTurnState>();
+            GameStateMachine::getInstance()->setState<BusyState>();
+            auto seq = cocos2d::Sequence::create(
+                    cocos2d::DelayTime::create(0.8f),
+                    cocos2d::CallFunc::create([=](){
+                        GameStateMachine::getInstance()->setState<EnemyTurnState>();
+                    }),
+                    NULL
+            );
+            cocos2d::Director::getInstance()->getRunningScene()->runAction(seq);
         }
     }
 }

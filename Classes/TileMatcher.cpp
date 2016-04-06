@@ -8,7 +8,6 @@
 using namespace lorafel;
 
 std::set<Match *> TileMatcher::findMatches() {
-    CCLOG("<enter> findMatches()");
     auto matchSets = std::set<Match*>();
 
     m_pSwappyGrid->clearVisitStates();
@@ -42,7 +41,6 @@ std::set<Match *> TileMatcher::findMatches() {
             }
         }
     }
-    CCLOG("<exit> findMatches()");
     return matchSets;
 }
 
