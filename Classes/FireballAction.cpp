@@ -28,8 +28,9 @@ void FireballAction::run() {
             t->applyHit(1000); //TODO: Tweak
 
         } else if(m_pTile->getTag() == Tag::TILE || m_pTile->getTag() == Tag::GLYPH) {
-//            m_pTile->remove();
+            m_pTile->remove();
 //            GameStateMachine::getInstance()->setState<TileRemovedState>();
+            GameStateMachine::getInstance()->setState<TileSwappingEndState>();
         }
         particle->stopSystem();
         particle->setDuration(0.01f);

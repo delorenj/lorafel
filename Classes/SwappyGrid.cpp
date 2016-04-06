@@ -639,12 +639,15 @@ void SwappyGrid::ProcessEnemyTurns() {
     auto tile = m_pActivePlayerTile;
     AIStrategy* strategy = tile->getStrategy();
     PlayerMove* playerMove = strategy->apply(tile);
+    /**
+     * Need this 'cause the enemy never really 'starts' moving
+     * a tile - it should just go to move state
+     */
+    GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
     executePlayerMove(playerMove);
 }
 
 void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
-    //WTF?!?!?!
-//    GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
     getMoveStack()->push(pMove);
     getMoveStack()->top()->run();
     getLevel()->getTurnManager()->addMove(pMove);
