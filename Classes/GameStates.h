@@ -21,11 +21,13 @@ namespace lorafel {
     };
 
     class ColumnReadyToDropState : public ColumnState {
+    public:
         virtual bool canDropTile() override { return true; }
         const std::string getName() const override { return "ColumnReadyToDropState"; }
     };
 
     class ColumnBusyState : public ColumnState {
+    public:
         virtual bool canDropTile() override { return false; }
         const std::string getName() const override { return "ColumnBusyState"; }
     };

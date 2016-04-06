@@ -591,7 +591,7 @@ void SwappyGrid::ProcessTurnManager() {
      * turn is the ENEMY, transition to enemy turn state and
      * and don't allow the HERO to make any moves until 'idle' again
      */
-    if (!state->isBusy()) {
+    if (state->getName() == "IdleState") {
         /*
          * If it's game over, then there are no more
          * turns to manager
@@ -608,15 +608,16 @@ void SwappyGrid::ProcessTurnManager() {
         auto tile = turnManager->getNextPlayerTile();
         m_pActivePlayerTile = tile;  // set this for faster access in the game loop
         if (tile->getTag() == Tag::ENEMY) {
-            GameStateMachine::getInstance()->setState<BusyState>();
-            auto seq = cocos2d::Sequence::create(
-                    cocos2d::DelayTime::create(1.0f),
-                    cocos2d::CallFunc::create([=](){
-                        GameStateMachine::getInstance()->setState<EnemyTurnState>();
-                    }),
-                    NULL
-            );
-            cocos2d::Director::getInstance()->getRunningScene()->runAction(seq);
+            GameStateMachine::getInstance()->setState<EnemyTurnState>();
+//            GameStateMachine::getInstance()->setState<BusyState>();
+//            auto seq = cocos2d::Sequence::create(
+//                    cocos2d::DelayTime::create(0.01f),
+//                    cocos2d::CallFunc::create([=](){
+//                        GameStateMachine::getInstance()->setState<EnemyTurnState>();
+//                    }),
+//                    NULL
+//            );
+//            cocos2d::Director::getInstance()->getRunningScene()->runAction(seq);
         }
     }
 }
@@ -642,7 +643,8 @@ void SwappyGrid::ProcessEnemyTurns() {
 }
 
 void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
-    GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
+    //WTF?!?!?!
+//    GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
     getMoveStack()->push(pMove);
     getMoveStack()->top()->run();
     getLevel()->getTurnManager()->addMove(pMove);

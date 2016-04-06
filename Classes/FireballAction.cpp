@@ -26,15 +26,10 @@ void FireballAction::run() {
             m_pSwappyGrid->addChild(explode, LayerOrder::PARTICLES);
 
             t->applyHit(1000); //TODO: Tweak
-            if(t->getHp() == 0) {
-                GameStateMachine::getInstance()->setState<TileRemovedState>();
-            } else {
-                GameStateMachine::getInstance()->setState<IdleState>();
-            }
 
         } else if(m_pTile->getTag() == Tag::TILE || m_pTile->getTag() == Tag::GLYPH) {
-            m_pTile->remove();
-            GameStateMachine::getInstance()->setState<TileRemovedState>();
+//            m_pTile->remove();
+//            GameStateMachine::getInstance()->setState<TileRemovedState>();
         }
         particle->stopSystem();
         particle->setDuration(0.01f);
