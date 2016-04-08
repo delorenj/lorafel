@@ -12,7 +12,23 @@ namespace lorafel {
     class Tile;
     class Match : public cocos2d::Node {
     public:
-        virtual ~Match();
+        virtual bool init(std::set<Tile*>& tileSet);
+        static Match* create(std::set<Tile*>& tileSet)
+        {
+            Match *pRet = new(std::nothrow) Match();
+            if (pRet && pRet->init(tileSet))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
         virtual void run();
         std::set<Tile *>* getTileSet() const;
         void setTileSet(std::set<Tile *>* tileSet);

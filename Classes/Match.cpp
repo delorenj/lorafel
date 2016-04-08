@@ -8,10 +8,15 @@
 
 using namespace lorafel;
 
-Match::~Match() {
-//    for(auto it : *m_pTileSet) {
-//        CC_SAFE_DELETE(it);
-//    }
+bool Match::init(std::set<Tile*>& tileSet) {
+    if(!cocos2d::Node::init()) {
+        return false;
+    }
+
+    std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
+    setTileSet(tileSetCopy);
+
+    return true;
 }
 
 void Match::setTileSet(std::set<Tile *>* tileSet) {

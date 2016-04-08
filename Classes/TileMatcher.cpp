@@ -4,6 +4,7 @@
 
 #include "TileMatcher.h"
 #include "ui/CocosGUI.h"
+#include "MatchFactory.h"
 
 using namespace lorafel;
 
@@ -22,9 +23,7 @@ std::set<Match *> TileMatcher::findMatches() {
 
             if(tileSet.size() > 0) {
                 // Create copy of the local tileSet
-                std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
-                auto match = new Match();
-                match->setTileSet(tileSetCopy);
+                auto match = MatchFactory::getInstance()->create(tileSet);
 
                 /**
                  * If match set contains an enemy, filter out

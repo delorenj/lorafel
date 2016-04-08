@@ -21,6 +21,7 @@
 		3167D0BE2B7D0E9F49ACBE25 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */; };
 		3167D0DAEC202AF63530A399 /* MeleeAttackTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */; };
 		3167D0EBE0FB0D2FB0C6A480 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
+		3167D0F85E8380F3450BF426 /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
 		3167D15716CB1410EE06B9DA /* ActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D89630700CB559F19ED5 /* ActionTile.cpp */; };
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D1A85CFB9057E83AA562 /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
@@ -64,6 +65,7 @@
 		3167D7CC9497333290968E19 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D91F86828D187FCABCF0 /* GameStateMachine.cpp */; };
 		3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
+		3167D836E569DD3FED261E5D /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
 		3167D8A4704147D6996CA579 /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7FF62C84DBB3A5F919 /* TileFactory.cpp */; };
@@ -246,6 +248,7 @@
 		3167D278D399D66F395F05FA /* GrapeTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrapeTile.cpp; sourceTree = "<group>"; };
 		3167D27EEDA9753245463E70 /* Consumable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consumable.h; sourceTree = "<group>"; };
 		3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelThree.h; sourceTree = "<group>"; };
+		3167D2B01A205F5230035BCB /* MatchFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchFactory.h; sourceTree = "<group>"; };
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
 		3167D2D4485795E3FC0CC6B7 /* StringPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringPatch.h; sourceTree = "<group>"; };
 		3167D2EA20DB699433739D20 /* GameStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateMachine.h; sourceTree = "<group>"; };
@@ -312,12 +315,14 @@
 		3167D9BC91A1230BCD87B710 /* XpFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpFloatie.h; sourceTree = "<group>"; };
 		3167D9CC1F5BE0A42846EC41 /* MeleeAttackFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackFactory.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
+		3167D9FB7B3848B6E808AEDF /* Match5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match5.cpp; sourceTree = "<group>"; };
 		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
 		3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldUI.cpp; sourceTree = "<group>"; };
+		3167DB3F8836CD055272AA38 /* Match5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match5.h; sourceTree = "<group>"; };
 		3167DB517CC5D9B549E8555B /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievements.h; sourceTree = "<group>"; };
 		3167DB7FF62C84DBB3A5F919 /* TileFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileFactory.cpp; sourceTree = "<group>"; };
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
@@ -699,6 +704,9 @@
 				3167D8FD5B6617C26519A0D4 /* HealthPotion.h */,
 				3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */,
 				3167D0A88374F8248BC58E79 /* HealthPotionPlayerMove.h */,
+				3167D2B01A205F5230035BCB /* MatchFactory.h */,
+				3167D9FB7B3848B6E808AEDF /* Match5.cpp */,
+				3167DB3F8836CD055272AA38 /* Match5.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -960,6 +968,7 @@
 				3167D28D91E967FABB57B55C /* Item.cpp in Sources */,
 				3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */,
 				3167DFE43A7F387D45C2E166 /* HealthPotionPlayerMove.cpp in Sources */,
+				3167D0F85E8380F3450BF426 /* Match5.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1028,7 @@
 				3167DF223816C31DB6724D37 /* Item.cpp in Sources */,
 				3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */,
 				3167D21B7A109F9FF7203CB3 /* HealthPotionPlayerMove.cpp in Sources */,
+				3167D836E569DD3FED261E5D /* Match5.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

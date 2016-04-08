@@ -114,13 +114,13 @@ namespace lorafel {
                     }
                 }
             }
-            if(state && _state && state!=_state) {
-                CCLOG("FAILED TO ENTER STATE!!!!!!! %s --> %s", _state->getName().c_str(), state->getName().c_str());
-            } else if(_state) {
-                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", _state->getName().c_str());
-            } else if(state) {
-                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", state->getName().c_str());
-            }
+//            if(state && _state && state!=_state) {
+//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s --> %s", _state->getName().c_str(), state->getName().c_str());
+//            } else if(_state) {
+//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", _state->getName().c_str());
+//            } else if(state) {
+//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", state->getName().c_str());
+//            }
             return false;
         }
 
