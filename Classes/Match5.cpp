@@ -3,8 +3,13 @@
 //
 
 #include "Match5.h"
+#include "Globals.h"
 
-void lorafel::Match5::run() {
-  CCLOG("Running a special 5-match ! You get a present !");
+using namespace lorafel;
+
+void Match5::run() {
+  auto p = cocos2d::ParticleMeteor::create();
+  p->setPosition(m_pPrimaryTile->getGrid()->convertToNodeSpace(getTileSetCenter()));
+  m_pPrimaryTile->getGrid()->addChild(p, LayerOrder::PARTICLES);
   Match::run();
 }

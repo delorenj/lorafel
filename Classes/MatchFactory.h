@@ -24,7 +24,7 @@ namespace lorafel {
 
         virtual Match* create(std::set<Tile*>& pTileSet) {
             Match* match;
-
+            CCLOG("tileset size: %d", pTileSet.size());
             if(pTileSet.size() == 5) {
                 /**
                  * A special, cool match that drops

@@ -11,6 +11,22 @@ namespace lorafel {
     class Match5 : public Match {
 
     public:
+        static Match* create(std::set<Tile*>& tileSet)
+        {
+            Match *pRet = new(std::nothrow) Match5();
+            if (pRet && pRet->init(tileSet))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
         virtual void run() override;
     };
 }
