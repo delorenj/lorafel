@@ -193,7 +193,9 @@ void Tile::onMatch(Match *pMatch) {
     auto iter = tilesToReplace->find(this);
     if(iter != tilesToReplace->end()) {
         CCLOG("Replacing tile with %s", iter->second->getTileName().c_str());
-        remove();
+        auto gridPos = getGridPos();
+        m_pSwappyGrid->getGrid()->at((unsigned long) gridPos.x)->at((unsigned long) gridPos.y) = iter->second;
+        m_pSwappyGrid->removeChild(iter->first);
     } else {
         remove();
     }

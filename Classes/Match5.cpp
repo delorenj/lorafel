@@ -35,6 +35,7 @@ void Match5::run() {
   auto gridPos = pSwappyGrid->screenToGrid(pSwappyGrid->convertToNodeSpace(getTileSetCenter()));
   auto centerTile = pSwappyGrid->getTileAt(gridPos);
   auto loot = pSwappyGrid->getLevel()->getTileConfigs()->at(4)->factory->createTile();
+  loot->setGrid(pSwappyGrid);
   m_pTilesToReplace->insert(std::pair<Tile*, Tile*>(centerTile, loot));
   Match::run();
 }
