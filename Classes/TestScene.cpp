@@ -7,9 +7,6 @@
 //
 #include "Globals.h"
 #include "TestScene.h"
-#include "Level__TestLevelOne.h"
-#include "Level__TestLevelTwo.h"
-#include "Level__TestLevelThree.h"
 #include "Level__TestLevelFour.h"
 
 

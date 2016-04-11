@@ -43,17 +43,20 @@ namespace lorafel {
         bool containsHero();
 
         void setPrimaryTileProcessed(bool i);
-
+        std::map<Tile*, Tile*>* getTilesToReplace() { return m_pTilesToReplace; }
         bool processPrimaryTile();
 
     protected:
         std::set<Tile*>* m_pTileSet;
         Tile* m_pPrimaryTile;
         std::set<Tile *>* m_pEnemies;
+        std::map<Tile*, Tile*>* m_pTilesToReplace;
         cocos2d::Vec2 m_anchorBottomLeft;
         cocos2d::Vec2 m_anchorTopRight;
         Tile* m_pHero;
         bool m_primaryTileProcessed = 0;
+
+
     };
 }
 

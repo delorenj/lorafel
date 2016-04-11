@@ -189,7 +189,14 @@ void Tile::moveToGridPos(int x, int y) {
 }
 
 void Tile::onMatch(Match *pMatch) {
-    remove();
+    auto tilesToReplace = pMatch->getTilesToReplace();
+    auto iter = tilesToReplace->find(this);
+    if(iter != tilesToReplace->end()) {
+        CCLOG("Replacing tile with %s", iter->second->getTileName().c_str());
+        remove();
+    } else {
+        remove();
+    }
 }
 
 int Tile::getRandHit(Tile* pTile) {

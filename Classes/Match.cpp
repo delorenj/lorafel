@@ -14,6 +14,7 @@ bool Match::init(std::set<Tile*>& tileSet) {
     }
 
     std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
+    m_pTilesToReplace = new std::map<Tile*, Tile*>();
     setTileSet(tileSetCopy);
 
     return true;
