@@ -198,6 +198,8 @@ void Tile::onMatch(Match *pMatch) {
         m_pSwappyGrid->addChild(iter->second, LayerOrder::TILES);
         m_pSwappyGrid->getGrid()->at((unsigned long) gridPos.x)->at((unsigned long) gridPos.y) = iter->second;
         m_pSwappyGrid->removeChild(iter->first);
+        auto particle = static_cast<cocos2d::ParticleSystemQuad*>(iter->second->getChildByTag(Tag::HIGHLIGHT));
+        particle->setPosition(cocos2d::Vec2(200,200));
     } else {
         remove();
     }

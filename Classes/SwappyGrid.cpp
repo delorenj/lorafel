@@ -154,7 +154,7 @@ void SwappyGrid::RemoveDeadTiles() {
             auto tile = getTileAt(x, y);
             if (tile == nullptr) {
                 // blank spot. let's fill in the blank
-                Tile* nextTileAbove = getNextTileAbove(x, y);
+                    Tile* nextTileAbove = getNextTileAbove(x, y);
 
                 if (nextTileAbove == nullptr) continue; // nothing to slide down
                 m_pGrid->at(x)->at(nextTileAbove->getGridPos().y) = nullptr;
