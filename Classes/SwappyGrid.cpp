@@ -509,7 +509,6 @@ void SwappyGrid::clearVisitStates() {
             if (!tile) continue;
             tile->setVisitColor(Tile::NONE);
             tile->setVisitOrder(0);
-            tile->removeAllChildrenWithCleanup(true);
         }
     }
 }
@@ -688,7 +687,7 @@ void SwappyGrid::highlightTiles(TileSet* pSet) {
 void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation) {
     auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
     p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    p->setTag(Tag::HIGHLIGHT);
+    p->setTag(Tag::PARTICLE);
     p->setPosition(anchorPos);
     p->setRotation(rotation);
     p->setAutoRemoveOnFinish(true);

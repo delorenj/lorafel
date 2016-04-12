@@ -88,6 +88,7 @@ namespace lorafel {
         void setStrategy(AIStrategy* strategy) { m_pStrategy = strategy; }
         void showTrajectoryLine(cocos2d::Vec2 dest);
         void hideTrajectoryLine();
+        void setGlow(const int color);
 
     protected:
         std::string m_tileName;

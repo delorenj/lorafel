@@ -35,11 +35,8 @@ void Match5::run() {
   auto gridPos = pSwappyGrid->screenToGrid(pSwappyGrid->convertToNodeSpace(getTileSetCenter()));
   auto centerTile = pSwappyGrid->getTileAt(gridPos);
   auto loot = pSwappyGrid->getLevel()->getTileConfigs()->at(4)->factory->createTile();
-  auto particle = cocos2d::ParticleSystemQuad::create("glow_puff.plist");
-  particle->setAutoRemoveOnFinish(true);
-  particle->setTag(Tag::HIGHLIGHT);
   loot->setGrid(pSwappyGrid);
-  loot->addChild(particle, 233);
+  loot->setGlow(Glow::GREEN);
   m_pTilesToReplace->insert(std::pair<Tile*, Tile*>(centerTile, loot));
   Match::run();
 }

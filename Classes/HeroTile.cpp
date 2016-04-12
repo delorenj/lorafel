@@ -129,7 +129,7 @@ void HeroTile::addEvents() {
         // No matter what, get rid of all the particle
         // tile highlight effects
         for(auto node : m_pSwappyGrid->getChildren()) {
-            if(node->getTag() == Tag::HIGHLIGHT) {
+            if(node->getTag() == Tag::PARTICLE) {
                 auto pe = (cocos2d::ParticleSystem*) node;
                 pe->stopSystem();
                 pe->setDuration(0.1f);

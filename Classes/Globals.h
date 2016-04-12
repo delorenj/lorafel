@@ -47,7 +47,7 @@ namespace lorafel {
         static const int HERO = 4;
         static const int ENEMY = 5;
         static const int GLYPH = 6;
-        static const int HIGHLIGHT = 7;
+        static const int PARTICLE = 7;
         static const int CONSUMABLE = 8;
     };
 
@@ -58,6 +58,13 @@ namespace lorafel {
         static const int UX = 30;
         static const int GAMEOVER = 40;
         static const int DEBUG = 100;
+    };
+
+    struct Glow {
+        static const int NONE = 0;
+        static const int GREEN = 1;
+        static const int BLUE = 2;
+        static const int PURPLE = 3;
     };
 }
 

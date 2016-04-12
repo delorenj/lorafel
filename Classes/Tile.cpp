@@ -189,17 +189,37 @@ void Tile::moveToGridPos(int x, int y) {
 }
 
 void Tile::onMatch(Match *pMatch) {
+    /**
+     * First, check to see if a tile was marked
+     * for replacement. If so, we will swap the
+     * tile out instead of removing it.  We will
+     * then show a glowy around it if the new tile
+     * is valuable. Wait, perhaps the glowy should
+     * be added at the tile level instead of the
+     * match level.
+     */
     auto tilesToReplace = pMatch->getTilesToReplace();
     auto iter = tilesToReplace->find(this);
     if(iter != tilesToReplace->end()) {
         CCLOG("Replacing tile with %s", iter->second->getTileName().c_str());
         auto gridPos = getGridPos();
         iter->second->setPosition(iter->first->getPosition());
+
+        /**
+         * Add new tile to grid in place of other one
+         */
         m_pSwappyGrid->addChild(iter->second, LayerOrder::TILES);
+
+        /**
+         * Add new tile to the grid data structure in place of other one
+         */
         m_pSwappyGrid->getGrid()->at((unsigned long) gridPos.x)->at((unsigned long) gridPos.y) = iter->second;
+
+        /**
+         * Remove the old tile from the screen
+         */
         m_pSwappyGrid->removeChild(iter->first);
-        auto particle = static_cast<cocos2d::ParticleSystemQuad*>(iter->second->getChildByTag(Tag::HIGHLIGHT));
-        particle->setPosition(cocos2d::Vec2(200,200));
+
     } else {
         remove();
     }
@@ -271,4 +291,17 @@ void Tile::hideTrajectoryLine() {
     }
     m_pTrajectoryLine = nullptr;
     m_pClippingMask = nullptr;
+}
+
+void Tile::setGlow(const int color) {
+    auto particle = cocos2d::ParticleSystemQuad::create("glow_ring.plist");
+    particle->setAutoRemoveOnFinish(true);
+    particle->setPosition(TILE_CENTER);
+    particle->setPositionType(cocos2d::ParticleSystem::PositionType::RELATIVE);
+    particle->setCascadeOpacityEnabled(true);
+    particle->setOpacityModifyRGB(true);
+    particle->setOpacity(140);
+    addChild(particle, LayerOrder::PARTICLES);
+    setGlobalZOrder(LayerOrder::PARTICLES+1);
+
 }

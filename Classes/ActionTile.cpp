@@ -67,7 +67,7 @@ void ActionTile::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
      * tile highlight effects
      */
     for(auto node : m_pSwappyGrid->getChildren()) {
-        if(node->getTag() == Tag::HIGHLIGHT) {
+        if(node->getTag() == Tag::PARTICLE) {
             auto pe = (cocos2d::ParticleSystem*) node;
             pe->stopSystem();
             pe->setDuration(0.1f);
@@ -121,7 +121,7 @@ void ActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
         m_pParticle->setPosition(m_pSwappyGrid->convertToNodeSpace(FINGER_OFFSET_TOUCH));
         m_pParticle->setAutoRemoveOnFinish(true);
         m_pParticle->setAnchorPoint(cocos2d::Vec2(0,0));
-        m_pParticle->setTag(Tag::HIGHLIGHT);
+        m_pParticle->setTag(Tag::PARTICLE);
         m_pSwappyGrid->addChild(m_pParticle, LayerOrder::PARTICLES);
         GameStateMachine::getInstance()->enterState<TileTouchMoveState>();
     }
