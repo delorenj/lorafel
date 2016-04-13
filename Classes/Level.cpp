@@ -3,6 +3,7 @@
 //
 
 #include "Level.h"
+#include "LootFactory.h"
 
 using namespace lorafel;
 
@@ -12,7 +13,7 @@ Tile* Level::getRandomTile() {
         probs.push_back(m_pTileConfigs->at(i)->frequency);
     }
     int result = randomizer->randomize(probs);
-    return m_pTileConfigs->at(result)->factory->createTile();
+    return m_pTileConfigs->at(result)->create();
 }
 
 /**
@@ -26,4 +27,14 @@ bool Level::isCleared() const {
 
 TurnManager* Level::getTurnManager() {
     return m_pTurnManager;
+}
+
+Tile* Level::getRandomLoot(Tile* sourceTile) {
+    /**
+     * Before we create a loot tile, since loot is level-based
+     * and player based, we can finnagle around with the LootFactory
+     * settings to customize the loot generated based on the tile
+     * passed in. For now, let's just try it plain-style
+     */
+    return LootFactory::getInstance()->createTile();
 }

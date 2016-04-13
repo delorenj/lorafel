@@ -8,22 +8,22 @@
 #include "SeededLevel.h"
 #include "Tile.h"
 #include "NormalDistributionRandomizer.h"
-#include "AvocadoFactory.h"
-#include "GrapeFactory.h"
-#include "CarrotFactory.h"
-#include "MeleeAttackFactory.h"
-#include "MoneyBagFactory.h"
+#include "AvocadoTile.h"
+#include "GrapeTile.h"
+#include "CarrotTile.h"
+#include "MeleeAttackTile.h"
+#include "MoneyBagTile.h"
 #include "StickMan.h"
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
 #include "GridTransparency.h"
 
 namespace lorafel {
-#define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->factory->createTile());
-#define CARROT col->emplace_back(m_pTileConfigs->at(1)->factory->createTile());
-#define GRAPE col->emplace_back(m_pTileConfigs->at(2)->factory->createTile());
-#define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->factory->createTile());
-#define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->factory->createTile());
+#define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->create());
+#define CARROT col->emplace_back(m_pTileConfigs->at(1)->create());
+#define GRAPE col->emplace_back(m_pTileConfigs->at(2)->create());
+#define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->create());
+#define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->create());
 #define STICKMAN col->emplace_back(StickMan::create());
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
@@ -37,27 +37,27 @@ namespace lorafel {
                 m_pTileConfigs = new TileConfigs();
                 randomizer = new NormalDistributionRandomizer();
                 TileConfig* config = new TileConfig();
-                config->factory = AvocadoFactory::getInstance();
+                config->create = std::bind([=]() { return AvocadoTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = CarrotFactory::getInstance();
+                config->create = std::bind([=]() { return CarrotTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = GrapeFactory::getInstance();
+                config->create = std::bind([=]() { return GrapeTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = MeleeAttackFactory::getInstance();
+                config->create = std::bind([=]() { return MeleeAttackTile::create(); });
                 config->frequency = 2;
                 m_pTileConfigs->push_back(config);
 
                 config = new TileConfig();
-                config->factory = MoneyBagFactory::getInstance();
+                config->create = std::bind([=]() { return MoneyBagTile::create(); });
                 config->frequency = 1;
                 m_pTileConfigs->push_back(config);
 

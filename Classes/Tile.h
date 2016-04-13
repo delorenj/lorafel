@@ -89,6 +89,7 @@ namespace lorafel {
         void showTrajectoryLine(cocos2d::Vec2 dest);
         void hideTrajectoryLine();
         void setGlow(const int color);
+        virtual Tile* generateLootTile();
 
     protected:
         std::string m_tileName;

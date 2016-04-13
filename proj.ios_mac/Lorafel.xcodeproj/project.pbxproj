@@ -76,7 +76,9 @@
 		3167DA40E20AEE55BCE869CA /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
 		3167DA6853233E9DCA430057 /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167DA6BD270B9F88832DF0C /* GrapeTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D278D399D66F395F05FA /* GrapeTile.cpp */; };
+		3167DA749E841CBEED22FA4F /* LootFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */; };
 		3167DA75CE3224EEDFFF726C /* GameOverUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */; };
+		3167DAABB1774F45F78D80A1 /* LootFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */; };
 		3167DAB3F8EEC94D802B9C0F /* GameStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D07B9EB51E82506FE89C /* GameStates.cpp */; };
 		3167DACF75A40E866B1FD53F /* InGameSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */; };
 		3167DADDF5EF06EAFB9F4B36 /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
@@ -279,6 +281,7 @@
 		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
 		3167D5D9966B9101A21E90BF /* FireballAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballAction.cpp; sourceTree = "<group>"; };
 		3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeleeAttackTile.cpp; sourceTree = "<group>"; };
+		3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LootFactory.cpp; sourceTree = "<group>"; };
 		3167D644A16126625AD28D6C /* AIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStrategy.h; sourceTree = "<group>"; };
 		3167D67C7D373CBDF45F687F /* StormGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StormGlyph.cpp; sourceTree = "<group>"; };
 		3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverUI.cpp; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 		3167D9BC91A1230BCD87B710 /* XpFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpFloatie.h; sourceTree = "<group>"; };
 		3167D9CC1F5BE0A42846EC41 /* MeleeAttackFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackFactory.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
+		3167D9F002E2CE510A7C9DA8 /* LootFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LootFactory.h; sourceTree = "<group>"; };
 		3167D9FB7B3848B6E808AEDF /* Match5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match5.cpp; sourceTree = "<group>"; };
 		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
@@ -707,6 +711,8 @@
 				3167D2B01A205F5230035BCB /* MatchFactory.h */,
 				3167D9FB7B3848B6E808AEDF /* Match5.cpp */,
 				3167DB3F8836CD055272AA38 /* Match5.h */,
+				3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */,
+				3167D9F002E2CE510A7C9DA8 /* LootFactory.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -969,6 +975,7 @@
 				3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */,
 				3167DFE43A7F387D45C2E166 /* HealthPotionPlayerMove.cpp in Sources */,
 				3167D0F85E8380F3450BF426 /* Match5.cpp in Sources */,
+				3167DA749E841CBEED22FA4F /* LootFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1036,7 @@
 				3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */,
 				3167D21B7A109F9FF7203CB3 /* HealthPotionPlayerMove.cpp in Sources */,
 				3167D836E569DD3FED261E5D /* Match5.cpp in Sources */,
+				3167DAABB1774F45F78D80A1 /* LootFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

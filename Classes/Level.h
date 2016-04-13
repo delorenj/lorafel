@@ -30,6 +30,7 @@ namespace lorafel {
         void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
         virtual Tile* getRandomTile();
+        virtual Tile* getRandomLoot(Tile* sourceTile = nullptr);
 
         virtual void load() {
             for (int i = 0; i < SwappyGrid::NUM_COLUMNS; ++i) {

@@ -17,7 +17,7 @@ namespace lorafel {
 
     };
 
-    typedef struct {TileFactory* factory; int frequency;} TileConfig;
+    typedef struct {std::function<Tile*(void)> create; TileFactory* factory; int frequency;} TileConfig;
     typedef std::vector<TileConfig*> TileConfigs;
 
 }

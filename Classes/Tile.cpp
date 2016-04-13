@@ -294,14 +294,37 @@ void Tile::hideTrajectoryLine() {
 }
 
 void Tile::setGlow(const int color) {
-    auto particle = cocos2d::ParticleSystemQuad::create("glow_ring.plist");
+    auto particle = cocos2d::ParticleSystemQuad::create("glow_puff.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
     particle->setPositionType(cocos2d::ParticleSystem::PositionType::RELATIVE);
-    particle->setCascadeOpacityEnabled(true);
-    particle->setOpacityModifyRGB(true);
-    particle->setOpacity(140);
+    particle->setScale(1);
+
+    switch(color) {
+        case Glow::BLUE:
+            particle->setStartColor(cocos2d::Color4F(0.2051, 0.5098, 0.9241, 0.6753));
+            particle->setEndColor(cocos2d::Color4F(0.5413, 0.7108, 0.9834, 0.0844));
+            break;
+        case Glow::YELLOW:
+            particle->setStartColor(cocos2d::Color4F(0.9241, 0.8467, 0.0, 0.6753));
+            particle->setEndColor(cocos2d::Color4F(0.9826, 0.9553, 0.6468, 0.0844));
+            break;
+        case Glow::PURPLE:
+            particle->setStartColor(cocos2d::Color4F(0.9185, 0.3721, 0.9236, 0.6753));
+            particle->setEndColor(cocos2d::Color4F(0.9830, 0.6343, 0.9829, 0.0844));
+            break;
+        case Glow::GREEN:
+        default:
+            particle->setStartColor(cocos2d::Color4F(0.0, 0.9039, 0.2169, 0.6753));
+            particle->setEndColor(cocos2d::Color4F(0.6941, 0.9779, 0.7418, 0.0844));
+            break;
+    };
+
     addChild(particle, LayerOrder::PARTICLES);
     setGlobalZOrder(LayerOrder::PARTICLES+1);
 
+}
+
+Tile* Tile::generateLootTile() {
+    return m_pSwappyGrid->getLevel()->getRandomLoot(this);
 }

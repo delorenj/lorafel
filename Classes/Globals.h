@@ -65,6 +65,7 @@ namespace lorafel {
         static const int GREEN = 1;
         static const int BLUE = 2;
         static const int PURPLE = 3;
+        static const int YELLOW = 4;
     };
 }
 
