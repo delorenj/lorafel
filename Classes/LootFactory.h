@@ -20,7 +20,7 @@ namespace lorafel {
         virtual void init();
 
     public:
-        static TileFactory* getInstance() {
+        static LootFactory* getInstance() {
             if (_instance == nullptr) {
                 _instance = new LootFactory();
             }
@@ -28,17 +28,27 @@ namespace lorafel {
         }
 
         Tile* createTile() override;
+        Tile* createTile(TileConfigs* pTileConfigs);
+        Tile* createTile(Tile* pTile);
 
         Player* getPlayer() const { return m_pPlayer; }
         void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
         void setGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
 
     protected:
-        static TileFactory *_instance;
+        static LootFactory *_instance;
         Player* m_pPlayer;
         SwappyGrid* m_pSwappyGrid;
         TileConfigs* m_pTileConfigs;
         NormalDistributionRandomizer* m_pRandomizer;
+
+        void loadBasicLoot();
+
+        TileConfigs* getBasicLoot();
+
+        TileConfigs* getXpLoot();
+
+        TileConfigs* getLevelLoot();
     };
 }
 

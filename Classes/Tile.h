@@ -12,6 +12,7 @@
 #include "StatResult.h"
 #include "AIStrategy.h"
 #include "TrajectoryParticle.h"
+#include "TileFactory.h"
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
@@ -91,6 +92,8 @@ namespace lorafel {
         void setGlow(const int color);
         virtual Tile* generateLootTile();
 
+        TileConfigs* getLoot();
+
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;
@@ -110,6 +113,7 @@ namespace lorafel {
         std::set<MatchPattern*>* m_pMatchPatterns;
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
         TrajectoryParticle* m_pTrajectoryLine = nullptr;
+        TileConfigs* m_pLoot;
     };
 }
 

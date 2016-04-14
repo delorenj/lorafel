@@ -10,7 +10,7 @@
 namespace lorafel {
     class IRandomizerStrategy {
     public:
-        virtual int randomize(std::vector<int>) = 0;
+        virtual u_long randomize(std::vector<int>) = 0;
     };
 }
 

@@ -11,6 +11,7 @@
 #include "PlayerManager.h"
 #include "Level.h"
 #include "Globals.h"
+#include "LootFactory.h"
 
 using namespace lorafel;
 
@@ -31,6 +32,7 @@ void Tile::initOptions() {
     this->setAnchorPoint(cocos2d::Vec2(0,0));
     this->setScale(1.15);
     m_pStatResults = new std::set<StatResult*>();
+    m_pLoot = new TileConfigs();
 }
 
 
@@ -326,5 +328,11 @@ void Tile::setGlow(const int color) {
 }
 
 Tile* Tile::generateLootTile() {
-    return m_pSwappyGrid->getLevel()->getRandomLoot(this);
+    return LootFactory::getInstance()->createTile(this);
 }
+
+TileConfigs* Tile::getLoot() {
+    return m_pLoot;
+}
+
+

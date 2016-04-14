@@ -9,7 +9,7 @@
 
 using namespace lorafel;
 
-int NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
+u_long NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
     std::random_device rd;
     std::mt19937 generator(rd());
     double mean = 10.0;
