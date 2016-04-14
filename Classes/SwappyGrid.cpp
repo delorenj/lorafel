@@ -286,8 +286,8 @@ const cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
 
 const cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
-            ROUND_2_INT(pos.x / m_tileSize.width),
-            ROUND_2_INT(pos.y / m_tileSize.height)
+            clamp<int>(ROUND_2_INT(pos.x / m_tileSize.width), 0, 9),
+            clamp<int>(ROUND_2_INT(pos.y / m_tileSize.height), 0 , 9)
     );
 }
 

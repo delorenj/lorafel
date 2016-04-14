@@ -40,7 +40,7 @@ namespace lorafel {
             BLACK       // Is not part of a match set
         };
 
-        bool init() override;
+        virtual bool init() override;
 
         virtual void onMatch(Match* pMatch);
 

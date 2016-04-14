@@ -16,6 +16,15 @@
 using namespace lorafel;
 
 bool Tile::init() {
+    if(!cocos2d::Sprite::init()) {
+        return false;
+    }
+    this->setVisitColor(NONE);
+    this->setAnchorPoint(cocos2d::Vec2(0,0));
+    this->setScale(1.15);
+    m_pStatResults = new std::set<StatResult*>();
+    m_pLoot = new TileConfigs();
+
     return true;
 }
 
@@ -28,11 +37,6 @@ void Tile::setTileName(const std::string name) {
     m_tileName = name;
 }
 void Tile::initOptions() {
-    this->setVisitColor(NONE);
-    this->setAnchorPoint(cocos2d::Vec2(0,0));
-    this->setScale(1.15);
-    m_pStatResults = new std::set<StatResult*>();
-    m_pLoot = new TileConfigs();
 }
 
 
@@ -84,7 +88,13 @@ void Tile::addEvents() {
         if("TileTouchMoveState" == touchState->getName()) {
             cocos2d::Vec2 swapVec = getSwapVec(touch);
             if(swapVec.isZero()) return;
-            auto playerMove = new BasicPlayerMove(m_pSwappyGrid, m_pSwappyGrid->screenToGrid(touchState->getTileStartPos()), m_pSwappyGrid->screenToGrid(touchState->getTileStartPos())+swapVec);
+            auto swapFrom = m_pSwappyGrid->screenToGrid(touchState->getTileStartPos());
+            auto swapTo = m_pSwappyGrid->screenToGrid(touchState->getTileStartPos())+swapVec;
+
+            if(swapTo.x < 0 || swapTo.y < 0 || swapTo.x > SwappyGrid::NUM_COLUMNS || swapTo.y > SwappyGrid::NUM_ROWS) {
+                return;
+            }
+            auto playerMove = new BasicPlayerMove(m_pSwappyGrid, swapFrom, swapTo);
             if (playerMove->isValid()) {
                 m_pSwappyGrid->executePlayerMove(playerMove);
             }
@@ -301,6 +311,7 @@ void Tile::setGlow(const int color) {
     particle->setPosition(TILE_CENTER);
     particle->setPositionType(cocos2d::ParticleSystem::PositionType::RELATIVE);
     particle->setScale(1);
+    particle->setTag(Tag::GLOW);
 
     switch(color) {
         case Glow::BLUE:
@@ -322,6 +333,7 @@ void Tile::setGlow(const int color) {
             break;
     };
 
+    removeChildByTag(Tag::GLOW);
     addChild(particle, LayerOrder::PARTICLES);
     setGlobalZOrder(LayerOrder::PARTICLES+1);
 

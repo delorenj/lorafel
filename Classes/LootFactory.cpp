@@ -4,7 +4,7 @@
 
 #include "LootFactory.h"
 #include "MoneyBagTile.h"
-#include "LameSpiderSword.h"
+#include "LameSpiderSwordTile.h"
 
 using namespace lorafel;
 
@@ -58,7 +58,7 @@ void LootFactory::loadBasicLoot() {
     config->frequency = 7;
     m_pTileConfigs->push_back(config);
 
-    config->create = std::bind([=](){ return LameSpiderSword::create();});
+    config->create = std::bind([=](){ return LameSpiderSwordTile::create();});
     config->frequency = 7;
     m_pTileConfigs->push_back(config);
 

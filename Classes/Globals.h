@@ -49,6 +49,8 @@ namespace lorafel {
         static const int GLYPH = 6;
         static const int PARTICLE = 7;
         static const int CONSUMABLE = 8;
+        static const int LOOT = 9;
+        static const int GLOW = 10;
     };
 
     struct LayerOrder {
