@@ -12,7 +12,8 @@ namespace lorafel {
     public:
         virtual void onMatch(Match* pMatch);
 
-        static PoisonGlyph* create();
+        virtual bool init() override;
+        CREATE_FUNC(PoisonGlyph);
 
     };
 }

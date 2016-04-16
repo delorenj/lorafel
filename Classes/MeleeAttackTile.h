@@ -10,11 +10,8 @@
 namespace lorafel {
     class MeleeAttackTile : public Tile {
     public:
-        MeleeAttackTile();
-        ~MeleeAttackTile();
-
-        static MeleeAttackTile* create();
-
+        virtual bool init() override;
+        CREATE_FUNC(MeleeAttackTile);
         void onMatch(Match* pMatch) override;
     };
 }

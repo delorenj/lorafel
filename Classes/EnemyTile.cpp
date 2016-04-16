@@ -13,10 +13,15 @@
 using namespace lorafel;
 
 bool EnemyTile::init() {
+    if(!Tile::init()) {
+        return false;
+    }
     // Add event listener for onHit()
     setTag(Tag::ENEMY);
-    auto _listenter = cocos2d::EventListenerCustom::create("enemy_damaged", CC_CALLBACK_1(EnemyTile::onHit, this));
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(_listenter, this);
+    auto _listener = cocos2d::EventListenerCustom::create("enemy_damaged", CC_CALLBACK_1(EnemyTile::onHit, this));
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(_listener, this);
+
+    return true;
 }
 
 void EnemyTile::applyHit(Match* pMatch) {

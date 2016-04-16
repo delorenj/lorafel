@@ -13,7 +13,6 @@ bool LootTile::init() {
     }
 
     setTag(Tag::LOOT);
-    setGlow(Glow::BLUE);
     return true;
 }
 

@@ -14,10 +14,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Achievements.cpp \
                    ../../Classes/ActionTile.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/AvocadoTile.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
-                   ../../Classes/CarrotTile.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
@@ -30,7 +28,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GlyphTile.cpp \
                    ../../Classes/GoldStatResult.cpp \
                    ../../Classes/GoldUI.cpp \
-                   ../../Classes/GrapeTile.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridTransparency.cpp \
                    ../../Classes/GridUI.cpp \
@@ -42,7 +39,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
                    ../../Classes/MeleeAttackTile.cpp \
-                   ../../Classes/MoneyBagTile.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/PlayerManager.cpp \

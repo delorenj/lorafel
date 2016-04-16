@@ -5,9 +5,9 @@
 #ifndef LORAFEL_LAMESPIDERSWORD_H
 #define LORAFEL_LAMESPIDERSWORD_H
 
-#import "LootTile.h"
-#import "Globals.h"
-#import "XpStatResult.h"
+#include "LootTile.h"
+#include "Globals.h"
+#include "XpStatResult.h"
 
 namespace lorafel {
     class LameSpiderSwordTile : public LootTile {
@@ -20,11 +20,10 @@ namespace lorafel {
             if (initWithSpriteFrameName("lame-spider-sword.png"))
             {
                 setTileName("LameSpiderSwordTile");
-                setTag(Tag::TILE);
                 initOptions();
                 addEvents();
                 addStatResult(new XpStatResult(150));
-//                setGlow(Glow::GREEN);
+                setGlow(Glow::GREEN);
             }
             return true;
         }

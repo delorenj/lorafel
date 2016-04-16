@@ -8,24 +8,6 @@
 
 using namespace lorafel;
 
-lorafel::StormGlyph* StormGlyph::create() {
-    StormGlyph* sprite = new StormGlyph();
-
-    if (sprite->initWithSpriteFrameName("Storm.png"))
-    {
-        sprite->setTileName("StormGlyph");
-        sprite->setTag(Tag::GLYPH);
-        sprite->autorelease();
-        sprite->initOptions();
-        sprite->addEvents();
-        return sprite;
-    }
-
-    CC_SAFE_DELETE(sprite);
-
-    return NULL;
-}
-
 void StormGlyph::onMatch(Match* pMatch) {
     auto hero = m_pSwappyGrid->getHeroTile();
     if(hero != nullptr) {
@@ -33,3 +15,19 @@ void StormGlyph::onMatch(Match* pMatch) {
         Tile::onMatch(pMatch);
     }
 }
+
+bool StormGlyph::init() {
+    if(!GlyphTile::init()) {
+        return false;
+    }
+    if (initWithSpriteFrameName("Storm.png"))
+    {
+        setTileName("StormGlyph");
+        initOptions();
+        addEvents();
+        return true;
+    }
+    return false;
+}
+
+

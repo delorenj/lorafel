@@ -44,7 +44,7 @@ namespace lorafel {
 
         virtual void onMatch(Match* pMatch);
 
-        CREATE_FUNC(Tile);
+//        CREATE_FUNC(Tile);
 
         const unsigned int MIN_MATCH_SIZE = 3;
         void addStatResult(StatResult* pStatResult) { m_pStatResults->insert(pStatResult); }

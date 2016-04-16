@@ -6,15 +6,29 @@
 #define LORAFEL_GRAPETILE_H
 
 #include "Tile.h"
+#include "Globals.h"
+#include "XpStatResult.h"
 
 namespace lorafel {
     class GrapeTile : public Tile {
     public:
-        GrapeTile();
-        ~GrapeTile();
+        virtual bool init() override {
+            if(!Tile::init()) {
+                return false;
+            }
 
-        static GrapeTile* create();
+            if (initWithSpriteFrameName("grapes.png"))
+            {
+                setTileName("Grapes");
+                initOptions();
+                addEvents();
+                addStatResult(new XpStatResult(2));
+                return true;
+            }
+            return false;
+        }
 
+        CREATE_FUNC(GrapeTile);
     };
 }
 

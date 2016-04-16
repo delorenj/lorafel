@@ -21,28 +21,6 @@ StickMan::StickMan() {
     m_pGlyphFactory->addTileFactory(StormGlyphFactory::getInstance(), 9);
 }
 
-StickMan* StickMan::create() {
-    StickMan* sprite = new StickMan();
-
-    if (sprite->initWithSpriteFrameName("enemy1.png"))
-    {
-        sprite->setTileName("Stick Man");
-        sprite->autorelease();
-        sprite->setTag(Tag::ENEMY);
-        sprite->initOptions();
-        sprite->addEvents();
-        sprite->addStatResult(new XpStatResult(200));
-        sprite->setHp(5000);
-        sprite->setMaxHp(5000);
-        sprite->setStrategy(new RandomAIStrategy());
-        return sprite;
-    }
-
-    CC_SAFE_DELETE(sprite);
-
-    return NULL;
-}
-
 
 void StickMan::applyHit(Match* pMatch) {
     if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
@@ -52,5 +30,26 @@ void StickMan::applyHit(Match* pMatch) {
 Tile* StickMan::getRandomGlyph() {
     return CCRANDOM_0_1() < 0.5f ? m_pSwappyGrid->getLevel()->getRandomTile() : EnemyTile::getRandomGlyph();
 }
+
+bool StickMan::init() {
+    if(!EnemyTile::init()) {
+        return false;
+    }
+    if (initWithSpriteFrameName("enemy1.png"))
+    {
+        setTileName("Stick Man");
+        initOptions();
+        addEvents();
+        addStatResult(new XpStatResult(200));
+        setHp(5000);
+        setMaxHp(5000);
+        setStrategy(new RandomAIStrategy());
+        return true;
+    }
+
+    return false;
+}
+
+
 
 

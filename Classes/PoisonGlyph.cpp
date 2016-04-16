@@ -8,24 +8,6 @@
 
 using namespace lorafel;
 
-lorafel::PoisonGlyph* PoisonGlyph::create() {
-    PoisonGlyph* sprite = new PoisonGlyph();
-
-    if (sprite->initWithSpriteFrameName("PoisonGlyph.png"))
-    {
-        sprite->setTileName("PoisonGlyph");
-        sprite->setTag(Tag::GLYPH);
-        sprite->autorelease();
-        sprite->initOptions();
-        sprite->addEvents();
-        return sprite;
-    }
-
-    CC_SAFE_DELETE(sprite);
-
-    return NULL;
-}
-
 void PoisonGlyph::onMatch(Match* pMatch) {
     auto hero = m_pSwappyGrid->getHeroTile();
     if(hero != nullptr) {
@@ -33,3 +15,20 @@ void PoisonGlyph::onMatch(Match* pMatch) {
         Tile::onMatch(pMatch);
     }
 }
+
+bool PoisonGlyph::init() {
+    if(!GlyphTile::init()) {
+        return false;
+    }
+
+    if (initWithSpriteFrameName("PoisonGlyph.png"))
+    {
+        setTileName("PoisonGlyph");
+        initOptions();
+        addEvents();
+        return true;
+    }
+    return false;
+}
+
+

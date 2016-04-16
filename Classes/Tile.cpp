@@ -19,11 +19,10 @@ bool Tile::init() {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
-    this->setVisitColor(NONE);
-    this->setAnchorPoint(cocos2d::Vec2(0,0));
-    this->setScale(1.15);
     m_pStatResults = new std::set<StatResult*>();
     m_pLoot = new TileConfigs();
+    setTag(Tag::TILE);
+    retain();
 
     return true;
 }
@@ -37,6 +36,9 @@ void Tile::setTileName(const std::string name) {
     m_tileName = name;
 }
 void Tile::initOptions() {
+    setVisitColor(NONE);
+    setAnchorPoint(cocos2d::Vec2(0,0));
+    setScale(1.15);
 }
 
 

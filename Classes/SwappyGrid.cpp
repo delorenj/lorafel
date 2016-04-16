@@ -139,13 +139,14 @@ void SwappyGrid::RemoveDeadTiles() {
     TileQueue* queue = m_pTileRemoveQueue;
 
     if (queue->empty() && getNumberOfFallingTiles() == 0) {
-        GameStateMachine::getInstance()->enterState<IdleState>();
+        GameStateMachine::getInstance()->setState<IdleState>();
         return;
     }
 
     while (!queue->empty()) {
         Tile* tile = queue->front();
         queue->pop();
+        tile->release();
         if (tile->getReferenceCount() == 1) removeTile(tile);
     }
 

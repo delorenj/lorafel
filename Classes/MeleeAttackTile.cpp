@@ -9,29 +9,18 @@
 
 using namespace lorafel;
 
-MeleeAttackTile::MeleeAttackTile() {
-}
-
-MeleeAttackTile::~MeleeAttackTile() {
-}
-
-MeleeAttackTile* MeleeAttackTile::create() {
-    MeleeAttackTile* sprite = new MeleeAttackTile();
-
-    if (sprite->initWithSpriteFrameName("sword.png"))
-    {
-        sprite->setTileName("Melee Attack");
-        sprite->setTag(Tag::TILE);
-        sprite->autorelease();
-        sprite->initOptions();
-        sprite->addEvents();
-        return sprite;
+bool MeleeAttackTile::init() {
+    if(!Tile::init()) {
+        return false;
     }
 
-    CC_SAFE_DELETE(sprite);
-
-
-    return NULL;
+    if (initWithSpriteFrameName("sword.png")) {
+        setTileName("Melee Attack");
+        initOptions();
+        addEvents();
+        return true;
+    }
+    return false;
 }
 
 void MeleeAttackTile::onMatch(Match* pMatch) {
@@ -73,3 +62,5 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
 
     remove();
 }
+
+

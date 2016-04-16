@@ -10,8 +10,24 @@
 namespace lorafel {
     class HeroTile : public Tile {
     public:
-        bool init() override;
-        static HeroTile* create(const char string[100]);
+        virtual bool init(const char string[100]);
+
+        static HeroTile* create(const char string[100])
+        {
+            HeroTile *pRet = new(std::nothrow) HeroTile();
+            if (pRet && pRet->init(string))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
         virtual void onMatch(Match* pMatch) override;
         virtual void remove() override;
         virtual void addEvents() override;

@@ -12,28 +12,6 @@
 
 using namespace lorafel;
 
-HeroTile* HeroTile::create(const char string[100]){
-    HeroTile* sprite = new HeroTile();
-    sprite->init();
-    if (sprite->initWithSpriteFrameName(string))
-    {
-        sprite->setTileName("Hero");
-        sprite->autorelease();
-        sprite->initOptions();
-        sprite->addEvents();
-        sprite->setTag(Tag::HERO);
-        return sprite;
-    }
-
-    CC_SAFE_DELETE(sprite);
-
-    return NULL;
-}
-
-bool HeroTile::init() {
-    return Tile::init();
-}
-
 void HeroTile::applyHit(Match* pMatch) {
     auto player = PlayerManager::getInstance()->getPlayer();
     auto primaryTile = pMatch->getPrimaryTile();
@@ -199,3 +177,21 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
 int HeroTile::getMaxMoveDistance() {
     return 2;
 }
+
+bool HeroTile::init(const char* string) {
+    if(!Tile::init()) {
+        return false;
+    }
+
+    if (initWithSpriteFrameName(string))
+    {
+        setTileName("Hero");
+        initOptions();
+        addEvents();
+        setTag(Tag::HERO);
+        return true;
+    }
+    return false;
+}
+
+
