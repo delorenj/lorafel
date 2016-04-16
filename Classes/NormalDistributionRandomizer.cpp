@@ -9,7 +9,7 @@
 
 using namespace lorafel;
 
-u_long NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
+int NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
     std::random_device rd;
     std::mt19937 generator(rd());
     double mean = 10.0;
@@ -31,7 +31,7 @@ u_long NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
 
     std::vector<int> closest;
     int minDiff = 10;
-    int randomFreq = cocos2d::clampf(normal(generator), 0, 10);
+    int randomFreq = (int) cocos2d::clampf((float) normal(generator), 0, 10);
     for (int j = 0; j < freqs.size(); ++j) {
         int thisDiff = abs(freqs.at(j)-randomFreq);
         if(thisDiff == minDiff) {
@@ -43,7 +43,8 @@ u_long NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
         }
     }
     if(closest.size() > 1) {
-        std::random_shuffle(closest.begin(), closest.end());
+        std::srand((unsigned int) std::time(0));
+        std::shuffle(closest.begin(), closest.end(), rd);
     }
     return closest.at(0);
 }

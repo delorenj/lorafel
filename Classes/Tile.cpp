@@ -177,7 +177,6 @@ std::string Tile::getVisitCountAsString() {
 }
 
 void Tile::remove() {
-//    auto explode = cocos2d::ParticleExplosion::create();
     auto explode = cocos2d::ParticleSystemQuad::create("break_block_color_smoke.plist");
     explode->setAutoRemoveOnFinish(true);
     explode->setScale(0.75);

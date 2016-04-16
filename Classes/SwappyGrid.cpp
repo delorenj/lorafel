@@ -146,7 +146,7 @@ void SwappyGrid::RemoveDeadTiles() {
     while (!queue->empty()) {
         Tile* tile = queue->front();
         queue->pop();
-        tile->release();
+        if(tile->getReferenceCount() > 0) tile->release();
         if (tile->getReferenceCount() == 1) removeTile(tile);
     }
 
