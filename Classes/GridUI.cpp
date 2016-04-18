@@ -136,6 +136,24 @@ void GridUI::initActionBar() {
     m_pAction1->setPosition(cocos2d::Vec2(m_origin.x+5, convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(m_pSwappyGrid->gridToScreen(0,0))).y-m_pAction1->getContentSize().height-20));
     m_pAction1->setSwappyGrid(m_pSwappyGrid);
     addChild(m_pAction1);
+
+    auto emptyTile = cocos2d::Sprite::createWithSpriteFrameName("empty-tile-selected.png");
+    emptyTile->setAnchorPoint(cocos2d::Vec2(0,0));
+    emptyTile->setPosition(cocos2d::Vec2(m_origin.x+5 + (1*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y));
+    addChild(emptyTile);
+    auto sprite = cocos2d::Sprite::createWithSpriteFrameName("feet.png");
+    sprite->setAnchorPoint(cocos2d::Vec2(0, 0));
+    sprite->setPosition(emptyTile->convertToNodeSpace(emptyTile->getPosition()));
+    emptyTile->addChild(sprite, LayerOrder::UX);
+
+    emptyTile = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
+    emptyTile->setAnchorPoint(cocos2d::Vec2(0,0));
+    emptyTile->setPosition(cocos2d::Vec2(m_origin.x+5 + (2*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y));
+    addChild(emptyTile);
+    sprite = cocos2d::Sprite::createWithSpriteFrameName("hook.png");
+    sprite->setAnchorPoint(cocos2d::Vec2(0, 0));
+    sprite->setPosition(emptyTile->convertToNodeSpace(emptyTile->getPosition()));
+    emptyTile->addChild(sprite, LayerOrder::UX);
 }
 
 void GridUI::initConsumableBar() {
