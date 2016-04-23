@@ -33,12 +33,14 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GridUI.cpp \
                    ../../Classes/HealthPotionPlayerMove.cpp \
                    ../../Classes/HeroTile.cpp \
+                   ../../Classes/HookActionTile.cpp \
                    ../../Classes/HpUI.cpp \
                    ../../Classes/InGameSettings.cpp \
                    ../../Classes/Inventory.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/Match.cpp \
                    ../../Classes/MeleeAttackTile.cpp \
+                   ../../Classes/MoveActionTile.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/PlayerManager.cpp \

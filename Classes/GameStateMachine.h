@@ -16,6 +16,7 @@ namespace lorafel {
 
         static void initStates() {
             _instance->addState<IdleState>();
+                _instance->addState<IdleHookModeState>();
             _instance->addState<BusyState>();
                 _instance->addState<EnemyTurnState>();
                 _instance->addState<TileTouchState>();

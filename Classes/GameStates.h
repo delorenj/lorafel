@@ -53,6 +53,16 @@ namespace lorafel {
             if(state->getName() == "TileFallingState")      return true;
             if(state->getName() == "TileTouchStartState")   return true;
             if(state->getName() == "EnemyTurnState")   return true;
+            return false;
+        }
+    };
+
+    // Waiting for player's move - in hook mode!
+    class IdleHookModeState : public IdleState {
+    public:
+        virtual const std::string getName() const override { return "IdleHookModeState"; }
+        virtual bool isValidNextState(State* state) override {
+            return IdleState::isValidNextState(state);
         }
     };
 
@@ -73,6 +83,7 @@ namespace lorafel {
         bool isValidNextState(State* state) override {
             if(state->getName() == "TileSwappingStartState") return true;
             if(state->getName() == "TileTouchEndState") return true;
+            return false;
         }
 
     protected:
@@ -89,6 +100,7 @@ namespace lorafel {
             if(state->getName() == "TileTouchMoveState") return true;
             if(state->getName() == "TileTouchEndState") return true;
             if(state->getName() == "IdleState") return true;
+            return false;
         }
     };
 
@@ -97,6 +109,7 @@ namespace lorafel {
         virtual const std::string getName() const override { return "TileTouchEndState"; }
         bool isValidNextState(State* state) override {
             if(state->getName() == "IdleState") return true;
+            return false;
         }
 
     };
@@ -107,6 +120,7 @@ namespace lorafel {
         bool isValidNextState(State* state) override {
             if(state->getName() == "IdleState") return true;
             if(state->getName() == "TileSwappingStartState") return true;
+            return false;
         }
     };
 
@@ -115,6 +129,7 @@ namespace lorafel {
         virtual const std::string getName() const override { return "TileSwappingState"; }
         bool isValidNextState(State* state) override {
             if(state->getName() == "TileTouchEndState") return true;
+            return false;
         }
 
     };

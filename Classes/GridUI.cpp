@@ -9,6 +9,8 @@
 #include "EventDataTile.h"
 #include "FireballActionTile.h"
 #include "PlayerManager.h"
+#include "MoveActionTile.h"
+#include "HookActionTile.h"
 
 using namespace lorafel;
 
@@ -141,18 +143,20 @@ void GridUI::initActionBar() {
     emptyTile->setAnchorPoint(cocos2d::Vec2(0,0));
     emptyTile->setPosition(cocos2d::Vec2(m_origin.x+5 + (1*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y));
     addChild(emptyTile);
-    auto sprite = cocos2d::Sprite::createWithSpriteFrameName("feet.png");
+    ToggleActionTile* sprite = MoveActionTile::create();
     sprite->setAnchorPoint(cocos2d::Vec2(0, 0));
     sprite->setPosition(emptyTile->convertToNodeSpace(emptyTile->getPosition()));
+    sprite->setSwappyGrid(m_pSwappyGrid);
     emptyTile->addChild(sprite, LayerOrder::UX);
 
     emptyTile = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
     emptyTile->setAnchorPoint(cocos2d::Vec2(0,0));
     emptyTile->setPosition(cocos2d::Vec2(m_origin.x+5 + (2*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y));
     addChild(emptyTile);
-    sprite = cocos2d::Sprite::createWithSpriteFrameName("hook.png");
+    sprite = HookActionTile::create();
     sprite->setAnchorPoint(cocos2d::Vec2(0, 0));
     sprite->setPosition(emptyTile->convertToNodeSpace(emptyTile->getPosition()));
+    sprite->setSwappyGrid(m_pSwappyGrid);
     emptyTile->addChild(sprite, LayerOrder::UX);
 }
 
