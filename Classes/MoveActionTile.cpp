@@ -3,6 +3,7 @@
 //
 
 #include "MoveActionTile.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -17,7 +18,8 @@ bool MoveActionTile::init() {
 }
 
 void MoveActionTile::toggleAction() {
-    CCLOG("Toggle Action State: Move");
+    GameStateMachine::getInstance()->setState<IdleState>();
+    ToggleActionTile::toggleAction();
 }
 
 

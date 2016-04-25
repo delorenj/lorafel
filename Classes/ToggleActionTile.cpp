@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "GameStateMachine.h"
 #include "PlayerManager.h"
+#include "EventDataString.h"
 
 using namespace lorafel;
 
@@ -25,6 +26,14 @@ void ToggleActionTile::addEvents() {
     listener->onTouchBegan = CC_CALLBACK_2(ToggleActionTile::onTouchBegan, this);
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+    auto customEventListener = cocos2d::EventListenerCustom::create("ToggleAction", [=](cocos2d::EventCustom* event) {
+        EventDataString* data = static_cast<EventDataString*>(event->getUserData());
+        if(data->val == getName()) return;
+        static_cast<cocos2d::Sprite*>(getParent())->setSpriteFrame("empty-tile.png");
+    });
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customEventListener, this);
 }
 
 bool ToggleActionTile::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
@@ -52,6 +61,14 @@ bool ToggleActionTile::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event
 
     return false; // we did not consume this event, pass thru.
 }
+
+void ToggleActionTile::toggleAction() {
+    _eventDispatcher->dispatchCustomEvent("ToggleAction", new EventDataString(getName().c_str()));
+    cocos2d::Sprite* container = static_cast<cocos2d::Sprite*>(getParent());
+    container->setSpriteFrame("empty-tile-selected.png");
+}
+
+
 
 
 

@@ -19,7 +19,7 @@ namespace lorafel {
         virtual void addEvents();
         SwappyGrid* m_pSwappyGrid;
 
-        virtual void toggleAction() = 0;
+        virtual void toggleAction();
     };
 }
 
