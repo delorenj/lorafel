@@ -62,6 +62,7 @@ namespace lorafel {
     public:
         virtual const std::string getName() const override { return "IdleHookModeState"; }
         virtual bool isValidNextState(State* state) override {
+            if(state->getName() == "HookTouchStartState") return true;
             return IdleState::isValidNextState(state);
         }
     };
@@ -90,6 +91,84 @@ namespace lorafel {
         cocos2d::Vec2 m_touchStartPos;
         cocos2d::Vec2 m_tileStartPos;
 
+    };
+
+    class HookTouchStartState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "HookTouchStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "HookTouchMoveState") return true;
+            if(state->getName() == "HookTouchEndState") return true;
+            if(state->getName() == "IdleHookModeState") return true;
+            return false;
+        }
+    };
+
+    class HookTouchEndState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "HookTouchEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleHookModeState") return true;
+            return false;
+        }
+
+    };
+
+    class HookTouchMoveState : public TileTouchState {
+    public:
+        virtual const std::string getName() const override { return "HookTouchMoveState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "IdleHookModeState") return true;
+            if(state->getName() == "HookFireStartState") return true;
+            return false;
+        }
+    };
+
+    class HookFireStartState : public BusyState {
+    public:
+        virtual const std::string getName() const override { return "HookFireStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "HookFireEndState") return true;
+            return false;
+        }
+    };
+
+    class HookFireEndState : public BusyState{
+    public:
+        virtual const std::string getName() const override { return "HookFireEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "HookMatchFoundState") return true;
+            if(state->getName() == "IdleHookModeState") return true;
+            return false;
+        }
+
+    };
+
+    class HookMatchFoundState : public BusyState {
+    public:
+        const std::string getName() const override { return "HookMatchFoundState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "HookFireReverseStartState") return true;
+            return false;
+        }
+    };
+
+    class HookFireReverseStartState : public BusyState {
+    public:
+        const std::string getName() const override { return "HookFireReverseStartState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "HookFireReverseEndState") return true;
+            return false;
+        }
+    };
+
+    class HookFireReverseEndState : public BusyState {
+    public:
+        const std::string getName() const override { return "HookFireReverseEndState"; }
+        bool isValidNextState(State* state) override {
+            if(state->getName() == "TileRemovedState") return true;
+            return false;
+        }
     };
 
     class TileTouchStartState : public TileTouchState {

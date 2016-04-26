@@ -74,6 +74,7 @@
 		3167D8A4704147D6996CA579 /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7FF62C84DBB3A5F919 /* TileFactory.cpp */; };
 		3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
 		3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
+		3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
 		3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */; };
 		3167DA2C7C35EB792FE179EE /* InGameSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */; };
 		3167DA40E20AEE55BCE869CA /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
@@ -104,6 +105,7 @@
 		3167DE8014349C819649EA4B /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
 		3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
 		3167DEB39657802EA6DE783F /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
+		3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
 		3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167DF223816C31DB6724D37 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7233A0AA901871761E8 /* Item.cpp */; };
 		3167DF6A2051958CDE171A31 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
@@ -333,9 +335,11 @@
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
 		3167DB81C65E9CCE8D2657AF /* ActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTile.h; sourceTree = "<group>"; };
 		3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragDropSwapPlayerMove.cpp; sourceTree = "<group>"; };
+		3167DBEE19A2E31B3DF46261 /* Hook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hook.cpp; sourceTree = "<group>"; };
 		3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameSettings.cpp; sourceTree = "<group>"; };
 		3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomAIStrategy.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
+		3167DCBDD3425DF38F2B9641 /* Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hook.h; sourceTree = "<group>"; };
 		3167DCDDEEFA942DCACD39F3 /* TurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnManager.h; sourceTree = "<group>"; };
 		3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphTile.cpp; sourceTree = "<group>"; };
 		3167DD7349C16437B240803C /* StormGlyphFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StormGlyphFactory.h; sourceTree = "<group>"; };
@@ -712,6 +716,8 @@
 				3167D634E5280139C2CB02F2 /* ToggleActionTile.h */,
 				3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */,
 				3167D7ED3DEF99FA190EEDFD /* EventDataString.h */,
+				3167DBEE19A2E31B3DF46261 /* Hook.cpp */,
+				3167DCBDD3425DF38F2B9641 /* Hook.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -974,6 +980,7 @@
 				3167D18FD07C3AD37E741B1A /* HookActionTile.cpp in Sources */,
 				3167DB6EC55B7FCDB9070C51 /* ToggleActionTile.cpp in Sources */,
 				3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */,
+				3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,6 +1042,7 @@
 				3167D10D729C9B55C92BDCD2 /* HookActionTile.cpp in Sources */,
 				3167DC57B5E53F1FA8600089 /* ToggleActionTile.cpp in Sources */,
 				3167D090D78FDB78A4721B55 /* GameStateMachine.cpp in Sources */,
+				3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

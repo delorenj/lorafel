@@ -104,3 +104,9 @@ bool Player::equipConsumableSlot(const char* itemName, int slot) {
 Consumable* Player::getConsumableSlotItem(int i) {
     return m_activeConsumables[i];
 }
+
+void Player::equipHook() {
+    m_pHook = Hook::create(m_pTile);
+}
+
+

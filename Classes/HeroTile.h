@@ -31,7 +31,6 @@ namespace lorafel {
         virtual void onMatch(Match* pMatch) override;
         virtual void remove() override;
         virtual void addEvents() override;
-
         virtual void applyHit(Match* pMatch);
 
         virtual bool isMatch(Tile* pTile) const override {
@@ -40,8 +39,8 @@ namespace lorafel {
         };
 
         TileSet* getValidMoves(Tile* pTile, int distance);
-
         int getMaxMoveDistance();
+
     };
 }
 

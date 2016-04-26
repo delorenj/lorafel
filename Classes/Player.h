@@ -11,6 +11,7 @@
 #include "LinearLevelManager.h"
 #include "HeroTile.h"
 #include "Consumable.h"
+#include "Hook.h"
 
 namespace lorafel {
     class Player {
@@ -20,6 +21,8 @@ namespace lorafel {
         static const int MAX_CONSUMABLE_SLOTS = 3;
 
         Consumable* getConsumableSlotItem(int i);
+
+        void equipHook();
 
     public:
         Player();
@@ -49,6 +52,7 @@ namespace lorafel {
         Inventory* getInventory() const { return m_pInventory; }
         bool equipConsumableSlot(const char* itemName);
         bool equipConsumableSlot(const char* itemName, int slot);
+        Hook* getHook() const { return m_pHook; }
 
     protected:
         // Current Stats
@@ -68,6 +72,7 @@ namespace lorafel {
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
         std::vector<Consumable*> m_activeConsumables;
+        Hook* m_pHook;
 
     protected:
         Tile* m_pTile;

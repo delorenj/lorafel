@@ -4,6 +4,7 @@
 
 #include "MoveActionTile.h"
 #include "GameStateMachine.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 

@@ -360,6 +360,10 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
             auto eventData = new EventDataTile(pTile);
             getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
         }
+
+        if(pTile->getTag() == Tag::HERO) {
+            PlayerManager::getInstance()->getPlayer()->equipHook();
+        }
     }
 
     // Drop the random tile in the given column

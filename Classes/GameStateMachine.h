@@ -19,8 +19,16 @@ namespace lorafel {
                 _instance->addState<IdleHookModeState>();
             _instance->addState<BusyState>();
                 _instance->addState<EnemyTurnState>();
-                _instance->addState<TileTouchState>();
-                    _instance->addState<TileTouchStartState>();
+            _instance->addState<TileTouchState>();
+                _instance->addState<HookTouchStartState>();
+                _instance->addState<HookTouchMoveState>();
+                _instance->addState<HookTouchEndState>();
+                _instance->addState<HookFireReverseStartState>();
+                _instance->addState<HookFireReverseEndState>();
+                _instance->addState<HookFireStartState>();
+                _instance->addState<HookFireEndState>();
+                _instance->addState<HookMatchFoundState>();
+            _instance->addState<TileTouchStartState>();
                     _instance->addState<TileTouchEndState>();
                         _instance->addState<TileSwappingReverseStartState>();
                         _instance->addState<TileSwappingReverseEndState>();

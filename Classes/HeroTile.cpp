@@ -9,6 +9,7 @@
 #include "BasicPlayerMove.h"
 #include "DragDropSwapPlayerMove.h"
 #include "PlayerManager.h"
+#include "Hook.h"
 
 using namespace lorafel;
 
@@ -62,7 +63,7 @@ void HeroTile::addEvents() {
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {
         auto state = (GameState*) GameStateMachine::getInstance()->getState();
-        if(state->isBusy()) {
+        if(state->getName() != "IdleState") {
             return false;
         }
 
@@ -70,8 +71,8 @@ void HeroTile::addEvents() {
         cocos2d::Rect rect = this->getBoundingBox();
         m_pSwappyGrid->setCurrentTouchId(touch->_ID);
 
-        if(rect.containsPoint(p))
-        {
+        if(rect.containsPoint(p)) {
+            cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
             GameStateMachine::getInstance()->enterState<TileTouchStartState>();
             auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTouchStartPos(p);
@@ -79,9 +80,10 @@ void HeroTile::addEvents() {
             m_pSwappyGrid->clearVisitStates();
             m_pSwappyGrid->highlightTiles(getValidMoves(this, 0));
             return true; // to indicate that we have consumed it.
-        }
 
-        return false; // we did not consume this event, pass thru.
+        } else {
+            return false;
+        }
     };
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
@@ -103,18 +105,18 @@ void HeroTile::addEvents() {
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
-
-        // No matter what, get rid of all the particle
-        // tile highlight effects
-        for(auto node : m_pSwappyGrid->getChildren()) {
-            if(node->getTag() == Tag::PARTICLE) {
-                auto pe = (cocos2d::ParticleSystem*) node;
-                pe->stopSystem();
-                pe->setDuration(0.1f);
-            }
-        }
-
         if(touchState->getName() == "TileTouchMoveState") {
+
+            // No matter what, get rid of all the particle
+            // tile highlight effects
+            for(auto node : m_pSwappyGrid->getChildren()) {
+                if(node->getTag() == Tag::PARTICLE) {
+                    auto pe = (cocos2d::ParticleSystem*) node;
+                    pe->stopSystem();
+                    pe->setDuration(0.1f);
+                }
+            }
+
             // Only perform the move if the finger is over
             // a valid move position. Otherwise, move the
             // tile back to its origin.
@@ -193,5 +195,9 @@ bool HeroTile::init(const char* string) {
     }
     return false;
 }
+
+
+
+
 
 
