@@ -5,6 +5,7 @@
 #include "Hook.h"
 #include "GameStateMachine.h"
 #include "PlayerManager.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -15,10 +16,10 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
 
     m_pSourceTile = pSourceTile;
     m_pProjectile = cocos2d::Sprite::createWithSpriteFrameName("arrow.png");
-//    m_pProjectile->setVisible(false);
+    m_pProjectile->setVisible(false);
     addChild(m_pProjectile);
     m_pSwappyGrid = m_pSourceTile->getGrid();
-    m_pSwappyGrid->addChild(this);
+    m_pSwappyGrid->addChild(this, LayerOrder::UX);
     setPosition(PTILE_CENTER(m_pSourceTile));
     addEvents();
     return true;
@@ -64,6 +65,9 @@ void Hook::addEvents() {
             touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTileStartPos(tilePos);
             touchState->setTouchStartPos(touchPos);
+            m_pProjectile->setVisible(true);
+            m_pProjectile->setPosition(convertToNodeSpace(touch->getLocation()));
+            return true;
         }
         if("HookTouchMoveState" == touchState->getName()) {
             /**
@@ -71,8 +75,7 @@ void Hook::addEvents() {
              */
             cocos2d::Vec2 delta = m_pSwappyGrid->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
             auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
-            m_pProjectile->setVisible(true);
-            m_pProjectile->setPosition(m_pSwappyGrid->convertToNodeSpace(touch->getLocation()));
+            setPosition(newPos);
         }
     };
 
@@ -91,6 +94,7 @@ void Hook::addEvents() {
              */
             // For now, just go back to idle.
             GameStateMachine::getInstance()->enterState<IdleHookModeState>();
+            m_pProjectile->setVisible(false);
         }
 
         // Valid tiles are marked Tile::Color::YELLOW
