@@ -36,7 +36,12 @@ namespace lorafel {
         Tile* m_pSourceTile;
         SwappyGrid* m_pSwappyGrid;
         cocos2d::Sprite* m_pProjectile;
+        cocos2d::ParticleSystemQuad* m_pTrajectoryLine1;
+        cocos2d::ParticleSystemQuad* m_pTrajectoryLine2;
+        cocos2d::ClippingRectangleNode* m_pClippingMask;
+        void hideApparatus();
 
+        void showApparatus();
 
 
     };
