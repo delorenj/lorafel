@@ -17,10 +17,11 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
     m_pSourceTile = pSourceTile;
     m_pProjectile = cocos2d::Sprite::createWithSpriteFrameName("arrow.png");
     m_pProjectile->setVisible(false);
-    addChild(m_pProjectile);
+    m_pProjectile->setAnchorPoint(cocos2d::Vec2(0.5f, 1.0f));
     m_pSwappyGrid = m_pSourceTile->getGrid();
-    m_pSwappyGrid->addChild(this, LayerOrder::UX);
-    setPosition(PTILE_CENTER(m_pSourceTile));
+    addChild(m_pProjectile, LayerOrder::UX+10);
+    m_pSourceTile->addChild(this, LayerOrder::UX+10);
+    m_pProjectile->setPosition(PTILE_CENTER(m_pSourceTile));
     addEvents();
     return true;
 }
@@ -65,17 +66,23 @@ void Hook::addEvents() {
             touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
             touchState->setTileStartPos(tilePos);
             touchState->setTouchStartPos(touchPos);
-            m_pProjectile->setVisible(true);
-            m_pProjectile->setPosition(convertToNodeSpace(touch->getLocation()));
             return true;
         }
         if("HookTouchMoveState" == touchState->getName()) {
             /**
              * Move aimer thing around
              */
-            cocos2d::Vec2 delta = m_pSwappyGrid->convertToNodeSpace(touch->getLocation()) - touchState->getTouchStartPos();
-            auto newPos = cocos2d::Vec2(touchState->getTileStartPos().x + delta.x, touchState->getTileStartPos().y + delta.y);
-            setPosition(newPos);
+            m_pProjectile->setVisible(true);
+            m_pProjectile->setPosition(m_pSourceTile->convertToNodeSpace(touch->getLocation()));
+            auto pos = m_pProjectile->getPosition();
+            m_pProjectile->setRotation(getAngleToPoint(
+                    cocos2d::Vec2(
+                            pos.x-(
+                                    m_pSwappyGrid->getTileSize().width*m_pSwappyGrid->getTileScaleFactor()/2),
+                            pos.y-(
+                                    m_pSwappyGrid->getTileSize().height*m_pSwappyGrid->getTileScaleFactor()/2)
+                    )
+            ) - 90);
         }
     };
 
