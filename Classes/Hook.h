@@ -39,10 +39,10 @@ namespace lorafel {
         cocos2d::ParticleSystemQuad* m_pTrajectoryLine1;
         cocos2d::ParticleSystemQuad* m_pTrajectoryLine2;
         cocos2d::ClippingRectangleNode* m_pClippingMask;
+        cocos2d::DrawNode* m_pDebug;
+
         void hideApparatus();
-
         void showApparatus();
-
 
     };
 }

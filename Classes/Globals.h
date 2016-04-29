@@ -26,6 +26,16 @@ namespace lorafel {
         return bearingDegrees;
     }
 
+    static cocos2d::Rect getMinimumSpanningRect(cocos2d::Sprite* p1, cocos2d::Sprite* p2) {
+        auto bb1 = p1->getBoundingBox();
+        auto bb2 = p2->getBoundingBox();
+        auto pos1 = cocos2d::Director::getInstance()->getRunningScene()->convertToWorldSpace(p1->getPosition());
+        auto pos2 = cocos2d::Director::getInstance()->getRunningScene()->convertToWorldSpace(p2->getPosition());
+        CCLOG("p1=%f,%f | p2=%f,%f", pos1.x, pos1.y, pos2.x, pos2.y);
+        bb1.merge(bb2);
+        return bb2;
+    }
+
     static int parseInt(const std::string& value)
     {
         // Android NDK 10 doesn't support std::stoi a/ std::stoul

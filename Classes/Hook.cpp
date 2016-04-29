@@ -14,7 +14,7 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
         return false;
     }
     m_pClippingMask = nullptr;
-
+    m_pDebug = cocos2d::DrawNode::create();
     m_pSourceTile = pSourceTile;
     m_pProjectile = cocos2d::Sprite::createWithSpriteFrameName("arrow.png");
     m_pProjectile->setVisible(false);
@@ -23,6 +23,7 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
     addChild(m_pProjectile, LayerOrder::DEBUG+10);
     m_pSourceTile->addChild(this, LayerOrder::DEBUG+10);
     m_pProjectile->setPosition(PTILE_CENTER(m_pSourceTile));
+    addChild(m_pDebug);
     addEvents();
     return true;
 }
@@ -132,30 +133,46 @@ void Hook::addEvents() {
 
 void Hook::showApparatus() {
     auto projPos = m_pProjectile->getPosition();
+    auto sourcePos = m_pSourceTile->getPosition();
+    float adjustedTileSize = m_pSourceTile->getContentSize().width;
 
     /**
-     * We need to keep the clipping area an exact square for the case
-     * where either x or y is close to zero on either axis. This will
-     * cause everything to be clipped and we never want that.
+     * If the projectile is left of the source tile
+     * then the right side of the rect should anchor
+     * to the right side of the source tile
+     *
+     * If the projectile is right of the source tile
+     * then the left side of the rect should anchor
+     * to the left side of the source tile
+     *
+     * The rect should never be less than the tile size
      */
-    auto clippingSize = cocos2d::Size(
-            2*std::max(std::abs(projPos.x),std::abs(projPos.y)),
-            2*std::max(std::abs(projPos.x),std::abs(projPos.y))
-    );
+    float lx,ly,rx,ry;
+    if(projPos.x < 0) {
+        lx = std::min(projPos.x, 0.0f);
+        rx = -projPos.x + adjustedTileSize;
+    } else {
+        lx = 0.0f;
+        rx = std::max(adjustedTileSize, projPos.x);
+    }
 
-    CCLOG("projPos=%f,%f | clipSize=%f,%f", projPos.x, projPos.y, clippingSize.width, clippingSize.height);
+    if(projPos.y < 0) {
+        ly = std::min(projPos.y, 0.0f);
+        ry = -projPos.y + adjustedTileSize;
+    } else {
+        ly = 0.0f;
+        ry = std::max(adjustedTileSize, projPos.y);
+    }
 
-    /**
-     * Only create the clipping mask and the trajectory
-     * line the first time.
-     */
+    auto clippingArea = cocos2d::Rect(lx, ly, rx, ry);
+
     if(m_pClippingMask == nullptr) {
         m_pClippingMask = cocos2d::ClippingRectangleNode::create();
-        m_pClippingMask->setPosition(PTILE_CENTER(m_pSourceTile));
-        m_pClippingMask->setClippingRegion(cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize));
-        m_pClippingMask->setContentSize(clippingSize);
-        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-        m_pSwappyGrid->addChild(m_pClippingMask,LayerOrder::PARTICLES);
+        m_pClippingMask->setClippingRegion(clippingArea);
+        m_pClippingMask->setContentSize(clippingArea.size);
+        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
+        addChild(m_pClippingMask,LayerOrder::PARTICLES);
+        m_pClippingMask->setPosition(clippingArea.getMinX(), clippingArea.getMinY());
     }
 
     if(m_pTrajectoryLine1 == nullptr) {
@@ -163,7 +180,7 @@ void Hook::showApparatus() {
         m_pTrajectoryLine1->setAutoRemoveOnFinish(true);
         m_pTrajectoryLine1->setAnchorPoint(cocos2d::Vec2(0,0.5f));
         m_pTrajectoryLine1->setScaleY(0.25f);
-        m_pTrajectoryLine1->setPosition(PTILE_LEFT(m_pSourceTile));
+        m_pTrajectoryLine1->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
         m_pClippingMask->addChild(m_pTrajectoryLine1,LayerOrder::PARTICLES);
         /**
          * Fast-forward the particle system to make it seem there are
@@ -177,7 +194,7 @@ void Hook::showApparatus() {
         m_pTrajectoryLine2->setAutoRemoveOnFinish(true);
         m_pTrajectoryLine2->setAnchorPoint(cocos2d::Vec2(0,0.5f));
         m_pTrajectoryLine2->setScaleY(0.25f);
-        m_pTrajectoryLine2->setPosition(PTILE_RIGHT(m_pSourceTile));
+        m_pTrajectoryLine2->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
         m_pClippingMask->addChild(m_pTrajectoryLine2,LayerOrder::PARTICLES);
         /**
          * Fast-forward the particle system to make it seem there are
@@ -192,12 +209,20 @@ void Hook::showApparatus() {
      * a child of the clipping area, we also need to position the line each
      * time the clipping size is recalculated.
      */
-    m_pClippingMask->setClippingRegion(cocos2d::Rect(cocos2d::Vec2(0,0), clippingSize));
-    m_pClippingMask->setContentSize(clippingSize);
-    m_pTrajectoryLine1->setPosition(PTILE_LEFT(m_pSourceTile));
+    m_pClippingMask->setClippingRegion(clippingArea);
+    m_pClippingMask->setContentSize(clippingArea.size);
+    m_pTrajectoryLine1->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
     m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(projPos)));
-    m_pTrajectoryLine2->setPosition(PTILE_RIGHT(m_pSourceTile));
+    m_pTrajectoryLine2->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
     m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(projPos)));
+
+    m_pDebug->clear();
+    m_pDebug->drawRect(
+            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
+            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
+            cocos2d::Color4F::MAGENTA
+    );
+
 }
 
 void Hook::hideApparatus() {
