@@ -206,62 +206,72 @@ void Hook::showApparatus() {
 
     auto midPoint = m_pSourceTile->getContentSize().width/2;
 
-    float t1x, t1y, t2x, t2y;
-    if(projPos.x < midPoint && projPos.y >= midPoint) {
+    float t1x = -projPos.x;
+    float t1y = -projPos.y;
+    float t2x = -projPos.x;
+    float t2y = -projPos.y;
+
+    if(projPos.x < adjustedTileSize && projPos.y >= adjustedTileSize) {
         /**
          * Quadrant 4
          */
-        t1x = -projPos.x + adjustedTileSize;
+        auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, projPos.y+adjustedTileSize))/180*M_PI);
+        CCLOG("sineOfTopRight=%f, xfactor=%f", sinOfTopRight, adjustedTileSize*sinOfTopRight);
+        t1x = -projPos.x + adjustedTileSize - (adjustedTileSize * sinOfTopRight);
         t1y = -projPos.y + adjustedTileSize;
-        t2x = -projPos.x;
-        t2y = -projPos.y;
+        t2x += 0;
+        t2y += 0;
 
     } else if(projPos.x < midPoint && projPos.y < midPoint) {
         /**
          * Quadrant 3
          */
-        t1x = -projPos.x;
+        t1x += 0;
         t1y = -projPos.y + adjustedTileSize;
-        t2x = t1x + adjustedTileSize;
-        t2y = -projPos.y;
+        t2x = -projPos.x + adjustedTileSize;
+        t2y += 0;
 
     } else if(projPos.x >= midPoint && projPos.y < midPoint) {
         /**
          * Quadrant 2
          */
-        t1x = -projPos.x;
-        t1y = -projPos.y;
-        t2x = t1x + adjustedTileSize;
-        t2y = t1y + adjustedTileSize;
+        t1x += 0;
+        t1y += 0;
+        t2x = -projPos.x + adjustedTileSize;
+        t2y = -projPos.y + adjustedTileSize;
 
     } else if(projPos.x >= midPoint && projPos.y >= midPoint) {
         /**
          * Quadrant 1
          */
         t1x = -projPos.x + adjustedTileSize;
-        t1y = -projPos.y;
-        t2x = -projPos.x;
+        t1y += 0;
+        t2x += 0;
         t2y = -projPos.y + adjustedTileSize;
     } else {
         /**
          * Quadrant huh ?
          */
         t1x = -projPos.x + adjustedTileSize;
-        t1y = -projPos.y;
-        t2x = -projPos.x;
+        t1y += 0;
+        t2x += 0;
         t2y = -projPos.y + adjustedTileSize;
     }
 
+    auto t1angle = getAngleToPoint(cocos2d::Vec2(t1x, t1y));
+    auto t2angle = getAngleToPoint(cocos2d::Vec2(t2x, t2y));
 
-    m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Vec2(t1x, t1y)));
-    m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Vec2(t2x, t2y)));
+//    CCLOG("t1 sin/cos = %d  |  %d", (int)(std::sin(t1angle/180*M_PI)*100), (int)(std::cos(t1angle/180*M_PI)*100));
 
-    m_pDebug->clear();
-    m_pDebug->drawRect(
-            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
-            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
-            cocos2d::Color4F::MAGENTA
-    );
+    m_pTrajectoryLine1->setRotation(t1angle);
+    m_pTrajectoryLine2->setRotation(t2angle);
+
+//    m_pDebug->clear();
+//    m_pDebug->drawRect(
+//            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
+//            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
+//            cocos2d::Color4F::MAGENTA
+//    );
 
 }
 
