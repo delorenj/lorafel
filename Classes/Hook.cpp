@@ -176,11 +176,10 @@ void Hook::showApparatus() {
     }
 
     if(m_pTrajectoryLine1 == nullptr) {
-        m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("dashed-line.plist");
+        m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
         m_pTrajectoryLine1->setAutoRemoveOnFinish(true);
-        m_pTrajectoryLine1->setAnchorPoint(cocos2d::Vec2(0,0.5f));
-        m_pTrajectoryLine1->setScaleY(0.25f);
-        m_pTrajectoryLine1->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
+        m_pTrajectoryLine1->setPosition(projPos);
+        m_pTrajectoryLine1->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
         m_pClippingMask->addChild(m_pTrajectoryLine1,LayerOrder::PARTICLES);
         /**
          * Fast-forward the particle system to make it seem there are
@@ -190,11 +189,10 @@ void Hook::showApparatus() {
     }
 
     if(m_pTrajectoryLine2 == nullptr) {
-        m_pTrajectoryLine2 = cocos2d::ParticleSystemQuad::create("dashed-line.plist");
+        m_pTrajectoryLine2 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
         m_pTrajectoryLine2->setAutoRemoveOnFinish(true);
-        m_pTrajectoryLine2->setAnchorPoint(cocos2d::Vec2(0,0.5f));
-        m_pTrajectoryLine2->setScaleY(0.25f);
-        m_pTrajectoryLine2->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
+        m_pTrajectoryLine2->setPosition(projPos);
+        m_pTrajectoryLine2->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
         m_pClippingMask->addChild(m_pTrajectoryLine2,LayerOrder::PARTICLES);
         /**
          * Fast-forward the particle system to make it seem there are
@@ -211,16 +209,16 @@ void Hook::showApparatus() {
      */
     m_pClippingMask->setClippingRegion(clippingArea);
     m_pClippingMask->setContentSize(clippingArea.size);
-    m_pTrajectoryLine1->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
-    m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(projPos)));
-    m_pTrajectoryLine2->setPosition(m_pProjectile->convertToNodeSpace(sourcePos));
-    m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(projPos)));
+    m_pTrajectoryLine1->setPosition(projPos);
+    m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y)));
+    m_pTrajectoryLine2->setPosition(projPos);
+    m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y)));
 
-    m_pDebug->clear();
-    m_pDebug->drawRect(
-            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
-            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
-            cocos2d::Color4F::MAGENTA
+//    m_pDebug->clear();
+//    m_pDebug->drawRect(
+//            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
+//            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
+//            cocos2d::Color4F::MAGENTA
     );
 
 }
