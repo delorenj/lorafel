@@ -122,8 +122,6 @@ void Hook::addEvents() {
             m_pProjectile->setVisible(false);
         }
 
-        // Valid tiles are marked Tile::Color::YELLOW
-        // Clear that shit out.
         m_pSwappyGrid->clearVisitStates();
         hideApparatus();
     };
@@ -201,24 +199,68 @@ void Hook::showApparatus() {
         for(int i=0; i<300; i++) m_pTrajectoryLine2->update(0.1);
     }
 
-    /**
-     * We now need to calculate the trajectory line angle and the clipping
-     * area based on the current finger position (projPos). Since the line is
-     * a child of the clipping area, we also need to position the line each
-     * time the clipping size is recalculated.
-     */
     m_pClippingMask->setClippingRegion(clippingArea);
     m_pClippingMask->setContentSize(clippingArea.size);
     m_pTrajectoryLine1->setPosition(projPos);
-    m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y)));
     m_pTrajectoryLine2->setPosition(projPos);
-    m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y)));
 
-//    m_pDebug->clear();
-//    m_pDebug->drawRect(
-//            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
-//            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
-//            cocos2d::Color4F::MAGENTA
+    auto midPoint = m_pSourceTile->getContentSize().width/2;
+
+    float t1x, t1y, t2x, t2y;
+    if(projPos.x < midPoint && projPos.y >= midPoint) {
+        /**
+         * Quadrant 4
+         */
+        t1x = -projPos.x + adjustedTileSize;
+        t1y = -projPos.y + adjustedTileSize;
+        t2x = -projPos.x;
+        t2y = -projPos.y;
+
+    } else if(projPos.x < midPoint && projPos.y < midPoint) {
+        /**
+         * Quadrant 3
+         */
+        t1x = -projPos.x;
+        t1y = -projPos.y + adjustedTileSize;
+        t2x = t1x + adjustedTileSize;
+        t2y = -projPos.y;
+
+    } else if(projPos.x >= midPoint && projPos.y < midPoint) {
+        /**
+         * Quadrant 2
+         */
+        t1x = -projPos.x;
+        t1y = -projPos.y;
+        t2x = t1x + adjustedTileSize;
+        t2y = t1y + adjustedTileSize;
+
+    } else if(projPos.x >= midPoint && projPos.y >= midPoint) {
+        /**
+         * Quadrant 1
+         */
+        t1x = -projPos.x + adjustedTileSize;
+        t1y = -projPos.y;
+        t2x = -projPos.x;
+        t2y = -projPos.y + adjustedTileSize;
+    } else {
+        /**
+         * Quadrant huh ?
+         */
+        t1x = -projPos.x + adjustedTileSize;
+        t1y = -projPos.y;
+        t2x = -projPos.x;
+        t2y = -projPos.y + adjustedTileSize;
+    }
+
+
+    m_pTrajectoryLine1->setRotation(getAngleToPoint(cocos2d::Vec2(t1x, t1y)));
+    m_pTrajectoryLine2->setRotation(getAngleToPoint(cocos2d::Vec2(t2x, t2y)));
+
+    m_pDebug->clear();
+    m_pDebug->drawRect(
+            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
+            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
+            cocos2d::Color4F::MAGENTA
     );
 
 }
