@@ -67,9 +67,10 @@ namespace lorafel {
     struct LayerOrder {
         static const int BACKGROUND = 1;
         static const int TILES = 10;
-        static const int PARTICLES = 20;
-        static const int UX = 30;
-        static const int GAMEOVER = 40;
+        static const int HERO_TILE = 20;
+        static const int PARTICLES = 30;
+        static const int UX = 40;
+        static const int GAMEOVER = 50;
         static const int DEBUG = 100;
     };
 

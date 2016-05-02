@@ -20,8 +20,8 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
     m_pProjectile->setVisible(false);
     m_pProjectile->setAnchorPoint(cocos2d::Vec2(0.5f, 0.0f));
     m_pSwappyGrid = m_pSourceTile->getGrid();
-    addChild(m_pProjectile, LayerOrder::DEBUG+10);
-    m_pSourceTile->addChild(this, LayerOrder::DEBUG+10);
+    addChild(m_pProjectile);
+    m_pSourceTile->addChild(this);
     m_pProjectile->setPosition(PTILE_CENTER(m_pSourceTile));
     addChild(m_pDebug);
     addEvents();
@@ -169,16 +169,16 @@ void Hook::showApparatus() {
         m_pClippingMask->setClippingRegion(clippingArea);
         m_pClippingMask->setContentSize(clippingArea.size);
         m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
-        addChild(m_pClippingMask,LayerOrder::PARTICLES);
+        addChild(m_pClippingMask);
         m_pClippingMask->setPosition(clippingArea.getMinX(), clippingArea.getMinY());
     }
 
     if(m_pTrajectoryLine1 == nullptr) {
         m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
         m_pTrajectoryLine1->setAutoRemoveOnFinish(true);
-        m_pTrajectoryLine1->setPosition(projPos);
         m_pTrajectoryLine1->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
-        m_pClippingMask->addChild(m_pTrajectoryLine1,LayerOrder::PARTICLES);
+        m_pClippingMask->addChild(m_pTrajectoryLine1);
+
         /**
          * Fast-forward the particle system to make it seem there are
          * many particles to begin with
@@ -189,9 +189,8 @@ void Hook::showApparatus() {
     if(m_pTrajectoryLine2 == nullptr) {
         m_pTrajectoryLine2 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
         m_pTrajectoryLine2->setAutoRemoveOnFinish(true);
-        m_pTrajectoryLine2->setPosition(projPos);
         m_pTrajectoryLine2->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
-        m_pClippingMask->addChild(m_pTrajectoryLine2,LayerOrder::PARTICLES);
+        m_pClippingMask->addChild(m_pTrajectoryLine2);
         /**
          * Fast-forward the particle system to make it seem there are
          * many particles to begin with
@@ -204,10 +203,9 @@ void Hook::showApparatus() {
     m_pTrajectoryLine1->setPosition(projPos);
     m_pTrajectoryLine2->setPosition(projPos);
 
-    auto midPoint = m_pSourceTile->getContentSize().width/2;
-
     float t1x = -projPos.x;
     float t1y = -projPos.y;
+    float t1offx, t1offy;
     float t2x = -projPos.x;
     float t2y = -projPos.y;
 
@@ -215,56 +213,70 @@ void Hook::showApparatus() {
         /**
          * Quadrant 4
          */
-        auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, projPos.y+adjustedTileSize))/180*M_PI);
-        CCLOG("sineOfTopRight=%f, xfactor=%f", sinOfTopRight, adjustedTileSize*sinOfTopRight);
-        t1x = -projPos.x + adjustedTileSize - (adjustedTileSize * sinOfTopRight);
-        t1y = -projPos.y + adjustedTileSize;
-        t2x += 0;
-        t2y += 0;
+        auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, -projPos.y+adjustedTileSize))/180*M_PI);
+        auto cosOfTopLeft = std::cosf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
+//        CCLOG("sineOfTopRight=%f, projPos.x=%f, sizeXsin=%f, t1x=%f",
+//                sinOfTopRight,
+//                projPos.x,
+//                adjustedTileSize*sinOfTopRight,
+//                t1x
+//        );
+//        CCLOG("cosOfTopRight=%f, projPos.x=%f, sizeXcos=%f, t2x=%f",
+//                cosOfTopLeft,
+//                projPos.x,
+//                adjustedTileSize*cosOfTopLeft,
+//                t2x
+//        );
 
-    } else if(projPos.x < midPoint && projPos.y < midPoint) {
+        t1x += adjustedTileSize * sinOfTopRight;
+        t1y += adjustedTileSize;
+        t1offx = t1offy = adjustedTileSize;
+
+        t2x += 0;
+        t2y += adjustedTileSize * (1-cosOfTopLeft);
+
+    } else if(projPos.x < adjustedTileSize && projPos.y < adjustedTileSize) {
         /**
          * Quadrant 3
          */
         t1x += 0;
-        t1y = -projPos.y + adjustedTileSize;
-        t2x = -projPos.x + adjustedTileSize;
+        t1y += adjustedTileSize;
+        t2x += adjustedTileSize;
         t2y += 0;
 
-    } else if(projPos.x >= midPoint && projPos.y < midPoint) {
+    } else if(projPos.x >= adjustedTileSize && projPos.y < adjustedTileSize) {
         /**
          * Quadrant 2
          */
         t1x += 0;
         t1y += 0;
-        t2x = -projPos.x + adjustedTileSize;
-        t2y = -projPos.y + adjustedTileSize;
+        t2x += adjustedTileSize;
+        t2y += adjustedTileSize;
 
-    } else if(projPos.x >= midPoint && projPos.y >= midPoint) {
+    } else { // don't need this if(projPos.x >= adjustedTileSize && projPos.y >= adjustedTileSize) {
         /**
          * Quadrant 1
          */
-        t1x = -projPos.x + adjustedTileSize;
+        t1x += adjustedTileSize;
         t1y += 0;
         t2x += 0;
-        t2y = -projPos.y + adjustedTileSize;
-    } else {
-        /**
-         * Quadrant huh ?
-         */
-        t1x = -projPos.x + adjustedTileSize;
-        t1y += 0;
-        t2x += 0;
-        t2y = -projPos.y + adjustedTileSize;
+        t2y += adjustedTileSize;
     }
-
     auto t1angle = getAngleToPoint(cocos2d::Vec2(t1x, t1y));
     auto t2angle = getAngleToPoint(cocos2d::Vec2(t2x, t2y));
-
-//    CCLOG("t1 sin/cos = %d  |  %d", (int)(std::sin(t1angle/180*M_PI)*100), (int)(std::cos(t1angle/180*M_PI)*100));
-
-    m_pTrajectoryLine1->setRotation(t1angle);
+    m_pTrajectoryLine1->setPosition(m_pTrajectoryLine1->convertToNodeSpace(cocos2d::Vec2(t1x, t1y)));
+    m_pTrajectoryLine1->setRotation(t1angle + 180);
+//    m_pTrajectoryLine2->setPosition(t2x, t2y);
     m_pTrajectoryLine2->setRotation(t2angle);
+    m_pTrajectoryLine2->setVisible(false);
+
+    CCLOG("projPos=%f,%f | dest=%f,%f",
+            projPos.x,
+            projPos.y,
+            t1x,
+            t1y
+    );
+
 
 //    m_pDebug->clear();
 //    m_pDebug->drawRect(

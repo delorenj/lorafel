@@ -53,7 +53,7 @@ bool SwappyGrid::init() {
 
     // Create the Grid Transparency;
     m_pGridTransparency = new GridTransparency();
-    addChild(m_pGridTransparency, LayerOrder::TILES-1);
+    addChild(m_pGridTransparency, LayerOrder::TILES-5);
 
     // Create Tile Grid
     m_pGrid = new TileGrid();

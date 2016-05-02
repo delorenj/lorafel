@@ -184,7 +184,7 @@ bool HeroTile::init(const char* string) {
     if(!Tile::init()) {
         return false;
     }
-
+    
     if (initWithSpriteFrameName(string))
     {
         setTileName("Hero");
