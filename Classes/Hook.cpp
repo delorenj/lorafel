@@ -264,7 +264,7 @@ void Hook::showApparatus() {
     }
     auto t1angle = getAngleToPoint(cocos2d::Vec2(t1x, t1y));
     auto t2angle = getAngleToPoint(cocos2d::Vec2(t2x, t2y));
-    m_pTrajectoryLine1->setPosition(cocos2d::Vec2(projPos.x + t1x, projPos.y + t1y));
+    m_pTrajectoryLine1->setPosition(cocos2d::Vec2(t1x, t1y));
     m_pTrajectoryLine1->setRotation(t1angle + 180);
 //    m_pTrajectoryLine2->setPosition(t2x, t2y);
     m_pTrajectoryLine2->setRotation(t2angle);
