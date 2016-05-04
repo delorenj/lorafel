@@ -215,12 +215,13 @@ void Hook::showApparatus() {
          */
         auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, -projPos.y+adjustedTileSize))/180*M_PI);
         auto cosOfTopLeft = std::cosf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
-//        CCLOG("sineOfTopRight=%f, projPos.x=%f, sizeXsin=%f, t1x=%f",
-//                sinOfTopRight,
-//                projPos.x,
-//                adjustedTileSize*sinOfTopRight,
-//                t1x
-//        );
+        CCLOG("sineOfTopRight=%f, projPos.x=%f, sizeXsin=%f, t1x=%f, t1y=%f",
+                sinOfTopRight,
+                projPos.x,
+                adjustedTileSize*sinOfTopRight,
+                t1x,
+                t1y
+        );
 //        CCLOG("cosOfTopRight=%f, projPos.x=%f, sizeXcos=%f, t2x=%f",
 //                cosOfTopLeft,
 //                projPos.x,
@@ -230,8 +231,6 @@ void Hook::showApparatus() {
 
         t1x += adjustedTileSize * sinOfTopRight;
         t1y += adjustedTileSize;
-        t1offx = t1offy = adjustedTileSize;
-
         t2x += 0;
         t2y += adjustedTileSize * (1-cosOfTopLeft);
 
@@ -262,23 +261,28 @@ void Hook::showApparatus() {
         t2x += 0;
         t2y += adjustedTileSize;
     }
+
     auto t1angle = getAngleToPoint(cocos2d::Vec2(t1x, t1y));
+//    m_pTrajectoryLine1->setPosition(cocos2d::Vec2(t1x, t1y));
+    m_pTrajectoryLine1->setRotation(t1angle);
+
+
     auto t2angle = getAngleToPoint(cocos2d::Vec2(t2x, t2y));
-    m_pTrajectoryLine1->setPosition(cocos2d::Vec2(t1x, t1y));
-    m_pTrajectoryLine1->setRotation(t1angle + 180);
 //    m_pTrajectoryLine2->setPosition(t2x, t2y);
     m_pTrajectoryLine2->setRotation(t2angle);
     m_pTrajectoryLine2->setVisible(false);
 
-    CCLOG("projPos=%f,%f | dest=%f,%f",
-            projPos.x,
-            projPos.y,
-            t1x,
-            t1y
-    );
+//    CCLOG("projPos=%f,%f | dest=%f,%f",
+//            projPos.x,
+//            projPos.y,
+//            t1x,
+//            t1y
+//    );
 
 
-//    m_pDebug->clear();
+    m_pDebug->clear();
+    m_pDebug->drawCircle(projPos, 20, 0, 8, false, 1, 1, cocos2d::Color4F::MAGENTA);
+    m_pDebug->drawCircle(m_pClippingMask->convertToNodeSpace(cocos2d::Vec2(t1x,t1y)), 20, 0, 8, false, 1, 1, cocos2d::Color4F::ORANGE);
 //    m_pDebug->drawRect(
 //            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
 //            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
