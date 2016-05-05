@@ -9,6 +9,14 @@
 
 using namespace lorafel;
 
+/**
+ * Heierarchy
+ *
+ * swappyGrid -> sourceTile -> this -> clippingMask -> trajectoryLines
+ * swappyGrid -> sourceTile -> this -> projectile
+ * swappyGrid -> sourceTile -> this -> debug
+ *
+ */
 bool Hook::init(lorafel::Tile* pSourceTile) {
     if(!cocos2d::Node::init()) {
         return false;
@@ -174,7 +182,7 @@ void Hook::showApparatus() {
     }
 
     if(m_pTrajectoryLine1 == nullptr) {
-        m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
+        m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("bow-rope-directional.plist");
         m_pTrajectoryLine1->setAutoRemoveOnFinish(true);
         m_pTrajectoryLine1->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
         m_pClippingMask->addChild(m_pTrajectoryLine1);
@@ -187,7 +195,7 @@ void Hook::showApparatus() {
     }
 
     if(m_pTrajectoryLine2 == nullptr) {
-        m_pTrajectoryLine2 = cocos2d::ParticleSystemQuad::create("bow-rope.plist");
+        m_pTrajectoryLine2 = cocos2d::ParticleSystemQuad::create("bow-rope-directional.plist");
         m_pTrajectoryLine2->setAutoRemoveOnFinish(true);
         m_pTrajectoryLine2->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
         m_pClippingMask->addChild(m_pTrajectoryLine2);
@@ -205,42 +213,37 @@ void Hook::showApparatus() {
 
     float t1x = -projPos.x;
     float t1y = -projPos.y;
-    float t1offx, t1offy;
     float t2x = -projPos.x;
     float t2y = -projPos.y;
+    cocos2d::Vec2 sourceTether1, sourceTether2;
 
     if(projPos.x < adjustedTileSize && projPos.y >= adjustedTileSize) {
         /**
          * Quadrant 4
          */
         auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, -projPos.y+adjustedTileSize))/180*M_PI);
-        auto cosOfTopLeft = std::cosf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
-        CCLOG("sineOfTopRight=%f, projPos.x=%f, sizeXsin=%f, t1x=%f, t1y=%f",
-                sinOfTopRight,
-                projPos.x,
-                adjustedTileSize*sinOfTopRight,
-                t1x,
-                t1y
-        );
-//        CCLOG("cosOfTopRight=%f, projPos.x=%f, sizeXcos=%f, t2x=%f",
-//                cosOfTopLeft,
-//                projPos.x,
-//                adjustedTileSize*cosOfTopLeft,
-//                t2x
-//        );
+        auto sinOfTopLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
 
+        sourceTether1 = cocos2d::Vec2(adjustedTileSize * sinOfTopRight,adjustedTileSize);
+        sourceTether2 = cocos2d::Vec2(0, adjustedTileSize * sinOfTopLeft);
         t1x += adjustedTileSize * sinOfTopRight;
         t1y += adjustedTileSize;
         t2x += 0;
-        t2y += adjustedTileSize * (1-cosOfTopLeft);
+        t2y += adjustedTileSize * sinOfTopLeft;
 
     } else if(projPos.x < adjustedTileSize && projPos.y < adjustedTileSize) {
         /**
          * Quadrant 3
          */
+        auto sinOfTopLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
+        auto sinOfBottomLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y))/180*M_PI);
+
+        sourceTether1 = cocos2d::Vec2(0, sinOfTopLeft);
+        sourceTether2 = cocos2d::Vec2(adjustedTileSize * sinOfBottomLeft, 0);
+
         t1x += 0;
-        t1y += adjustedTileSize;
-        t2x += adjustedTileSize;
+        t1y += sinOfTopLeft;
+        t2x += adjustedTileSize * sinOfBottomLeft;
         t2y += 0;
 
     } else if(projPos.x >= adjustedTileSize && projPos.y < adjustedTileSize) {
@@ -252,7 +255,7 @@ void Hook::showApparatus() {
         t2x += adjustedTileSize;
         t2y += adjustedTileSize;
 
-    } else { // don't need this if(projPos.x >= adjustedTileSize && projPos.y >= adjustedTileSize) {
+    } else {
         /**
          * Quadrant 1
          */
@@ -263,32 +266,21 @@ void Hook::showApparatus() {
     }
 
     auto t1angle = getAngleToPoint(cocos2d::Vec2(t1x, t1y));
-//    m_pTrajectoryLine1->setPosition(cocos2d::Vec2(t1x, t1y));
-    m_pTrajectoryLine1->setRotation(t1angle);
-
+    m_pTrajectoryLine1->setRotation(t1angle+180);
+    m_pTrajectoryLine1->setPosition(sourceTether1);
 
     auto t2angle = getAngleToPoint(cocos2d::Vec2(t2x, t2y));
-//    m_pTrajectoryLine2->setPosition(t2x, t2y);
-    m_pTrajectoryLine2->setRotation(t2angle);
-    m_pTrajectoryLine2->setVisible(false);
+    m_pTrajectoryLine2->setRotation(t2angle+180);
+    m_pTrajectoryLine2->setPosition(sourceTether2);
 
-//    CCLOG("projPos=%f,%f | dest=%f,%f",
-//            projPos.x,
-//            projPos.y,
-//            t1x,
-//            t1y
-//    );
-
-
-    m_pDebug->clear();
-    m_pDebug->drawCircle(projPos, 20, 0, 8, false, 1, 1, cocos2d::Color4F::MAGENTA);
-    m_pDebug->drawCircle(m_pClippingMask->convertToNodeSpace(cocos2d::Vec2(t1x,t1y)), 20, 0, 8, false, 1, 1, cocos2d::Color4F::ORANGE);
+//    m_pDebug->clear();
+//    m_pDebug->drawCircle(projPos, 20, 0, 8, false, 1, 1, cocos2d::Color4F::MAGENTA);
+//    m_pDebug->drawCircle(pp, 20, 0, 8, false, 1, 1, cocos2d::Color4F::ORANGE);
 //    m_pDebug->drawRect(
 //            cocos2d::Vec2(clippingArea.getMinX(), clippingArea.getMinY()),
 //            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
 //            cocos2d::Color4F::MAGENTA
 //    );
-
 }
 
 void Hook::hideApparatus() {
