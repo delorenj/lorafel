@@ -170,19 +170,20 @@ void Hook::showApparatus() {
         ry = std::max(adjustedTileSize, projPos.y);
     }
 
-    auto clippingArea = cocos2d::Rect(lx, ly, rx, ry);
+    float clipPadding = 10;
+    auto clippingArea = cocos2d::Rect(lx-clipPadding, ly-clipPadding, rx+clipPadding, ry+clipPadding);
 
     if(m_pClippingMask == nullptr) {
         m_pClippingMask = cocos2d::ClippingRectangleNode::create();
         m_pClippingMask->setClippingRegion(clippingArea);
         m_pClippingMask->setContentSize(clippingArea.size);
-        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
         addChild(m_pClippingMask);
-        m_pClippingMask->setPosition(clippingArea.getMinX(), clippingArea.getMinY());
     }
 
     if(m_pTrajectoryLine1 == nullptr) {
         m_pTrajectoryLine1 = cocos2d::ParticleSystemQuad::create("bow-rope-directional.plist");
+        m_pTrajectoryLine1->setStartColor(cocos2d::Color4F::BLUE);
+        m_pTrajectoryLine1->setEndColor(cocos2d::Color4F::BLUE);
         m_pTrajectoryLine1->setAutoRemoveOnFinish(true);
         m_pTrajectoryLine1->setPositionType(cocos2d::ParticleSystemQuad::PositionType::GROUPED);
         m_pClippingMask->addChild(m_pTrajectoryLine1);
@@ -206,8 +207,6 @@ void Hook::showApparatus() {
         for(int i=0; i<300; i++) m_pTrajectoryLine2->update(0.1);
     }
 
-    m_pClippingMask->setClippingRegion(clippingArea);
-    m_pClippingMask->setContentSize(clippingArea.size);
     m_pTrajectoryLine1->setPosition(projPos);
     m_pTrajectoryLine2->setPosition(projPos);
 
@@ -221,39 +220,57 @@ void Hook::showApparatus() {
         /**
          * Quadrant 4
          */
-        auto sinOfTopRight = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, -projPos.y+adjustedTileSize))/180*M_PI);
-        auto sinOfTopLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
+        auto tetherFactor = adjustedTileSize*std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x+adjustedTileSize, -projPos.y+adjustedTileSize))/180*M_PI);
 
-        sourceTether1 = cocos2d::Vec2(adjustedTileSize * sinOfTopRight,adjustedTileSize);
-        sourceTether2 = cocos2d::Vec2(0, adjustedTileSize * sinOfTopLeft);
-        t1x += adjustedTileSize * sinOfTopRight;
+        sourceTether1 = cocos2d::Vec2(tetherFactor,adjustedTileSize);
+        sourceTether2 = cocos2d::Vec2(0, tetherFactor);
+        t1x += tetherFactor;
         t1y += adjustedTileSize;
         t2x += 0;
-        t2y += adjustedTileSize * sinOfTopLeft;
+        t2y += tetherFactor;
+
+        auto anchorFactorX = 1-(clippingArea.size.width-clipPadding)/clippingArea.size.width;
+        auto anchorFactorY = 1-(clippingArea.size.height-clipPadding)/clippingArea.size.height;
+        m_pClippingMask->setClippingRegion(clippingArea);
+        m_pClippingMask->setContentSize(clippingArea.size);
+        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(anchorFactorX, anchorFactorY));
+        m_pClippingMask->setPosition(clippingArea.getMinX()-clipPadding, clippingArea.getMinY()+clipPadding);
+
 
     } else if(projPos.x < adjustedTileSize && projPos.y < adjustedTileSize) {
         /**
          * Quadrant 3
          */
-        auto sinOfTopLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI);
-        auto sinOfBottomLeft = std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y))/180*M_PI);
+        auto tetherFactor = adjustedTileSize*(1 - std::cosf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y+adjustedTileSize))/180*M_PI));
 
-        sourceTether1 = cocos2d::Vec2(0, sinOfTopLeft);
-        sourceTether2 = cocos2d::Vec2(adjustedTileSize * sinOfBottomLeft, 0);
+        sourceTether1 = cocos2d::Vec2(0, adjustedTileSize-tetherFactor);
+        sourceTether2 = cocos2d::Vec2(tetherFactor, 0);
 
         t1x += 0;
-        t1y += sinOfTopLeft;
-        t2x += adjustedTileSize * sinOfBottomLeft;
+        t1y += adjustedTileSize-tetherFactor;
+        t2x += tetherFactor;
         t2y += 0;
+
+        auto anchorFactorX = 1-(clippingArea.size.width-clipPadding)/clippingArea.size.width;
+        auto anchorFactorY = 1-(clippingArea.size.height-clipPadding)/clippingArea.size.height;
+        m_pClippingMask->setClippingRegion(clippingArea);
+        m_pClippingMask->setContentSize(clippingArea.size);
+        m_pClippingMask->setAnchorPoint(cocos2d::Vec2(anchorFactorX, anchorFactorY));
+        m_pClippingMask->setPosition(clippingArea.getMinX()-clipPadding, clippingArea.getMinY()-clipPadding);
+
 
     } else if(projPos.x >= adjustedTileSize && projPos.y < adjustedTileSize) {
         /**
          * Quadrant 2
          */
-        t1x += 0;
+        auto tetherFactor = adjustedTileSize*std::sinf(getAngleToPoint(cocos2d::Vec2(-projPos.x, -projPos.y))/180*M_PI);
+
+        sourceTether1 = cocos2d::Vec2(tetherFactor,0);
+        sourceTether2 = cocos2d::Vec2(adjustedTileSize, tetherFactor);
+        t1x += tetherFactor;
         t1y += 0;
         t2x += adjustedTileSize;
-        t2y += adjustedTileSize;
+        t2y += tetherFactor;
 
     } else {
         /**
@@ -273,7 +290,7 @@ void Hook::showApparatus() {
     m_pTrajectoryLine2->setRotation(t2angle+180);
     m_pTrajectoryLine2->setPosition(sourceTether2);
 
-//    m_pDebug->clear();
+    m_pDebug->clear();
 //    m_pDebug->drawCircle(projPos, 20, 0, 8, false, 1, 1, cocos2d::Color4F::MAGENTA);
 //    m_pDebug->drawCircle(pp, 20, 0, 8, false, 1, 1, cocos2d::Color4F::ORANGE);
 //    m_pDebug->drawRect(
@@ -281,6 +298,13 @@ void Hook::showApparatus() {
 //            cocos2d::Vec2(clippingArea.getMaxX(), clippingArea.getMaxY()),
 //            cocos2d::Color4F::MAGENTA
 //    );
+    m_pDebug->drawCircle(m_pClippingMask->getAnchorPointInPoints(), 8, 0, 8, false, 1, 1, cocos2d::Color4F::ORANGE);
+    m_pDebug->drawRect(
+            cocos2d::Vec2(m_pClippingMask->getPosition().x, m_pClippingMask->getPosition().y),
+            cocos2d::Vec2(m_pClippingMask->getPosition().x + clippingArea.size.width, m_pClippingMask->getPosition().y + clippingArea.size.height),
+            cocos2d::Color4F::MAGENTA
+    );
+
 }
 
 void Hook::hideApparatus() {
