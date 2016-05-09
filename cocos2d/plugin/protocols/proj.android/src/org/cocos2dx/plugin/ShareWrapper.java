@@ -36,7 +36,7 @@ public class ShareWrapper {
 		PluginWrapper.runOnGLThread(new Runnable() {
 			@Override
 			public void run() {
-				String name = curAdapter.getClass().getTileName();
+				String name = curAdapter.getClass().getName();
 				name = name.replace('.', '/');
 				nativeOnShareResult(name, curRet, curMsg);
 			}

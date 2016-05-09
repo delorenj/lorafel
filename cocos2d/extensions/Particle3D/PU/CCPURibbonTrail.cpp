@@ -64,7 +64,7 @@ void PURibbonTrail::addNode(Node* n)
     //if (n->getListener())
     //{
     //	OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS, 
-    //		mName + " cannot monitor node " + n->getTileName() + " since it already has a listener.",
+    //		mName + " cannot monitor node " + n->getName() + " since it already has a listener.",
     //		"RibbonTrail::addNode");
     //}
 

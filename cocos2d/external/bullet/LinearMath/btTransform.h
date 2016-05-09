@@ -84,9 +84,9 @@ public:
 		}
 
 /*		void multInverseLeft(const btTransform& t1, const btTransform& t2) {
-			btVector3 v = t2.m_originGridPos - t1.m_originGridPos;
+			btVector3 v = t2.m_origin - t1.m_origin;
 			m_basis = btMultTransposeLeft(t1.m_basis, t2.m_basis);
-			m_originGridPos = v * t1.m_basis;
+			m_origin = v * t1.m_basis;
 		}
 		*/
 

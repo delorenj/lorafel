@@ -101,7 +101,7 @@ public class AdsWrapper {
 		PluginWrapper.runOnGLThread(new Runnable(){
 			@Override
 			public void run() {
-				String name = curAdapter.getClass().getTileName();
+				String name = curAdapter.getClass().getName();
 				name = name.replace('.', '/');
 				AdsWrapper.nativeOnPlayerGetPoints(name, curPoints);
 			}

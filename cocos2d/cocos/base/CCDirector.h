@@ -287,6 +287,9 @@ public:
      */
     void pushScene(Scene *scene);
 
+
+    Scene *previousScene(void);
+
     /** 
      * Pops out a scene from the stack.
      * This scene will replace the running one.
@@ -294,8 +297,6 @@ public:
      * ONLY call it if there is a running scene.
      */
     void popScene();
-
-    Scene *previousScene(void);
     void popScene(Scene *trans);
 
     /** 

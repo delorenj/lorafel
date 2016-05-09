@@ -442,7 +442,7 @@ void Director::setNextDeltaTimeZero(bool nextDeltaTimeZero)
 //
 // FIXME TODO
 // Matrix code MUST NOT be part of the Director
-// MUST BE moved outide.
+// MUST BE moved outside.
 // Why the Director must have this code ?
 //
 void Director::initMatrixStack()
@@ -856,29 +856,6 @@ void Director::popScene(void)
     {
         _sendCleanupToScene = true;
         _nextScene = _scenesStack.at(c - 1);
-    }
-}
-
-Scene* Director::previousScene(void) {
-    unsigned int c = _scenesStack.size();
-
-    if (c <= 1) return NULL;
-    return (Scene *) _scenesStack.at(c - 2);
-}
-
-
-void Director::popScene(Scene *trans) {
-            CCAssert(_runningScene != NULL, "running scene should not null");
-    _scenesStack.popBack();
-    unsigned int c = _scenesStack.size();
-
-    if (c == 0) {
-        end();
-    }
-    else {
-
-        _sendCleanupToScene = true;
-        _nextScene = trans;
     }
 }
 
@@ -1383,6 +1360,29 @@ void DisplayLinkDirector::setAnimationInterval(float interval)
         startAnimation();
     }    
 }
+
+Scene* Director::previousScene(void) {
+    unsigned int c = _scenesStack.size();
+
+    if (c <= 1) return NULL;
+    return (Scene *) _scenesStack.at(c - 2);
+}
+
+void Director::popScene(Scene *trans) {
+            CCAssert(_runningScene != NULL, "running scene should not null");
+    _scenesStack.popBack();
+    unsigned int c = _scenesStack.size();
+
+    if (c == 0) {
+        end();
+    }
+    else {
+
+        _sendCleanupToScene = true;
+        _nextScene = trans;
+    }
+}
+
 
 NS_CC_END
 

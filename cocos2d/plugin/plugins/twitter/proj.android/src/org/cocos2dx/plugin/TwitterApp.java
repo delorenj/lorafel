@@ -160,7 +160,7 @@ public class TwitterApp {
 					mAccessToken = new AccessToken(mHttpOauthConsumer.getToken(), mHttpOauthConsumer.getTokenSecret());				
 					configureToken();				
 					User user = mTwitter.verifyCredentials();				
-			        mSession.storeAccessToken(mAccessToken, user.getTileName());
+			        mSession.storeAccessToken(mAccessToken, user.getName());			        
 			        what = 0;
 				} catch (Exception e){
 					LogD("Error getting access token");					

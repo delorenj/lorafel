@@ -36,7 +36,7 @@ public class IAPWrapper {
 		PluginWrapper.runOnGLThread(new Runnable() {
 			@Override
 			public void run() {
-				String name = curObj.getClass().getTileName();
+				String name = curObj.getClass().getName();
 				name = name.replace('.', '/');
 				nativeOnPayResult(name, curRet, curMsg);
 			}

@@ -68,7 +68,7 @@ public:
 	virtual	bool isInside(const btVector3& pt,btScalar tolerance) const;
 
 
-	///getTileName is for debugging
+	///getName is for debugging
 	virtual const char*	getName()const { return "btBU_Simplex1to4";}
 
 };
