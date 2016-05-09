@@ -7,6 +7,7 @@
 
 #include "cocos2d.h"
 #include "Tile.h"
+#include "Arrow.h"
 
 namespace lorafel {
     class Hook : public cocos2d::Node {
@@ -35,7 +36,8 @@ namespace lorafel {
     protected:
         Tile* m_pSourceTile;
         SwappyGrid* m_pSwappyGrid;
-        cocos2d::Sprite* m_pProjectile;
+        Arrow* m_pProjectile;
+
         cocos2d::ParticleSystemQuad* m_pTrajectoryLine1;
         cocos2d::ParticleSystemQuad* m_pTrajectoryLine2;
         cocos2d::ClippingRectangleNode* m_pClippingMask;

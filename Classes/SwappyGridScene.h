@@ -11,6 +11,7 @@
 #include "GridUI.h"
 #include "GridTestUI.h"
 #include "Level.h"
+#include "Box2D/Box2D.h"
 
 namespace lorafel {
     class GridUI;
@@ -24,7 +25,7 @@ namespace lorafel {
     protected:
         cocos2d::Sprite* m_pBackground;
         SwappyGrid* m_pSwappyGrid;
-        cocos2d::PhysicsWorld* m_world;
+        b2World* m_pWorld;
         StateMachine* m_pGameStateMachine;
         GridUI *m_pGridUI;
         Level* m_pLevel;

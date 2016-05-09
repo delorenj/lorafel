@@ -20,6 +20,12 @@ bool SwappyGridScene::init() {
     m_pBackground->setPosition(origin.x + visibleSize.width/2 ,origin.y + visibleSize.height/2);
     addChild(m_pBackground, LayerOrder::BACKGROUND);
 
+    /**
+     * Create a physics world with no gravity
+     */
+    m_pWorld = new b2World(b2Vec2(0, 0));
+    m_pWorld->SetAllowSleeping(true);
+
     // Instantiate the GridUI
     m_pGridUI = GridUI::create(m_pSwappyGrid);
     m_pGridUI->ignoreAnchorPointForPosition(false);

@@ -24,9 +24,9 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
     m_pClippingMask = nullptr;
     m_pDebug = cocos2d::DrawNode::create();
     m_pSourceTile = pSourceTile;
-    m_pProjectile = cocos2d::Sprite::createWithSpriteFrameName("arrow.png");
+    m_pProjectile = Arrow::create();
     m_pProjectile->setVisible(false);
-    m_pProjectile->setAnchorPoint(cocos2d::Vec2(0.5f, 0.0f));
+
     m_pSwappyGrid = m_pSourceTile->getGrid();
     addChild(m_pProjectile);
     m_pSourceTile->addChild(this);

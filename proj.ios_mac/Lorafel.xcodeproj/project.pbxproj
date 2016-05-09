@@ -50,6 +50,7 @@
 		3167D4DA44740D81CEBBBD78 /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
 		3167D4E9F84B1EE8F292825B /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D504F192517D21351ACE /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
+		3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
 		3167D5A540E9B6193A66BB3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
@@ -72,6 +73,7 @@
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
 		3167D8A4704147D6996CA579 /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7FF62C84DBB3A5F919 /* TileFactory.cpp */; };
+		3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
 		3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
@@ -312,6 +314,7 @@
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
 		3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveActionTile.cpp; sourceTree = "<group>"; };
 		3167D95C7DE012999F5D29C6 /* StatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatResult.h; sourceTree = "<group>"; };
+		3167D96A2683A5494A40827F /* Arrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arrow.cpp; sourceTree = "<group>"; };
 		3167D97C25C0022BB33E3A87 /* HeroTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroTile.h; sourceTree = "<group>"; };
 		3167D98A0DDDFA707C4D382D /* MeleeAttackTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackTile.h; sourceTree = "<group>"; };
 		3167D99F1FE72B60EC072B22 /* StatGuage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatGuage.h; sourceTree = "<group>"; };
@@ -350,6 +353,7 @@
 		3167DE5A93B0953649C6C566 /* XpFloatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpFloatie.cpp; sourceTree = "<group>"; };
 		3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalDistributionRandomizer.cpp; sourceTree = "<group>"; };
 		3167DE78A23A2C4122F283E0 /* AvocadoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvocadoTile.h; sourceTree = "<group>"; };
+		3167DE8C1E9C79420C008807 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
 		3167DF44D30E7CF3B5F1BDBC /* StickMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickMan.h; sourceTree = "<group>"; };
@@ -716,6 +720,8 @@
 				3167D7ED3DEF99FA190EEDFD /* EventDataString.h */,
 				3167DBEE19A2E31B3DF46261 /* Hook.cpp */,
 				3167DCBDD3425DF38F2B9641 /* Hook.h */,
+				3167D96A2683A5494A40827F /* Arrow.cpp */,
+				3167DE8C1E9C79420C008807 /* Arrow.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -977,6 +983,7 @@
 				3167DB6EC55B7FCDB9070C51 /* ToggleActionTile.cpp in Sources */,
 				3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */,
 				3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */,
+				3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,6 +1046,7 @@
 				3167DC57B5E53F1FA8600089 /* ToggleActionTile.cpp in Sources */,
 				3167D090D78FDB78A4721B55 /* GameStateMachine.cpp in Sources */,
 				3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */,
+				3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
