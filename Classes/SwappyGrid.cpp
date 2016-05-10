@@ -24,6 +24,13 @@ bool SwappyGrid::init() {
     m_pMoveStack = new std::stack<PlayerMove*>();
     m_pTileMatcher = new TileMatcher(this);
     m_pTileMatcher->setDebugDraw(false);
+
+    /**
+     * Create a physics world with no gravity
+     */
+    m_pWorld = new b2World(b2Vec2(0, -9));
+    m_pWorld->SetAllowSleeping(true);
+
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -107,6 +114,8 @@ bool SwappyGrid::init() {
 void SwappyGrid::update(float delta) {
 
 //    DrawDebugData();
+
+    UpdatePhysics(delta);
 
     RemoveDeadTiles();
 
@@ -766,3 +775,9 @@ bool SwappyGrid::isPointInsideGrid(cocos2d::Vec2 pos) {
 cocos2d::Size SwappyGrid::getTileSize() {
     return m_tileSize;
 }
+
+void SwappyGrid::UpdatePhysics(float delta) {
+
+}
+
+

@@ -20,16 +20,12 @@ namespace lorafel {
         virtual bool init() override;
         virtual ~SwappyGridScene();
 
-        SwappyGrid* getSwappyGrid() { return m_pSwappyGrid; }
-
     protected:
         cocos2d::Sprite* m_pBackground;
         SwappyGrid* m_pSwappyGrid;
-        b2World* m_pWorld;
         StateMachine* m_pGameStateMachine;
         GridUI *m_pGridUI;
         Level* m_pLevel;
-
     };
 }
 

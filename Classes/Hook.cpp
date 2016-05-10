@@ -24,10 +24,9 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
     m_pClippingMask = nullptr;
     m_pDebug = cocos2d::DrawNode::create();
     m_pSourceTile = pSourceTile;
-    m_pProjectile = Arrow::create();
-    m_pProjectile->setVisible(false);
-
     m_pSwappyGrid = m_pSourceTile->getGrid();
+    m_pProjectile = Arrow::create(m_pSwappyGrid);
+    m_pProjectile->setVisible(false);
     addChild(m_pProjectile);
     m_pSourceTile->addChild(this);
     m_pProjectile->setPosition(PTILE_CENTER(m_pSourceTile));

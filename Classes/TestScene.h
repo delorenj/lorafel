@@ -17,7 +17,6 @@ namespace lorafel {
         static cocos2d::Scene* createScene();
         virtual bool init() override;
         CREATE_FUNC(TestScene);
-
     };
 }
 
