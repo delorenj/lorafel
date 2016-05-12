@@ -5,11 +5,16 @@
 #include "Arrow.h"
 #include "SwappyGridScene.h"
 
-bool lorafel::Arrow::init(SwappyGrid* pGrid) {
+using namespace lorafel;
+
+bool Arrow::init(SwappyGrid* pGrid) {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
-    createWithSpriteFrameName("arrow.png");
+    if(!initWithSpriteFrameName("arrow.png")) {
+        return false;
+    }
+
     setAnchorPoint(cocos2d::Vec2(0.5f, 0.0f));
 
     m_pSwappyGrid = pGrid;
@@ -17,10 +22,9 @@ bool lorafel::Arrow::init(SwappyGrid* pGrid) {
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(200, 200);
+//    bodyDef.position.Set(200/PTM_RATIO, 200/PTM_RATIO);
     bodyDef.userData = this;
     m_pBody = m_pWorld->CreateBody(&bodyDef);
-
     shape.Set(b2Vec2(0,0), b2Vec2(10,0));
 
     b2FixtureDef fixtureDef;
@@ -33,4 +37,18 @@ bool lorafel::Arrow::init(SwappyGrid* pGrid) {
 
     return true;
 }
+
+void Arrow::setPosition(cocos2d::Vec2 pos) {
+    cocos2d::Sprite::setPosition(pos);
+    m_pBody->SetTransform(b2Vec2(pos.x/PTM_RATIO, pos.y/PTM_RATIO), m_pBody->GetAngle());
+}
+
+void Arrow::setRotation(float degrees) {
+    cocos2d::Sprite::setRotation(degrees);
+    m_pBody->SetTransform(m_pBody->GetPosition(), CC_DEGREES_TO_RADIANS(degrees));
+}
+
+
+
+
 

@@ -28,7 +28,7 @@ bool SwappyGrid::init() {
     /**
      * Create a physics world with no gravity
      */
-    m_pWorld = new b2World(b2Vec2(0, -9));
+    m_pWorld = new b2World(b2Vec2(0, 0));
     m_pWorld->SetAllowSleeping(true);
 
     setName("SwappyGrid");
@@ -777,7 +777,25 @@ cocos2d::Size SwappyGrid::getTileSize() {
 }
 
 void SwappyGrid::UpdatePhysics(float delta) {
+    float dt = 1/60.0f;
+    int velocityIterations = 8;
+    int positionIterations = 1;
 
+    // Instruct the world to perform a single step of simulation. It is
+    // generally best to keep the time step and iterations fixed.
+    m_pWorld->Step(dt, velocityIterations, positionIterations);
+
+    bool blockFound = false;
+
+    // Iterate over the bodies in the physics world
+    for (b2Body* b = m_pWorld->GetBodyList(); b; b = b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            // Synchronize the sprite's position and rotation with the corresponding body
+            cocos2d::Sprite* sprite = (cocos2d::Sprite*) b->GetUserData();
+            sprite->setPosition(cocos2d::Vec2(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO));
+            sprite->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
+        }
+    }
 }
 
 
