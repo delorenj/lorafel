@@ -48,6 +48,13 @@ void Arrow::setRotation(float degrees) {
     m_pBody->SetTransform(m_pBody->GetPosition(), CC_DEGREES_TO_RADIANS(degrees));
 }
 
+void Arrow::fire() {
+    float mag = 10;
+    m_pBody->ApplyLinearImpulse(m_pBody->GetLocalVector(b2Vec2(0,mag)), b2Vec2_zero, true);
+}
+
+
+
 
 
 

@@ -793,7 +793,7 @@ void SwappyGrid::UpdatePhysics(float delta) {
             // Synchronize the sprite's position and rotation with the corresponding body
             cocos2d::Sprite* sprite = (cocos2d::Sprite*) b->GetUserData();
             sprite->setPosition(cocos2d::Vec2(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO));
-            sprite->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
+            sprite->setRotation(CC_RADIANS_TO_DEGREES(b->GetAngle()));
         }
     }
 }

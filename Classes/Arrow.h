@@ -35,6 +35,8 @@ namespace lorafel {
         void setPosition(cocos2d::Vec2 pos);
         void setRotation(float degrees);
 
+        void fire();
+
     protected:
         b2Body* m_pBody;
         b2Fixture* m_pFixture;

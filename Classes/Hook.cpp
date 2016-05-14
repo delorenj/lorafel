@@ -134,19 +134,41 @@ bool Hook::init(lorafel::Tile* pSourceTile) {
 void Hook::addEvents() {
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
-
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         m_pProjectile = Arrow::create(m_pSwappyGrid);
         addChild(m_pProjectile);
-        m_pProjectile->setPosition(convertToNodeSpace(touch->getLocation()));
+        cocos2d::Vec2 p = touch->getLocation();
+        cocos2d::Vec2 mp = cocos2d::Vec2(p.x - m_pSwappyGrid->getTileSize().width/2, p.y - m_pSwappyGrid->getTileSize().width/2);
+        m_pProjectile->setPosition(convertToNodeSpace(p));
+        m_pProjectile->setRotation(getAngleToPoint(-convertToNodeSpace(mp))+90);
         return true;
     };
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-        m_pProjectile->setPosition(convertToNodeSpace(touch->getLocation()));
+        auto p = touch->getLocation();
+        auto mp = cocos2d::Vec2(p.x - m_pSwappyGrid->getTileSize().width/2, p.y - m_pSwappyGrid->getTileSize().width/2);
+        auto ms = cocos2d::Vec2(m_pSwappyGrid->getTileSize().width/2, m_pSwappyGrid->getTileSize().width/2);
+        auto maxDist = 200.0f;
+        auto dist = convertToNodeSpace(p).getDistance(ms);
+        auto angle = getAngleToPoint(-convertToNodeSpace(mp));
+
+        if(dist >= maxDist) {
+
+            m_pProjectile->setPosition(
+                    cocos2d::Vec2(
+                            ms.x-7 - maxDist*sinf(CC_DEGREES_TO_RADIANS(angle+90)),
+                            ms.y-7 - maxDist*cosf(CC_DEGREES_TO_RADIANS(angle+90))
+                    )
+            );
+        } else {
+            m_pProjectile->setPosition(convertToNodeSpace(p));
+        }
+
+        m_pProjectile->setRotation(angle+90);
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+        m_pProjectile->fire();
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
