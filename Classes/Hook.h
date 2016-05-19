@@ -8,6 +8,7 @@
 #include "cocos2d.h"
 #include "Tile.h"
 #include "Arrow.h"
+#include "Rope.h"
 
 namespace lorafel {
     class Hook : public cocos2d::Node {
@@ -37,10 +38,8 @@ namespace lorafel {
         Tile* m_pSourceTile;
         SwappyGrid* m_pSwappyGrid;
         Arrow* m_pProjectile;
+        Rope* m_pRope;
 
-        cocos2d::ParticleSystemQuad* m_pTrajectoryLine1;
-        cocos2d::ParticleSystemQuad* m_pTrajectoryLine2;
-        cocos2d::ClippingRectangleNode* m_pClippingMask;
         cocos2d::DrawNode* m_pDebug;
 
         void hideApparatus();
