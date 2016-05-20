@@ -54,7 +54,7 @@ bool B2DebugDrawLayer::init()
   //////////////////////////////
   // 1. super init first
 
-  if(!CCLayer::init())
+  if(!cocos2d::Node::init())
   {
     return false;
   }
@@ -64,25 +64,24 @@ bool B2DebugDrawLayer::init()
   
   uint32 flags = 0;
   flags += b2Draw::e_shapeBit;
-  flags += b2Draw::e_jointBit;
-  flags += b2Draw::e_aabbBit;
-  flags += b2Draw::e_pairBit;
-  flags += b2Draw::e_centerOfMassBit;
+//  flags += b2Draw::e_jointBit;
+//  flags += b2Draw::e_aabbBit;
+//  flags += b2Draw::e_pairBit;
+//  flags += b2Draw::e_centerOfMassBit;
   mB2DebugDraw->SetFlags(flags);
-  
   return true;
 }
 
 
 
-void B2DebugDrawLayer::draw(Renderer *renderer, const Mat4& transform, bool transformUpdated)
+void B2DebugDrawLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
     //
     // IMPORTANT:
     // This is only for debug purposes
     // It is recommend to disable it
     //
-    Layer::draw(renderer, transform, transformUpdated);
+    cocos2d::Node::draw(renderer, transform, flags);
 
 
     GL::enableVertexAttribs( cocos2d::GL::VERTEX_ATTRIB_FLAG_POSITION );

@@ -28,12 +28,11 @@ THE SOFTWARE.
 #define __B2_DEBUG_DRAW_LAYER_H__
 
 #include "cocos2d.h"
-#include "Box2D/Box2D.h"
 #include "GLES-Render.h"
 
 using namespace cocos2d;
 
-class B2DebugDrawLayer : public Layer
+class B2DebugDrawLayer : public Node
 {
   b2World* mB2World;
   GLESDebugDraw* mB2DebugDraw;
@@ -43,7 +42,7 @@ public:
   B2DebugDrawLayer(b2World* pB2World, float pPtmRatio);
   static B2DebugDrawLayer* create(b2World* pB2World, float pPtmRatio);
   virtual bool init();
-  virtual void draw(Renderer *renderer, const Mat4& transform, bool transformUpdated);
+  virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) override;
     
 protected:
     Mat4 _modelViewMV;

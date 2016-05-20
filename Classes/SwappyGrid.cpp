@@ -29,8 +29,8 @@ bool SwappyGrid::init() {
      * Create a physics world with no gravity
      */
     m_pWorld = new b2World(b2Vec2(0, 0));
-    m_pWorld->SetAllowSleeping(true);
-    addChild(B2DebugDrawLayer::create(m_pWorld, PTM_RATIO), LayerOrder::DEBUG);
+    m_pWorld->SetAllowSleeping(false);
+    addChild(B2DebugDrawLayer::create(m_pWorld, PTM_RATIO), 9999);
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -798,13 +798,11 @@ void SwappyGrid::UpdatePhysics(float delta) {
     }
 }
 
-void SwappyGrid::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) {
-    GL::enableVertexAttribs( GL::VERTEX_ATTRIB_FLAG_POSITION );
-    Director* director = Director::getInstance();
-    CCASSERT(nullptr != director, "Director is null when seting matrix stack");
-    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-    m_pWorld->DrawDebugData();
-    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-}
-
-
+//void SwappyGrid::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) {
+//    GL::enableVertexAttribs( GL::VERTEX_ATTRIB_FLAG_POSITION );
+//    Director* director = Director::getInstance();
+//    CCASSERT(nullptr != director, "Director is null when seting matrix stack");
+//    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+//    m_pWorld->DrawDebugData();
+//    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+//}
