@@ -10,7 +10,7 @@
 #include "PlayerManager.h"
 #include "GameOverUI.h"
 #include "EventDataTile.h"
-#include "GridTransparency.h"
+#include "B2DebugDrawLayer.h"
 
 using namespace lorafel;
 
@@ -30,7 +30,7 @@ bool SwappyGrid::init() {
      */
     m_pWorld = new b2World(b2Vec2(0, 0));
     m_pWorld->SetAllowSleeping(true);
-
+    addChild(B2DebugDrawLayer::create(m_pWorld, PTM_RATIO), LayerOrder::DEBUG);
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -53,10 +53,10 @@ bool SwappyGrid::init() {
     setScale(m_tileScaleFactor);
 
     // Create the debug drawing node
-    m_pDebugDraw = cocos2d::DrawNode::create();
-    m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0, 0));
-    m_pDebugDraw->setPosition(0, 0);
-    addChild(m_pDebugDraw, LayerOrder::DEBUG);
+//    m_pDebugDraw = cocos2d::DrawNode::create();
+//    m_pDebugDraw->setAnchorPoint(cocos2d::Vec2(0, 0));
+//    m_pDebugDraw->setPosition(0, 0);
+//    addChild(m_pDebugDraw, LayerOrder::DEBUG);
 
     // Create the Grid Transparency;
     m_pGridTransparency = new GridTransparency();
@@ -135,7 +135,7 @@ void SwappyGrid::DropTiles() {
         TileQueue* queue = m_pTileDropQueues->at(k);
         if (queue->empty()) continue;
         if (!columnReadyToDropTile(k)) continue;
-        Tile* tile = queue->front();
+        lorafel::Tile* tile = queue->front();
         queue->pop();
         dropTile(k, tile);
     }
@@ -153,7 +153,7 @@ void SwappyGrid::RemoveDeadTiles() {
     }
 
     while (!queue->empty()) {
-        Tile* tile = queue->front();
+        lorafel::Tile* tile = queue->front();
         queue->pop();
         if(tile->getReferenceCount() > 0) tile->release();
         if (tile->getReferenceCount() == 1) removeTile(tile);
@@ -164,7 +164,7 @@ void SwappyGrid::RemoveDeadTiles() {
             auto tile = getTileAt(x, y);
             if (tile == nullptr) {
                 // blank spot. let's fill in the blank
-                    Tile* nextTileAbove = getNextTileAbove(x, y);
+                    lorafel::Tile* nextTileAbove = getNextTileAbove(x, y);
 
                 if (nextTileAbove == nullptr) continue; // nothing to slide down
                 m_pGrid->at(x)->at(nextTileAbove->getGridPos().y) = nullptr;
@@ -175,7 +175,7 @@ void SwappyGrid::RemoveDeadTiles() {
     }
 }
 
-Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
+lorafel::Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
     auto numberOfSlotsToSlideDown = 1;
     auto result = getTileAt(x, y + numberOfSlotsToSlideDown);
     while (result == nullptr && y + numberOfSlotsToSlideDown < NUM_ROWS) {
@@ -499,7 +499,7 @@ void SwappyGrid::setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles) {
     SwappyGrid::m_numberOfFallingTiles = m_numberOfFallingTiles;
 }
 
-Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
+lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
     if (pos.x >= m_pGrid->size()) {
         return nullptr;
     }
@@ -512,7 +512,7 @@ Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
     }
 }
 
-Tile* SwappyGrid::getTileAt(const int x, const int y) const {
+lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y) const {
     return getTileAt(cocos2d::Vec2(x, y));
 }
 
@@ -536,7 +536,7 @@ Level* SwappyGrid::getLevel() {
 }
 
 int SwappyGrid::lowestVacancyInColumn(int i) {
-    Tile* tile;
+    lorafel::Tile* tile;
     int j = 0;
     do {
         tile = getTileAt(i, j++);
@@ -545,7 +545,7 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
     return j - 1;
 }
 
-void SwappyGrid::removeTile(Tile* tile) {
+void SwappyGrid::removeTile(lorafel::Tile* tile) {
     if (tile == nullptr) return;
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
@@ -558,7 +558,7 @@ void SwappyGrid::removeTile(Tile* tile) {
     }
 }
 
-void SwappyGrid::addTileToRemoveQueue(Tile* pTile) {
+void SwappyGrid::addTileToRemoveQueue(lorafel::Tile* pTile) {
     m_pTileRemoveQueue->push(pTile);
 }
 
@@ -576,8 +576,8 @@ int SwappyGrid::getNumberOfRemainingEnemies() {
     return (int) getEnemyTiles().size();
 }
 
-std::set<Tile*> SwappyGrid::getEnemyTiles() {
-    std::set<Tile*> enemies;
+std::set<lorafel::Tile*> SwappyGrid::getEnemyTiles() {
+    std::set<lorafel::Tile*> enemies;
     for (int i = 0; i < NUM_COLUMNS; i++) {
         for (int j = 0; j < NUM_ROWS; j++) {
             auto t = getTileAt(i, j);
@@ -666,11 +666,11 @@ void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
     getLevel()->getTurnManager()->addMove(pMove);
 }
 
-Tile* SwappyGrid::getActivePlayerTile() {
+lorafel::Tile* SwappyGrid::getActivePlayerTile() {
     return m_pActivePlayerTile;
 }
 
-void SwappyGrid::setActivePlayerTile(Tile* pTile) {
+void SwappyGrid::setActivePlayerTile(lorafel::Tile* pTile) {
     m_pActivePlayerTile = pTile;
 }
 
@@ -698,7 +698,7 @@ void SwappyGrid::highlightTiles(TileSet* pSet) {
     }
 }
 
-void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation) {
+void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const lorafel::Tile* tile, cocos2d::Vec2 anchorPos, float rotation) {
     auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
     p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
     p->setTag(Tag::PARTICLE);
@@ -717,7 +717,7 @@ TileGrid* SwappyGrid::getGrid() {
     return m_pGrid;
 }
 
-Tile* SwappyGrid::getRandomEnemy() {
+lorafel::Tile* SwappyGrid::getRandomEnemy() {
     auto numEnemies = getNumberOfRemainingEnemies();
 
     if(numEnemies == 0) return nullptr;
@@ -731,7 +731,7 @@ Tile* SwappyGrid::getRandomEnemy() {
     return *it;
 }
 
-Tile* SwappyGrid::getHeroTile() {
+lorafel::Tile* SwappyGrid::getHeroTile() {
     return PlayerManager::getInstance()->getPlayer()->getTile();
 }
 
@@ -796,6 +796,15 @@ void SwappyGrid::UpdatePhysics(float delta) {
             sprite->setRotation(CC_RADIANS_TO_DEGREES(b->GetAngle()));
         }
     }
+}
+
+void SwappyGrid::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) {
+    GL::enableVertexAttribs( GL::VERTEX_ATTRIB_FLAG_POSITION );
+    Director* director = Director::getInstance();
+    CCASSERT(nullptr != director, "Director is null when seting matrix stack");
+    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+    m_pWorld->DrawDebugData();
+    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }
 
 

@@ -42,5 +42,3 @@ bool SwappyGridScene::init() {
 SwappyGridScene::~SwappyGridScene() {
     CCLOG("~SwappyGridScene()");
 }
-
-

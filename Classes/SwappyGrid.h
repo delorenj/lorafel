@@ -43,6 +43,7 @@ namespace lorafel {
     public:
         virtual ~SwappyGrid();
         bool init() override;
+        void draw(cocos2d::Renderer* renderer, const cocos2d::Mat4& transform, uint32_t flags) override;
         void update(float delta) override;
         void onLevelCleared();
         CREATE_FUNC(SwappyGrid);
