@@ -141,7 +141,7 @@ void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const 
     GLfloat*    glVertices = new GLfloat[vertexCount*2];
     for (int i = 0; i < k_segments; ++i)
     {
-        b2Vec2 v = center + 20 * b2Vec2(cosf(theta), sinf(theta));
+        b2Vec2 v = center + radius * b2Vec2(cosf(theta), sinf(theta));
         glVertices[i*2]=v.x * mRatio;
         glVertices[i*2+1]=v.y * mRatio;
         theta += k_increment;
