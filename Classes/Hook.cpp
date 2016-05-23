@@ -181,7 +181,6 @@ void Hook::showApparatus() {
     auto pos = getParent()->getPosition();
     CCLOG("%f,%f", pos.x, pos.y);
     m_pRope->setPosition(pos);
-//    m_pRope->getBody()->SetTransform(b2Vec2(10,10), );
 }
 
 void Hook::hideApparatus() {

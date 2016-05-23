@@ -5,12 +5,10 @@
 #include "SwappyGrid.h"
 #include "GameStateMachine.h"
 #include "Level.h"
-#include "Globals.h"
 #include "EnemyTile.h"
 #include "PlayerManager.h"
 #include "GameOverUI.h"
 #include "EventDataTile.h"
-#include "B2DebugDrawLayer.h"
 
 using namespace lorafel;
 
@@ -28,8 +26,8 @@ bool SwappyGrid::init() {
     /**
      * Create a physics world with no gravity
      */
-    m_pWorld = new b2World(b2Vec2(0, 0));
-    m_pWorld->SetAllowSleeping(false);
+//    m_pWorld = new b2World(b2Vec2(0, 0));
+//    m_pWorld->SetAllowSleeping(false);
 
     setName("SwappyGrid");
 
@@ -107,13 +105,6 @@ bool SwappyGrid::init() {
             visibleSize.height / 2
     );
 
-    auto dd = B2DebugDrawLayer::create(m_pWorld, PTM_RATIO);
-    dd->setContentSize(getContentSize());
-    dd->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    dd->setPosition(cocos2d::Vec2(origin.x + visibleSize.width / 2 + 228, visibleSize.height / 2 - 80));
-    addChild(dd, 9999);
-
-    CCLOG("%f,%f", dd->getPosition().x, dd->getPosition().y);
     scheduleUpdate();
     return true;
 }
@@ -122,7 +113,7 @@ void SwappyGrid::update(float delta) {
 
 //    DrawDebugData();
 
-    UpdatePhysics(delta);
+//    UpdatePhysics(delta);
 
     RemoveDeadTiles();
 
@@ -784,23 +775,4 @@ cocos2d::Size SwappyGrid::getTileSize() {
 }
 
 void SwappyGrid::UpdatePhysics(float delta) {
-    float dt = 1/60.0f;
-    int velocityIterations = 8;
-    int positionIterations = 1;
-
-    // Instruct the world to perform a single step of simulation. It is
-    // generally best to keep the time step and iterations fixed.
-    m_pWorld->Step(dt, velocityIterations, positionIterations);
-
-    bool blockFound = false;
-
-    // Iterate over the bodies in the physics world
-    for (b2Body* b = m_pWorld->GetBodyList(); b; b = b->GetNext()) {
-        if (b->GetUserData() != NULL) {
-            // Synchronize the sprite's position and rotation with the corresponding body
-            auto node = (cocos2d::Node*) b->GetUserData();
-            node->setPosition(cocos2d::Vec2(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO));
-            node->setRotation(CC_RADIANS_TO_DEGREES(b->GetAngle()));
-        }
-    }
 }

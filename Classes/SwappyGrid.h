@@ -5,7 +5,6 @@
 #ifndef LORAFEL_SWAPPYGRID_H
 #define LORAFEL_SWAPPYGRID_H
 
-#include <external/Box2D/Dynamics/b2World.h>
 #include "cocos2d.h"
 #include "Tile.h"
 #include "StateMachine.h"
@@ -56,7 +55,6 @@ namespace lorafel {
         const cocos2d::Vec2 screenToGrid(cocos2d::Vec2 pos) const;
         const int getTopOffscreenTileSlot() const;
         const cocos2d::Vec2 getTopOfScreen() const;
-        b2World* getPhysicsWorld() const { return m_pWorld; }
         // Grid Data Structure Helpers
         void insertTile(cocos2d::Vec2 pos, Tile*);          // Insert a tile into the grid ds
         void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds
@@ -130,7 +128,6 @@ namespace lorafel {
         std::vector<PlayerMove*> getValidMoves(Tile* pTile);
         void addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation);
         void onGameOver();
-        b2World* m_pWorld;
 
         void UpdatePhysics(float delta);
     };

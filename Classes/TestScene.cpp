@@ -13,7 +13,7 @@
 using namespace lorafel;
 
 cocos2d::Scene* TestScene::createScene() {
-    auto scene = cocos2d::Scene::create();
+    auto scene = cocos2d::Scene::createWithPhysics();
     auto layer = TestScene::create();
     scene->addChild(layer);
     return scene;

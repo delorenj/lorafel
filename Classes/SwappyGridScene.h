@@ -11,7 +11,6 @@
 #include "GridUI.h"
 #include "GridTestUI.h"
 #include "Level.h"
-#include "Box2D/Box2D.h"
 
 namespace lorafel {
     class GridUI;

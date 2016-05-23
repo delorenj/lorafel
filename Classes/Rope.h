@@ -5,11 +5,6 @@
 #ifndef LORAFEL_ROPE_H
 #define LORAFEL_ROPE_H
 
-#include <external/Box2D/Dynamics/b2Body.h>
-#include <external/Box2D/Dynamics/b2World.h>
-#include <external/Box2D/Dynamics/b2Fixture.h>
-#include <external/Box2D/Collision/Shapes/b2EdgeShape.h>
-#include <external/Box2D/Collision/Shapes/b2CircleShape.h>
 #include "SwappyGrid.h"
 
 namespace lorafel {
@@ -33,13 +28,7 @@ namespace lorafel {
             }
         }
 
-        b2Body* m_pBody;
-        b2Fixture* m_pFixture;
-        b2World* m_pWorld;
-        b2CircleShape shape;
         SwappyGrid* m_pSwappyGrid;
-
-        b2Body* getBody();
     };
 }
 
