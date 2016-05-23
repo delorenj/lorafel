@@ -30,7 +30,7 @@ bool SwappyGrid::init() {
      */
     m_pWorld = new b2World(b2Vec2(0, 0));
     m_pWorld->SetAllowSleeping(false);
-    addChild(B2DebugDrawLayer::create(m_pWorld, PTM_RATIO), 9999);
+
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -107,6 +107,13 @@ bool SwappyGrid::init() {
             visibleSize.height / 2
     );
 
+    auto dd = B2DebugDrawLayer::create(m_pWorld, PTM_RATIO);
+    dd->setContentSize(getContentSize());
+    dd->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    dd->setPosition(cocos2d::Vec2(origin.x + visibleSize.width / 2 + 228, visibleSize.height / 2 - 80));
+    addChild(dd, 9999);
+
+    CCLOG("%f,%f", dd->getPosition().x, dd->getPosition().y);
     scheduleUpdate();
     return true;
 }
@@ -791,18 +798,9 @@ void SwappyGrid::UpdatePhysics(float delta) {
     for (b2Body* b = m_pWorld->GetBodyList(); b; b = b->GetNext()) {
         if (b->GetUserData() != NULL) {
             // Synchronize the sprite's position and rotation with the corresponding body
-            cocos2d::Sprite* sprite = (cocos2d::Sprite*) b->GetUserData();
-            sprite->setPosition(cocos2d::Vec2(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO));
-            sprite->setRotation(CC_RADIANS_TO_DEGREES(b->GetAngle()));
+            auto node = (cocos2d::Node*) b->GetUserData();
+            node->setPosition(cocos2d::Vec2(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO));
+            node->setRotation(CC_RADIANS_TO_DEGREES(b->GetAngle()));
         }
     }
 }
-
-//void SwappyGrid::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags) {
-//    GL::enableVertexAttribs( GL::VERTEX_ATTRIB_FLAG_POSITION );
-//    Director* director = Director::getInstance();
-//    CCASSERT(nullptr != director, "Director is null when seting matrix stack");
-//    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-//    m_pWorld->DrawDebugData();
-//    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-//}

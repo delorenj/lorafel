@@ -64,10 +64,10 @@ bool B2DebugDrawLayer::init()
   
   uint32 flags = 0;
   flags += b2Draw::e_shapeBit;
-//  flags += b2Draw::e_jointBit;
-//  flags += b2Draw::e_aabbBit;
-//  flags += b2Draw::e_pairBit;
-//  flags += b2Draw::e_centerOfMassBit;
+  flags += b2Draw::e_jointBit;
+  flags += b2Draw::e_aabbBit;
+  flags += b2Draw::e_pairBit;
+  flags += b2Draw::e_centerOfMassBit;
   mB2DebugDraw->SetFlags(flags);
   return true;
 }
@@ -88,7 +88,6 @@ void B2DebugDrawLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &tr
     Director* director = Director::getInstance();
     CCASSERT(nullptr != director, "Director is null when seting matrix stack");
     director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-
     _modelViewMV = director->getMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 
     _customCommand.init(_globalZOrder);

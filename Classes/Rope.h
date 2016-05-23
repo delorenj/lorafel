@@ -33,13 +33,13 @@ namespace lorafel {
             }
         }
 
-    protected:
-
         b2Body* m_pBody;
         b2Fixture* m_pFixture;
         b2World* m_pWorld;
         b2CircleShape shape;
         SwappyGrid* m_pSwappyGrid;
+
+        b2Body* getBody();
     };
 }
 

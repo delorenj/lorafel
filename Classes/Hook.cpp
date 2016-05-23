@@ -178,6 +178,10 @@ void Hook::addEvents() {
 void Hook::showApparatus() {
     m_pRope = Rope::create(m_pSwappyGrid, 1);
     addChild(m_pRope);
+    auto pos = getParent()->getPosition();
+    CCLOG("%f,%f", pos.x, pos.y);
+    m_pRope->setPosition(pos);
+//    m_pRope->getBody()->SetTransform(b2Vec2(10,10), );
 }
 
 void Hook::hideApparatus() {

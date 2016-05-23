@@ -30,11 +30,16 @@ bool lorafel::Rope::init(SwappyGrid* pGrid, int length) {
 
     for(int i=0; i<length; i++) {
         cocos2d::Sprite* link = cocos2d::Sprite::createWithSpriteFrameName("dot.png");
-        auto pos = convertToNodeSpace(getPosition());
-        m_pBody->SetTransform(b2Vec2((pos.x+100)/PTM_RATIO,(pos.y+100)/PTM_RATIO), m_pBody->GetAngle());
+//        auto pos = getPosition();
+//        m_pBody->SetTransform(b2Vec2((pos.x)/PTM_RATIO,(pos.y)/PTM_RATIO), m_pBody->GetAngle());
         addChild(link);
     }
 
     return true;
 }
+
+b2Body* Rope::getBody() {
+    return m_pBody;
+}
+
 
