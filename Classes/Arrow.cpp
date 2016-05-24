@@ -19,13 +19,24 @@ bool Arrow::init(SwappyGrid* pGrid) {
 
     m_pSwappyGrid = pGrid;
 
+    auto body = cocos2d::PhysicsBody::createBox(
+            cocos2d::Size(getContentSize().width/4, getContentSize().height),
+            cocos2d::PhysicsMaterial(0.05f, 1.0f, 0.0f)
+    );
+
+    body->setGravityEnable(false);
+    body->setDynamic(true);
+    body->setTag(Tag::DRAG_BODY);
+    setPhysicsBody(body);
+
     return true;
 }
 
 
 void Arrow::fire() {
-    float mag = 10;
-//    m_pBody->ApplyLinearImpulse(m_pBody->GetLocalVector(b2Vec2(0,mag)), b2Vec2_zero, true);
+    auto distance = getPosition().getDistanceSq(PTILE_CENTER(getParent()));
+    float mag = 50000 + distance*2;
+    getPhysicsBody()->applyImpulse(getPhysicsBody()->local2World(cocos2d::Vec2(0,mag)));
 }
 
 
