@@ -11,7 +11,7 @@ bool LootTile::init() {
     if(!Tile::init()) {
         return false;
     }
-
+    
     setTag(Tag::LOOT);
     return true;
 }

@@ -144,7 +144,7 @@ private:
 };
 
 /**
- * @brief Presolve value generated when onContactPreSolve called.
+ * @brief Presolve value generated when onContactPostSolve called.
  */
 class CC_DLL PhysicsContactPreSolve
 {
@@ -235,7 +235,7 @@ public:
     std::function<void(PhysicsContact& contact, const PhysicsContactPostSolve& solve)> onContactPostSolve;
     /**
      * @brief It will called at two shapes separated, and only call it once.
-     * onContactBegin and onContactSeparate will called in pairs.
+     * onContactPostSolve and onContactSeparate will called in pairs.
      */
     std::function<void(PhysicsContact& contact)> onContactSeparate;
     

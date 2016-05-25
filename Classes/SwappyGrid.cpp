@@ -105,6 +105,13 @@ bool SwappyGrid::init() {
             visibleSize.height / 2
     );
 
+    //adds physics contact event listener
+    auto contactListener = cocos2d::EventListenerPhysicsContact::create();
+    contactListener->onContactPostSolve = CC_CALLBACK_1(SwappyGrid::onContactPostSolve, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+
+//    schedule(CC_SCHEDULE_SELECTOR(PhysicsDemoCollisionProcessing::tick), 0.3f);
+
     scheduleUpdate();
     return true;
 }
@@ -776,3 +783,13 @@ cocos2d::Size SwappyGrid::getTileSize() {
 
 void SwappyGrid::UpdatePhysics(float delta) {
 }
+
+bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
+    auto b1 = contact.getShapeA()->getBody();
+    auto b2 = contact.getShapeB()->getBody();
+    auto j = cocos2d::PhysicsJointFixed::construct(b1,b2, cocos2d::Vec2(0.5f,0.5f));
+    j->setEnable(true);
+    return true;
+}
+
+

@@ -130,6 +130,7 @@ namespace lorafel {
         void onGameOver();
 
         void UpdatePhysics(float delta);
+        bool onContactPostSolve(cocos2d::PhysicsContact& contact);
     };
 }
 

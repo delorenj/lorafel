@@ -27,6 +27,9 @@ bool Arrow::init(SwappyGrid* pGrid) {
     body->setGravityEnable(false);
     body->setDynamic(true);
     body->setTag(Tag::DRAG_BODY);
+    body->setCategoryBitmask(0x01);
+    body->setCollisionBitmask(0x03);
+    body->setContactTestBitmask(0xFFFFFF);
     setPhysicsBody(body);
 
     return true;

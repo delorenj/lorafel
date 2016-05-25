@@ -22,6 +22,7 @@ namespace lorafel {
                 initOptions();
                 addEvents();
                 addStatResult(new XpStatResult(2));
+
                 return true;
             }
             return false;

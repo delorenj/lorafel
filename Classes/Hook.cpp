@@ -141,7 +141,6 @@ void Hook::addEvents() {
         cocos2d::Vec2 mp = cocos2d::Vec2(p.x - m_pSwappyGrid->getTileSize().width/2, p.y - m_pSwappyGrid->getTileSize().width/2);
         m_pProjectile->setPosition(convertToNodeSpace(p));
         m_pProjectile->setRotation(getAngleToPoint(-convertToNodeSpace(mp))+90);
-        showApparatus();
         return true;
     };
 
