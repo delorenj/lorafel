@@ -107,7 +107,7 @@ bool SwappyGrid::init() {
 
     //adds physics contact event listener
     auto contactListener = cocos2d::EventListenerPhysicsContact::create();
-    contactListener->onContactPostSolve = CC_CALLBACK_1(SwappyGrid::onContactPostSolve, this);
+    contactListener->onContactPreSolve = CC_CALLBACK_1(SwappyGrid::onContactPostSolve, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
 //    schedule(CC_SCHEDULE_SELECTOR(PhysicsDemoCollisionProcessing::tick), 0.3f);
@@ -787,9 +787,38 @@ void SwappyGrid::UpdatePhysics(float delta) {
 bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
     auto b1 = contact.getShapeA()->getBody();
     auto b2 = contact.getShapeB()->getBody();
-    auto j = cocos2d::PhysicsJointFixed::construct(b1,b2, cocos2d::Vec2(0.5f,0.5f));
-    j->setEnable(true);
+
+    /**
+     * If both bodies are supposed to stick together,
+     * then disable and remove the physics body. Then
+     * fire the post-sticky callback
+     */
+    if((b1->getTag() == Tag::ARROW && b2->getTag() == Tag::HOOKABLE_BODY) || (b2->getTag() == Tag::ARROW && b1->getTag() == Tag::HOOKABLE_BODY)) {
+
+        auto item = b1->getTag() == Tag::HOOKABLE_BODY ? b1 : b2;
+
+        b1->setEnabled(false);
+        b1->removeFromWorld();
+        b2->setEnabled(false);
+        b2->removeFromWorld();
+
+        onHooked(static_cast<cocos2d::Sprite*>(item->getNode()));
+    }
+
     return true;
 }
+
+void SwappyGrid::onHooked(cocos2d::Sprite* pSprite) {
+    auto scale = cocos2d::ScaleBy::create(0.5f, 3.0);
+
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+    });
+
+    auto sequence = cocos2d::Sequence::create(scale, callback, NULL);
+
+    pSprite->runAction(sequence);
+}
+
+
 
 

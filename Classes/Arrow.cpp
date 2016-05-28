@@ -21,12 +21,12 @@ bool Arrow::init(SwappyGrid* pGrid) {
 
     auto body = cocos2d::PhysicsBody::createBox(
             cocos2d::Size(getContentSize().width/4, getContentSize().height),
-            cocos2d::PhysicsMaterial(0.05f, 1.0f, 0.0f)
+            cocos2d::PhysicsMaterial(0.05f, 0.0f, 0.0f)
     );
 
     body->setGravityEnable(false);
     body->setDynamic(true);
-    body->setTag(Tag::DRAG_BODY);
+    body->setTag(Tag::ARROW);
     body->setCategoryBitmask(0x01);
     body->setCollisionBitmask(0x03);
     body->setContactTestBitmask(0xFFFFFF);

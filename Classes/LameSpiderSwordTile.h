@@ -26,12 +26,12 @@ namespace lorafel {
                 setGlow(Glow::GREEN);
 
                 auto body = cocos2d::PhysicsBody::createBox(
-                        cocos2d::Size(getContentSize().width, getContentSize().height),
-                        cocos2d::PhysicsMaterial(0.05f, 1.0f, 0.0f)
+                        cocos2d::Size(getContentSize().width/4, getContentSize().height),
+                        cocos2d::PhysicsMaterial(1.0f, 0.0f, 0.0f)
                 );
 
                 body->setDynamic(false);
-                body->setTag(Tag::DRAG_BODY);
+                body->setTag(Tag::HOOKABLE_BODY);
                 body->setCategoryBitmask(0x02);
                 body->setCollisionBitmask(0x01);
                 body->setContactTestBitmask(0xFFFFFF);

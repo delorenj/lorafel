@@ -62,7 +62,8 @@ namespace lorafel {
         static const int LOOT = 9;
         static const int GLOW = 10;
         static const int TOGGLE_ACTION_TILE = 11;
-        static const int DRAG_BODY = 12;
+        static const int HOOKABLE_BODY = 12;
+        static const int ARROW = 13;
     };
 
     struct LayerOrder {
