@@ -370,8 +370,6 @@ void Tile::onHooked() {
     auto moveAndAddToInventoryEase = cocos2d::EaseSineInOut::create(moveAndAddToInventory->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        remove();
-        GameStateMachine::getInstance()->setState<TileRemovedState>();
 
     });
 

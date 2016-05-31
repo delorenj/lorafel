@@ -33,6 +33,7 @@ namespace lorafel {
 
         void addEvents();
         void setGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
+        void onArrowTimeout(float dt);
 
     protected:
         Tile* m_pSourceTile;

@@ -185,6 +185,12 @@ void Hook::showApparatus() {
 void Hook::hideApparatus() {
 }
 
+void Hook::onArrowTimeout(float dt) {
+    auto state = GameStateMachine::getInstance()->getState();
+    if(state->getName() == "HookFireStartState") {
+        GameStateMachine::getInstance()->setState<IdleState>();
+    }
+}
 
 
 

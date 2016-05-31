@@ -18,7 +18,7 @@ namespace lorafel {
         virtual void run();
         virtual void cancel();
         virtual bool isValid();
-        
+
     protected:
         Arrow* m_pArrow;
     };
