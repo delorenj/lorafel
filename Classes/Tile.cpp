@@ -363,10 +363,16 @@ void Tile::onHooked() {
     auto hover = cocos2d::MoveBy::create(0.9f, cocos2d::Vec2(0, 15.0f));
     auto initialPopAndScale = cocos2d::Spawn::createWithTwoActions(scaleEase, hover);
     auto delay = cocos2d::DelayTime::create(0.1f);
-    auto moveAndAddToInventory = cocos2d::MoveTo::create(0.75f, m_pSwappyGrid->convertToNodeSpace(cocos2d::Vec2(xpBarPos.x+xpBar->getContentSize().width, xpBarPos.y)));
+    auto moveAndAddToInventory = cocos2d::MoveTo::create(0.75f, m_pSwappyGrid->convertToNodeSpace(cocos2d::Vec2(
+            xpBarPos.x+xpBar->getContentSize().width/2,
+            xpBarPos.y-getContentSize().height))
+    );
     auto moveAndAddToInventoryEase = cocos2d::EaseSineInOut::create(moveAndAddToInventory->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        remove();
+        GameStateMachine::getInstance()->setState<TileRemovedState>();
+
     });
 
     auto sequence = cocos2d::Sequence::create(

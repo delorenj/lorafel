@@ -13,6 +13,7 @@
 #include "CarrotTile.h"
 #include "MeleeAttackTile.h"
 #include "MoneyBagTile.h"
+#include "LameSpiderSwordTile.h"
 #include "StickMan.h"
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
@@ -25,6 +26,7 @@ namespace lorafel {
 #define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->create());
 #define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->create());
 #define STICKMAN col->emplace_back(StickMan::create());
+#define LAMESWORD col->emplace_back(LameSpiderSwordTile::create());
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
     class Level__TestLevelFour : public SeededLevel {
@@ -132,7 +134,7 @@ namespace lorafel {
 
                 // Col7
                 col = new TileColumn();
-                AVOCADO CARROT CARROT AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
+                LAMESWORD CARROT CARROT AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col8

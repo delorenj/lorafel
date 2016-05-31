@@ -57,6 +57,7 @@
 		3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DDB9CD851C38F804AA16 /* Rope.cpp */; };
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
 		3167D5CEFCFD7C8EAF2759A3 /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
+		3167D5DBFCBCFCAFC915D317 /* HookAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */; };
 		3167D606ED8469EF170CDF8B /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167D64077AEEE55678E4EFD /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
@@ -93,6 +94,7 @@
 		3167DB04447FED7FAB894B4B /* StatGuage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */; };
 		3167DB6EC55B7FCDB9070C51 /* ToggleActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF458FA2E520FB3CED3C /* ToggleActionTile.cpp */; };
 		3167DBB09AD123F6B5333418 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
+		3167DBD651952EA5C9DA2349 /* HookAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */; };
 		3167DC57B5E53F1FA8600089 /* ToggleActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF458FA2E520FB3CED3C /* ToggleActionTile.cpp */; };
 		3167DC654406DD3D7D005C1B /* LootTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D39657152A6F3BCEEF46 /* LootTile.cpp */; };
 		3167DC66920A4A70EA6E9678 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
@@ -338,7 +340,9 @@
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
 		3167DB81C65E9CCE8D2657AF /* ActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTile.h; sourceTree = "<group>"; };
 		3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragDropSwapPlayerMove.cpp; sourceTree = "<group>"; };
+		3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HookAction.cpp; sourceTree = "<group>"; };
 		3167DBEE19A2E31B3DF46261 /* Hook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hook.cpp; sourceTree = "<group>"; };
+		3167DC04D32A0D61C59F11A1 /* HookAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookAction.h; sourceTree = "<group>"; };
 		3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameSettings.cpp; sourceTree = "<group>"; };
 		3167DC523587BA4796E2907F /* Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rope.h; sourceTree = "<group>"; };
 		3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomAIStrategy.cpp; sourceTree = "<group>"; };
@@ -728,6 +732,8 @@
 				3167DE8C1E9C79420C008807 /* Arrow.h */,
 				3167DDB9CD851C38F804AA16 /* Rope.cpp */,
 				3167DC523587BA4796E2907F /* Rope.h */,
+				3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */,
+				3167DC04D32A0D61C59F11A1 /* HookAction.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -991,6 +997,7 @@
 				3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */,
 				3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */,
 				3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */,
+				3167DBD651952EA5C9DA2349 /* HookAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1062,7 @@
 				3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */,
 				3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */,
 				3167D3E14475BF4997E7690B /* Rope.cpp in Sources */,
+				3167D5DBFCBCFCAFC915D317 /* HookAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

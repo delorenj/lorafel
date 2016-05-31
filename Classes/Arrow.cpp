@@ -4,6 +4,7 @@
 
 #include "Arrow.h"
 #include "SwappyGridScene.h"
+#include "HookAction.h"
 
 using namespace lorafel;
 
@@ -37,10 +38,23 @@ bool Arrow::init(SwappyGrid* pGrid) {
 
 
 void Arrow::fire() {
-    auto distance = getPosition().getDistanceSq(PTILE_CENTER(getParent()));
-    float mag = 50000 + distance*2;
-    getPhysicsBody()->applyImpulse(getPhysicsBody()->local2World(cocos2d::Vec2(0,mag)));
+    auto move = new HookAction(m_pSwappyGrid, this);
+    m_pSwappyGrid->executePlayerMove(move);
 }
+
+void Arrow::onHooked() {
+    auto p = cocos2d::ParticleFlower::create();
+    auto hook = getParent();
+    auto tile = static_cast<Tile*>(hook->getParent());
+    auto pos = tile->convertToWorldSpace(hook->convertToWorldSpace(getPosition()));
+    p->setPosition(m_pSwappyGrid->convertToNodeSpace(pos));
+    p->setDuration(0.3f);
+    p->setAutoRemoveOnFinish(true);
+    m_pSwappyGrid->addChild(p);
+    removeFromParentAndCleanup(true);
+}
+
+
 
 
 

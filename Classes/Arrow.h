@@ -30,6 +30,8 @@ namespace lorafel {
 
         void fire();
 
+        void onHooked();
+
     protected:
         SwappyGrid* m_pSwappyGrid;
     };

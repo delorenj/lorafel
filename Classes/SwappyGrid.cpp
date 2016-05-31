@@ -551,9 +551,7 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
 }
 
 void SwappyGrid::removeTile(lorafel::Tile* tile) {
-    if (tile == nullptr) return;
-    auto pos = tile->getGridPos();
-    m_pGrid->at(pos.x)->at(pos.y) = nullptr;
+    removeTileFromGrid(tile);
 
     /**
      * Don't remove Hero tile. Causes some shit!
@@ -562,6 +560,19 @@ void SwappyGrid::removeTile(lorafel::Tile* tile) {
         removeChild(tile);
     }
 }
+
+/**
+ * This removes the tile only from the data structure. This
+ * allows the grid to continue dropping tiles while leaving
+ * the sprite hanging around for animations and stuff
+ */
+void SwappyGrid::removeTileFromGrid(Tile* tile) {
+    if (tile == nullptr) return;
+    auto pos = tile->getGridPos();
+    m_pGrid->at(pos.x)->at(pos.y) = nullptr;
+}
+
+
 
 void SwappyGrid::addTileToRemoveQueue(lorafel::Tile* pTile) {
     m_pTileRemoveQueue->push(pTile);
@@ -796,11 +807,15 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
     if((b1->getTag() == Tag::ARROW && b2->getTag() == Tag::HOOKABLE_BODY) || (b2->getTag() == Tag::ARROW && b1->getTag() == Tag::HOOKABLE_BODY)) {
 
         auto item = b1->getTag() == Tag::HOOKABLE_BODY ? b1 : b2;
+        auto projectile = b1->getTag() == Tag::HOOKABLE_BODY ? b2 : b1;
 
         b1->setEnabled(false);
         b1->removeFromWorld();
         b2->setEnabled(false);
         b2->removeFromWorld();
+
+        Arrow* arrow = static_cast<Arrow*>(projectile->getNode());
+        arrow->onHooked();
 
         Tile* tile = static_cast<Tile*>(item->getNode());
         tile->onHooked();
@@ -808,6 +823,7 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
 
     return true;
 }
+
 
 
 

@@ -57,8 +57,9 @@ namespace lorafel {
         const cocos2d::Vec2 getTopOfScreen() const;
         // Grid Data Structure Helpers
         void insertTile(cocos2d::Vec2 pos, Tile*);          // Insert a tile into the grid ds
-        void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds
-        void removeTile(Tile* tile);                        // Remove a tile from the grid ds
+        void removeTile(cocos2d::Vec2);                     // Remove a tile from the grid ds and cleanup
+        void removeTile(Tile* tile);                        // Remove a tile from the grid ds and cleanup
+        void removeTileFromGrid(Tile* tile);                // Remove a tile from the grid ds
         void swapTiles(Tile* pTile, cocos2d::Vec2 vec2);    // Swap tiles using tile and vec
         void swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2); // Swap tiles using two positions
         TileSwapEventData* getTileSwapEventData() const;
