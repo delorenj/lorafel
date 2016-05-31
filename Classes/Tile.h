@@ -94,6 +94,8 @@ namespace lorafel {
 
         TileConfigs* getLoot();
 
+        void onHooked();
+
     protected:
         std::string m_tileName;
         SwappyGrid* m_pSwappyGrid;

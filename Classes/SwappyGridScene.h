@@ -18,6 +18,7 @@ namespace lorafel {
     public:
         virtual bool init() override;
         virtual ~SwappyGridScene();
+        GridUI* getGridUI() { return m_pGridUI; }
 
     protected:
         cocos2d::Sprite* m_pBackground;

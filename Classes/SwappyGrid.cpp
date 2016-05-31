@@ -802,21 +802,11 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
         b2->setEnabled(false);
         b2->removeFromWorld();
 
-        onHooked(static_cast<cocos2d::Sprite*>(item->getNode()));
+        Tile* tile = static_cast<Tile*>(item->getNode());
+        tile->onHooked();
     }
 
     return true;
-}
-
-void SwappyGrid::onHooked(cocos2d::Sprite* pSprite) {
-    auto scale = cocos2d::ScaleBy::create(0.5f, 3.0);
-
-    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-    });
-
-    auto sequence = cocos2d::Sequence::create(scale, callback, NULL);
-
-    pSprite->runAction(sequence);
 }
 
 

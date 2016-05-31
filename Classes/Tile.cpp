@@ -12,6 +12,7 @@
 #include "Level.h"
 #include "Globals.h"
 #include "LootFactory.h"
+#include "SwappyGridScene.h"
 
 using namespace lorafel;
 
@@ -347,5 +348,38 @@ Tile* Tile::generateLootTile() {
 TileConfigs* Tile::getLoot() {
     return m_pLoot;
 }
+
+void Tile::onHooked() {
+    auto swappyGridScene = static_cast<SwappyGridScene*>(m_pSwappyGrid->getParent());
+    auto ui = swappyGridScene->getGridUI();
+    auto xpBar = static_cast<XpUI*>(ui->getChildByName("XpBar"));
+    auto xpBarPos = xpBar->getPosition();
+
+    setAnchorPoint(cocos2d::Vec2(0.5,0));
+    setPosition(cocos2d::Vec2(getPosition().x + m_pSwappyGrid->getTileSize().width/2, getPosition().y));
+
+    auto scale = cocos2d::ScaleBy::create(0.9f, 1.5);
+    auto scaleEase = cocos2d::EaseElasticOut::create(scale->clone());
+    auto hover = cocos2d::MoveBy::create(0.9f, cocos2d::Vec2(0, 15.0f));
+    auto initialPopAndScale = cocos2d::Spawn::createWithTwoActions(scaleEase, hover);
+    auto delay = cocos2d::DelayTime::create(0.1f);
+    auto moveAndAddToInventory = cocos2d::MoveTo::create(0.75f, m_pSwappyGrid->convertToNodeSpace(cocos2d::Vec2(xpBarPos.x+xpBar->getContentSize().width, xpBarPos.y)));
+    auto moveAndAddToInventoryEase = cocos2d::EaseSineInOut::create(moveAndAddToInventory->clone());
+
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+    });
+
+    auto sequence = cocos2d::Sequence::create(
+            initialPopAndScale,
+            delay,
+            moveAndAddToInventoryEase,
+            callback,
+            NULL
+    );
+
+    runAction(sequence);
+}
+
+
 
 

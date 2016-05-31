@@ -131,8 +131,6 @@ namespace lorafel {
 
         void UpdatePhysics(float delta);
         bool onContactPostSolve(cocos2d::PhysicsContact& contact);
-
-        void onHooked(cocos2d::Sprite* pSprite);
     };
 }
 
