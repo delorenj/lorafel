@@ -170,7 +170,20 @@ Tile* Tile::getRight() const {
 }
 
 const cocos2d::Vec2 Tile::getGridPos() const {
-    return m_pSwappyGrid->screenToGrid(getPosition());
+    /**
+     * Loot animations require a middle-bottom anchor
+     * point to scale properly. We need to take that
+     * into account when getting the tile column
+     */
+    auto ap = getAnchorPoint();
+
+    CCASSERT(ap == cocos2d::Vec2::ANCHOR_BOTTOM_LEFT || ap == cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM, "Tile anchor point not supported");
+
+    if(ap == cocos2d::Vec2::ANCHOR_MIDDLE_BOTTOM) {
+        return m_pSwappyGrid->screenToGrid(cocos2d::Vec2(getPosition().x - getContentSize().width/2, getPosition().y));
+    } else{
+        return m_pSwappyGrid->screenToGrid(getPosition());
+    }
 }
 
 std::string Tile::getVisitCountAsString() {
