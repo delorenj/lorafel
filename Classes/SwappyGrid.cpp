@@ -9,6 +9,7 @@
 #include "PlayerManager.h"
 #include "GameOverUI.h"
 #include "EventDataTile.h"
+#include "EventDataString.h"
 
 using namespace lorafel;
 
@@ -110,6 +111,14 @@ bool SwappyGrid::init() {
     contactListener->onContactPreSolve = CC_CALLBACK_1(SwappyGrid::onContactPostSolve, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
+    auto actionBarEventListener = cocos2d::EventListenerCustom::create("ToggleAction", [=](cocos2d::EventCustom* event) {
+        EventDataString* data = static_cast<EventDataString*>(event->getUserData());
+        m_currentSelectedAction = data->val;
+        CCLOG("joe: %s", m_currentSelectedAction);
+    });
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(actionBarEventListener, this);
+
 //    schedule(CC_SCHEDULE_SELECTOR(PhysicsDemoCollisionProcessing::tick), 0.3f);
 
     scheduleUpdate();
@@ -153,7 +162,7 @@ void SwappyGrid::RemoveDeadTiles() {
     TileQueue* queue = m_pTileRemoveQueue;
 
     if (queue->empty() && getNumberOfFallingTiles() == 0) {
-        GameStateMachine::getInstance()->setState<IdleState>();
+        setIdleState();
         return;
     }
 
@@ -273,7 +282,7 @@ void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
         if (m_pGameStateMachine->getState()->getName() == "TileSwappingStartState") {
             m_pGameStateMachine->enterState<TileSwappingEndState>();
         } else {
-            m_pGameStateMachine->setState<IdleState>();
+            setIdleState();
         }
 
     });
@@ -449,13 +458,13 @@ void SwappyGrid::ProcessMatches() {
         for (auto match : matches) {
             match->run();
         }
-        GameStateMachine::getInstance()->enterState<IdleState>();
+        setIdleState();
     } else if(!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
         /**
          * If the player clicked on a consumable, process that
          * as a move here
          */
-        GameStateMachine::getInstance()->enterState<IdleState>();
+        setIdleState();
 
     } else if (!m_pMoveStack->empty() && !m_pMoveStack->top()->isMatched()) {
         // Only revert tiles when no match is found AND the match was
@@ -469,7 +478,7 @@ void SwappyGrid::ProcessMatches() {
             m_pMoveStack->pop();
             playerMove->cancel();
         } else {
-            GameStateMachine::getInstance()->enterState<IdleState>();
+            setIdleState();
         }
 
     } else if (m_pLevel->isCleared()) {
@@ -477,7 +486,7 @@ void SwappyGrid::ProcessMatches() {
         // If so, fire off the end level state
         onLevelCleared();
     } else {
-        GameStateMachine::getInstance()->enterState<IdleState>();
+        setIdleState();
     }
 }
 
@@ -623,7 +632,7 @@ void SwappyGrid::ProcessTurnManager() {
      * turn is the ENEMY, transition to enemy turn state and
      * and don't allow the HERO to make any moves until 'idle' again
      */
-    if (state->getName() == "IdleState") {
+    if (state->getName() == "IdleState" || state->getName() == "IdleHookModeState") {
         /*
          * If it's game over, then there are no more
          * turns to manager
@@ -795,9 +804,6 @@ cocos2d::Size SwappyGrid::getTileSize() {
     return m_tileSize;
 }
 
-void SwappyGrid::UpdatePhysics(float delta) {
-}
-
 bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
     auto b1 = contact.getShapeA()->getBody();
     auto b2 = contact.getShapeB()->getBody();
@@ -826,6 +832,21 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
 
     return true;
 }
+
+/**
+ * Setting the idle state is special since there are different
+ * idle states depending on which action the player last had
+ * selected.
+ */
+void SwappyGrid::setIdleState() {
+    if(std::strcmp(m_currentSelectedAction,"Hook") == 0) {
+        GameStateMachine::getInstance()->setState<IdleHookModeState>();
+    } else {
+        GameStateMachine::getInstance()->setState<IdleState>();
+    }
+}
+
+
 
 
 

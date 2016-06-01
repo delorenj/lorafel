@@ -89,6 +89,7 @@ namespace lorafel {
         void initGameOverScreen(float dt);
         std::set<Tile*> getEnemyTilesFromDropQueue();
         bool isPointInsideGrid(cocos2d::Vec2 pos);
+        void setIdleState();
 
     protected:
         Level* m_pLevel;
@@ -109,6 +110,7 @@ namespace lorafel {
         TileSwapEventData* m_pTileSwapEventData;
         Tile* m_pActivePlayerTile;
         int m_currentTouchId;
+        const char* m_currentSelectedAction;
 
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
@@ -129,8 +131,6 @@ namespace lorafel {
         std::vector<PlayerMove*> getValidMoves(Tile* pTile);
         void addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation);
         void onGameOver();
-
-        void UpdatePhysics(float delta);
         bool onContactPostSolve(cocos2d::PhysicsContact& contact);
     };
 }

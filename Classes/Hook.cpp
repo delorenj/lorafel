@@ -135,13 +135,26 @@ void Hook::addEvents() {
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        m_pProjectile = Arrow::create(m_pSwappyGrid);
-        addChild(m_pProjectile);
-        cocos2d::Vec2 p = touch->getLocation();
-        cocos2d::Vec2 mp = cocos2d::Vec2(p.x - m_pSwappyGrid->getTileSize().width/2, p.y - m_pSwappyGrid->getTileSize().width/2);
-        m_pProjectile->setPosition(convertToNodeSpace(p));
-        m_pProjectile->setRotation(getAngleToPoint(-convertToNodeSpace(mp))+90);
-        return true;
+        auto state = (GameState*) GameStateMachine::getInstance()->getState();
+        if(state->getName() != "IdleHookModeState") {
+            return false;
+        }
+        cocos2d::Vec2 p = m_pSwappyGrid->convertToNodeSpace(touch->getLocation());
+        cocos2d::Rect rect = m_pSourceTile->getBoundingBox();
+        m_pSwappyGrid->setCurrentTouchId(touch->_ID);
+
+        if(rect.containsPoint(p)) {
+
+            m_pProjectile = Arrow::create(m_pSwappyGrid);
+            addChild(m_pProjectile);
+            cocos2d::Vec2 p = touch->getLocation();
+            cocos2d::Vec2 mp = cocos2d::Vec2(p.x - m_pSwappyGrid->getTileSize().width / 2, p.y - m_pSwappyGrid->getTileSize().width / 2);
+            m_pProjectile->setPosition(convertToNodeSpace(p));
+            m_pProjectile->setRotation(getAngleToPoint(-convertToNodeSpace(mp)) + 90);
+            return true;
+        }
+
+        return false;
     };
 
     listener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
@@ -188,7 +201,7 @@ void Hook::hideApparatus() {
 void Hook::onArrowTimeout(float dt) {
     auto state = GameStateMachine::getInstance()->getState();
     if(state->getName() == "HookFireStartState") {
-        GameStateMachine::getInstance()->setState<IdleState>();
+        GameStateMachine::getInstance()->setState<IdleHookModeState>();
     }
 }
 
