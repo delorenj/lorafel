@@ -370,7 +370,9 @@ void Tile::onHooked() {
     auto moveAndAddToInventoryEase = cocos2d::EaseSineInOut::create(moveAndAddToInventory->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-
+        auto tile = static_cast<Tile*>(sender);
+        tile->remove();
+        GameStateMachine::getInstance()->setState<TileRemovedState>();
     });
 
     auto sequence = cocos2d::Sequence::create(
@@ -381,6 +383,13 @@ void Tile::onHooked() {
             NULL
     );
 
+    /**
+     * Need to remove tile from grid before animation starts
+     * because the grid location is mapped by the current
+     * physical location on the SwappyGrid
+     */
+    GameStateMachine::getInstance()->setState<WaitForAnimationState>();
+    m_pSwappyGrid->removeTileFromGrid(this);
     runAction(sequence);
 }
 

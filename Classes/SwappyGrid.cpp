@@ -191,6 +191,9 @@ lorafel::Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
 }
 
 void SwappyGrid::ReplenishTiles() {
+    GET_GAME_STATE
+    if(state->getName() == "WaitForAnimationState") return;
+
     if(m_pActivePlayerTile == nullptr)
         m_pActivePlayerTile = m_pLevel->getTurnManager()->getNextPlayerTile();
 

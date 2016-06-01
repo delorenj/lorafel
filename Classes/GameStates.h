@@ -73,6 +73,11 @@ namespace lorafel {
         virtual bool isBusy() const override { return true; }
     };
 
+    class WaitForAnimationState : public BusyState {
+    public:
+        const std::string getName() const override { return "WaitForAnimationState"; }
+    };
+
     class TileTouchState : public BusyState {
     public:
         virtual const std::string getName() const override { return "TileTouchState"; }
