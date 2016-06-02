@@ -23,6 +23,7 @@ bool SwappyGrid::init() {
     m_pMoveStack = new std::stack<PlayerMove*>();
     m_pTileMatcher = new TileMatcher(this);
     m_pTileMatcher->setDebugDraw(false);
+    m_currentSelectedAction = "Move";
 
     /**
      * Create a physics world with no gravity
@@ -458,7 +459,6 @@ void SwappyGrid::ProcessMatches() {
         for (auto match : matches) {
             match->run();
         }
-        setIdleState();
     } else if(!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
         /**
          * If the player clicked on a consumable, process that
