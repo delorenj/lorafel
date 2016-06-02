@@ -134,7 +134,7 @@ namespace lorafel {
 
                 // Col7
                 col = new TileColumn();
-                LAMESWORD CARROT CARROT AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
+                LAMESWORD CARROT GRAPE AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col8

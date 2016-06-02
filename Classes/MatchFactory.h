@@ -25,7 +25,13 @@ namespace lorafel {
         virtual Match* create(std::set<Tile*>& pTileSet) {
             Match* match;
             CCLOG("tileset size: %d", pTileSet.size());
-            if(pTileSet.size() >= 5) {
+
+            /**
+             * Here, we don't want to only check if the set
+             * is >=5 because we also want the 5 to be consecutive
+             * tiles.
+             */
+            if(pTileSet.size() >= 5 && ) {
                 /**
                  * A special, cool match that drops
                  * snaggable loot !
