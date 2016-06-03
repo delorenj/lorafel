@@ -7,11 +7,13 @@
 
 #include "SwappyGrid.h"
 #include "Match.h"
+#include "MatchSet.h"
 #include <set>
 
 namespace lorafel {
     class SwappyGrid;
     class Match;
+    class MatchSet;
     class TileMatcher {
     public:
         TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
@@ -27,9 +29,16 @@ namespace lorafel {
         static const int DEBUG_TAG = 15515;
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
-        bool m_debugDraw = 0;
-        bool _findMatch(Tile *pTile, std::set<Tile*> &inOutResult, int order);
+        bool m_debugDraw = 1;
+        bool _findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz);
 
+        bool _findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult, int i);
+
+        bool _findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, int order);
+
+        void debugDraw(Tile* pTile) const;
+
+        void createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSets) const;
     };
 }
 

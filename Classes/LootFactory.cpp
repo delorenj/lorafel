@@ -50,9 +50,9 @@ Tile* LootFactory::createTile(Tile* pTile) {
     allLoot->insert(allLoot->end(), tileLoot->begin(), tileLoot->end());
 
     auto tile = createTile(allLoot);
-    CC_SAFE_DELETE(xpLoot);
-    CC_SAFE_DELETE(levelLoot);
-    CC_SAFE_DELETE(tileLoot);
+//    CC_SAFE_DELETE(xpLoot);
+//    CC_SAFE_DELETE(levelLoot);
+//    CC_SAFE_DELETE(tileLoot);
     return tile;
 }
 

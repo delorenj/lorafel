@@ -167,11 +167,14 @@ void SwappyGrid::RemoveDeadTiles() {
         return;
     }
 
+    std::set<lorafel::Tile*> removed;
     while (!queue->empty()) {
         lorafel::Tile* tile = queue->front();
         queue->pop();
-        if(tile->getReferenceCount() > 0) tile->release();
-        if (tile->getReferenceCount() == 1) removeTile(tile);
+        auto it = removed.find(tile);
+        if(it != removed.end()) continue;
+        removed.insert(tile);
+        removeTile(tile);
     }
 
     for (auto x = 0; x < NUM_COLUMNS; x++) {
