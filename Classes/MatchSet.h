@@ -8,9 +8,14 @@
 #include "Match.h"
 
 namespace lorafel {
-    class MatchSet : public std::set<Match*> {
+    class MatchSet {
     public:
-        MatchSet& unique();
+        std::set<Match*> unique();
+
+        std::pair<std::set<Match*>::iterator,bool> insert(Match* match);
+
+    protected:
+        std::set<Match*> m_set;
     };
 }
 
