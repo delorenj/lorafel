@@ -10,12 +10,12 @@
 namespace lorafel {
     class MatchSet {
     public:
-        std::set<Match*> unique();
+        std::set<lorafel::Match*> unique();
 
-        std::pair<std::set<Match*>::iterator,bool> insert(Match* match);
+        std::pair<std::set<lorafel::Match*>::iterator,bool> insert(lorafel::Match* match);
 
     protected:
-        std::set<Match*> m_set;
+        std::set<lorafel::Match*> m_set;
     };
 }
 

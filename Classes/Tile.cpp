@@ -244,7 +244,12 @@ void Tile::onMatch(Match *pMatch) {
 
         /**
          * Remove the old tile from the screen
+         * but mark the grid entry to NOT be deleted
+         * on the tile cleanup loop because there will
+         * be the replaced tile there! I don't like this
+         * 'cause it's weird, but it's how it is.
          */
+        iter->first->setTag(Tag::TILE_DONT_REMOVE_FROM_GRID);
         m_pSwappyGrid->removeChild(iter->first);
 
     } else {

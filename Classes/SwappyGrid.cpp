@@ -566,7 +566,13 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
 }
 
 void SwappyGrid::removeTile(lorafel::Tile* tile) {
-    removeTileFromGrid(tile);
+    if(tile->getTag() != Tag::TILE_DONT_REMOVE_FROM_GRID && tile->getTag() != Tag::HERO) {
+        removeTileFromGrid(tile);
+    }
+
+    if(tile->getTag() == Tag::TILE_DONT_REMOVE_FROM_GRID) {
+        tile->setTag(Tag::TILE);
+    }
 
     /**
      * Don't remove Hero tile. Causes some shit!

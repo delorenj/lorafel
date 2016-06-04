@@ -64,6 +64,7 @@ namespace lorafel {
         static const int TOGGLE_ACTION_TILE = 11;
         static const int HOOKABLE_BODY = 12;
         static const int ARROW = 13;
+        static const int TILE_DONT_REMOVE_FROM_GRID = 14;
     };
 
     struct LayerOrder {
