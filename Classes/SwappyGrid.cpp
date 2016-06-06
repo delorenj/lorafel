@@ -209,7 +209,7 @@ void SwappyGrid::ReplenishTiles() {
 
     if(m_pActivePlayerTile == nullptr)
         m_pActivePlayerTile = m_pLevel->getTurnManager()->getNextPlayerTile();
-
+    
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
         for (int j = 0; j < counts[i]; ++j) {

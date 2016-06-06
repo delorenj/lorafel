@@ -5,10 +5,15 @@
 #ifndef LORAFEL_LOOTFACTORY_H
 #define LORAFEL_LOOTFACTORY_H
 
+#include "Globals.h"
 #include "Tile.h"
 #include "PlayerManager.h"
 #include "TileFactory.h"
 #include "NormalDistributionRandomizer.h"
+
+#ifdef DISABLE_RANDOM_SEED
+    #include "StupidRandomizer.h"
+#endif
 
 namespace lorafel {
     class LootFactory : public TileFactory{

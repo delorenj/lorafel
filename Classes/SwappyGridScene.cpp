@@ -1,6 +1,4 @@
 #include "SwappyGridScene.h"
-#include "GameStateMachine.h"
-#include "Globals.h"
 
 using namespace lorafel;
 
@@ -8,6 +6,7 @@ bool SwappyGridScene::init() {
     if(!cocos2d::Node::init()) {
         return false;
     }
+
     ignoreAnchorPointForPosition(false);
     m_pGameStateMachine = GameStateMachine::getInstance();
     m_pGameStateMachine->setState<IdleState>();

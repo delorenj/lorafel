@@ -65,10 +65,10 @@ Tile* LootFactory::createTile(Tile* pTile) {
 void LootFactory::loadBasicLoot() {
     TileConfig* config;
 
-    config =new TileConfig();
-    config->create = std::bind([=](){ return MoneyBagTile::create();});
-    config->frequency = 0;
-    m_pTileConfigs->push_back(config);
+//    config =new TileConfig();
+//    config->create = std::bind([=](){ return MoneyBagTile::create();});
+//    config->frequency = 0;
+//    m_pTileConfigs->push_back(config);
 
     config = new TileConfig();
     config->create = std::bind([=](){ return LameSpiderSwordTile::create();});

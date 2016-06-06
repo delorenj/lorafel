@@ -5,8 +5,13 @@
 #ifndef LORAFEL_GLYPHFACTORY_H
 #define LORAFEL_GLYPHFACTORY_H
 
+#include "Globals.h"
 #include "TileFactory.h"
 #include "IRandomizerStrategy.h"
+
+#ifdef DISABLE_RANDOM_SEED
+    #include "StupidRandomizer.h"
+#endif
 
 namespace lorafel {
     class GlyphFactory : public TileFactory{

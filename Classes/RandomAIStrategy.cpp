@@ -18,9 +18,15 @@ PlayerMove* lorafel::RandomAIStrategy::apply(Tile* pTile) {
         return nullptr;
     }
 
+
+#ifdef DISABLE_RANDOM_SEED
+    int idx = m_pRandomizer->randomize((int) moves.size());
+    return moves.at(idx);
+#else
     // Otherwise, shuffle em up and return one.
     std::random_shuffle(moves.begin(), moves.end());
     return moves.at(0);
+#endif
 }
 
 std::vector<PlayerMove*> RandomAIStrategy::getValidMoves() {

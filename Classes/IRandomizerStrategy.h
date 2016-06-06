@@ -11,6 +11,7 @@ namespace lorafel {
     class IRandomizerStrategy {
     public:
         virtual int randomize(std::vector<int>) = 0;
+        virtual int randomize(unsigned long size) = 0;
     };
 }
 
