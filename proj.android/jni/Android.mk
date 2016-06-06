@@ -51,6 +51,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/StatGuage.cpp \
                    ../../Classes/StickMan.cpp \
                    ../../Classes/StormGlyph.cpp \
+                   ../../Classes/StupidRandomizer.cpp \
                    ../../Classes/SwappyGrid.cpp \
                    ../../Classes/SwappyGridScene.cpp \
                    ../../Classes/TestScene.cpp \

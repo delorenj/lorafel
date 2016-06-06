@@ -14,6 +14,7 @@ namespace lorafel {
         virtual bool init() override;
 
         virtual bool isSwappable() override { return false; }
+        bool isMatch(Tile* pTile) const override { return false; }
 
     protected:
         Item* m_pLootItem;

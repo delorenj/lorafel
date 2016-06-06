@@ -5,6 +5,7 @@
 #include "LootFactory.h"
 #include "MoneyBagTile.h"
 #include "LameSpiderSwordTile.h"
+#include "StupidRandomizer.h"
 
 using namespace lorafel;
 
@@ -13,7 +14,12 @@ LootFactory* LootFactory::_instance;
 void LootFactory::init() {
     setPlayer(PlayerManager::getInstance()->getPlayer());
     m_pTileConfigs = new TileConfigs();
-    m_pRandomizer = new NormalDistributionRandomizer();
+
+    #ifdef DISABLE_RANDOM_SEED
+        m_pRandomizer = new StupidRandomizer();
+    #else
+        m_pRandomizer = new NormalDistributionRandomizer();
+    #endif
 
     loadBasicLoot();
 }

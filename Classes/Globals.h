@@ -15,6 +15,7 @@ extern "C" {
 };
 
 namespace lorafel {
+    #define DISABLE_RANDOM_SEED 1
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
     #define PTM_RATIO 300.0f  // Pixels-to-Meters
     static float getAngleToPoint(cocos2d::Vec2 vec2) {

@@ -28,6 +28,7 @@
 		3167D18FD07C3AD37E741B1A /* HookActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D40321AB5081630D99C9 /* HookActionTile.cpp */; };
 		3167D1A85CFB9057E83AA562 /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
 		3167D1CD1C77F0756A1BD69C /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
+		3167D2187CC9D93B59A9CF52 /* StupidRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D918440E694548445F /* StupidRandomizer.cpp */; };
 		3167D21B7A109F9FF7203CB3 /* HealthPotionPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */; };
 		3167D253A8E8474396383D3B /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
 		3167D28D91E967FABB57B55C /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7233A0AA901871761E8 /* Item.cpp */; };
@@ -106,6 +107,7 @@
 		3167DD59027337A1D754F1B5 /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
 		3167DD9D019CAA55E69B3F40 /* ActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D89630700CB559F19ED5 /* ActionTile.cpp */; };
 		3167DDA1EEB0A3C66E8599C6 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
+		3167DDB3515BA5F3B77ACC29 /* StupidRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D918440E694548445F /* StupidRandomizer.cpp */; };
 		3167DDF7D1632A5DE9B96B00 /* MeleeAttackTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */; };
 		3167DE0B4AD91ABB3DF4171F /* MatchSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9E6F6E99ED879995593 /* MatchSet.cpp */; };
 		3167DE417343D058CABDB86C /* TrajectoryParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */; };
@@ -307,9 +309,11 @@
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
 		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
+		3167D7D918440E694548445F /* StupidRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StupidRandomizer.cpp; sourceTree = "<group>"; };
 		3167D7ED3DEF99FA190EEDFD /* EventDataString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataString.h; sourceTree = "<group>"; };
 		3167D808D5906C0F6DF89297 /* CarrotTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarrotTile.h; sourceTree = "<group>"; };
 		3167D8097512943BF474377C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		3167D8097FD50C649DFA45E6 /* StupidRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StupidRandomizer.h; sourceTree = "<group>"; };
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Consumable.cpp; sourceTree = "<group>"; };
@@ -740,6 +744,8 @@
 				3167DC04D32A0D61C59F11A1 /* HookAction.h */,
 				3167D9E6F6E99ED879995593 /* MatchSet.cpp */,
 				3167DED2269D21779C04D7A3 /* MatchSet.h */,
+				3167D7D918440E694548445F /* StupidRandomizer.cpp */,
+				3167D8097FD50C649DFA45E6 /* StupidRandomizer.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1005,6 +1011,7 @@
 				3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */,
 				3167DBD651952EA5C9DA2349 /* HookAction.cpp in Sources */,
 				3167DE0B4AD91ABB3DF4171F /* MatchSet.cpp in Sources */,
+				3167DDB3515BA5F3B77ACC29 /* StupidRandomizer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,6 +1078,7 @@
 				3167D3E14475BF4997E7690B /* Rope.cpp in Sources */,
 				3167D5DBFCBCFCAFC915D317 /* HookAction.cpp in Sources */,
 				3167D36FC95C57F042B72F1A /* MatchSet.cpp in Sources */,
+				3167D2187CC9D93B59A9CF52 /* StupidRandomizer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

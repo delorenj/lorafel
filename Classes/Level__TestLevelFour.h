@@ -18,6 +18,7 @@
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
 #include "GridTransparency.h"
+#include "StupidRandomizer.h"
 
 namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->create());
@@ -37,8 +38,13 @@ namespace lorafel {
                 m_pTurnManager->setSwappyGrid(m_pSwappyGrid);
 
                 m_pTileConfigs = new TileConfigs();
-                randomizer = new NormalDistributionRandomizer();
-                TileConfig* config = new TileConfig();
+                #ifdef DISABLE_RANDOM_SEED
+                            randomizer = new StupidRandomizer();
+                #else
+                            randomizer = new NormalDistributionRandomizer();
+                #endif
+
+            TileConfig* config = new TileConfig();
                 config->create = std::bind([=]() { return AvocadoTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);

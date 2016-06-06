@@ -40,7 +40,7 @@ namespace lorafel {
         Player* m_pPlayer;
         SwappyGrid* m_pSwappyGrid;
         TileConfigs* m_pTileConfigs;
-        NormalDistributionRandomizer* m_pRandomizer;
+        IRandomizerStrategy* m_pRandomizer;
 
         void loadBasicLoot();
 

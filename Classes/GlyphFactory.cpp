@@ -2,9 +2,10 @@
 // Created by Jarad DeLorenzo on 2/8/16.
 //
 
-#include "cocos2d.h"
+#include "Globals.h"
 #include "GlyphFactory.h"
 #include "NormalDistributionRandomizer.h"
+#include "StupidRandomizer.h"
 
 lorafel::Tile* lorafel::GlyphFactory::createTile() {
     std::vector<int> probs;
@@ -17,7 +18,11 @@ lorafel::Tile* lorafel::GlyphFactory::createTile() {
 }
 
 lorafel::GlyphFactory::GlyphFactory() {
-    m_pRandomizer = new NormalDistributionRandomizer();
+    #ifdef DISABLE_RANDOM_SEED
+        m_pRandomizer = new StupidRandomizer();
+    #else
+        m_pRandomizer = new NormalDistributionRandomizer();
+    #endif
     m_pTileConfigs = new TileConfigs();
 }
 

@@ -36,7 +36,7 @@ namespace lorafel {
         bool m_isMatched = 0;
 
     protected:
-        int m_tag;
+        int m_tag = 0;
     };
 }
 
