@@ -39,7 +39,9 @@ bool Arrow::init(SwappyGrid* pGrid) {
 
 void Arrow::fire() {
     auto move = new HookAction(m_pSwappyGrid, this);
-    m_pSwappyGrid->executePlayerMove(move);
+    if(move->isValid()) {
+        m_pSwappyGrid->executePlayerMove(move);
+    }
 }
 
 void Arrow::onHooked() {
