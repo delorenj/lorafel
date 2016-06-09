@@ -35,6 +35,7 @@
 		3167D2903E512367412739EC /* StormGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D67C7D373CBDF45F687F /* StormGlyph.cpp */; };
 		3167D2A62650524EC789DA51 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
 		3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
+		3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D1DEE2F81382C6AA2085 /* Weapon.cpp */; };
 		3167D3222AC906FBB2C0702D /* StickMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */; };
 		3167D3281444C6E14E34C116 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D3614B46AC23DF272ED1 /* TrajectoryParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */; };
@@ -79,7 +80,9 @@
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
 		3167D8A4704147D6996CA579 /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7FF62C84DBB3A5F919 /* TileFactory.cpp */; };
 		3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
+		3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */; };
 		3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
+		3167D93C71B42914A7AE986D /* NonConsumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */; };
 		3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
 		3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */; };
@@ -89,6 +92,7 @@
 		3167DA749E841CBEED22FA4F /* LootFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */; };
 		3167DA75CE3224EEDFFF726C /* GameOverUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */; };
 		3167DAABB1774F45F78D80A1 /* LootFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */; };
+		3167DAC28ABBDADDFEF00501 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D1DEE2F81382C6AA2085 /* Weapon.cpp */; };
 		3167DACF75A40E866B1FD53F /* InGameSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */; };
 		3167DADDF5EF06EAFB9F4B36 /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
 		3167DAE2913F03958ED8A20F /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
@@ -249,6 +253,7 @@
 		3167D1832B9DCD5C84646A52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		3167D19F68934CE0CC42D252 /* EnemyTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTile.h; sourceTree = "<group>"; };
 		3167D1D7265C0E86F89CDBDC /* PoisonGlyphFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyphFactory.h; sourceTree = "<group>"; };
+		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
 		3167D2432814485577EB6E9F /* GameStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStates.h; sourceTree = "<group>"; };
@@ -283,6 +288,7 @@
 		3167D53672DC56EAFD01531E /* SwappyGridScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGridScene.h; sourceTree = "<group>"; };
 		3167D53F7A6E35A701E5B1BA /* XpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpUI.h; sourceTree = "<group>"; };
 		3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldUI.h; sourceTree = "<group>"; };
+		3167D57BA3A0CF8847F33AD6 /* LameSpiderSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameSpiderSword.h; sourceTree = "<group>"; };
 		3167D57F44E44D04FA0913E8 /* HeroTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroTile.cpp; sourceTree = "<group>"; };
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
@@ -350,7 +356,10 @@
 		3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HookAction.cpp; sourceTree = "<group>"; };
 		3167DBEE19A2E31B3DF46261 /* Hook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hook.cpp; sourceTree = "<group>"; };
 		3167DC04D32A0D61C59F11A1 /* HookAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookAction.h; sourceTree = "<group>"; };
+		3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonConsumable.cpp; sourceTree = "<group>"; };
+		3167DC20649EFCC42CEBED02 /* NonConsumable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonConsumable.h; sourceTree = "<group>"; };
 		3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameSettings.cpp; sourceTree = "<group>"; };
+		3167DC321971CA6CE427DAF7 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
 		3167DC523587BA4796E2907F /* Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rope.h; sourceTree = "<group>"; };
 		3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomAIStrategy.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
@@ -746,6 +755,11 @@
 				3167DED2269D21779C04D7A3 /* MatchSet.h */,
 				3167D7D918440E694548445F /* StupidRandomizer.cpp */,
 				3167D8097FD50C649DFA45E6 /* StupidRandomizer.h */,
+				3167D57BA3A0CF8847F33AD6 /* LameSpiderSword.h */,
+				3167D1DEE2F81382C6AA2085 /* Weapon.cpp */,
+				3167DC321971CA6CE427DAF7 /* Weapon.h */,
+				3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */,
+				3167DC20649EFCC42CEBED02 /* NonConsumable.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1012,6 +1026,8 @@
 				3167DBD651952EA5C9DA2349 /* HookAction.cpp in Sources */,
 				3167DE0B4AD91ABB3DF4171F /* MatchSet.cpp in Sources */,
 				3167DDB3515BA5F3B77ACC29 /* StupidRandomizer.cpp in Sources */,
+				3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */,
+				3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,6 +1095,8 @@
 				3167D5DBFCBCFCAFC915D317 /* HookAction.cpp in Sources */,
 				3167D36FC95C57F042B72F1A /* MatchSet.cpp in Sources */,
 				3167D2187CC9D93B59A9CF52 /* StupidRandomizer.cpp in Sources */,
+				3167DAC28ABBDADDFEF00501 /* Weapon.cpp in Sources */,
+				3167D93C71B42914A7AE986D /* NonConsumable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

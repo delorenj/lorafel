@@ -15,8 +15,8 @@ namespace lorafel {
         typedef std::unordered_map<const char *, ItemQuantityPair> ItemDictionary;
 
     public:
-        Inventory();
-        virtual ~Inventory();
+        Inventory() {};
+        virtual ~Inventory() {};
         void addEvents(cocos2d::Node* pSwappyGrid);
 
         const int addItem(const char* itemName, int quantity = 1);

@@ -6,15 +6,6 @@
 
 using namespace lorafel;
 
-Inventory::Inventory() {
-}
-
-Inventory::~Inventory() {
-
-}
-
-
-
 const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
     auto itemPair = m_items[itemName];

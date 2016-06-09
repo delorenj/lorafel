@@ -19,6 +19,16 @@ namespace lorafel {
         static const int UNLOCK_CONSUMABLE_SLOT_2 = 15;
         static const int UNLOCK_CONSUMABLE_SLOT_3 = 40;
         static const int MAX_CONSUMABLE_SLOTS = 3;
+        static const int HEAD               = 0x000000000001;
+        static const int LEFT_HAND          = 0x000000000010;
+        static const int RIGHT_HAND         = 0x000000000100;
+        static const int LEGS               = 0x000000001000;
+        static const int FEET               = 0x000000010000;
+        static const int BELT               = 0x000000100000;
+        static const int NECKLACE           = 0x000001000000;
+        static const int LEFT_RING          = 0x000010000000;
+        static const int RIGHT_RING         = 0x000100000000;
+        static const int ARMS               = 0x001000000000;
 
         Consumable* getConsumableSlotItem(int i);
 
