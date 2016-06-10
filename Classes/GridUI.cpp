@@ -11,6 +11,9 @@
 #include "PlayerManager.h"
 #include "MoveActionTile.h"
 #include "HookActionTile.h"
+#include "InGameSettings.h"
+#include "GameStateMachine.h"
+#include "CharacterButton.h"
 
 using namespace lorafel;
 
@@ -27,6 +30,7 @@ bool GridUI::init() {
     initActionBar();
     initMpUI();
     initConsumableBar();
+    initButtons();
 
     auto _listener = cocos2d::EventListenerCustom::create("enemy_damaged", [=](cocos2d::EventCustom* event){
         EventDataFloatie* data = static_cast<EventDataFloatie*>(event->getUserData());
@@ -194,4 +198,16 @@ void GridUI::initConsumableBar() {
         addChild(slot);
 
     }
+}
+
+void GridUI::initButtons() {
+
+    m_pCharacterBtn = CharacterButton::create();
+    m_pCharacterBtn->setAnchorPoint(cocos2d::Vec2(0, 1));
+    m_pCharacterBtn->setPosition(cocos2d::Vec2(
+            m_pXpUI->getPosition().x + m_pXpUI->getContentSize().width + 5,
+            m_pXpUI->getPosition().y
+    ));
+    addChild(m_pCharacterBtn);
+
 }

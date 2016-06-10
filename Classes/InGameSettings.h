@@ -6,6 +6,7 @@
 #define LORAFEL_INGAMESETTINGS_H
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "StateMachine.h"
 #include "SwappyGrid.h"
 

@@ -49,6 +49,7 @@ namespace lorafel {
         std::vector<StatGuage*> m_vecEnemyHpUI;
         ActionTile* m_pAction1;
         std::vector<cocos2d::Sprite*> m_consumableSlots;
+        cocos2d::Sprite* m_pCharacterBtn;
 
         void initXpUI();
         void initHpUI();
@@ -57,6 +58,7 @@ namespace lorafel {
         void initEnemyUIs();
         void initActionBar();
         void initConsumableBar();
+        void initButtons();
     };
 }
 

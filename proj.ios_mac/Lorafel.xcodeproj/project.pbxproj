@@ -23,6 +23,7 @@
 		3167D0EBE0FB0D2FB0C6A480 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D0F85E8380F3450BF426 /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
 		3167D10D729C9B55C92BDCD2 /* HookActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D40321AB5081630D99C9 /* HookActionTile.cpp */; };
+		3167D14B7EE5B75A17465157 /* CharacterButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD115E1C613057E511F9 /* CharacterButton.cpp */; };
 		3167D15716CB1410EE06B9DA /* ActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D89630700CB559F19ED5 /* ActionTile.cpp */; };
 		3167D18C07F3F6910020030A /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D18FD07C3AD37E741B1A /* HookActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D40321AB5081630D99C9 /* HookActionTile.cpp */; };
@@ -41,6 +42,7 @@
 		3167D3614B46AC23DF272ED1 /* TrajectoryParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */; };
 		3167D369DE6FA8305B0DFA5F /* GlyphFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8F1806DED0DD6B27C0 /* GlyphFactory.cpp */; };
 		3167D36FC95C57F042B72F1A /* MatchSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9E6F6E99ED879995593 /* MatchSet.cpp */; };
+		3167D378DB6AC7A00DE4CCDC /* CharacterButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD115E1C613057E511F9 /* CharacterButton.cpp */; };
 		3167D3E14475BF4997E7690B /* Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DDB9CD851C38F804AA16 /* Rope.cpp */; };
 		3167D3E989B19440DE3B4297 /* GridTransparency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */; };
 		3167D4048E9806496EF2F6F7 /* GridTransparency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */; };
@@ -346,6 +348,7 @@
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
+		3167DAFD0D1B6CD25B352054 /* CharacterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterButton.h; sourceTree = "<group>"; };
 		3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldUI.cpp; sourceTree = "<group>"; };
 		3167DB3F8836CD055272AA38 /* Match5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match5.h; sourceTree = "<group>"; };
 		3167DB517CC5D9B549E8555B /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievements.h; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
 		3167DCBDD3425DF38F2B9641 /* Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hook.h; sourceTree = "<group>"; };
 		3167DCDDEEFA942DCACD39F3 /* TurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnManager.h; sourceTree = "<group>"; };
+		3167DD115E1C613057E511F9 /* CharacterButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterButton.cpp; sourceTree = "<group>"; };
 		3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphTile.cpp; sourceTree = "<group>"; };
 		3167DD7349C16437B240803C /* StormGlyphFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StormGlyphFactory.h; sourceTree = "<group>"; };
 		3167DD765D888EB77000827F /* EventDataFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataFloatie.h; sourceTree = "<group>"; };
@@ -760,6 +764,8 @@
 				3167DC321971CA6CE427DAF7 /* Weapon.h */,
 				3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */,
 				3167DC20649EFCC42CEBED02 /* NonConsumable.h */,
+				3167DD115E1C613057E511F9 /* CharacterButton.cpp */,
+				3167DAFD0D1B6CD25B352054 /* CharacterButton.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1028,6 +1034,7 @@
 				3167DDB3515BA5F3B77ACC29 /* StupidRandomizer.cpp in Sources */,
 				3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */,
 				3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */,
+				3167D14B7EE5B75A17465157 /* CharacterButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1104,7 @@
 				3167D2187CC9D93B59A9CF52 /* StupidRandomizer.cpp in Sources */,
 				3167DAC28ABBDADDFEF00501 /* Weapon.cpp in Sources */,
 				3167D93C71B42914A7AE986D /* NonConsumable.cpp in Sources */,
+				3167D378DB6AC7A00DE4CCDC /* CharacterButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
