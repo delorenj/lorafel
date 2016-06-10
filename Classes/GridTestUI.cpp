@@ -106,11 +106,9 @@ void GridTestUI::update(float delta) {
 void GridTestUI::addSettingsButton() {
     auto lp = cocos2d::ui::LinearLayoutParameter::create();
     lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
-    m_pSettingsButton = cocos2d::ui::Button::create();
-    m_pSettingsButton->setTitleFontSize(20);
+    m_pSettingsButton = cocos2d::ui::Button::create("character-button.png");
     m_pSettingsButton->setLayoutParameter(lp);
     m_pSettingsButton->setScale(2.0);
-    m_pSettingsButton->setTitleText("S");
     m_pSettingsButton->setPosition(cocos2d::Vec2(0,0));
     m_pSettingsButton->addClickEventListener([](cocos2d::Ref* sender) {
         auto scene = InGameSettings::createScene();
