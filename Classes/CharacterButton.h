@@ -5,6 +5,8 @@
 #ifndef LORAFEL_CHARACTERBUTTON_H
 #define LORAFEL_CHARACTERBUTTON_H
 
+#include "cocos2d.h"
+
 namespace lorafel {
     class CharacterButton : public cocos2d::Sprite {
     public:

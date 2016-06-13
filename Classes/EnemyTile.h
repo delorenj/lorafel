@@ -6,8 +6,6 @@
 #define LORAFEL_ENEMYTILE_H
 
 #include "Tile.h"
-#include "GlyphFactory.h"
-
 
 namespace lorafel {
     class EnemyTile : public Tile {
@@ -33,7 +31,7 @@ namespace lorafel {
         virtual bool freelyMovable() override { return true; }
 
     protected:
-        GlyphFactory* m_pGlyphFactory;
+        TileConfigs* m_pTileConfigs;
     };
 }
 

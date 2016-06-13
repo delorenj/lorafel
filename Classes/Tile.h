@@ -5,6 +5,7 @@
 #ifndef LORAFEL_TILE_H
 #define LORAFEL_TILE_H
 
+#include <vector>
 #include <iostream>
 #include "cocos2d.h"
 #include "SwappyGrid.h"
@@ -12,7 +13,6 @@
 #include "StatResult.h"
 #include "AIStrategy.h"
 #include "TrajectoryParticle.h"
-#include "TileFactory.h"
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
@@ -24,7 +24,6 @@
 #define PTILE_RIGHT_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width, tile->getPosition().y + tile->getContentSize().height/2)
 #define PTILE_BOTTOM_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y)
 namespace lorafel {
-
     class SwappyGrid;
     class StatResult;
     class EnemyTile;
@@ -32,6 +31,13 @@ namespace lorafel {
     class Tile : public cocos2d::Sprite {
 
     public:
+        typedef struct {
+            int frequency;
+            std::function<Tile*(void)> create;
+        } TileConfig;
+
+        typedef std::vector<TileConfig*> TileConfigs;
+
         enum Color {
             NONE,       // Has not been visited
             RED,        // Has been visited

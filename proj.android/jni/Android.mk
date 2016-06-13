@@ -14,8 +14,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Achievements.cpp \
                    ../../Classes/ActionTile.cpp \
                    ../../Classes/AppDelegate.cpp \
+                   ../../Classes/Arrow.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
+                   ../../Classes/CharacterButton.cpp \
+                   ../../Classes/Consumable.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
@@ -24,7 +27,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameOverUI.cpp \
                    ../../Classes/GameStateMachine.cpp \
-                   ../../Classes/GlyphFactory.cpp \
                    ../../Classes/GlyphTile.cpp \
                    ../../Classes/GoldStatResult.cpp \
                    ../../Classes/GoldUI.cpp \
@@ -38,15 +40,21 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/InGameSettings.cpp \
                    ../../Classes/Inventory.cpp \
                    ../../Classes/Level.cpp \
+                   ../../Classes/LootFactory.cpp \
+                   ../../Classes/LootTile.cpp \
                    ../../Classes/Match.cpp \
+                   ../../Classes/Match5.cpp \
+                   ../../Classes/MatchSet.cpp \
                    ../../Classes/MeleeAttackTile.cpp \
                    ../../Classes/MoveActionTile.cpp \
+                   ../../Classes/NonConsumable.cpp \
                    ../../Classes/NormalDistributionRandomizer.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/PlayerManager.cpp \
                    ../../Classes/PoisonGlyph.cpp \
                    ../../Classes/Progress.cpp \
                    ../../Classes/RandomAIStrategy.cpp \
+                   ../../Classes/Rope.cpp \
                    ../../Classes/SeededLevel.cpp \
                    ../../Classes/StatGuage.cpp \
                    ../../Classes/StickMan.cpp \
@@ -56,9 +64,10 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/SwappyGridScene.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
-                   ../../Classes/TileFactory.cpp \
                    ../../Classes/TileMatcher.cpp \
+                   ../../Classes/ToggleActionTile.cpp \
                    ../../Classes/TrajectoryParticle.cpp \
+                   ../../Classes/Weapon.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
                    ../../Classes/XpUI.cpp

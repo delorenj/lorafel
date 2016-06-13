@@ -8,15 +8,15 @@
 #include "Globals.h"
 #include "Tile.h"
 #include "PlayerManager.h"
-#include "TileFactory.h"
-#include "NormalDistributionRandomizer.h"
 
 #ifdef DISABLE_RANDOM_SEED
     #include "StupidRandomizer.h"
+#else
+#include "NormalDistributionRandomizer.h"
 #endif
 
 namespace lorafel {
-    class LootFactory : public TileFactory{
+    class LootFactory {
     protected:
         LootFactory() {
             init();
@@ -32,8 +32,8 @@ namespace lorafel {
             return _instance;
         }
 
-        Tile* createTile() override;
-        Tile* createTile(TileConfigs* pTileConfigs);
+        Tile* createTile();
+        Tile* createTile(Tile::TileConfigs* pTileConfigs);
         Tile* createTile(Tile* pTile);
 
         Player* getPlayer() const { return m_pPlayer; }
@@ -44,16 +44,16 @@ namespace lorafel {
         static LootFactory *_instance;
         Player* m_pPlayer;
         SwappyGrid* m_pSwappyGrid;
-        TileConfigs* m_pTileConfigs;
+        Tile::TileConfigs* m_pTileConfigs;
         IRandomizerStrategy* m_pRandomizer;
 
         void loadBasicLoot();
 
-        TileConfigs* getBasicLoot();
+        Tile::TileConfigs* getBasicLoot();
 
-        TileConfigs* getXpLoot();
+        Tile::TileConfigs* getXpLoot();
 
-        TileConfigs* getLevelLoot();
+        Tile::TileConfigs* getLevelLoot();
     };
 }
 

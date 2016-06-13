@@ -16,8 +16,6 @@ namespace lorafel {
         virtual void applyHit(Match* pMatch) override;
 
     protected:
-        StickMan();
-
         /**
          * Overriding this so this enemy is easier. He will sometimes
          * drop normal tiles mixed in with the mean glyphs

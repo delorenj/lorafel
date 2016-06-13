@@ -7,20 +7,10 @@
 #include "Globals.h"
 #include "Level.h"
 #include "RandomAIStrategy.h"
-#include "PoisonGlyphFactory.h"
-#include "StormGlyphFactory.h"
+#include "PoisonGlyph.h"
+#include "StormGlyph.h"
 
 using namespace lorafel;
-
-// Create a constructor to set the GlyphFactory for poison tiles
-// and other Glyphs
-
-StickMan::StickMan() {
-    m_pGlyphFactory = new GlyphFactory();
-    m_pGlyphFactory->addTileFactory(PoisonGlyphFactory::getInstance(), 9);
-    m_pGlyphFactory->addTileFactory(StormGlyphFactory::getInstance(), 9);
-}
-
 
 void StickMan::applyHit(Match* pMatch) {
     if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
@@ -44,6 +34,18 @@ bool StickMan::init() {
         setHp(5000);
         setMaxHp(5000);
         setStrategy(new RandomAIStrategy());
+
+        m_pTileConfigs = new TileConfigs();
+        auto config = new TileConfig();
+        config->create = std::bind([=](){ return PoisonGlyph::create();});
+        config->frequency = 5;
+        m_pTileConfigs->push_back(config);
+
+        config = new TileConfig();
+        config->create = std::bind([=](){ return StormGlyph::create();});
+        config->frequency = 5;
+        m_pTileConfigs->push_back(config);
+
         return true;
     }
 

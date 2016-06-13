@@ -37,34 +37,34 @@ namespace lorafel {
                 m_pTurnManager = new BasicTurnManager();
                 m_pTurnManager->setSwappyGrid(m_pSwappyGrid);
 
-                m_pTileConfigs = new TileConfigs();
+                m_pTileConfigs = new Tile::TileConfigs();
                 #ifdef DISABLE_RANDOM_SEED
                             randomizer = new StupidRandomizer();
                 #else
                             randomizer = new NormalDistributionRandomizer();
                 #endif
 
-            TileConfig* config = new TileConfig();
+            Tile::TileConfig* config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return AvocadoTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
-                config = new TileConfig();
+                config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return CarrotTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
-                config = new TileConfig();
+                config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return GrapeTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
-                config = new TileConfig();
+                config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return MeleeAttackTile::create(); });
                 config->frequency = 2;
                 m_pTileConfigs->push_back(config);
 
-                config = new TileConfig();
+                config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return MoneyBagTile::create(); });
                 config->frequency = 1;
                 m_pTileConfigs->push_back(config);

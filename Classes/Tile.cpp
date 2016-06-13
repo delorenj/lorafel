@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include "TileFactory.h"
 #include "Tile.h"
 #include "GameStateMachine.h"
 #include "BasicPlayerMove.h"
@@ -363,7 +362,7 @@ Tile* Tile::generateLootTile() {
     return LootFactory::getInstance()->createTile(this);
 }
 
-TileConfigs* Tile::getLoot() {
+Tile::TileConfigs* Tile::getLoot() {
     return m_pLoot;
 }
 

@@ -2,10 +2,9 @@
 // Created by Jarad DeLorenzo on 4/13/16.
 //
 
+#include "Globals.h"
 #include "LootFactory.h"
-#include "MoneyBagTile.h"
 #include "LameSpiderSwordTile.h"
-#include "StupidRandomizer.h"
 
 using namespace lorafel;
 
@@ -13,7 +12,7 @@ LootFactory* LootFactory::_instance;
 
 void LootFactory::init() {
     setPlayer(PlayerManager::getInstance()->getPlayer());
-    m_pTileConfigs = new TileConfigs();
+    m_pTileConfigs = new Tile::TileConfigs();
 
     #ifdef DISABLE_RANDOM_SEED
         m_pRandomizer = new StupidRandomizer();
@@ -33,7 +32,7 @@ Tile* LootFactory::createTile() {
     return m_pTileConfigs->at(result)->create();
 }
 
-Tile* LootFactory::createTile(TileConfigs* pTileConfigs) {
+Tile* LootFactory::createTile(Tile::TileConfigs* pTileConfigs) {
     std::vector<int> probs;
     for (unsigned long i = 0; i < pTileConfigs->size(); ++i) {
         probs.push_back(pTileConfigs->at(i)->frequency);
@@ -43,12 +42,12 @@ Tile* LootFactory::createTile(TileConfigs* pTileConfigs) {
 }
 
 Tile* LootFactory::createTile(Tile* pTile) {
-    TileConfigs* basicLoot = getBasicLoot();
-    TileConfigs* xpLoot = getXpLoot();
-    TileConfigs* levelLoot = getLevelLoot();
-    TileConfigs* tileLoot = pTile->getLoot();
+    Tile::TileConfigs* basicLoot = getBasicLoot();
+    Tile::TileConfigs* xpLoot = getXpLoot();
+    Tile::TileConfigs* levelLoot = getLevelLoot();
+    Tile::TileConfigs* tileLoot = pTile->getLoot();
 
-    TileConfigs* allLoot = new TileConfigs();
+    Tile::TileConfigs* allLoot = new Tile::TileConfigs();
     allLoot->reserve(basicLoot->size() + xpLoot->size() + levelLoot->size() + tileLoot->size());
     allLoot->insert(allLoot->end(), basicLoot->begin(), basicLoot->end());
     allLoot->insert(allLoot->end(), xpLoot->begin(), xpLoot->end());
@@ -63,30 +62,30 @@ Tile* LootFactory::createTile(Tile* pTile) {
 }
 
 void LootFactory::loadBasicLoot() {
-    TileConfig* config;
+    Tile::TileConfig* config;
 
-//    config =new TileConfig();
+//    config =new Tile::TileConfig();
 //    config->create = std::bind([=](){ return MoneyBagTile::create();});
 //    config->frequency = 0;
 //    m_pTileConfigs->push_back(config);
 
-    config = new TileConfig();
+    config = new Tile::TileConfig();
     config->create = std::bind([=](){ return LameSpiderSwordTile::create();});
     config->frequency = 10;
     m_pTileConfigs->push_back(config);
 
 }
 
-TileConfigs* LootFactory::getBasicLoot() {
+Tile::TileConfigs* LootFactory::getBasicLoot() {
     return m_pTileConfigs;
 }
 
-TileConfigs* LootFactory::getXpLoot() {
-    return new TileConfigs();
+Tile::TileConfigs* LootFactory::getXpLoot() {
+    return new Tile::TileConfigs();
 }
 
-TileConfigs* LootFactory::getLevelLoot() {
-    return new TileConfigs();
+Tile::TileConfigs* LootFactory::getLevelLoot() {
+    return new Tile::TileConfigs();
 }
 
 

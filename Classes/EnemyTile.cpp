@@ -88,5 +88,9 @@ bool EnemyTile::isSwappable() {
 }
 
 Tile* EnemyTile::getRandomGlyph() {
-    return m_pGlyphFactory->createTile();
+    /**
+     * TODO: integrate the normal distribution here...
+     */
+    auto t = cocos2d::RandomHelper::random_int(0,(int)m_pTileConfigs->size()-1);
+    return m_pTileConfigs->at(t)->create();
 }

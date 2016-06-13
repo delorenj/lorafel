@@ -6,13 +6,11 @@
 #define LORAFEL_LEVEL_H
 
 #include "IRandomizerStrategy.h"
-#include "TileFactory.h"
 #include "SwappyGrid.h"
 #include "TurnManager.h"
+#include "Tile.h"
 
 namespace lorafel {
-    class Tile;
-    class TileFactory;
     class Level {
 
     public:
@@ -20,14 +18,14 @@ namespace lorafel {
 
         virtual ~Level() { };
 
-        Level(TileConfigs* configs) {
+        Level(Tile::TileConfigs* configs) {
             this->m_pTileConfigs = configs;
         }
 
         virtual bool isCleared() const;
 
-        TileConfigs* getTileConfigs() { return m_pTileConfigs; }
-        void setTileConfigs(TileConfigs* configs) { this->m_pTileConfigs = configs; }
+        Tile::TileConfigs* getTileConfigs() { return m_pTileConfigs; }
+        void setTileConfigs(Tile::TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
         virtual Tile* getRandomTile();
         virtual Tile* getRandomLoot(Tile* sourceTile = nullptr);
@@ -44,7 +42,7 @@ namespace lorafel {
 
     protected:
         SwappyGrid* m_pSwappyGrid;
-        TileConfigs* m_pTileConfigs;
+        Tile::TileConfigs* m_pTileConfigs;
         IRandomizerStrategy* randomizer;
         TurnManager* m_pTurnManager;
     };
