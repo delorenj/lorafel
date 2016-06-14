@@ -156,7 +156,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/CocosGUI.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTextureAtlas.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCBatchCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/CocosGUI.h:
 
@@ -471,3 +472,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/CocosGUI.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

@@ -135,7 +135,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIButton.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCValue.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCFileUtils.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCData.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIButton.h:
 
@@ -408,3 +409,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIButton.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCData.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

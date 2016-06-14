@@ -147,6 +147,10 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCActionNode.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/GUIDefine.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ObjectFactory.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGroupCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ccUtils.h
 
@@ -443,6 +447,14 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCActionNode.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ObjectFactory.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGroupCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h:
 

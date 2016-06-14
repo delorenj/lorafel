@@ -81,6 +81,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/base/ccUtils.o: \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/future \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventDispatcher.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventListener.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/base64.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderer.h \
@@ -88,7 +89,13 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/base/ccUtils.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCFileUtils.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCValue.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCData.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCData.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCSprite.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCDrawNode.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTextureAtlas.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTrianglesCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCAutoPolygon.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ccUtils.h:
 
@@ -252,6 +259,8 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/base/ccUtils.o: \
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventListener.h:
 
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/base64.h:
+
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h:
@@ -267,3 +276,15 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/base/ccUtils.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCValue.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCData.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCSprite.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCDrawNode.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTextureAtlas.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTrianglesCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCAutoPolygon.h:

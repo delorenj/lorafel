@@ -118,7 +118,9 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCLabelTextFormatter.o:
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCDirector.h \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCScene.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontFNT.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFont.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCLabel.h:
 
@@ -357,3 +359,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCLabelTextFormatter.o:
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCScene.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontFNT.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFont.h:

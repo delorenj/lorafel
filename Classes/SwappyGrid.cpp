@@ -10,6 +10,7 @@
 #include "GameOverUI.h"
 #include "EventDataTile.h"
 #include "EventDataString.h"
+#include <cstring>
 
 using namespace lorafel;
 

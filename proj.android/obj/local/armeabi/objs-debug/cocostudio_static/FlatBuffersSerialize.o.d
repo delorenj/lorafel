@@ -384,6 +384,7 @@ obj/local/armeabi/objs-debug/cocostudio_static/FlatBuffersSerialize.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScale9Sprite.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrameEasing.h \
@@ -1270,6 +1271,8 @@ obj/local/armeabi/objs-debug/cocostudio_static/FlatBuffersSerialize.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
 

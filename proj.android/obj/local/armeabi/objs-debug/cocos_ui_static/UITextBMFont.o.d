@@ -118,7 +118,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UITextBMFont.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCQuadCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontAtlas.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontAtlas.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UITextBMFont.h:
 
@@ -357,3 +358,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UITextBMFont.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontAtlas.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

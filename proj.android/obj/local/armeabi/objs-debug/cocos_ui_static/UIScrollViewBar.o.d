@@ -127,7 +127,7 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIScrollViewBar.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCAutoPolygon.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/base64.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ccUtils.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIScrollViewBar.h:
 
@@ -383,4 +383,4 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIScrollViewBar.o: \
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h:
 
-/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/base64.h:
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/ccUtils.h:

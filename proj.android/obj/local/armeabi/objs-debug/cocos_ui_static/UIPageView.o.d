@@ -1,6 +1,8 @@
 obj/local/armeabi/objs-debug/cocos_ui_static/UIPageView.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIPageView.cpp \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIWidget.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCProtectedNode.h \
@@ -117,9 +119,15 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIPageView.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGroupCommand.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageViewIndicator.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h:
 
@@ -354,3 +362,7 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIPageView.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGroupCommand.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageViewIndicator.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h:

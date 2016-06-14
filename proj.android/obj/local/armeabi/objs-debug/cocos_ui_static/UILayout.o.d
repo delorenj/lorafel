@@ -141,7 +141,9 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UILayout.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCDrawNode.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCLayer.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCSprite.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventFocus.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventFocus.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCStencilStateManager.hpp \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h:
 
@@ -426,3 +428,7 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UILayout.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCSprite.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventFocus.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCStencilStateManager.hpp:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

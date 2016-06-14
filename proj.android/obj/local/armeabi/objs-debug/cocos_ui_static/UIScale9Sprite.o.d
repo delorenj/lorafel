@@ -129,7 +129,16 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIScale9Sprite.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgram.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/ccShaders.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCNinePatchImageParser.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCNinePatchImageParser.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCCamera.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCFrustum.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCAABB.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCOBB.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCAABB.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCPlane.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCQuadCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCFrameBuffer.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderer.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIScale9Sprite.h:
 
@@ -390,3 +399,21 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIScale9Sprite.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/ccShaders.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCNinePatchImageParser.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCCamera.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCFrustum.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCAABB.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCOBB.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCAABB.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCPlane.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCQuadCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCFrameBuffer.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderer.h:

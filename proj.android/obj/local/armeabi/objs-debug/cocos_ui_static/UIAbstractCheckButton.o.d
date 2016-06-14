@@ -121,7 +121,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIAbstractCheckButton.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCTrianglesCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCGLProgramState.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCAutoPolygon.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIAbstractCheckButton.h:
 
@@ -366,3 +367,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIAbstractCheckButton.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCAutoPolygon.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCImage.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

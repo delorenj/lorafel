@@ -5,7 +5,7 @@
 #ifndef LORAFEL_EVENTDATASTRING_H
 #define LORAFEL_EVENTDATASTRING_H
 
-#import "EventData.h"
+#include "EventData.h"
 
 namespace lorafel {
     class EventDataString : public EventData {

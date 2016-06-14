@@ -135,7 +135,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UISlider.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./3d/CCPlane.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCQuadCommand.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCFrameBuffer.h \
- /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/set
+ /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UISlider.h:
 
@@ -408,3 +409,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UISlider.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCFrameBuffer.h:
 
 /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

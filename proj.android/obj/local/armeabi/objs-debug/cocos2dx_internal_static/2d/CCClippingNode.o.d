@@ -120,7 +120,8 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCClippingNode.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCRenderState.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCDirector.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCScene.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCStencilStateManager.hpp
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCClippingNode.h:
 
@@ -363,3 +364,5 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCClippingNode.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCScene.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./platform/CCGLView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCStencilStateManager.hpp:

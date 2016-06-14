@@ -126,7 +126,8 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIImageView.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIHelper.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCSprite.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCDrawNode.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIImageView.h:
 
@@ -381,3 +382,5 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UIImageView.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCDrawNode.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./renderer/CCCustomCommand.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:

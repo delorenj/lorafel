@@ -498,6 +498,7 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCSSceneReader.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScale9Sprite.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./audio/include/SimpleAudioEngine.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./audio/include/Export.h
 
@@ -1496,6 +1497,8 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCSSceneReader.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./audio/include/SimpleAudioEngine.h:
 

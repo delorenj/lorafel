@@ -146,7 +146,9 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCLabel.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventListenerCustom.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventListener.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventDispatcher.h \
- /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventCustom.h
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventCustom.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontFNT.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFont.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCLabel.h:
 
@@ -441,3 +443,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCLabel.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventDispatcher.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./base/CCEventCustom.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFontFNT.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCFont.h:

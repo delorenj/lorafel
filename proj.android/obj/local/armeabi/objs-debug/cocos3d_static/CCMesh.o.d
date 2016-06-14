@@ -2,6 +2,7 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCMesh.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/CCMesh.cpp \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../3d/CCMesh.h \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../3d/CCBundle3DData.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../base/CCRef.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../platform/CCPlatformMacros.h \
@@ -18,7 +19,6 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCMesh.o: \
  /Users/delorenj/code/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/select.h \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../platform/CCStdC.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../platform/android/CCStdC-android.h \
@@ -113,6 +113,8 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCMesh.o: \
 
 /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
+/Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../3d/CCBundle3DData.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/3d/../base/CCRef.h:
@@ -144,8 +146,6 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCMesh.o: \
 /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread:
 
 /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
-
-/Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 /Users/delorenj/code/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 

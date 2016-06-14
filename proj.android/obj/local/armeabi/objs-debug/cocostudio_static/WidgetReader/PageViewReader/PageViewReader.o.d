@@ -383,6 +383,8 @@ obj/local/armeabi/objs-debug/cocostudio_static/WidgetReader/PageViewReader/PageV
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/WidgetReader/NodeReaderProtocol.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/WidgetReader/NodeReaderDefine.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CSParseBinary_generated.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/external/flatbuffers/../flatbuffers/flatbuffers.h \
@@ -1159,6 +1161,10 @@ obj/local/armeabi/objs-debug/cocostudio_static/WidgetReader/PageViewReader/PageV
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/WidgetReader/NodeReaderDefine.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIPageView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoLoader.h:
 

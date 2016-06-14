@@ -1,6 +1,8 @@
 obj/local/armeabi/objs-debug/cocos_ui_static/UILayoutComponent.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UILayoutComponent.cpp \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIPageView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIWidget.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./2d/CCProtectedNode.h \
@@ -123,6 +125,10 @@ obj/local/armeabi/objs-debug/cocos_ui_static/UILayoutComponent.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIHelper.h
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/ui/UIPageView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIListView.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScrollView.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayout.h:
 

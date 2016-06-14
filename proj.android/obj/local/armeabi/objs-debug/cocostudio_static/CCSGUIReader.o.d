@@ -444,6 +444,7 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCSGUIReader.o: \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIScale9Sprite.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h \
+ /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionManagerEx.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionObject.h \
  /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionNode.h \
@@ -1361,6 +1362,8 @@ obj/local/armeabi/objs-debug/cocostudio_static/CCSGUIReader.o: \
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UIEditBox/UIEditBox.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./ui/UILayoutComponent.h:
+
+/Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/./editor-support/cocostudio/CocosStudioExtension.h:
 
 /Users/delorenj/code/Lorafel/proj.android/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionManagerEx.h:
 
