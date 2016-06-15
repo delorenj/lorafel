@@ -18,6 +18,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
                    ../../Classes/CharacterButton.cpp \
+                   ../../Classes/CharacterModal.cpp \
                    ../../Classes/Consumable.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \

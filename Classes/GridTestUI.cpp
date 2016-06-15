@@ -29,7 +29,7 @@ bool GridTestUI::init() {
 
 //    addDropTileButtons();
 
-    addSettingsButton();
+//    addSettingsButton();
 
     scheduleUpdate();
 

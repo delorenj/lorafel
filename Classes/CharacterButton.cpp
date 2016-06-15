@@ -5,6 +5,7 @@
 #include "CharacterButton.h"
 #include "GameStateMachine.h"
 #include "InGameSettings.h"
+#include "CharacterModal.h"
 
 using namespace lorafel;
 
@@ -32,8 +33,7 @@ void CharacterButton::addEvents() {
         cocos2d::Rect rect = this->getBoundingBox();
 
         if (rect.containsPoint(p)) {
-            auto scene = InGameSettings::createScene();
-            cocos2d::Director::getInstance()->pushScene(TransitionFlipX::create(0.3, scene));
+            CharacterModal::createAndDropIn(getParent());
             return true;
         }
         return false;

@@ -78,6 +78,7 @@
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
+		3167D87ADA6A9A75E69368B0 /* CharacterModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D843C8A19C4FBD802915 /* CharacterModal.cpp */; };
 		3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */; };
 		3167D8B840DE1D6DD352E583 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
@@ -121,6 +122,7 @@
 		3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
 		3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167DF223816C31DB6724D37 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7233A0AA901871761E8 /* Item.cpp */; };
+		3167DF27DFE5E870A5845C35 /* CharacterModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D843C8A19C4FBD802915 /* CharacterModal.cpp */; };
 		3167DF6A2051958CDE171A31 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
 		3167DF77FADCFEBDF48F06B9 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D836466E117847AC4CFA /* Tile.cpp */; };
 		3167DF790D24EFE39E1056FC /* Match.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D26E887DBACCBB1454C8 /* Match.cpp */; };
@@ -319,6 +321,7 @@
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Consumable.cpp; sourceTree = "<group>"; };
+		3167D843C8A19C4FBD802915 /* CharacterModal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterModal.cpp; sourceTree = "<group>"; };
 		3167D84B29A5E82970A45F5D /* StormGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StormGlyph.h; sourceTree = "<group>"; };
 		3167D87F51E76C8213EF5A5C /* EventDataTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataTile.h; sourceTree = "<group>"; };
 		3167D89630700CB559F19ED5 /* ActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionTile.cpp; sourceTree = "<group>"; };
@@ -356,6 +359,7 @@
 		3167DC20649EFCC42CEBED02 /* NonConsumable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonConsumable.h; sourceTree = "<group>"; };
 		3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameSettings.cpp; sourceTree = "<group>"; };
 		3167DC321971CA6CE427DAF7 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
+		3167DC507958A77E6056333C /* CharacterModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterModal.h; sourceTree = "<group>"; };
 		3167DC523587BA4796E2907F /* Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rope.h; sourceTree = "<group>"; };
 		3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomAIStrategy.cpp; sourceTree = "<group>"; };
 		3167DCBA468CAC4273A3D936 /* SwappyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGrid.h; sourceTree = "<group>"; };
@@ -752,6 +756,8 @@
 				3167DC20649EFCC42CEBED02 /* NonConsumable.h */,
 				3167DD115E1C613057E511F9 /* CharacterButton.cpp */,
 				3167DAFD0D1B6CD25B352054 /* CharacterButton.h */,
+				3167D843C8A19C4FBD802915 /* CharacterModal.cpp */,
+				3167DC507958A77E6056333C /* CharacterModal.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1019,6 +1025,7 @@
 				3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */,
 				3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */,
 				3167D14B7EE5B75A17465157 /* CharacterButton.cpp in Sources */,
+				3167DF27DFE5E870A5845C35 /* CharacterModal.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1094,7 @@
 				3167DAC28ABBDADDFEF00501 /* Weapon.cpp in Sources */,
 				3167D93C71B42914A7AE986D /* NonConsumable.cpp in Sources */,
 				3167D378DB6AC7A00DE4CCDC /* CharacterButton.cpp in Sources */,
+				3167D87ADA6A9A75E69368B0 /* CharacterModal.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
