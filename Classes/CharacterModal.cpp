@@ -3,6 +3,7 @@
 //
 
 #include "CharacterModal.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -44,10 +45,25 @@ bool CharacterModal::init() {
     m_pWindow->addChild(m_pClose);
 
     auto closeListener = cocos2d::EventListenerTouchOneByOne::create();
-    closeListener->onTouchBegan = CC_CALLBACK_2([=](cocos2d::Touch* touch, cocos2d::Event* event) {
-      CCLOG("hi");
-    });
-    m_pClose->getEventDispatcher()->addEventListenerWithFixedPriority(closeListener, 1);
+    closeListener->setSwallowTouches(true);
+    closeListener->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
+        cocos2d::Vec2 p = m_pWindow->convertToNodeSpace(touch->getLocation());
+        cocos2d::Rect rect = m_pClose->getBoundingBox();
+        if(rect.containsPoint(p))
+        {
+            std::function<void(void)> callback = [&]() {
+                removeFromParentAndCleanup(true);
+                GameStateMachine::getInstance()->popState();
+            };
+
+            dismiss(callback);
+            return true; // to indicate that we have consumed it.
+        }
+
+        return false; // we did not consume this event, pass thru.
+    };
+
+    m_pClose->getEventDispatcher()->addEventListenerWithSceneGraphPriority(closeListener, this);
 
     return true;
 }
@@ -64,11 +80,29 @@ CharacterModal* CharacterModal::createAndDropIn(cocos2d::Node* container) {
     container->addChild(modal);
     modal->runAction(seq);
 
+    /**
+     * Set game state to modal
+     */
+    GameStateMachine::getInstance()->pushState();
+    GameStateMachine::getInstance()->setState<CharacterModalState>();
+
     return modal;
 }
 
-cocos2d::Sprite* CharacterModal::getWindow() {
-    return m_pWindow;
+CharacterModal* CharacterModal::dismiss(std::function<void(void)> callback) {
+    auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+    auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+
+
+    auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(getPosition().x, origin.y + visibleSize.height + getContentSize().height/2));
+    auto ease = cocos2d::EaseBackIn::create(moveTo->clone());
+
+    auto onComplete = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        callback();
+    });
+    auto seq = cocos2d::Sequence::create(ease, onComplete, NULL);
+
+    runAction(seq);
 }
 
 

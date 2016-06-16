@@ -15,7 +15,8 @@ namespace lorafel {
         CREATE_FUNC(CharacterModal);
 
         static CharacterModal* createAndDropIn(cocos2d::Node* container);
-        cocos2d::Sprite* getWindow();
+        CharacterModal* dismiss(std::function<void(void)> callback);
+        cocos2d::Sprite* getWindow() { return m_pWindow; }
 
     protected:
         cocos2d::Sprite* m_pWindow;

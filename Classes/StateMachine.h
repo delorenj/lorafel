@@ -13,22 +13,12 @@ namespace lorafel {
 
     class StateMachine {
     public:
-        /**
-         *  Create state machine
-         *
-         *  @return new state machine
-         */
         static StateMachine* create()
         {
             auto ref = new StateMachine();
             return ref;
         }
 
-        /**
-         *  Find state by id and return casted state
-         *
-         *  @return casted state
-         */
         template<class T>
         T* findState()
         {
@@ -40,11 +30,6 @@ namespace lorafel {
             return nullptr;
         }
 
-        /**
-         *  Add new state to state machine
-         *
-         *  @param args arguments to pass to constructor of state
-         */
         template<typename T, class... Args>
         void addState(Args&&... args)
         {
@@ -55,11 +40,6 @@ namespace lorafel {
             _states.insert({typeId, state});
         }
 
-        /**
-         *  Check if we can enter state
-         *
-         *  @return true if this state is valid, false otherwise
-         */
         template<typename T>
         bool canEnterState()
         {
@@ -78,19 +58,6 @@ namespace lorafel {
             return false;
         }
 
-        /**
-         *  Enters new state
-         *
-         *  Before entering new state old state will check if it is a valid state to execute
-         *  transaction
-         *
-         *  Order of execution:
-         *
-         *  willExitWithNextState will be called on current state
-         *  didEnterWithPreviousState will be called on new state
-         *
-         *  @return true if entered, false otherwise
-         */
         template<typename T>
         bool enterState()
         {
@@ -114,27 +81,9 @@ namespace lorafel {
                     }
                 }
             }
-//            if(state && _state && state!=_state) {
-//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s --> %s", _state->getName().c_str(), state->getName().c_str());
-//            } else if(_state) {
-//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", _state->getName().c_str());
-//            } else if(state) {
-//                CCLOG("FAILED TO ENTER STATE!!!!!!! %s ", state->getName().c_str());
-//            }
             return false;
         }
 
-        /**
-         *  Enters new state without any check if next state is valid
-         *
-         *
-         *  Order of execution:
-         *
-         *  willExitWithNextState will be called on current state
-         *  didEnterWithPreviousState will be called on new state
-         *
-         *  @return true if entered, false otherwise
-         */
         template<typename T>
         bool setState()
         {
@@ -158,11 +107,6 @@ namespace lorafel {
             return false;
         }
 
-        /**
-         *  Update state machine delta time, this will call updateWithDeltaTime on current state
-         *
-         *  @param delta delta time
-         */
         void updateWithDeltaTime(float delta)
         {
             if (_state != nullptr)
@@ -171,11 +115,6 @@ namespace lorafel {
             }
         }
 
-        /**
-         *  Get current state
-         *
-         *  @return current state
-         */
         State* getState()
         {
             return _state;
@@ -188,8 +127,49 @@ namespace lorafel {
 
         bool setState(float i);
 
+
+        void pushState()
+        {
+            if(_state != nullptr) {
+                _stack.push(_state);
+            }
+        }
+
+        State* popState() {
+            if(!_stack.empty()) {
+                auto s = _stack.top();
+                _stack.pop();
+                _state = s;
+            }
+            return _state;
+        }
+
+        template<typename T>
+        bool popState()
+        {
+            auto state = findState<T>();
+            if (state)
+            {
+                if (_state == nullptr)
+                {
+                    _state = state;
+                    _state->didEnterWithPreviousState(nullptr);
+                    return true;
+                }
+                else
+                {
+                    _state->willExitWithNextState(state);
+                    state->didEnterWithPreviousState(_state);
+                    _state = state;
+                    return true;
+                }
+            }
+            return false;
+        }
+
     private:
         std::unordered_map<std::string, State*> _states;
+        std::stack<State*> _stack;
         State* _state;
 
         StateMachine():
