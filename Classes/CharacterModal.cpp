@@ -22,7 +22,7 @@ bool CharacterModal::init() {
      * Set the anchor point to the center
      * set the position to the origin of the parent
      */
-    m_pWindow = cocos2d::Sprite::create("modal-m.png");
+    m_pWindow = cocos2d::Sprite::create("modal-bg.png");
     m_pWindow->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
     m_pWindow->setPosition(0, 0);
 
