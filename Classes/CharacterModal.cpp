@@ -4,6 +4,7 @@
 
 #include "CharacterModal.h"
 #include "GameStateMachine.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -68,31 +69,43 @@ bool CharacterModal::init() {
     /**
      * Add the nav buttons on the footer
      */
-    auto lp = cocos2d::ui::LinearLayoutParameter::create();
-    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_HORIZONTAL);
+    int buttonIndex = 0;
+    int numNavButtons = 4;
+    float modalWidth = m_pWindow->getContentSize().width;
 
-    auto navLayout = cocos2d::ui::Layout::create();
-    navLayout->setLayoutType(cocos2d::ui::Layout::Type::HORIZONTAL);
-    navLayout->setLayoutParameter(lp);
-    m_pWindow->addChild(navLayout);
+    CCLOG("modal wid=%f", m_pWindow->getContentSize().width);
 
-    m_pInventory = cocos2d::ui::Button::create("satchel.png", "satchel.png", "satchel.png", cocos2d::ui::TextureResType::PLIST);
-    m_pInventory->setLayoutParameter(lp);
-    navLayout->addChild(m_pInventory);
+    m_pInventory = cocos2d::Sprite::createWithSpriteFrameName("satchel.png");
+    m_pInventory->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    m_pInventory->setPosition(
+            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
+            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
+    );
+    m_pWindow->addChild(m_pInventory);
 
+    m_pAchievements = cocos2d::Sprite::createWithSpriteFrameName("trophy.png");
+    m_pAchievements->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    m_pAchievements->setPosition(
+            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
+            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
+    );
+    m_pWindow->addChild(m_pAchievements);
 
-    m_pAchievements = cocos2d::ui::Button::create("trophy.png", "trophy.png", "trophy.png", cocos2d::ui::TextureResType::PLIST);
-    m_pAchievements->setLayoutParameter(lp);
-    navLayout->addChild(m_pAchievements);
+    m_pSettings = cocos2d::Sprite::createWithSpriteFrameName("gear.png");
+    m_pSettings->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    m_pSettings->setPosition(
+            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
+            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
+    );
+    m_pWindow->addChild(m_pSettings);
 
-    m_pSettings = cocos2d::ui::Button::create("gear.png", "gear.png", "gear.png", cocos2d::ui::TextureResType::PLIST);
-    m_pSettings->setLayoutParameter(lp);
-    navLayout->addChild(m_pSettings);
-
-    m_pStore = cocos2d::ui::Button::create("store.png", "store.png", "store.png", cocos2d::ui::TextureResType::PLIST);
-    m_pStore->setLayoutParameter(lp);
-    navLayout->addChild(m_pStore);
-
+    m_pStore = cocos2d::Sprite::createWithSpriteFrameName("store.png");
+    m_pStore->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    m_pStore->setPosition(
+            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
+            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
+    );
+    m_pWindow->addChild(m_pStore);
 
     return true;
 }

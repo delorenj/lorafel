@@ -24,10 +24,10 @@ namespace lorafel {
         cocos2d::Size m_visibleSize;
         cocos2d::Vec2 m_origin;
         cocos2d::Sprite* m_pClose;
-        cocos2d::ui::Button* m_pInventory;
-        cocos2d::ui::Button* m_pAchievements;
-        cocos2d::ui::Button* m_pSettings;
-        cocos2d::ui::Button* m_pStore;
+        cocos2d::Sprite* m_pInventory;
+        cocos2d::Sprite* m_pAchievements;
+        cocos2d::Sprite* m_pSettings;
+        cocos2d::Sprite* m_pStore;
     };
 }
 
