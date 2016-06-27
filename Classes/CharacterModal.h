@@ -6,6 +6,7 @@
 #define LORAFEL_CHARACTERMODAL_H
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 
 namespace lorafel {
     class CharacterModal : public cocos2d::Node {
@@ -23,6 +24,10 @@ namespace lorafel {
         cocos2d::Size m_visibleSize;
         cocos2d::Vec2 m_origin;
         cocos2d::Sprite* m_pClose;
+        cocos2d::ui::Button* m_pInventory;
+        cocos2d::ui::Button* m_pAchievements;
+        cocos2d::ui::Button* m_pSettings;
+        cocos2d::ui::Button* m_pStore;
     };
 }
 

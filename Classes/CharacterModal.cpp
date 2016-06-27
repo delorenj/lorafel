@@ -65,6 +65,35 @@ bool CharacterModal::init() {
 
     m_pClose->getEventDispatcher()->addEventListenerWithSceneGraphPriority(closeListener, this);
 
+    /**
+     * Add the nav buttons on the footer
+     */
+    auto lp = cocos2d::ui::LinearLayoutParameter::create();
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::CENTER_HORIZONTAL);
+
+    auto navLayout = cocos2d::ui::Layout::create();
+    navLayout->setLayoutType(cocos2d::ui::Layout::Type::HORIZONTAL);
+    navLayout->setLayoutParameter(lp);
+    m_pWindow->addChild(navLayout);
+
+    m_pInventory = cocos2d::ui::Button::create("satchel.png", "satchel.png", "satchel.png", cocos2d::ui::TextureResType::PLIST);
+    m_pInventory->setLayoutParameter(lp);
+    navLayout->addChild(m_pInventory);
+
+
+    m_pAchievements = cocos2d::ui::Button::create("trophy.png", "trophy.png", "trophy.png", cocos2d::ui::TextureResType::PLIST);
+    m_pAchievements->setLayoutParameter(lp);
+    navLayout->addChild(m_pAchievements);
+
+    m_pSettings = cocos2d::ui::Button::create("gear.png", "gear.png", "gear.png", cocos2d::ui::TextureResType::PLIST);
+    m_pSettings->setLayoutParameter(lp);
+    navLayout->addChild(m_pSettings);
+
+    m_pStore = cocos2d::ui::Button::create("store.png", "store.png", "store.png", cocos2d::ui::TextureResType::PLIST);
+    m_pStore->setLayoutParameter(lp);
+    navLayout->addChild(m_pStore);
+
+
     return true;
 }
 
