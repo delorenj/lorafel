@@ -353,7 +353,7 @@ void Tile::setGlow(const int color) {
     };
 
     removeChildByTag(Tag::GLOW);
-    addChild(particle, LayerOrder::PARTICLES);
+    addChild(particle);
     setGlobalZOrder(LayerOrder::PARTICLES+1);
 
 }

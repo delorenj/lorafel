@@ -20,7 +20,7 @@
    <key>Storm.png</key>
    <dict>
     <key>frame</key>
-    <string>{{114,388},{48,48}}</string>
+    <string>{{0,389},{48,48}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -46,7 +46,7 @@
    <key>avocado.png</key>
    <dict>
     <key>frame</key>
-    <string>{{44,389},{33,43}}</string>
+    <string>{{261,383},{33,43}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -189,7 +189,7 @@
    <key>character-button.png</key>
    <dict>
     <key>frame</key>
-    <string>{{0,389},{43,43}}</string>
+    <string>{{49,389},{43,43}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -202,20 +202,20 @@
    <key>close-modal-x.png</key>
    <dict>
     <key>frame</key>
-    <string>{{261,383},{39,38}}</string>
+    <string>{{114,388},{51,51}}</string>
     <key>offset</key>
-    <string>{0,1}</string>
+    <string>{0,0}</string>
     <key>rotated</key>
     <false/>
     <key>sourceColorRect</key>
-    <string>{{2,1},{39,38}}</string>
+    <string>{{0,0},{51,51}}</string>
     <key>sourceSize</key>
-    <string>{44,44}</string>
+    <string>{52,52}</string>
    </dict>
    <key>coin.png</key>
    <dict>
     <key>frame</key>
-    <string>{{301,383},{36,37}}</string>
+    <string>{{305,383},{36,37}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -306,7 +306,7 @@
    <key>feet.png</key>
    <dict>
     <key>frame</key>
-    <string>{{163,388},{40,44}}</string>
+    <string>{{166,388},{40,44}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -371,11 +371,11 @@
    <key>heart.png</key>
    <dict>
     <key>frame</key>
-    <string>{{204,417},{36,35}}</string>
+    <string>{{343,383},{36,35}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <false/>
+    <true/>
     <key>sourceColorRect</key>
     <string>{{0,1},{36,35}}</string>
     <key>sourceSize</key>
@@ -579,11 +579,11 @@
    <key>stick_man_avatar.png</key>
    <dict>
     <key>frame</key>
-    <string>{{339,383},{36,31}}</string>
+    <string>{{379,414},{36,31}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <true/>
+    <false/>
     <key>sourceColorRect</key>
     <string>{{0,3},{36,31}}</string>
     <key>sourceSize</key>

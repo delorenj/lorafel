@@ -9,7 +9,7 @@
 #include "ui/CocosGUI.h"
 
 namespace lorafel {
-    class CharacterModal : public cocos2d::Node {
+    class CharacterModal : public cocos2d::Sprite {
     public:
         virtual bool init() override;
 
