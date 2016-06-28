@@ -35,7 +35,7 @@ bool CharacterModal::init() {
     setAnchorPoint(cocos2d::Vec2(0, 0));
     setContentSize(m_pWindow->getContentSize());
     setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height/2);
-    addChild(m_pWindow);
+    addChild(m_pWindow, LayerOrder::MODAL);
 
     /**
      * Create the close button

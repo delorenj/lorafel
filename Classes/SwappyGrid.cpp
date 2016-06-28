@@ -116,12 +116,9 @@ bool SwappyGrid::init() {
     auto actionBarEventListener = cocos2d::EventListenerCustom::create("ToggleAction", [=](cocos2d::EventCustom* event) {
         EventDataString* data = static_cast<EventDataString*>(event->getUserData());
         m_currentSelectedAction = data->val;
-        CCLOG("joe: %s", m_currentSelectedAction);
     });
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(actionBarEventListener, this);
-
-//    schedule(CC_SCHEDULE_SELECTOR(PhysicsDemoCollisionProcessing::tick), 0.3f);
 
     scheduleUpdate();
     return true;
@@ -130,8 +127,6 @@ bool SwappyGrid::init() {
 void SwappyGrid::update(float delta) {
 
 //    DrawDebugData();
-
-//    UpdatePhysics(delta);
 
     RemoveDeadTiles();
 

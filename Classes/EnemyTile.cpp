@@ -46,7 +46,7 @@ void EnemyTile::applyHit(int hitAmount) {
     auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
-    m_pSwappyGrid->addChild(particle);
+    m_pSwappyGrid->addChild(particle, LayerOrder::PARTICLES);
     CC_SAFE_DELETE(val);
 
     if(m_hp <= 0) {
@@ -77,7 +77,7 @@ void EnemyTile::remove() {
     particle->setTotalParticles(1500);
     particle->setDuration(0.2);
     particle->setPosition(TILE_CENTER);
-    m_pSwappyGrid->addChild(particle);
+    m_pSwappyGrid->addChild(particle, LayerOrder::PARTICLES);
     setVisible(false);
     m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 

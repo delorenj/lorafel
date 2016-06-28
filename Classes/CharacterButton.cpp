@@ -33,7 +33,7 @@ void CharacterButton::addEvents() {
         cocos2d::Rect rect = this->getBoundingBox();
 
         if (rect.containsPoint(p)) {
-            CharacterModal::createAndDropIn(getParent());
+            CharacterModal::createAndDropIn(cocos2d::Director::getInstance()->getRunningScene());
             return true;
         }
         return false;

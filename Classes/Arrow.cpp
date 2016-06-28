@@ -52,7 +52,7 @@ void Arrow::onHooked() {
     p->setPosition(m_pSwappyGrid->convertToNodeSpace(pos));
     p->setDuration(0.3f);
     p->setAutoRemoveOnFinish(true);
-    m_pSwappyGrid->addChild(p);
+    m_pSwappyGrid->addChild(p, LayerOrder::TILES+5);
     removeFromParentAndCleanup(true);
 }
 

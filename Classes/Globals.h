@@ -76,7 +76,8 @@ namespace lorafel {
         static const int PARTICLES = 30;
         static const int UX = 40;
         static const int GAMEOVER = 50;
-        static const int DEBUG = 100;
+        static const int DEBUG = 1000;
+        static const int MODAL = 10000;
     };
 
     struct Glow {

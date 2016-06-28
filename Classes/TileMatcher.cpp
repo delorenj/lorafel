@@ -5,6 +5,7 @@
 #include "TileMatcher.h"
 #include "ui/CocosGUI.h"
 #include "MatchFactory.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -201,11 +202,11 @@ void TileMatcher::debugDraw(Tile* pTile) const {// If debug draw is on, then dra
     dn->setLineWidth(7);
     dn->setTag(DEBUG_TAG);
     dn->drawSolidRect(cocos2d::Vec2(0,0), pTile->getContentSize(), color);
-    pTile->addChild(dn);
+    pTile->addChild(dn, LayerOrder::DEBUG);
 
     auto orderText = cocos2d::ui::Text::create(pTile->getVisitCountAsString(),"fonts/BebasNeue Bold.ttf", 24);
     orderText->setPosition(cocos2d::Vec2(25,25));
-    dn->addChild(orderText);
+    dn->addChild(orderText, LayerOrder::DEBUG);
 }
 
 

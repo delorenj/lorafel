@@ -30,7 +30,7 @@ void HeroTile::applyHit(Match* pMatch) {
     auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
-    m_pSwappyGrid->addChild(particle);
+    m_pSwappyGrid->addChild(particle, LayerOrder::PARTICLES);
 
     if(player->getHp() == 0) {
         cocos2d::EventCustom gameOver("game_over");
@@ -50,7 +50,7 @@ void HeroTile::remove() {
     particle->setTotalParticles(1500);
     particle->setDuration(0.2);
     particle->setPosition(TILE_CENTER);
-    m_pSwappyGrid->addChild(particle);
+    m_pSwappyGrid->addChild(particle, LayerOrder::PARTICLES);
     setVisible(false);
     m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 

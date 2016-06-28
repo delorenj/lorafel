@@ -11,7 +11,11 @@ bool LootTile::init() {
     if(!Tile::init()) {
         return false;
     }
-    
+
+    setGlobalZOrder(1);
+    setPositionZ(1.0f);
+    setLocalZOrder(1);
+    setOrderOfArrival(1);
     setTag(Tag::LOOT);
     return true;
 }

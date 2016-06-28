@@ -194,7 +194,7 @@ void Tile::remove() {
     explode->setAutoRemoveOnFinish(true);
     explode->setScale(0.75);
     explode->setPosition(TILE_CENTER);
-    m_pSwappyGrid->addChild(explode);
+    m_pSwappyGrid->addChild(explode, LayerOrder::PARTICLES);
     setVisible(false);
     m_pSwappyGrid->addTileToRemoveQueue(this);
 }
