@@ -69,44 +69,10 @@ bool CharacterModal::init() {
     /**
      * Add the nav buttons on the footer
      */
-    int buttonIndex = 0;
-    int numNavButtons = 4;
-    float modalWidth = m_pWindow->getContentSize().width;
-
-    CCLOG("modal wid=%f", m_pWindow->getContentSize().width);
-
-    m_pInventory = cocos2d::Sprite::createWithSpriteFrameName("satchel.png");
-    m_pInventory->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    m_pInventory->setPosition(
-            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
-            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
-    );
-    m_pWindow->addChild(m_pInventory);
-
-    m_pAchievements = cocos2d::Sprite::createWithSpriteFrameName("trophy.png");
-    m_pAchievements->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    m_pAchievements->setPosition(
-            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
-            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
-    );
-    m_pWindow->addChild(m_pAchievements);
-
-    m_pSettings = cocos2d::Sprite::createWithSpriteFrameName("gear.png");
-    m_pSettings->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    m_pSettings->setPosition(
-            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
-            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
-    );
-    m_pWindow->addChild(m_pSettings);
-
-    m_pStore = cocos2d::Sprite::createWithSpriteFrameName("store.png");
-    m_pStore->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    m_pStore->setPosition(
-            DISTRIBUTE(buttonIndex++, numNavButtons, modalWidth),
-            m_pInventory->getContentSize().height/2 + m_pInventory->getContentSize().height*0.50f
-    );
-    m_pWindow->addChild(m_pStore);
-
+    m_pInventory = createButton("satchel.png", 1);
+    m_pAchievements = createButton("trophy.png", 2);
+    m_pSettings = createButton("gear.png", 3);
+    m_pStore = createButton("store.png", 4);
     return true;
 }
 
@@ -146,6 +112,23 @@ CharacterModal* CharacterModal::dismiss(std::function<void(void)> callback) {
 
     runAction(seq);
 }
+
+cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) {
+    index -= 1;
+    auto btn = cocos2d::Sprite::createWithSpriteFrameName("modal-nav-btn.png");
+    btn->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    btn->setPosition(
+            DISTRIBUTE(index, NAV_BUTTONS.size(), m_pWindow->getContentSize().width),
+            btn->getContentSize().height/2 + btn->getContentSize().height*0.50f
+    );
+    auto image = cocos2d::Sprite::createWithSpriteFrameName(imageName);
+    image->setPosition(btn->getContentSize().width/2, btn->getContentSize().height/2);
+    btn->addChild(image);
+    m_pWindow->addChild(btn);
+    return btn;
+}
+
+
 
 
 
