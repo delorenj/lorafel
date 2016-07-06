@@ -7,6 +7,7 @@
 
 #include <unordered_map>
 #include <typeinfo>
+#include <stack>
 #include "State.h"
 
 namespace lorafel {

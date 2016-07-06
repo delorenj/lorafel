@@ -21,8 +21,12 @@ gulp.task('sprites:pack', function () {
 
 gulp.task('sprites:copy',['sprites:pack'], function() {
    return gulp
-       .src('/Users/delorenj/cc/Lorafel/sprites/sheets/**/sprites.*')
+       .src([
+           '/Users/delorenj/cc/Lorafel/sprites/sheets/**/sprites.*',
+           '/Users/delorenj/cc/Lorafel/sprites/nss/**/*'
+       ])
        .pipe(gulp.dest("/Users/delorenj/code/Lorafel/Resources"))
+
     ;
 });
 

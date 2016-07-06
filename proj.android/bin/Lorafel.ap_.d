@@ -46,6 +46,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.plist \
@@ -72,6 +73,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.plist \
@@ -98,6 +100,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.plist \
@@ -114,6 +117,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glitter_line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow.pdproject \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_puff.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_puff_purple.plist \
@@ -123,6 +127,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.plist \
@@ -149,10 +154,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/nexus5/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug.png \
@@ -175,6 +182,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/grid_highlight.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/hearts.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/lineplosion.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sprites.plist \

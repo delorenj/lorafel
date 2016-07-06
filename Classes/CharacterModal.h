@@ -20,7 +20,7 @@ namespace lorafel {
         cocos2d::Sprite* getWindow() { return m_pWindow; }
 
     protected:
-        const std::vector<char*> NAV_BUTTONS = {
+        const std::vector<const char*> NAV_BUTTONS = {
                 "satchel.png",
                 "trophy.png",
                 "gear.png",

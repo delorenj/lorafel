@@ -24,25 +24,23 @@ bool CharacterModal::init() {
      * set the position to the origin of the parent
      */
     initWithFile("modal-bg.png");
-    m_pWindow->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    m_pWindow->setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height + m_pWindow->getContentSize().height/2);
-    m_pWindow->setGlobalZOrder(LayerOrder::MODAL);
-    addChild(m_pWindow, LayerOrder::MODAL);
+    setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
+    setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height + getContentSize().height/2);
+    setGlobalZOrder(LayerOrder::MODAL);
 
-    setContentSize(m_pWindow->getContentSize());
     /**
      * Create the close button
      */
     m_pClose = cocos2d::Sprite::createWithSpriteFrameName("close-modal-x.png");
     m_pClose->setAnchorPoint(cocos2d::Vec2(1,1));
-    m_pClose->setPosition(m_pWindow->getContentSize().width/2, m_pWindow->getContentSize().height/2);
+    m_pClose->setPosition(getContentSize().width-50, getContentSize().height-40);
     m_pClose->setGlobalZOrder(LayerOrder::MODAL+1);
-    m_pWindow->addChild(m_pClose);
+    addChild(m_pClose);
 
     auto closeListener = cocos2d::EventListenerTouchOneByOne::create();
     closeListener->setSwallowTouches(true);
     closeListener->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-        cocos2d::Vec2 p = m_pWindow->convertToNodeSpace(touch->getLocation());
+        cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
         cocos2d::Rect rect = m_pClose->getBoundingBox();
         if(rect.containsPoint(p))
         {
@@ -78,7 +76,6 @@ CharacterModal* CharacterModal::createAndDropIn(cocos2d::Node* container) {
     auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(modal->getPosition().x, origin.y + visibleSize.height/2));
     auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
     auto seq = cocos2d::Sequence::create(ease, NULL);
-    modal->setGlobalZOrder(100001);
     container->addChild(modal, LayerOrder::MODAL);
     modal->runAction(seq);
 
@@ -112,7 +109,7 @@ cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) 
     auto btn = cocos2d::Sprite::createWithSpriteFrameName("modal-nav-btn.png");
     btn->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
     btn->setPosition(
-            DISTRIBUTE(index, NAV_BUTTONS.size(), m_pWindow->getContentSize().width),
+            DISTRIBUTE(index, NAV_BUTTONS.size(), getContentSize().width),
             btn->getContentSize().height/2 + btn->getContentSize().height*0.50f
     );
     auto image = cocos2d::Sprite::createWithSpriteFrameName(imageName);
@@ -120,7 +117,7 @@ cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) 
     image->setGlobalZOrder(LayerOrder::MODAL+2);
     btn->addChild(image);
     btn->setGlobalZOrder(LayerOrder::MODAL+1);
-    m_pWindow->addChild(btn);
+    addChild(btn, LayerOrder::MODAL+1);
     return btn;
 }
 
