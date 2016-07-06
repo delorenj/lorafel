@@ -23,19 +23,19 @@ bool CharacterModal::init() {
      * Set the anchor point to the center
      * set the position to the origin of the parent
      */
-    initWithFile("modal-bg.png");
-    setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height + getContentSize().height/2);
-    setGlobalZOrder(LayerOrder::MODAL);
-
+    m_pWindow = cocos2d::Sprite::create("modal-bg.png");
+    m_pWindow->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
+    m_pWindow->setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height + getContentSize().height/2);
+    m_pWindow->setGlobalZOrder(LayerOrder::MODAL);
+    addChild(m_pWindow);
     /**
      * Create the close button
      */
     m_pClose = cocos2d::Sprite::createWithSpriteFrameName("close-modal-x.png");
-    m_pClose->setAnchorPoint(cocos2d::Vec2(1,1));
-    m_pClose->setPosition(getContentSize().width-50, getContentSize().height-40);
-    m_pClose->setGlobalZOrder(LayerOrder::MODAL+1);
-    addChild(m_pClose);
+    m_pClose->setAnchorPoint(cocos2d::Vec2(1.0f,1.0f));
+    m_pClose->setPosition(0,0);
+    m_pWindow->addChild(m_pClose);
+//    m_pClose->setGlobalZOrder(LayerOrder::MODAL+1);
 
     auto closeListener = cocos2d::EventListenerTouchOneByOne::create();
     closeListener->setSwallowTouches(true);
@@ -114,10 +114,10 @@ cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) 
     );
     auto image = cocos2d::Sprite::createWithSpriteFrameName(imageName);
     image->setPosition(btn->getContentSize().width/2, btn->getContentSize().height/2);
-    image->setGlobalZOrder(LayerOrder::MODAL+2);
+//    image->setGlobalZOrder(LayerOrder::MODAL+2);
     btn->addChild(image);
-    btn->setGlobalZOrder(LayerOrder::MODAL+1);
-    addChild(btn, LayerOrder::MODAL+1);
+//    btn->setGlobalZOrder(LayerOrder::MODAL+1);
+//    addChild(btn, LayerOrder::MODAL+1);
     return btn;
 }
 
