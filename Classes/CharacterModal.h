@@ -9,7 +9,7 @@
 #include "ui/CocosGUI.h"
 
 namespace lorafel {
-    class CharacterModal : public cocos2d::Node {
+    class CharacterModal : public cocos2d::Sprite {
     public:
         virtual bool init() override;
 
@@ -18,6 +18,7 @@ namespace lorafel {
         static CharacterModal* createAndDropIn(cocos2d::Node* container);
         CharacterModal* dismiss(std::function<void(void)> callback);
         cocos2d::Sprite* getWindow() { return m_pWindow; }
+        void update(float delta) override;
 
     protected:
         const std::vector<const char*> NAV_BUTTONS = {
