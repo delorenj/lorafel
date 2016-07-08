@@ -13,7 +13,6 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5 \
-/Users/delorenj/code/Lorafel/proj.android/assets/nexus5 \
 /Users/delorenj/code/Lorafel/proj.android/assets/res \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k \
 /Users/delorenj/code/Lorafel/proj.android/assets/fonts/arial.ttf \
@@ -159,7 +158,6 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.png \
-/Users/delorenj/code/Lorafel/proj.android/assets/nexus5/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug.png \

@@ -25,11 +25,6 @@ bool CharacterModal::init() {
      */
     initWithFile("modal-bg.png");
     setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    CCLOG("SIZE: %f,%f", getContentSize().width, getContentSize().height);
-    CCLOG("BOUND: %f,%f", getBoundingBox().size.width, getBoundingBox().size.height);
-    CCLOG("VISIBLE SIZE: %f,%f", m_visibleSize.width, m_visibleSize.height);
-
-
     setPosition(m_origin.x + m_visibleSize.width/2, m_origin.y + m_visibleSize.height + getContentSize().height/2);
     setGlobalZOrder(LayerOrder::MODAL);
 
@@ -37,8 +32,9 @@ bool CharacterModal::init() {
      * Create the close button
      */
     m_pClose = cocos2d::Sprite::createWithSpriteFrameName("close-modal-x.png");
-    m_pClose->setAnchorPoint(cocos2d::Vec2(0,0));
-    m_pClose->setPosition(0,0);
+    m_pClose->setAnchorPoint(cocos2d::Vec2(1,1));
+    m_pClose->setPosition(getContentSize().width - m_pClose->getContentSize().width*0.25f, getContentSize().height - m_pClose->getContentSize().height*0.25f);
+    m_pClose->setGlobalZOrder(LayerOrder::MODAL+1);
     addChild(m_pClose);
 
     auto closeListener = cocos2d::EventListenerTouchOneByOne::create();
@@ -72,7 +68,6 @@ bool CharacterModal::init() {
     CCLOG("SIZE: %f,%f", getContentSize().width, getContentSize().height);
     CCLOG("BOUND: %f,%f", getBoundingBox().size.width, getBoundingBox().size.height);
 
-    scheduleUpdate();
     return true;
 }
 
@@ -118,7 +113,7 @@ cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) 
     btn->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
     btn->setPosition(
             DISTRIBUTE(index, NAV_BUTTONS.size(), getContentSize().width),
-            btn->getContentSize().height/2 + btn->getContentSize().height*0.50f
+            btn->getContentSize().height/2 + btn->getContentSize().height*0.25f
     );
     auto image = cocos2d::Sprite::createWithSpriteFrameName(imageName);
     image->setPosition(btn->getContentSize().width/2, btn->getContentSize().height/2);
@@ -127,34 +122,6 @@ cocos2d::Sprite* CharacterModal::createButton(const char* imageName, int index) 
     btn->setGlobalZOrder(LayerOrder::MODAL+1);
     addChild(btn, LayerOrder::MODAL+1);
     return btn;
-}
-
-void CharacterModal::update(float delta) {
-    auto d = cocos2d::DrawNode::create();
-
-    d->drawRect(
-            cocos2d::Vec2::ZERO,
-            cocos2d::Vec2(
-                    m_pClose->getBoundingBox().size.width,
-                    m_pClose->getBoundingBox().size.height
-            ),
-            cocos2d::Color4F::GREEN);
-
-    d->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    m_pClose->addChild(d);
-
-    d = cocos2d::DrawNode::create();
-    d->drawRect(
-            cocos2d::Vec2::ZERO,
-            cocos2d::Vec2(
-                    getBoundingBox().size.width,
-                    getBoundingBox().size.height
-            ),
-            cocos2d::Color4F::GREEN);
-
-    d->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    addChild(d);
-
 }
 
 

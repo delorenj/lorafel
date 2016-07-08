@@ -17,8 +17,6 @@ namespace lorafel {
 
         static CharacterModal* createAndDropIn(cocos2d::Node* container);
         CharacterModal* dismiss(std::function<void(void)> callback);
-        cocos2d::Sprite* getWindow() { return m_pWindow; }
-        void update(float delta) override;
 
     protected:
         const std::vector<const char*> NAV_BUTTONS = {
@@ -28,7 +26,6 @@ namespace lorafel {
                 "store.png"
         };
 
-        cocos2d::Sprite* m_pWindow;
         cocos2d::Size m_visibleSize;
         cocos2d::Vec2 m_origin;
         cocos2d::Sprite* m_pClose;
