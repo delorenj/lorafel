@@ -13,7 +13,7 @@
 #include "HookActionTile.h"
 #include "InGameSettings.h"
 #include "GameStateMachine.h"
-#include "CharacterButton.h"
+#include "InGameModalNavButton.h"
 
 using namespace lorafel;
 
@@ -202,7 +202,7 @@ void GridUI::initConsumableBar() {
 
 void GridUI::initButtons() {
 
-    m_pCharacterBtn = CharacterButton::create();
+    m_pCharacterBtn = InGameModalNavButton::create();
     m_pCharacterBtn->setAnchorPoint(cocos2d::Vec2(0, 1));
     m_pCharacterBtn->setPosition(cocos2d::Vec2(
             m_pXpUI->getPosition().x + m_pXpUI->getContentSize().width + 5,

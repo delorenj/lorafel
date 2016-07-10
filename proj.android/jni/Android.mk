@@ -17,8 +17,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Arrow.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
-                   ../../Classes/CharacterButton.cpp \
-                   ../../Classes/CharacterModal.cpp \
                    ../../Classes/Consumable.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
@@ -41,8 +39,12 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/HookAction.cpp \
                    ../../Classes/HookActionTile.cpp \
                    ../../Classes/HpUI.cpp \
+                   ../../Classes/InGameModal.cpp \
+                   ../../Classes/InGameModalNavButton.cpp \
                    ../../Classes/InGameSettings.cpp \
                    ../../Classes/Inventory.cpp \
+                   ../../Classes/InventoryItemGrid.cpp \
+                   ../../Classes/InventoryModal.cpp \
                    ../../Classes/Item.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/LootFactory.cpp \
