@@ -20,7 +20,7 @@
    <key>Storm.png</key>
    <dict>
     <key>frame</key>
-    <string>{{152,198},{24,24}}</string>
+    <string>{{179,174},{24,24}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -33,7 +33,7 @@
    <key>arrow.png</key>
    <dict>
     <key>frame</key>
-    <string>{{216,29},{6,28}}</string>
+    <string>{{211,58},{6,28}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -46,11 +46,11 @@
    <key>avocado.png</key>
    <dict>
     <key>frame</key>
-    <string>{{177,199},{18,22}}</string>
+    <string>{{204,174},{18,22}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <true/>
+    <false/>
     <key>sourceColorRect</key>
     <string>{{5,3},{18,22}}</string>
     <key>sourceSize</key>
@@ -189,7 +189,7 @@
    <key>character-button.png</key>
    <dict>
     <key>frame</key>
-    <string>{{21,202},{18,18}}</string>
+    <string>{{41,202},{18,18}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -202,7 +202,7 @@
    <key>checkbox-empty.png</key>
    <dict>
     <key>frame</key>
-    <string>{{127,198},{24,24}}</string>
+    <string>{{152,198},{24,24}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -215,7 +215,7 @@
    <key>checkbox-filled.png</key>
    <dict>
     <key>frame</key>
-    <string>{{179,174},{24,24}}</string>
+    <string>{{127,198},{24,24}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -241,11 +241,11 @@
    <key>coin.png</key>
    <dict>
     <key>frame</key>
-    <string>{{200,199},{18,19}}</string>
+    <string>{{100,201},{18,19}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <false/>
+    <true/>
     <key>sourceColorRect</key>
     <string>{{0,0},{18,19}}</string>
     <key>sourceSize</key>
@@ -332,11 +332,11 @@
    <key>feet.png</key>
    <dict>
     <key>frame</key>
-    <string>{{100,201},{20,22}}</string>
+    <string>{{201,199},{20,22}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <true/>
+    <false/>
     <key>sourceColorRect</key>
     <string>{{4,3},{20,22}}</string>
     <key>sourceSize</key>
@@ -345,7 +345,7 @@
    <key>fireball.png</key>
    <dict>
     <key>frame</key>
-    <string>{{79,173},{20,28}}</string>
+    <string>{{0,193},{20,28}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -397,11 +397,11 @@
    <key>heart.png</key>
    <dict>
     <key>frame</key>
-    <string>{{204,174},{18,19}}</string>
+    <string>{{21,202},{18,19}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <false/>
+    <true/>
     <key>sourceColorRect</key>
     <string>{{0,0},{18,19}}</string>
     <key>sourceSize</key>
@@ -462,7 +462,7 @@
    <key>lame-spider-sword.png</key>
    <dict>
     <key>frame</key>
-    <string>{{211,58},{6,28}}</string>
+    <string>{{216,29},{6,28}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -498,6 +498,19 @@
     <key>sourceSize</key>
     <string>{29,29}</string>
    </dict>
+   <key>modal-inventory-grid-slot.png</key>
+   <dict>
+    <key>frame</key>
+    <string>{{177,199},{23,23}}</string>
+    <key>offset</key>
+    <string>{0,0}</string>
+    <key>rotated</key>
+    <false/>
+    <key>sourceColorRect</key>
+    <string>{{0,0},{23,23}}</string>
+    <key>sourceSize</key>
+    <string>{24,24}</string>
+   </dict>
    <key>modal-nav-btn.png</key>
    <dict>
     <key>frame</key>
@@ -514,7 +527,7 @@
    <key>money_bag_1.png</key>
    <dict>
     <key>frame</key>
-    <string>{{0,193},{20,28}}</string>
+    <string>{{79,173},{20,28}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -605,7 +618,7 @@
    <key>stick_man_avatar.png</key>
    <dict>
     <key>frame</key>
-    <string>{{40,202},{18,16}}</string>
+    <string>{{60,202},{18,16}}</string>
     <key>offset</key>
     <string>{0,-1}</string>
     <key>rotated</key>

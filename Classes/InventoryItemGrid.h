@@ -10,6 +10,9 @@
 namespace lorafel {
     class InventoryItemGrid : public cocos2d::Sprite {
     public:
+        static const int NUM_ROWS = 4;
+        static const int NUM_COLS = 8;
+
         bool init(cocos2d::Node* container);
         static InventoryItemGrid* create(cocos2d::Node* container)
         {
@@ -26,6 +29,9 @@ namespace lorafel {
                 return nullptr;
             }
         }
+
+    protected:
+        float distribute(int idx, int total, float size) const;
     };
 }
 

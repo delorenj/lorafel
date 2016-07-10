@@ -20,7 +20,6 @@ namespace lorafel {
             static const int EMPTY = 0;
             static const int IDLE = 1;
             static const int SELECTED = 2;
-            static const int MOVING = 3;
         };
 
     protected:

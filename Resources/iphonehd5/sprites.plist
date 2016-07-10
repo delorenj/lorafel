@@ -46,7 +46,7 @@
    <key>avocado.png</key>
    <dict>
     <key>frame</key>
-    <string>{{49,389},{34,44}}</string>
+    <string>{{261,383},{34,44}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -189,7 +189,7 @@
    <key>character-button.png</key>
    <dict>
     <key>frame</key>
-    <string>{{261,383},{43,43}}</string>
+    <string>{{306,383},{43,43}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -215,7 +215,7 @@
    <key>coin.png</key>
    <dict>
     <key>frame</key>
-    <string>{{305,383},{36,37}}</string>
+    <string>{{207,417},{36,37}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
@@ -371,11 +371,11 @@
    <key>heart.png</key>
    <dict>
     <key>frame</key>
-    <string>{{343,383},{36,35}}</string>
+    <string>{{245,418},{36,35}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <true/>
+    <false/>
     <key>sourceColorRect</key>
     <string>{{0,1},{36,35}}</string>
     <key>sourceSize</key>
@@ -471,6 +471,19 @@
     <string>{{0,0},{56,56}}</string>
     <key>sourceSize</key>
     <string>{57,57}</string>
+   </dict>
+   <key>modal-inventory-grid-slot.png</key>
+   <dict>
+    <key>frame</key>
+    <string>{{49,389},{46,46}}</string>
+    <key>offset</key>
+    <string>{0,0}</string>
+    <key>rotated</key>
+    <false/>
+    <key>sourceColorRect</key>
+    <string>{{0,0},{46,46}}</string>
+    <key>sourceSize</key>
+    <string>{47,47}</string>
    </dict>
    <key>modal-nav-btn.png</key>
    <dict>
@@ -579,11 +592,11 @@
    <key>stick_man_avatar.png</key>
    <dict>
     <key>frame</key>
-    <string>{{207,417},{36,31}}</string>
+    <string>{{350,383},{36,31}}</string>
     <key>offset</key>
     <string>{0,0}</string>
     <key>rotated</key>
-    <false/>
+    <true/>
     <key>sourceColorRect</key>
     <string>{{0,3},{36,31}}</string>
     <key>sourceSize</key>

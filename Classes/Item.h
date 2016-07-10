@@ -14,7 +14,6 @@ namespace lorafel {
     class Item : public cocos2d::Sprite {
     public:
         virtual bool init() override;
-        CREATE_FUNC(Item);
         virtual void addEvents(cocos2d::Node* pNode);
 
     protected:
