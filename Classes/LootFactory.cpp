@@ -12,7 +12,7 @@ LootFactory* LootFactory::_instance;
 
 void LootFactory::init() {
     setPlayer(PlayerManager::getInstance()->getPlayer());
-    m_pTileConfigs = new Tile::TileConfigs();
+    m_pTileConfigs = new lorafel::Tile::TileConfigs();
 
     #ifdef DISABLE_RANDOM_SEED
         m_pRandomizer = new StupidRandomizer();
@@ -23,7 +23,7 @@ void LootFactory::init() {
     loadBasicLoot();
 }
 
-Tile* LootFactory::createTile() {
+lorafel::Tile* LootFactory::createTile() {
     std::vector<int> probs;
     for (int i = 0; i < m_pTileConfigs->size(); ++i) {
         probs.push_back(m_pTileConfigs->at(i)->frequency);
@@ -32,7 +32,7 @@ Tile* LootFactory::createTile() {
     return m_pTileConfigs->at(result)->create();
 }
 
-Tile* LootFactory::createTile(Tile::TileConfigs* pTileConfigs) {
+lorafel::Tile* LootFactory::createTile(lorafel::Tile::TileConfigs* pTileConfigs) {
     std::vector<int> probs;
     for (unsigned long i = 0; i < pTileConfigs->size(); ++i) {
         probs.push_back(pTileConfigs->at(i)->frequency);
@@ -41,13 +41,13 @@ Tile* LootFactory::createTile(Tile::TileConfigs* pTileConfigs) {
     return pTileConfigs->at(result)->create();
 }
 
-Tile* LootFactory::createTile(Tile* pTile) {
-    Tile::TileConfigs* basicLoot = getBasicLoot();
-    Tile::TileConfigs* xpLoot = getXpLoot();
-    Tile::TileConfigs* levelLoot = getLevelLoot();
-    Tile::TileConfigs* tileLoot = pTile->getLoot();
+lorafel::Tile* LootFactory::createTile(lorafel::Tile* pTile) {
+    lorafel::Tile::TileConfigs* basicLoot = getBasicLoot();
+    lorafel::Tile::TileConfigs* xpLoot = getXpLoot();
+    lorafel::Tile::TileConfigs* levelLoot = getLevelLoot();
+    lorafel::Tile::TileConfigs* tileLoot = pTile->getLoot();
 
-    Tile::TileConfigs* allLoot = new Tile::TileConfigs();
+    lorafel::Tile::TileConfigs* allLoot = new lorafel::Tile::TileConfigs();
     allLoot->reserve(basicLoot->size() + xpLoot->size() + levelLoot->size() + tileLoot->size());
     allLoot->insert(allLoot->end(), basicLoot->begin(), basicLoot->end());
     allLoot->insert(allLoot->end(), xpLoot->begin(), xpLoot->end());
@@ -62,30 +62,30 @@ Tile* LootFactory::createTile(Tile* pTile) {
 }
 
 void LootFactory::loadBasicLoot() {
-    Tile::TileConfig* config;
+    lorafel::Tile::TileConfig* config;
 
-//    config =new Tile::TileConfig();
-//    config->create = std::bind([=](){ return MoneyBagTile::create();});
+//    config =new lorafel::Tile::TileConfig();
+//    config->create = std::bind([=](){ return MoneyBaglorafel::Tile::create();});
 //    config->frequency = 0;
 //    m_pTileConfigs->push_back(config);
 
-    config = new Tile::TileConfig();
+    config = new lorafel::Tile::TileConfig();
     config->create = std::bind([=](){ return LameSpiderSwordTile::create();});
     config->frequency = 10;
     m_pTileConfigs->push_back(config);
 
 }
 
-Tile::TileConfigs* LootFactory::getBasicLoot() {
+lorafel::Tile::TileConfigs* LootFactory::getBasicLoot() {
     return m_pTileConfigs;
 }
 
-Tile::TileConfigs* LootFactory::getXpLoot() {
-    return new Tile::TileConfigs();
+lorafel::Tile::TileConfigs* LootFactory::getXpLoot() {
+    return new lorafel::Tile::TileConfigs();
 }
 
-Tile::TileConfigs* LootFactory::getLevelLoot() {
-    return new Tile::TileConfigs();
+lorafel::Tile::TileConfigs* LootFactory::getLevelLoot() {
+    return new lorafel::Tile::TileConfigs();
 }
 
 

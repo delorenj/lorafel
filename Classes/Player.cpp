@@ -49,7 +49,7 @@ int Player::updateMpBy(int val) {
     return m_mp;
 }
 
-Tile* Player::getTile() const {
+lorafel::Tile* Player::getTile() const {
     return m_hp <=0  ?  nullptr : m_pTile;
 }
 

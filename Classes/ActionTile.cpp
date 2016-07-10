@@ -152,7 +152,7 @@ void ActionTile::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
 }
 
 
-Tile* ActionTile::getTile(const cocos2d::Touch* touch) const {
+lorafel::Tile* ActionTile::getTile(const cocos2d::Touch* touch) const {
     return m_pSwappyGrid->getTileAt(
             m_pSwappyGrid->screenToGrid(
                     m_pSwappyGrid->convertToNodeSpace(

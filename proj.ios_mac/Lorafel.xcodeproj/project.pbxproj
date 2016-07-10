@@ -76,6 +76,7 @@
 		3167D7A1752231AB51E4244F /* PoisonGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */; };
 		3167D7EC5DD46B264A271A0C /* NormalDistributionRandomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE765B1D39B06D38A837 /* NormalDistributionRandomizer.cpp */; };
 		3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
+		3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */; };
 		3167D836E569DD3FED261E5D /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
@@ -123,6 +124,7 @@
 		3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
 		3167DEB39657802EA6DE783F /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
 		3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
+		3167DED1F0F561A1B33A0A47 /* InventoryItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */; };
 		3167DF137BA8EACC5F7CDD95 /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167DF223816C31DB6724D37 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7233A0AA901871761E8 /* Item.cpp */; };
 		3167DF27DFE5E870A5845C35 /* InGameModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D843C8A19C4FBD802915 /* InGameModal.cpp */; };
@@ -250,6 +252,7 @@
 		3167D094F10916B85FB7B0FC /* GameOverUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverUI.h; sourceTree = "<group>"; };
 		3167D0A88374F8248BC58E79 /* HealthPotionPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotionPlayerMove.h; sourceTree = "<group>"; };
 		3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrajectoryParticle.cpp; sourceTree = "<group>"; };
+		3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItemSlot.h; sourceTree = "<group>"; };
 		3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Achievements.cpp; sourceTree = "<group>"; };
 		3167D158E63BA8AB24BBA71F /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
 		3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMatcher.cpp; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 		3167D84B29A5E82970A45F5D /* StormGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StormGlyph.h; sourceTree = "<group>"; };
 		3167D87F51E76C8213EF5A5C /* EventDataTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataTile.h; sourceTree = "<group>"; };
 		3167D89630700CB559F19ED5 /* ActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionTile.cpp; sourceTree = "<group>"; };
+		3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemSlot.cpp; sourceTree = "<group>"; };
 		3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryModal.cpp; sourceTree = "<group>"; };
 		3167D8FD5B6617C26519A0D4 /* HealthPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotion.h; sourceTree = "<group>"; };
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
@@ -770,6 +774,8 @@
 				3167D5FB0780249507F8EA0A /* InventoryModal.h */,
 				3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */,
 				3167DB4E792CF937E33E0EE7 /* InventoryItemGrid.h */,
+				3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */,
+				3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1040,6 +1046,7 @@
 				3167DF27DFE5E870A5845C35 /* InGameModal.cpp in Sources */,
 				3167D6670F04CFB304C74978 /* InventoryModal.cpp in Sources */,
 				3167D46DC6F8F83AE6CCEA72 /* InventoryItemGrid.cpp in Sources */,
+				3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,6 +1118,7 @@
 				3167D87ADA6A9A75E69368B0 /* InGameModal.cpp in Sources */,
 				3167DC9F7BB2AE668694D0D1 /* InventoryModal.cpp in Sources */,
 				3167DF4A7A84EDD0241DCCA9 /* InventoryItemGrid.cpp in Sources */,
+				3167DED1F0F561A1B33A0A47 /* InventoryItemSlot.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

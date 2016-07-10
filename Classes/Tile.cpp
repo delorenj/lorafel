@@ -15,7 +15,7 @@
 
 using namespace lorafel;
 
-bool Tile::init() {
+bool lorafel::Tile::init() {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
@@ -28,29 +28,29 @@ bool Tile::init() {
 }
 
 
-const std::string& Tile::getTileName() const{
+const std::string& lorafel::Tile::getTileName() const{
     return m_tileName;
 }
 
-void Tile::setTileName(const std::string name) {
+void lorafel::Tile::setTileName(const std::string name) {
     m_tileName = name;
 }
-void Tile::initOptions() {
+void lorafel::Tile::initOptions() {
     setVisitColor(NONE);
     setAnchorPoint(cocos2d::Vec2(0,0));
     setScale(1.15);
 }
 
 
-void Tile::setGrid(SwappyGrid *pGrid) {
+void lorafel::Tile::setGrid(SwappyGrid *pGrid) {
     m_pSwappyGrid = pGrid;
 }
 
-SwappyGrid* Tile::getGrid() {
+SwappyGrid* lorafel::Tile::getGrid() {
     return m_pSwappyGrid;
 }
 
-void Tile::addEvents() {
+void lorafel::Tile::addEvents() {
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
 
@@ -117,7 +117,7 @@ void Tile::addEvents() {
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
+cocos2d::Vec2 lorafel::Tile::getSwapVec(cocos2d::Touch *pTouch) {
     auto touchState = (TileTouchState*) GameStateMachine::getInstance()->getState();
 
     cocos2d::Vec2 delta = _parent->convertToNodeSpace(pTouch->getLocation()) - touchState->getTouchStartPos();
@@ -143,32 +143,32 @@ cocos2d::Vec2 Tile::getSwapVec(cocos2d::Touch *pTouch) {
 }
 
 
-Tile* Tile::getLeft() const {
+lorafel::Tile* lorafel::Tile::getLeft() const {
     auto pos = getGridPos();
     if(pos.x == 0) return nullptr;
     return m_pSwappyGrid->getTileAt(pos.x -1, pos.y);
 }
 
-Tile* Tile::getTop() const {
+lorafel::Tile* lorafel::Tile::getTop() const {
     auto pos = getGridPos();
     if(pos.y == SwappyGrid::NUM_ROWS-1) return nullptr;
     return m_pSwappyGrid->getTileAt(pos.x, pos.y+1);
 
 }
 
-Tile* Tile::getBottom() const {
+lorafel::Tile* lorafel::Tile::getBottom() const {
     auto pos = getGridPos();
     if(pos.y == 0) return nullptr;
     return m_pSwappyGrid->getTileAt(pos.x, pos.y-1);
 }
 
-Tile* Tile::getRight() const {
+lorafel::Tile* lorafel::Tile::getRight() const {
     auto pos = getGridPos();
     if(pos.x == SwappyGrid::NUM_COLUMNS-1) return nullptr;
     return m_pSwappyGrid->getTileAt(pos.x+1, (pos.y));
 }
 
-const cocos2d::Vec2 Tile::getGridPos() const {
+const cocos2d::Vec2 lorafel::Tile::getGridPos() const {
     /**
      * Loot animations require a middle-bottom anchor
      * point to scale properly. We need to take that
@@ -185,11 +185,11 @@ const cocos2d::Vec2 Tile::getGridPos() const {
     }
 }
 
-std::string Tile::getVisitCountAsString() {
+std::string lorafel::Tile::getVisitCountAsString() {
     return lorafel::to_string(m_firstVisit);
 }
 
-void Tile::remove() {
+void lorafel::Tile::remove() {
     auto explode = cocos2d::ParticleSystemQuad::create("break_block_color_smoke.plist");
     explode->setAutoRemoveOnFinish(true);
     explode->setScale(0.75);
@@ -199,7 +199,7 @@ void Tile::remove() {
     m_pSwappyGrid->addTileToRemoveQueue(this);
 }
 
-void Tile::moveToGridPos(int x, int y) {
+void lorafel::Tile::moveToGridPos(int x, int y) {
     m_pSwappyGrid->setNumberOfFallingTiles(m_pSwappyGrid->getNumberOfFallingTiles()+1);
     auto move = cocos2d::MoveTo::create(0.5, m_pSwappyGrid->gridToScreen(x,y));
     auto ease = cocos2d::EaseBounceOut::create(move->clone());
@@ -214,7 +214,7 @@ void Tile::moveToGridPos(int x, int y) {
 
 }
 
-void Tile::onMatch(Match *pMatch) {
+void lorafel::Tile::onMatch(Match *pMatch) {
     /**
      * First, check to see if a tile was marked
      * for replacement. If so, we will swap the
@@ -256,17 +256,17 @@ void Tile::onMatch(Match *pMatch) {
     }
 }
 
-int Tile::getRandHit(Tile* pTile) {
+int lorafel::Tile::getRandHit(lorafel::Tile* pTile) {
     Player* player;
     player = PlayerManager::getInstance()->getPlayer();
     return 10;
 }
 
-bool Tile::freelyMovable() {
+bool lorafel::Tile::freelyMovable() {
     return false;
 }
 
-void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
+void lorafel::Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
     /**
      * We need to keep the clipping area an exact square for the case
      * where either x or y is close to zero on either axis. This will
@@ -314,7 +314,7 @@ void Tile::showTrajectoryLine(cocos2d::Vec2 dest) {
     m_pTrajectoryLine->setRotation(getAngleToPoint(cocos2d::Node::convertToNodeSpace(dest)));
 }
 
-void Tile::hideTrajectoryLine() {
+void lorafel::Tile::hideTrajectoryLine() {
     if(m_pTrajectoryLine != nullptr) {
         m_pTrajectoryLine->stopSystem();
         m_pTrajectoryLine->setVisible(false);
@@ -324,7 +324,7 @@ void Tile::hideTrajectoryLine() {
     m_pClippingMask = nullptr;
 }
 
-void Tile::setGlow(const int color) {
+void lorafel::Tile::setGlow(const int color) {
     auto particle = cocos2d::ParticleSystemQuad::create("glow_puff.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
@@ -358,15 +358,15 @@ void Tile::setGlow(const int color) {
 
 }
 
-Tile* Tile::generateLootTile() {
+lorafel::Tile* lorafel::Tile::generateLootTile() {
     return LootFactory::getInstance()->createTile(this);
 }
 
-Tile::TileConfigs* Tile::getLoot() {
+lorafel::Tile::TileConfigs* lorafel::Tile::getLoot() {
     return m_pLoot;
 }
 
-void Tile::onHooked() {
+void lorafel::Tile::onHooked() {
     auto swappyGridScene = static_cast<SwappyGridScene*>(m_pSwappyGrid->getParent());
     auto ui = swappyGridScene->getGridUI();
     auto xpBar = static_cast<XpUI*>(ui->getChildByName("XpBar"));
@@ -387,7 +387,7 @@ void Tile::onHooked() {
     auto moveAndAddToInventoryEase = cocos2d::EaseSineInOut::create(moveAndAddToInventory->clone());
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        auto tile = static_cast<Tile*>(sender);
+        auto tile = static_cast<lorafel::Tile*>(sender);
         tile->remove();
         GameStateMachine::getInstance()->setState<TileRemovedState>();
     });

@@ -7,7 +7,7 @@
 
 using namespace lorafel;
 
-Tile* Level::getRandomTile() {
+lorafel::Tile* Level::getRandomTile() {
     std::vector<int> probs;
     for (int i = 0; i < m_pTileConfigs->size(); ++i) {
         probs.push_back(m_pTileConfigs->at(i)->frequency);
@@ -29,7 +29,7 @@ TurnManager* Level::getTurnManager() {
     return m_pTurnManager;
 }
 
-Tile* Level::getRandomLoot(Tile* sourceTile) {
+lorafel::Tile* Level::getRandomLoot(Tile* sourceTile) {
     /**
      * Before we create a loot tile, since loot is level-based
      * and player based, we can finnagle around with the LootFactory

@@ -87,6 +87,7 @@ namespace lorafel {
         static const int PURPLE = 3;
         static const int YELLOW = 4;
     };
+
 }
 
 #endif //LORAFEL_GLOBALS_H

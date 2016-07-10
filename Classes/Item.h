@@ -8,11 +8,13 @@
 #include "cocos2d.h"
 #include "SwappyGrid.h"
 
+USING_NS_CC;
+
 namespace lorafel {
     class Item : public cocos2d::Sprite {
     public:
         virtual bool init() override;
-
+        CREATE_FUNC(Item);
         virtual void addEvents(cocos2d::Node* pNode);
 
     protected:
