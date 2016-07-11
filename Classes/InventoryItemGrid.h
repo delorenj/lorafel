@@ -6,6 +6,8 @@
 #define LORAFEL_INVENTORYITEMGRID_H
 
 #include "cocos2d.h"
+#include "Grid.h"
+#include "InventoryItemSlot.h"
 
 namespace lorafel {
     class InventoryItemGrid : public cocos2d::Sprite {
@@ -31,7 +33,7 @@ namespace lorafel {
         }
 
     protected:
-        float distribute(int idx, int total, float size) const;
+        Grid<InventoryItemSlot*>* m_pGrid;
     };
 }
 

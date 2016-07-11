@@ -15,6 +15,8 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
+    m_pGrid = new Grid<InventoryItemSlot*>();
+
     /**
      * Create the background of the
      * grid container
@@ -25,18 +27,16 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     for(int i=0; i<NUM_ROWS; i++) {
         for(int j=0; j<NUM_COLS; j++) {
             auto slot = InventoryItemSlot::create();
-            CCLOG("%f + ((%f/(2*%d)) * (1+2*%d)", hmargin, getContentSize().width-hmargin*2, InventoryItemGrid::NUM_COLS, j);
             slot->setPosition(
-                    hmargin + distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
-                    vmargin + distribute(i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
+                    hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
+                    vmargin + lorafel::distribute(i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
             );
             addChild(slot);
+            m_pGrid->insert(slot, i, j);
         }
     }
     return true;
 }
 
-float InventoryItemGrid::distribute(int idx, int total, float size) const {
-    return size/(2*total) * (1+2*idx);
-}
+
 

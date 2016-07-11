@@ -283,6 +283,7 @@
 		3167D3C5652E9C08FAD14D4B /* IRandomizerStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRandomizerStrategy.h; sourceTree = "<group>"; };
 		3167D401384F1525922B53D2 /* Progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Progress.cpp; sourceTree = "<group>"; };
 		3167D40321AB5081630D99C9 /* HookActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HookActionTile.cpp; sourceTree = "<group>"; };
+		3167D407EBEE36DAA53D2CF2 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		3167D4214B4637FF17045DC5 /* Floatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floatie.cpp; sourceTree = "<group>"; };
 		3167D43152C240F722DEE01C /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
 		3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyHitFloatie.cpp; sourceTree = "<group>"; };
@@ -776,6 +777,7 @@
 				3167DB4E792CF937E33E0EE7 /* InventoryItemGrid.h */,
 				3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */,
 				3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */,
+				3167D407EBEE36DAA53D2CF2 /* Grid.h */,
 			);
 			name = Classes;
 			path = ../Classes;

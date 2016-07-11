@@ -38,6 +38,10 @@ namespace lorafel {
         return bb2;
     }
 
+    static float distribute(int idx, int total, float size) {
+        return size/(2*total) * (1+2*idx);
+    }
+
     static int parseInt(const std::string& value)
     {
         // Android NDK 10 doesn't support std::stoi a/ std::stoul
