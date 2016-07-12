@@ -22,9 +22,18 @@ namespace lorafel {
             static const int SELECTED = 2;
         };
 
+        void setItem(Item* pItem) {
+            m_pItem = pItem;
+            m_state = InventoryItemSlot::State::IDLE;
+        }
+
+        Item* getItem() const { return m_pItem; }
+
+        bool isEmpty();
+
     protected:
         Item* m_pItem;
-        int m_state = InventoryItemSlot::State::IDLE;
+        int m_state = InventoryItemSlot::State::EMPTY;
     };
 }
 

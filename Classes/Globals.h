@@ -19,6 +19,7 @@ namespace lorafel {
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
     #define DISTRIBUTE(idx, total, size) ((float)size/(2*total) * (1+2*idx))
     #define PTM_RATIO 300.0f  // Pixels-to-Meters
+
     static float getAngleToPoint(cocos2d::Vec2 vec2) {
         auto bearingRadians = atan2f(-vec2.y, vec2.x);
         auto bearingDegrees = (float)(bearingRadians * (180 / M_PI));
@@ -27,6 +28,8 @@ namespace lorafel {
         }
         return bearingDegrees;
     }
+
+    static const std::pair<int, int> NULL_COORDINATES = std::make_pair(-1,-1);
 
     static cocos2d::Rect getMinimumSpanningRect(cocos2d::Sprite* p1, cocos2d::Sprite* p2) {
         auto bb1 = p1->getBoundingBox();

@@ -18,3 +18,11 @@ bool InventoryItemSlot::init() {
     return true;
 }
 
+bool InventoryItemSlot::isEmpty() {
+    return m_state == InventoryItemSlot::State::EMPTY;
+}
+
+
+
+
+

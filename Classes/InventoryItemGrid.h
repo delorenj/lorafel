@@ -9,6 +9,8 @@
 #include "Grid.h"
 #include "InventoryItemSlot.h"
 
+USING_NS_CC;
+
 namespace lorafel {
     class InventoryItemGrid : public cocos2d::Sprite {
     public:
@@ -33,7 +35,15 @@ namespace lorafel {
         }
 
     protected:
+        void loadInventory();
+
+    protected:
         Grid<InventoryItemSlot*>* m_pGrid;
+
+
+        Item* assignItemToSlot(Item* pItem);
+
+        bool isEmpty(std::pair<int, int> pair);
     };
 }
 

@@ -4,6 +4,7 @@
 
 #include "Item.h"
 #include "GameStateMachine.h"
+#include "Globals.h"
 
 using namespace lorafel;
 
@@ -11,6 +12,8 @@ bool Item::init() {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
+
+    setInventorySlotCoordinates(lorafel::NULL_COORDINATES);
 
     return true;
 }
@@ -47,3 +50,15 @@ void Item::addEvents(cocos2d::Node* pNode) {
 
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
+
+void Item::setInventorySlotCoordinates(std::pair<int, int> coords) {
+    m_inventorySlotCoordinates = coords;
+}
+
+std::pair<int, int> Item::getInventorySlotCoordinates() {
+    return m_inventorySlotCoordinates;
+}
+
+
+
+

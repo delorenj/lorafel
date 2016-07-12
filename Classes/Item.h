@@ -16,8 +16,12 @@ namespace lorafel {
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode);
 
+        void setInventorySlotCoordinates(std::pair<int, int> coords);
+        std::pair<int, int> getInventorySlotCoordinates();
+
     protected:
         SwappyGrid* m_pSwappyGrid;
+        std::pair<int, int> m_inventorySlotCoordinates;
     };
 }
 
