@@ -33,6 +33,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
             );
             addChild(slot);
             m_pGrid->insert(slot, i, j);
+            CCLOG("Just added slot: %d,%d at position %f,%f", i, j, slot->getPosition().x, slot->getPosition().y);
         }
     }
     return true;

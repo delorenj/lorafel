@@ -13,7 +13,7 @@ build/*
 *.perspective
 *.perspectivev3
 *~.nib
-
+project.android
 #ignore private workspace stuff added by Xcode4
 xcuserdata
 project.xcworkspace

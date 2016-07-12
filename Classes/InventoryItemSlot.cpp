@@ -13,7 +13,7 @@ bool InventoryItemSlot::init() {
     }
 
     initWithSpriteFrameName("modal-inventory-grid-slot.png");
-    setGlobalZOrder(LayerOrder::MODAL+1);
+    setGlobalZOrder(LayerOrder::MODAL+2);
     setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
     return true;
 }
