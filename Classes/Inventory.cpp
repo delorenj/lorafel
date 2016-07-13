@@ -8,10 +8,11 @@ using namespace lorafel;
 
 const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
-    auto itemPair = m_items[itemName];
+    auto itemPair = m_pItems->at(itemName);
     count += quantity;
-    itemPair.second = count;
-    m_items[itemName] = itemPair;
+    itemPair->second = count;
+    auto p = std::make_pair(itemName, itemPair);
+    m_pItems->insert(p);
     return count;
 }
 
@@ -19,25 +20,24 @@ const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     if(itemExists(itemName)) {
         return addItem(itemName, quantity);
     }
-    ItemQuantityPair itemPair(pItem, quantity);
-    m_items.insert(std::make_pair(itemName, itemPair));
+    ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+    auto p = std::make_pair(itemName, itemPair);
+    m_pItems->insert(p);
     return quantity;
 }
 
 int Inventory::getItemCount(const char* itemName) {
-    try {
-        auto pair = m_items[itemName];
-        return pair.second;
-    } catch(std::out_of_range e) {
-        CCLOG("Item not found in inventory");
-        throw new std::out_of_range("Balls");
+    if(!itemExists(itemName)) {
+        return 0;
+    } else {
+        return m_pItems->at(itemName)->second;
     }
 }
 
 bool Inventory::itemExists(const char* itemName) {
     try {
-        m_items.at(itemName);
-    }catch(std::out_of_range e) {
+        m_pItems->at(itemName);
+    } catch(std::out_of_range e) {
         return false;
     }
     return true;
@@ -45,17 +45,18 @@ bool Inventory::itemExists(const char* itemName) {
 
 Item* Inventory::getItem(const char* itemName) {
     if(itemExists(itemName)) {
-        auto itemPair = m_items[itemName];
-        return itemPair.first;
+        return m_pItems->at(itemName)->first;
     } else {
         return nullptr;
     }
+
 }
 
 void Inventory::addEvents(cocos2d::Node* pSwappyGrid) {
-    for(auto itemDictionary : m_items) {
+    for(auto itemDictionary : *m_pItems) {
         auto itemPair = itemDictionary.second;
-        auto item = itemPair.first;
+        auto item = itemPair->first;
         item->addEvents(pSwappyGrid);
     }
 }
+

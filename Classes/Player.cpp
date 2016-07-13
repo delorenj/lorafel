@@ -12,7 +12,7 @@ Player::Player() {
     m_pLevelManager = new LinearLevelManager();
     m_pInventory = new Inventory();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
-    m_activeConsumables.reserve(3);
+    //m_activeConsumables.reserve(3);
 }
 
 Player::~Player() {

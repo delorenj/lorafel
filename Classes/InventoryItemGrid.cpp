@@ -52,25 +52,55 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 }
 
 void InventoryItemGrid::loadInventory() {
-    auto inventory = PlayerManager::getInstance()->getPlayer()->getInventory();
-    for(Item* item : inventory) {
-        assignItemToSlot(item);
+    auto itemDictionary = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+
+    for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
+        assignItemToSlot(it->second);
     }
 }
 
-Item* InventoryItemGrid::assignItemToSlot(Item* pItem) {
-    if(pItem->getInventorySlotCoordinates() == NULL_COORDINATES || !isEmpty(pItem->getInventorySlotCoordinates())) {
-        pItem->setInventorySlotCoordinates(nextEmptySlotCoordinates());
+Item* InventoryItemGrid::assignItemToSlot(Inventory::ItemQuantityPair* pItemPair) {
+    auto slotCoords = nextEmptySlotCoordinates();
+    if(slotCoords == NULL_COORDINATES) {
+        /**
+         * No space left in inventory -
+         * at least, on the current page.
+         */
+        return nullptr;
     }
 
-    auto slot = m_pGrid->get(pItem->getInventorySlotCoordinates());
+    /**
+     * Assign the coordinates to the item
+     */
+    pItemPair->first->setInventorySlotCoordinates(slotCoords);
+
+    /**
+     * Assign the item to the slot
+     */
+    auto slot = m_pGrid->get(slotCoords);
+    auto pItem = pItemPair->first;
     slot->setItem(pItem);
+    return pItem;
 }
 
 bool InventoryItemGrid::isEmpty(std::pair<int, int> pair) {
     auto slot = m_pGrid->get(pair);
     return slot->isEmpty();
 }
+
+std::pair<int, int> InventoryItemGrid::nextEmptySlotCoordinates() {
+    for(int i=0; i<NUM_COLS; i++) {
+        for(int j=0; j<NUM_ROWS; j++) {
+            auto coords = std::make_pair(i,j);
+            if(isEmpty(coords)) {
+                return coords;
+            }
+        }
+    }
+    return NULL_COORDINATES;
+}
+
+
 
 
 

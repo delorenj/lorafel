@@ -8,6 +8,7 @@
 #include "cocos2d.h"
 #include "Grid.h"
 #include "InventoryItemSlot.h"
+#include "Inventory.h"
 
 USING_NS_CC;
 
@@ -34,16 +35,21 @@ namespace lorafel {
             }
         }
 
+        bool isEmpty(std::pair<int, int> pair);
+        Item* assignItemToSlot(Inventory::ItemQuantityPair* pItemPair);
+
     protected:
         void loadInventory();
+        std::pair<int, int> nextEmptySlotCoordinates();
 
     protected:
         Grid<InventoryItemSlot*>* m_pGrid;
 
 
-        Item* assignItemToSlot(Item* pItem);
 
-        bool isEmpty(std::pair<int, int> pair);
+
+
+
     };
 }
 

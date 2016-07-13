@@ -31,9 +31,9 @@ namespace lorafel {
             //TODO: Load from server, including player avatar image
             m_pPlayer->setTile(HeroTile::create("player.png"));
             m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health100%", HealthPotion::create(0.50));
-            m_pPlayer->getInventory()->addItem("Health50hp", HealthPotion::create(50));
-            m_pPlayer->equipConsumableSlot("Health20%", 0);
+//            m_pPlayer->getInventory()->addItem("Health100%", HealthPotion::create(0.50));
+//            m_pPlayer->getInventory()->addItem("Health50hp", HealthPotion::create(50));
+//            m_pPlayer->equipConsumableSlot("Health20%", 0);
             return m_pPlayer;
         }
 

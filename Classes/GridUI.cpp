@@ -170,13 +170,11 @@ void GridUI::initConsumableBar() {
     //TODO: Refactor this loop logic!
     for(int i=0; i<player->getNumConsumableSlots(); i++) {
         auto item = player->getConsumableSlotItem(i);
-        auto sprite = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
-        m_consumableSlots[i] = sprite;
-
-        auto slot = m_consumableSlots[i];
+        auto slot = cocos2d::Sprite::createWithSpriteFrameName("empty-tile.png");
         slot->setAnchorPoint(cocos2d::Vec2(0,1));
         slot->setPosition(cocos2d::Vec2(m_origin.x+5 + (i*m_pSwappyGrid->getTileSize().width),m_pAction1->getPosition().y-5));
         addChild(slot);
+        m_consumableSlots.push_back(slot);
 
         /**
          * Something's equipped in this slot

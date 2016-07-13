@@ -81,7 +81,7 @@ namespace lorafel {
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
-        std::vector<Consumable*> m_activeConsumables;
+        std::map<int, Consumable*> m_activeConsumables;
         Hook* m_pHook;
 
     protected:

@@ -33,8 +33,7 @@ namespace lorafel {
         }
 
         T get(std::pair<int, int> loc) {
-            auto val = m_pDic->at(loc);
-            return val.second;
+            return m_pDic->at(loc);
         }
 
         void swap(std::pair<int, int> loc1, std::pair<int, int> loc2) {

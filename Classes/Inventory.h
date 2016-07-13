@@ -12,20 +12,22 @@ namespace lorafel {
     class Inventory {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;
-        typedef std::unordered_map<const char *, ItemQuantityPair> ItemDictionary;
+        typedef std::unordered_map<const char *, ItemQuantityPair*> ItemDictionary;
 
     public:
-        Inventory() {};
+        Inventory() {
+            m_pItems = new ItemDictionary();
+        };
         virtual ~Inventory() {};
         void addEvents(cocos2d::Node* pSwappyGrid);
 
         const int addItem(const char* itemName, int quantity = 1);
         const int addItem(const char* itemName, Item* pItem, int quantity = 1);
         Item* getItem(const char* itemName);
-
+        ItemDictionary* getItemDictionary() { return m_pItems; }
 
     protected:
-        ItemDictionary m_items;
+        ItemDictionary* m_pItems;
         int getItemCount(const char* itemName);
         bool itemExists(const char* itemName);
     };

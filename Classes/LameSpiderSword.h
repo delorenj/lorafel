@@ -16,6 +16,7 @@ namespace lorafel {
                 return false;
             }
 
+            initWithSpriteFrameName("lame-spider-sword.png");
             m_damage = 500;
             m_equipMask = Player::LEFT_HAND | Player::RIGHT_HAND;
             return true;

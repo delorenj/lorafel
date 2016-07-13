@@ -25,6 +25,20 @@ namespace lorafel {
         void setItem(Item* pItem) {
             m_pItem = pItem;
             m_state = InventoryItemSlot::State::IDLE;
+            /**
+             * If item slot was empty, then we
+             * first need to add a sprite image
+             *
+             * Otherwise, there already is an image,
+             * so in this case we load the new
+             * image in there
+             */
+            if(m_pItemSprite == nullptr) {
+                m_pItemSprite = cocos2d::Sprite::createWithSpriteFrame(m_pItem->getSpriteFrame());
+                addChild(m_pItemSprite);
+            } else {
+                m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
+            }
         }
 
         Item* getItem() const { return m_pItem; }
@@ -33,6 +47,7 @@ namespace lorafel {
 
     protected:
         Item* m_pItem;
+        cocos2d::Sprite* m_pItemSprite;
         int m_state = InventoryItemSlot::State::EMPTY;
     };
 }
