@@ -20,6 +20,7 @@ const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     if(itemExists(itemName)) {
         return addItem(itemName, quantity);
     }
+    pItem->retain();
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
     auto p = std::make_pair(itemName, itemPair);
     m_pItems->insert(p);

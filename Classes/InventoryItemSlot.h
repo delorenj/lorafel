@@ -7,6 +7,7 @@
 
 #include "cocos2d.h"
 #include "Item.h"
+#include "Globals.h"
 
 USING_NS_CC;
 
@@ -35,6 +36,9 @@ namespace lorafel {
              */
             if(m_pItemSprite == nullptr) {
                 m_pItemSprite = cocos2d::Sprite::createWithSpriteFrame(m_pItem->getSpriteFrame());
+                m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0,0));
+                m_pItemSprite->setGlobalZOrder(LayerOrder::MODAL+3);
+                m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
                 addChild(m_pItemSprite);
             } else {
                 m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());

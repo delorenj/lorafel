@@ -35,7 +35,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
             auto slot = InventoryItemSlot::create();
             slot->setPosition(
                     hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
-                    vmargin + lorafel::distribute(i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
+                    vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
             );
             addChild(slot);
             /**
