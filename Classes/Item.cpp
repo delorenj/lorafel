@@ -13,7 +13,7 @@ bool Item::init() {
         return false;
     }
 
-    setInventorySlotCoordinates(lorafel::NULL_COORDINATES);
+    addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
 
     return true;
 }
@@ -51,11 +51,11 @@ void Item::addEvents(cocos2d::Node* pNode) {
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Item::setInventorySlotCoordinates(std::pair<int, int> coords) {
-    m_inventorySlotCoordinates = coords;
+void Item::addInventorySlotCoordinates(std::pair<int, int> coords) {
+    m_inventorySlotCoordinates.insert(coords);
 }
 
-std::pair<int, int> Item::getInventorySlotCoordinates() {
+std::set<std::pair<int, int> >Item::getInventorySlotCoordinates() const {
     return m_inventorySlotCoordinates;
 }
 

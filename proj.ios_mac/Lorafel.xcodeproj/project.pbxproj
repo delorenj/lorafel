@@ -354,6 +354,7 @@
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
+		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
@@ -778,6 +779,7 @@
 				3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */,
 				3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */,
 				3167D407EBEE36DAA53D2CF2 /* Grid.h */,
+				3167DA5343064B77FE4ED1BD /* IStackable.h */,
 			);
 			name = Classes;
 			path = ../Classes;

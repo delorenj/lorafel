@@ -3,7 +3,7 @@
 //
 
 #include "InventoryItemSlot.h"
-#include "Globals.h"
+#include "IStackable.h"
 
 using namespace lorafel;
 
@@ -21,6 +21,29 @@ bool InventoryItemSlot::init() {
 bool InventoryItemSlot::isEmpty() {
     return m_state == InventoryItemSlot::State::EMPTY;
 }
+
+int InventoryItemSlot::incrementStack() {
+    return ++m_stackSize;
+}
+
+int InventoryItemSlot::decrementStack() {
+    return --m_stackSize;
+}
+
+bool InventoryItemSlot::stackFull() const {
+    if(m_pItem == nullptr) {
+        return false;
+    }
+
+    IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+    if(stackable == nullptr) {
+        true;
+    }
+
+    return m_pItem->ge stackable->getMaxStack())
+}
+
+
 
 
 

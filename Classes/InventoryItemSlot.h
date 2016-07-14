@@ -43,16 +43,29 @@ namespace lorafel {
             } else {
                 m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
             }
+
+            /**
+             * This may have to change. For now, assume
+             * that setting an item will always replace
+             * current item with a single stack item
+             */
+            m_stackSize = 1;
         }
 
         Item* getItem() const { return m_pItem; }
 
         bool isEmpty();
 
+        int incrementStack();
+        int decrementStack();
+
+        bool stackFull() const;
+
     protected:
         Item* m_pItem;
         cocos2d::Sprite* m_pItemSprite;
         int m_state = InventoryItemSlot::State::EMPTY;
+        int m_stackSize = 0;
     };
 }
 

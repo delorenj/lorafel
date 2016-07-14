@@ -46,10 +46,9 @@ namespace lorafel {
         Grid<InventoryItemSlot*>* m_pGrid;
 
 
+        bool isStackable(Item* pItem);
 
-
-
-
+        std::pair<int, int> findNonMaxedSlotCoordinatesOfItem(Item* pItem);
     };
 }
 

@@ -60,27 +60,47 @@ void InventoryItemGrid::loadInventory() {
 }
 
 Item* InventoryItemGrid::assignItemToSlot(Inventory::ItemQuantityPair* pItemPair) {
-    auto slotCoords = nextEmptySlotCoordinates();
-    if(slotCoords == NULL_COORDINATES) {
+    if(!isStackable(pItemPair->first)) {
+        auto slotCoords = nextEmptySlotCoordinates();
+        if(slotCoords == NULL_COORDINATES) {
+            /**
+             * No space left in inventory -
+             * at least, on the current page.
+             */
+            return nullptr;
+        }
+
         /**
-         * No space left in inventory -
-         * at least, on the current page.
+         * Assign the coordinates to the item
          */
-        return nullptr;
+        pItemPair->first->addInventorySlotCoordinates(slotCoords);
+
+        /**
+         * Assign the item to the slot
+         */
+        auto slot = m_pGrid->get(slotCoords);
+        auto pItem = pItemPair->first;
+        slot->setItem(pItem);
+        return pItem;
+    } else {
+        /**
+         * Find any slot with pItem that does not have maxed-out
+         * stack quantity. If none exist, then create a new
+         * stack in a new slot. Otherwise, render a higher stack
+         * number on the slot.
+         */
+        auto slotCoords = findNonMaxedSlotCoordinatesOfItem(pItemPair->first);
+        if(slotCoords == NULL_COORDINATES) {
+            /**
+             * All slots are maxed,
+             * so let's insert a fresh stack
+             */
+
+        } else {
+            auto slot = m_pGrid->get(slotCoords);
+            slot->incrementStack();
+        }
     }
-
-    /**
-     * Assign the coordinates to the item
-     */
-    pItemPair->first->setInventorySlotCoordinates(slotCoords);
-
-    /**
-     * Assign the item to the slot
-     */
-    auto slot = m_pGrid->get(slotCoords);
-    auto pItem = pItemPair->first;
-    slot->setItem(pItem);
-    return pItem;
 }
 
 bool InventoryItemGrid::isEmpty(std::pair<int, int> pair) {
@@ -99,6 +119,24 @@ std::pair<int, int> InventoryItemGrid::nextEmptySlotCoordinates() {
     }
     return NULL_COORDINATES;
 }
+
+bool InventoryItemGrid::isStackable(Item* pItem) {
+    IStackable* iStackable = dynamic_cast<IStackable*>(pItem);
+    return iStackable != nullptr;
+}
+
+std::pair<int, int> InventoryItemGrid::findNonMaxedSlotCoordinatesOfItem(Item* pItem) {
+    for(int i=0; i<NUM_ROWS; i++) {
+        for(int j=0; j<NUM_COLS; j++) {
+            auto slot = m_pGrid->get(i, j);
+            return slot->getItem() == pItem && !slot->stackFull();
+        }
+    }
+}
+
+
+
+
 
 
 

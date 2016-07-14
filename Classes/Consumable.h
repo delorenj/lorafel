@@ -7,13 +7,13 @@
 
 #include "Item.h"
 #include "Tile.h"
+#include "IStackable.h"
 
 namespace lorafel {
-    class Consumable : public Item {
+    class Consumable : public Item, public IStackable {
     public:
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode) override;
-
         virtual void use(Tile* pTarget);
     };
 }
