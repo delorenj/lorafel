@@ -30,108 +30,14 @@ namespace lorafel {
             m_pPlayer = new Player();
             //TODO: Load from server, including player avatar image
             m_pPlayer->setTile(HeroTile::create("player.png"));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-//            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-//            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-//            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-//            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-//            m_pPlayer->getInventory()->addItem("Health20%", HealthPotion::create(0.20));
-
-
-            m_pPlayer->getInventory()->addItem("Health100%", HealthPotion::create(0.50));
-
-//            m_pPlayer->getInventory()->addItem("Health50hp", HealthPotion::create(50));
-
-            m_pPlayer->equipConsumableSlot("Health20%", 0);
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.50, "Better Health"));
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(50, "Super 50 Health"));
+            m_pPlayer->equipConsumableSlot("Better Health", 0);
 
             return m_pPlayer;
         }

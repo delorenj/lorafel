@@ -10,12 +10,13 @@
 
 using namespace lorafel;
 
-bool HealthPotion::init(double amount) {
+bool HealthPotion::init(double amount, const char* name) {
     if(!Consumable::init()) {
         return false;
     }
 
     m_amount = amount;
+    m_itemName = name;
     initWithSpriteFrameName("PoisonGlyph.png");
     return true;
 }
@@ -73,4 +74,10 @@ void HealthPotion::use(Tile* pTarget) {
         m_pSwappyGrid->executePlayerMove(playerMove);
     }
 
+}
+
+bool HealthPotion::addToInventory() {
+    auto inventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+    inventory->addItem(this);
+    _eventDispatcher->dispatchCustomEvent("itemAdded", this);
 }

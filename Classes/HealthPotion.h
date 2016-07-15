@@ -8,16 +8,15 @@
 #include "cocos2d.h"
 #include "Consumable.h"
 
-
 namespace lorafel {
     class HealthPotion : public Consumable {
     public:
-        virtual bool init(double percent);
+        virtual bool init(double percent, const char* name);
 
-        static HealthPotion* create(double percent) {
+        static HealthPotion* create(double percent, const char* name = "Health Potion") {
 
             HealthPotion* pRet = new(std::nothrow) HealthPotion();
-            if (pRet && pRet->init(percent)) {
+            if (pRet && pRet->init(percent, name)) {
                 pRet->autorelease();
                 return pRet;
             }
@@ -30,6 +29,7 @@ namespace lorafel {
 
         virtual void addEvents(cocos2d::Node* pNode) override;
         virtual void use(Tile* pTarget) override;
+        virtual bool addToInventory() override;
 
         virtual int getMaxStack() const override { return 5; }
 

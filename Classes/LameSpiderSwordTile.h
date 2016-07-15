@@ -29,7 +29,7 @@ namespace lorafel {
                 PlayerManager::getInstance()
                         ->getPlayer()
                         ->getInventory()
-                        ->addItem("Lame Spider Sword", LameSpiderSword::create());
+                        ->addItem(LameSpiderSword::create());
 
                 auto body = cocos2d::PhysicsBody::createBox(
                         cocos2d::Size(getContentSize().width/4, getContentSize().height),

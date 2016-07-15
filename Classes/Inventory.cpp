@@ -6,6 +6,10 @@
 
 using namespace lorafel;
 
+const int Inventory::addItem(Item* pItem, int quantity) {
+    return addItem(pItem->getItemName());
+}
+
 const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
     auto itemPair = m_pItems->at(itemName);

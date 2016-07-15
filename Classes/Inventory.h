@@ -21,6 +21,7 @@ namespace lorafel {
         virtual ~Inventory() {};
         void addEvents(cocos2d::Node* pSwappyGrid);
 
+        const int addItem(Item* pItem, int quantity = 1);
         const int addItem(const char* itemName, int quantity = 1);
         const int addItem(const char* itemName, Item* pItem, int quantity = 1);
         Item* getItem(const char* itemName);
