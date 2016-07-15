@@ -403,6 +403,7 @@
 		3167DF9921A93AA17D12B6C8 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGridScene.cpp; sourceTree = "<group>"; };
 		3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballActionTile.cpp; sourceTree = "<group>"; };
+		3167DFEFBC33BF81FB4F901F /* IInventoryable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IInventoryable.h; sourceTree = "<group>"; };
 		3167DFF164097D4A82449B44 /* EnemyHitFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyHitFloatie.h; sourceTree = "<group>"; };
 		3167DFFA821FDCDD595EF4C2 /* RandomAIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomAIStrategy.h; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
@@ -780,6 +781,7 @@
 				3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */,
 				3167D407EBEE36DAA53D2CF2 /* Grid.h */,
 				3167DA5343064B77FE4ED1BD /* IStackable.h */,
+				3167DFEFBC33BF81FB4F901F /* IInventoryable.h */,
 			);
 			name = Classes;
 			path = ../Classes;

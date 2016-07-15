@@ -12,6 +12,7 @@
 #include "Globals.h"
 #include "LootFactory.h"
 #include "SwappyGridScene.h"
+#include "IInventoryable.h"
 
 using namespace lorafel;
 
@@ -388,7 +389,24 @@ void lorafel::Tile::onHooked() {
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         auto tile = static_cast<lorafel::Tile*>(sender);
+
+        /**
+         * Check to see if this tile implements the Inventoryable
+         * interface. If it does, then invoke the addToInventory()
+         * method.
+         */
+        auto inventoryable = dynamic_cast<IInventoryable*>(tile);
+        if(inventoryable != nullptr) {
+            inventoryable->addToInventory();
+        }
+
+        /**
+         * After checking to make sure we inventory
+         * the tile if it's a loot tile, only then
+         * may we delete the tile.
+         */
         tile->remove();
+
         GameStateMachine::getInstance()->setState<TileRemovedState>();
     });
 

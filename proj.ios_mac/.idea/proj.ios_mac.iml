@@ -87,7 +87,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HeroTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventDataFloatie.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NonConsumable.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/Achievements.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/IInventoryable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SeededLevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Floatie.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameSettings.cpp" isTestSource="false" />
@@ -105,6 +105,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpFloatie.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PlayerManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Achievements.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LameSpiderSwordTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GoldUI.h" isTestSource="false" />

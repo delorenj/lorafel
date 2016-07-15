@@ -16,3 +16,13 @@ bool LootTile::init() {
     return true;
 }
 
+/**
+ * For Loot tiles, just call addToInventory()
+ * on the underlying tile's item
+ */
+bool LootTile::addToInventory() {
+    m_pLootItem->addToInventory();
+}
+
+
+

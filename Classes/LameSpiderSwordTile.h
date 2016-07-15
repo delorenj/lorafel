@@ -26,10 +26,6 @@ namespace lorafel {
                 addEvents();
                 addStatResult(new XpStatResult(150));
                 setGlow(Glow::GREEN);
-                PlayerManager::getInstance()
-                        ->getPlayer()
-                        ->getInventory()
-                        ->addItem(LameSpiderSword::create());
 
                 auto body = cocos2d::PhysicsBody::createBox(
                         cocos2d::Size(getContentSize().width/4, getContentSize().height),
@@ -46,6 +42,11 @@ namespace lorafel {
             }
             return false;
 
+        }
+
+        virtual bool addToInventory() override {
+            m_pLootItem = LameSpiderSword::create();
+            LootTile::addToInventory();
         }
 
         CREATE_FUNC(LameSpiderSwordTile);
