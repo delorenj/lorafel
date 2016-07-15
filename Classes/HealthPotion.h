@@ -13,10 +13,10 @@ namespace lorafel {
     public:
         virtual bool init(double percent, const char* name);
 
-        static HealthPotion* create(double percent, const char* name = "Health Potion") {
+        static HealthPotion* create(double percent) {
 
             HealthPotion* pRet = new(std::nothrow) HealthPotion();
-            if (pRet && pRet->init(percent, name)) {
+            if (pRet && pRet->init(percent)) {
                 pRet->autorelease();
                 return pRet;
             }
@@ -32,6 +32,7 @@ namespace lorafel {
         virtual bool addToInventory() override;
 
         virtual int getMaxStack() const override { return 5; }
+        virtual const char* getItemName() const override;
 
     protected:
         double m_amount;

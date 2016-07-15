@@ -3,6 +3,7 @@
 //
 
 #include "Weapon.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 

@@ -23,7 +23,8 @@ namespace lorafel {
         }
 
         CREATE_FUNC(LameSpiderSword);
-        
+
+
     protected:
         const char* m_itemName = "Lame Spider Sword";
 

@@ -6,17 +6,16 @@
 #include "GameStateMachine.h"
 #include "PlayerManager.h"
 #include "HealthPotionPlayerMove.h"
-#include "Level.h"
 
 using namespace lorafel;
 
-bool HealthPotion::init(double amount, const char* name) {
+bool HealthPotion::init(double amount) {
     if(!Consumable::init()) {
         return false;
     }
 
     m_amount = amount;
-    m_itemName = name;
+    m_itemName = getItemName();
     initWithSpriteFrameName("PoisonGlyph.png");
     return true;
 }
@@ -81,3 +80,27 @@ bool HealthPotion::addToInventory() {
     inventory->addItem(this);
     _eventDispatcher->dispatchCustomEvent("itemAdded", this);
 }
+
+const char* HealthPotion::getItemName() const {
+    /**
+     * This is a percentage-based potion
+     */
+    if(m_amount <= 0.1) {
+        return "Stupid Potion";
+    } else if(m_amount <= 0.2) {
+        return "Yummy Potion";
+    } else if(m_amount <= 0.5) {
+        return "Awesome Potion";
+    } else if(m_amount <= 0.8) {
+        return "Damn Good Potion";
+    } else if(m_amount <= 1) {
+            return "Grand Potion";
+    } else {
+        /**
+         * This is a flat-amount potion
+         */
+        return std::string("Health Potion " + to_string(m_amount)).c_str();
+    }
+}
+
+

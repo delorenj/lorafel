@@ -6,10 +6,19 @@
 
 using namespace lorafel;
 
+/**
+ * This is for adding an item and using the item's
+ * own getItemName() function to set the lookup name
+ * in the inventory dictionary
+ */
 const int Inventory::addItem(Item* pItem, int quantity) {
-    return addItem(pItem->getItemName());
+    return addItem(pItem->getItemName(), pItem, quantity);
 }
 
+/**
+ * This is only for adding MORE items of an already
+ * existing item
+ */
 const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
     auto itemPair = m_pItems->at(itemName);
@@ -20,6 +29,11 @@ const int Inventory::addItem(const char* itemName, int quantity) {
     return count;
 }
 
+/**
+ * This is for adding an Item and setting the name of it,
+ * thus overriding the default Item name returned in
+ * the item's own getItemName() function
+ */
 const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     if(itemExists(itemName)) {
         return addItem(itemName, quantity);
