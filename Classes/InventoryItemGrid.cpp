@@ -114,8 +114,8 @@ bool InventoryItemGrid::isEmpty(InventoryItemGrid::Coords pair) {
 }
 
 InventoryItemGrid::Coords InventoryItemGrid::nextEmptySlotCoordinates() {
-    for(int i=0; i<NUM_COLS; i++) {
-        for(int j=0; j<NUM_ROWS; j++) {
+    for(int i=0; i<NUM_ROWS; i++) {
+        for(int j=0; j<NUM_COLS; j++) {
             auto coords = std::make_pair(i,j);
             if(isEmpty(coords)) {
                 return coords;

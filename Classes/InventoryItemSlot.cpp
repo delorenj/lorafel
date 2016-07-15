@@ -4,6 +4,7 @@
 
 #include "InventoryItemSlot.h"
 #include "IStackable.h"
+#include "StringPatch.h"
 
 using namespace lorafel;
 
@@ -68,7 +69,7 @@ bool InventoryItemSlot::stackFull() const {
 
 void InventoryItemSlot::update(float delta) {
     if(m_stackSizeChange) {
-        auto show = m_stackSize < 2 ? "" : std::to_string(m_stackSize);
+        auto show = m_stackSize < 2 ? "" : to_string(m_stackSize);
         m_pStackSizeLabel->setString(show);
         m_stackSizeChange = false;
     }
