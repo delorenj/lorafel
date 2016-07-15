@@ -33,7 +33,6 @@ namespace lorafel {
 
     protected:
         double m_amount;
-
     };
 }
 

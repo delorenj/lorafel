@@ -17,6 +17,7 @@ namespace lorafel {
     public:
         static const int NUM_ROWS = 4;
         static const int NUM_COLS = 8;
+        typedef std::pair<int, int> Coords;
 
         bool init(cocos2d::Node* container);
         static InventoryItemGrid* create(cocos2d::Node* container)
@@ -35,12 +36,14 @@ namespace lorafel {
             }
         }
 
-        bool isEmpty(std::pair<int, int> pair);
+        bool isEmpty(Coords pair);
         Item* assignItemToSlot(Inventory::ItemQuantityPair* pItemPair);
+        Item* assignItemToSlot(Item* pItem, Coords slotCoords);
 
     protected:
         void loadInventory();
-        std::pair<int, int> nextEmptySlotCoordinates();
+        Coords nextEmptySlotCoordinates();
+
 
     protected:
         Grid<InventoryItemSlot*>* m_pGrid;
@@ -48,7 +51,7 @@ namespace lorafel {
 
         bool isStackable(Item* pItem);
 
-        std::pair<int, int> findNonMaxedSlotCoordinatesOfItem(Item* pItem);
+        Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
     };
 }
 

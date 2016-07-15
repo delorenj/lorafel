@@ -9,11 +9,11 @@
 namespace lorafel {
     class IStackable {
     public:
-        virtual int getMaxStack() const { return m_maxStack; }
-        virtual int getNumStacks(int quantity) const { return (int)quantity/getMaxStack(); }
+        virtual int getMaxStack() const = 0;
 
-    protected:
-        int m_maxStack = 20;
+        virtual int getNumStacks(int quantity) const {
+            return (int)quantity/getMaxStack();
+        }
     };
 }
 

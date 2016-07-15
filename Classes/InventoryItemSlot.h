@@ -26,6 +26,7 @@ namespace lorafel {
         void setItem(Item* pItem) {
             m_pItem = pItem;
             m_state = InventoryItemSlot::State::IDLE;
+
             /**
              * If item slot was empty, then we
              * first need to add a sprite image
@@ -55,17 +56,18 @@ namespace lorafel {
         Item* getItem() const { return m_pItem; }
 
         bool isEmpty();
-
         int incrementStack();
         int decrementStack();
-
         bool stackFull() const;
+        void update(float delta) override;
 
     protected:
         Item* m_pItem;
         cocos2d::Sprite* m_pItemSprite;
+        cocos2d::Label* m_pStackSizeLabel;
         int m_state = InventoryItemSlot::State::EMPTY;
         int m_stackSize = 0;
+        bool m_stackSizeChange = false;
     };
 }
 
