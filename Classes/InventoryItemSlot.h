@@ -56,6 +56,12 @@ namespace lorafel {
              * current item with a single stack item
              */
             m_stackSize = 1;
+
+            /**
+             * Ensure that the ghost sprite is a copy of the
+             * item sprite - used for drag and drop
+             */
+            m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
         }
 
         Item* getItem() const { return m_pItem; }
@@ -69,14 +75,13 @@ namespace lorafel {
     protected:
         Item* m_pItem;
         cocos2d::Sprite* m_pItemSprite;
+        cocos2d::Sprite* m_pGhost;
         cocos2d::Label* m_pStackSizeLabel;
         int m_state = InventoryItemSlot::State::EMPTY;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;
 
         void addEvents();
-
-        cocos2d::Sprite* createGhost();
     };
 }
 

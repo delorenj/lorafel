@@ -29,6 +29,17 @@ bool InventoryItemSlot::init() {
     m_pStackSizeLabel->setPosition(getContentSize().width/2, getContentSize().height/2);
     addChild(m_pStackSizeLabel);
 
+    /**
+     * Add the ghost sprite used when dragging item stacks
+     * so the actual item stays in the slot while the ghost
+     * follows the finger
+     */
+    m_pGhost = cocos2d::Sprite::create();
+    m_pGhost->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+    m_pGhost->setGlobalZOrder(LayerOrder::MODAL+10);
+    m_pGhost->setVisible(false);
+    addChild(m_pGhost);
+
     addEvents();
 
     scheduleUpdate();
@@ -80,7 +91,6 @@ void InventoryItemSlot::update(float delta) {
 
 void InventoryItemSlot::addEvents() {
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
-    cocos2d::Sprite* ghost;
 
     listener->setSwallowTouches(true);
 
@@ -114,30 +124,22 @@ void InventoryItemSlot::addEvents() {
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         if(m_state == InventoryItemSlot::State::TOUCH_BEGIN) {
             CCLOG("Move: start");
-            ghost = createGhost();
-            ghost->setPosition(touch->getLocation());
-            addChild(ghost);
+            m_pGhost->setVisible(true);
+            m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
             m_state = InventoryItemSlot::State::MOVING;
         } else if(m_state == InventoryItemSlot::State::MOVING) {
-            ghost->setPosition(touch->getLocation());
+            m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
         }
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        ghost->removeFromParentAndCleanup(true);
+        m_pGhost->setVisible(false);
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 }
 
-cocos2d::Sprite* InventoryItemSlot::createGhost() {
-    auto ghost = cocos2d::Sprite::createWithSpriteFrame(m_pItem->getSpriteFrame());
-    ghost->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    ghost->setOpacity(100);
-    return ghost;
-
-}
 
 
 
