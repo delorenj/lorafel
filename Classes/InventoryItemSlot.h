@@ -21,6 +21,11 @@ namespace lorafel {
             static const int EMPTY = 0;
             static const int IDLE = 1;
             static const int SELECTED = 2;
+            static const int TOUCH_BEGIN = 3;
+            static const int MOVE_BEGIN = 4;
+            static const int MOVING = 5;
+            static const int MOVE_END = 6;
+            static const int TOUCH_END = 7;
         };
 
         void setItem(Item* pItem) {
@@ -68,6 +73,10 @@ namespace lorafel {
         int m_state = InventoryItemSlot::State::EMPTY;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;
+
+        void addEvents();
+
+        cocos2d::Sprite* createGhost();
     };
 }
 
