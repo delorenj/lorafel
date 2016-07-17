@@ -122,10 +122,14 @@ void InventoryItemSlot::addEvents() {
     };
 
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+
         if(m_state == InventoryItemSlot::State::TOUCH_BEGIN) {
             CCLOG("Move: start");
             m_pGhost->setVisible(true);
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
+
+            auto scaleTo = cocos2d::ScaleBy::create(0.2f, 3.0f);
+            m_pGhost->runAction(scaleTo);
             m_state = InventoryItemSlot::State::MOVING;
         } else if(m_state == InventoryItemSlot::State::MOVING) {
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
@@ -133,7 +137,14 @@ void InventoryItemSlot::addEvents() {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        m_pGhost->setVisible(false);
+        auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+        auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
+        auto goHome = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
+        auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+            m_pGhost->setVisible(false);
+        });
+        auto seq = cocos2d::Sequence::create(cocos2d::Spawn::create(scaleTo, goHome, nullptr), callback, nullptr);
+        m_pGhost->runAction(seq);
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
