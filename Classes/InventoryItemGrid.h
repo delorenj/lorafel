@@ -44,6 +44,8 @@ namespace lorafel {
 
         void highlightsOff();
 
+        void swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot2);
+
     protected:
         void loadInventory();
         Coords nextEmptySlotCoordinates();

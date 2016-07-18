@@ -59,6 +59,12 @@ std::set<std::pair<int, int> >Item::getInventorySlotCoordinates() const {
     return m_inventorySlotCoordinates;
 }
 
+void Item::removeInventorySlotCoordinates(std::pair<int, int> coords) {
+    m_inventorySlotCoordinates.erase(coords);
+}
+
+
+
 
 
 

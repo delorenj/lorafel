@@ -25,6 +25,8 @@ namespace lorafel {
         std::set<std::pair<int, int> > getInventorySlotCoordinates() const;
 
 
+        void removeInventorySlotCoordinates(std::pair<int, int> coords);
+
     protected:
         const char* m_itemName;
         SwappyGrid* m_pSwappyGrid;

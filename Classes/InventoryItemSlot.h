@@ -58,7 +58,7 @@ namespace lorafel {
              */
             if(m_pItemSprite == nullptr) {
                 m_pItemSprite = cocos2d::Sprite::createWithSpriteFrame(m_pItem->getSpriteFrame());
-                m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0,0));
+                m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
                 m_pItemSprite->setGlobalZOrder(LayerOrder::MODAL+3);
                 m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
                 addChild(m_pItemSprite);
@@ -67,17 +67,11 @@ namespace lorafel {
             }
 
             /**
-             * This may have to change. For now, assume
-             * that setting an item will always replace
-             * current item with a single stack item
-             */
-            m_stackSize = 1;
-
-            /**
              * Ensure that the ghost sprite is a copy of the
              * item sprite - used for drag and drop
              */
             m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
+            m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
         }
 
         Item* getItem() const { return m_pItem; }
@@ -86,11 +80,16 @@ namespace lorafel {
         int incrementStack();
         int decrementStack();
         bool stackFull() const;
+        int getStackSize() const { return m_stackSize; }
+        void setStackSize(int stackSize) { m_stackSize = stackSize; }
         void ghostOn() const;
         void ghostOff() const;
+        cocos2d::Sprite* getGhost() const { return m_pGhost; }
         void highlightOn();
         void highlightOff();
         void update(float delta) override;
+        std::pair<int, int> getCoords() const { return m_coords; }
+        void setCoords(std::pair<int, int> coords) { m_coords = coords; }
 
     protected:
         Item* m_pItem;
@@ -98,6 +97,7 @@ namespace lorafel {
         cocos2d::Sprite* m_pItemSprite;
         cocos2d::Sprite* m_pGhost;
         cocos2d::Label* m_pStackSizeLabel;
+        std::pair<int, int> m_coords;
         int m_state = InventoryItemSlot::State::EMPTY;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;

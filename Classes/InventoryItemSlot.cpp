@@ -148,9 +148,9 @@ void InventoryItemSlot::addEvents() {
              * to the hovered slot
              */
             auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
-            auto to1 = cocos2d::Vec2(currentHoveredSlot->getPosition().x + currentHoveredSlot->getContentSize().width/2,currentHoveredSlot->getPosition().y + currentHoveredSlot->getContentSize().height/2);
+            auto to1 = currentHoveredSlot->getPosition();
             auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
-            auto moveTo = cocos2d::MoveTo::create(speed1, to1);
+            auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(m_pGrid->convertToWorldSpace(to1)));
             auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
 
             if(!currentHoveredSlot->isEmpty()) {
@@ -158,12 +158,30 @@ void InventoryItemSlot::addEvents() {
                  * Swap the current item with the one
                  * trying to go into this one
                  */
-                auto item = currentHoveredSlot->getItem();
-                auto to2 = item->convertToNodeSpace(cocos2d::Vec2::ZERO);
-                auto speed2 = item->getPosition().getDistance(to2)/800;
-                auto moveTo2 = cocos2d::MoveTo::create(speed2, to2);
-                item->runAction(moveTo2);
+                currentHoveredSlot->ghostOn();
+                auto swapGhost = currentHoveredSlot->getGhost();
+                /**
+                 * The original itemSprite is still in it's
+                 * same position, regardless of the ghost that
+                 * you're dragging around.
+                 *
+                 * Move the item that you want to swap to the
+                 * static position of the itemSprite.
+                 */
+                auto to2 = getPosition();
+                auto moveTo2 = cocos2d::MoveTo::create(speed1, swapGhost->convertToNodeSpace(m_pGrid->convertToWorldSpace(to2)));
+                auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
+                    currentHoveredSlot->ghostOff();
+                });
+
+                swapGhost->runAction(cocos2d::Sequence::create(moveTo2, callback, nullptr));
             }
+
+            auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
+                ghostOff();
+                m_pGrid->swap(this, currentHoveredSlot);
+            });
+
             seq = cocos2d::Sequence::create(s1, nullptr);
 
         } else {
@@ -175,12 +193,13 @@ void InventoryItemSlot::addEvents() {
             auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
             auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
             auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
-            seq = cocos2d::Sequence::create(s1, nullptr);
+            auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                ghostOff();
+            });
+
+            seq = cocos2d::Sequence::create(s1, callback, nullptr);
         }
 
-        auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-
-        });
 
         m_pGhost->runAction(seq);
     };
@@ -208,6 +227,7 @@ void InventoryItemSlot::highlightOn() {
 void InventoryItemSlot::highlightOff() {
     setColor(cocos2d::Color3B::WHITE);
 }
+
 
 
 

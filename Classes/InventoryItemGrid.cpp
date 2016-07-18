@@ -44,6 +44,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
              * into the underlying grid structure
              */
             m_pGrid->insert(slot, i, j);
+            slot->setCoords(std::make_pair(i, j));
         }
     }
 
@@ -167,6 +168,24 @@ void InventoryItemGrid::highlightsOff() {
         }
     }
 }
+
+void InventoryItemGrid::swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot2) {
+    auto s1StackSize = pSlot1->getStackSize();
+    auto s1Item = pSlot1->getItem();
+
+    pSlot1->getItem()->removeInventorySlotCoordinates(pSlot1->getCoords());
+    pSlot2->getItem()->removeInventorySlotCoordinates(pSlot2->getCoords());
+
+    pSlot1->setStackSize(pSlot2->getStackSize());
+    pSlot1->setItem(pSlot2->getItem());
+    pSlot1->getItem()->addInventorySlotCoordinates(pSlot1->getCoords());
+
+    pSlot2->setStackSize(s1StackSize);
+    pSlot2->setItem(s1Item);
+    pSlot2->getItem()->addInventorySlotCoordinates(pSlot2->getCoords());
+}
+
+
 
 
 
