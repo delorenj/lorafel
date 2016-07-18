@@ -3,6 +3,7 @@
 //
 
 #include "InventoryItemGrid.h"
+#include "InventoryItemSlot.h"
 #include "Globals.h"
 #include "PlayerManager.h"
 
@@ -32,7 +33,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     float vmargin = 0.05f * getContentSize().height;
     for(int i=0; i<NUM_ROWS; i++) {
         for(int j=0; j<NUM_COLS; j++) {
-            auto slot = InventoryItemSlot::create();
+            auto slot = InventoryItemSlot::create(this);
             slot->setPosition(
                     hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
                     vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
@@ -145,6 +146,31 @@ InventoryItemGrid::Coords InventoryItemGrid::findNonMaxedSlotCoordinatesOfItem(I
     }
     return NULL_COORDINATES;
 }
+
+InventoryItemSlot* InventoryItemGrid::getSlotFromPosition(Vec2 coords) {
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < NUM_COLS; j++) {
+            auto slot = m_pGrid->get(i,j);
+            if(slot->getBoundingBox().containsPoint(coords)) {
+                return slot;
+            }
+        }
+    }
+    return nullptr;
+}
+
+void InventoryItemGrid::highlightsOff() {
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < NUM_COLS; j++) {
+            auto slot = m_pGrid->get(i,j);
+            slot->highlightOff();
+        }
+    }
+}
+
+
+
+
 
 
 

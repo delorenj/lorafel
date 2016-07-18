@@ -7,12 +7,12 @@
 
 #include "cocos2d.h"
 #include "Grid.h"
-#include "InventoryItemSlot.h"
 #include "Inventory.h"
 
 USING_NS_CC;
 
 namespace lorafel {
+    class InventoryItemSlot;
     class InventoryItemGrid : public cocos2d::Sprite {
     public:
         static const int NUM_ROWS = 4;
@@ -39,6 +39,10 @@ namespace lorafel {
         bool isEmpty(Coords pair);
         Item* assignItemToSlot(Inventory::ItemQuantityPair* pItemPair);
         Item* assignItemToSlot(Item* pItem, Coords slotCoords);
+
+        InventoryItemSlot* getSlotFromPosition(Vec2 coords);
+
+        void highlightsOff();
 
     protected:
         void loadInventory();

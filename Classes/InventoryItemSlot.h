@@ -8,14 +8,30 @@
 #include "cocos2d.h"
 #include "Item.h"
 #include "Globals.h"
+#include "InventoryItemGrid.h"
 
 USING_NS_CC;
 
 namespace lorafel {
     class InventoryItemSlot : public cocos2d::Sprite {
     public:
-        bool init() override;
-        CREATE_FUNC(InventoryItemSlot);
+        bool init(InventoryItemGrid* pGrid);
+
+        static InventoryItemSlot* create(InventoryItemGrid* pGrid)
+        {
+            InventoryItemSlot *pRet = new(std::nothrow) InventoryItemSlot();
+            if (pRet && pRet->init(pGrid))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
 
         struct State {
             static const int EMPTY = 0;
@@ -70,18 +86,23 @@ namespace lorafel {
         int incrementStack();
         int decrementStack();
         bool stackFull() const;
+        void ghostOn() const;
+        void ghostOff() const;
+        void highlightOn();
+        void highlightOff();
         void update(float delta) override;
 
     protected:
         Item* m_pItem;
+        InventoryItemGrid* m_pGrid;
         cocos2d::Sprite* m_pItemSprite;
         cocos2d::Sprite* m_pGhost;
         cocos2d::Label* m_pStackSizeLabel;
         int m_state = InventoryItemSlot::State::EMPTY;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;
-
         void addEvents();
+
     };
 }
 

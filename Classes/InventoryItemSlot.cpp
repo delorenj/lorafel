@@ -5,13 +5,16 @@
 #include "InventoryItemSlot.h"
 #include "IStackable.h"
 #include "StringPatch.h"
+#include "InventoryItemGrid.h"
 
 using namespace lorafel;
 
-bool InventoryItemSlot::init() {
+bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
+
+    m_pGrid = pGrid;
 
     initWithSpriteFrameName("modal-inventory-grid-slot.png");
     setGlobalZOrder(LayerOrder::MODAL+2);
@@ -125,9 +128,8 @@ void InventoryItemSlot::addEvents() {
 
         if(m_state == InventoryItemSlot::State::TOUCH_BEGIN) {
             CCLOG("Move: start");
-            m_pGhost->setVisible(true);
+            ghostOn();
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
-
             auto scaleTo = cocos2d::ScaleBy::create(0.2f, 3.0f);
             m_pGhost->runAction(scaleTo);
             m_state = InventoryItemSlot::State::MOVING;
@@ -137,18 +139,74 @@ void InventoryItemSlot::addEvents() {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
-        auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
-        auto goHome = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
+        auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
+        cocos2d::Sequence* seq;
+
+        if(currentHoveredSlot != nullptr) {
+            /**
+             * If over a slot, then set the destination
+             * to the hovered slot
+             */
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto to1 = cocos2d::Vec2(currentHoveredSlot->getPosition().x + currentHoveredSlot->getContentSize().width/2,currentHoveredSlot->getPosition().y + currentHoveredSlot->getContentSize().height/2);
+            auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+            auto moveTo = cocos2d::MoveTo::create(speed1, to1);
+            auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
+            if(!currentHoveredSlot->isEmpty()) {
+                /**
+                 * Swap the current item with the one
+                 * trying to go into this one
+                 */
+                auto item = currentHoveredSlot->getItem();
+                auto to2 = item->convertToNodeSpace(cocos2d::Vec2::ZERO);
+                auto speed2 = item->getPosition().getDistance(to2)/800;
+                auto moveTo2 = cocos2d::MoveTo::create(speed2, to2);
+                item->runAction(moveTo2);
+            }
+            seq = cocos2d::Sequence::create(s1, nullptr);
+
+        } else {
+            /**
+             * If not over a slot, then return the item
+             * back to it's origin slot
+             */
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
+            auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
+            auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+            seq = cocos2d::Sequence::create(s1, nullptr);
+        }
+
         auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-            m_pGhost->setVisible(false);
+
         });
-        auto seq = cocos2d::Sequence::create(cocos2d::Spawn::create(scaleTo, goHome, nullptr), callback, nullptr);
+
         m_pGhost->runAction(seq);
     };
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
+}
+
+void InventoryItemSlot::ghostOn() const {
+    m_pItemSprite->setVisible(false);
+    m_pStackSizeLabel->setVisible(false);
+    m_pGhost->setVisible(true);
+}
+
+void InventoryItemSlot::ghostOff() const {
+    m_pItemSprite->setVisible(true);
+    m_pStackSizeLabel->setVisible(true);
+    m_pGhost->setVisible(false);
+}
+
+void InventoryItemSlot::highlightOn() {
+    setColor(cocos2d::Color3B::MAGENTA);
+}
+
+void InventoryItemSlot::highlightOff() {
+    setColor(cocos2d::Color3B::WHITE);
 }
 
 
