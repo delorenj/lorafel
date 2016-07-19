@@ -52,7 +52,7 @@ namespace lorafel {
             if(pItem == nullptr) {
                 m_pItemSprite->setVisible(false);
                 m_pGhost->setVisible(false);
-                m_stackSize = 0;
+                setStackSize(0);
                 m_state = InventoryItemSlot::State::EMPTY;
                 m_pItem = nullptr;
                 return;
@@ -72,7 +72,8 @@ namespace lorafel {
             m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
             m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
 
-            m_stackSize = stackSize;
+            setStackSize(stackSize);
+
 
             /**
              * Ensure that the ghost sprite is a copy of the
@@ -89,7 +90,7 @@ namespace lorafel {
         int decrementStack();
         bool stackFull() const;
         int getStackSize() const { return m_stackSize; }
-        void setStackSize(int stackSize) { m_stackSize = stackSize; }
+        void setStackSize(int stackSize);
         void ghostOn() const;
         void ghostOff() const;
         cocos2d::Sprite* getGhost() const { return m_pGhost; }

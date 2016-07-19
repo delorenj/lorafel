@@ -160,33 +160,9 @@ void InventoryItemSlot::addEvents() {
             auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(m_pGrid->convertToWorldSpace(to1)));
             auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
 
-//            if(!currentHoveredSlot->isEmpty()) {
-//                /**
-//                 * Swap the current item with the one
-//                 * trying to go into this one
-//                 */
-//                currentHoveredSlot->ghostOn();
-//                auto swapGhost = currentHoveredSlot->getGhost();
-//                /**
-//                 * The original itemSprite is still in it's
-//                 * same position, regardless of the ghost that
-//                 * you're dragging around.
-//                 *
-//                 * Move the item that you want to swap to the
-//                 * static position of the itemSprite.
-//                 */
-//                auto to2 = getPosition();
-//                auto moveTo2 = cocos2d::MoveTo::create(speed1, swapGhost->convertToNodeSpace(m_pGrid->convertToWorldSpace(to2)));
-//                auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-//                });
-//
-//                swapGhost->runAction(cocos2d::Sequence::create(moveTo2, callback, nullptr));
-//            }
-
             /**
-             * No matter what, send the dragged item to
-             * the hovered slot, since you're def over
-             * a hovered slot
+             * Send the dragged item to the hovered slot,
+             * since you're def over a hovered slot
              */
             auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
                 ghostOff();
@@ -240,14 +216,9 @@ void InventoryItemSlot::highlightOff() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+void InventoryItemSlot::setStackSize(int stackSize) {
+    if(m_stackSize != stackSize) {
+        m_stackSize = stackSize;
+        m_stackSizeChange = true;
+    }
+}

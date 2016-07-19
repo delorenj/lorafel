@@ -54,10 +54,47 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 }
 
 void InventoryItemGrid::loadInventory() {
-    auto itemDictionary = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+    auto pInventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+    auto itemDictionary = pInventory->getItemDictionary();
+    auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
+    std::unordered_map<const char*, int> alreadyPlaced;
+    /**
+     * First, cycle through all persisted slot assignments that
+     * the player has previously stored and populate the item
+     * grid accordingly
+     */
+    for(auto it = slotItemStackDictionary->begin(); it != slotItemStackDictionary->end(); ++it) {
+        /**
+         * Each iterator is a slot with an ItemQuantity pair
+         */
+        auto coords = it->first;
+        auto pItemQuantityPair = it->second;
+        auto pItem = pItemQuantityPair->first;
+        auto quantity = pItemQuantityPair->second;
+        auto slot = m_pGrid->get(it->first);
 
+        slot->setItem(pItem, quantity);
+        alreadyPlaced.emplace(pItem->getItemName(), quantity);
+    }
+
+    /**
+     * Then, cycle through all items that have not been stored
+     * or previously set and place them in the next available slot
+     */
     for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
-        assignItemToSlot(it->second);
+        auto pItemQuatityPair = it->second;
+        auto pItem = pItemQuatityPair->first;
+        auto itemQuantity = pItemQuatityPair->second;
+        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
+
+        if(numAlreadyPlaced == 0) {
+            assignItemToSlot(it->second);
+        } else {
+            std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
+            pNewPair->first = pItem;
+            pNewPair->second = itemQuantity - numAlreadyPlaced;
+            assignItemToSlot(pNewPair);
+        }
     }
 }
 
@@ -190,9 +227,7 @@ void InventoryItemGrid::swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot
 
 }
 void InventoryItemGrid::swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords) {
-    auto pSlot1 = m_pGrid->get(pSlot1Coords);
-    auto pSlot2 = m_pGrid->get(pSlot2Coords);
-    swap(pSlot1, pSlot2);
+    swap(m_pGrid->get(pSlot1Coords), m_pGrid->get(pSlot2Coords));
 }
 
 

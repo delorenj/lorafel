@@ -21,11 +21,11 @@ const int Inventory::addItem(Item* pItem, int quantity) {
  */
 const int Inventory::addItem(const char* itemName, int quantity) {
     auto count = getItemCount(itemName);
-    auto itemPair = m_pItems->at(itemName);
+    auto itemPair = m_pItemDictionary->at(itemName);
     count += quantity;
     itemPair->second = count;
     auto p = std::make_pair(itemName, itemPair);
-    m_pItems->insert(p);
+    m_pItemDictionary->insert(p);
     return count;
 }
 
@@ -41,7 +41,7 @@ const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     pItem->retain();
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
     auto p = std::make_pair(itemName, itemPair);
-    m_pItems->insert(p);
+    m_pItemDictionary->insert(p);
     return quantity;
 }
 
@@ -49,13 +49,13 @@ int Inventory::getItemCount(const char* itemName) {
     if(!itemExists(itemName)) {
         return 0;
     } else {
-        return m_pItems->at(itemName)->second;
+        return m_pItemDictionary->at(itemName)->second;
     }
 }
 
 bool Inventory::itemExists(const char* itemName) {
     try {
-        m_pItems->at(itemName);
+        m_pItemDictionary->at(itemName);
     } catch(std::out_of_range e) {
         return false;
     }
@@ -64,7 +64,7 @@ bool Inventory::itemExists(const char* itemName) {
 
 Item* Inventory::getItem(const char* itemName) {
     if(itemExists(itemName)) {
-        return m_pItems->at(itemName)->first;
+        return m_pItemDictionary->at(itemName)->first;
     } else {
         return nullptr;
     }
@@ -72,7 +72,7 @@ Item* Inventory::getItem(const char* itemName) {
 }
 
 void Inventory::addEvents(cocos2d::Node* pSwappyGrid) {
-    for(auto itemDictionary : *m_pItems) {
+    for(auto itemDictionary : *m_pItemDictionary) {
         auto itemPair = itemDictionary.second;
         auto item = itemPair->first;
         item->addEvents(pSwappyGrid);
