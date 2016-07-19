@@ -183,6 +183,12 @@ void InventoryItemGrid::swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot
     pSlot2->setStackSize(s1StackSize);
     pSlot2->setItem(s1Item);
     pSlot2->getItem()->addInventorySlotCoordinates(pSlot2->getCoords());
+
+}
+void InventoryItemGrid::swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords) {
+    auto pSlot1 = m_pGrid->get(pSlot1Coords);
+    auto pSlot2 = m_pGrid->get(pSlot2Coords);
+    swap(pSlot1, pSlot2);
 }
 
 

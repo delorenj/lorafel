@@ -45,6 +45,7 @@ namespace lorafel {
         void highlightsOff();
 
         void swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot2);
+        void swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords);
 
     protected:
         void loadInventory();

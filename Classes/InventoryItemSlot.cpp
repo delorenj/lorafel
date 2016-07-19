@@ -140,6 +140,7 @@ void InventoryItemSlot::addEvents() {
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
+        auto chsCoords = currentHoveredSlot->getCoords();
         cocos2d::Sequence* seq;
 
         if(currentHoveredSlot != nullptr) {
@@ -170,19 +171,18 @@ void InventoryItemSlot::addEvents() {
                  */
                 auto to2 = getPosition();
                 auto moveTo2 = cocos2d::MoveTo::create(speed1, swapGhost->convertToNodeSpace(m_pGrid->convertToWorldSpace(to2)));
-                auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
-                    currentHoveredSlot->ghostOff();
+                auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
                 });
 
                 swapGhost->runAction(cocos2d::Sequence::create(moveTo2, callback, nullptr));
             }
 
-            auto callback = cocos2d::CallFuncN::create([&](cocos2d::Node* sender) {
+            auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
                 ghostOff();
-                m_pGrid->swap(this, currentHoveredSlot);
+                m_pGrid->swap(this->getCoords(), chsCoords);
             });
 
-            seq = cocos2d::Sequence::create(s1, nullptr);
+            seq = cocos2d::Sequence::create(s1, callback, nullptr);
 
         } else {
             /**
