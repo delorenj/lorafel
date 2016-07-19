@@ -8,6 +8,7 @@
 #include <string>
 #include "Player.h"
 #include "HealthPotion.h"
+#include "LameSpiderSword.h"
 
 namespace lorafel {
 
@@ -30,6 +31,7 @@ namespace lorafel {
             m_pPlayer = new Player();
             //TODO: Load from server, including player avatar image
             m_pPlayer->setTile(HeroTile::create("player.png"));
+            m_pPlayer->getInventory()->addItem(LameSpiderSword::create());
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));

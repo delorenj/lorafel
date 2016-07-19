@@ -32,6 +32,11 @@ bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
     m_pStackSizeLabel->setPosition(getContentSize().width/2, getContentSize().height/2);
     addChild(m_pStackSizeLabel);
 
+    m_pItemSprite = cocos2d::Sprite::create();
+    m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+    m_pItemSprite->setGlobalZOrder(LayerOrder::MODAL+3);
+    addChild(m_pItemSprite);
+
     /**
      * Add the ghost sprite used when dragging item stacks
      * so the actual item stays in the slot while the ghost
@@ -140,7 +145,7 @@ void InventoryItemSlot::addEvents() {
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
         auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
-        auto chsCoords = currentHoveredSlot->getCoords();
+        std::pair<int, int> chsCoords;
         cocos2d::Sequence* seq;
 
         if(currentHoveredSlot != nullptr) {
@@ -148,6 +153,7 @@ void InventoryItemSlot::addEvents() {
              * If over a slot, then set the destination
              * to the hovered slot
              */
+            auto chsCoords = currentHoveredSlot->getCoords();
             auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
             auto to1 = currentHoveredSlot->getPosition();
             auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;

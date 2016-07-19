@@ -24,6 +24,8 @@ namespace lorafel {
 
         CREATE_FUNC(LameSpiderSword);
 
+        virtual const char* getItemName() const override { return m_itemName; }
+
 
     protected:
         const char* m_itemName = "Lame Spider Sword";

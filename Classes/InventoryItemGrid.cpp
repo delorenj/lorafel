@@ -173,16 +173,20 @@ void InventoryItemGrid::swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot
     auto s1StackSize = pSlot1->getStackSize();
     auto s1Item = pSlot1->getItem();
 
-    pSlot1->getItem()->removeInventorySlotCoordinates(pSlot1->getCoords());
-    pSlot2->getItem()->removeInventorySlotCoordinates(pSlot2->getCoords());
+    auto s2StackSize = pSlot2->getStackSize();
+    auto s2Item = pSlot2->getItem();
 
-    pSlot1->setStackSize(pSlot2->getStackSize());
-    pSlot1->setItem(pSlot2->getItem());
-    pSlot1->getItem()->addInventorySlotCoordinates(pSlot1->getCoords());
+    if(s1Item != nullptr) {
+        s1Item->removeInventorySlotCoordinates(pSlot1->getCoords());
+        s1Item->addInventorySlotCoordinates(pSlot2->getCoords());
+    }
+    if(s2Item != nullptr) {
+        s2Item->removeInventorySlotCoordinates(pSlot2->getCoords());
+        s2Item->addInventorySlotCoordinates(pSlot1->getCoords());
+    }
 
-    pSlot2->setStackSize(s1StackSize);
-    pSlot2->setItem(s1Item);
-    pSlot2->getItem()->addInventorySlotCoordinates(pSlot2->getCoords());
+    pSlot1->setItem(s2Item, s2StackSize);
+    pSlot2->setItem(s1Item, s1StackSize);
 
 }
 void InventoryItemGrid::swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords) {

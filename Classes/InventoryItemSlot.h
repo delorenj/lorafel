@@ -44,7 +44,20 @@ namespace lorafel {
             static const int TOUCH_END = 7;
         };
 
-        void setItem(Item* pItem) {
+        void setItem(Item* pItem, int stackSize = 1) {
+            /**
+             * If clearing slot, then set item to null
+             * and other things
+             */
+            if(pItem == nullptr) {
+                m_pItemSprite->setVisible(false);
+                m_pGhost->setVisible(false);
+                m_stackSize = 0;
+                m_state = InventoryItemSlot::State::EMPTY;
+                m_pItem = nullptr;
+                return;
+            }
+
             m_pItem = pItem;
             m_state = InventoryItemSlot::State::IDLE;
 
@@ -56,15 +69,10 @@ namespace lorafel {
              * so in this case we load the new
              * image in there
              */
-            if(m_pItemSprite == nullptr) {
-                m_pItemSprite = cocos2d::Sprite::createWithSpriteFrame(m_pItem->getSpriteFrame());
-                m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-                m_pItemSprite->setGlobalZOrder(LayerOrder::MODAL+3);
-                m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
-                addChild(m_pItemSprite);
-            } else {
-                m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
-            }
+            m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
+            m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+
+            m_stackSize = stackSize;
 
             /**
              * Ensure that the ghost sprite is a copy of the
