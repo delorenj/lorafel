@@ -7,14 +7,24 @@
 
 #include <unordered_map>
 #include "Item.h"
-#include "InventoryItemGrid.h"
+
+namespace std {
+    template<>
+    struct hash<std::pair<int, int> > {
+        size_t operator()(const std::pair<int, int>& pt) const {
+            return std::hash<int>()(pt.first) ^ std::hash<int>()(pt.second);
+        }
+    };
+}
 
 namespace lorafel {
+
+
     class Inventory {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;
         typedef std::unordered_map<const char *, ItemQuantityPair*> ItemDictionary;
-        typedef std::unordered_map<InventoryItemGrid::Coords, ItemQuantityPair*> SlotItemStackDictionary;
+        typedef std::unordered_map<std::pair<int, int>, ItemQuantityPair*> SlotItemStackDictionary;
     public:
         Inventory() {
             m_pItemDictionary = new ItemDictionary();

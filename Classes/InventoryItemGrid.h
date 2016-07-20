@@ -7,7 +7,7 @@
 
 #include "cocos2d.h"
 #include "Grid.h"
-#include "Inventory.h"
+#include "Item.h"
 
 USING_NS_CC;
 
@@ -37,7 +37,7 @@ namespace lorafel {
         }
 
         bool isEmpty(Coords pair);
-        Item* assignItemToSlot(Inventory::ItemQuantityPair* pItemPair);
+        Item* assignItemToSlot(std::pair<Item*, int>* pItemPair);
         Item* assignItemToSlot(Item* pItem, Coords slotCoords);
 
         InventoryItemSlot* getSlotFromPosition(Vec2 coords);

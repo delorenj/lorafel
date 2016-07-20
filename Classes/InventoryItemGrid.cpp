@@ -98,7 +98,7 @@ void InventoryItemGrid::loadInventory() {
     }
 }
 
-Item* InventoryItemGrid::assignItemToSlot(Inventory::ItemQuantityPair* pItemPair) {
+Item* InventoryItemGrid::assignItemToSlot(std::pair<Item*, int>* pItemPair) {
     if(!isStackable(pItemPair->first)) {
         for(int i=0; i<pItemPair->second; i++) {
             assignItemToSlot(pItemPair->first, nextEmptySlotCoordinates());
