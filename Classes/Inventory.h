@@ -18,8 +18,6 @@ namespace std {
 }
 
 namespace lorafel {
-
-
     class Inventory {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;

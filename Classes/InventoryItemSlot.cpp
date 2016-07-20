@@ -6,6 +6,7 @@
 #include "IStackable.h"
 #include "StringPatch.h"
 #include "InventoryItemGrid.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -221,4 +222,73 @@ void InventoryItemSlot::setStackSize(int stackSize) {
         m_stackSize = stackSize;
         m_stackSizeChange = true;
     }
+}
+
+void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
+    /**
+     * We need this to persist the item placement,
+     * including stack size, in the item grid
+     */
+    auto slotStackDic = PlayerManager::getInstance()
+            ->getPlayer()
+            ->getInventory()
+            ->getSlotItemStackDictionary();
+
+    auto stackIter = slotStackDic->find(getCoords());
+
+    /**
+     * If clearing slot, then set item to null
+     * and other things
+     */
+    if(pItem == nullptr) {
+        m_pItemSprite->setVisible(false);
+        m_pGhost->setVisible(false);
+        setStackSize(0);
+        m_state = InventoryItemSlot::State::EMPTY;
+        m_pItem = nullptr;
+
+        if(stackIter != slotStackDic->end()) {
+            stackIter->second->first = m_pItem;
+            stackIter->second->second = 0;
+        }
+
+        return;
+    }
+
+    m_pItem = pItem;
+    m_state = InventoryItemSlot::State::IDLE;
+
+    /**
+     * If item slot was empty, then we
+     * first need to add a sprite image
+     *
+     * Otherwise, there already is an image,
+     * so in this case we load the new
+     * image in there
+     */
+    m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
+    m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+
+    setStackSize(stackSize);
+
+
+    /**
+     * Persist this new slot item in the slotStack
+     */
+    if(stackIter != slotStackDic->end()) {
+        stackIter->second->first = pItem;
+        stackIter->second->second = stackSize;
+    } else {
+        auto pair = new std::pair<Item*, int>();
+        pair->first = pItem;
+        pair->second = stackSize;
+        slotStackDic->emplace(getCoords(), pair);
+    }
+
+    /**
+     * Ensure that the ghost sprite is a copy of the
+     * item sprite - used for drag and drop
+     */
+    m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
+    m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
 }

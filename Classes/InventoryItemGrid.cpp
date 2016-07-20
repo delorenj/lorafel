@@ -74,7 +74,16 @@ void InventoryItemGrid::loadInventory() {
         auto slot = m_pGrid->get(it->first);
 
         slot->setItem(pItem, quantity);
-        alreadyPlaced.emplace(pItem->getItemName(), quantity);
+        
+        /**
+         * If this placement was just a nil to clear
+         * out a slot, then don't emplace anything
+         * into the alreadyPlaced hash
+         */
+        if(pItem != nullptr) {
+            alreadyPlaced.emplace(pItem->getItemName(), quantity);
+        }
+
     }
 
     /**
