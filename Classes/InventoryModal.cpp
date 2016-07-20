@@ -18,6 +18,12 @@ bool InventoryModal::init() {
     m_pItemGrid->setPosition(getContentSize().width/2, getContentSize().height - getContentSize().height*0.176f);
     addChild(m_pItemGrid);
 
+    m_pEquipGrid = InventoryEquipGrid::create(this);
+    m_pEquipGrid->setGlobalZOrder(LayerOrder::MODAL+1);
+    m_pEquipGrid->setAnchorPoint(cocos2d::Vec2(0.5f,1));
+    m_pEquipGrid->setPosition(getContentSize().width/2, getContentSize().height - getContentSize().height*0.493);
+    addChild(m_pEquipGrid);
+
     return true;
 }
 

@@ -43,6 +43,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/InGameModalNavButton.cpp \
                    ../../Classes/InGameSettings.cpp \
                    ../../Classes/Inventory.cpp \
+                   ../../Classes/InventoryEquipGrid.cpp \
                    ../../Classes/InventoryItemGrid.cpp \
                    ../../Classes/InventoryItemSlot.cpp \
                    ../../Classes/InventoryModal.cpp \

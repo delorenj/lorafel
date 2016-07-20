@@ -7,6 +7,7 @@
 
 #include "InGameModal.h"
 #include "InventoryItemGrid.h"
+#include "InventoryEquipGrid.h"
 
 namespace lorafel {
     class InventoryModal : public InGameModal {
@@ -18,6 +19,7 @@ namespace lorafel {
 
     protected:
         InventoryItemGrid* m_pItemGrid;
+        InventoryEquipGrid* m_pEquipGrid;
         cocos2d::DrawNode* m_pDebugDraw;
     };
 }

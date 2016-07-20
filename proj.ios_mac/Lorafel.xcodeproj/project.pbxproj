@@ -62,6 +62,7 @@
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
 		3167D5CEFCFD7C8EAF2759A3 /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
 		3167D5DBFCBCFCAFC915D317 /* HookAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */; };
+		3167D60596F53704DD288960 /* InventoryEquipGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9AC0E3B47D08E906C6D /* InventoryEquipGrid.cpp */; };
 		3167D606ED8469EF170CDF8B /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167D64077AEEE55678E4EFD /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
@@ -91,6 +92,7 @@
 		3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */; };
 		3167DA2C7C35EB792FE179EE /* InGameSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */; };
 		3167DA40E20AEE55BCE869CA /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
+		3167DA42A1A77BF1709EBF74 /* InventoryEquipGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9AC0E3B47D08E906C6D /* InventoryEquipGrid.cpp */; };
 		3167DA6853233E9DCA430057 /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167DA749E841CBEED22FA4F /* LootFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */; };
 		3167DA75CE3224EEDFFF726C /* GameOverUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */; };
@@ -345,6 +347,7 @@
 		3167D97C25C0022BB33E3A87 /* HeroTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroTile.h; sourceTree = "<group>"; };
 		3167D98A0DDDFA707C4D382D /* MeleeAttackTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeleeAttackTile.h; sourceTree = "<group>"; };
 		3167D99F1FE72B60EC072B22 /* StatGuage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatGuage.h; sourceTree = "<group>"; };
+		3167D9AC0E3B47D08E906C6D /* InventoryEquipGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryEquipGrid.cpp; sourceTree = "<group>"; };
 		3167D9BC91A1230BCD87B710 /* XpFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpFloatie.h; sourceTree = "<group>"; };
 		3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicPlayerMove.cpp; sourceTree = "<group>"; };
 		3167D9E6F6E99ED879995593 /* MatchSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatchSet.cpp; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
 		3167DED2269D21779C04D7A3 /* MatchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSet.h; sourceTree = "<group>"; };
+		3167DF1A060CBD1982A7BABF /* InventoryEquipGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryEquipGrid.h; sourceTree = "<group>"; };
 		3167DF44D30E7CF3B5F1BDBC /* StickMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickMan.h; sourceTree = "<group>"; };
 		3167DF458FA2E520FB3CED3C /* ToggleActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleActionTile.cpp; sourceTree = "<group>"; };
 		3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StickMan.cpp; sourceTree = "<group>"; };
@@ -782,6 +786,8 @@
 				3167D407EBEE36DAA53D2CF2 /* Grid.h */,
 				3167DA5343064B77FE4ED1BD /* IStackable.h */,
 				3167DFEFBC33BF81FB4F901F /* IInventoryable.h */,
+				3167D9AC0E3B47D08E906C6D /* InventoryEquipGrid.cpp */,
+				3167DF1A060CBD1982A7BABF /* InventoryEquipGrid.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1053,6 +1059,7 @@
 				3167D6670F04CFB304C74978 /* InventoryModal.cpp in Sources */,
 				3167D46DC6F8F83AE6CCEA72 /* InventoryItemGrid.cpp in Sources */,
 				3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */,
+				3167DA42A1A77BF1709EBF74 /* InventoryEquipGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,6 +1132,7 @@
 				3167DC9F7BB2AE668694D0D1 /* InventoryModal.cpp in Sources */,
 				3167DF4A7A84EDD0241DCCA9 /* InventoryItemGrid.cpp in Sources */,
 				3167DED1F0F561A1B33A0A47 /* InventoryItemSlot.cpp in Sources */,
+				3167D60596F53704DD288960 /* InventoryEquipGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

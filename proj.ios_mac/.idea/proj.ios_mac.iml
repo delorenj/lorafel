@@ -70,6 +70,8 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Player.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameModal.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Player.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryEquipGrid.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HealthPotionPlayerMove.h" isTestSource="false" />
@@ -115,7 +117,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/RandomAIStrategy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/BasicPlayerMove.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryItemSlot.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryEquipGrid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Hook.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Weapon.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TurnManager.h" isTestSource="false" />
