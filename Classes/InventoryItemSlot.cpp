@@ -3,53 +3,18 @@
 //
 
 #include "InventoryItemSlot.h"
-#include "InventoryItemGrid.h"
 #include "PlayerManager.h"
+#include "EventDataItem.h"
 
 using namespace lorafel;
 
 bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
-    if(!cocos2d::Sprite::init()) {
+    if(!ItemSlot::init()) {
         return false;
     }
 
     m_pGrid = pGrid;
 
-    initWithSpriteFrameName("modal-inventory-grid-slot.png");
-    setGlobalZOrder(LayerOrder::MODAL+2);
-    setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-
-    m_pStackSizeLabel = cocos2d::Label::createWithTTF(
-            "", "fonts/BebasNeue Bold.ttf",
-            16,
-            cocos2d::Size(getContentSize().width-5, getContentSize().height-5),
-            cocos2d::TextHAlignment::RIGHT,
-            cocos2d::TextVAlignment::TOP
-    );
-    m_pStackSizeLabel->setGlobalZOrder(LayerOrder::MODAL+3);
-    m_pStackSizeLabel->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    m_pStackSizeLabel->setPosition(getContentSize().width/2, getContentSize().height/2);
-    addChild(m_pStackSizeLabel);
-
-    m_pItemSprite = cocos2d::Sprite::create();
-    m_pItemSprite->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    m_pItemSprite->setGlobalZOrder(LayerOrder::MODAL+3);
-    addChild(m_pItemSprite);
-
-    /**
-     * Add the ghost sprite used when dragging item stacks
-     * so the actual item stays in the slot while the ghost
-     * follows the finger
-     */
-    m_pGhost = cocos2d::Sprite::create();
-    m_pGhost->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
-    m_pGhost->setGlobalZOrder(LayerOrder::MODAL+10);
-    m_pGhost->setVisible(false);
-    addChild(m_pGhost);
-
-    addEvents();
-
-    scheduleUpdate();
     return true;
 }
 
@@ -63,6 +28,8 @@ void InventoryItemSlot::update(float delta) {
 }
 
 void InventoryItemSlot::addEvents() {
+    ItemSlot::addEvents();
+
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
 
     listener->setSwallowTouches(true);
@@ -78,7 +45,9 @@ void InventoryItemSlot::addEvents() {
         if(rect.containsPoint(p) && m_pItem != nullptr)
         {
             CCLOG("Touch: %s", m_pItem->getItemName());
-            m_state = InventoryItemSlot::State::TOUCH_BEGIN;
+            m_state = State::TOUCH_BEGIN;
+            EventDataItem* pItemEvent = new EventDataItem(m_pItem);
+            _eventDispatcher->dispatchCustomEvent("inventory-item-selected", event);
             return true; // to indicate that we have consumed it.
         }
 
@@ -96,14 +65,15 @@ void InventoryItemSlot::addEvents() {
 
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
 
-        if(m_state == InventoryItemSlot::State::TOUCH_BEGIN) {
+        if(m_state == State::TOUCH_BEGIN) {
             CCLOG("Move: start");
             ghostOn();
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
             auto scaleTo = cocos2d::ScaleBy::create(0.2f, 3.0f);
             m_pGhost->runAction(scaleTo);
-            m_state = InventoryItemSlot::State::MOVING;
-        } else if(m_state == InventoryItemSlot::State::MOVING) {
+            m_state = State::MOVING;
+
+        } else if(m_state == State::MOVING) {
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
         }
     };

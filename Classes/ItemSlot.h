@@ -10,6 +10,8 @@
 namespace lorafel {
     class ItemSlot : public cocos2d::Sprite {
     public:
+        virtual bool init() override;
+
         struct State {
             static const int EMPTY = 0;
             static const int IDLE = 1;
@@ -42,6 +44,9 @@ namespace lorafel {
          * for each ItemSlot subclass
          */
         virtual void setItem(Item* pItem, int stackSize = 1) = 0;
+
+    protected:
+        virtual void addEvents();
 
     protected:
         Item* m_pItem;

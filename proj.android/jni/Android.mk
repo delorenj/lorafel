@@ -21,6 +21,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/DragDropSwapPlayerMove.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
+                   ../../Classes/EquipItemSlot.cpp \
                    ../../Classes/FireballAction.cpp \
                    ../../Classes/FireballActionTile.cpp \
                    ../../Classes/Floatie.cpp \
@@ -48,6 +49,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/InventoryItemSlot.cpp \
                    ../../Classes/InventoryModal.cpp \
                    ../../Classes/Item.cpp \
+                   ../../Classes/ItemSlot.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/LootFactory.cpp \
                    ../../Classes/LootTile.cpp \

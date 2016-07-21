@@ -12,11 +12,7 @@ namespace lorafel {
     public:
 
         virtual bool init() override;
-        void setEquipMask(int mask) { m_equipMask = mask; }
-        int getEquipMask() { return m_equipMask; }
 
-    protected:
-        int m_equipMask;
     };
 }
 

@@ -3,9 +3,11 @@
 //
 
 #include "InventoryEquipGrid.h"
-#include "InventoryItemSlot.h"
+#include "Player.h"
 
-bool lorafel::InventoryEquipGrid::init(cocos2d::Node* container) {
+using namespace lorafel;
+
+bool InventoryEquipGrid::init(cocos2d::Node* container) {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
@@ -13,15 +15,18 @@ bool lorafel::InventoryEquipGrid::init(cocos2d::Node* container) {
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
     /**
-     * Initialize each equip slot
-     */
-//    m_pItemSlotBody = InventoryItemSlot::cre
-
-    /**
      * Create the background of the
      * grid container
      */
     initWithFile("equip-slot-container.png");
+
+    /**
+     * Initialize each equip slot
+     */
+    m_pItemSlotBody = EquipItemSlot::create();
+    m_pItemSlotBody->setEquipMask(Player::BODY);
+    m_pItemSlotBody->setPosition(cocos2d::Vec2(getContentSize().width/2, getContentSize().height/2));
+    addChild(m_pItemSlotBody);
 
     return true;
 

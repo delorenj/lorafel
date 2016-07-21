@@ -5,9 +5,11 @@
 #ifndef LORAFEL_INVENTORYEQUIPGRID_H
 #define LORAFEL_INVENTORYEQUIPGRID_H
 
-#include "Grid.h"
+#include "cocos2d.h"
 #include "Item.h"
-#include "InventoryItemSlot.h"
+#include "EquipItemSlot.h"
+
+USING_NS_CC;
 
 namespace lorafel {
     class InventoryEquipGrid : public cocos2d::Sprite {
@@ -31,16 +33,16 @@ namespace lorafel {
         }
 
     protected:
-        InventoryItemSlot* m_pItemSlotBody;
-        InventoryItemSlot* m_pItemSlotHead;
-        InventoryItemSlot* m_pItemSlotLH;
-        InventoryItemSlot* m_pItemSlotRH;
-        InventoryItemSlot* m_pItemSlotFeet;
-        InventoryItemSlot* m_pItemSlotLRing;
-        InventoryItemSlot* m_pItemSlotRRing;
-        InventoryItemSlot* m_pItemSlotNecklace;
-        InventoryItemSlot* m_pItemSlotAction;
-        InventoryItemSlot* m_pItemSlotConsumable;
+        EquipItemSlot* m_pItemSlotBody;
+        EquipItemSlot* m_pItemSlotHead;
+        EquipItemSlot* m_pItemSlotLH;
+        EquipItemSlot* m_pItemSlotRH;
+        EquipItemSlot* m_pItemSlotFeet;
+        EquipItemSlot* m_pItemSlotLRing;
+        EquipItemSlot* m_pItemSlotRRing;
+        EquipItemSlot* m_pItemSlotNecklace;
+        EquipItemSlot* m_pItemSlotAction;
+        EquipItemSlot* m_pItemSlotConsumable;
     };
 }
 

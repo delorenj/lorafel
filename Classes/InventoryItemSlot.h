@@ -44,7 +44,7 @@ namespace lorafel {
     protected:
         InventoryItemGrid* m_pGrid;
         std::pair<int, int> m_coords;
-        void addEvents();
+        void addEvents() override;
 
     };
 }
