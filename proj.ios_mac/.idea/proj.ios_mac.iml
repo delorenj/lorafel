@@ -25,7 +25,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GridUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchSet.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Grid.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/Item.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemSlot.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/DragDropSwapPlayerMove.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StatResult.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Progress.h" isTestSource="false" />
@@ -46,12 +46,13 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LameSpiderSword.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NonConsumable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelThree.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Item.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NormalDistributionRandomizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelTwo.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Singleton.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpStatResult.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/BasicTurnManager.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/MoveActionTile.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemSlot.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Floatie.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StormGlyph.cpp" isTestSource="false" />
@@ -92,6 +93,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/IInventoryable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SeededLevel.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Floatie.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/MoveActionTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameSettings.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NormalDistributionRandomizer.cpp" isTestSource="false" />

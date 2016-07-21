@@ -3,8 +3,6 @@
 //
 
 #include "InventoryItemSlot.h"
-#include "IStackable.h"
-#include "StringPatch.h"
 #include "InventoryItemGrid.h"
 #include "PlayerManager.h"
 
@@ -55,40 +53,6 @@ bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
     return true;
 }
 
-bool InventoryItemSlot::isEmpty() {
-    return m_state == InventoryItemSlot::State::EMPTY;
-}
-
-int InventoryItemSlot::incrementStack() {
-    m_stackSizeChange = true;
-    return ++m_stackSize;
-}
-
-int InventoryItemSlot::decrementStack() {
-    m_stackSizeChange = true;
-    return --m_stackSize;
-}
-
-bool InventoryItemSlot::stackFull() const {
-    /**
-     * If there's no item in the slot
-     * then it's definitely not full
-     */
-    if(m_pItem == nullptr) {
-        return false;
-    }
-
-    /**
-     * If item is not stackable, then consider
-     * the stack full
-     */
-    IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
-    if(stackable == nullptr) {
-        true;
-    } else {
-        return m_stackSize >= stackable->getMaxStack();
-    }
-}
 
 void InventoryItemSlot::update(float delta) {
     if(m_stackSizeChange) {
@@ -196,34 +160,6 @@ void InventoryItemSlot::addEvents() {
 
 }
 
-void InventoryItemSlot::ghostOn() const {
-    m_pItemSprite->setVisible(false);
-    m_pStackSizeLabel->setVisible(false);
-    m_pGhost->setVisible(true);
-}
-
-void InventoryItemSlot::ghostOff() const {
-    m_pItemSprite->setVisible(true);
-    m_pStackSizeLabel->setVisible(true);
-    m_pGhost->setVisible(false);
-}
-
-void InventoryItemSlot::highlightOn() {
-    setColor(cocos2d::Color3B::MAGENTA);
-}
-
-void InventoryItemSlot::highlightOff() {
-    setColor(cocos2d::Color3B::WHITE);
-}
-
-
-void InventoryItemSlot::setStackSize(int stackSize) {
-    if(m_stackSize != stackSize) {
-        m_stackSize = stackSize;
-        m_stackSizeChange = true;
-    }
-}
-
 void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     /**
      * We need this to persist the item placement,
@@ -234,7 +170,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
             ->getInventory()
             ->getSlotItemStackDictionary();
 
-    auto stackIter = slotStackDic->find(getCoords());
+    auto stackIter = slotStackDic->find(InventoryItemSlot::getCoords());
 
     /**
      * If clearing slot, then set item to null
@@ -243,8 +179,8 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     if(pItem == nullptr) {
         m_pItemSprite->setVisible(false);
         m_pGhost->setVisible(false);
-        setStackSize(0);
-        m_state = InventoryItemSlot::State::EMPTY;
+        InventoryItemSlot::setStackSize(0);
+        m_state = ItemSlot::State::EMPTY;
         m_pItem = nullptr;
 
         if(stackIter != slotStackDic->end()) {
@@ -256,7 +192,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     }
 
     m_pItem = pItem;
-    m_state = InventoryItemSlot::State::IDLE;
+    m_state = ItemSlot::State::IDLE;
 
     /**
      * If item slot was empty, then we
@@ -279,10 +215,10 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         stackIter->second->first = pItem;
         stackIter->second->second = stackSize;
     } else {
-        auto pair = new std::pair<Item*, int>();
+        auto pair = new std::__1::pair<Item*, int>();
         pair->first = pItem;
         pair->second = stackSize;
-        slotStackDic->emplace(getCoords(), pair);
+        slotStackDic->emplace(InventoryItemSlot::getCoords(), pair);
     }
 
     /**
@@ -292,3 +228,6 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
 }
+
+
+

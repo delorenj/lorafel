@@ -31,7 +31,16 @@ namespace lorafel {
         }
 
     protected:
-        Grid<InventoryItemSlot*>* m_pGrid;
+        InventoryItemSlot* m_pItemSlotBody;
+        InventoryItemSlot* m_pItemSlotHead;
+        InventoryItemSlot* m_pItemSlotLH;
+        InventoryItemSlot* m_pItemSlotRH;
+        InventoryItemSlot* m_pItemSlotFeet;
+        InventoryItemSlot* m_pItemSlotLRing;
+        InventoryItemSlot* m_pItemSlotRRing;
+        InventoryItemSlot* m_pItemSlotNecklace;
+        InventoryItemSlot* m_pItemSlotAction;
+        InventoryItemSlot* m_pItemSlotConsumable;
     };
 }
 
