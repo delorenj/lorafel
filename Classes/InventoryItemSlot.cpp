@@ -113,6 +113,12 @@ void InventoryItemSlot::addEvents() {
 
         } else {
             /**
+             * If over a valid equip slot, then equip
+             * the item
+             */
+            ItemSlot* equipSlot = m_pGrid->getEquipSlotFromPosition(m_pGhost->getPosition())
+
+            /**
              * If not over a slot, then return the item
              * back to it's origin slot
              */

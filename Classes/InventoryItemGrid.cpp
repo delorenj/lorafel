@@ -4,8 +4,8 @@
 
 #include "InventoryItemGrid.h"
 #include "InventoryItemSlot.h"
-#include "Globals.h"
 #include "PlayerManager.h"
+#include "InventoryModal.h"
 
 using namespace lorafel;
 
@@ -238,6 +238,14 @@ void InventoryItemGrid::swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot
 void InventoryItemGrid::swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords) {
     swap(m_pGrid->get(pSlot1Coords), m_pGrid->get(pSlot2Coords));
 }
+
+ItemSlot* InventoryItemGrid::getEquipSlotFromPosition(const Vec2& pos) {
+    auto pInventoryModal = static_cast<InventoryModal*>(getParent());
+    auto pEquipGrid = pInventoryModal->getEquipGrid();
+    return pEquipGrid->getSlotFromPosition(pos);
+}
+
+
 
 
 

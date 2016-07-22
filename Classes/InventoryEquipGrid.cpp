@@ -80,3 +80,12 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
 
 }
 
+ItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
+    /**
+     * TODO !!
+     */
+    return nullptr;
+}
+
+
+

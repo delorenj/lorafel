@@ -32,6 +32,8 @@ namespace lorafel {
             }
         }
 
+        ItemSlot* getSlotFromPosition(const Vec2& pos);
+
     protected:
         EquipItemSlot* m_pItemSlotBody;
         EquipItemSlot* m_pItemSlotHead;
