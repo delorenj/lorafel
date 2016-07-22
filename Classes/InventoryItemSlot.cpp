@@ -46,8 +46,8 @@ void InventoryItemSlot::addEvents() {
         {
             CCLOG("Touch: %s", m_pItem->getItemName());
             m_state = State::TOUCH_BEGIN;
-            EventDataItem* pItemEvent = new EventDataItem(m_pItem);
-            _eventDispatcher->dispatchCustomEvent("inventory-item-selected", event);
+            auto pItemEvent = new EventDataItem(m_pItem);
+            _eventDispatcher->dispatchCustomEvent("inventory-item-selected", pItemEvent);
             return true; // to indicate that we have consumed it.
         }
 
@@ -82,6 +82,11 @@ void InventoryItemSlot::addEvents() {
         auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
         std::pair<int, int> chsCoords;
         cocos2d::Sequence* seq;
+
+        /**
+         * Turn off selection highlights no matter what
+         */
+        _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 
         if(currentHoveredSlot != nullptr) {
             /**
