@@ -27,14 +27,14 @@ namespace lorafel {
 
         void removeInventorySlotCoordinates(std::pair<int, int> coords);
 
-        void setEquipMask(int mask) { m_equipMask = mask; }
-        int getEquipMask() { return m_equipMask; }
+        void addEquipMask(int mask) { m_equipMaskSet.insert(mask); }
+        bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
 
     protected:
         const char* m_itemName;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
-        int m_equipMask;
+        std::set<int> m_equipMaskSet;
     };
 }
 

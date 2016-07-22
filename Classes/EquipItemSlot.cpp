@@ -60,7 +60,7 @@ void EquipItemSlot::onItemSelected(cocos2d::EventCustom* event) {
     /**
      * Check if item can go in this slot
      */
-    if(pItem->getEquipMask() == getEquipMask()) {
+    if(pItem->canEquip(getEquipMask())) {
         highlightOn();
     }
 }

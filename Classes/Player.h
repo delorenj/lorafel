@@ -23,11 +23,12 @@ namespace lorafel {
         static const int LEFT_HAND          = 2;
         static const int RIGHT_HAND         = 3;
         static const int BODY               = 4;
-        static const int LEGS               = 5;
+        static const int FEET               = 5;
         static const int NECKLACE           = 6;
         static const int LEFT_RING          = 7;
         static const int RIGHT_RING         = 8;
         static const int ACTIONITEM         = 9;
+        static const int CONSUMABLE         = 10;
 
         Consumable* getConsumableSlotItem(int i);
 

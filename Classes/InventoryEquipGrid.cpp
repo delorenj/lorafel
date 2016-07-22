@@ -41,6 +41,41 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
     m_pItemSlotRH->setPosition(m_pItemSlotBody->getPositionX() + wh + pad, m_pItemSlotBody->getPositionY());
     addChild(m_pItemSlotRH);
 
+    m_pItemSlotHead = EquipItemSlot::create();
+    m_pItemSlotHead->setEquipMask(Player::HEAD);
+    m_pItemSlotHead->setPosition(m_pItemSlotBody->getPositionX(), m_pItemSlotBody->getPositionY() + wh + pad);
+    addChild(m_pItemSlotHead);
+
+    m_pItemSlotFeet = EquipItemSlot::create();
+    m_pItemSlotFeet->setEquipMask(Player::FEET);
+    m_pItemSlotFeet->setPosition(m_pItemSlotBody->getPositionX(), m_pItemSlotBody->getPositionY() - wh - pad);
+    addChild(m_pItemSlotFeet);
+
+    m_pItemSlotRRing = EquipItemSlot::create();
+    m_pItemSlotRRing->setEquipMask(Player::RIGHT_RING);
+    m_pItemSlotRRing->setPosition(getContentSize().width - wh/2 - pad, m_pItemSlotBody->getPositionY());
+    addChild(m_pItemSlotRRing);
+
+    m_pItemSlotLRing = EquipItemSlot::create();
+    m_pItemSlotLRing->setEquipMask(Player::LEFT_RING);
+    m_pItemSlotLRing->setPosition(m_pItemSlotRRing->getPositionX() - wh - pad, m_pItemSlotBody->getPositionY());
+    addChild(m_pItemSlotLRing);
+
+    m_pItemSlotNecklace= EquipItemSlot::create();
+    m_pItemSlotNecklace->setEquipMask(Player::NECKLACE);
+    m_pItemSlotNecklace->setPosition(m_pItemSlotLRing->getPositionX(), m_pItemSlotBody->getPositionY() + wh + pad);
+    addChild(m_pItemSlotNecklace);
+
+    m_pItemSlotAction = EquipItemSlot::create();
+    m_pItemSlotAction->setEquipMask(Player::ACTIONITEM);
+    m_pItemSlotAction->setPosition(0 + wh/2 + pad, m_pItemSlotBody->getPositionY());
+    addChild(m_pItemSlotAction);
+
+    m_pItemSlotConsumable = EquipItemSlot::create();
+    m_pItemSlotConsumable->setEquipMask(Player::CONSUMABLE);
+    m_pItemSlotConsumable->setPosition(m_pItemSlotAction->getPositionX() + wh + pad, m_pItemSlotBody->getPositionY());
+    addChild(m_pItemSlotConsumable);
+
     return true;
 
 }

@@ -16,6 +16,7 @@ bool HealthPotion::init(double amount) {
 
     m_amount = amount;
     m_itemName = getItemName();
+    addEquipMask(Player::CONSUMABLE);
     initWithSpriteFrameName("PoisonGlyph.png");
     return true;
 }
