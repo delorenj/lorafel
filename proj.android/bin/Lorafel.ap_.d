@@ -32,6 +32,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/glitter_line.plist \
@@ -60,6 +61,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/glitter_line.plist \
@@ -88,6 +90,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/glitter_line.plist \
@@ -116,6 +119,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glitter_line.plist \
@@ -144,6 +148,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/glitter_line.plist \
@@ -172,6 +177,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/break_block_color_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/break_block_generic_smoke.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/dashed-line.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/equip-slot-container.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/fireball_action.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/flame.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/glitter_line.plist \

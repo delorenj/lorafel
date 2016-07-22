@@ -6,7 +6,7 @@
 #define LORAFEL_EVENTDATAITEM_H
 
 #include "EventData.h"
-#import "Item.h"
+#include "Item.h"
 
 namespace lorafel {
     class EventDataItem : public EventData {

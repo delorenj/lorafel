@@ -190,7 +190,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         stackIter->second->first = pItem;
         stackIter->second->second = stackSize;
     } else {
-        auto pair = new std::__1::pair<Item*, int>();
+        auto pair = new std::pair<Item*, int>();
         pair->first = pItem;
         pair->second = stackSize;
         slotStackDic->emplace(InventoryItemSlot::getCoords(), pair);
