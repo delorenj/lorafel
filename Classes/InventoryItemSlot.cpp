@@ -5,6 +5,7 @@
 #include "InventoryItemSlot.h"
 #include "PlayerManager.h"
 #include "EventDataItem.h"
+#include "InventoryModal.h"
 
 using namespace lorafel;
 
@@ -74,7 +75,12 @@ void InventoryItemSlot::addEvents() {
             m_state = State::MOVING;
 
         } else if(m_state == State::MOVING) {
+            auto modal = static_cast<InventoryModal*>(m_pGrid->getParent());
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
+            CCLOG("EquipSpace: %f,%f",
+                    (convertToWorldSpace(m_pGhost->getPosition())).x,
+                    (convertToWorldSpace(m_pGhost->getPosition())).y
+            );
         }
     };
 
@@ -116,8 +122,21 @@ void InventoryItemSlot::addEvents() {
              * If over a valid equip slot, then equip
              * the item
              */
-            ItemSlot* equipSlot = m_pGrid->getEquipSlotFromPosition(m_pGhost->getPosition())
-
+            auto equipSlot = m_pGrid->getEquipSlotFromPosition(convertToWorldSpace(m_pGhost->getPosition()));
+            if(equipSlot != nullptr) {
+                /**
+                 * This means we're over an equip slot
+                 * We have to make sure we can equip
+                 * it here though
+                 */
+                if(m_pItem->canEquip(equipSlot->getEquipMask())) {
+                    CCLOG("Yay! Can equip");
+                    /**
+                     * TODO: Tween to equip slot
+                     * Then return
+                     */
+                }
+            }
             /**
              * If not over a slot, then return the item
              * back to it's origin slot

@@ -239,7 +239,7 @@ void InventoryItemGrid::swap(std::pair<int, int> pSlot1Coords, std::pair<int, in
     swap(m_pGrid->get(pSlot1Coords), m_pGrid->get(pSlot2Coords));
 }
 
-ItemSlot* InventoryItemGrid::getEquipSlotFromPosition(const Vec2& pos) {
+EquipItemSlot* InventoryItemGrid::getEquipSlotFromPosition(const Vec2& pos) {
     auto pInventoryModal = static_cast<InventoryModal*>(getParent());
     auto pEquipGrid = pInventoryModal->getEquipGrid();
     return pEquipGrid->getSlotFromPosition(pos);

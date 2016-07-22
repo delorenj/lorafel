@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "Item.h"
 #include "ItemSlot.h"
+#include "EquipItemSlot.h"
 
 USING_NS_CC;
 
@@ -48,7 +49,7 @@ namespace lorafel {
         void swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot2);
         void swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords);
 
-        lorafel::ItemSlot* getEquipSlotFromPosition(const Vec2& pos);
+        EquipItemSlot* getEquipSlotFromPosition(const Vec2& pos);
 
     protected:
         void loadInventory();

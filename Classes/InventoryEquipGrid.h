@@ -32,9 +32,10 @@ namespace lorafel {
             }
         }
 
-        ItemSlot* getSlotFromPosition(const Vec2& pos);
+        EquipItemSlot* getSlotFromPosition(const Vec2& pos);
 
     protected:
+        std::vector<EquipItemSlot*> m_equipSlots;
         EquipItemSlot* m_pItemSlotBody;
         EquipItemSlot* m_pItemSlotHead;
         EquipItemSlot* m_pItemSlotLH;
