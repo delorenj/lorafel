@@ -18,7 +18,7 @@ namespace lorafel {
 
         virtual void onItemSelected(cocos2d::EventCustom* event);
         virtual void onItemUnselected();
-        virtual void setItem(Item* pItem, int stackSize) override;
+        virtual void setItem(Item* pItem, int stackSize = 1) override;
         void setEquipMask(int mask) { m_equipMask = mask; }
         int getEquipMask() const { return m_equipMask; }
 
@@ -26,7 +26,6 @@ namespace lorafel {
 
     protected:
         int m_equipMask;
-
 
     };
 }

@@ -4,6 +4,7 @@
 
 #include "EquipItemSlot.h"
 #include "EventDataItem.h"
+#include "InventoryModal.h"
 
 using namespace lorafel;
 
@@ -16,9 +17,10 @@ bool EquipItemSlot::init() {
 }
 
 void EquipItemSlot::setItem(Item* pItem, int stackSize) {
+
     /**
      * If clearing slot, then set item to null
-     * and other things
+     * and assign the item back to the item grid
      */
     if(pItem == nullptr) {
         m_pItemSprite->setVisible(false);
@@ -26,10 +28,6 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
         setStackSize(0);
         m_state = ItemSlot::State::EMPTY;
         m_pItem = nullptr;
-
-        /**
-         * TODO: Unequip the item
-         */
         return;
     }
 

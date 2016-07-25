@@ -45,7 +45,6 @@ void InventoryItemSlot::addEvents() {
          */
         if(rect.containsPoint(p) && m_pItem != nullptr)
         {
-            CCLOG("Touch: %s", m_pItem->getItemName());
             m_state = State::TOUCH_BEGIN;
             auto pItemEvent = new EventDataItem(m_pItem);
             _eventDispatcher->dispatchCustomEvent("inventory-item-selected", pItemEvent);
@@ -57,7 +56,6 @@ void InventoryItemSlot::addEvents() {
          */
         if(rect.containsPoint(p) && m_pItem == nullptr)
         {
-            CCLOG("Touch: empty slot");
             return true; // to indicate that we have consumed it.
         }
 
@@ -67,7 +65,6 @@ void InventoryItemSlot::addEvents() {
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
 
         if(m_state == State::TOUCH_BEGIN) {
-            CCLOG("Move: start");
             ghostOn();
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
             auto scaleTo = cocos2d::ScaleBy::create(0.2f, 3.0f);
@@ -77,10 +74,6 @@ void InventoryItemSlot::addEvents() {
         } else if(m_state == State::MOVING) {
             auto modal = static_cast<InventoryModal*>(m_pGrid->getParent());
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
-            CCLOG("EquipSpace: %f,%f",
-                    (convertToWorldSpace(m_pGhost->getPosition())).x,
-                    (convertToWorldSpace(m_pGhost->getPosition())).y
-            );
         }
     };
 
@@ -130,11 +123,41 @@ void InventoryItemSlot::addEvents() {
                  * it here though
                  */
                 if(m_pItem->canEquip(equipSlot->getEquipMask())) {
-                    CCLOG("Yay! Can equip");
+                    auto im = static_cast<InventoryModal*>(m_pGrid->getParent());
+                    cocos2d::Node* n = im->getEquipGrid();
+                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                    auto to1 = equipSlot->getPosition();
+                    auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+                    auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(n->convertToWorldSpace(to1)));
+                    auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
                     /**
-                     * TODO: Tween to equip slot
-                     * Then return
+                     * Send the dragged item to the equip slot,
                      */
+                    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                        /**
+                         * Now, turn off the ghost image and replace with the
+                         * image rendered by equip slot. Also, equip the slot.
+                         */
+                        ghostOff();
+                        /**
+                         * If slot had something in it, put it
+                         * back in the item grid. When modal opens
+                         * again, this will happen automatically,
+                         * but need to do it no manually, 'cause.
+                         */
+                        if(equipSlot->getItem() != nullptr) {
+                            currentHoveredSlot->setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                        }
+
+                        equipSlot->setItem(m_pItem);
+
+                    });
+
+                    seq = cocos2d::Sequence::create(s1, callback, nullptr);
+                    m_pGhost->runAction(seq);
+                    return;
+
                 }
             }
             /**
