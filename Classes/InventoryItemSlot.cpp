@@ -22,7 +22,8 @@ bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
 
 void InventoryItemSlot::update(float delta) {
     if(m_stackSizeChange) {
-        auto show = m_stackSize < 2 ? "" : to_string(m_stackSize);
+        IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+        auto show = stackable == nullptr ? "" : to_string(m_stackSize);
         m_pStackSizeLabel->setString(show);
         m_stackSizeChange = false;
     }
