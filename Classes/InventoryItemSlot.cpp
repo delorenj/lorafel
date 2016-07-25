@@ -32,7 +32,6 @@ void InventoryItemSlot::addEvents() {
     ItemSlot::addEvents();
 
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
-
     listener->setSwallowTouches(true);
 
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
@@ -147,11 +146,20 @@ void InventoryItemSlot::addEvents() {
                          * but need to do it no manually, 'cause.
                          */
                         if(equipSlot->getItem() != nullptr) {
-                            currentHoveredSlot->setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                            setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                            equipSlot->setItem(m_pItem);
+                        } else {
+                            equipSlot->setItem(m_pItem);
+
+                            /**
+                             * Only remove the item from the item grid
+                             * if the item is not stackable
+                             */
+                            IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+                            if(stackable == nullptr) {
+                                setItem(nullptr);
+                            }
                         }
-
-                        equipSlot->setItem(m_pItem);
-
                     });
 
                     seq = cocos2d::Sequence::create(s1, callback, nullptr);

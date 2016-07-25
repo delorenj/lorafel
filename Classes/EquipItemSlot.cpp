@@ -38,6 +38,8 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
     setStackSize(stackSize);
+
+    m_pItem->equip(this);
 }
 
 void EquipItemSlot::addEvents() {

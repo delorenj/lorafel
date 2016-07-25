@@ -13,6 +13,7 @@
 USING_NS_CC;
 
 namespace lorafel {
+    class EquipItemSlot;
     class Item : public cocos2d::Sprite {
     public:
         virtual bool init() override;
@@ -30,11 +31,14 @@ namespace lorafel {
         void addEquipMask(int mask) { m_equipMaskSet.insert(mask); }
         bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
 
+        virtual void equip(EquipItemSlot* pSlot);
+
     protected:
         const char* m_itemName;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
+        EquipItemSlot* m_pEquipSlot;
     };
 }
 

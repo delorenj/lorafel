@@ -4,7 +4,13 @@
 
 #include "NonConsumable.h"
 
-bool lorafel::NonConsumable::init() {
+using namespace lorafel;
+
+bool NonConsumable::init() {
     return Item::init();
+}
+
+void NonConsumable::equip(lorafel::EquipItemSlot* pSlot) {
+    Item::equip(pSlot);
 }
 

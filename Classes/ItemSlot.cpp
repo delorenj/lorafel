@@ -33,7 +33,7 @@ bool ItemSlot::stackFull() const {
      */
     IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
     if(stackable == nullptr) {
-        true;
+        return true;
     } else {
         return m_stackSize >= stackable->getMaxStack();
     }
@@ -44,8 +44,21 @@ bool ItemSlot::isEmpty() {
 }
 
 void ItemSlot::ghostOn() const {
-    m_pItemSprite->setVisible(false);
-    m_pStackSizeLabel->setVisible(false);
+    /**
+     * If item is stackable, then leave underlying
+     * grid item visible
+     *
+     */
+    IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+    if(stackable == nullptr) {
+        m_pItemSprite->setVisible(false);
+        m_pStackSizeLabel->setVisible(false);
+        m_pGhost->setOpacity(255);
+
+    } else {
+        m_pGhost->setOpacity(100);
+    }
+
     m_pGhost->setVisible(true);
 }
 

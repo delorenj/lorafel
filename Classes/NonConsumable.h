@@ -13,6 +13,8 @@ namespace lorafel {
 
         virtual bool init() override;
 
+        virtual void equip(EquipItemSlot* pSlot) override;
+
     };
 }
 
