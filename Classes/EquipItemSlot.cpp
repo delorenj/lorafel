@@ -5,6 +5,7 @@
 #include "EquipItemSlot.h"
 #include "EventDataItem.h"
 #include "InventoryModal.h"
+#include "InventoryItemSlot.h"
 
 using namespace lorafel;
 
@@ -36,6 +37,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
     m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
+    m_pItemSprite->setVisible(true);
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
     setStackSize(stackSize);
 
@@ -59,7 +61,7 @@ void EquipItemSlot::addEvents() {
         if(rect.containsPoint(p) && m_pItem != nullptr) {
             m_state = State::TOUCH_BEGIN;
             auto pItemEvent = new EventDataItem(m_pItem);
-            _eventDispatcher->dispatchCustomEvent("equipped-item-selected", pItemEvent);
+            _eventDispatcher->dispatchCustomEvent("inventory-item-selected", pItemEvent);
             return true; // to indicate that we have consumed it.
         }
 
@@ -83,50 +85,79 @@ void EquipItemSlot::addEvents() {
             m_state = State::MOVING;
 
         } else if(m_state == State::MOVING) {
-            auto modal = static_cast<InventoryModal*>(getParent()->getParent());
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
         }
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-//        auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
-//        std::pair<int, int> chsCoords;
-//        cocos2d::Sequence* seq;
-//
-//        /**
-//         * Turn off selection highlights no matter what
-//         */
-//        _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
-//
-//        if(currentHoveredSlot != nullptr) {
-//            /**
-//             * If over a slot, then set the destination
-//             * to the hovered slot
-//             */
-//            auto chsCoords = currentHoveredSlot->getCoords();
-//            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
-//            auto to1 = currentHoveredSlot->getPosition();
-//            auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
-//            auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(m_pGrid->convertToWorldSpace(to1)));
-//            auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
-//
-//            /**
-//             * Send the dragged item to the hovered slot,
-//             * since you're def over a hovered slot
-//             */
-//            auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-//                ghostOff();
-//                m_pGrid->swap(this->getCoords(), chsCoords);
-//            });
-//
-//            seq = cocos2d::Sequence::create(s1, callback, nullptr);
-//
-//        } else {
+        auto modal = static_cast<InventoryModal*>(getParent()->getParent());
+        auto itemGrid = modal->getItemGrid();
+        auto currentHoveredSlot = itemGrid->getSlotFromPosition(itemGrid->convertToNodeSpace(touch->getLocation()));
+        cocos2d::Sequence* seq;
+
+        /**
+         * Turn off selection highlights no matter what
+         */
+        _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
+
+        if(currentHoveredSlot != nullptr) {
+            if(currentHoveredSlot->isEmpty()) {
+                /**
+                 * If over an empty slot, then set
+                 * the destination to the hovered slot
+                 */
+                auto chsCoords = currentHoveredSlot->getCoords();
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto to1 = currentHoveredSlot->getPosition();
+                auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+                auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
+                auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
+                /**
+                 * Send the dragged item to the hovered slot,
+                 * since you're def over a hovered slot
+                 */
+                auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                    ghostOff();
+                    itemGrid->assignItemToSlot(m_pItem, chsCoords);
+                    setItem(nullptr);
+                });
+
+                seq = cocos2d::Sequence::create(s1, callback, nullptr);
+                m_pGhost->runAction(seq);
+            } else {
+                /**
+                 * If slot is already occupied, then just
+                 * assign it a new one
+                 */
+                auto chsCoords = itemGrid->nextEmptySlotCoordinates();
+                auto assignedSlot = itemGrid->getSlotFromCoords(chsCoords);
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto to1 = assignedSlot->getPosition();
+                auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+                auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
+                auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
+                /**
+                 * Send the dragged item to the hovered slot,
+                 * since you're def over a hovered slot
+                 */
+                auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                    ghostOff();
+                    itemGrid->assignItemToSlot(m_pItem, chsCoords);
+                    setItem(nullptr);
+                });
+
+                seq = cocos2d::Sequence::create(s1, callback, nullptr);
+                m_pGhost->runAction(seq);
+            }
+
+        } else {
 //            /**
 //             * If over a valid equip slot, then equip
 //             * the item
 //             */
-//            auto equipSlot = m_pGrid->getEquipSlotFromPosition(convertToWorldSpace(m_pGhost->getPosition()));
+//            auto equipSlot = itemGrid->getEquipSlotFromPosition(convertToWorldSpace(m_pGhost->getPosition()));
 //            if(equipSlot != nullptr) {
 //                /**
 //                 * This means we're over an equip slot
@@ -134,7 +165,7 @@ void EquipItemSlot::addEvents() {
 //                 * it here though
 //                 */
 //                if(m_pItem->canEquip(equipSlot->getEquipMask())) {
-//                    auto im = static_cast<InventoryModal*>(m_pGrid->getParent());
+//                    auto im = static_cast<InventoryModal*>(itemGrid->getParent());
 //                    cocos2d::Node* n = im->getEquipGrid();
 //                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
 //                    auto to1 = equipSlot->getPosition();
@@ -193,7 +224,7 @@ void EquipItemSlot::addEvents() {
 //            });
 //
 //            seq = cocos2d::Sequence::create(s1, callback, nullptr);
-//        }
+        }
 //
 //
 //        m_pGhost->runAction(seq);

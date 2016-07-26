@@ -39,6 +39,8 @@ namespace lorafel {
         }
 
         bool isEmpty(Coords pair);
+        Coords nextEmptySlotCoordinates();
+
         Item* assignItemToSlot(std::pair<Item*, int>* pItemPair);
         Item* assignItemToSlot(Item* pItem, Coords slotCoords);
 
@@ -51,9 +53,11 @@ namespace lorafel {
 
         EquipItemSlot* getEquipSlotFromPosition(const Vec2& pos);
 
+        InventoryItemSlot* getSlotFromCoords(Coords pair) const;
+
     protected:
         void loadInventory();
-        Coords nextEmptySlotCoordinates();
+
 
 
     protected:

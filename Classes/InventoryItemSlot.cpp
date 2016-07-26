@@ -259,6 +259,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
      */
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
+    m_pItemSprite->setVisible(true);
 }
 
 

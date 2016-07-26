@@ -245,6 +245,10 @@ EquipItemSlot* InventoryItemGrid::getEquipSlotFromPosition(const Vec2& pos) {
     return pEquipGrid->getSlotFromPosition(pos);
 }
 
+InventoryItemSlot* InventoryItemGrid::getSlotFromCoords(InventoryItemGrid::Coords pair) const {
+    return m_pGrid->get(pair);
+}
+
 
 
 
