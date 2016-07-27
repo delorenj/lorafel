@@ -6,6 +6,7 @@
 #include "EventDataItem.h"
 #include "InventoryModal.h"
 #include "InventoryItemSlot.h"
+#include "Consumable.h"
 
 using namespace lorafel;
 
@@ -94,6 +95,12 @@ void EquipItemSlot::addEvents() {
         auto itemGrid = modal->getItemGrid();
         auto currentHoveredSlot = itemGrid->getSlotFromPosition(itemGrid->convertToNodeSpace(touch->getLocation()));
         cocos2d::Sequence* seq;
+        /**
+         * Use this to determine if item is a consumable
+         * These go in a special slot that does not move
+         * an item actually out of the item grid.
+         */
+        auto consumable = dynamic_cast<Consumable*>(m_pItem);
 
         /**
          * Turn off selection highlights no matter what
@@ -101,7 +108,38 @@ void EquipItemSlot::addEvents() {
         _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 
         if(currentHoveredSlot != nullptr) {
-            if(currentHoveredSlot->isEmpty()) {
+            /**
+             * If the item is a consumable, then we don't
+             * care where it's hovering - just return it
+             * to the grid
+             */
+            if(consumable != nullptr) {
+                /**
+                 * Find a slot that has at least one of your
+                 * item and tween it toward it, just 'cause.
+                 */
+                auto coordSet = m_pItem->getInventorySlotCoordinates();
+                auto it = coordSet.end();
+                auto coords = *--it;
+                auto slot = itemGrid->getSlotFromCoords(coords);
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto to1 = slot->getPosition();
+                auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+                auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
+                auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
+                /**
+                 * Send the dragged item to a similar slot,
+                 */
+                auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                    ghostOff();
+                    setItem(nullptr);
+                });
+
+                seq = cocos2d::Sequence::create(s1, callback, nullptr);
+                m_pGhost->runAction(seq);
+
+            } else if(currentHoveredSlot->isEmpty()) {
                 /**
                  * If over an empty slot, then set
                  * the destination to the hovered slot
