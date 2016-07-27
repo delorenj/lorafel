@@ -191,81 +191,82 @@ void EquipItemSlot::addEvents() {
             }
 
         } else {
-//            /**
-//             * If over a valid equip slot, then equip
-//             * the item
-//             */
-//            auto equipSlot = itemGrid->getEquipSlotFromPosition(convertToWorldSpace(m_pGhost->getPosition()));
-//            if(equipSlot != nullptr) {
-//                /**
-//                 * This means we're over an equip slot
-//                 * We have to make sure we can equip
-//                 * it here though
-//                 */
-//                if(m_pItem->canEquip(equipSlot->getEquipMask())) {
-//                    auto im = static_cast<InventoryModal*>(itemGrid->getParent());
-//                    cocos2d::Node* n = im->getEquipGrid();
-//                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
-//                    auto to1 = equipSlot->getPosition();
-//                    auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
-//                    auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(n->convertToWorldSpace(to1)));
-//                    auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
-//
-//                    /**
-//                     * Send the dragged item to the equip slot,
-//                     */
-//                    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-//                        /**
-//                         * Now, turn off the ghost image and replace with the
-//                         * image rendered by equip slot. Also, equip the slot.
-//                         */
-//                        ghostOff();
-//                        /**
-//                         * If slot had something in it, put it
-//                         * back in the item grid. When modal opens
-//                         * again, this will happen automatically,
-//                         * but need to do it no manually, 'cause.
-//                         */
-//                        if(equipSlot->getItem() != nullptr) {
-//                            setItem(equipSlot->getItem(), equipSlot->getStackSize());
-//                            equipSlot->setItem(m_pItem);
-//                        } else {
-//                            equipSlot->setItem(m_pItem);
-//
-//                            /**
-//                             * Only remove the item from the item grid
-//                             * if the item is not stackable
-//                             */
-//                            IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
-//                            if(stackable == nullptr) {
-//                                setItem(nullptr);
-//                            }
-//                        }
-//                    });
-//
-//                    seq = cocos2d::Sequence::create(s1, callback, nullptr);
-//                    m_pGhost->runAction(seq);
-//                    return;
-//
-//                }
-//            }
-//            /**
-//             * If not over a slot, then return the item
-//             * back to it's origin slot
-//             */
-//            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
-//            auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
-//            auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
-//            auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
-//            auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-//                ghostOff();
-//            });
-//
-//            seq = cocos2d::Sequence::create(s1, callback, nullptr);
+            /**
+             * If over a valid equip slot, then equip
+             * the item
+             */
+            auto equipSlot = itemGrid->getEquipSlotFromPosition(convertToWorldSpace(m_pGhost->getPosition()));
+            if(equipSlot != nullptr) {
+                /**
+                 * This means we're over an equip slot
+                 * We have to make sure we can equip
+                 * it here though
+                 */
+                if(m_pItem->canEquip(equipSlot->getEquipMask())) {
+                    auto im = static_cast<InventoryModal*>(itemGrid->getParent());
+                    cocos2d::Node* n = im->getEquipGrid();
+                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                    auto to1 = equipSlot->getPosition();
+                    auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
+                    auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(n->convertToWorldSpace(to1)));
+                    auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+
+                    /**
+                     * Send the dragged item to the equip slot,
+                     */
+                    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                        /**
+                         * Now, turn off the ghost image and replace with the
+                         * image rendered by equip slot. Also, equip the slot.
+                         */
+                        ghostOff();
+                        /**
+                         * If slot had something in it, put it
+                         * back in the item grid. When modal opens
+                         * again, this will happen automatically,
+                         * but need to do it no manually, 'cause.
+                         */
+                        if(equipSlot->getItem() != nullptr) {
+                            setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                            equipSlot->setItem(m_pItem);
+                        } else {
+                            equipSlot->setItem(m_pItem);
+
+                            /**
+                             * Only remove the item from the item grid
+                             * if the item is not stackable
+                             */
+                            IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+                            if(stackable == nullptr) {
+                                setItem(nullptr);
+                            }
+                        }
+                    });
+
+                    seq = cocos2d::Sequence::create(s1, callback, nullptr);
+                    m_pGhost->runAction(seq);
+                    return;
+
+                }
+            }
+            /**
+             * If not over a slot, then return the item
+             * back to it's origin slot
+             */
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
+            auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
+            auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
+            auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+                ghostOff();
+            });
+
+            seq = cocos2d::Sequence::create(s1, callback, nullptr);
+            m_pGhost->runAction(seq);
         }
-//
-//
-//        m_pGhost->runAction(seq);
+
+
+
     };
 
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);

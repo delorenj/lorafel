@@ -81,6 +81,7 @@ void InventoryItemSlot::addEvents() {
         auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
         std::pair<int, int> chsCoords;
         cocos2d::Sequence* seq;
+        Consumable* consumable = dynamic_cast<Consumable*>(m_pItem);
 
         /**
          * Turn off selection highlights no matter what
@@ -140,27 +141,34 @@ void InventoryItemSlot::addEvents() {
                          * image rendered by equip slot. Also, equip the slot.
                          */
                         ghostOff();
+
                         /**
                          * If slot had something in it, put it
                          * back in the item grid. When modal opens
                          * again, this will happen automatically,
                          * but need to do it no manually, 'cause.
+                         * Don't put it back though if it's a
+                         * consumable, 'cause.
                          */
                         if(equipSlot->getItem() != nullptr) {
-                            setItem(equipSlot->getItem(), equipSlot->getStackSize());
-                            equipSlot->setItem(m_pItem);
-                        } else {
-                            equipSlot->setItem(m_pItem);
+                            if(consumable == nullptr) {
+                                setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                            }
 
+                        } else {
                             /**
                              * Only remove the item from the item grid
                              * if the item is not stackable
                              */
-                            IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
-                            if(stackable == nullptr) {
+                            if(consumable == nullptr) {
                                 setItem(nullptr);
                             }
                         }
+                        /**
+                         * Equip the new item
+                         */
+                        equipSlot->setItem(m_pItem);
+
                     });
 
                     seq = cocos2d::Sequence::create(s1, callback, nullptr);
