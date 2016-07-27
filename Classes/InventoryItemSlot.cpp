@@ -20,15 +20,6 @@ bool InventoryItemSlot::init(InventoryItemGrid* pGrid) {
 }
 
 
-void InventoryItemSlot::update(float delta) {
-    if(m_stackSizeChange) {
-        IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
-        auto show = stackable == nullptr ? "" : to_string(m_stackSize);
-        m_pStackSizeLabel->setString(show);
-        m_stackSizeChange = false;
-    }
-}
-
 void InventoryItemSlot::addEvents() {
     ItemSlot::addEvents();
 
@@ -154,6 +145,7 @@ void InventoryItemSlot::addEvents() {
                             if(consumable == nullptr) {
                                 setItem(equipSlot->getItem(), equipSlot->getStackSize());
                             }
+                            equipSlot->setItem(m_pItem);
 
                         } else {
                             /**
@@ -163,12 +155,8 @@ void InventoryItemSlot::addEvents() {
                             if(consumable == nullptr) {
                                 setItem(nullptr);
                             }
+                            equipSlot->setItem(m_pItem);
                         }
-                        /**
-                         * Equip the new item
-                         */
-                        equipSlot->setItem(m_pItem);
-
                     });
 
                     seq = cocos2d::Sequence::create(s1, callback, nullptr);

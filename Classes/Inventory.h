@@ -37,11 +37,11 @@ namespace lorafel {
         Item* getItem(const char* itemName);
         ItemDictionary* getItemDictionary() { return m_pItemDictionary; }
         SlotItemStackDictionary* getSlotItemStackDictionary() { return m_pSlotItemStackDictionary; }
+        int getItemCount(const char* itemName);
 
     protected:
         ItemDictionary* m_pItemDictionary;
         SlotItemStackDictionary* m_pSlotItemStackDictionary;
-        int getItemCount(const char* itemName);
         bool itemExists(const char* itemName);
     };
 

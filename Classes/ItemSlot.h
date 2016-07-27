@@ -6,6 +6,7 @@
 #define LORAFEL_ITEMSLOT_H
 
 #include "Item.h"
+#include "InventoryItemGrid.h"
 
 namespace lorafel {
     class ItemSlot : public cocos2d::Sprite {
@@ -44,6 +45,8 @@ namespace lorafel {
          * for each ItemSlot subclass
          */
         virtual void setItem(Item* pItem, int stackSize = 1) = 0;
+
+        void update(float delta) override;
 
     protected:
         virtual void addEvents();

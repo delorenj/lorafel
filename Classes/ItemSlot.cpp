@@ -2,6 +2,8 @@
 // Created by Jarad DeLorenzo on 7/21/16.
 //
 
+#include "InventoryModal.h"
+#include "InventoryItemSlot.h"
 #include "ItemSlot.h"
 #include "IStackable.h"
 #include "Globals.h"
@@ -132,5 +134,11 @@ void ItemSlot::addEvents() {
 }
 
 
-
-
+void ItemSlot::update(float delta) {
+    if(m_stackSizeChange) {
+        IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
+        auto show = stackable == nullptr ? "" : to_string(m_stackSize);
+        m_pStackSizeLabel->setString(show);
+        m_stackSizeChange = false;
+    }
+}

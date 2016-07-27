@@ -7,6 +7,7 @@
 #include "InventoryModal.h"
 #include "InventoryItemSlot.h"
 #include "Consumable.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -40,8 +41,16 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
     m_pItemSprite->setVisible(true);
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
-    setStackSize(stackSize);
 
+    auto consumable = dynamic_cast<Consumable*>(m_pItem);
+    if(consumable == nullptr) {
+        setStackSize(1);
+    } else {
+        int total = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemCount(m_pItem->getItemName());
+        setStackSize(total);
+    }
+
+    m_stackSizeChange = true;
     m_pItem->equip(this);
 }
 

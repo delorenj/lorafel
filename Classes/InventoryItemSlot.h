@@ -35,7 +35,6 @@ namespace lorafel {
         }
 
 
-        void update(float delta) override;
         std::pair<int, int> getCoords() const { return m_coords; }
         void setCoords(std::pair<int, int> coords) { m_coords = coords; }
 
