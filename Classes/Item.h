@@ -19,8 +19,9 @@ namespace lorafel {
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode);
         virtual bool addToInventory() = 0;
-        virtual const char* getItemName() const { return m_itemName.c_str(); }
-        virtual void setItemName(const char* name) { m_itemName = std::string(name); }
+        virtual std::string getItemName() const { return m_itemName; }
+        virtual void setItemName(const char* name) { m_itemName = to_string(name); }
+        virtual void setItemName(std::string name) { m_itemName = name; }
 
         void addInventorySlotCoordinates(std::pair<int, int> coords);
         std::set<std::pair<int, int> > getInventorySlotCoordinates() const;

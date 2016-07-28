@@ -60,8 +60,8 @@ namespace lorafel {
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
         Inventory* getInventory() const { return m_pInventory; }
-        bool equipConsumableSlot(const char* itemName);
-        bool equipConsumableSlot(const char* itemName, int slot);
+        bool equipConsumableSlot(std::string itemName);
+        bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
 
     protected:

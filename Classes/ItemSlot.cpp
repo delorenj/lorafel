@@ -139,7 +139,7 @@ void ItemSlot::addEvents() {
          */
         if(rect.containsPoint(p) && m_pItem != nullptr)
         {
-            CCLOG("TouchBegin: %s", m_pItem->getItemName());
+            CCLOG("TouchBegin: %s", m_pItem->getItemName().c_str());
             return true; // to indicate that we have consumed it.
         }
 

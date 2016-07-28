@@ -65,11 +65,11 @@ const int Player::getNumConsumableSlots() const {
     }
 }
 
-bool Player::equipConsumableSlot(const char* itemName) {
+bool Player::equipConsumableSlot(std::string itemName) {
     return equipConsumableSlot(itemName, 0);
 }
 
-bool Player::equipConsumableSlot(const char* itemName, int slot) {
+bool Player::equipConsumableSlot(std::string itemName, int slot) {
     Item* pItem = getInventory()->getItem(itemName);
 
     /**

@@ -95,14 +95,12 @@ void HealthPotion::initItemName() {
     } else if(m_amount <= 0.8) {
         setItemName("Damn Good Potion");
     } else if(m_amount <= 1) {
-            setItemName("Grand Potion");
+        setItemName("Grand Potion");
     } else {
         /**
          * This is a flat-amount potion
          */
-        auto a = std::string(to_string(m_amount));
-        auto b = std::string(to_string("Health Potion"));
-        setItemName("Health Potion Boh");
+        setItemName(std::string(to_string("Health Potion ") + to_string(m_amount)));
     }
 }
 

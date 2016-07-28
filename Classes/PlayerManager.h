@@ -34,13 +34,10 @@ namespace lorafel {
             m_pPlayer->getInventory()->addItem(LameSpiderSword::create());
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
-            m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.50));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(50.0f));
             m_pPlayer->equipConsumableSlot("Yummy Potion", 0);
-
+            CCLOG("Num Yums: %d", m_pPlayer->getInventory()->getItemCount("Yummy Potion"));
             return m_pPlayer;
         }
 

@@ -57,7 +57,7 @@ void InventoryItemGrid::loadInventory() {
     auto pInventory = PlayerManager::getInstance()->getPlayer()->getInventory();
     auto itemDictionary = pInventory->getItemDictionary();
     auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
-    std::unordered_map<const char*, int> alreadyPlaced;
+    std::unordered_map<std::string, int> alreadyPlaced;
     /**
      * First, cycle through all persisted slot assignments that
      * the player has previously stored and populate the item

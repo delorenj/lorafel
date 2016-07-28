@@ -19,7 +19,7 @@ const int Inventory::addItem(Item* pItem, int quantity) {
  * This is only for adding MORE items of an already
  * existing item
  */
-const int Inventory::addItem(const char* itemName, int quantity) {
+const int Inventory::addItem(std::string itemName, int quantity) {
     auto count = getItemCount(itemName);
     auto itemPair = m_pItemDictionary->at(itemName);
     count += quantity;
@@ -34,7 +34,7 @@ const int Inventory::addItem(const char* itemName, int quantity) {
  * thus overriding the default Item name returned in
  * the item's own getItemName() function
  */
-const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
+const int Inventory::addItem(std::string itemName, Item* pItem, int quantity) {
     if(itemExists(itemName)) {
         return addItem(itemName, quantity);
     }
@@ -45,7 +45,7 @@ const int Inventory::addItem(const char* itemName, Item* pItem, int quantity) {
     return quantity;
 }
 
-int Inventory::getItemCount(const char* itemName) {
+int Inventory::getItemCount(std::string itemName) {
     if(!itemExists(itemName)) {
         return 0;
     } else {
@@ -53,7 +53,7 @@ int Inventory::getItemCount(const char* itemName) {
     }
 }
 
-bool Inventory::itemExists(const char* itemName) {
+bool Inventory::itemExists(std::string itemName) {
     try {
         m_pItemDictionary->at(itemName);
     } catch(std::out_of_range e) {
@@ -62,7 +62,7 @@ bool Inventory::itemExists(const char* itemName) {
     return true;
 }
 
-Item* Inventory::getItem(const char* itemName) {
+Item* Inventory::getItem(std::string itemName) {
     if(itemExists(itemName)) {
         return m_pItemDictionary->at(itemName)->first;
     } else {
