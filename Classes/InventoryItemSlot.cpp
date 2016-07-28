@@ -148,6 +148,8 @@ void InventoryItemSlot::addEvents() {
                             equipSlot->setItem(m_pItem);
 
                         } else {
+                            equipSlot->setItem(m_pItem);
+
                             /**
                              * Only remove the item from the item grid
                              * if the item is not stackable
@@ -155,7 +157,6 @@ void InventoryItemSlot::addEvents() {
                             if(consumable == nullptr) {
                                 setItem(nullptr);
                             }
-                            equipSlot->setItem(m_pItem);
                         }
                     });
 
