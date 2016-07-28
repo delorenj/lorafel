@@ -15,7 +15,7 @@ bool HealthPotion::init(double amount) {
     }
 
     m_amount = amount;
-    m_itemName = getItemName();
+    initItemName();
     addEquipMask(Player::CONSUMABLE);
     initWithSpriteFrameName("PoisonGlyph.png");
     return true;
@@ -82,25 +82,27 @@ bool HealthPotion::addToInventory() {
     _eventDispatcher->dispatchCustomEvent("itemAdded", this);
 }
 
-const char* HealthPotion::getItemName() const {
+void HealthPotion::initItemName() {
     /**
      * This is a percentage-based potion
      */
     if(m_amount <= 0.1) {
-        return "Stupid Potion";
+        setItemName("Stupid Potion");
     } else if(m_amount <= 0.2) {
-        return "Yummy Potion";
+        setItemName("Yummy Potion");
     } else if(m_amount <= 0.5) {
-        return "Awesome Potion";
+        setItemName("Awesome Potion");
     } else if(m_amount <= 0.8) {
-        return "Damn Good Potion";
+        setItemName("Damn Good Potion");
     } else if(m_amount <= 1) {
-            return "Grand Potion";
+            setItemName("Grand Potion");
     } else {
         /**
          * This is a flat-amount potion
          */
-        return std::string("Health Potion " + to_string(m_amount)).c_str();
+        auto a = std::string(to_string(m_amount));
+        auto b = std::string(to_string("Health Potion"));
+        setItemName("Health Potion Boh");
     }
 }
 

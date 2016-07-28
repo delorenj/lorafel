@@ -4,9 +4,7 @@
 
 #include "InventoryModal.h"
 #include "InventoryItemSlot.h"
-#include "ItemSlot.h"
 #include "IStackable.h"
-#include "Globals.h"
 
 using namespace lorafel;
 
@@ -54,7 +52,6 @@ void ItemSlot::ghostOn() const {
     IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
     if(stackable == nullptr) {
         m_pItemSprite->setVisible(false);
-        m_pStackSizeLabel->setVisible(false);
         m_pGhost->setOpacity(255);
 
     } else {
@@ -66,7 +63,6 @@ void ItemSlot::ghostOn() const {
 
 void ItemSlot::ghostOff() const {
     m_pItemSprite->setVisible(true);
-    m_pStackSizeLabel->setVisible(true);
     m_pGhost->setVisible(false);
 }
 
@@ -130,6 +126,33 @@ bool ItemSlot::init() {
 }
 
 void ItemSlot::addEvents() {
+    auto listener = cocos2d::EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+
+    listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+    {
+        cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
+        cocos2d::Rect rect = this->getBoundingBox();
+
+        /**
+         * Touching a slot with something in it
+         */
+        if(rect.containsPoint(p) && m_pItem != nullptr)
+        {
+            CCLOG("TouchBegin: %s", m_pItem->getItemName());
+            return true; // to indicate that we have consumed it.
+        }
+
+        return false; // we did not consume this event, pass thru.
+    };
+
+    listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+    };
+
+    listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+    };
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 }
 
@@ -139,6 +162,13 @@ void ItemSlot::update(float delta) {
         IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
         auto show = stackable == nullptr ? "" : to_string(m_stackSize);
         m_pStackSizeLabel->setString(show);
+
+        if(m_stackSize == 0) {
+            m_pStackSizeLabel->setVisible(false);
+        } else {
+            m_pStackSizeLabel->setVisible(true);
+        }
+
         m_stackSizeChange = false;
     }
 }

@@ -24,7 +24,7 @@ void InventoryItemSlot::addEvents() {
     ItemSlot::addEvents();
 
     auto listener = cocos2d::EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(true);
+    listener->setSwallowTouches(false);
 
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {

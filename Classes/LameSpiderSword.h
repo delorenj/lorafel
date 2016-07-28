@@ -20,17 +20,11 @@ namespace lorafel {
             m_damage = 500;
             addEquipMask(Player::LEFT_HAND);
             addEquipMask(Player::RIGHT_HAND);
+            setItemName("Lame Spider Sword");
             return true;
         }
 
         CREATE_FUNC(LameSpiderSword);
-
-        virtual const char* getItemName() const override { return m_itemName; }
-
-
-    protected:
-        const char* m_itemName = "Lame Spider Sword";
-
 
     };
 }

@@ -19,8 +19,8 @@ namespace lorafel {
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode);
         virtual bool addToInventory() = 0;
-        virtual const char* getItemName() const { return m_itemName; }
-        virtual void setItemName(const char* name) { m_itemName = name; }
+        virtual const char* getItemName() const { return m_itemName.c_str(); }
+        virtual void setItemName(const char* name) { m_itemName = std::string(name); }
 
         void addInventorySlotCoordinates(std::pair<int, int> coords);
         std::set<std::pair<int, int> > getInventorySlotCoordinates() const;
@@ -34,7 +34,7 @@ namespace lorafel {
         virtual void equip(EquipItemSlot* pSlot);
 
     protected:
-        const char* m_itemName;
+        std::string m_itemName;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;

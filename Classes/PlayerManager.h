@@ -38,8 +38,8 @@ namespace lorafel {
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.50));
-            m_pPlayer->getInventory()->addItem(HealthPotion::create(50));
-            m_pPlayer->equipConsumableSlot("Better Health", 0);
+            m_pPlayer->getInventory()->addItem(HealthPotion::create(50.0f));
+            m_pPlayer->equipConsumableSlot("Yummy Potion", 0);
 
             return m_pPlayer;
         }

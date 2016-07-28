@@ -32,9 +32,9 @@ namespace lorafel {
         virtual bool addToInventory() override;
 
         virtual int getMaxStack() const override { return 5; }
-        virtual const char* getItemName() const override;
 
     protected:
+        void initItemName();
         double m_amount;
 
     };
