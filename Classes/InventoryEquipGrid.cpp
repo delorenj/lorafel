@@ -4,6 +4,7 @@
 
 #include "InventoryEquipGrid.h"
 #include "Player.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -86,6 +87,8 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
     addChild(m_pItemSlotConsumable);
     m_equipSlots.push_back(m_pItemSlotConsumable);
 
+    loadInventory();
+
     return true;
 
 }
@@ -97,6 +100,33 @@ EquipItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
         }
     }
     return nullptr;
+}
+
+void InventoryEquipGrid::loadInventory() {
+    auto pInventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+    auto itemDictionary = pInventory->getItemDictionary();
+    auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
+    std::unordered_map<std::string, int> alreadyPlaced;
+    /**
+     * Cycle through all items and if equipped, set them to the
+     * appropriate slot
+     */
+    for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
+        auto pItemQuatityPair = it->second;
+        auto pItem = pItemQuatityPair->first;
+        auto itemQuantity = pItemQuatityPair->second;
+        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
+
+        if(numAlreadyPlaced == 0) {
+            assignItemToSlot(it->second);
+        } else {
+            std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
+            pNewPair->first = pItem;
+            pNewPair->second = itemQuantity - numAlreadyPlaced;
+            assignItemToSlot(pNewPair);
+        }
+    }
+
 }
 
 

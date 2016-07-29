@@ -46,6 +46,8 @@ namespace lorafel {
         EquipItemSlot* m_pItemSlotNecklace;
         EquipItemSlot* m_pItemSlotAction;
         EquipItemSlot* m_pItemSlotConsumable;
+
+        void loadInventory();
     };
 }
 
