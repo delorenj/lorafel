@@ -12,6 +12,7 @@
 #include "HeroTile.h"
 #include "Consumable.h"
 #include "Hook.h"
+#include "EquipManager.h"
 
 namespace lorafel {
     class Player {
@@ -30,10 +31,6 @@ namespace lorafel {
         static const int ACTIONITEM         = 9;
         static const int CONSUMABLE         = 10;
 
-        Consumable* getConsumableSlotItem(int i);
-
-        void equipHook();
-
     public:
         Player();
         virtual ~Player();
@@ -44,7 +41,8 @@ namespace lorafel {
          * Getters and Setters
         */
         const int getNumConsumableSlots() const;
-
+        Consumable* getConsumableSlotItem(int i);
+        void equipHook();
         LevelManager* getLevelManager() const { return m_pLevelManager; }
         int updateGoldBy(int amount, Match* pMatch);
         int getGold() const { return m_gold; }
@@ -63,6 +61,8 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemName);
         bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
+        Item* getEquippedItemBySlotType(int equipMask) const;
+        EquipManager* getEquipManager() const { return m_pEquipManager; }
 
     protected:
         // Current Stats
@@ -78,6 +78,7 @@ namespace lorafel {
         cocos2d::EventDispatcher* m_pDispatcher;
 
         LinearLevelManager* m_pLevelManager;
+        EquipManager* m_pEquipManager;
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;

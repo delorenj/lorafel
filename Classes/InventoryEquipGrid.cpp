@@ -5,6 +5,8 @@
 #include "InventoryEquipGrid.h"
 #include "Player.h"
 #include "PlayerManager.h"
+#include "InventoryItemSlot.h"
+#include "IStackable.h"
 
 using namespace lorafel;
 
@@ -103,28 +105,44 @@ EquipItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
 }
 
 void InventoryEquipGrid::loadInventory() {
-    auto pInventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+    auto pPlayer = PlayerManager::getInstance()->getPlayer();
+    auto pInventory = pPlayer->getInventory();
     auto itemDictionary = pInventory->getItemDictionary();
     auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
-    std::unordered_map<std::string, int> alreadyPlaced;
+    auto pInventoryGrid = static_cast<InventoryItemGrid*>(getParent());
+
     /**
-     * Cycle through all items and if equipped, set them to the
+     * Cycle through all equip item slots and if equipped, set them to the
      * appropriate slot
      */
-    for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
-        auto pItemQuatityPair = it->second;
-        auto pItem = pItemQuatityPair->first;
-        auto itemQuantity = pItemQuatityPair->second;
-        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
+    for(auto slot : m_equipSlots) {
+        auto slotType = slot->getEquipMask();
+        Item* pItem  = pPlayer->getEquippedItemBySlotType(slotType);
 
-        if(numAlreadyPlaced == 0) {
-            assignItemToSlot(it->second);
-        } else {
-            std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
-            pNewPair->first = pItem;
-            pNewPair->second = itemQuantity - numAlreadyPlaced;
-            assignItemToSlot(pNewPair);
+        /**
+         * If player has nothing equipped in the current
+         * slot type, then just continue
+         */
+        if(pItem == nullptr) continue;
+
+        /**
+         * If item is equipped, then remove it
+         * from the inventory grid and equip it
+         * here.
+         *
+         * If item is stackable, then we don't have to
+         * remove it from the inventory grid
+         */
+        IStackable* iStackable = dynamic_cast<IStackable*>(pItem);
+        if(iStackable == nullptr) {
+            auto inventoryCoords = pItem->getInventorySlotCoordinates();
+            if(inventoryCoords.size() > 0) {
+                InventoryItemSlot* inventorySlot = pInventoryGrid->getSlotFromCoords(*inventoryCoords.begin());
+                inventorySlot->setItem(nullptr);
+            }
         }
+
+        slot->setItem(pItem);
     }
 
 }

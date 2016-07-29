@@ -12,15 +12,12 @@
 using namespace lorafel;
 
 bool EquipItemSlot::init() {
-    if(!ItemSlot::init()) {
-        return false;
-    }
+    return ItemSlot::init();
 
-    return true;
 }
 
 void EquipItemSlot::setItem(Item* pItem, int stackSize) {
-
+    auto equipManager = PlayerManager::getInstance()->getPlayer()->getEquipManager();
     /**
      * If clearing slot, then set item to null
      * and assign the item back to the item grid
@@ -31,6 +28,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
         setStackSize(0);
         m_state = ItemSlot::State::EMPTY;
         m_pItem = nullptr;
+        equipManager->setEquippedItem(getEquipMask(), NULL);
         return;
     }
 
@@ -53,6 +51,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     m_stackSizeChange = true;
     m_pItem->equip(this);
+    equipManager->setEquippedItem(getEquipMask(), m_pItem->getItemName());
 }
 
 void EquipItemSlot::addEvents() {

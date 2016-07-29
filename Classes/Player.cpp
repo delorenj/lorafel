@@ -109,4 +109,9 @@ void Player::equipHook() {
     m_pHook = Hook::create(m_pTile);
 }
 
+Item* Player::getEquippedItemBySlotType(int equipMask) const {
+    auto itemName = m_pEquipManager->getItemNameByEquipMask(equipMask);
+    return m_pInventory->getItem(itemName);
+}
+
 
