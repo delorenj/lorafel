@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "HealthPotion.h"
 #include "LameSpiderSword.h"
+#include "DumbKnife.h"
 
 namespace lorafel {
 
@@ -32,12 +33,12 @@ namespace lorafel {
             //TODO: Load from server, including player avatar image
             m_pPlayer->setTile(HeroTile::create("player.png"));
             m_pPlayer->getInventory()->addItem(LameSpiderSword::create());
+            m_pPlayer->getInventory()->addItem(DumbKnife::create());
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.20));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(0.50));
             m_pPlayer->getInventory()->addItem(HealthPotion::create(50.0f));
             m_pPlayer->equipConsumableSlot("Yummy Potion", 0);
-            CCLOG("Num Yums: %d", m_pPlayer->getInventory()->getItemCount("Yummy Potion"));
             return m_pPlayer;
         }
 

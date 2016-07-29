@@ -366,6 +366,7 @@
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
 		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
+		3167DA659FBDBFB961F1C50F /* DumbKnife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbKnife.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
@@ -802,6 +803,7 @@
 				3167D64DF3736FBC3CEF6B10 /* EquipItemSlot.cpp */,
 				3167D40B103B97B902256E63 /* EquipItemSlot.h */,
 				3167DCE5F6560AA6833ED344 /* EventDataItem.h */,
+				3167DA659FBDBFB961F1C50F /* DumbKnife.h */,
 			);
 			name = Classes;
 			path = ../Classes;

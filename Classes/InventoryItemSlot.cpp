@@ -85,7 +85,7 @@ void InventoryItemSlot::addEvents() {
              * to the hovered slot
              */
             auto chsCoords = currentHoveredSlot->getCoords();
-            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
             auto to1 = currentHoveredSlot->getPosition();
             auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
             auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(m_pGrid->convertToWorldSpace(to1)));
@@ -117,7 +117,7 @@ void InventoryItemSlot::addEvents() {
                 if(m_pItem->canEquip(equipSlot->getEquipMask())) {
                     auto im = static_cast<InventoryModal*>(m_pGrid->getParent());
                     cocos2d::Node* n = im->getEquipGrid();
-                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
                     auto to1 = equipSlot->getPosition();
                     auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
                     auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(n->convertToWorldSpace(to1)));
@@ -142,10 +142,13 @@ void InventoryItemSlot::addEvents() {
                          * consumable, 'cause.
                          */
                         if(equipSlot->getItem() != nullptr) {
+                            auto tmp = getItem();
+
                             if(consumable == nullptr) {
                                 setItem(equipSlot->getItem(), equipSlot->getStackSize());
                             }
-                            equipSlot->setItem(m_pItem);
+
+                            equipSlot->setItem(tmp);
 
                         } else {
                             equipSlot->setItem(m_pItem);
@@ -170,7 +173,7 @@ void InventoryItemSlot::addEvents() {
              * If not over a slot, then return the item
              * back to it's origin slot
              */
-            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
             auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
             auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
             auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
@@ -232,7 +235,8 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
      * image in there
      */
     m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
-    m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+    setOriginalScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+    m_pItemSprite->setScale(m_originalScale);
 
     setStackSize(stackSize);
 

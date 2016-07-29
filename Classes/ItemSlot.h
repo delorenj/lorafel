@@ -38,6 +38,8 @@ namespace lorafel {
         bool stackFull() const;
         int getStackSize() const { return m_stackSize; }
         void setStackSize(int stackSize);
+        double getOriginalScale() const { return m_originalScale; }
+        void setOriginalScale(double scale) { m_originalScale = scale; }
 
         /**
          * Each type of ItemSlot is different, so this is
@@ -58,6 +60,7 @@ namespace lorafel {
         cocos2d::Label* m_pStackSizeLabel;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;
+        double m_originalScale;
         int m_state = ItemSlot::State::EMPTY;
     };
 

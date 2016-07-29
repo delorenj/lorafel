@@ -37,7 +37,8 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     m_pItem = pItem;
     m_state = ItemSlot::State::IDLE;
     m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
-    m_pItemSprite->setScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+    setOriginalScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+    m_pItemSprite->setScale(m_originalScale);
     m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
     m_pItemSprite->setVisible(true);
     m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
@@ -131,7 +132,7 @@ void EquipItemSlot::addEvents() {
                 auto it = coordSet.end();
                 auto coords = *--it;
                 auto slot = itemGrid->getSlotFromCoords(coords);
-                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
                 auto to1 = slot->getPosition();
                 auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
                 auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
@@ -154,7 +155,7 @@ void EquipItemSlot::addEvents() {
                  * the destination to the hovered slot
                  */
                 auto chsCoords = currentHoveredSlot->getCoords();
-                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
                 auto to1 = currentHoveredSlot->getPosition();
                 auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
                 auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
@@ -179,7 +180,7 @@ void EquipItemSlot::addEvents() {
                  */
                 auto chsCoords = itemGrid->nextEmptySlotCoordinates();
                 auto assignedSlot = itemGrid->getSlotFromCoords(chsCoords);
-                auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
                 auto to1 = assignedSlot->getPosition();
                 auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
                 auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(itemGrid->convertToWorldSpace(to1)));
@@ -214,7 +215,7 @@ void EquipItemSlot::addEvents() {
                 if(m_pItem->canEquip(equipSlot->getEquipMask())) {
                     auto im = static_cast<InventoryModal*>(itemGrid->getParent());
                     cocos2d::Node* n = im->getEquipGrid();
-                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+                    auto scaleTo = cocos2d::ScaleTo::create(0.2f, m_originalScale);
                     auto to1 = equipSlot->getPosition();
                     auto speed1 = m_pGhost->getPosition().getDistance(to1)/800;
                     auto moveTo = cocos2d::MoveTo::create(speed1, convertToNodeSpace(n->convertToWorldSpace(to1)));
@@ -236,8 +237,14 @@ void EquipItemSlot::addEvents() {
                          * but need to do it no manually, 'cause.
                          */
                         if(equipSlot->getItem() != nullptr) {
-                            setItem(equipSlot->getItem(), equipSlot->getStackSize());
-                            equipSlot->setItem(m_pItem);
+                            auto tmp = getItem();
+
+                            if(consumable == nullptr) {
+                                setItem(equipSlot->getItem(), equipSlot->getStackSize());
+                            }
+
+                            equipSlot->setItem(tmp);
+
                         } else {
                             equipSlot->setItem(m_pItem);
 
@@ -245,8 +252,7 @@ void EquipItemSlot::addEvents() {
                              * Only remove the item from the item grid
                              * if the item is not stackable
                              */
-                            IStackable* stackable = dynamic_cast<IStackable*>(m_pItem);
-                            if(stackable == nullptr) {
+                            if(consumable == nullptr) {
                                 setItem(nullptr);
                             }
                         }
@@ -262,7 +268,7 @@ void EquipItemSlot::addEvents() {
              * If not over a slot, then return the item
              * back to it's origin slot
              */
-            auto scaleTo = cocos2d::ScaleTo::create(0.2f, 1.0f);
+            auto scaleTo = cocos2d::ScaleTo::create(0.2f,m_originalScale);
             auto speed = m_pGhost->getPosition().getDistance(cocos2d::Vec2::ZERO)/800;
             auto moveTo = cocos2d::MoveTo::create(speed, cocos2d::Vec2(getContentSize().width/2,getContentSize().height/2));
             auto s1 = cocos2d::Spawn::create(scaleTo, moveTo, nullptr);
