@@ -45,10 +45,9 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
              */
             m_pGrid->insert(slot, i, j);
             slot->setCoords(std::make_pair(i, j));
+            slot->retain();
         }
     }
-
-    loadInventory();
 
     return true;
 }

@@ -84,7 +84,7 @@ InGameModal* InGameModal::createAndDropIn(cocos2d::Node* container) {
     auto seq = cocos2d::Sequence::create(ease, NULL);
     container->addChild(modal, LayerOrder::MODAL);
     modal->runAction(seq);
-
+    modal->loadInventory();
     /**
      * Set game state to modal
      */

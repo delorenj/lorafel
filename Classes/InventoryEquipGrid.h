@@ -33,6 +33,7 @@ namespace lorafel {
         }
 
         EquipItemSlot* getSlotFromPosition(const Vec2& pos);
+        void loadInventory();
 
     protected:
         std::vector<EquipItemSlot*> m_equipSlots;
@@ -47,7 +48,7 @@ namespace lorafel {
         EquipItemSlot* m_pItemSlotAction;
         EquipItemSlot* m_pItemSlotConsumable;
 
-        void loadInventory();
+
     };
 }
 

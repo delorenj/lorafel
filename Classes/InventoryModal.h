@@ -18,6 +18,10 @@ namespace lorafel {
         void update(float delta) override;
         InventoryItemGrid* getItemGrid() const { return m_pItemGrid; }
         InventoryEquipGrid* getEquipGrid() const { return m_pEquipGrid; }
+        void loadInventory() {
+            m_pItemGrid->loadInventory();
+            m_pEquipGrid->loadInventory();
+        }
 
     protected:
         InventoryItemGrid* m_pItemGrid;

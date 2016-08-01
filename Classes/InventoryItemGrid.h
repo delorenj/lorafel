@@ -55,17 +55,13 @@ namespace lorafel {
 
         InventoryItemSlot* getSlotFromCoords(Coords pair) const;
 
-    protected:
         void loadInventory();
 
 
 
     protected:
         Grid<InventoryItemSlot*>* m_pGrid;
-
-
         bool isStackable(Item* pItem);
-
         Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
     };
 }

@@ -53,7 +53,11 @@ void Item::addEvents(cocos2d::Node* pNode) {
 }
 
 void Item::addInventorySlotCoordinates(std::pair<int, int> coords) {
-    m_inventorySlotCoordinates.insert(coords);
+    if(coords == NULL_COORDINATES) {
+        m_inventorySlotCoordinates.clear();
+    } else {
+        m_inventorySlotCoordinates.insert(coords);
+    }
 }
 
 std::set<std::pair<int, int> >Item::getInventorySlotCoordinates() const {

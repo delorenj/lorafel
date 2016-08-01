@@ -89,8 +89,6 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
     addChild(m_pItemSlotConsumable);
     m_equipSlots.push_back(m_pItemSlotConsumable);
 
-    loadInventory();
-
     return true;
 
 }
