@@ -28,7 +28,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
         setStackSize(0);
         m_state = ItemSlot::State::EMPTY;
         m_pItem = nullptr;
-        equipManager->setEquippedItem(getEquipMask(), NULL);
+        equipManager->setEquippedItem(getEquipMask(), "");
         return;
     }
 
@@ -78,11 +78,7 @@ void EquipItemSlot::addEvents() {
         /**
          * Touching an empty slot
          */
-        if(rect.containsPoint(p) && m_pItem == nullptr) {
-            return true; // to indicate that we have consumed it.
-        }
-
-        return false; // we did not consume this event, pass thru.
+        return rect.containsPoint(p) && m_pItem == nullptr;
     };
 
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {

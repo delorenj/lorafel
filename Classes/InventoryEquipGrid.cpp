@@ -106,8 +106,6 @@ EquipItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
 void InventoryEquipGrid::loadInventory() {
     auto pPlayer = PlayerManager::getInstance()->getPlayer();
     auto pInventory = pPlayer->getInventory();
-    auto itemDictionary = pInventory->getItemDictionary();
-    auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
     auto pInventoryModal = static_cast<InventoryModal*>(getParent());
     auto pInventoryGrid = pInventoryModal->getItemGrid();
 
