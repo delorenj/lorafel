@@ -60,7 +60,7 @@ namespace lorafel {
 
 
     protected:
-        Grid<InventoryItemSlot*>* m_pGrid;
+        std::shared_ptr<Grid<InventoryItemSlot*> > m_pGrid;
         bool isStackable(Item* pItem);
         Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
     };

@@ -16,7 +16,8 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
-    m_pGrid = new Grid<InventoryItemSlot*>();
+    m_pGrid = std::make_shared<Grid<InventoryItemSlot*> >();
+
 
     /**
      * Create the background of the
@@ -45,7 +46,6 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
              */
             m_pGrid->insert(slot, i, j);
             slot->setCoords(std::make_pair(i, j));
-            slot->retain();
         }
     }
 

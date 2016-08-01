@@ -7,6 +7,7 @@
 #include "PlayerManager.h"
 #include "InventoryItemSlot.h"
 #include "IStackable.h"
+#include "InventoryModal.h"
 
 using namespace lorafel;
 
@@ -107,7 +108,8 @@ void InventoryEquipGrid::loadInventory() {
     auto pInventory = pPlayer->getInventory();
     auto itemDictionary = pInventory->getItemDictionary();
     auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
-    auto pInventoryGrid = static_cast<InventoryItemGrid*>(getParent());
+    auto pInventoryModal = static_cast<InventoryModal*>(getParent());
+    auto pInventoryGrid = pInventoryModal->getItemGrid();
 
     /**
      * Cycle through all equip item slots and if equipped, set them to the

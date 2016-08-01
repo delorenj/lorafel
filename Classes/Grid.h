@@ -10,12 +10,7 @@ namespace lorafel {
     class Grid {
     public:
         Grid() {
-            m_pDic = new std::map<std::pair<int, int>, T>();
-        }
-
-        ~Grid() {
-            delete m_pDic;
-            m_pDic = nullptr;
+            m_pDic = std::make_shared<std::map<std::pair<int, int>, T> >();
         }
 
         void insert(T item, int x, int y) {
@@ -43,7 +38,7 @@ namespace lorafel {
         }
 
     protected:
-        std::map<std::pair<int, int>, T>* m_pDic;
+        std::shared_ptr<std::map<std::pair<int, int>, T> > m_pDic;
     };
 }
 
