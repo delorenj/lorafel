@@ -6,15 +6,18 @@
 #define LORAFEL_EQUIPSTATUS_H
 
 #include "Serializer.h"
+#include "StringPatch.h"
 
 namespace lorafel {
-    class EquipSerializer : public cocos2d::Node, Serializer<int, std::string> {
+    class EquipSerializer : public Serializer<int, std::string> {
     public:
-        CREATE_FUNC(EquipSerializer);
+        void serialize(int key, std::string value) override {
+            cocos2d::UserDefault::getInstance()->setStringForKey(to_string(key).c_str(), value.c_str());
+        }
 
-        std::string getItemNameByEquipMask(int mask) const;
-        virtual void serialize(int key, std::string value) override;
-
+        std::string unserialize(int key) override {
+            return cocos2d::UserDefault::getInstance()->getStringForKey(to_string(key).c_str());
+        }
     };
 }
 

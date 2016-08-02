@@ -14,6 +14,8 @@ Player::Player() {
     m_pInventory = new Inventory();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
     //m_activeConsumables.reserve(3);
+    m_pInventorySlotSerializer = std::make_shared<InventorySlotSerializer>();
+    m_pEquipSerializer = std::make_shared<EquipSerializer>();
 }
 
 Player::~Player() {
@@ -111,12 +113,6 @@ void Player::equipHook() {
 }
 
 Item* Player::getEquippedItemBySlotType(int equipMask) const {
-    auto itemName = m_pEquipManager->getItemNameByEquipMask(equipMask);
+    auto itemName = m_pEquipSerializer->unserialize(equipMask);
     return m_pInventory->getItem(itemName);
 }
-
-InventorySlotSerializer Player::getInventorySlotSerializer() {
-    return m_inventorySlotSerializer;
-}
-
-

@@ -22,7 +22,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/EnemyHitFloatie.cpp \
                    ../../Classes/EnemyTile.cpp \
                    ../../Classes/EquipItemSlot.cpp \
-                   ../../Classes/EquipStatus.cpp \
                    ../../Classes/FireballAction.cpp \
                    ../../Classes/FireballActionTile.cpp \
                    ../../Classes/Floatie.cpp \

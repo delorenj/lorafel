@@ -36,7 +36,6 @@
 		3167D2A62650524EC789DA51 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
 		3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D1DEE2F81382C6AA2085 /* Weapon.cpp */; };
-		3167D30CD371A1E250290F4C /* EquipSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0AE695F0FEE572B0579 /* EquipSerializer.cpp */; };
 		3167D3222AC906FBB2C0702D /* StickMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */; };
 		3167D3281444C6E14E34C116 /* Achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */; };
 		3167D3614B46AC23DF272ED1 /* TrajectoryParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */; };
@@ -82,7 +81,6 @@
 		3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
 		3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */; };
 		3167D836E569DD3FED261E5D /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
-		3167D83A1823EBECD19EC0A8 /* EquipSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0AE695F0FEE572B0579 /* EquipSerializer.cpp */; };
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
@@ -259,7 +257,6 @@
 		3167D080272FAB8E8AC62DAC /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateMachine.h; sourceTree = "<group>"; };
 		3167D094F10916B85FB7B0FC /* GameOverUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverUI.h; sourceTree = "<group>"; };
 		3167D0A88374F8248BC58E79 /* HealthPotionPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotionPlayerMove.h; sourceTree = "<group>"; };
-		3167D0AE695F0FEE572B0579 /* EquipSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipSerializer.cpp; sourceTree = "<group>"; };
 		3167D0C811C57107CDCDBC35 /* ItemSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemSlot.cpp; sourceTree = "<group>"; };
 		3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrajectoryParticle.cpp; sourceTree = "<group>"; };
 		3167D0FE9E64FA082453BAE7 /* InventoryItemSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItemSlot.h; sourceTree = "<group>"; };
@@ -810,7 +807,6 @@
 				3167D40B103B97B902256E63 /* EquipItemSlot.h */,
 				3167DCE5F6560AA6833ED344 /* EventDataItem.h */,
 				3167DA659FBDBFB961F1C50F /* DumbKnife.h */,
-				3167D0AE695F0FEE572B0579 /* EquipSerializer.cpp */,
 				3167D2677BC18E2A72ED452C /* EquipSerializer.h */,
 				3167DC270BA4E3C90A1B810B /* InventorySlotSerializer.h */,
 				3167D9296BC28553AF292A0E /* Serializer.h */,
@@ -1088,7 +1084,6 @@
 				3167DA42A1A77BF1709EBF74 /* InventoryEquipGrid.cpp in Sources */,
 				3167D48F90EAF43F43E8B8A9 /* ItemSlot.cpp in Sources */,
 				3167D6F8F2A29344F1DF6E1F /* EquipItemSlot.cpp in Sources */,
-				3167D30CD371A1E250290F4C /* EquipSerializer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,7 +1159,6 @@
 				3167D60596F53704DD288960 /* InventoryEquipGrid.cpp in Sources */,
 				3167DF9D4B256CCF243DC62E /* ItemSlot.cpp in Sources */,
 				3167DEEA746D5995C56A9E8E /* EquipItemSlot.cpp in Sources */,
-				3167D83A1823EBECD19EC0A8 /* EquipSerializer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

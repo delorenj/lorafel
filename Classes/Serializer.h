@@ -10,6 +10,7 @@ namespace lorafel {
     class Serializer {
     public:
         virtual void serialize(K key, V value) = 0;
+        virtual V unserialize(K key) = 0;
     };
 }
 

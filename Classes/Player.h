@@ -63,8 +63,9 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
         Item* getEquippedItemBySlotType(int equipMask) const;
-        EquipSerializer* getEquipSerializer() const { return m_pEquipManager; }
-        InventorySlotSerializer getInventorySlotSerializer();
+        std::shared_ptr<EquipSerializer> getEquipSerializer() const { return m_pEquipSerializer; }
+        std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
+
     protected:
         // Current Stats
         int m_gold = 0;
@@ -79,7 +80,8 @@ namespace lorafel {
         cocos2d::EventDispatcher* m_pDispatcher;
 
         LinearLevelManager* m_pLevelManager;
-        EquipSerializer* m_pEquipManager;
+        std::shared_ptr<EquipSerializer> m_pEquipSerializer;
+        std::shared_ptr<InventorySlotSerializer> m_pInventorySlotSerializer;
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;

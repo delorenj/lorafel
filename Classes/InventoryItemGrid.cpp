@@ -53,41 +53,41 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 }
 
 void InventoryItemGrid::loadInventory() {
-    auto pInventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+    auto pPlayer = PlayerManager::getInstance()->getPlayer();
+    auto pInventory = pPlayer->getInventory();
     auto itemDictionary = pInventory->getItemDictionary();
-    auto slotItemStackDictionary = pInventory->getSlotItemStackDictionary();
     std::unordered_map<std::string, int> alreadyPlaced;
+
     /**
-     * First, cycle through all persisted slot assignments that
-     * the player has previously stored and populate the item
-     * grid accordingly
+     * First, cycle through all slots on current page
+     * and populate the item grid accordingly
      */
-    for(auto it = slotItemStackDictionary->begin(); it != slotItemStackDictionary->end(); ++it) {
-        /**
-         * Each iterator is a slot with an ItemQuantity pair
-         */
-        auto coords = it->first;
-        auto pItemQuantityPair = it->second;
-        auto pItem = pItemQuantityPair->first;
-        auto quantity = pItemQuantityPair->second;
-        auto slot = m_pGrid->get(it->first);
+    for(int i=0; i<NUM_ROWS; i++) {
+        for(int j=0; j<NUM_COLS; j++) {
+            auto pair = pPlayer->getInventorySlotSerializer()->unserialize(std::make_pair(i,j));
+            /**
+             * If slot contains nullptr for item
+             * just continue - nothing stored here.
+             */
+            if(pair.first == "") continue;
 
-        slot->setItem(pItem, quantity);
-        
-        /**
-         * If this placement was just a nil to clear
-         * out a slot, then don't emplace anything
-         * into the alreadyPlaced hash
-         */
-        if(pItem != nullptr) {
-            alreadyPlaced.emplace(pItem->getItemName(), quantity);
+            /**
+             * Otherwise, set the slot item and mark as
+             * 'already placed' so when we loop through
+             * all items next, we don't place the same
+             * item twice.
+             */
+            auto slot = getSlotFromCoords(std::make_pair(i,j));
+            auto pItem = pInventory->getItem(pair.first);
+            slot->setItem(pItem, pair.second);
+            alreadyPlaced.emplace(pair.first, pair.second);
         }
-
     }
 
     /**
-     * Then, cycle through all items that have not been stored
-     * or previously set and place them in the next available slot
+     * Then, cycle through all items and place them in
+     * the next available slot IFF they have not already
+     * been placed in the previous loop.
      */
     for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
         auto pItemQuatityPair = it->second;

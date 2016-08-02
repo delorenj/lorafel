@@ -229,7 +229,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
             stackIter->second->first = nullptr;
             stackIter->second->second = 0;
         }
-        inventorySlotSerializer->serialize(getCoords(), stackIter);
+        inventorySlotSerializer->serialize(getCoords(), std::make_pair("", 0));
         return;
     }
 
@@ -239,15 +239,14 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     if(stackIter != slotStackDic->end()) {
         stackIter->second->first = pItem;
         stackIter->second->second = stackSize;
-        inventorySlotSerializer->serialize(getCoords(), stackIter);
+
     } else {
         auto pair = new std::pair<Item*, int>();
         pair->first = pItem;
         pair->second = stackSize;
-        inventorySlotSerializer->serialize(getCoords(), pair);
         slotStackDic->emplace(getCoords(), pair);
     }
-
+    inventorySlotSerializer->serialize(getCoords(), std::make_pair(pItem->getItemName(), stackSize));
     ItemSlot::setItem(pItem, stackSize);
 }
 
