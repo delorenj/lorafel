@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "cocos2d.h"
 #include "Globals.h"
+#include "InventorySlotSerializer.h"
 
 using namespace lorafel;
 
@@ -112,6 +113,10 @@ void Player::equipHook() {
 Item* Player::getEquippedItemBySlotType(int equipMask) const {
     auto itemName = m_pEquipManager->getItemNameByEquipMask(equipMask);
     return m_pInventory->getItem(itemName);
+}
+
+InventorySlotSerializer Player::getInventorySlotSerializer() {
+    return m_inventorySlotSerializer;
 }
 
 

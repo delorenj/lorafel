@@ -12,7 +12,8 @@
 #include "HeroTile.h"
 #include "Consumable.h"
 #include "Hook.h"
-#include "EquipManager.h"
+#include "EquipSerializer.h"
+#include "InventorySlotSerializer.h"
 
 namespace lorafel {
     class Player {
@@ -62,8 +63,8 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
         Item* getEquippedItemBySlotType(int equipMask) const;
-        EquipManager* getEquipManager() const { return m_pEquipManager; }
-
+        EquipSerializer* getEquipSerializer() const { return m_pEquipManager; }
+        InventorySlotSerializer getInventorySlotSerializer();
     protected:
         // Current Stats
         int m_gold = 0;
@@ -78,7 +79,7 @@ namespace lorafel {
         cocos2d::EventDispatcher* m_pDispatcher;
 
         LinearLevelManager* m_pLevelManager;
-        EquipManager* m_pEquipManager;
+        EquipSerializer* m_pEquipManager;
         Progress*   m_pProgress;
         Achievements* m_pAchievements;
         Inventory* m_pInventory;

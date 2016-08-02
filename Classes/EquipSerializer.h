@@ -5,17 +5,16 @@
 #ifndef LORAFEL_EQUIPSTATUS_H
 #define LORAFEL_EQUIPSTATUS_H
 
+#include "Serializer.h"
+
 namespace lorafel {
-    class EquipManager : public cocos2d::Node {
+    class EquipSerializer : public cocos2d::Node, Serializer<int, std::string> {
     public:
-        bool init() override;
-        CREATE_FUNC(EquipManager);
+        CREATE_FUNC(EquipSerializer);
 
         std::string getItemNameByEquipMask(int mask) const;
-        void setEquippedItem(int mask, std::string itemName);
+        virtual void serialize(int key, std::string value) override;
 
-    protected:
-        cocos2d::UserDefault* m_pData;
     };
 }
 

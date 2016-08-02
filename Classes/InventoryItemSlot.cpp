@@ -193,7 +193,7 @@ void InventoryItemSlot::addEvents() {
 }
 
 void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
-
+    auto inventorySlotSerializer = PlayerManager::getInstance()->getPlayer()->getInventorySlotSerializer();
 
     /**
      * We need this to persist the item placement,
@@ -226,10 +226,10 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         m_pItem = nullptr;
 
         if(stackIter != slotStackDic->end()) {
-            stackIter->second->first = m_pItem;
+            stackIter->second->first = nullptr;
             stackIter->second->second = 0;
         }
-
+        inventorySlotSerializer->serialize(getCoords(), stackIter);
         return;
     }
 
@@ -239,11 +239,13 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     if(stackIter != slotStackDic->end()) {
         stackIter->second->first = pItem;
         stackIter->second->second = stackSize;
+        inventorySlotSerializer->serialize(getCoords(), stackIter);
     } else {
         auto pair = new std::pair<Item*, int>();
         pair->first = pItem;
         pair->second = stackSize;
-        slotStackDic->emplace(InventoryItemSlot::getCoords(), pair);
+        inventorySlotSerializer->serialize(getCoords(), pair);
+        slotStackDic->emplace(getCoords(), pair);
     }
 
     ItemSlot::setItem(pItem, stackSize);
