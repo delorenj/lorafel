@@ -172,3 +172,24 @@ void ItemSlot::update(float delta) {
         m_stackSizeChange = false;
     }
 }
+
+void ItemSlot::setItem(Item* pItem, int stackSize) {
+    m_pItem = pItem;
+    m_state = ItemSlot::State::IDLE;
+
+    m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
+    setOriginalScale(getContentSize().width/m_pItemSprite->getContentSize().width);
+    m_pItemSprite->setScale(m_originalScale);
+
+    setStackSize(stackSize);
+
+
+    /**
+     * Ensure that the ghost sprite is a copy of the
+     * item sprite - used for drag and drop
+     */
+    m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
+    m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
+    m_pItemSprite->setVisible(true);
+
+}

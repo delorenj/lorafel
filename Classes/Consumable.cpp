@@ -54,6 +54,6 @@ void Consumable::addEvents(cocos2d::Node* pNode) {
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Consumable::equip(EquipItemSlot* pSlot) {
-    Item::equip(pSlot);
+void Consumable::addEquipSlot(EquipItemSlot* pSlot) {
+    Item::addEquipSlot(pSlot);
 }

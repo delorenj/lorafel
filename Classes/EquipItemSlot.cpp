@@ -18,6 +18,15 @@ bool EquipItemSlot::init() {
 
 void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     auto equipManager = PlayerManager::getInstance()->getPlayer()->getEquipManager();
+
+    /**
+     * If previous item was equipped here, make sure
+     * to remove this slot from its equipSlots
+     */
+    if(m_pItem != nullptr) {
+        m_pItem->removeEquipSlot(this);
+    }
+
     /**
      * If clearing slot, then set item to null
      * and assign the item back to the item grid
@@ -32,26 +41,18 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
         return;
     }
 
-    m_pItem = pItem;
-    m_state = ItemSlot::State::IDLE;
-    m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
-    setOriginalScale(getContentSize().width/m_pItemSprite->getContentSize().width);
-    m_pItemSprite->setScale(m_originalScale);
-    m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
-    m_pItemSprite->setVisible(true);
-    m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
-
-    auto consumable = dynamic_cast<Consumable*>(m_pItem);
+    auto consumable = dynamic_cast<Consumable*>(pItem);
     if(consumable == nullptr) {
         setStackSize(1);
     } else {
-        int total = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemCount(m_pItem->getItemName());
+        int total = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemCount(pItem->getItemName());
         setStackSize(total);
     }
 
     m_stackSizeChange = true;
-    m_pItem->equip(this);
-    equipManager->setEquippedItem(getEquipMask(), m_pItem->getItemName());
+    pItem->addEquipSlot(this);
+    equipManager->setEquippedItem(getEquipMask(), pItem->getItemName());
+    ItemSlot::setItem(pItem, stackSize);
 }
 
 void EquipItemSlot::addEvents() {

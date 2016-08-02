@@ -38,15 +38,15 @@ namespace lorafel {
         bool stackFull() const;
         int getStackSize() const { return m_stackSize; }
         void setStackSize(int stackSize);
-        double getOriginalScale() const { return m_originalScale; }
-        void setOriginalScale(double scale) { m_originalScale = scale; }
+        float getOriginalScale() const { return m_originalScale; }
+        void setOriginalScale(float scale) { m_originalScale = scale; }
 
         /**
          * Each type of ItemSlot is different, so this is
          * a pure virtual function and needs to be implemented
          * for each ItemSlot subclass
          */
-        virtual void setItem(Item* pItem, int stackSize = 1) = 0;
+        virtual void setItem(Item* pItem, int stackSize = 1);
 
         void update(float delta) override;
 
@@ -60,7 +60,7 @@ namespace lorafel {
         cocos2d::Label* m_pStackSizeLabel;
         int m_stackSize = 0;
         bool m_stackSizeChange = false;
-        double m_originalScale;
+        float m_originalScale;
         int m_state = ItemSlot::State::EMPTY;
     };
 

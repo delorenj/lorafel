@@ -32,14 +32,16 @@ namespace lorafel {
         void addEquipMask(int mask) { m_equipMaskSet.insert(mask); }
         bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
 
-        virtual void equip(EquipItemSlot* pSlot);
+        virtual void addEquipSlot(EquipItemSlot* pSlot);
+
+        void removeEquipSlot(EquipItemSlot* pSlot);
 
     protected:
         std::string m_itemName;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
-        EquipItemSlot* m_pEquipSlot;
+        std::set<EquipItemSlot*> m_pEquipSlots;
     };
 }
 

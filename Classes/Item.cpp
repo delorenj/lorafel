@@ -14,7 +14,7 @@ bool Item::init() {
     }
 
     addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
-    m_pEquipSlot = nullptr;
+    m_pEquipSlots.clear();
 
     return true;
 }
@@ -68,8 +68,12 @@ void Item::removeInventorySlotCoordinates(std::pair<int, int> coords) {
     m_inventorySlotCoordinates.erase(coords);
 }
 
-void Item::equip(EquipItemSlot* pSlot) {
-    m_pEquipSlot = pSlot;
+void Item::addEquipSlot(EquipItemSlot* pSlot) {
+    m_pEquipSlots.insert(pSlot);
+}
+
+void Item::removeEquipSlot(EquipItemSlot* pSlot) {
+    m_pEquipSlots.erase(pSlot);
 }
 
 

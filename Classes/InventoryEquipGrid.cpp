@@ -22,7 +22,7 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
      * Create the background of the
      * grid container
      */
-    initWithFile("equip-slot-container.png");
+    initWithFile("addEquipSlot-slot-container.png");
 
     /**
      * Initialize each equip slot

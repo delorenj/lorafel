@@ -193,6 +193,8 @@ void InventoryItemSlot::addEvents() {
 }
 
 void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
+
+
     /**
      * We need this to persist the item placement,
      * including stack size, in the item grid
@@ -202,7 +204,15 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
             ->getInventory()
             ->getSlotItemStackDictionary();
 
-    auto stackIter = slotStackDic->find(InventoryItemSlot::getCoords());
+    auto stackIter = slotStackDic->find(getCoords());
+
+    /**
+     * If previous item was stored here, make sure
+     * to remove this slot from its slotCoords
+     */
+    if(m_pItem != nullptr) {
+        m_pItem->removeInventorySlotCoordinates(getCoords());
+    }
 
     /**
      * If clearing slot, then set item to null
@@ -223,24 +233,6 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         return;
     }
 
-    m_pItem = pItem;
-    m_state = ItemSlot::State::IDLE;
-
-    /**
-     * If item slot was empty, then we
-     * first need to add a sprite image
-     *
-     * Otherwise, there already is an image,
-     * so in this case we load the new
-     * image in there
-     */
-    m_pItemSprite->setSpriteFrame(m_pItem->getSpriteFrame());
-    setOriginalScale(getContentSize().width/m_pItemSprite->getContentSize().width);
-    m_pItemSprite->setScale(m_originalScale);
-
-    setStackSize(stackSize);
-
-
     /**
      * Persist this new slot item in the slotStack
      */
@@ -254,13 +246,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         slotStackDic->emplace(InventoryItemSlot::getCoords(), pair);
     }
 
-    /**
-     * Ensure that the ghost sprite is a copy of the
-     * item sprite - used for drag and drop
-     */
-    m_pGhost->setSpriteFrame(m_pItem->getSpriteFrame());
-    m_pItemSprite->setPosition(getContentSize().width/2, getContentSize().height/2);
-    m_pItemSprite->setVisible(true);
+    ItemSlot::setItem(pItem, stackSize);
 }
 
 

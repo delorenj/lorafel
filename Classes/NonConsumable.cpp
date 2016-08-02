@@ -10,7 +10,7 @@ bool NonConsumable::init() {
     return Item::init();
 }
 
-void NonConsumable::equip(lorafel::EquipItemSlot* pSlot) {
-    Item::equip(pSlot);
+void NonConsumable::addEquipSlot(lorafel::EquipItemSlot* pSlot) {
+    Item::addEquipSlot(pSlot);
 }
 
