@@ -81,8 +81,13 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Weapon.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
-                   ../../Classes/XpUI.cpp
-
+                   ../../Classes/XpUI.cpp \
+                   ../../Classes/Backup.cpp \
+                   ../../Classes/Column.cpp \
+                   ../../Classes/Database.cpp \
+                   ../../Classes/Exception.cpp \
+                   ../../Classes/Statement.cpp \
+                   ../../Classes/Transaction.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

@@ -5605,6 +5605,9 @@
 		B6DD2FA31B04825B00E47F5F /* DetourTileCacheBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetourTileCacheBuilder.h; sourceTree = "<group>"; };
 		B6DD2FA51B04825B00E47F5F /* fastlz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fastlz.c; sourceTree = "<group>"; };
 		B6DD2FA61B04825B00E47F5F /* fastlz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fastlz.h; sourceTree = "<group>"; };
+		BA29B1001D52A6C300289019 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		BA29B1021D52A8CF00289019 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		BA29B1041D52A91B00289019 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		C50306631B60B583001E6D43 /* CCBoneNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBoneNode.cpp; sourceTree = "<group>"; };
 		C50306641B60B583001E6D43 /* CCBoneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBoneNode.h; sourceTree = "<group>"; };
 		C50306651B60B583001E6D43 /* CCSkeletonNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSkeletonNode.cpp; sourceTree = "<group>"; };
@@ -5755,6 +5758,9 @@
 		1551A341158F2AB200E66CFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA29B1041D52A91B00289019 /* libsqlite3.dylib */,
+				BA29B1021D52A8CF00289019 /* libz.1.dylib */,
+				BA29B1001D52A6C300289019 /* libsqlite3.tbd */,
 				2905E9CC1ACD3D8C00092DD2 /* libz.a */,
 				292F1A661A524F2700E479F8 /* libssl.dylib */,
 				B217704C1977ED8B009EE11B /* libsqlite3.dylib */,
@@ -12851,6 +12857,10 @@
 				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -12885,6 +12895,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -12925,7 +12939,10 @@
 					"\"$(SRCROOT)/../external/zlib/prebuilt/mac\"",
 				);
 				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "-llibsql3";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lsqlite3",
+				);
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/png/include/mac $(SRCROOT)/../external/tiff/include/mac $(SRCROOT)/../external/webp/include/mac $(SRCROOT)/../external/jpeg/include/mac $(SRCROOT)/../external/freetype2/include/mac $(SRCROOT)/../external/glfw3/include/mac $(SRCROOT)/../external/websockets/include/mac $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../external/curl/include/mac $(SRCROOT)/../external/freetype2/include/mac/freetype2";
 			};
 			name = Debug;
@@ -12963,7 +12980,10 @@
 					"\"$(SRCROOT)/../external/zlib/prebuilt/mac\"",
 				);
 				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "-llibsql3";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lsqlite3",
+				);
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/png/include/mac $(SRCROOT)/../external/tiff/include/mac $(SRCROOT)/../external/webp/include/mac $(SRCROOT)/../external/jpeg/include/mac $(SRCROOT)/../external/freetype2/include/mac $(SRCROOT)/../external/glfw3/include/mac $(SRCROOT)/../external/websockets/include/mac $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../external/curl/include/mac $(SRCROOT)/../external/freetype2/include/mac/freetype2";
 			};
 			name = Release;

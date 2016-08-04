@@ -5,6 +5,7 @@
 #ifndef LORAFEL_PLAYER_H
 #define LORAFEL_PLAYER_H
 
+#include "sqlite3.h"
 #include "Progress.h"
 #include "Achievements.h"
 #include "Inventory.h"
@@ -77,6 +78,8 @@ namespace lorafel {
         int m_maxHp = 1000;
         int m_maxMp = 3;
 
+        // Storage
+
         cocos2d::EventDispatcher* m_pDispatcher;
 
         LinearLevelManager* m_pLevelManager;
@@ -87,8 +90,6 @@ namespace lorafel {
         Inventory* m_pInventory;
         std::map<int, Consumable*> m_activeConsumables;
         Hook* m_pHook;
-
-    protected:
         Tile* m_pTile;
 
     };
