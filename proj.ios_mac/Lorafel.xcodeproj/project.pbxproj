@@ -198,6 +198,7 @@
 		BA078CEA1C22E89E00B0E1EA /* iphonehd5 in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDE1C22E89E00B0E1EA /* iphonehd5 */; };
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
+		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -473,6 +474,7 @@
 		BA078CDE1C22E89E00B0E1EA /* iphonehd5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphonehd5; sourceTree = "<group>"; };
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
+		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BABFB8A31C815A7700AFD266 /* HpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpUI.cpp; sourceTree = "<group>"; };
 		BABFB8A41C815A7700AFD266 /* HpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpUI.h; sourceTree = "<group>"; };
 		BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyBagTile.h; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
@@ -583,6 +586,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA77BA371D536045009E2195 /* libsqlite3.0.tbd */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -1345,9 +1349,10 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1375,9 +1380,10 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				VALIDATE_PRODUCT = YES;
