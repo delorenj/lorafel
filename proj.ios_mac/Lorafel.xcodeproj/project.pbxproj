@@ -199,6 +199,12 @@
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
+		BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA01D536AD50017E0EB /* Backup.cpp */; };
+		BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA21D536AD50017E0EB /* Column.cpp */; };
+		BA8A0FB01D536AD50017E0EB /* Database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA41D536AD50017E0EB /* Database.cpp */; };
+		BA8A0FB11D536AD50017E0EB /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA61D536AD50017E0EB /* Exception.cpp */; };
+		BA8A0FB21D536AD50017E0EB /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA91D536AD50017E0EB /* Statement.cpp */; };
+		BA8A0FB31D536AD50017E0EB /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -475,6 +481,21 @@
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
 		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
+		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
+		BA8A0FA11D536AD50017E0EB /* Backup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backup.h; sourceTree = "<group>"; };
+		BA8A0FA21D536AD50017E0EB /* Column.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Column.cpp; sourceTree = "<group>"; };
+		BA8A0FA31D536AD50017E0EB /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
+		BA8A0FA41D536AD50017E0EB /* Database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Database.cpp; sourceTree = "<group>"; };
+		BA8A0FA51D536AD50017E0EB /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		BA8A0FA61D536AD50017E0EB /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
+		BA8A0FA71D536AD50017E0EB /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		BA8A0FA81D536AD50017E0EB /* SQLiteCpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteCpp.h; sourceTree = "<group>"; };
+		BA8A0FA91D536AD50017E0EB /* Statement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statement.cpp; sourceTree = "<group>"; };
+		BA8A0FAA1D536AD50017E0EB /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
+		BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transaction.cpp; sourceTree = "<group>"; };
+		BA8A0FAC1D536AD50017E0EB /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		BA8A0FAD1D536AD50017E0EB /* VariadicBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariadicBind.h; sourceTree = "<group>"; };
 		BABFB8A31C815A7700AFD266 /* HpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpUI.cpp; sourceTree = "<group>"; };
 		BABFB8A41C815A7700AFD266 /* HpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpUI.h; sourceTree = "<group>"; };
 		BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyBagTile.h; sourceTree = "<group>"; };
@@ -631,6 +652,21 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BA8A0F9F1D536AD50017E0EB /* Assertion.h */,
+				BA8A0FA01D536AD50017E0EB /* Backup.cpp */,
+				BA8A0FA11D536AD50017E0EB /* Backup.h */,
+				BA8A0FA21D536AD50017E0EB /* Column.cpp */,
+				BA8A0FA31D536AD50017E0EB /* Column.h */,
+				BA8A0FA41D536AD50017E0EB /* Database.cpp */,
+				BA8A0FA51D536AD50017E0EB /* Database.h */,
+				BA8A0FA61D536AD50017E0EB /* Exception.cpp */,
+				BA8A0FA71D536AD50017E0EB /* Exception.h */,
+				BA8A0FA81D536AD50017E0EB /* SQLiteCpp.h */,
+				BA8A0FA91D536AD50017E0EB /* Statement.cpp */,
+				BA8A0FAA1D536AD50017E0EB /* Statement.h */,
+				BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */,
+				BA8A0FAC1D536AD50017E0EB /* Transaction.h */,
+				BA8A0FAD1D536AD50017E0EB /* VariadicBind.h */,
 				BABFB8A31C815A7700AFD266 /* HpUI.cpp */,
 				BABFB8A41C815A7700AFD266 /* HpUI.h */,
 				BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */,
@@ -1018,6 +1054,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */,
+				BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */,
@@ -1031,6 +1068,7 @@
 				3167D2C9F7F5DAA26CADF2D0 /* TileMatcher.cpp in Sources */,
 				3167DF790D24EFE39E1056FC /* Match.cpp in Sources */,
 				3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */,
+				BA8A0FB31D536AD50017E0EB /* Transaction.cpp in Sources */,
 				3167D0DAEC202AF63530A399 /* MeleeAttackTile.cpp in Sources */,
 				3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */,
 				3167DF6A2051958CDE171A31 /* Player.cpp in Sources */,
@@ -1048,6 +1086,7 @@
 				3167D714D9CA38C5BBB01890 /* BasicTurnManager.cpp in Sources */,
 				BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */,
 				3167DFF8737A98857B7869FF /* RandomAIStrategy.cpp in Sources */,
+				BA8A0FB01D536AD50017E0EB /* Database.cpp in Sources */,
 				3167D4529143497A6EF69C6E /* GlyphTile.cpp in Sources */,
 				3167D0582326F2B81A8A7A76 /* PoisonGlyph.cpp in Sources */,
 				3167D2903E512367412739EC /* StormGlyph.cpp in Sources */,
@@ -1070,6 +1109,7 @@
 				3167D6D7B1CC04F2E6CF6106 /* LootTile.cpp in Sources */,
 				3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */,
 				3167D18FD07C3AD37E741B1A /* HookActionTile.cpp in Sources */,
+				BA8A0FB21D536AD50017E0EB /* Statement.cpp in Sources */,
 				3167DB6EC55B7FCDB9070C51 /* ToggleActionTile.cpp in Sources */,
 				3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */,
 				3167DECBD9B10006D10EAD3A /* Hook.cpp in Sources */,
@@ -1077,8 +1117,10 @@
 				3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */,
 				3167DBD651952EA5C9DA2349 /* HookAction.cpp in Sources */,
 				3167DE0B4AD91ABB3DF4171F /* MatchSet.cpp in Sources */,
+				BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */,
 				3167DDB3515BA5F3B77ACC29 /* StupidRandomizer.cpp in Sources */,
 				3167D2D077FC51BA42CAF503 /* Weapon.cpp in Sources */,
+				BA8A0FB11D536AD50017E0EB /* Exception.cpp in Sources */,
 				3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */,
 				3167D14B7EE5B75A17465157 /* InGameModalNavButton.cpp in Sources */,
 				3167DF27DFE5E870A5845C35 /* InGameModal.cpp in Sources */,
