@@ -84,7 +84,7 @@ static void firebase_test()
     // Log an event with multiple parameters.
     CCLOG("Log level up event.");
     {
-        auto kLevelUpParameters[] = {
+        const ::firebase::analytics::Parameter kLevelUpParameters[] = {
                 analytics::Parameter(analytics::kParameterLevel, 5),
                 analytics::Parameter(analytics::kParameterCharacter, "mrspoon"),
                 analytics::Parameter("hit_accuracy", 3.14f),
