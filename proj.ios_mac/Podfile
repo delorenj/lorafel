@@ -14,4 +14,8 @@ target 'Lorafel-mobile' do
 
   # Pods for Lorafel-mobile
   pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/AdMob'
+  pod 'Firebase/Auth'
 end

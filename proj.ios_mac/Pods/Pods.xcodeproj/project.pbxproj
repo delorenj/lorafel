@@ -15,24 +15,36 @@
 
 /* Begin PBXFileReference section */
 		0BBFA27342FAEC673CC69E6DBE4D90BA /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12536E3CDC2825FF8E1B0AE781192E99 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		156520A1ED7382A7B9ABA4AFA30BFCF7 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
 		1822EE37D8204D6865D8C4755E59C1B1 /* Pods-Lorafel-desktop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-desktop.release.xcconfig"; sourceTree = "<group>"; };
+		1CABFF50F8E4EB62F378E309962B7846 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		2DE316095DDED59116109032012A2C36 /* Pods-Lorafel-mobile-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-mobile-frameworks.sh"; sourceTree = "<group>"; };
 		3DDDA7B9A8EF11A653227909CC6E91AB /* Pods-Lorafel-desktop-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Lorafel-desktop-acknowledgements.markdown"; sourceTree = "<group>"; };
 		45F83BA4A7FA9F673CFEB102952607ED /* Pods-Lorafel-desktop-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lorafel-desktop-acknowledgements.plist"; sourceTree = "<group>"; };
 		4F10DFF0183F7B355C6132A30A497CB6 /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		511EB2A112D2936A08A461D4CA2E0041 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		52E131F72BB865B3938E4371B709EB57 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		5796821C6B56B454B5A37D75EE901A25 /* Pods-Lorafel-desktop-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-desktop-frameworks.sh"; sourceTree = "<group>"; };
+		5A15A93DD02076F78D1D9327080C1DDD /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
+		631D3E5195E7E19AAA53FE1DA84A26E1 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		74377C8250C6656FD8845AFD3F6F1D47 /* Pods-Lorafel-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Lorafel-mobile-dummy.m"; sourceTree = "<group>"; };
 		898CF5BC51B5E5B7D703B63CF2E40B13 /* Pods-Lorafel-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Lorafel-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8E2367C76BA6EEA8E7E62679D3F13523 /* libPods-Lorafel-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97373DF89E3E7457B6B610CB9AF487B2 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		9E5FDE34A19355CF653C6153027A3558 /* Pods-Lorafel-desktop-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-desktop-resources.sh"; sourceTree = "<group>"; };
 		A53C5E5B7DEECBB175069A679EF32E42 /* Pods-Lorafel-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lorafel-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
 		A7D81BB10C7D244C5BB0BF27291430E6 /* Pods-Lorafel-desktop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-desktop.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B6E3E348FB3DC189EFD29FBF1EAFDF3C /* Pods-Lorafel-desktop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Lorafel-desktop-dummy.m"; sourceTree = "<group>"; };
 		BB988C298202D3ED8139345B69B7D908 /* Pods-Lorafel-mobile-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-mobile-resources.sh"; sourceTree = "<group>"; };
+		D40BECB0897403553052D3DC08A2CA0D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		E12C877C12743736C1C32E5128BF7418 /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = Frameworks/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
 		E4BCC2B653F8AC1604C08356CC120C50 /* Pods-Lorafel-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		E9E2965594033DE0661FAAA01F270A5B /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		F5FEED465A1E12952D88282635BBD20F /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D3BC586E929238D7DD78EDDC5BA7A2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CABFF50F8E4EB62F378E309962B7846 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F845C91A6E5EE0D670C8954B61A2EE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D40BECB0897403553052D3DC08A2CA0D /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,11 +92,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5D844159284E9E994EDE0118DB657F05 /* Firebase */ = {
+		47D1CD17F4FA2F16D6B5D67C31EAB314 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E12C877C12743736C1C32E5128BF7418 /* GoogleParsingUtilities.framework */,
 			);
-			path = Firebase;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54FBBEE019B8EE39BE5A082A4BBF47D9 /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				2F845C91A6E5EE0D670C8954B61A2EE6 /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		55834417A26A37EE419111702D5136D1 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				156520A1ED7382A7B9ABA4AFA30BFCF7 /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		77FF020CE4A330225F5961D2B407BD23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52E131F72BB865B3938E4371B709EB57 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B54A4DF84D85591F7E7F60C84BA91A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				631D3E5195E7E19AAA53FE1DA84A26E1 /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -76,10 +137,18 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */,
-				B2AA6FC8E8E8924978848521E67A3B1A /* Pods */,
+				C54213740C2649B0C4E7713290FD9B9A /* Pods */,
 				98D49DEF3955D2F5AC93EDCDF97863A5 /* Products */,
 				FA8E3827FB3DBB3293F931731A291D68 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8550FEE28FB56E75FDDB9187D90C4C97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5FEED465A1E12952D88282635BBD20F /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9304B30CB87FDB77B6CEE9FB6B800855 /* OS X */ = {
@@ -114,12 +183,62 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2AA6FC8E8E8924978848521E67A3B1A /* Pods */ = {
+		9AFB81AC21D0C87F6F9115F2662065BF /* GoogleInterchangeUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				5D844159284E9E994EDE0118DB657F05 /* Firebase */,
+				E49B766833D46C42CE0E23DA04F3DEA4 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		A8655BAFFA74F4E32DBD2DB2E27D8B1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E2965594033DE0661FAAA01F270A5B /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1EB7738F9050D9B90668763DBC10065 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				A8655BAFFA74F4E32DBD2DB2E27D8B1B /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		C2A11D15868E072AAAF2A01AD1F2133A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A15A93DD02076F78D1D9327080C1DDD /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C54213740C2649B0C4E7713290FD9B9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FAFC4B1027E2719262DF87FBB907D /* Firebase */,
+				D16D9FC982089BEFBAC615E0643C835A /* FirebaseAnalytics */,
+				DEBC8C809C07FFDF60CDEA588C435971 /* FirebaseAuth */,
+				DA11E4A78873B540FE912002E1742306 /* FirebaseDatabase */,
+				E78E30D00FB4AE51E6758888312B089F /* FirebaseInstanceID */,
+				54FBBEE019B8EE39BE5A082A4BBF47D9 /* Google-Mobile-Ads-SDK */,
+				9AFB81AC21D0C87F6F9115F2662065BF /* GoogleInterchangeUtilities */,
+				FE3BA00A107D21CCB22785AB49FC6F85 /* GoogleNetworkingUtilities */,
+				D2A6E04FC5F87C0454DE31CB7B4551C0 /* GoogleParsingUtilities */,
+				E809C9860D0C924F4497627CC2855255 /* GoogleSymbolUtilities */,
+				B1EB7738F9050D9B90668763DBC10065 /* GoogleUtilities */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D16D9FC982089BEFBAC615E0643C835A /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BC586E929238D7DD78EDDC5BA7A2F /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
 		D1C8413A51184DA1D978F962BB2F7634 /* Pods-Lorafel-desktop */ = {
@@ -137,12 +256,77 @@
 			path = "Target Support Files/Pods-Lorafel-desktop";
 			sourceTree = "<group>";
 		};
+		D2A6E04FC5F87C0454DE31CB7B4551C0 /* GoogleParsingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				47D1CD17F4FA2F16D6B5D67C31EAB314 /* Frameworks */,
+			);
+			path = GoogleParsingUtilities;
+			sourceTree = "<group>";
+		};
+		DA11E4A78873B540FE912002E1742306 /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				7B54A4DF84D85591F7E7F60C84BA91A2 /* Frameworks */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		DE6FAFC4B1027E2719262DF87FBB907D /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				55834417A26A37EE419111702D5136D1 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		DEA55AE7EB4A1B09C009B82BA492BD02 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		DEBC8C809C07FFDF60CDEA588C435971 /* FirebaseAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C2A11D15868E072AAAF2A01AD1F2133A /* Frameworks */,
+			);
+			path = FirebaseAuth;
+			sourceTree = "<group>";
+		};
+		E49B766833D46C42CE0E23DA04F3DEA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12536E3CDC2825FF8E1B0AE781192E99 /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E78E30D00FB4AE51E6758888312B089F /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				511EB2A112D2936A08A461D4CA2E0041 /* FIRInstanceID.h */,
+				8550FEE28FB56E75FDDB9187D90C4C97 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		E809C9860D0C924F4497627CC2855255 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				77FF020CE4A330225F5961D2B407BD23 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		EBB2EF5C54E97DB88894BFA0D4571E53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97373DF89E3E7457B6B610CB9AF487B2 /* GoogleNetworkingUtilities.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA8E3827FB3DBB3293F931731A291D68 /* Targets Support Files */ = {
@@ -152,6 +336,14 @@
 				9728A58D7E0AA122AC5FA7B3B338BCE1 /* Pods-Lorafel-mobile */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		FE3BA00A107D21CCB22785AB49FC6F85 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				EBB2EF5C54E97DB88894BFA0D4571E53 /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +428,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		04FB5C4E3B9F4FCE424E0C9E1C94C0AF /* Debug */ = {
+		03B2FBDA8318577A282C5767857D5334 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F10DFF0183F7B355C6132A30A497CB6 /* Pods-Lorafel-mobile.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		199811A2E74BDB2603C16B12A6743ED2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -254,7 +467,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -272,14 +484,34 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+		};
+		1BBA628AC6435345205BDFB44BC10605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4BCC2B653F8AC1604C08356CC120C50 /* Pods-Lorafel-mobile.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		2137A031F86BAD8FA1215736E87142C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -303,7 +535,7 @@
 			};
 			name = Debug;
 		};
-		6EAA2241B40965309FB2799D3C4F4295 /* Release */ = {
+		977A3514A02F36DB4F442865328F1C90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,7 +553,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -335,57 +566,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		9880CBB590F6C4AAEB20D10B10E92799 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4BCC2B653F8AC1604C08356CC120C50 /* Pods-Lorafel-mobile.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		9EF16194ACDED9A9F2CB28E570A8930B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F10DFF0183F7B355C6132A30A497CB6 /* Pods-Lorafel-mobile.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
 		};
 		B76CC5895DC64DD959199C3FE38A7BC3 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -415,8 +602,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04FB5C4E3B9F4FCE424E0C9E1C94C0AF /* Debug */,
-				6EAA2241B40965309FB2799D3C4F4295 /* Release */,
+				199811A2E74BDB2603C16B12A6743ED2 /* Debug */,
+				977A3514A02F36DB4F442865328F1C90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -433,8 +620,8 @@
 		BD5D3259FA00778F8BCCE8042E4F5464 /* Build configuration list for PBXNativeTarget "Pods-Lorafel-mobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EF16194ACDED9A9F2CB28E570A8930B /* Debug */,
-				9880CBB590F6C4AAEB20D10B10E92799 /* Release */,
+				03B2FBDA8318577A282C5767857D5334 /* Debug */,
+				1BBA628AC6435345205BDFB44BC10605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

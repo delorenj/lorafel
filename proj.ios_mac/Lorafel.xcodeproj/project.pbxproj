@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05357CD0EF94A8063F9615A1 /* libPods-Lorafel-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -183,6 +184,7 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
 		BA078CD91C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
@@ -198,7 +200,9 @@
 		BA078CEA1C22E89E00B0E1EA /* iphonehd5 in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDE1C22E89E00B0E1EA /* iphonehd5 */; };
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
-		BA0DBD731D54154D0084CD9D /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD721D54154D0084CD9D /* Firebase.framework */; };
+		BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD761D5426380084CD9D /* MediaPlayer.framework */; };
+		BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD781D54264B0084CD9D /* GameController.framework */; };
+		BA0DBD7B1D5428780084CD9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */; };
 		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
 		BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA01D536AD50017E0EB /* Backup.cpp */; };
 		BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA21D536AD50017E0EB /* Column.cpp */; };
@@ -252,6 +256,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-desktop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop.debug.xcconfig"; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -471,7 +476,11 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-desktop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop.release.xcconfig"; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
 		BA078CD61C22E57F00B0E1EA /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		BA078CD71C22E57F00B0E1EA /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		BA078CDA1C22E89D00B0E1EA /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
@@ -482,6 +491,9 @@
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
 		BA0DBD721D54154D0084CD9D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Pods/Firebase/Firebase.framework; sourceTree = "<group>"; };
+		BA0DBD761D5426380084CD9D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		BA0DBD781D54264B0084CD9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
 		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
@@ -504,6 +516,7 @@
 		BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldStatResult.cpp; sourceTree = "<group>"; };
 		BACEE7B61C7DE889000AF703 /* GoldStatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldStatResult.h; sourceTree = "<group>"; };
 		BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyTile.cpp; sourceTree = "<group>"; };
+		BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.release.xcconfig"; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -520,7 +533,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0DBD731D54154D0084CD9D /* Firebase.framework in Frameworks */,
+				BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */,
+				BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */,
 				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
@@ -535,6 +549,7 @@
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
+				05357CD0EF94A8063F9615A1 /* libPods-Lorafel-mobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +569,7 @@
 				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
 				5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */,
 				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
+				57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +589,17 @@
 			);
 			name = ios;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		164DAE682E591C1530FBB0D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */,
+				73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */,
+				B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */,
+				BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -596,6 +623,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -603,6 +631,7 @@
 				080E96DDFE201D6D7F000001 /* ios */,
 				503AE10617EB990700D1A890 /* mac */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				164DAE682E591C1530FBB0D7 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -610,6 +639,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA0DBD781D54264B0084CD9D /* GameController.framework */,
+				BA0DBD761D5426380084CD9D /* MediaPlayer.framework */,
 				BA0DBD721D54154D0084CD9D /* Firebase.framework */,
 				BA77BA371D536045009E2195 /* libsqlite3.0.tbd */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
@@ -631,6 +662,8 @@
 				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */,
+				6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -913,9 +946,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Lorafel-mobile" */;
 			buildPhases = (
+				9A0A4F8786FB556C1C384040 /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				8E6B44B51054AEACBCFF33CA /* [CP] Embed Pods Frameworks */,
+				8EF62D6D3F15BABAF99B75E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -931,9 +967,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5087E76C17EB910900C73F5D /* Build configuration list for PBXNativeTarget "Lorafel-desktop" */;
 			buildPhases = (
+				333607A79585A059A1DDF34C /* [CP] Check Pods Manifest.lock */,
 				5087E74817EB910900C73F5D /* Resources */,
 				5087E75617EB910900C73F5D /* Sources */,
 				5087E75C17EB910900C73F5D /* Frameworks */,
+				A0C896E40FD5303BFFF976E5 /* [CP] Embed Pods Frameworks */,
+				6EB451E035BD58E986972573 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1014,6 +1053,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				BA0DBD7B1D5428780084CD9D /* GoogleService-Info.plist in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				BA078CE51C22E89E00B0E1EA /* iphone in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -1049,6 +1089,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		333607A79585A059A1DDF34C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6EB451E035BD58E986972573 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E6B44B51054AEACBCFF33CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EF62D6D3F15BABAF99B75E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A0A4F8786FB556C1C384040 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A0C896E40FD5303BFFF976E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -1230,6 +1363,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1258,7 +1392,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -1275,6 +1409,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1301,7 +1436,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -1318,6 +1453,7 @@
 		};
 		5087E76D17EB910900C73F5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1354,6 +1490,7 @@
 		};
 		5087E76E17EB910900C73F5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1419,6 +1556,7 @@
 					"-lsqlite3",
 					"-lanalytics",
 					"-lapp",
+					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1456,6 +1594,7 @@
 					"-lsqlite3",
 					"-lanalytics",
 					"-lapp",
+					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
