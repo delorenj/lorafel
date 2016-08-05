@@ -2,6 +2,17 @@
 #include "TestScene.h"
 #include "PlayerManager.h"
 
+// firebase
+#include "firebase/analytics.h"
+#include "firebase/analytics/event_names.h"
+#include "firebase/analytics/parameter_names.h"
+#include "firebase/analytics/user_property_names.h"
+#include "firebase/app.h"
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 USING_NS_CC;
 
 static cocos2d::Size ultra4kResolutionSize = cocos2d::Size(2160,4096);
@@ -17,6 +28,73 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate()
 {
+}
+
+static void firebase_test()
+{
+    namespace analytics = ::firebase::analytics;
+    ::firebase::App* app = NULL;
+
+    CCLOG("Initialize the Analytics library");
+#if defined(__ANDROID__)
+    ::firebase::AppOptions options;
+    options.set_app_id("281343926607-8740isl9kao0n7d87vd5tp2a8lo8cvuk.apps.googleusercontent.com");
+    options.set_api_key("AIzaSyCouO_YdowioS2n7m5vBr1n5RqhSKo3s_8");
+    app = ::firebase::App::Create(options, JniHelper::getEnv(), JniHelper::GetActivity());
+#else
+    app = ::firebase::App::Create(::firebase::AppOptions());
+#endif  // defined(__ANDROID__)
+
+    CCLOG("Created the firebase app %x",
+            static_cast<int>(reinterpret_cast<intptr_t>(app)));
+    analytics::Initialize(*app);
+    CCLOG("Initialized the firebase analytics API");
+
+    CCLOG("Enabling data collection.");
+    analytics::SetAnalyticsCollectionEnabled(true);
+    // App needs to be open at least 1s before logging a valid session.
+    analytics::SetMinimumSessionDuration(1000);
+    // App session times out after 5s.
+    analytics::SetSessionTimeoutDuration(5000);
+
+    CCLOG("Set user properties.");
+    // Set the user's sign up method.
+    analytics::SetUserProperty(analytics::kUserPropertySignUpMethod, "Google");
+    // Set the user ID.
+    analytics::SetUserId("uber_user_510");
+
+    // Log an event with no parameters.
+    CCLOG("Log login event.");
+    analytics::LogEvent(analytics::kEventLogin);
+
+    // Log an event with a floating point parameter.
+    CCLOG("Log progress event.");
+    analytics::LogEvent("progress", "percent", 0.4f);
+
+    // Log an event with an integer parameter.
+    CCLOG("Log post score event.");
+    analytics::LogEvent(analytics::kEventPostScore, analytics::kParameterScore,
+            42);
+
+    // Log an event with a string parameter.
+    CCLOG("Log group join event.");
+    analytics::LogEvent(analytics::kEventJoinGroup, analytics::kParameterGroupID,
+            "spoon_welders");
+
+    // Log an event with multiple parameters.
+    CCLOG("Log level up event.");
+    {
+        const analytics::Parameter kLevelUpParameters[] = {
+                analytics::Parameter(analytics::kParameterLevel, 5),
+                analytics::Parameter(analytics::kParameterCharacter, "mrspoon"),
+                analytics::Parameter("hit_accuracy", 3.14f),
+        };
+        analytics::LogEvent(
+                analytics::kEventLevelUp, kLevelUpParameters,
+                sizeof(kLevelUpParameters) / sizeof(kLevelUpParameters[0]));
+    }
+
+    CCLOG("Complete");
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -154,6 +232,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // make a new one!
     // Or...wrong email?
     CCASSERT(player, "Player not found!");
+
+    firebase_test();
 
     // create a scene. it's an autorelease object
     auto scene = lorafel::TestScene::createScene();

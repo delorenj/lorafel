@@ -274,6 +274,8 @@ LOCAL_STATIC_LIBRARIES += cocos_chipmunk_static
 LOCAL_STATIC_LIBRARIES += cocos_zlib_static
 LOCAL_STATIC_LIBRARIES += recast_static
 LOCAL_STATIC_LIBRARIES += bullet_static
+LOCAL_STATIC_LIBRARIES += firebase-prebuilt firebase-analytics
+
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dxandroid_static
 
@@ -324,3 +326,5 @@ $(call import-module,recast)
 # $(call import-module,curl/prebuilt/android)
 $(call import-module,websockets/prebuilt/android)
 $(call import-module,flatbuffers)
+$(call import-module,firebase_cpp_sdk)
+

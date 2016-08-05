@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "517389322164",
+    "firebase_url": "https://lorafel-53908.firebaseio.com",
+    "project_id": "lorafel-53908",
+    "storage_bucket": "lorafel-53908.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517389322164:android:73fd08142777ef65",
+        "android_client_info": {
+          "package_name": "com.lasertoast.lorafel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517389322164-c62m4028t3kssjs6q8m6pfhv4o05erne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCJ0FG-shbjQHfP8SA8Ho0hnS6XC345-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

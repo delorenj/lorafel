@@ -198,6 +198,7 @@
 		BA078CEA1C22E89E00B0E1EA /* iphonehd5 in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDE1C22E89E00B0E1EA /* iphonehd5 */; };
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
+		BA0DBD731D54154D0084CD9D /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD721D54154D0084CD9D /* Firebase.framework */; };
 		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
 		BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA01D536AD50017E0EB /* Backup.cpp */; };
 		BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA21D536AD50017E0EB /* Column.cpp */; };
@@ -480,6 +481,7 @@
 		BA078CDE1C22E89E00B0E1EA /* iphonehd5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphonehd5; sourceTree = "<group>"; };
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
+		BA0DBD721D54154D0084CD9D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Pods/Firebase/Firebase.framework; sourceTree = "<group>"; };
 		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
 		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0DBD731D54154D0084CD9D /* Firebase.framework in Frameworks */,
 				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
@@ -607,6 +610,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA0DBD721D54154D0084CD9D /* Firebase.framework */,
 				BA77BA371D536045009E2195 /* libsqlite3.0.tbd */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
@@ -1232,6 +1236,10 @@
 				COMPRESS_PNG_FILES = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1251,7 +1259,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -1273,6 +1281,10 @@
 				COMPRESS_PNG_FILES = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -1290,7 +1302,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -1354,7 +1366,7 @@
 					USE_FILE32API,
 					CC_TARGET_OS_MAC,
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
-					"$(inherited)"
+					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1398,12 +1410,15 @@
 					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
+					"-lanalytics",
+					"-lapp",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1432,12 +1447,15 @@
 					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
+					"-lanalytics",
+					"-lapp",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

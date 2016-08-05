@@ -122,6 +122,10 @@ namespace cocos2d {
         return _env;
     }
 
+    jobject JniHelper::GetActivity() {
+        return _activity;
+    }
+
     bool JniHelper::setClassLoaderFrom(jobject activityinstance) {
         JniMethodInfo _getclassloaderMethod;
         if (!JniHelper::getMethodInfo_DefaultClassLoader(_getclassloaderMethod,
