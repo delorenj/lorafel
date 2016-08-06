@@ -73,8 +73,13 @@ void GpgStateManager::InitServices(gpg::PlatformConfiguration* config) {
         CCLOG("Birdfuck");
     };
 
-    auto finished_callback = [&](gpg::AuthOperation op, gpg::AuthStatus) {
-        CCLOG("Assmain");
+    auto finished_callback = [&](gpg::AuthOperation op, gpg::AuthStatus status) {
+        if(gpg::IsSuccess(status)) {
+            CCLOG("Yay! Logged in");
+        } else {
+            CCLOG("=( Not logged in");
+            BeginUserInitiatedSignIn();
+        }
     };
 
     CCLOG("Initializing Services");
