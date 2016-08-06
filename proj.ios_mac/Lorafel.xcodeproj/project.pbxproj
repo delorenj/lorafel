@@ -190,7 +190,6 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
-		BA00F1B01D559474001BBFAD /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA00F1AF1D559474001BBFAD /* gpg.framework */; };
 		BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
 		BA078CD91C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
 		BA078CE11C22E89E00B0E1EA /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDA1C22E89D00B0E1EA /* ipad */; };
@@ -215,6 +214,7 @@
 		BA8A0FB11D536AD50017E0EB /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA61D536AD50017E0EB /* Exception.cpp */; };
 		BA8A0FB21D536AD50017E0EB /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA91D536AD50017E0EB /* Statement.cpp */; };
 		BA8A0FB31D536AD50017E0EB /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */; };
+		BAAF27081D5685CB00971CCA /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA00F1AF1D559474001BBFAD /* gpg.framework */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -543,7 +543,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA00F1B01D559474001BBFAD /* gpg.framework in Frameworks */,
+				BAAF27081D5685CB00971CCA /* gpg.framework in Frameworks */,
 				BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */,
 				BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */,
 				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
@@ -1393,6 +1393,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Firebase",
+					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
 					"$(PROJECT_DIR)/Pods/GooglePlayGames",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1411,6 +1412,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
+					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1440,6 +1442,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Firebase",
+					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
 					"$(PROJECT_DIR)/Pods/GooglePlayGames",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1456,6 +1459,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
+					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
