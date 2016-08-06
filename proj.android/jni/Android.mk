@@ -30,6 +30,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/GlyphTile.cpp \
                    ../../Classes/GoldStatResult.cpp \
                    ../../Classes/GoldUI.cpp \
+                   ../../Classes/GpgStateManager.cpp \
                    ../../Classes/GridTestUI.cpp \
                    ../../Classes/GridTransparency.cpp \
                    ../../Classes/GridUI.cpp \

@@ -1,0 +1,1 @@
+../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/score_summary.h

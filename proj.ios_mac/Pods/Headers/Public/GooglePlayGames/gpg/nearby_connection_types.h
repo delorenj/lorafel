@@ -1,0 +1,1 @@
+../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/nearby_connection_types.h

@@ -1,0 +1,1 @@
+../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/ios_platform_configuration.h

@@ -1,5 +1,6 @@
 .idea
 node_modules
+cocos2d/external/gpg-cpp-sdk
 *.apk
 dexedLibs
 cocos2d/cocos/platform/android/java/bin/classes.jar

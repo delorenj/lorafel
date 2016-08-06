@@ -26,6 +26,8 @@
 #import "RootViewController.h"
 #import "cocos2d.h"
 #import "platform/ios/CCEAGLView-ios.h"
+#import "ios_platform_configuration.h"
+#import "GpgStateManager.h"
 
 @implementation RootViewController
 
@@ -50,8 +52,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
 */
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    // Configure platform configuration for iOS
+    auto pConfig = new gpg::IosPlatformConfiguration();
+    pConfig->SetClientID("948183101103-gu90smfeu0k2dh6qa9ehrmbrinarmnft.apps.googleusercontent.com");
+    pConfig->SetOptionalViewControllerForPopups(self);
+
+    // Initialize Google Play Games Services with callbacks for Auth operations.  This will
+    // attempt to silently sign-in the user if they have signed in before.
+    lorafel::GpgStateManager::InitServices(pConfig);
+
+}
+
 // Override to allow orientations other than the default portrait orientation.
 // This method is deprecated on ios6
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

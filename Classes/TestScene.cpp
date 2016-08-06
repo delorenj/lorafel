@@ -16,7 +16,6 @@ cocos2d::Scene* TestScene::createScene() {
     auto scene = cocos2d::Scene::createWithPhysics();
     auto layer = TestScene::create();
     scene->addChild(layer);
-//    scene->getPhysicsWorld()->setDebugDrawMask(cocos2d::PhysicsWorld::DEBUGDRAW_ALL);
     return scene;
 }
 
