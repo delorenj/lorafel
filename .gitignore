@@ -1,4 +1,5 @@
 .idea
+proj.ios_mac/Pods/**/*
 node_modules
 cocos2d/external/gpg-cpp-sdk
 *.apk

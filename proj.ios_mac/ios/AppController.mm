@@ -27,6 +27,9 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "FIRApp.h"
+#import "FIROptions.h"
+#import "FIRGoogleAuthProvider.h"
 
 @implementation AppController
 
@@ -84,6 +87,12 @@ static AppDelegate s_sharedApplication;
     // IMPORTANT: Setting the GLView should be done after creating the RootViewController
     cocos2d::GLView *glview = cocos2d::GLViewImpl::createWithEAGLView(eaglView);
     cocos2d::Director::getInstance()->setOpenGLView(glview);
+
+    // Use Firebase library to configure APIs
+    [FIRApp configure];
+
+    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
+    [GIDSignIn sharedInstance].delegate = self;
 
     app->run();
 
@@ -146,5 +155,41 @@ static AppDelegate s_sharedApplication;
     [super dealloc];
 }
 
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                      annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
+- (BOOL)application:(UIApplication *)application
+        openURL:(NSURL *)url
+        sourceApplication:(NSString *)sourceApplication
+        annotation:(id)annotation {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+        didSignInForUser:(GIDGoogleUser *)user
+        withError:(NSError *)error {
+    if (error == nil) {
+        NSLog(@"Signed In =D");
+        GIDAuthentication *authentication = user.authentication;
+        FIRAuthCredential *credential =
+                [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
+                                                 accessToken:authentication.accessToken];
+    } else {
+        NSLog(@"%@", error.localizedDescription);
+    }
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+        didDisconnectWithUser:(GIDGoogleUser *)user
+        withError:(NSError *)error {
+    NSLog(@"Signed Out");
+}
 
 @end

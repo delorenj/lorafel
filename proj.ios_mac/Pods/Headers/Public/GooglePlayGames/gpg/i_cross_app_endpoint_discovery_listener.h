@@ -1,1 +1,0 @@
-../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/i_cross_app_endpoint_discovery_listener.h

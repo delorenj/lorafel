@@ -80,11 +80,9 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "GooglePlayGames/gpg-cpp-sdk/ios/gpg.bundle"
   install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "GooglePlayGames/gpg-cpp-sdk/ios/gpg.bundle"
   install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
 fi
 

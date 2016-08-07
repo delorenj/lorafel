@@ -1,1 +1,0 @@
-../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/common_default_callbacks.h

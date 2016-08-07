@@ -18,6 +18,5 @@ target 'Lorafel-mobile' do
   pod 'Firebase/Database'
   pod 'Firebase/AdMob'
   pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
-  pod 'GooglePlayGames'
+  pod 'Google/SignIn'
 end

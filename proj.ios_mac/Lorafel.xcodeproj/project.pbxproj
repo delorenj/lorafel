@@ -51,13 +51,11 @@
 		3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
 		3167D46DC6F8F83AE6CCEA72 /* InventoryItemGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */; };
 		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
-		3167D47C6CCBD0DB16C8F914 /* GpgStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D1E12D15F977C0D95104 /* GpgStateManager.cpp */; };
 		3167D48F90EAF43F43E8B8A9 /* ItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0C811C57107CDCDBC35 /* ItemSlot.cpp */; };
 		3167D4B06AAC1D06E119952A /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
 		3167D4C7C3A21F5625157529 /* Consumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */; };
 		3167D4DA44740D81CEBBBD78 /* EnemyHitFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */; };
 		3167D4E9F84B1EE8F292825B /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
-		3167D4EC8709DD8F53957D91 /* GpgStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D1E12D15F977C0D95104 /* GpgStateManager.cpp */; };
 		3167D504F192517D21351ACE /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
@@ -214,7 +212,6 @@
 		BA8A0FB11D536AD50017E0EB /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA61D536AD50017E0EB /* Exception.cpp */; };
 		BA8A0FB21D536AD50017E0EB /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA91D536AD50017E0EB /* Statement.cpp */; };
 		BA8A0FB31D536AD50017E0EB /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */; };
-		BAAF27081D5685CB00971CCA /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA00F1AF1D559474001BBFAD /* gpg.framework */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -284,7 +281,6 @@
 		3167D1832B9DCD5C84646A52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		3167D19F68934CE0CC42D252 /* EnemyTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTile.h; sourceTree = "<group>"; };
 		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
-		3167D1E12D15F977C0D95104 /* GpgStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpgStateManager.cpp; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
 		3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemGrid.cpp; sourceTree = "<group>"; };
@@ -338,7 +334,6 @@
 		3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LootFactory.cpp; sourceTree = "<group>"; };
 		3167D644A16126625AD28D6C /* AIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStrategy.h; sourceTree = "<group>"; };
 		3167D64DF3736FBC3CEF6B10 /* EquipItemSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EquipItemSlot.cpp; sourceTree = "<group>"; };
-		3167D6705268FFC34B9F32C9 /* GpgStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpgStateManager.h; sourceTree = "<group>"; };
 		3167D67C7D373CBDF45F687F /* StormGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StormGlyph.cpp; sourceTree = "<group>"; };
 		3167D69CB9B6765E8EFACDE8 /* GameOverUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverUI.cpp; sourceTree = "<group>"; };
 		3167D6BF39D1E520BFFD7883 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
@@ -543,7 +538,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAAF27081D5685CB00971CCA /* gpg.framework in Frameworks */,
 				BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */,
 				BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */,
 				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
@@ -901,8 +895,6 @@
 				3167D9296BC28553AF292A0E /* Serializer.h */,
 				3167DD39A3AC40F3E7AED8C7 /* FirebaseDatabaseClient.cpp */,
 				3167D58B10102E6AC9CC54ED /* FirebaseDatabaseClient.h */,
-				3167D1E12D15F977C0D95104 /* GpgStateManager.cpp */,
-				3167D6705268FFC34B9F32C9 /* GpgStateManager.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1284,7 +1276,6 @@
 				3167D48F90EAF43F43E8B8A9 /* ItemSlot.cpp in Sources */,
 				3167D6F8F2A29344F1DF6E1F /* EquipItemSlot.cpp in Sources */,
 				3167DD3DF09D859665AE4AB7 /* FirebaseDatabaseClient.cpp in Sources */,
-				3167D4EC8709DD8F53957D91 /* GpgStateManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1361,7 +1352,6 @@
 				3167DF9D4B256CCF243DC62E /* ItemSlot.cpp in Sources */,
 				3167DEEA746D5995C56A9E8E /* EquipItemSlot.cpp in Sources */,
 				3167D624FF2686415353C773 /* FirebaseDatabaseClient.cpp in Sources */,
-				3167D47C6CCBD0DB16C8F914 /* GpgStateManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,8 +1383,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Firebase",
-					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
-					"$(PROJECT_DIR)/Pods/GooglePlayGames",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1425,7 +1413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lasertoast.lorafel;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) \"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) \"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -1442,8 +1430,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Firebase",
-					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
-					"$(PROJECT_DIR)/Pods/GooglePlayGames",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1472,7 +1458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lasertoast.lorafel;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) \"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) \"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
@@ -1583,7 +1569,6 @@
 					"-lanalytics",
 					"-lapp",
 					"-lauth",
-					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1622,7 +1607,6 @@
 					"-lanalytics",
 					"-lapp",
 					"-lauth",
-					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

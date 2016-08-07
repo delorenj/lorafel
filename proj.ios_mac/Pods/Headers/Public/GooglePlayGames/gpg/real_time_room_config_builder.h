@@ -1,1 +1,0 @@
-../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_room_config_builder.h

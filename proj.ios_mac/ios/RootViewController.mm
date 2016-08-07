@@ -24,10 +24,8 @@
  ****************************************************************************/
 
 #import "RootViewController.h"
-#import "cocos2d.h"
 #import "platform/ios/CCEAGLView-ios.h"
-#import "ios_platform_configuration.h"
-#import "GpgStateManager.h"
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @implementation RootViewController
 
@@ -56,15 +54,13 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    // Configure platform configuration for iOS
-    auto pConfig = new gpg::IosPlatformConfiguration();
-    pConfig->SetClientID("948183101103-gu90smfeu0k2dh6qa9ehrmbrinarmnft.apps.googleusercontent.com");
-    pConfig->SetOptionalViewControllerForPopups(self);
 
-    // Initialize Google Play Games Services with callbacks for Auth operations.  This will
-    // attempt to silently sign-in the user if they have signed in before.
-    lorafel::GpgStateManager::InitServices(pConfig);
+    // TODO(developer) Configure the sign-in button look/feel
 
+    [GIDSignIn sharedInstance].uiDelegate = self;
+
+    // Uncomment to automatically sign in the user.
+    [[GIDSignIn sharedInstance] signInSilently];
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -124,6 +120,5 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

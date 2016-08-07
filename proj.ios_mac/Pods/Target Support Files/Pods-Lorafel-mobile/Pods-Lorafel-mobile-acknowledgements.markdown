@@ -25,6 +25,10 @@ Copyright 2016 Google
 
 Copyright 2011 Google Inc. All Rights Reserved.
 
+## Google
+
+Copyright 2016 Google Inc.
+
 ## GoogleAppUtilities
 
 Copyright 2015 Google Inc.
@@ -42,14 +46,6 @@ Copyright 2015 Google Inc.
 Copyright 2015 Google Inc.
 
 ## GoogleParsingUtilities
-
-Copyright 2015 Google Inc.
-
-## GooglePlayGames
-
-Copyright 2016 Google Inc.
-
-## GooglePlusOpenSource
 
 Copyright 2015 Google Inc.
 

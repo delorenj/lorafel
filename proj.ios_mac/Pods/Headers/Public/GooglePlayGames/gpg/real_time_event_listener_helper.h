@@ -1,1 +1,0 @@
-../../../../GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_event_listener_helper.h

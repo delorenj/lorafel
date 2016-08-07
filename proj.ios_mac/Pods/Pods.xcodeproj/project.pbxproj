@@ -14,179 +14,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00179EA828C480C9E185AB1222776384 /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSDictionary+URLArguments.h"; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
-		00D8BC2AABF6C1304D2D76A24BAC293C /* i_cross_app_endpoint_discovery_listener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = i_cross_app_endpoint_discovery_listener.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/i_cross_app_endpoint_discovery_listener.h"; sourceTree = "<group>"; };
-		03AA7AAC5270A41931641F738989F5C0 /* score_page.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = score_page.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/score_page.h"; sourceTree = "<group>"; };
-		070635507828B48BFDBD85617BD57121 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Frameworks/GoogleSignIn.framework; sourceTree = "<group>"; };
-		079D90F15DC79BA2853FA3D3E34E9869 /* builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = builder.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/builder.h"; sourceTree = "<group>"; };
-		0A54009C6FC567F2316B306D4D0BED8F /* GPGEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGEvent.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGEvent.h"; sourceTree = "<group>"; };
 		0BBFA27342FAEC673CC69E6DBE4D90BA /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DA811C78033BDB2C7EEA82445FCA15B /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		0E11DF572C4E9ACB5576D20022E82B0A /* GTMHTTPFetcherService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherService.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMHTTPFetcherService.h"; sourceTree = "<group>"; };
-		0E1F34C11D31BD1BD86E0A35A17A43DB /* nearby_connections_status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nearby_connections_status.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/nearby_connections_status.h"; sourceTree = "<group>"; };
-		10596BB69DCCE6691C8C660F224DF23D /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
-		10B43085168CCA8D8928A8B61D3BD89B /* nearby_connection_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nearby_connection_types.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/nearby_connection_types.h"; sourceTree = "<group>"; };
-		11D8235F3DC1B71A54674E7EA08E95C0 /* turn_based_multiplayer_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = turn_based_multiplayer_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/turn_based_multiplayer_manager.h"; sourceTree = "<group>"; };
-		14329D5E92B7953F6F65EBF4E41F1DAB /* snapshot_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = snapshot_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/snapshot_manager.h"; sourceTree = "<group>"; };
-		1562978CB9B0C59E72639BF77E592952 /* GTLPlusMomentsFeed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusMomentsFeed.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusMomentsFeed.h"; sourceTree = "<group>"; };
-		170145A3BAFB2916F9EA057445FAB705 /* i_real_time_event_listener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = i_real_time_event_listener.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/i_real_time_event_listener.h"; sourceTree = "<group>"; };
-		17652A60D764AC90CA64222F8655A933 /* platform_defines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = platform_defines.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/platform_defines.h"; sourceTree = "<group>"; };
+		0FE6971C8010EB3850CD9AE3A5A6DC4B /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppUtilities.framework; path = Frameworks/GoogleAppUtilities.framework; sourceTree = "<group>"; };
+		10F0CB3A141841C775F17162CD023520 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		1822EE37D8204D6865D8C4755E59C1B1 /* Pods-Lorafel-desktop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-desktop.release.xcconfig"; sourceTree = "<group>"; };
-		1968AD064853026B6C59ECB067A15DA7 /* real_time_room_config_builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = real_time_room_config_builder.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_room_config_builder.h"; sourceTree = "<group>"; };
-		1B3746927DF37A880A4E119409A6D47E /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2ViewControllerTouch.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMOAuth2ViewControllerTouch.h"; sourceTree = "<group>"; };
-		1EC13F7BF5333C0F9AEFC533F45613EF /* GTLRuntimeCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLRuntimeCommon.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLRuntimeCommon.h"; sourceTree = "<group>"; };
-		1F6C2657F9D9DAC2F5F9C99FE6D9CBE9 /* gpg.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = "gpg-cpp-sdk/ios/gpg.bundle"; sourceTree = "<group>"; };
-		20588B623E1C7770E35409D0C59736C8 /* GTLErrorObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLErrorObject.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLErrorObject.h"; sourceTree = "<group>"; };
-		22A8FA5C7C1BF155DCCCCF241008D101 /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2Authentication.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMOAuth2Authentication.h"; sourceTree = "<group>"; };
-		23A3D41E27D8885DC84D8BE09334D94B /* GTLServicePlus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLServicePlus.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLServicePlus.h"; sourceTree = "<group>"; };
-		24BE5AF7283AD1998273EFFBE45E0A71 /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2SignIn.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMOAuth2SignIn.h"; sourceTree = "<group>"; };
-		24ED9165992BFAE7C09C0EE366B64C79 /* GTLPlusConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusConstants.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusConstants.h"; sourceTree = "<group>"; };
-		25CF544B41ADE7F346AA2AE99829DAD5 /* leaderboard_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = leaderboard_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/leaderboard_manager.h"; sourceTree = "<group>"; };
-		2B7F0ACE1EBF6E4B6841F8786CEA6495 /* i_endpoint_discovery_listener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = i_endpoint_discovery_listener.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/i_endpoint_discovery_listener.h"; sourceTree = "<group>"; };
-		2C2BB5B99A41CD6DA1155F73681F44FF /* GPGSnapshotMetadataChange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGSnapshotMetadataChange.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGSnapshotMetadataChange.h"; sourceTree = "<group>"; };
-		2C3E63299E88B04D4EF9825399AC388E /* turn_based_match_config_builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = turn_based_match_config_builder.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/turn_based_match_config_builder.h"; sourceTree = "<group>"; };
+		1FD022D50920403A0779912D05FB645F /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Frameworks/GoogleSignIn.framework; sourceTree = "<group>"; };
 		2DE316095DDED59116109032012A2C36 /* Pods-Lorafel-mobile-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-mobile-frameworks.sh"; sourceTree = "<group>"; };
-		2F3970854B5CC282A7B647EA02D0D419 /* GPGLeaderboardMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGLeaderboardMetadata.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGLeaderboardMetadata.h"; sourceTree = "<group>"; };
-		2FFF9A34D43031AD42ABB857589C1B9F /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		30835FCBA1733C74C6453E74F901DB47 /* GTLUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLUtilities.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLUtilities.h"; sourceTree = "<group>"; };
-		311DE0C6EEC50E72FE7B422B84F9B40F /* GTLPlusActivityFeed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusActivityFeed.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusActivityFeed.h"; sourceTree = "<group>"; };
-		33C45FE07E9456364F78A47894E3EFF2 /* player_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = player_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/player_manager.h"; sourceTree = "<group>"; };
-		34D94DDE49670F03DA49CE8228368035 /* GTLObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLObject.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLObject.h"; sourceTree = "<group>"; };
-		37F76D7FA6514EEC97EE854DD0D3005F /* GTLQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLQuery.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLQuery.h"; sourceTree = "<group>"; };
-		380C3C2975C64E415A04C0113FC3A84F /* GTLBatchResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLBatchResult.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLBatchResult.h"; sourceTree = "<group>"; };
-		3869815C587DB710F429B355BB3AE235 /* types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = types.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/types.h"; sourceTree = "<group>"; };
-		3BBDA70B0686998D990804D9568FE3F4 /* snapshot_metadata_change_builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = snapshot_metadata_change_builder.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/snapshot_metadata_change_builder.h"; sourceTree = "<group>"; };
-		3C608F658A297345D2CFF009DE5564CE /* android_support.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = android_support.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/android_support.h"; sourceTree = "<group>"; };
+		35F14C98235189F4FEC455B48CBA229C /* GoogleAuthUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAuthUtilities.framework; path = Frameworks/GoogleAuthUtilities.framework; sourceTree = "<group>"; };
+		37B5B36D33103CA2151AA8C879683DE2 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
 		3DDDA7B9A8EF11A653227909CC6E91AB /* Pods-Lorafel-desktop-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Lorafel-desktop-acknowledgements.markdown"; sourceTree = "<group>"; };
-		40ECC57208DEC83B1EB93A63560D495B /* real_time_room_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = real_time_room_config.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_room_config.h"; sourceTree = "<group>"; };
-		436F5B8A07DB78C1178F071E1EF96E21 /* leaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = leaderboard.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/leaderboard.h"; sourceTree = "<group>"; };
-		44465ACC9E0DA647BB8DF5F921DEA0C4 /* GTMGarbageCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMGarbageCollection.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMGarbageCollection.h"; sourceTree = "<group>"; };
+		3DFD3CB39EF10F8D2C24AAE5C8CAF71C /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		3E6F972667D248B0B67E3A5C88EC3CA3 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		45F83BA4A7FA9F673CFEB102952607ED /* Pods-Lorafel-desktop-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lorafel-desktop-acknowledgements.plist"; sourceTree = "<group>"; };
-		49F808AEAE8A1DB4F36344D2BAB81730 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcher.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMHTTPFetcher.h"; sourceTree = "<group>"; };
-		4B81993B10ECC9D996D5E19FDE6C62B9 /* real_time_event_listener_helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = real_time_event_listener_helper.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_event_listener_helper.h"; sourceTree = "<group>"; };
-		4CC144948B1EA9F46DBAB5606622FAD5 /* achievement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = achievement.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/achievement.h"; sourceTree = "<group>"; };
-		4DE32B7A6EA34E6B36069739CF20AC6C /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMDefines.h"; sourceTree = "<group>"; };
-		4E99BB666442685E1DF955D021615D70 /* score_summary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = score_summary.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/score_summary.h"; sourceTree = "<group>"; };
-		4EDF0A15136E2175539CC4059C3A09BC /* playerstats.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = playerstats.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/playerstats.h"; sourceTree = "<group>"; };
-		4EFE2EB286B961A7431482B6DD57213E /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		4B1ABD6C46B1268E44E0D97BC239932D /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
 		4F10DFF0183F7B355C6132A30A497CB6 /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
-		518D82BA09C73FA89F34B6C5192CFD29 /* GPGPlayerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGPlayerLevel.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGPlayerLevel.h"; sourceTree = "<group>"; };
-		544D94B6DED20F7CD150CCF0347C6165 /* default_callbacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = default_callbacks.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/default_callbacks.h"; sourceTree = "<group>"; };
-		5571AFE71EDD6563F5518186301A58BB /* GooglePlayGames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GooglePlayGames.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GooglePlayGames.h"; sourceTree = "<group>"; };
-		55EA0436476009EF25318BC274D09043 /* multiplayer_participant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = multiplayer_participant.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/multiplayer_participant.h"; sourceTree = "<group>"; };
+		55A3B24BF50E0C55196725D18BC839A5 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		5796821C6B56B454B5A37D75EE901A25 /* Pods-Lorafel-desktop-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-desktop-frameworks.sh"; sourceTree = "<group>"; };
-		5935D8D9EA0E0131FB2EE6378A2529E8 /* snapshot_metadata_change_cover_image.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = snapshot_metadata_change_cover_image.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/snapshot_metadata_change_cover_image.h"; sourceTree = "<group>"; };
-		5AB6E6BC1E76B4B62A3F7F355C40268D /* GPGTurnBasedParticipantResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGTurnBasedParticipantResult.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGTurnBasedParticipantResult.h"; sourceTree = "<group>"; };
-		5B6B168A0075CAECE4810EF5BCA4A83C /* participant_results.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = participant_results.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/participant_results.h"; sourceTree = "<group>"; };
-		5CC0CF2EF789CB8E86C3E34268F0DFDE /* GTLDateTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLDateTime.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLDateTime.h"; sourceTree = "<group>"; };
-		5D193BA84AB120B548894D5C7B51CDB6 /* GTLBase64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLBase64.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLBase64.h"; sourceTree = "<group>"; };
-		5D3850EF0380D7DADCE1E66A5A6CBBD5 /* real_time_multiplayer_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = real_time_multiplayer_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_multiplayer_manager.h"; sourceTree = "<group>"; };
-		5DE5C9AFCDD5659B0EB9A0C3786EEBBF /* GPGTurnBasedMatch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGTurnBasedMatch.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGTurnBasedMatch.h"; sourceTree = "<group>"; };
-		5FB9D87A1F3FFCB9B1F514F189F8A214 /* GPGQuest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGQuest.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGQuest.h"; sourceTree = "<group>"; };
-		5FC50E0B96723DEA5940EEAFBA734D2D /* GTMMethodCheck.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMMethodCheck.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMMethodCheck.h"; sourceTree = "<group>"; };
-		61BE8D44852809D30B0956DE4779D559 /* common_default_callbacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = common_default_callbacks.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/common_default_callbacks.h"; sourceTree = "<group>"; };
-		66C6495C6471D8F2DC8EE3E2DEB05D70 /* GoogleOpenSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleOpenSource.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GoogleOpenSource.h"; sourceTree = "<group>"; };
-		69DBF9D0FE7FB5BA49344E5C69940999 /* GTLBatchQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLBatchQuery.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLBatchQuery.h"; sourceTree = "<group>"; };
-		6AC9BDA3CEA39CA03C9A30FC90725E2A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		6DD4587381B9B98235C32CC2B933316E /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		622A1C42D71636C8751E185857EDCA22 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		6308FFF23DFDC2CC7345CA90031E33A0 /* SignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SignIn.h; path = Headers/SignIn.h; sourceTree = "<group>"; };
+		6B5D265F97D1F46283BD025678967251 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
 		74377C8250C6656FD8845AFD3F6F1D47 /* Pods-Lorafel-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Lorafel-mobile-dummy.m"; sourceTree = "<group>"; };
-		79C936F412CB8907895A39053AB961F3 /* GTMHTTPFetcherLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherLogging.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMHTTPFetcherLogging.h"; sourceTree = "<group>"; };
-		7A86737C8673606DD2354482CF3B2341 /* GTLTargetNamespace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLTargetNamespace.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLTargetNamespace.h"; sourceTree = "<group>"; };
-		7A9B61C1619E1D04936B533C62CC682F /* GTLPlusCommentFeed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusCommentFeed.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusCommentFeed.h"; sourceTree = "<group>"; };
-		7AAB886EE9BC53F6670EE23B0387A4F1 /* message_listener_helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = message_listener_helper.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/message_listener_helper.h"; sourceTree = "<group>"; };
-		7B3A23E2D75E58024163A5A0E127FA0A /* common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = common.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/common.h"; sourceTree = "<group>"; };
-		7CFCB5D5B8E389FC9BB98D46CF883C9E /* OpenInChromeController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OpenInChromeController.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/OpenInChromeController.h"; sourceTree = "<group>"; };
-		8362F4CACC89C901A6D01D3A5296940F /* multiplayer_invitation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = multiplayer_invitation.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/multiplayer_invitation.h"; sourceTree = "<group>"; };
-		8521EFE1B7A6CAE404C11DFB7621A2D9 /* achievement_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = achievement_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/achievement_manager.h"; sourceTree = "<group>"; };
-		871DF1B344EC31632C5BAB2ED438D991 /* GPGLeaderboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGLeaderboard.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGLeaderboard.h"; sourceTree = "<group>"; };
-		893B236CB14E71B0C7586B4C561D897E /* GoogleAuthUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAuthUtilities.framework; path = Frameworks/GoogleAuthUtilities.framework; sourceTree = "<group>"; };
+		7D9F72C35AA5FE0D1DDE925745D884A9 /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
+		87D30F0A97FB030CBEEE7556DEDAAA41 /* GGLSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLSignIn.framework; path = Frameworks/GGLSignIn.framework; sourceTree = "<group>"; };
 		898CF5BC51B5E5B7D703B63CF2E40B13 /* Pods-Lorafel-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Lorafel-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8B92E0FA90A60A4F3834F7C101EAB4E5 /* GPGSnapshotMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGSnapshotMetadata.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGSnapshotMetadata.h"; sourceTree = "<group>"; };
-		8D6A980E1645AA6A3418D8D64D6C4ECB /* GTLPlus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlus.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlus.h"; sourceTree = "<group>"; };
-		8E21AC0759D24B3256D9C5D0580A86D9 /* android_platform_configuration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = android_platform_configuration.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/android_platform_configuration.h"; sourceTree = "<group>"; };
 		8E2367C76BA6EEA8E7E62679D3F13523 /* libPods-Lorafel-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F560CDFB15435DA53EEA50D5038802E /* GPGPlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGPlayer.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGPlayer.h"; sourceTree = "<group>"; };
-		8F8A20061A17E047B19F7903BF983936 /* score.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = score.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/score.h"; sourceTree = "<group>"; };
-		927A508EA871F1DA1AE0BBDF3DCE11A5 /* GPGScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGScore.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGScore.h"; sourceTree = "<group>"; };
+		8EBDB541CE3AED1874F01B8AED511A31 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		948B8ED3BA13BFE5B520272E12025CA0 /* GPGPlayerStats.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGPlayerStats.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGPlayerStats.h"; sourceTree = "<group>"; };
-		9547CA32E99ABA720912A4DA8448BAAB /* GTLPlusPlace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusPlace.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusPlace.h"; sourceTree = "<group>"; };
-		963E74838A7B133E15C69B68FAB3D381 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		97B1C94E97CA167EADA18EBEC1C269C0 /* stats_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stats_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/stats_manager.h"; sourceTree = "<group>"; };
-		9A9676B73C935B29899DBD7B1961A454 /* debug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = debug.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/debug.h"; sourceTree = "<group>"; };
-		9BFD7B0602FD183C2353D3BA50DC3729 /* GPGRealTimeRoom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGRealTimeRoom.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGRealTimeRoom.h"; sourceTree = "<group>"; };
-		9C17E7020D1E5E06D4D0803F9347D9DA /* quest_milestone.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quest_milestone.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/quest_milestone.h"; sourceTree = "<group>"; };
-		9D64D26E2A5807957C01370262E800F4 /* real_time_room.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = real_time_room.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/real_time_room.h"; sourceTree = "<group>"; };
-		9D7F5F329A1276823ED079A73CA16F8C /* i_message_listener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = i_message_listener.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/i_message_listener.h"; sourceTree = "<group>"; };
-		9DB5CB0747E7C2FAD313604FA4884820 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
 		9E5FDE34A19355CF653C6153027A3558 /* Pods-Lorafel-desktop-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-desktop-resources.sh"; sourceTree = "<group>"; };
-		9EFFC384CE1AD0C9EF3B660B833144FC /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
-		A437CF6BB98C853DB4E1B1E49820BE2F /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppUtilities.framework; path = Frameworks/GoogleAppUtilities.framework; sourceTree = "<group>"; };
+		A087BAE1607D4C391E285202AD05C291 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		A53C5E5B7DEECBB175069A679EF32E42 /* Pods-Lorafel-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Lorafel-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
-		A6A32563D1FDB57D92A54B47C03BAF8D /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
-		A70E6329E638AFAE6F908BF9C888BC68 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		A7D81BB10C7D244C5BB0BF27291430E6 /* Pods-Lorafel-desktop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-desktop.debug.xcconfig"; sourceTree = "<group>"; };
-		A81976405678E1F20C09E29F8F6757AA /* GTLJSONParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLJSONParser.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLJSONParser.h"; sourceTree = "<group>"; };
-		A9343BF398123EDA699CA8E6C8C70D1F /* GTMLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMLogger.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMLogger.h"; sourceTree = "<group>"; };
-		AA32F1202F91B3B5CFB782DE09E9ACF6 /* GTMHTTPUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMHTTPUploadFetcher.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMHTTPUploadFetcher.h"; sourceTree = "<group>"; };
-		AA8D7C243B28C1C0975CED2CB3FB4B21 /* GTLPlusAclentryResource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusAclentryResource.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusAclentryResource.h"; sourceTree = "<group>"; };
-		AC574A5867CB3FE7E15B088EBABB8E14 /* common_error_status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = common_error_status.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/common_error_status.h"; sourceTree = "<group>"; };
-		AD97663DA41DD1FFCB8C937EFB76809E /* gpg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gpg.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/gpg.h"; sourceTree = "<group>"; };
-		B02525D8E69D05AA7F210A66706346BB /* quest_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quest_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/quest_manager.h"; sourceTree = "<group>"; };
-		B08CBD25192947E3EB349878F60CC972 /* player_level.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = player_level.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/player_level.h"; sourceTree = "<group>"; };
 		B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B210E7FBEB78DDE07CB0706C12F83FE5 /* GTLUploadParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLUploadParameters.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLUploadParameters.h"; sourceTree = "<group>"; };
-		B2EC262EA00B35AF5E5BB1EDC691DC4B /* android_initialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = android_initialization.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/android_initialization.h"; sourceTree = "<group>"; };
-		B3B9FD088C02A7D371143C072CE7AE1A /* GTMHTTPFetchHistory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetchHistory.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMHTTPFetchHistory.h"; sourceTree = "<group>"; };
-		B586F4C10B207A98D786A9A5A7833260 /* GTLPlusPeopleFeed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusPeopleFeed.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusPeopleFeed.h"; sourceTree = "<group>"; };
 		B6E3E348FB3DC189EFD29FBF1EAFDF3C /* Pods-Lorafel-desktop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Lorafel-desktop-dummy.m"; sourceTree = "<group>"; };
-		B89D1CD98D0E965008D67E78760C81E7 /* nearby_connections.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nearby_connections.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/nearby_connections.h"; sourceTree = "<group>"; };
-		BAEC87830B1B4FC4F3F66D952743EC1F /* nearby_connections_builder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nearby_connections_builder.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/nearby_connections_builder.h"; sourceTree = "<group>"; };
-		BB5FFD7841D488DD4046F1844E1F6485 /* game_services.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = game_services.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/game_services.h"; sourceTree = "<group>"; };
+		B6FF46C8204C8D923F669836C9B3F16D /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = Frameworks/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
 		BB988C298202D3ED8139345B69B7D908 /* Pods-Lorafel-mobile-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Lorafel-mobile-resources.sh"; sourceTree = "<group>"; };
-		BDA0435CD3603119DC110D5CFC0F3112 /* endpoint_discovery_listener_helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = endpoint_discovery_listener_helper.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/endpoint_discovery_listener_helper.h"; sourceTree = "<group>"; };
-		C04B0F004B5895B9A09C9B2A31BD7D1C /* GPGManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGManager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGManager.h"; sourceTree = "<group>"; };
-		C18BA605D833973795BDB5814CBCA0F2 /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = Frameworks/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
-		C2282A24C0A311CD85DD995A75C554E0 /* GTLPlusMoment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusMoment.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusMoment.h"; sourceTree = "<group>"; };
-		C9201BE17500AC2220318384969A857B /* GTLPlusPerson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusPerson.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusPerson.h"; sourceTree = "<group>"; };
-		C9F145569F6ED2B88BD1E07E1A0539B0 /* player.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = player.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/player.h"; sourceTree = "<group>"; };
-		C9FF83E568B6258E4B490499FE1C240F /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
-		CB62EC96ED80392E92763051E67A64B9 /* platform_configuration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = platform_configuration.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/platform_configuration.h"; sourceTree = "<group>"; };
-		CDAAAF466017F3C57E2BE8422829F3CA /* GPGAchievementMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGAchievementMetadata.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGAchievementMetadata.h"; sourceTree = "<group>"; };
-		CF203B211DFA66F9E32759155A02D6CF /* GPGEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGEnums.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGEnums.h"; sourceTree = "<group>"; };
-		D011162FF9D6B01F46ED16C61D3BC47B /* event.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = event.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/event.h"; sourceTree = "<group>"; };
-		D1534E080A77155B58E9A6590FF8324B /* quest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quest.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/quest.h"; sourceTree = "<group>"; };
-		D1E4CF58779E948A52E8A074E877DA50 /* GTLDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLDefines.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLDefines.h"; sourceTree = "<group>"; };
-		D2037E5F2DAF5F13E391C13EF8604A77 /* GTLQueryPlus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLQueryPlus.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLQueryPlus.h"; sourceTree = "<group>"; };
-		D2CF857F0D987661B91B1B993D12966D /* GPGLocalPlayerScore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGLocalPlayerScore.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGLocalPlayerScore.h"; sourceTree = "<group>"; };
-		D31DC8598E8E76E59F8FA31F99255859 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+URLArguments.h"; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
-		D37A9821985A236AC35B401C33971D29 /* GTLPlusActivity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusActivity.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusActivity.h"; sourceTree = "<group>"; };
-		D59686DFB6868DDF150583BFF3A57766 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = "gpg-cpp-sdk/ios/gpg.framework"; sourceTree = "<group>"; };
-		D63BCA444B62BD45CFE50EB06A02631B /* GPGScoreReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGScoreReport.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGScoreReport.h"; sourceTree = "<group>"; };
-		D6AB590BF16B61021023F4694E27899E /* ios_support.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ios_support.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/ios_support.h"; sourceTree = "<group>"; };
-		D8DA14F97D9944118F676C6FD3CD0A97 /* turn_based_match_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = turn_based_match_config.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/turn_based_match_config.h"; sourceTree = "<group>"; };
-		D9E3F701C6963D4D17BDD75DDB0C886E /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		DAE5EC2D758DEA03440CD545C8971A99 /* GPGLocalPlayerRank.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGLocalPlayerRank.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGLocalPlayerRank.h"; sourceTree = "<group>"; };
-		DAEBF83482CE9B32328EFC7BE75DD0CD /* GTLPlusComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusComment.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusComment.h"; sourceTree = "<group>"; };
-		DE0518116AC5AC31DDC4C9B4EEA3D926 /* turn_based_match.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = turn_based_match.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/turn_based_match.h"; sourceTree = "<group>"; };
+		CCFCEE8AE60251B9C87A6052CEDD620C /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		D552E7B5BF7FAD74AC960C65823171C7 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		DCC797FD1FDFDB8C8C50B2E0C359ACB5 /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
 		DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		DEFDE1E3AD226D1B0693EEAD39085103 /* GPGRealTimeRoomMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGRealTimeRoomMaker.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGRealTimeRoomMaker.h"; sourceTree = "<group>"; };
-		E2987A1AAC9F66D63120AC158849203B /* GTLPlusAcl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusAcl.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusAcl.h"; sourceTree = "<group>"; };
 		E4BCC2B653F8AC1604C08356CC120C50 /* Pods-Lorafel-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Lorafel-mobile.release.xcconfig"; sourceTree = "<group>"; };
-		E5C1D5C7FB896E549069C783CD685B8C /* GPGLauncherController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGLauncherController.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGLauncherController.h"; sourceTree = "<group>"; };
-		EFBC3D16CCBD4C08CECBAD9FB0AC2D55 /* status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = status.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/status.h"; sourceTree = "<group>"; };
-		F0B80D36AD4D0F36C62D8346E34528F5 /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMObjC2Runtime.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTMObjC2Runtime.h"; sourceTree = "<group>"; };
-		F112C13E85F6E4E79CD535683C2161F2 /* snapshot_metadata_change.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = snapshot_metadata_change.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/snapshot_metadata_change.h"; sourceTree = "<group>"; };
-		F1ECDA10CA0A7C6A1D1742CF1C4CD0C2 /* GPGTurnBasedParticipant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGTurnBasedParticipant.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGTurnBasedParticipant.h"; sourceTree = "<group>"; };
-		F454440BD79075031C37B1CA60E21B9E /* GTLFramework.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLFramework.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLFramework.h"; sourceTree = "<group>"; };
-		F53EB03F7B47E4C5D31C306152170D29 /* GPGRealTimeRoomData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGRealTimeRoomData.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGRealTimeRoomData.h"; sourceTree = "<group>"; };
-		F737E91AAB6F566B077EB5799CA4B264 /* snapshot_metadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = snapshot_metadata.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/snapshot_metadata.h"; sourceTree = "<group>"; };
-		F79749D162FE0DA4C0416AF0E9B4413C /* event_manager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = event_manager.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/event_manager.h"; sourceTree = "<group>"; };
-		F7DA936656925D9B09F7FB30C8FEC0E2 /* ios_platform_configuration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ios_platform_configuration.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/ios_platform_configuration.h"; sourceTree = "<group>"; };
-		F7F6B9C79CCA2336A5C62A78A79FC9D0 /* GPGMultiplayerConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGMultiplayerConfig.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGMultiplayerConfig.h"; sourceTree = "<group>"; };
-		F84B97425D7EBD3580531E0D5AD69418 /* GTLService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLService.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLService.h"; sourceTree = "<group>"; };
-		FB6B22A634C3B9CD5D00A347F498B64B /* GPGAchievement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPGAchievement.h; path = "gpg-cpp-sdk/ios/gpg.framework/Versions/A/Headers/GPGAchievement.h"; sourceTree = "<group>"; };
-		FD106B63EFFBBE47242ABACB9873F24D /* GTLPlusItemScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLPlusItemScope.h; path = "google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework/Versions/A/Headers/GTLPlusItemScope.h"; sourceTree = "<group>"; };
+		E9DF5C431B51D466397F5CF09E2D1C12 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		F8F8728B1C71DEDFBD6446E94B2D0225 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
+		FE8CB662FA001418A9B3A7BDF3F7BB09 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,163 +78,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10A51AB5ECE019CB997F8AB157D87D61 /* Pods */ = {
+		20481A726CECB163D764B028ECE8AF25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				92FABE409A1E46A141BA9FC16D44AD58 /* Firebase */,
-				76429BC471576413A1AEA92CBB0A37FA /* FirebaseAnalytics */,
-				12E37C60320CEE072E18641FCC4F1B8F /* FirebaseAuth */,
-				99DEA2E8AA5A779E1EFB0BE29F17CE18 /* FirebaseDatabase */,
-				CEB2456CE2D743E2C1EB42B5692B3E56 /* FirebaseInstanceID */,
-				4167072BE88C2B33D1891740F55B0DC5 /* Google-Mobile-Ads-SDK */,
-				C2F4FBAB64C7937286728DACDEB4776C /* GoogleAppUtilities */,
-				2BE64C5A1AAD61AFF9D3342947B93AC2 /* GoogleAuthUtilities */,
-				54C2BF51E6B53DF67EE5270A3029CEF3 /* GoogleInterchangeUtilities */,
-				DE3DA91BF4569F3BF937ED2A2211A2AE /* GoogleNetworkingUtilities */,
-				8D64D5EF6026D81245AFE324C2970FE2 /* GoogleParsingUtilities */,
-				E35CDC33702D1C7A71A027EF1B3B89CD /* GooglePlayGames */,
-				1142B7FF5CA29AAFC24FBD6774FEDDD5 /* GooglePlusOpenSource */,
-				D5C15071FE2761CDBF27C9FCFDD5ABAF /* GoogleSignIn */,
-				642DCBD6E3BFF0E58E4BB17D7E8D1F43 /* GoogleSymbolUtilities */,
-				6BAF0439B5FEA363EDCF055E51208D97 /* GoogleUtilities */,
+				10F0CB3A141841C775F17162CD023520 /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20792A4D0AD1A6AB7B647036F1826688 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6B5D265F97D1F46283BD025678967251 /* Analytics-Module.h */,
+				7D9F72C35AA5FE0D1DDE925745D884A9 /* Core.h */,
+				DCC797FD1FDFDB8C8C50B2E0C359ACB5 /* Core-Module.h */,
+				CCFCEE8AE60251B9C87A6052CEDD620C /* SignIn-Module.h */,
+				551395C6DDB10D8CBBB6007857D9573D /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		22C66BD25886E9BE073E03E49FAC6DB5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8D7A1A7731B1A7BBCB217688336610A /* Firebase */,
+				C2B6539EE25C2BDED423298B4EC2F278 /* FirebaseAnalytics */,
+				E9AF4F263A82DB154587A02E47CAF9B1 /* FirebaseAuth */,
+				B825EDB78BDB6F6A7AD803FF38F19F79 /* FirebaseDatabase */,
+				C4BCEF2678715256598EA6284B531CBD /* FirebaseInstanceID */,
+				A79F80721C9B299DDA1E4405039FB01A /* Google */,
+				FFC55187B50615FEB3E5DC4D2866E1FB /* Google-Mobile-Ads-SDK */,
+				7AD99C66F248B1C86353209A6E44E02B /* GoogleAppUtilities */,
+				B6ED32129F7C2FA99754E782C8326AAF /* GoogleAuthUtilities */,
+				56C7C9B791E9D2C3C771BBC600E82433 /* GoogleInterchangeUtilities */,
+				4386FE5460DD005477ECF0230A67B76B /* GoogleNetworkingUtilities */,
+				F0A04C64FC861B5C58E8B4D94C8610AE /* GoogleParsingUtilities */,
+				93FD8BD641A7EA4ADE4615246EA748B3 /* GoogleSignIn */,
+				AB83983F83E1397A90155291531C69B7 /* GoogleSymbolUtilities */,
+				43A6E915C8D0A9E9F44A1B2E0002E46A /* GoogleUtilities */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		1142B7FF5CA29AAFC24FBD6774FEDDD5 /* GooglePlusOpenSource */ = {
-			isa = PBXGroup;
-			children = (
-				66C6495C6471D8F2DC8EE3E2DEB05D70 /* GoogleOpenSource.h */,
-				5D193BA84AB120B548894D5C7B51CDB6 /* GTLBase64.h */,
-				69DBF9D0FE7FB5BA49344E5C69940999 /* GTLBatchQuery.h */,
-				380C3C2975C64E415A04C0113FC3A84F /* GTLBatchResult.h */,
-				5CC0CF2EF789CB8E86C3E34268F0DFDE /* GTLDateTime.h */,
-				D1E4CF58779E948A52E8A074E877DA50 /* GTLDefines.h */,
-				20588B623E1C7770E35409D0C59736C8 /* GTLErrorObject.h */,
-				F454440BD79075031C37B1CA60E21B9E /* GTLFramework.h */,
-				A81976405678E1F20C09E29F8F6757AA /* GTLJSONParser.h */,
-				34D94DDE49670F03DA49CE8228368035 /* GTLObject.h */,
-				8D6A980E1645AA6A3418D8D64D6C4ECB /* GTLPlus.h */,
-				E2987A1AAC9F66D63120AC158849203B /* GTLPlusAcl.h */,
-				AA8D7C243B28C1C0975CED2CB3FB4B21 /* GTLPlusAclentryResource.h */,
-				D37A9821985A236AC35B401C33971D29 /* GTLPlusActivity.h */,
-				311DE0C6EEC50E72FE7B422B84F9B40F /* GTLPlusActivityFeed.h */,
-				DAEBF83482CE9B32328EFC7BE75DD0CD /* GTLPlusComment.h */,
-				7A9B61C1619E1D04936B533C62CC682F /* GTLPlusCommentFeed.h */,
-				24ED9165992BFAE7C09C0EE366B64C79 /* GTLPlusConstants.h */,
-				FD106B63EFFBBE47242ABACB9873F24D /* GTLPlusItemScope.h */,
-				C2282A24C0A311CD85DD995A75C554E0 /* GTLPlusMoment.h */,
-				1562978CB9B0C59E72639BF77E592952 /* GTLPlusMomentsFeed.h */,
-				B586F4C10B207A98D786A9A5A7833260 /* GTLPlusPeopleFeed.h */,
-				C9201BE17500AC2220318384969A857B /* GTLPlusPerson.h */,
-				9547CA32E99ABA720912A4DA8448BAAB /* GTLPlusPlace.h */,
-				37F76D7FA6514EEC97EE854DD0D3005F /* GTLQuery.h */,
-				D2037E5F2DAF5F13E391C13EF8604A77 /* GTLQueryPlus.h */,
-				1EC13F7BF5333C0F9AEFC533F45613EF /* GTLRuntimeCommon.h */,
-				F84B97425D7EBD3580531E0D5AD69418 /* GTLService.h */,
-				23A3D41E27D8885DC84D8BE09334D94B /* GTLServicePlus.h */,
-				7A86737C8673606DD2354482CF3B2341 /* GTLTargetNamespace.h */,
-				B210E7FBEB78DDE07CB0706C12F83FE5 /* GTLUploadParameters.h */,
-				30835FCBA1733C74C6453E74F901DB47 /* GTLUtilities.h */,
-				4DE32B7A6EA34E6B36069739CF20AC6C /* GTMDefines.h */,
-				44465ACC9E0DA647BB8DF5F921DEA0C4 /* GTMGarbageCollection.h */,
-				49F808AEAE8A1DB4F36344D2BAB81730 /* GTMHTTPFetcher.h */,
-				79C936F412CB8907895A39053AB961F3 /* GTMHTTPFetcherLogging.h */,
-				0E11DF572C4E9ACB5576D20022E82B0A /* GTMHTTPFetcherService.h */,
-				B3B9FD088C02A7D371143C072CE7AE1A /* GTMHTTPFetchHistory.h */,
-				AA32F1202F91B3B5CFB782DE09E9ACF6 /* GTMHTTPUploadFetcher.h */,
-				A9343BF398123EDA699CA8E6C8C70D1F /* GTMLogger.h */,
-				5FC50E0B96723DEA5940EEAFBA734D2D /* GTMMethodCheck.h */,
-				00179EA828C480C9E185AB1222776384 /* GTMNSDictionary+URLArguments.h */,
-				D31DC8598E8E76E59F8FA31F99255859 /* GTMNSString+URLArguments.h */,
-				22A8FA5C7C1BF155DCCCCF241008D101 /* GTMOAuth2Authentication.h */,
-				24BE5AF7283AD1998273EFFBE45E0A71 /* GTMOAuth2SignIn.h */,
-				1B3746927DF37A880A4E119409A6D47E /* GTMOAuth2ViewControllerTouch.h */,
-				F0B80D36AD4D0F36C62D8346E34528F5 /* GTMObjC2Runtime.h */,
-				7CFCB5D5B8E389FC9BB98D46CF883C9E /* OpenInChromeController.h */,
-				26B1C4C85C216CA57B948ED89123CD68 /* Frameworks */,
-			);
-			path = GooglePlusOpenSource;
-			sourceTree = "<group>";
-		};
-		12E37C60320CEE072E18641FCC4F1B8F /* FirebaseAuth */ = {
-			isa = PBXGroup;
-			children = (
-				EDBB15604D94E52D5E7C795143746DCD /* Frameworks */,
-			);
-			path = FirebaseAuth;
-			sourceTree = "<group>";
-		};
-		14EB543B5D9875CB736E0DBEA46FC1F4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A70E6329E638AFAE6F908BF9C888BC68 /* GoogleMobileAds.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		18FD8B79984242E61552D2D1A8084A6B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D59686DFB6868DDF150583BFF3A57766 /* gpg.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1E0DEB937B0EE2BDD7820B2018FF8E60 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4EFE2EB286B961A7431482B6DD57213E /* GoogleSymbolUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1F57CA790186A211506A16C9E2C41269 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C18BA605D833973795BDB5814CBCA0F2 /* GoogleParsingUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		23407460C51731BE9D0F3F35DC0421F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				893B236CB14E71B0C7586B4C561D897E /* GoogleAuthUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		26B1C4C85C216CA57B948ED89123CD68 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D9E3F701C6963D4D17BDD75DDB0C886E /* GoogleOpenSource.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2BE64C5A1AAD61AFF9D3342947B93AC2 /* GoogleAuthUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				23407460C51731BE9D0F3F35DC0421F5 /* Frameworks */,
-			);
-			path = GoogleAuthUtilities;
-			sourceTree = "<group>";
-		};
-		2E55CC5A393F28128A2DD14BFC825C6F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				070635507828B48BFDBD85617BD57121 /* GoogleSignIn.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		39A4FF2602FF00B5C8E5BEA35E94078C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2FFF9A34D43031AD42ABB857589C1B9F /* GoogleUtilities.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */ = {
@@ -377,66 +129,115 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4167072BE88C2B33D1891740F55B0DC5 /* Google-Mobile-Ads-SDK */ = {
+		3D9D762F91F662B4EC8E1CD2DCADA41C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				14EB543B5D9875CB736E0DBEA46FC1F4 /* Frameworks */,
-			);
-			path = "Google-Mobile-Ads-SDK";
-			sourceTree = "<group>";
-		};
-		54C2BF51E6B53DF67EE5270A3029CEF3 /* GoogleInterchangeUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				59D042CEDBDDE24B1230D634612A6107 /* Frameworks */,
-			);
-			path = GoogleInterchangeUtilities;
-			sourceTree = "<group>";
-		};
-		59D042CEDBDDE24B1230D634612A6107 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0DA811C78033BDB2C7EEA82445FCA15B /* GoogleInterchangeUtilities.framework */,
+				A087BAE1607D4C391E285202AD05C291 /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		642DCBD6E3BFF0E58E4BB17D7E8D1F43 /* GoogleSymbolUtilities */ = {
+		4217D9232BBEF71C97544B82FFC0AF1C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				1E0DEB937B0EE2BDD7820B2018FF8E60 /* Frameworks */,
+				6308FFF23DFDC2CC7345CA90031E33A0 /* SignIn.h */,
+				99B0F62AA54943D2D1DC4EEE126008BA /* Frameworks */,
 			);
-			path = GoogleSymbolUtilities;
+			name = SignIn;
 			sourceTree = "<group>";
 		};
-		6BAF0439B5FEA363EDCF055E51208D97 /* GoogleUtilities */ = {
+		4386FE5460DD005477ECF0230A67B76B /* GoogleNetworkingUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				39A4FF2602FF00B5C8E5BEA35E94078C /* Frameworks */,
+				F35B0908EA7601DE9E9C016044896D5A /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		43A6E915C8D0A9E9F44A1B2E0002E46A /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				730B632718781E9D5F430B14697994CD /* Frameworks */,
 			);
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
-		76429BC471576413A1AEA92CBB0A37FA /* FirebaseAnalytics */ = {
+		45AD5496A341CE4FCC7F4546B342D929 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1437B7D29D2492D6E218D339AA99285 /* Frameworks */,
-			);
-			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		7A06A63F254AD021F023BF6945873C00 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A437CF6BB98C853DB4E1B1E49820BE2F /* GoogleAppUtilities.framework */,
+				55A3B24BF50E0C55196725D18BC839A5 /* FirebaseInstanceID.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C711C6B4FE44F4BFE563CC67B75097C /* Frameworks */ = {
+		5207AA56395AB5A7C09F453FF77F76DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10596BB69DCCE6691C8C660F224DF23D /* FirebaseDatabase.framework */,
+				8EBDB541CE3AED1874F01B8AED511A31 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		551395C6DDB10D8CBBB6007857D9573D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B1ABD6C46B1268E44E0D97BC239932D /* GGLCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56C7C9B791E9D2C3C771BBC600E82433 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				7C53B740E40F3E9E561538D00E8344D9 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		5DF9630FE0A349860F1B9C7D2357816F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35F14C98235189F4FEC455B48CBA229C /* GoogleAuthUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60257B867692005BD728683A8EE2ECE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FE6971C8010EB3850CD9AE3A5A6DC4B /* GoogleAppUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61650E425983BCC9D514203DC3BCEFFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D552E7B5BF7FAD74AC960C65823171C7 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		730B632718781E9D5F430B14697994CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9DF5C431B51D466397F5CF09E2D1C12 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AD99C66F248B1C86353209A6E44E02B /* GoogleAppUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				60257B867692005BD728683A8EE2ECE3 /* Frameworks */,
+			);
+			path = GoogleAppUtilities;
+			sourceTree = "<group>";
+		};
+		7C53B740E40F3E9E561538D00E8344D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3CB39EF10F8D2C24AAE5C8CAF71C /* GoogleInterchangeUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -446,26 +247,26 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */,
-				10A51AB5ECE019CB997F8AB157D87D61 /* Pods */,
+				22C66BD25886E9BE073E03E49FAC6DB5 /* Pods */,
 				98D49DEF3955D2F5AC93EDCDF97863A5 /* Products */,
 				FA8E3827FB3DBB3293F931731A291D68 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8D64D5EF6026D81245AFE324C2970FE2 /* GoogleParsingUtilities */ = {
+		7DE14168CE9BBACDC65A8A5C14F805D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F57CA790186A211506A16C9E2C41269 /* Frameworks */,
+				1FD022D50920403A0779912D05FB645F /* GoogleSignIn.framework */,
 			);
-			path = GoogleParsingUtilities;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		92FABE409A1E46A141BA9FC16D44AD58 /* Firebase */ = {
+		7E5B8FFAFE7665A8137B9FF41DE9CA70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B87CAA3ADE9957EC5F8621ADFF929B49 /* Analytics */,
+				37B5B36D33103CA2151AA8C879683DE2 /* FirebaseAuth.framework */,
 			);
-			path = Firebase;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9304B30CB87FDB77B6CEE9FB6B800855 /* OS X */ = {
@@ -474,6 +275,15 @@
 				DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */,
 			);
 			name = "OS X";
+			sourceTree = "<group>";
+		};
+		93FD8BD641A7EA4ADE4615246EA748B3 /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				7DE14168CE9BBACDC65A8A5C14F805D9 /* Frameworks */,
+				BBF4BD84B70A0695B0FA4486503C9A7C /* Resources */,
+			);
+			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
 		9728A58D7E0AA122AC5FA7B3B338BCE1 /* Pods-Lorafel-mobile */ = {
@@ -500,67 +310,76 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		99DEA2E8AA5A779E1EFB0BE29F17CE18 /* FirebaseDatabase */ = {
+		99B0F62AA54943D2D1DC4EEE126008BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C711C6B4FE44F4BFE563CC67B75097C /* Frameworks */,
+				87D30F0A97FB030CBEEE7556DEDAAA41 /* GGLSignIn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A79F80721C9B299DDA1E4405039FB01A /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				20792A4D0AD1A6AB7B647036F1826688 /* Core */,
+				4217D9232BBEF71C97544B82FFC0AF1C /* SignIn */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		AB83983F83E1397A90155291531C69B7 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				5207AA56395AB5A7C09F453FF77F76DB /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		B6ED32129F7C2FA99754E782C8326AAF /* GoogleAuthUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				5DF9630FE0A349860F1B9C7D2357816F /* Frameworks */,
+			);
+			path = GoogleAuthUtilities;
+			sourceTree = "<group>";
+		};
+		B825EDB78BDB6F6A7AD803FF38F19F79 /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				20481A726CECB163D764B028ECE8AF25 /* Frameworks */,
 			);
 			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
-		A1437B7D29D2492D6E218D339AA99285 /* Frameworks */ = {
+		BBF4BD84B70A0695B0FA4486503C9A7C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6AC9BDA3CEA39CA03C9A30FC90725E2A /* FirebaseAnalytics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AF70820015440C6679CF49794C4019D7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9DB5CB0747E7C2FAD313604FA4884820 /* GoogleSignIn.bundle */,
+				622A1C42D71636C8751E185857EDCA22 /* GoogleSignIn.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		B87CAA3ADE9957EC5F8621ADFF929B49 /* Analytics */ = {
+		C2B6539EE25C2BDED423298B4EC2F278 /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				9EFFC384CE1AD0C9EF3B660B833144FC /* Firebase.h */,
+				3D9D762F91F662B4EC8E1CD2DCADA41C /* Frameworks */,
 			);
-			name = Analytics;
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		BD314AEF6255D6B325127BCBEE131D1A /* Resources */ = {
+		C2E2196423FF4D56C902D3AA0DAD44BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F6C2657F9D9DAC2F5F9C99FE6D9CBE9 /* gpg.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		C2F4FBAB64C7937286728DACDEB4776C /* GoogleAppUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				7A06A63F254AD021F023BF6945873C00 /* Frameworks */,
-			);
-			path = GoogleAppUtilities;
-			sourceTree = "<group>";
-		};
-		C7F0CBA26D347C100A8ED3B4D9BE4FEC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				963E74838A7B133E15C69B68FAB3D381 /* FirebaseInstanceID.framework */,
+				B6FF46C8204C8D923F669836C9B3F16D /* GoogleParsingUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEB2456CE2D743E2C1EB42B5692B3E56 /* FirebaseInstanceID */ = {
+		C4BCEF2678715256598EA6284B531CBD /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				6DD4587381B9B98235C32CC2B933316E /* FIRInstanceID.h */,
-				C7F0CBA26D347C100A8ED3B4D9BE4FEC /* Frameworks */,
+				FE8CB662FA001418A9B3A7BDF3F7BB09 /* FIRInstanceID.h */,
+				45AD5496A341CE4FCC7F4546B342D929 /* Frameworks */,
 			);
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
@@ -580,23 +399,6 @@
 			path = "Target Support Files/Pods-Lorafel-desktop";
 			sourceTree = "<group>";
 		};
-		D5C15071FE2761CDBF27C9FCFDD5ABAF /* GoogleSignIn */ = {
-			isa = PBXGroup;
-			children = (
-				2E55CC5A393F28128A2DD14BFC825C6F /* Frameworks */,
-				AF70820015440C6679CF49794C4019D7 /* Resources */,
-			);
-			path = GoogleSignIn;
-			sourceTree = "<group>";
-		};
-		DE3DA91BF4569F3BF937ED2A2211A2AE /* GoogleNetworkingUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				E0F6DAE4B8B7511840D7908DEEFBB288 /* Frameworks */,
-			);
-			path = GoogleNetworkingUtilities;
-			sourceTree = "<group>";
-		};
 		DEA55AE7EB4A1B09C009B82BA492BD02 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,114 +407,34 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		E0F6DAE4B8B7511840D7908DEEFBB288 /* Frameworks */ = {
+		E8D7A1A7731B1A7BBCB217688336610A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF83E568B6258E4B490499FE1C240F /* GoogleNetworkingUtilities.framework */,
+				FD36B3B471AE4A384766034BB78F7BAD /* Analytics */,
 			);
-			name = Frameworks;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
-		E35CDC33702D1C7A71A027EF1B3B89CD /* GooglePlayGames */ = {
+		E9AF4F263A82DB154587A02E47CAF9B1 /* FirebaseAuth */ = {
 			isa = PBXGroup;
 			children = (
-				4CC144948B1EA9F46DBAB5606622FAD5 /* achievement.h */,
-				8521EFE1B7A6CAE404C11DFB7621A2D9 /* achievement_manager.h */,
-				B2EC262EA00B35AF5E5BB1EDC691DC4B /* android_initialization.h */,
-				8E21AC0759D24B3256D9C5D0580A86D9 /* android_platform_configuration.h */,
-				3C608F658A297345D2CFF009DE5564CE /* android_support.h */,
-				079D90F15DC79BA2853FA3D3E34E9869 /* builder.h */,
-				7B3A23E2D75E58024163A5A0E127FA0A /* common.h */,
-				61BE8D44852809D30B0956DE4779D559 /* common_default_callbacks.h */,
-				AC574A5867CB3FE7E15B088EBABB8E14 /* common_error_status.h */,
-				9A9676B73C935B29899DBD7B1961A454 /* debug.h */,
-				544D94B6DED20F7CD150CCF0347C6165 /* default_callbacks.h */,
-				BDA0435CD3603119DC110D5CFC0F3112 /* endpoint_discovery_listener_helper.h */,
-				D011162FF9D6B01F46ED16C61D3BC47B /* event.h */,
-				F79749D162FE0DA4C0416AF0E9B4413C /* event_manager.h */,
-				BB5FFD7841D488DD4046F1844E1F6485 /* game_services.h */,
-				5571AFE71EDD6563F5518186301A58BB /* GooglePlayGames.h */,
-				AD97663DA41DD1FFCB8C937EFB76809E /* gpg.h */,
-				FB6B22A634C3B9CD5D00A347F498B64B /* GPGAchievement.h */,
-				CDAAAF466017F3C57E2BE8422829F3CA /* GPGAchievementMetadata.h */,
-				CF203B211DFA66F9E32759155A02D6CF /* GPGEnums.h */,
-				0A54009C6FC567F2316B306D4D0BED8F /* GPGEvent.h */,
-				E5C1D5C7FB896E549069C783CD685B8C /* GPGLauncherController.h */,
-				871DF1B344EC31632C5BAB2ED438D991 /* GPGLeaderboard.h */,
-				2F3970854B5CC282A7B647EA02D0D419 /* GPGLeaderboardMetadata.h */,
-				DAE5EC2D758DEA03440CD545C8971A99 /* GPGLocalPlayerRank.h */,
-				D2CF857F0D987661B91B1B993D12966D /* GPGLocalPlayerScore.h */,
-				C04B0F004B5895B9A09C9B2A31BD7D1C /* GPGManager.h */,
-				F7F6B9C79CCA2336A5C62A78A79FC9D0 /* GPGMultiplayerConfig.h */,
-				8F560CDFB15435DA53EEA50D5038802E /* GPGPlayer.h */,
-				518D82BA09C73FA89F34B6C5192CFD29 /* GPGPlayerLevel.h */,
-				948B8ED3BA13BFE5B520272E12025CA0 /* GPGPlayerStats.h */,
-				5FB9D87A1F3FFCB9B1F514F189F8A214 /* GPGQuest.h */,
-				9BFD7B0602FD183C2353D3BA50DC3729 /* GPGRealTimeRoom.h */,
-				F53EB03F7B47E4C5D31C306152170D29 /* GPGRealTimeRoomData.h */,
-				DEFDE1E3AD226D1B0693EEAD39085103 /* GPGRealTimeRoomMaker.h */,
-				927A508EA871F1DA1AE0BBDF3DCE11A5 /* GPGScore.h */,
-				D63BCA444B62BD45CFE50EB06A02631B /* GPGScoreReport.h */,
-				8B92E0FA90A60A4F3834F7C101EAB4E5 /* GPGSnapshotMetadata.h */,
-				2C2BB5B99A41CD6DA1155F73681F44FF /* GPGSnapshotMetadataChange.h */,
-				5DE5C9AFCDD5659B0EB9A0C3786EEBBF /* GPGTurnBasedMatch.h */,
-				F1ECDA10CA0A7C6A1D1742CF1C4CD0C2 /* GPGTurnBasedParticipant.h */,
-				5AB6E6BC1E76B4B62A3F7F355C40268D /* GPGTurnBasedParticipantResult.h */,
-				00D8BC2AABF6C1304D2D76A24BAC293C /* i_cross_app_endpoint_discovery_listener.h */,
-				2B7F0ACE1EBF6E4B6841F8786CEA6495 /* i_endpoint_discovery_listener.h */,
-				9D7F5F329A1276823ED079A73CA16F8C /* i_message_listener.h */,
-				170145A3BAFB2916F9EA057445FAB705 /* i_real_time_event_listener.h */,
-				F7DA936656925D9B09F7FB30C8FEC0E2 /* ios_platform_configuration.h */,
-				D6AB590BF16B61021023F4694E27899E /* ios_support.h */,
-				436F5B8A07DB78C1178F071E1EF96E21 /* leaderboard.h */,
-				25CF544B41ADE7F346AA2AE99829DAD5 /* leaderboard_manager.h */,
-				7AAB886EE9BC53F6670EE23B0387A4F1 /* message_listener_helper.h */,
-				8362F4CACC89C901A6D01D3A5296940F /* multiplayer_invitation.h */,
-				55EA0436476009EF25318BC274D09043 /* multiplayer_participant.h */,
-				10B43085168CCA8D8928A8B61D3BD89B /* nearby_connection_types.h */,
-				B89D1CD98D0E965008D67E78760C81E7 /* nearby_connections.h */,
-				BAEC87830B1B4FC4F3F66D952743EC1F /* nearby_connections_builder.h */,
-				0E1F34C11D31BD1BD86E0A35A17A43DB /* nearby_connections_status.h */,
-				5B6B168A0075CAECE4810EF5BCA4A83C /* participant_results.h */,
-				CB62EC96ED80392E92763051E67A64B9 /* platform_configuration.h */,
-				17652A60D764AC90CA64222F8655A933 /* platform_defines.h */,
-				C9F145569F6ED2B88BD1E07E1A0539B0 /* player.h */,
-				B08CBD25192947E3EB349878F60CC972 /* player_level.h */,
-				33C45FE07E9456364F78A47894E3EFF2 /* player_manager.h */,
-				4EDF0A15136E2175539CC4059C3A09BC /* playerstats.h */,
-				D1534E080A77155B58E9A6590FF8324B /* quest.h */,
-				B02525D8E69D05AA7F210A66706346BB /* quest_manager.h */,
-				9C17E7020D1E5E06D4D0803F9347D9DA /* quest_milestone.h */,
-				4B81993B10ECC9D996D5E19FDE6C62B9 /* real_time_event_listener_helper.h */,
-				5D3850EF0380D7DADCE1E66A5A6CBBD5 /* real_time_multiplayer_manager.h */,
-				9D64D26E2A5807957C01370262E800F4 /* real_time_room.h */,
-				40ECC57208DEC83B1EB93A63560D495B /* real_time_room_config.h */,
-				1968AD064853026B6C59ECB067A15DA7 /* real_time_room_config_builder.h */,
-				8F8A20061A17E047B19F7903BF983936 /* score.h */,
-				03AA7AAC5270A41931641F738989F5C0 /* score_page.h */,
-				4E99BB666442685E1DF955D021615D70 /* score_summary.h */,
-				14329D5E92B7953F6F65EBF4E41F1DAB /* snapshot_manager.h */,
-				F737E91AAB6F566B077EB5799CA4B264 /* snapshot_metadata.h */,
-				F112C13E85F6E4E79CD535683C2161F2 /* snapshot_metadata_change.h */,
-				3BBDA70B0686998D990804D9568FE3F4 /* snapshot_metadata_change_builder.h */,
-				5935D8D9EA0E0131FB2EE6378A2529E8 /* snapshot_metadata_change_cover_image.h */,
-				97B1C94E97CA167EADA18EBEC1C269C0 /* stats_manager.h */,
-				EFBC3D16CCBD4C08CECBAD9FB0AC2D55 /* status.h */,
-				DE0518116AC5AC31DDC4C9B4EEA3D926 /* turn_based_match.h */,
-				D8DA14F97D9944118F676C6FD3CD0A97 /* turn_based_match_config.h */,
-				2C3E63299E88B04D4EF9825399AC388E /* turn_based_match_config_builder.h */,
-				11D8235F3DC1B71A54674E7EA08E95C0 /* turn_based_multiplayer_manager.h */,
-				3869815C587DB710F429B355BB3AE235 /* types.h */,
-				18FD8B79984242E61552D2D1A8084A6B /* Frameworks */,
-				BD314AEF6255D6B325127BCBEE131D1A /* Resources */,
+				7E5B8FFAFE7665A8137B9FF41DE9CA70 /* Frameworks */,
 			);
-			path = GooglePlayGames;
+			path = FirebaseAuth;
 			sourceTree = "<group>";
 		};
-		EDBB15604D94E52D5E7C795143746DCD /* Frameworks */ = {
+		F0A04C64FC861B5C58E8B4D94C8610AE /* GoogleParsingUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				A6A32563D1FDB57D92A54B47C03BAF8D /* FirebaseAuth.framework */,
+				C2E2196423FF4D56C902D3AA0DAD44BC /* Frameworks */,
+			);
+			path = GoogleParsingUtilities;
+			sourceTree = "<group>";
+		};
+		F35B0908EA7601DE9E9C016044896D5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E6F972667D248B0B67E3A5C88EC3CA3 /* GoogleNetworkingUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -724,6 +446,22 @@
 				9728A58D7E0AA122AC5FA7B3B338BCE1 /* Pods-Lorafel-mobile */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		FD36B3B471AE4A384766034BB78F7BAD /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F8F8728B1C71DEDFBD6446E94B2D0225 /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		FFC55187B50615FEB3E5DC4D2866E1FB /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				61650E425983BCC9D514203DC3BCEFFD /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

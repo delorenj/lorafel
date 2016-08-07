@@ -1,6 +1,3 @@
-#include <gpg/gpg.h>
-#include "GpgStateManager.h"
-
 #include "AppDelegate.h"
 #include "TestScene.h"
 #include "PlayerManager.h"
