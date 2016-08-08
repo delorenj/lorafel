@@ -31,6 +31,7 @@
 #import "FIROptions.h"
 #import "FIRGoogleAuthProvider.h"
 #include "AuthStateMachine.h"
+#import "IOSNDKHelper.h"
 
 @implementation AppController
 
@@ -176,22 +177,42 @@ static AppDelegate s_sharedApplication;
 - (void)signIn:(GIDSignIn *)signIn
         didSignInForUser:(GIDGoogleUser *)user
         withError:(NSError *)error {
+
+    NSDictionary *parameters;
+
     if (error == nil) {
         NSLog(@"Signed In =D");
         GIDAuthentication *authentication = user.authentication;
         FIRAuthCredential *credential =
                 [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
                                                  accessToken:authentication.accessToken];
+        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
+                @"LoggedIn", @"state",
+                        nil];
+
+
     } else {
         NSLog(@"%@", error.localizedDescription);
-        AuthStateMachine::getInstance()->setState();
+        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
+                @"AuthenticationFailed", @"state",
+                        nil];
     }
+
+    // Send C++ a message with parameters
+    // C++ will receive this message only if the selector list has a method
+    // of the same name as specified - in this case, "gameTestMethod"
+    [IOSNDKHelper sendMessage:@"changeStateMethod" withParameters:parameters];
+
 }
 
 - (void)signIn:(GIDSignIn *)signIn
         didDisconnectWithUser:(GIDGoogleUser *)user
         withError:(NSError *)error {
     NSLog(@"Signed Out");
+    NSDictionary*parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
+            @"AuthenticationFailed", @"state",
+                    nil];
+    [IOSNDKHelper sendMessage:@"changeStateMethod" withParameters:parameters];
 }
 
 @end

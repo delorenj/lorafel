@@ -11,6 +11,8 @@
 namespace lorafel {
     class TitleScene : public cocos2d::Node {
     public:
+        ~TitleScene();
+
         static cocos2d::Scene* createScene();
         virtual bool init() override;
         CREATE_FUNC(TitleScene);
@@ -23,6 +25,8 @@ namespace lorafel {
         cocos2d::ui::Button* m_pPlayButton;
         cocos2d::Sprite* m_pLoader;
         cocos2d::ui::Button* m_pGoogleSignInButton;
+
+        void changeStateSelector(cocos2d::Node* sender, cocos2d::Value data);
     };
 }
 

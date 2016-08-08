@@ -7,20 +7,22 @@
 namespace lorafel {
     FirebaseAuth* FirebaseAuth::_instance;
 
-    ::firebase::App* FirebaseAuth::getApp() const {
-        #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-            firebase::App* app = firebase::App::Create(firebase::AppOptions(), my_jni_env, my_activity);
-            return app;
-        #else
-            return firebase::App::Create(firebase::AppOptions());
-        #endif
+    ::firebase::App* FirebaseAuth::getApp() {
+        if(m_pApp == nullptr) {
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                m_pApp = firebase::App::Create(firebase::AppOptions(), my_jni_env, my_activity);
+            #else
+                m_pApp = firebase::App::Create(firebase::AppOptions());
+            #endif
+        }
+        return m_pApp;
     }
 
-    ::firebase::auth::Auth* FirebaseAuth::getAuth() const {
+    ::firebase::auth::Auth* FirebaseAuth::getAuth() {
         return::firebase::auth::Auth::GetAuth(getApp());
     }
 
-    bool FirebaseAuth::isAuthenticated() const {
+    bool FirebaseAuth::isAuthenticated() {
         return getAuth()->CurrentUser() != nullptr;
     }
 

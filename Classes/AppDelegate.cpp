@@ -236,6 +236,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // Or...wrong email?
     CCASSERT(player, "Player not found!");
 
+    #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        firebase::App* app = firebase::App::Create(firebase::AppOptions(), my_jni_env, my_activity);
+    #else
+        firebase::App* app = firebase::App::Create(firebase::AppOptions());
+    #endif
+
+//    auto app = lorafel::FirebaseAuth::getInstance()->getApp();
+
     // create a scene. it's an autorelease object
     auto scene = lorafel::TitleScene::createScene();
 

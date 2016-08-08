@@ -19,15 +19,16 @@ namespace lorafel {
             return _instance;
         }
 
-        ::firebase::App* getApp() const;
-        ::firebase::auth::Auth* getAuth() const;
-        bool isAuthenticated() const;
+        ::firebase::App* getApp();
+        ::firebase::auth::Auth* getAuth();
+        bool isAuthenticated();
 
         void initiateLoginProcess();
 
     protected:
         static FirebaseAuth *_instance;
 
+        firebase::App* m_pApp;
     };
 }
 

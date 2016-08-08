@@ -210,7 +210,6 @@
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD761D5426380084CD9D /* MediaPlayer.framework */; };
 		BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD781D54264B0084CD9D /* GameController.framework */; };
-		BA0DBD7B1D5428780084CD9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */; };
 		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
 		BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA01D536AD50017E0EB /* Backup.cpp */; };
 		BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA21D536AD50017E0EB /* Column.cpp */; };
@@ -218,6 +217,35 @@
 		BA8A0FB11D536AD50017E0EB /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA61D536AD50017E0EB /* Exception.cpp */; };
 		BA8A0FB21D536AD50017E0EB /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA91D536AD50017E0EB /* Statement.cpp */; };
 		BA8A0FB31D536AD50017E0EB /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */; };
+		BAA35CD91D58B93B00A42B3B /* jansson in Resources */ = {isa = PBXBuildFile; fileRef = BAA35CD71D58B93B00A42B3B /* jansson */; };
+		BAA35CDA1D58B93B00A42B3B /* NDKHelper in Resources */ = {isa = PBXBuildFile; fileRef = BAA35CD81D58B93B00A42B3B /* NDKHelper */; };
+		BAA35CDC1D58B97D00A42B3B /* IOSNDKHelper in Resources */ = {isa = PBXBuildFile; fileRef = BAA35CDB1D58B97D00A42B3B /* IOSNDKHelper */; };
+		BAA35CE41D58BDC900A42B3B /* IOSNDKHelper-C-Interface.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE11D58BDC900A42B3B /* IOSNDKHelper-C-Interface.h */; };
+		BAA35CE51D58BDC900A42B3B /* IOSNDKHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE21D58BDC900A42B3B /* IOSNDKHelper.h */; };
+		BAA35CE61D58BDC900A42B3B /* IOSNDKHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE31D58BDC900A42B3B /* IOSNDKHelper.mm */; };
+		BAA35CF71D58BDE600A42B3B /* dump.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE71D58BDE500A42B3B /* dump.c */; };
+		BAA35CF81D58BDE600A42B3B /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE81D58BDE500A42B3B /* error.c */; };
+		BAA35CF91D58BDE600A42B3B /* hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CE91D58BDE500A42B3B /* hashtable.c */; };
+		BAA35CFA1D58BDE600A42B3B /* hashtable.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CEA1D58BDE500A42B3B /* hashtable.h */; };
+		BAA35CFB1D58BDE600A42B3B /* jansson_config.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CEB1D58BDE500A42B3B /* jansson_config.h */; };
+		BAA35CFC1D58BDE600A42B3B /* jansson_private.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CEC1D58BDE500A42B3B /* jansson_private.h */; };
+		BAA35CFD1D58BDE600A42B3B /* jansson.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CED1D58BDE500A42B3B /* jansson.h */; };
+		BAA35CFE1D58BDE600A42B3B /* load.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CEE1D58BDE500A42B3B /* load.c */; };
+		BAA35CFF1D58BDE600A42B3B /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CEF1D58BDE500A42B3B /* memory.c */; };
+		BAA35D001D58BDE600A42B3B /* pack_unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF01D58BDE500A42B3B /* pack_unpack.c */; };
+		BAA35D011D58BDE600A42B3B /* strbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF11D58BDE500A42B3B /* strbuffer.c */; };
+		BAA35D021D58BDE600A42B3B /* strbuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF21D58BDE600A42B3B /* strbuffer.h */; };
+		BAA35D031D58BDE600A42B3B /* strconv.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF31D58BDE600A42B3B /* strconv.c */; };
+		BAA35D041D58BDE600A42B3B /* utf.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF41D58BDE600A42B3B /* utf.c */; };
+		BAA35D051D58BDE600A42B3B /* utf.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF51D58BDE600A42B3B /* utf.h */; };
+		BAA35D061D58BDE600A42B3B /* value.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA35CF61D58BDE600A42B3B /* value.c */; };
+		BAA35D0D1D58BDF800A42B3B /* CallFuncNV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D071D58BDF700A42B3B /* CallFuncNV.cpp */; };
+		BAA35D0E1D58BDF800A42B3B /* CallFuncNV.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D081D58BDF700A42B3B /* CallFuncNV.h */; };
+		BAA35D0F1D58BDF800A42B3B /* NDKCallbackNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D091D58BDF700A42B3B /* NDKCallbackNode.cpp */; };
+		BAA35D101D58BDF800A42B3B /* NDKCallbackNode.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D0A1D58BDF800A42B3B /* NDKCallbackNode.h */; };
+		BAA35D111D58BDF800A42B3B /* NDKHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D0B1D58BDF800A42B3B /* NDKHelper.cpp */; };
+		BAA35D121D58BDF800A42B3B /* NDKHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = BAA35D0C1D58BDF800A42B3B /* NDKHelper.h */; };
+		BAA9EC581D594D92002C57FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAA9EC571D594D92002C57FA /* GoogleService-Info.plist */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
@@ -510,7 +538,6 @@
 		BA0DBD721D54154D0084CD9D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Pods/Firebase/Firebase.framework; sourceTree = "<group>"; };
 		BA0DBD761D5426380084CD9D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		BA0DBD781D54264B0084CD9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
-		BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
 		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
@@ -527,6 +554,35 @@
 		BA8A0FAB1D536AD50017E0EB /* Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transaction.cpp; sourceTree = "<group>"; };
 		BA8A0FAC1D536AD50017E0EB /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		BA8A0FAD1D536AD50017E0EB /* VariadicBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariadicBind.h; sourceTree = "<group>"; };
+		BAA35CD71D58B93B00A42B3B /* jansson */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jansson; sourceTree = "<group>"; };
+		BAA35CD81D58B93B00A42B3B /* NDKHelper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NDKHelper; sourceTree = "<group>"; };
+		BAA35CDB1D58B97D00A42B3B /* IOSNDKHelper */ = {isa = PBXFileReference; lastKnownFileType = folder; name = IOSNDKHelper; path = ios/IOSNDKHelper; sourceTree = SOURCE_ROOT; };
+		BAA35CE11D58BDC900A42B3B /* IOSNDKHelper-C-Interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IOSNDKHelper-C-Interface.h"; path = "ios/IOSNDKHelper/IOSNDKHelper-C-Interface.h"; sourceTree = "<group>"; };
+		BAA35CE21D58BDC900A42B3B /* IOSNDKHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IOSNDKHelper.h; path = ios/IOSNDKHelper/IOSNDKHelper.h; sourceTree = "<group>"; };
+		BAA35CE31D58BDC900A42B3B /* IOSNDKHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSNDKHelper.mm; path = ios/IOSNDKHelper/IOSNDKHelper.mm; sourceTree = "<group>"; };
+		BAA35CE71D58BDE500A42B3B /* dump.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = dump.c; path = ../Classes/jansson/dump.c; sourceTree = "<group>"; };
+		BAA35CE81D58BDE500A42B3B /* error.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = error.c; path = ../Classes/jansson/error.c; sourceTree = "<group>"; };
+		BAA35CE91D58BDE500A42B3B /* hashtable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = hashtable.c; path = ../Classes/jansson/hashtable.c; sourceTree = "<group>"; };
+		BAA35CEA1D58BDE500A42B3B /* hashtable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hashtable.h; path = ../Classes/jansson/hashtable.h; sourceTree = "<group>"; };
+		BAA35CEB1D58BDE500A42B3B /* jansson_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jansson_config.h; path = ../Classes/jansson/jansson_config.h; sourceTree = "<group>"; };
+		BAA35CEC1D58BDE500A42B3B /* jansson_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jansson_private.h; path = ../Classes/jansson/jansson_private.h; sourceTree = "<group>"; };
+		BAA35CED1D58BDE500A42B3B /* jansson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jansson.h; path = ../Classes/jansson/jansson.h; sourceTree = "<group>"; };
+		BAA35CEE1D58BDE500A42B3B /* load.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = load.c; path = ../Classes/jansson/load.c; sourceTree = "<group>"; };
+		BAA35CEF1D58BDE500A42B3B /* memory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = memory.c; path = ../Classes/jansson/memory.c; sourceTree = "<group>"; };
+		BAA35CF01D58BDE500A42B3B /* pack_unpack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pack_unpack.c; path = ../Classes/jansson/pack_unpack.c; sourceTree = "<group>"; };
+		BAA35CF11D58BDE500A42B3B /* strbuffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = strbuffer.c; path = ../Classes/jansson/strbuffer.c; sourceTree = "<group>"; };
+		BAA35CF21D58BDE600A42B3B /* strbuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = strbuffer.h; path = ../Classes/jansson/strbuffer.h; sourceTree = "<group>"; };
+		BAA35CF31D58BDE600A42B3B /* strconv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = strconv.c; path = ../Classes/jansson/strconv.c; sourceTree = "<group>"; };
+		BAA35CF41D58BDE600A42B3B /* utf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = utf.c; path = ../Classes/jansson/utf.c; sourceTree = "<group>"; };
+		BAA35CF51D58BDE600A42B3B /* utf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utf.h; path = ../Classes/jansson/utf.h; sourceTree = "<group>"; };
+		BAA35CF61D58BDE600A42B3B /* value.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = value.c; path = ../Classes/jansson/value.c; sourceTree = "<group>"; };
+		BAA35D071D58BDF700A42B3B /* CallFuncNV.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CallFuncNV.cpp; path = ../Classes/NDKHelper/CallFuncNV.cpp; sourceTree = "<group>"; };
+		BAA35D081D58BDF700A42B3B /* CallFuncNV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallFuncNV.h; path = ../Classes/NDKHelper/CallFuncNV.h; sourceTree = "<group>"; };
+		BAA35D091D58BDF700A42B3B /* NDKCallbackNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NDKCallbackNode.cpp; path = ../Classes/NDKHelper/NDKCallbackNode.cpp; sourceTree = "<group>"; };
+		BAA35D0A1D58BDF800A42B3B /* NDKCallbackNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NDKCallbackNode.h; path = ../Classes/NDKHelper/NDKCallbackNode.h; sourceTree = "<group>"; };
+		BAA35D0B1D58BDF800A42B3B /* NDKHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NDKHelper.cpp; path = ../Classes/NDKHelper/NDKHelper.cpp; sourceTree = "<group>"; };
+		BAA35D0C1D58BDF800A42B3B /* NDKHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NDKHelper.h; path = ../Classes/NDKHelper/NDKHelper.h; sourceTree = "<group>"; };
+		BAA9EC571D594D92002C57FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BABFB8A31C815A7700AFD266 /* HpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpUI.cpp; sourceTree = "<group>"; };
 		BABFB8A41C815A7700AFD266 /* HpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpUI.h; sourceTree = "<group>"; };
 		BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyBagTile.h; sourceTree = "<group>"; };
@@ -596,6 +652,8 @@
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				BAA9EC571D594D92002C57FA /* GoogleService-Info.plist */,
+				BAA35CDB1D58B97D00A42B3B /* IOSNDKHelper */,
 				5087E77117EB970100C73F5D /* Icons */,
 				503AE0FA17EB989F00D1A890 /* AppController.h */,
 				503AE0FB17EB989F00D1A890 /* AppController.mm */,
@@ -640,7 +698,31 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				BA0DBD7A1D5428780084CD9D /* GoogleService-Info.plist */,
+				BAA35D071D58BDF700A42B3B /* CallFuncNV.cpp */,
+				BAA35D081D58BDF700A42B3B /* CallFuncNV.h */,
+				BAA35D091D58BDF700A42B3B /* NDKCallbackNode.cpp */,
+				BAA35D0A1D58BDF800A42B3B /* NDKCallbackNode.h */,
+				BAA35D0B1D58BDF800A42B3B /* NDKHelper.cpp */,
+				BAA35D0C1D58BDF800A42B3B /* NDKHelper.h */,
+				BAA35CE71D58BDE500A42B3B /* dump.c */,
+				BAA35CE81D58BDE500A42B3B /* error.c */,
+				BAA35CE91D58BDE500A42B3B /* hashtable.c */,
+				BAA35CEA1D58BDE500A42B3B /* hashtable.h */,
+				BAA35CEB1D58BDE500A42B3B /* jansson_config.h */,
+				BAA35CEC1D58BDE500A42B3B /* jansson_private.h */,
+				BAA35CED1D58BDE500A42B3B /* jansson.h */,
+				BAA35CEE1D58BDE500A42B3B /* load.c */,
+				BAA35CEF1D58BDE500A42B3B /* memory.c */,
+				BAA35CF01D58BDE500A42B3B /* pack_unpack.c */,
+				BAA35CF11D58BDE500A42B3B /* strbuffer.c */,
+				BAA35CF21D58BDE600A42B3B /* strbuffer.h */,
+				BAA35CF31D58BDE600A42B3B /* strconv.c */,
+				BAA35CF41D58BDE600A42B3B /* utf.c */,
+				BAA35CF51D58BDE600A42B3B /* utf.h */,
+				BAA35CF61D58BDE600A42B3B /* value.c */,
+				BAA35CE11D58BDC900A42B3B /* IOSNDKHelper-C-Interface.h */,
+				BAA35CE21D58BDC900A42B3B /* IOSNDKHelper.h */,
+				BAA35CE31D58BDC900A42B3B /* IOSNDKHelper.mm */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -707,6 +789,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BAA35CD71D58B93B00A42B3B /* jansson */,
+				BAA35CD81D58B93B00A42B3B /* NDKHelper */,
 				BA8A0F9F1D536AD50017E0EB /* Assertion.h */,
 				BA8A0FA01D536AD50017E0EB /* Backup.cpp */,
 				BA8A0FA11D536AD50017E0EB /* Backup.h */,
@@ -1074,12 +1158,14 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				BA078CE71C22E89E00B0E1EA /* iphonehd in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				BAA35CDA1D58B93B00A42B3B /* NDKHelper in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				BAA35CDC1D58B97D00A42B3B /* IOSNDKHelper in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
-				BA0DBD7B1D5428780084CD9D /* GoogleService-Info.plist in Resources */,
+				BAA9EC581D594D92002C57FA /* GoogleService-Info.plist in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				BA078CE51C22E89E00B0E1EA /* iphone in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -1092,6 +1178,7 @@
 				BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				BAA35CD91D58B93B00A42B3B /* jansson in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -1214,6 +1301,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAA35D0D1D58BDF800A42B3B /* CallFuncNV.cpp in Sources */,
+				BAA35D0E1D58BDF800A42B3B /* CallFuncNV.h in Sources */,
+				BAA35D0F1D58BDF800A42B3B /* NDKCallbackNode.cpp in Sources */,
+				BAA35D101D58BDF800A42B3B /* NDKCallbackNode.h in Sources */,
+				BAA35D111D58BDF800A42B3B /* NDKHelper.cpp in Sources */,
+				BAA35D121D58BDF800A42B3B /* NDKHelper.h in Sources */,
+				BAA35CF71D58BDE600A42B3B /* dump.c in Sources */,
+				BAA35CF81D58BDE600A42B3B /* error.c in Sources */,
+				BAA35CF91D58BDE600A42B3B /* hashtable.c in Sources */,
+				BAA35CFA1D58BDE600A42B3B /* hashtable.h in Sources */,
+				BAA35CFB1D58BDE600A42B3B /* jansson_config.h in Sources */,
+				BAA35CFC1D58BDE600A42B3B /* jansson_private.h in Sources */,
+				BAA35CFD1D58BDE600A42B3B /* jansson.h in Sources */,
+				BAA35CFE1D58BDE600A42B3B /* load.c in Sources */,
+				BAA35CFF1D58BDE600A42B3B /* memory.c in Sources */,
+				BAA35D001D58BDE600A42B3B /* pack_unpack.c in Sources */,
+				BAA35D011D58BDE600A42B3B /* strbuffer.c in Sources */,
+				BAA35D021D58BDE600A42B3B /* strbuffer.h in Sources */,
+				BAA35D031D58BDE600A42B3B /* strconv.c in Sources */,
+				BAA35D041D58BDE600A42B3B /* utf.c in Sources */,
+				BAA35D051D58BDE600A42B3B /* utf.h in Sources */,
+				BAA35D061D58BDE600A42B3B /* value.c in Sources */,
+				BAA35CE41D58BDC900A42B3B /* IOSNDKHelper-C-Interface.h in Sources */,
+				BAA35CE51D58BDC900A42B3B /* IOSNDKHelper.h in Sources */,
+				BAA35CE61D58BDC900A42B3B /* IOSNDKHelper.mm in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */,
@@ -1425,6 +1537,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
+					"$(SRCROOT)/../proj.ios_mac/ios/IOSNDKHelper",
+					"$(SRCROOT)/../Classes/jansson",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1470,6 +1584,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 					"$(PROJECT_DIR)/../cocos2d/external/gpg-cpp-sdk/ios",
+					"$(SRCROOT)/../proj.ios_mac/ios/IOSNDKHelper",
+					"$(SRCROOT)/../Classes/jansson",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

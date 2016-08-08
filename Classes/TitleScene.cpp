@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "FirebaseAuth.h"
 #include "TestScene.h"
+#include "NDKHelper/NDKHelper.h"
 
 using namespace lorafel;
 
@@ -62,9 +63,25 @@ bool TitleScene::init() {
     m_pLoader->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     addChild(m_pLoader, LayerOrder::UX);
 
+    // Adds a selector association to be called from native end
+    NDKHelper::addSelector("AuthStateMachineSelectors",
+            "changeStateSelector",
+            CC_CALLBACK_2(TitleScene::changeStateSelector, this),
+            this);
+
     scheduleUpdate();
 
     return true;
+}
+
+void TitleScene::changeStateSelector(cocos2d::Node* sender, cocos2d::Value data) {
+    if (!data.isNull() && data.getType() == Value::Type::MAP) {
+        ValueMap valueMap = data.asValueMap();
+
+        std::string state = valueMap["state"].asString();
+        CCLOG("Response sent from native: %s", state.c_str());
+    }
+
 }
 
 void TitleScene::update(float delta) {
@@ -78,7 +95,11 @@ void TitleScene::update(float delta) {
         m_pGoogleSignInButton->setVisible(false);
         m_pLoader->setVisible(true);
         m_pLoader->stopAllActions();
-        FirebaseAuth::getInstance()->initiateLoginProcess();
+
+        if(FirebaseAuth::getInstance()->getAuth() != nullptr) {
+            FirebaseAuth::getInstance()->initiateLoginProcess();
+        }
+
 
     } else if(state->getName() == "NeverLoggedInState" || state->getName() == "AuthenticationFailedState") {
         /**
@@ -119,6 +140,10 @@ void TitleScene::update(float delta) {
         m_pLoader->setVisible(false);
         m_pLoader->stopAllActions();
     }
+}
+
+TitleScene::~TitleScene() {
+    NDKHelper::removeSelectorsInGroup("AuthStateMachineSelectors");
 }
 
 

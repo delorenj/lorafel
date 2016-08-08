@@ -4,6 +4,6 @@
 
 #include "AuthStateMachine.h"
 
-namespace lorafel {
-    StateMachine* AuthStateMachine::_instance;
-}
+using namespace lorafel;
+
+StateMachine* AuthStateMachine::_instance;
