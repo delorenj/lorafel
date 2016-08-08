@@ -1,4 +1,6 @@
 #include "SwappyGridScene.h"
+#include "FirebaseAuth.h"
+#include "AuthStateMachine.h"
 
 using namespace lorafel;
 

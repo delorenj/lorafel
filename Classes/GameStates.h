@@ -333,6 +333,34 @@ namespace lorafel {
         }
     };
 
+    /**
+     * Auth States
+     */
+    class AuthState : public State {
+    public:
+        virtual const std::string getName() const override { return "AuthState"; }
+    };
+    class NeverLoggedInState : public AuthState {
+    public:
+        virtual const std::string getName() const override { return "NeverLoggedInState"; }
+    };
+    class LoggedInState : public AuthState {
+    public:
+        virtual const std::string getName() const override { return "LoggedInState"; }
+    };
+    class LoggedOutState : public AuthState {
+    public:
+        virtual const std::string getName() const override { return "LoggedOutState"; }
+    };
+    class AuthenticatingState : public AuthState {
+    public:
+        virtual const std::string getName() const override { return "AuthenticatingState"; }
+    };
+    class AuthenticationFailedState : public AuthState {
+    public:
+        virtual const std::string getName() const override { return "AuthenticationFailedState"; }
+    };
+
 }
 
 #endif //LORAFEL_GAMESTATES_H

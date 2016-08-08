@@ -78,6 +78,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match5.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/IInventoryable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Transaction.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/TitleScene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ExponentialLevelManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameModalNavButton.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PlayerManager.cpp" isTestSource="false" />
@@ -93,7 +94,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LootTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TileSwapEventData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Statement.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchSet.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/NonConsumable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GameStates.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GoldUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Database.h" isTestSource="false" />
@@ -128,12 +129,14 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PoisonGlyph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FireballAction.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LootTile.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryEquipGrid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FireballAction.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpFloatie.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StormGlyph.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PlayerManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Column.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/FirebaseAuth.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LameSpiderSwordTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ActionTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.cpp" isTestSource="false" />
@@ -141,11 +144,12 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchPattern.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GridTestUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HealthPotionPlayerMove.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/GlyphTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Consumable.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/RandomAIStrategy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/BasicPlayerMove.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryItemSlot.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryEquipGrid.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Column.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryItemGrid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Hook.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Weapon.h" isTestSource="false" />
@@ -154,10 +158,11 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MoveActionTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SQLiteCpp.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/Column.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/AuthStateMachine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HookAction.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GoldStatResult.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/TitleScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GameStateMachine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ToggleActionTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Tile.cpp" isTestSource="false" />
@@ -205,18 +210,19 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HookActionTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Weapon.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GameStateMachine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchSet.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/State.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpStatResult.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MeleeAttackTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Serializer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/GlyphTile.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/FirebaseAuth.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Database.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StatGuage.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Item.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventDataInteger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/NonConsumable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/AuthStateMachine.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchResult.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/DragDropSwapPlayerMove.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryItemGrid.cpp" isTestSource="false" />

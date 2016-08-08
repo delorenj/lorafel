@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "TestScene.h"
+#include "TitleScene.h"
 #include "PlayerManager.h"
 
 // firebase
@@ -9,6 +10,7 @@
 #include "firebase/analytics/user_property_names.h"
 #include "firebase/app.h"
 #include "firebase/auth.h"
+#include "FirebaseAuth.h"
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "platform/android/jni/JniHelper.h"
@@ -29,27 +31,6 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate()
 {
-}
-
-static void firebase_auth_test() {
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-      firebase::App* app =
-      firebase::App::Create(firebase::AppOptions(), my_jni_env, my_activity);
-#else
-    firebase::App* app = firebase::App::Create(firebase::AppOptions());
-#endif
-
-    firebase::auth::Auth* auth = firebase::auth::Auth::GetAuth(app);
-
-    /*
-    firebase::auth::Credential credential =
-            firebase::auth::GoogleAuthProvider::GetCredential(google_id_token,
-                    nullptr);
-
-    firebase::Future<firebase::auth::User*> result =
-            auth->SignInWithCredential(credential);
-     */
-
 }
 
 static void firebase_test()
@@ -255,10 +236,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // Or...wrong email?
     CCASSERT(player, "Player not found!");
 
-    firebase_test();
-
     // create a scene. it's an autorelease object
-    auto scene = lorafel::TestScene::createScene();
+    auto scene = lorafel::TitleScene::createScene();
 
     // run
     director->runWithScene(scene);

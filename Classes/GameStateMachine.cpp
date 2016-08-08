@@ -3,7 +3,6 @@
 //
 
 #include "GameStateMachine.h"
-#include "StateMachine.h"
 
 namespace lorafel {
     StateMachine* GameStateMachine::_instance;

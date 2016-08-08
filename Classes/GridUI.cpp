@@ -207,5 +207,4 @@ void GridUI::initButtons() {
             m_pXpUI->getPosition().y
     ));
     addChild(m_pCharacterBtn);
-
 }

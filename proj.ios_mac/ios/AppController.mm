@@ -30,6 +30,7 @@
 #import "FIRApp.h"
 #import "FIROptions.h"
 #import "FIRGoogleAuthProvider.h"
+#include "AuthStateMachine.h"
 
 @implementation AppController
 
@@ -183,6 +184,7 @@ static AppDelegate s_sharedApplication;
                                                  accessToken:authentication.accessToken];
     } else {
         NSLog(@"%@", error.localizedDescription);
+        AuthStateMachine::getInstance()->setState();
     }
 }
 
