@@ -128,8 +128,11 @@ void TitleScene::update(float delta) {
         m_pPlayButton->setVisible(false);
         m_pGoogleSignInButton->setVisible(false);
         m_pLoader->setVisible(true);
-        auto spin = cocos2d::EaseInOut::create(cocos2d::RotateBy::create(1.0f, 1080), 1.0f);
-        m_pLoader->runAction(cocos2d::RepeatForever::create(spin));
+
+        if(m_pLoader->getNumberOfRunningActions() == 0) {
+            auto spin = cocos2d::EaseQuadraticActionInOut::create(cocos2d::RotateBy::create(1.0f,720.0f));
+            m_pLoader->runAction(cocos2d::RepeatForever::create(spin));
+        }
     }
     else {
         /**

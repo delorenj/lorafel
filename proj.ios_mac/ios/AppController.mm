@@ -24,13 +24,11 @@
 
 #import "AppController.h"
 #import "platform/ios/CCEAGLView-ios.h"
-#import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "FIRApp.h"
 #import "FIROptions.h"
 #import "FIRGoogleAuthProvider.h"
-#include "AuthStateMachine.h"
 #import "IOSNDKHelper.h"
 
 @implementation AppController
@@ -91,9 +89,9 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     // Use Firebase library to configure APIs
-    [FIRApp configure];
-
-    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
+//    [FIRApp configure];
+//
+    [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
     [GIDSignIn sharedInstance].delegate = self;
 
     app->run();
@@ -186,16 +184,12 @@ static AppDelegate s_sharedApplication;
         FIRAuthCredential *credential =
                 [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
                                                  accessToken:authentication.accessToken];
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
-                @"LoggedIn", @"state",
-                        nil];
+        parameters = @{@"state" : @"LoggedIn"};
 
 
     } else {
         NSLog(@"%@", error.localizedDescription);
-        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
-                @"AuthenticationFailed", @"state",
-                        nil];
+        parameters = @{@"state" : @"AuthenticationFailed"};
     }
 
     // Send C++ a message with parameters
@@ -209,9 +203,7 @@ static AppDelegate s_sharedApplication;
         didDisconnectWithUser:(GIDGoogleUser *)user
         withError:(NSError *)error {
     NSLog(@"Signed Out");
-    NSDictionary*parameters = [[NSDictionary alloc] initWithObjectsAndKeys:
-            @"AuthenticationFailed", @"state",
-                    nil];
+    NSDictionary*parameters = @{@"state" : @"AuthenticationFailed"};
     [IOSNDKHelper sendMessage:@"changeStateMethod" withParameters:parameters];
 }
 

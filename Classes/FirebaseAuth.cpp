@@ -15,6 +15,10 @@ namespace lorafel {
                 m_pApp = firebase::App::Create(firebase::AppOptions());
             #endif
         }
+
+        if(m_pApp == nullptr) {
+            m_pApp = firebase::App::GetInstance();
+        }
         return m_pApp;
     }
 
