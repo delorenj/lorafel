@@ -125,4 +125,8 @@
     [super dealloc];
 }
 
+- (void)signIn:(NSObject *)parametersObject {
+    [[GIDSignIn sharedInstance] signIn];
+}
+
 @end

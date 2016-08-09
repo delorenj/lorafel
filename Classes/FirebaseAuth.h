@@ -21,13 +21,14 @@ namespace lorafel {
 
         ::firebase::App* getApp();
         ::firebase::auth::Auth* getAuth();
-        bool isAuthenticated();
+        firebase::Future<firebase::auth::User*> getCurrentFuture() const { return m_future; }
 
+        bool isAuthenticated();
         void initiateLoginProcess();
 
     protected:
         static FirebaseAuth *_instance;
-
+        firebase::Future<firebase::auth::User*> m_future;
         firebase::App* m_pApp;
     };
 }

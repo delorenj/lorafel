@@ -31,11 +31,7 @@ namespace lorafel {
     }
 
     void FirebaseAuth::initiateLoginProcess() {
-        /**
-         * TODO: Do some login stuff. For now,
-         * just pretend we logged in
-         */
-        getAuth()->SignInWithCredentialLastResult();
+        m_future = getAuth()->SignInWithCredentialLastResult();
         AuthStateMachine::getInstance()->setState<AuthenticatingState>();
     }
 }
