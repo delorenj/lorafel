@@ -4,7 +4,6 @@
 
 #include "InventoryModal.h"
 #include "Globals.h"
-#include "sqlite3.h"
 
 using namespace lorafel;
 
@@ -12,9 +11,6 @@ bool InventoryModal::init() {
     if(!InGameModal::init()) {
         return false;
     }
-
-    sqlite3 *db;
-    auto rc = sqlite3_open_v2("test.db", &db,1,NULL);
 
     m_pItemGrid = InventoryItemGrid::create(this);
     m_pItemGrid->setGlobalZOrder(LayerOrder::MODAL+1);

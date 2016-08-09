@@ -26,8 +26,6 @@
 #import "platform/ios/CCEAGLView-ios.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "FIRApp.h"
-#import "FIROptions.h"
 #import "FIRAuth.h"
 #import "FIRUser.h"
 #import "FIRGoogleAuthProvider.h"

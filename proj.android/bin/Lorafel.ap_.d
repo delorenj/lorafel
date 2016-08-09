@@ -3,6 +3,7 @@
 /Users/delorenj/code/Lorafel/proj.android/res/drawable-ldpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/res/drawable-mdpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/res/values/strings.xml \
+/Users/delorenj/code/Lorafel/proj.android/res/values/version.xml \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-hdpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-ldpi/icon.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/res/drawable-mdpi/icon.png \
@@ -41,6 +42,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/grid_highlight.plist \
@@ -48,10 +50,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipad/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipad/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/bg_debug.png \
@@ -70,6 +74,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/grid_highlight.plist \
@@ -77,10 +82,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ipadhd/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/bg_debug.png \
@@ -99,6 +106,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/grid_highlight.plist \
@@ -106,10 +114,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphone/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphone/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/bg_debug.png \
@@ -128,6 +138,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/grid_highlight.plist \
@@ -135,10 +146,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/bg_debug.png \
@@ -157,6 +170,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/grid_highlight.plist \
@@ -164,10 +178,12 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/iphonehd5/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg1.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg2.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/bg_debug.png \
@@ -186,6 +202,7 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/glow_puff_blue.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/glow_puff_purple.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/glow_ring.plist \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/google-signin-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/green_beam.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/green_dust.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/grid_highlight.plist \
@@ -193,8 +210,10 @@
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/lineplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/modal-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/modal-inventory-grid-container.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/play-btn.png \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/pulse_line.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sparkplosion.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sprites.plist \
 /Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/sprites.png \
+/Users/delorenj/code/Lorafel/proj.android/assets/ultra4k/title-bg.png \
 /Users/delorenj/code/Lorafel/proj.android/bin/AndroidManifest.xml \

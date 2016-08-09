@@ -13,3 +13,8 @@ LOCAL_SRC_FILES := libs/android/$(TARGET_ARCH_ABI)/gnustl/libanalytics.a
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
 include $(PREBUILT_STATIC_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := firebase-auth
+LOCAL_SRC_FILES := libs/android/$(TARGET_ARCH_ABI)/gnustl/libauth.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
+include $(PREBUILT_STATIC_LIBRARY)

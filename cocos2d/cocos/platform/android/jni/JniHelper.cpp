@@ -22,7 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-#include "JniHelper.h"
+#include "platform/android/jni/JniHelper.h"
 #include <android/log.h>
 #include <string.h>
 #include <pthread.h>
@@ -45,8 +45,8 @@ jclass _getClassID(const char *className) {
     jstring _jstrClassName = env->NewStringUTF(className);
 
     jclass _clazz = (jclass) env->CallObjectMethod(cocos2d::JniHelper::classloader,
-                                                   cocos2d::JniHelper::loadclassMethod_methodID,
-                                                   _jstrClassName);
+            cocos2d::JniHelper::loadclassMethod_methodID,
+            _jstrClassName);
 
     if (nullptr == _clazz) {
         LOGE("Classloader failed to find class of %s", className);
@@ -54,7 +54,7 @@ jclass _getClassID(const char *className) {
     }
 
     env->DeleteLocalRef(_jstrClassName);
-        
+
     return _clazz;
 }
 
@@ -67,6 +67,8 @@ namespace cocos2d {
     JavaVM* JniHelper::_psJavaVM = nullptr;
     jmethodID JniHelper::loadclassMethod_methodID = nullptr;
     jobject JniHelper::classloader = nullptr;
+    jobject JniHelper::_activity = nullptr;
+    std::unordered_map<JNIEnv*, std::vector<jobject>> JniHelper::localRefs;
 
     JavaVM* JniHelper::getJavaVM() {
         pthread_t thisthread = pthread_self();
@@ -86,32 +88,32 @@ namespace cocos2d {
         JNIEnv* _env = nullptr;
         // get jni environment
         jint ret = jvm->GetEnv((void**)&_env, JNI_VERSION_1_4);
-        
+
         switch (ret) {
-        case JNI_OK :
-            // Success!
-            pthread_setspecific(g_key, _env);
-            return _env;
-                
-        case JNI_EDETACHED :
-            // Thread not attached
-            if (jvm->AttachCurrentThread(&_env, nullptr) < 0)
+            case JNI_OK :
+                // Success!
+                pthread_setspecific(g_key, _env);
+                return _env;
+
+            case JNI_EDETACHED :
+                // Thread not attached
+                if (jvm->AttachCurrentThread(&_env, nullptr) < 0)
                 {
                     LOGE("Failed to get the environment using AttachCurrentThread()");
 
                     return nullptr;
                 } else {
-                // Success : Attached and obtained JNIEnv!
-                pthread_setspecific(g_key, _env);
-                return _env;
-            }
-                
-        case JNI_EVERSION :
-            // Cannot recover from this error
-            LOGE("JNI interface version 1.4 not supported");
-        default :
-            LOGE("Failed to get the environment using GetEnv()");
-            return nullptr;
+                    // Success : Attached and obtained JNIEnv!
+                    pthread_setspecific(g_key, _env);
+                    return _env;
+                }
+
+            case JNI_EVERSION :
+                // Cannot recover from this error
+                LOGE("JNI interface version 1.4 not supported");
+            default :
+                LOGE("Failed to get the environment using GetEnv()");
+                return nullptr;
         }
     }
 
@@ -129,14 +131,14 @@ namespace cocos2d {
     bool JniHelper::setClassLoaderFrom(jobject activityinstance) {
         JniMethodInfo _getclassloaderMethod;
         if (!JniHelper::getMethodInfo_DefaultClassLoader(_getclassloaderMethod,
-                                                         "android/content/Context",
-                                                         "getClassLoader",
-                                                         "()Ljava/lang/ClassLoader;")) {
+                "android/content/Context",
+                "getClassLoader",
+                "()Ljava/lang/ClassLoader;")) {
             return false;
         }
 
         jobject _c = cocos2d::JniHelper::getEnv()->CallObjectMethod(activityinstance,
-                                                                    _getclassloaderMethod.methodID);
+                _getclassloaderMethod.methodID);
 
         if (nullptr == _c) {
             return false;
@@ -144,25 +146,26 @@ namespace cocos2d {
 
         JniMethodInfo _m;
         if (!JniHelper::getMethodInfo_DefaultClassLoader(_m,
-                                                         "java/lang/ClassLoader",
-                                                         "loadClass",
-                                                         "(Ljava/lang/String;)Ljava/lang/Class;")) {
+                "java/lang/ClassLoader",
+                "loadClass",
+                "(Ljava/lang/String;)Ljava/lang/Class;")) {
             return false;
         }
 
         JniHelper::classloader = cocos2d::JniHelper::getEnv()->NewGlobalRef(_c);
         JniHelper::loadclassMethod_methodID = _m.methodID;
+        JniHelper::_activity = cocos2d::JniHelper::getEnv()->NewGlobalRef(activityinstance);
 
         return true;
     }
 
     bool JniHelper::getStaticMethodInfo(JniMethodInfo &methodinfo,
-                                        const char *className, 
-                                        const char *methodName,
-                                        const char *paramCode) {
+            const char *className,
+            const char *methodName,
+            const char *paramCode) {
         if ((nullptr == className) ||
-            (nullptr == methodName) ||
-            (nullptr == paramCode)) {
+                (nullptr == methodName) ||
+                (nullptr == paramCode)) {
             return false;
         }
 
@@ -171,7 +174,7 @@ namespace cocos2d {
             LOGE("Failed to get JNIEnv");
             return false;
         }
-            
+
         jclass classID = _getClassID(className);
         if (! classID) {
             LOGE("Failed to find class %s", className);
@@ -185,7 +188,7 @@ namespace cocos2d {
             env->ExceptionClear();
             return false;
         }
-            
+
         methodinfo.classID = classID;
         methodinfo.env = env;
         methodinfo.methodID = methodID;
@@ -193,12 +196,12 @@ namespace cocos2d {
     }
 
     bool JniHelper::getMethodInfo_DefaultClassLoader(JniMethodInfo &methodinfo,
-                                                     const char *className,
-                                                     const char *methodName,
-                                                     const char *paramCode) {
+            const char *className,
+            const char *methodName,
+            const char *paramCode) {
         if ((nullptr == className) ||
-            (nullptr == methodName) ||
-            (nullptr == paramCode)) {
+                (nullptr == methodName) ||
+                (nullptr == paramCode)) {
             return false;
         }
 
@@ -229,12 +232,12 @@ namespace cocos2d {
     }
 
     bool JniHelper::getMethodInfo(JniMethodInfo &methodinfo,
-                                  const char *className,
-                                  const char *methodName,
-                                  const char *paramCode) {
+            const char *className,
+            const char *methodName,
+            const char *paramCode) {
         if ((nullptr == className) ||
-            (nullptr == methodName) ||
-            (nullptr == paramCode)) {
+                (nullptr == methodName) ||
+                (nullptr == paramCode)) {
             return false;
         }
 
@@ -268,7 +271,7 @@ namespace cocos2d {
         if (jstr == nullptr) {
             return "";
         }
-        
+
         JNIEnv *env = JniHelper::getEnv();
         if (!env) {
             return "";
@@ -277,6 +280,31 @@ namespace cocos2d {
         std::string strValue = cocos2d::StringUtils::getStringUTFCharsJNI(env, jstr);
 
         return strValue;
+    }
+
+    jstring JniHelper::convert(cocos2d::JniMethodInfo& t, const char* x) {
+        jstring ret = cocos2d::StringUtils::newStringUTFJNI(t.env, x ? x : "");
+        localRefs[t.env].push_back(ret);
+        return ret;
+    }
+
+    jstring JniHelper::convert(cocos2d::JniMethodInfo& t, const std::string& x) {
+        return convert(t, x.c_str());
+    }
+
+    void JniHelper::deleteLocalRefs(JNIEnv* env) {
+        if (!env) {
+            return;
+        }
+
+        for (const auto& ref : localRefs[env]) {
+            env->DeleteLocalRef(ref);
+        }
+        localRefs[env].clear();
+    }
+
+    void JniHelper::reportError(const std::string& className, const std::string& methodName, const std::string& signature) {
+        LOGE("Failed to find static java method. Class name: %s, method name: %s, signature: %s ",  className.c_str(), methodName.c_str(), signature.c_str());
     }
 
 } //namespace cocos2d

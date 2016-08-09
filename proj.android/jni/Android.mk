@@ -15,6 +15,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/ActionTile.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/Arrow.cpp \
+                   ../../Classes/AuthStateMachine.cpp \
                    ../../Classes/BasicPlayerMove.cpp \
                    ../../Classes/BasicTurnManager.cpp \
                    ../../Classes/Consumable.cpp \
@@ -24,6 +25,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/EquipItemSlot.cpp \
                    ../../Classes/FireballAction.cpp \
                    ../../Classes/FireballActionTile.cpp \
+                   ../../Classes/FirebaseAuth.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameOverUI.cpp \
                    ../../Classes/GameStateMachine.cpp \
@@ -76,21 +78,37 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/TestScene.cpp \
                    ../../Classes/Tile.cpp \
                    ../../Classes/TileMatcher.cpp \
+                   ../../Classes/TitleScene.cpp \
                    ../../Classes/ToggleActionTile.cpp \
                    ../../Classes/TrajectoryParticle.cpp \
                    ../../Classes/Weapon.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
-                   ../../Classes/XpUI.cpp
+                   ../../Classes/XpUI.cpp \
+                   ../../Classes/NDKHelper/CallFuncNV.cpp \
+                   ../../Classes/NDKHelper/NDKCallbackNode.cpp \
+                   ../../Classes/NDKHelper/NDKHelper.cpp \
+                   ../../Classes/jansson/dump.c \
+                   ../../Classes/jansson/error.c \
+                   ../../Classes/jansson/hashtable.c \
+                   ../../Classes/jansson/load.c \
+                   ../../Classes/jansson/memory.c \
+                   ../../Classes/jansson/pack_unpack.c \
+                   ../../Classes/jansson/strbuffer.c \
+                   ../../Classes/jansson/strconv.c \
+                   ../../Classes/jansson/utf.c \
+                   ../../Classes/jansson/value.c
 
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+                    $(LOCAL_PATH)/../../Classes/NDKHelper \
+                    $(LOCAL_PATH)/../../Classes/jansson
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
 
 
-LOCAL_STATIC_LIBRARIES := cocos2dx_static
+LOCAL_STATIC_LIBRARIES := cocos2dx_static firebase-prebuilt firebase-analytics firebase-auth
 
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END

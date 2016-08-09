@@ -9,6 +9,8 @@
 #include "InventoryItemGrid.h"
 #include "InventoryEquipGrid.h"
 
+USING_NS_CC;
+
 namespace lorafel {
     class InventoryModal : public InGameModal {
     public:

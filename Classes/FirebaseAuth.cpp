@@ -4,13 +4,17 @@
 
 #include "FirebaseAuth.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 namespace lorafel {
     FirebaseAuth* FirebaseAuth::_instance;
 
     ::firebase::App* FirebaseAuth::getApp() {
         if(m_pApp == nullptr) {
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-                m_pApp = firebase::App::Create(firebase::AppOptions(), my_jni_env, my_activity);
+                m_pApp = firebase::App::Create(firebase::AppOptions(), cocos2d::JniHelper::getEnv(), cocos2d::JniHelper::GetActivity());
             #else
                 m_pApp = firebase::App::Create(firebase::AppOptions());
             #endif
