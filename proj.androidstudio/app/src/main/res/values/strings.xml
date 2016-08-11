@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Lorafel</string>
+    <integer name="google_play_services_version">9452000</integer>
+</resources>
