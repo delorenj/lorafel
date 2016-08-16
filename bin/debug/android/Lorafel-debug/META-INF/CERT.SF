@@ -1,0 +1,676 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: 2pkF7PZ30IhPuZFCUa16iBSTKSQ=
+Created-By: 1.0 (Android)
+
+Name: assets/ipad/bg_debug_wider.png
+SHA1-Digest: 1LNIno+RvN8ls1aIO/nTEU2COKY=
+
+Name: assets/ultra4k/bg2.png
+SHA1-Digest: BEcskqt6NoiAqoAGP3IJlTIMD3w=
+
+Name: assets/ipadhd/title-bg.png
+SHA1-Digest: 7aOpkweSfrEx69H1wa0+N+MBxmo=
+
+Name: assets/iphonehd/glow_puff_blue.plist
+SHA1-Digest: IjyJSug4esESQDnLqOUbNUqV1fI=
+
+Name: assets/iphonehd/break_block_generic_smoke.plist
+SHA1-Digest: 5oZ/j7zgcpgvt9OAzjYukCIPr80=
+
+Name: assets/iphonehd/hearts.plist
+SHA1-Digest: QPGgnXgCHXpq/xEiQHXglwjU7FY=
+
+Name: assets/iphone/break_block_color_smoke.plist
+SHA1-Digest: HkIwQ5LtwuzGXTVgnQ7YzumXAQ8=
+
+Name: assets/fonts/Impact.ttf
+SHA1-Digest: PDrNrp197u3/2wo+qVpZnE2z3IY=
+
+Name: assets/iphonehd5/google-signin-btn.png
+SHA1-Digest: 9rxqBE2x3tIAz2OVGXTvr7BLvac=
+
+Name: assets/iphone/bg2.png
+SHA1-Digest: Zo/Jrg/SBcWx1bLdKHcxuZvlSrQ=
+
+Name: assets/iphone/flame.plist
+SHA1-Digest: 1XLuhNNeoUHcQWFRvZN8tcIuPSw=
+
+Name: assets/iphone/pulse_line.plist
+SHA1-Digest: eQrhH9St5jmfAprYMHaJ8Gh+6uM=
+
+Name: assets/fonts/Marker Felt.ttf
+SHA1-Digest: vFUnWlDQkc9zR4FPP59c8D/Ppyg=
+
+Name: assets/ipadhd/sprites.png
+SHA1-Digest: RwOGJ2QCJMEskPsY5i23AW/REV8=
+
+Name: res/mipmap-hdpi-v4/ic_launcher.png
+SHA1-Digest: 7rQl6EYeTTp31EHiQqxTWNvHumI=
+
+Name: main/AndroidManifest.xml
+SHA1-Digest: 3YOOR4fJV+Wees6SHYCbA6E+zJU=
+
+Name: assets/ipadhd/glitter_line.plist
+SHA1-Digest: dioxK4FXJm5ApfhF95U0oX4CwUM=
+
+Name: assets/iphonehd/google-signin-btn.png
+SHA1-Digest: xgH7usYScQmUUI/QT19T5WKH/qU=
+
+Name: assets/iphonehd/bow-rope.plist
+SHA1-Digest: nZjxYAbXcVzAUaDmdFDm3gNu9K8=
+
+Name: resources.arsc
+SHA1-Digest: xxMdQwUsKY1K8XUGB+fqbBrCLn8=
+
+Name: assets/iphonehd/glow.pdproject
+SHA1-Digest: 3ln66yyY7X3iV6+Rz/EjyhfQsq8=
+
+Name: assets/ipadhd/modal-inventory-grid-container.png
+SHA1-Digest: P28Eiuc+K74nMgBzdfJVloeGDVg=
+
+Name: assets/ultra4k/google-signin-btn.png
+SHA1-Digest: fPy+reyTEE+iacL2Cooqfwygtes=
+
+Name: main/res/mipmap-xhdpi/ic_launcher.png
+SHA1-Digest: rY3aCVvdFmADv7C4HUEkWzhds+Y=
+
+Name: AndroidManifest.xml
+SHA1-Digest: Y5VBko8PGBisGIp92huPBkcPerk=
+
+Name: assets/ipadhd/glow_puff_blue.plist
+SHA1-Digest: 0YSfDlJV+ydGzmCnMd55q70O++Q=
+
+Name: assets/iphonehd5/green_dust.plist
+SHA1-Digest: yByUoel25fuH1tVDu5YdjGtjago=
+
+Name: assets/iphone/hearts.plist
+SHA1-Digest: CoRLzzdfRGluXjcAX/8jKamceQk=
+
+Name: assets/ipad/fireball_action.plist
+SHA1-Digest: eA9/3qKWLdHqGlG7FyNDrg9p0w8=
+
+Name: assets/iphonehd5/bg_debug_wider.png
+SHA1-Digest: XKtvJEuR9GCYGOY2uNzsPp2uT7w=
+
+Name: assets/ipadhd/bg2.png
+SHA1-Digest: lBWAtQfBXKk3UW0xd1gWzZL4fm8=
+
+Name: assets/ultra4k/sprites.png
+SHA1-Digest: F4V8wpjSO14yRcDBBOLmv18Mr1o=
+
+Name: assets/iphonehd5/bg2.png
+SHA1-Digest: wtGrrqwx527mcu0He5WmLYzOM8U=
+
+Name: assets/ipad/sprites.png
+SHA1-Digest: f2yAxu2tZNLs/y1FBhMnwAZMZ68=
+
+Name: assets/iphone/glow_ring.plist
+SHA1-Digest: N6n4nkfPVoZMLT9YdF/DfdL5Sv0=
+
+Name: assets/iphonehd5/sprites.plist
+SHA1-Digest: RDoWa8vUuliCDJUn2xBFAwyI5qI=
+
+Name: assets/ipad/glitter_line.plist
+SHA1-Digest: C0GHelZTc4XH/3KZ9xv0s1qAbyY=
+
+Name: assets/iphone/lineplosion.plist
+SHA1-Digest: FoZzlbs5oxbvT/7k8VahYOZevsM=
+
+Name: assets/iphone/google-signin-btn.png
+SHA1-Digest: kERIcVT6x+/ljd0SqbsxSqwl2HU=
+
+Name: assets/ultra4k/modal-inventory-grid-container.png
+SHA1-Digest: ucqvaDlB01G2Y2sVmsWO9YIhdY0=
+
+Name: assets/HelloWorld.png
+SHA1-Digest: BRM/TJ0o6AnpNo5wiy/rFca0lzY=
+
+Name: assets/fonts/arial.ttf
+SHA1-Digest: lKyITuOMN1+2kuuLHTBrC5QntKA=
+
+Name: assets/ipad/equip-slot-container.png
+SHA1-Digest: SkDauOYEsDOyUvKQ4rm+mNsas2k=
+
+Name: assets/fonts/BebasNeue Bold.ttf
+SHA1-Digest: CdNfJD6CpDFYqXPBZFi/Pwc1VpQ=
+
+Name: assets/iphonehd/modal-inventory-grid-container.png
+SHA1-Digest: ENHprmHPpQi3/WdhHCD0ZP2afGc=
+
+Name: assets/iphonehd/dashed-line.plist
+SHA1-Digest: wIwbqiCt/9lA37gS4aGedwB8eP0=
+
+Name: assets/iphonehd5/play-btn.png
+SHA1-Digest: Kwc3o2gNah1PW6goRSNG2fZrsqo=
+
+Name: assets/ultra4k/hearts.plist
+SHA1-Digest: N7YW6cULNEjlj1GsvB/KWi436O8=
+
+Name: assets/ultra4k/title-bg.png
+SHA1-Digest: v+tnzUMJZmIN9LDv5aHMcVAVFbQ=
+
+Name: assets/iphone/equip-slot-container.png
+SHA1-Digest: ywFwc5HJ6kw9ZvM8tP2yngvnrg4=
+
+Name: assets/ultra4k/sprites.plist
+SHA1-Digest: k3FDVMgv1kHRscJSZ4jfz/mAJho=
+
+Name: assets/iphonehd/green_beam.plist
+SHA1-Digest: mpumRIUgGwVrDyFo5WKrWARS08Y=
+
+Name: assets/ultra4k/flame.plist
+SHA1-Digest: sxW4RKr5BM/Ehp3ASyciKsJ091k=
+
+Name: assets/iphone/glow_puff_blue.plist
+SHA1-Digest: +nxspLYwHvwQpaz+T+aK891zTKI=
+
+Name: res/drawable-hdpi-v4/icon.png
+SHA1-Digest: nvYudrG28cCEcqXavSj+84Y9dyY=
+
+Name: assets/ultra4k/bg1.png
+SHA1-Digest: 1IltoI39i+uniyRGoc3LTWGvug0=
+
+Name: main/res/mipmap-hdpi/ic_launcher.png
+SHA1-Digest: nApjm8IHg0IbsEp6iNeAkiUdxWc=
+
+Name: assets/iphone/green_beam.plist
+SHA1-Digest: zZdoy/6RkwCUYVMxSPSkU6bxew8=
+
+Name: assets/iphonehd5/green_beam.plist
+SHA1-Digest: qReuapXXyteooLaRAjKEErdlb1c=
+
+Name: main/res/values/strings.xml
+SHA1-Digest: dgfZqCwc4Sv0fMqfEur53NoXrSE=
+
+Name: assets/ipadhd/glow_puff_purple.plist
+SHA1-Digest: kHayrWaf3H/b5ODyVykbloGgAGg=
+
+Name: assets/iphonehd5/title-bg.png
+SHA1-Digest: 83hBVrrxKKcmn2CfytnA7WCyxTI=
+
+Name: assets/ipadhd/glow.pdproject
+SHA1-Digest: 04JcvdsA/wpvrYXb0haugzhukmA=
+
+Name: assets/iphonehd5/grid_highlight.plist
+SHA1-Digest: soaI5FBoGaOkz2loB3Fd0mG4ljQ=
+
+Name: assets/iphone/bg_debug_wider.png
+SHA1-Digest: +7ZenOTCj/h8SIvvvQm/sYA9F8E=
+
+Name: assets/ultra4k/lineplosion.plist
+SHA1-Digest: UMCWUvK07vgtZgtUIXwQwX6/RrI=
+
+Name: assets/ipad/play-btn.png
+SHA1-Digest: n2+ra76Z5jwUWraYi5k7SQlCmIE=
+
+Name: assets/iphonehd/lineplosion.plist
+SHA1-Digest: HRbwMeADVVMEeB/aDHUnBq4/5Wo=
+
+Name: assets/iphonehd5/bg_debug.png
+SHA1-Digest: +uXU+e6SRA8L6nU1yGLSEIwRRf4=
+
+Name: assets/ultra4k/fireball_action.plist
+SHA1-Digest: IZ4zeb7h8Tqc4l0qV2JhA+yuEnA=
+
+Name: lib/armeabi/libcocos2dcpp.so
+SHA1-Digest: pq3EhiRABqe6786sgJKbTpzY3Ec=
+
+Name: assets/iphone/bg_debug.png
+SHA1-Digest: rQN7sSXWfM5E8n/ynS26RgTl4hI=
+
+Name: assets/ipadhd/fireball_action.plist
+SHA1-Digest: +3dQPfyWqW8Yse1dvD34aFLcOco=
+
+Name: assets/ipad/lineplosion.plist
+SHA1-Digest: S+WEDy1FJhR/RbOoRUUxqjmc9Vc=
+
+Name: assets/iphonehd5/glow.pdproject
+SHA1-Digest: jBNuOUNOvK2LezAJgKZdeQ5lubg=
+
+Name: main/res/drawable-hdpi/icon.png
+SHA1-Digest: RpP8YI+kxuXQ8dTtPWRTlEVsHLw=
+
+Name: assets/ipadhd/play-btn.png
+SHA1-Digest: IGYZkT819Wat+vxZUiWwHPyj4qM=
+
+Name: assets/ipad/bg1.png
+SHA1-Digest: uwMPmKYUjNBOeBVykXq2Wa7OE1c=
+
+Name: assets/ipadhd/green_dust.plist
+SHA1-Digest: HWEUBoOaUX6gEtykjTukweJp3Dw=
+
+Name: assets/ipadhd/break_block_color_smoke.plist
+SHA1-Digest: MfAU+lh0VnURDczNx67Hwt0VI3o=
+
+Name: assets/iphonehd5/break_block_color_smoke.plist
+SHA1-Digest: CCSa/CYC8RGC2zRPHmhdEECJx1Q=
+
+Name: res/drawable-ldpi-v4/icon.png
+SHA1-Digest: Ss+8QEwmfouUETiFBvw6tpm4KuM=
+
+Name: assets/ipadhd/bg1.png
+SHA1-Digest: FNtGARe2LAjE8SQpcxVL0giF3EM=
+
+Name: assets/iphonehd/fireball_action.plist
+SHA1-Digest: UeSuJYLNRRk85BIKrJvIWEGERfo=
+
+Name: assets/ultra4k/break_block_generic_smoke.plist
+SHA1-Digest: 55mdzOfrzFON/9GB7/fqTf3J2J4=
+
+Name: res/mipmap-xhdpi-v4/ic_launcher.png
+SHA1-Digest: he0u+MMYOPtjL0qaRCkw275Ntw0=
+
+Name: assets/iphone/sparkplosion.plist
+SHA1-Digest: ZAT6HALOCBXvP2lpldtrKjC6RN4=
+
+Name: main/res/drawable-ldpi/icon.png
+SHA1-Digest: gl3JfiwyAfGakAzWsKyL2HC7neU=
+
+Name: assets/ipadhd/google-signin-btn.png
+SHA1-Digest: xQ+zyMJ+zjw+xRGt2M44p24pmpo=
+
+Name: assets/ipad/green_dust.plist
+SHA1-Digest: Oht3W2soJuduEmc75Z0n4jP6IhQ=
+
+Name: assets/iphone/bow-rope.plist
+SHA1-Digest: QplftDuJXOM0dYdHs+h9cpa+Wdk=
+
+Name: assets/iphonehd5/sprites.png
+SHA1-Digest: 8RzJimkyKgMepGdW3Qa8bG/YQ7s=
+
+Name: assets/iphonehd/pulse_line.plist
+SHA1-Digest: BWAz3xAkDlAm3q/XfdwibDagpuA=
+
+Name: assets/ultra4k/glow.pdproject
+SHA1-Digest: 9c/Hdwg+N5TPTV9NBrhIEOAGb1U=
+
+Name: main/res/mipmap-mdpi/ic_launcher.png
+SHA1-Digest: dfRIyXo4Ci/xS4ppq/XR1JPdS6s=
+
+Name: assets/ipad/modal-bg.png
+SHA1-Digest: 6hEoZ5Pxg9aRTAfDGzON7OeDWN0=
+
+Name: assets/ipadhd/flame.plist
+SHA1-Digest: 1A/MeMyOVMsqP4opdAbLdE+mjQ0=
+
+Name: assets/ultra4k/glow_puff_purple.plist
+SHA1-Digest: InFPQoWLXCASuJ9WH0gOgQ3h+8Q=
+
+Name: assets/ipadhd/break_block_generic_smoke.plist
+SHA1-Digest: uO6EK7nAp9MkeLzhS+W3juq1POo=
+
+Name: assets/ipadhd/modal-bg.png
+SHA1-Digest: xZkYcRHHb8t7Jf+95vc+PWvnjv4=
+
+Name: assets/ultra4k/green_beam.plist
+SHA1-Digest: sqPt93Mhw9W9RXNVWZYTgPpuOFA=
+
+Name: assets/iphonehd/bg2.png
+SHA1-Digest: tGqWaugN+Mu+Cn9R4nZynOS30CY=
+
+Name: assets/ultra4k/bow-rope-directional.plist
+SHA1-Digest: Dziix5Hi8iyduI3t/Dw5eXQUKeM=
+
+Name: res/mipmap-xxxhdpi-v4/ic_launcher.png
+SHA1-Digest: iLOKwoF385humB5kq5Bq46YZBTo=
+
+Name: assets/iphone/green_dust.plist
+SHA1-Digest: eiOEGQLuHn5jB0Uclp+V2lSacqs=
+
+Name: assets/ultra4k/sparkplosion.plist
+SHA1-Digest: M4n3xqCvU1Nyk7L0vkTZc1FNHuA=
+
+Name: assets/iphonehd/bg_debug_wider.png
+SHA1-Digest: HGPz4qK37ox4AIAS1Ro6zARI/M8=
+
+Name: main/res/mipmap-xxxhdpi/ic_launcher.png
+SHA1-Digest: Ur/uQX8waj98+vK7r0brsDT9a0I=
+
+Name: assets/ultra4k/pulse_line.plist
+SHA1-Digest: GmXM1Zh88nqnrMbxzM8THr/PjYQ=
+
+Name: assets/ipadhd/grid_highlight.plist
+SHA1-Digest: IDNIvd0VrO3b0fIjjxXA7+5bfik=
+
+Name: assets/fonts/BebasNeue Light.ttf
+SHA1-Digest: O7h5ORqJVSnH/eUULtDIEzFrNgU=
+
+Name: assets/ultra4k/modal-bg.png
+SHA1-Digest: /t3gw3iFb7p8XvAsS3APqQoZhYo=
+
+Name: assets/iphonehd5/modal-inventory-grid-container.png
+SHA1-Digest: OJPIVKfHww6+oApQdSWRhm0PHiw=
+
+Name: assets/ipadhd/sprites.plist
+SHA1-Digest: U6Bm9v5toDCcHaGX9OpgPiabhYc=
+
+Name: assets/iphone/modal-inventory-grid-container.png
+SHA1-Digest: tBdJGN/ufr1CPSZgxR3tCGh6AoM=
+
+Name: assets/ipad/flame.plist
+SHA1-Digest: mcVFT5QVBSQh19EBA6tvFxEJfOQ=
+
+Name: assets/iphonehd/play-btn.png
+SHA1-Digest: Qv10+Gl+kmT4Nzj3U0Ygs7EiH9E=
+
+Name: assets/iphonehd5/hearts.plist
+SHA1-Digest: ybbIPtV58ImZZHn1raG2DhdwQ6Q=
+
+Name: assets/ipadhd/green_beam.plist
+SHA1-Digest: A9/ulOUBkYovc5qfs5sj0Ha4D8w=
+
+Name: assets/ultra4k/bg_debug.png
+SHA1-Digest: RXaec7kpTfBvlpBYGu7fiXUm7fE=
+
+Name: assets/ultra4k/grid_highlight.plist
+SHA1-Digest: DkfwSpa88Q6D+TaSWJSRBBDuT+Q=
+
+Name: assets/fonts/BebasNeue Thin.ttf
+SHA1-Digest: IQgHEU7ofCYtunWyq2KQkBb1UeI=
+
+Name: assets/iphonehd/bg1.png
+SHA1-Digest: ohbNGOAQ0RRAEW5JqAyt7lNTk0E=
+
+Name: assets/iphonehd5/sparkplosion.plist
+SHA1-Digest: nyjNu5yYrBPV7sk7wSyTBVttSGs=
+
+Name: assets/ipad/glow_puff_purple.plist
+SHA1-Digest: MZlrmXoFwSP87M8BYmFa5/aLBwo=
+
+Name: assets/ipad/green_beam.plist
+SHA1-Digest: AakcVPWkVDcOmyhwam6LQWPlggM=
+
+Name: assets/iphonehd/glow_puff_purple.plist
+SHA1-Digest: JOzoFNNxaF29oT9uImdce6JKhUQ=
+
+Name: main/res/mipmap-xxhdpi/ic_launcher.png
+SHA1-Digest: 3YaxbvCXAeYEknghCuEavsmoVPY=
+
+Name: assets/iphone/grid_highlight.plist
+SHA1-Digest: A+kRMfJZdVidJ+VIwj0U8vU8cvw=
+
+Name: assets/ipad/glow_puff_blue.plist
+SHA1-Digest: 2WTsz6FoSVLm2HpzUcGa5UZ5YvM=
+
+Name: assets/ultra4k/green_dust.plist
+SHA1-Digest: Q3Nf1C3fW/6vaYZD5vu6RT/KqEA=
+
+Name: assets/iphonehd5/lineplosion.plist
+SHA1-Digest: lFuSE+snEPp0MbxN9XeNR8dAGeQ=
+
+Name: assets/iphonehd/break_block_color_smoke.plist
+SHA1-Digest: aaYAYuhUE78bRH4rBzK5Qj1w/5k=
+
+Name: assets/fonts/BebasNeue Regular.ttf
+SHA1-Digest: PX9wEBCpyR4Q3UKljSEkgbHq72s=
+
+Name: assets/iphonehd/bow-rope-directional.plist
+SHA1-Digest: eWG6wKGH1U2Q9iLKRT2Hu2/NmOw=
+
+Name: assets/iphonehd/flame.plist
+SHA1-Digest: A3OX/GSbeNBFgLvSeS8iK+n1wCc=
+
+Name: assets/ipad/bow-rope.plist
+SHA1-Digest: QCIJ9K75l1J22mvILNnTez5NB6E=
+
+Name: assets/ultra4k/bg_debug_wider.png
+SHA1-Digest: 6meN2mj66/Ivp6HuE9Ai7lEQva8=
+
+Name: assets/ipadhd/dashed-line.plist
+SHA1-Digest: Ax59eZbH1OgqioWJz8SZbVxf8zU=
+
+Name: assets/ipad/glow.pdproject
+SHA1-Digest: mdAxyPcGXGAj/8RNUWn2LblI92c=
+
+Name: assets/iphonehd/sprites.plist
+SHA1-Digest: nBbfu/qLNow0brR0WZKbATTSqI4=
+
+Name: assets/iphonehd5/bow-rope.plist
+SHA1-Digest: IniZ/DVIDQY5MgR5oeh56C8sc6s=
+
+Name: assets/iphonehd5/pulse_line.plist
+SHA1-Digest: dhkAU0elLiZT6X6cCDJNFX2tge8=
+
+Name: assets/iphonehd5/break_block_generic_smoke.plist
+SHA1-Digest: dve2xuGqkN/CDBukEqMXpcemwiE=
+
+Name: assets/iphone/glow_puff_purple.plist
+SHA1-Digest: jFSE/fq8XDT4sEMAoe0dJHiF00E=
+
+Name: assets/ipad/sparkplosion.plist
+SHA1-Digest: 9kMfqlpGjBhSUsCQtQQVKDYzSio=
+
+Name: assets/ipad/pulse_line.plist
+SHA1-Digest: MYa86Opy3qwrBPFRtnTLweCGpe4=
+
+Name: assets/iphonehd5/glow_puff_blue.plist
+SHA1-Digest: 6qfVUcfYz4LOfwMV6/Nsf6+OkqM=
+
+Name: assets/ipadhd/equip-slot-container.png
+SHA1-Digest: 3XV0Jwk7EGX4BHWSOOIDSVm0+nE=
+
+Name: assets/iphone/glow_puff.plist
+SHA1-Digest: dYfTCb/hN8yFqFDhf/+W/bw1+DI=
+
+Name: assets/ipad/bg2.png
+SHA1-Digest: nUpvAGSCtweUknXAFo9rOP1urZI=
+
+Name: assets/iphone/sprites.plist
+SHA1-Digest: btYkz64XGrFxUGjuaGTjp+6eVeU=
+
+Name: assets/iphonehd/sparkplosion.plist
+SHA1-Digest: /O420HlO8e8JIXur4EFtEm2eISA=
+
+Name: assets/iphone/title-bg.png
+SHA1-Digest: qITSm3ILHpv0ZqzMqb/d3WTv0vQ=
+
+Name: assets/ipadhd/bow-rope-directional.plist
+SHA1-Digest: qp5QZ4MkEWSco9VE6CpUVXs10qI=
+
+Name: assets/iphone/break_block_generic_smoke.plist
+SHA1-Digest: dIj+E3roQQnDu7sQZ3wnE0Kbqh8=
+
+Name: assets/iphonehd/equip-slot-container.png
+SHA1-Digest: HIXoeFkvAj+OPYrYOpucT2UDX9A=
+
+Name: assets/iphonehd/green_dust.plist
+SHA1-Digest: 7cqUG9Cu/QCMIzTGC4kZUobVGd4=
+
+Name: assets/ultra4k/dashed-line.plist
+SHA1-Digest: DAMrfW+7aOJI69YUWhLh9wgIZLA=
+
+Name: assets/ipadhd/pulse_line.plist
+SHA1-Digest: fckCJT6XKuSOHuBJ4AtysPLXVdY=
+
+Name: assets/ipad/break_block_color_smoke.plist
+SHA1-Digest: Ra8neHFn5xHkyuCUsxq7B9xcEBc=
+
+Name: assets/iphonehd5/dashed-line.plist
+SHA1-Digest: 2qEWpCehMP3LPA0AyIjcBZct5oA=
+
+Name: res/mipmap-mdpi-v4/ic_launcher.png
+SHA1-Digest: eAe4aQ3DNPRP6pSEW0HgZPPU5nE=
+
+Name: assets/iphonehd5/glow_ring.plist
+SHA1-Digest: 1WjhJuvfFSQFNyxV/0xMLo2wGYA=
+
+Name: assets/iphonehd/bg_debug.png
+SHA1-Digest: lHpzxk/pMy8OjFfDl1Nvi/b/rro=
+
+Name: assets/iphone/sprites.png
+SHA1-Digest: v55D2PYekF+V3aAJ1JoFsalUmQo=
+
+Name: assets/fonts/BebasNeue Book.ttf
+SHA1-Digest: PPinshGQvbC6SSyr4rFoIVmllTo=
+
+Name: assets/iphonehd5/fireball_action.plist
+SHA1-Digest: sTnAQluLrVqe2i0YOTdZWFZsfkg=
+
+Name: assets/ipad/sprites.plist
+SHA1-Digest: wx49/hwgZL/03hJ4zszfMCy2SWU=
+
+Name: assets/ipad/dashed-line.plist
+SHA1-Digest: IJWsESvh+pGbPDoMjzhse/BrwO0=
+
+Name: lib/armeabi/gdbserver
+SHA1-Digest: Sf8kvjCHqXanb0NhU/x1prYewOM=
+
+Name: assets/ultra4k/glow_puff_blue.plist
+SHA1-Digest: zgwg75LAdohJXQlX2+4puiB0BW0=
+
+Name: res/drawable-mdpi-v4/icon.png
+SHA1-Digest: 5RoGtwWo/OKNKmj5J8s6uLL4xnI=
+
+Name: res/mipmap-xxhdpi-v4/ic_launcher.png
+SHA1-Digest: w8zlhwlle2aoufXsl5l6tyaB0OQ=
+
+Name: assets/iphonehd/glow_ring.plist
+SHA1-Digest: ip2ulpRo7Kl6t//yYA4JxZigFIA=
+
+Name: assets/iphonehd/title-bg.png
+SHA1-Digest: as3DXzRJjME6XSHglkgrNR6woUI=
+
+Name: assets/iphonehd5/modal-bg.png
+SHA1-Digest: f3G/idXoI+ydWWYGmG9cFQkHob8=
+
+Name: assets/iphone/glow.pdproject
+SHA1-Digest: yY+j/tts4PobWyFT404LAjmXhms=
+
+Name: assets/ultra4k/play-btn.png
+SHA1-Digest: 1u+nh1zPVH43VgTn8/g2S6tELi0=
+
+Name: assets/ipadhd/hearts.plist
+SHA1-Digest: JmR80irLwi4JZ73eC7EEkUS4G8A=
+
+Name: assets/iphonehd/grid_highlight.plist
+SHA1-Digest: Bq7/CcG9Fx7g5c1w/bOurZoEioA=
+
+Name: assets/iphonehd/modal-bg.png
+SHA1-Digest: CtWzrcM3xq4/NJq+wI9RFBEjipM=
+
+Name: assets/iphonehd5/glow_puff.plist
+SHA1-Digest: E+1mZjaIzqTkgrFA+HD2dhJ+lLo=
+
+Name: assets/iphonehd5/equip-slot-container.png
+SHA1-Digest: RyrgwCbuvmXjhaD9UppQGTrogsA=
+
+Name: assets/iphonehd5/glitter_line.plist
+SHA1-Digest: LtNXaSZjcOg9/5Swu5jdocQ7aIA=
+
+Name: assets/ipad/grid_highlight.plist
+SHA1-Digest: k7m51QK+HzUszNfT/VbJ5gAHZtg=
+
+Name: assets/ipad/google-signin-btn.png
+SHA1-Digest: GyQ4zop/n9Oz+o7wIQKPZkPkUOI=
+
+Name: assets/ultra4k/break_block_color_smoke.plist
+SHA1-Digest: Ef0qjQgLexHSfhvg+1Ok17JkFD4=
+
+Name: assets/iphone/dashed-line.plist
+SHA1-Digest: NVgs2JvtTeRBEc+pUgIYY+OhF38=
+
+Name: assets/ipad/break_block_generic_smoke.plist
+SHA1-Digest: JXGZELv7bN0NTJNRovpN8R+tnNU=
+
+Name: assets/ipad/glow_puff.plist
+SHA1-Digest: LkY9EFGAtuqQV2O6PDmEeIRAUxM=
+
+Name: assets/iphonehd5/glow_puff_purple.plist
+SHA1-Digest: XsCTnJMpv5gGHEc3XGgmifXTit0=
+
+Name: assets/iphonehd/glitter_line.plist
+SHA1-Digest: tr5e4o9+1Srmo4AhVqeQeivzevY=
+
+Name: assets/ipadhd/glow_puff.plist
+SHA1-Digest: RLVQHs4lY+Gvgv+ImzrevnNWGxQ=
+
+Name: assets/ipadhd/sparkplosion.plist
+SHA1-Digest: J74UB0l3HPInmgFC6Rs+RCNMPPw=
+
+Name: assets/ultra4k/glow_ring.plist
+SHA1-Digest: 8wSf1z10ekw4lW7Sl7KcRNgThts=
+
+Name: assets/iphone/modal-bg.png
+SHA1-Digest: 37QchyHuQq5m1I+EMyswMXDIHbw=
+
+Name: main/res/drawable-mdpi/icon.png
+SHA1-Digest: qjVK8cV7NUxiddjvhO2DQl/EAy8=
+
+Name: assets/iphone/bow-rope-directional.plist
+SHA1-Digest: F5skONiRxZgq5Le7CYad8DSPQt8=
+
+Name: assets/ipad/modal-inventory-grid-container.png
+SHA1-Digest: cJsU56EAYHaMPlvullkD5Urf5Pk=
+
+Name: assets/ipad/bow-rope-directional.plist
+SHA1-Digest: JzG8lVHe10ycH2w7Y39pys1NE6M=
+
+Name: assets/iphonehd5/bg1.png
+SHA1-Digest: K+v4B92wkX3+eMxvcVXK4NDG7rY=
+
+Name: assets/ipad/bg_debug.png
+SHA1-Digest: aePc6eOnKcbKRaPUSIfCy25RfbI=
+
+Name: assets/iphone/play-btn.png
+SHA1-Digest: WYs6wjV9Ttct4XCAU6yuHcbWYfg=
+
+Name: assets/iphone/bg1.png
+SHA1-Digest: /45mKixh4vV8IctfPfir1yWTPnA=
+
+Name: assets/ultra4k/bow-rope.plist
+SHA1-Digest: h2YebUqGSOqiXaMKm518nhJV9qM=
+
+Name: assets/ipadhd/bow-rope.plist
+SHA1-Digest: e7ZId2ukya7fzUxCuxn2vpH4zus=
+
+Name: assets/iphone/fireball_action.plist
+SHA1-Digest: KBIMsvVOCcRqac21El4udJlhtKk=
+
+Name: assets/iphone/glitter_line.plist
+SHA1-Digest: Vy+n5gQt1uY3Ed+Mu1YNwpUTtUs=
+
+Name: assets/ultra4k/equip-slot-container.png
+SHA1-Digest: gCbRIeT90I52qmKOsI7+0mvrh6w=
+
+Name: assets/ipad/hearts.plist
+SHA1-Digest: gXUMQdRhwyHOclL0jekjpv8B5mc=
+
+Name: assets/iphonehd/glow_puff.plist
+SHA1-Digest: dwEmKMryPC9x8+J5d97JP+fiy3c=
+
+Name: assets/ipadhd/bg_debug.png
+SHA1-Digest: IQQKPiBVWBfEGzkw8t3yC8sp31M=
+
+Name: assets/ipadhd/bg_debug_wider.png
+SHA1-Digest: QJzUDdkV/SQbUBzaCKTKOpmpLdw=
+
+Name: assets/iphonehd/sprites.png
+SHA1-Digest: 1KK2igioK4u5ooPZut64fJTRIdg=
+
+Name: assets/ipad/title-bg.png
+SHA1-Digest: CnmPaK4sMz2qgv67w54gZlXJqvM=
+
+Name: assets/iphonehd5/bow-rope-directional.plist
+SHA1-Digest: wfhPhr18AX3BCqzaMvNMgpdWvzE=
+
+Name: assets/iphonehd5/flame.plist
+SHA1-Digest: ZUKHgd/HXgzMLq8hknOc2LqFNlc=
+
+Name: assets/ipad/glow_ring.plist
+SHA1-Digest: xqQxGnAv4TG0kfmM/Q7CVblWGSE=
+
+Name: assets/ipadhd/glow_ring.plist
+SHA1-Digest: RluF/epI9kx5kO3zUZbYRQxp//M=
+
+Name: assets/ipadhd/lineplosion.plist
+SHA1-Digest: ge6ixaR7prsSrYioSh4f1I0+4fQ=
+
+Name: assets/ultra4k/glow_puff.plist
+SHA1-Digest: DUfXA1nO1+aSjNO3q9m+QRQudmc=
+
+Name: classes.dex
+SHA1-Digest: e7OClxW/bpVGoNRDciMJZhpdGEw=
+
+Name: assets/ultra4k/glitter_line.plist
+SHA1-Digest: YoxgKmLJD/AUL/YAo/57RW93Jpk=
+

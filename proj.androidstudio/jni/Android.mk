@@ -1,10 +1,48 @@
 LOCAL_PATH := $(call my-dir)
 
-include $(CLEAR_VARS)
-
 $(call import-add-path,$(LOCAL_PATH)/../../cocos2d)
 $(call import-add-path,$(LOCAL_PATH)/../../cocos2d/external)
 $(call import-add-path,$(LOCAL_PATH)/../../cocos2d/cocos)
+
+include $(CLEAR_VARS)
+
+ifeq ($(FIREBASE_CPP_SDK_DIR),)
+$(error FIREBASE_CPP_SDK_DIR must specify the Firebase package location.)
+endif
+
+# With Firebase libraries for the selected build configuration (ABI + STL)
+STL:=$(firstword $(subst _, ,$(APP_STL)))
+FIREBASE_LIBRARY_PATH:=\
+../$(FIREBASE_CPP_SDK_DIR)/libs/android/$(TARGET_ARCH_ABI)/$(STL)
+
+GPG_LIBRARY_PATH:=\
+../$(FIREBASE_CPP_SDK_DIR)/../gpg/android/lib/$(STL)/$(TARGET_ARCH_ABI)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE:=firebase_app
+LOCAL_SRC_FILES:=$(FIREBASE_LIBRARY_PATH)/libapp.a
+LOCAL_EXPORT_C_INCLUDES:=$(FIREBASE_CPP_SDK_DIR)/include
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE:=firebase_auth
+LOCAL_SRC_FILES:=$(FIREBASE_LIBRARY_PATH)/libauth.a
+LOCAL_EXPORT_C_INCLUDES:=$(FIREBASE_CPP_SDK_DIR)/include
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE:=firebase_analytics
+LOCAL_SRC_FILES:=$(FIREBASE_LIBRARY_PATH)/libanalytics.a
+LOCAL_EXPORT_C_INCLUDES:=$(FIREBASE_CPP_SDK_DIR)/include
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE:=gpg
+LOCAL_SRC_FILES:=$(GPG_LIBRARY_PATH)/libgpg.a
+LOCAL_EXPORT_C_INCLUDES:=$(FIREBASE_CPP_SDK_DIR)/../gpg/android/include
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
 
 LOCAL_MODULE := cocos2dcpp_shared
 
@@ -100,21 +138,37 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/jansson/value.c
 
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
-                    $(LOCAL_PATH)/../../Classes/NDKHelper \
-                    $(LOCAL_PATH)/../../Classes/jansson
+LOCAL_C_INCLUDES := 	$(LOCAL_PATH)/../../Classes \
+                    	$(LOCAL_PATH)/../../Classes/NDKHelper \
+                    	$(LOCAL_PATH)/../../Classes/jansson \
+                    	$(LOCAL_PATH)/../../cocos2d/external/firebase_cpp_sdk/include \
+                    	$(LOCAL_PATH)/../../cocos2d/external/gpg/android/include \
+#			$(NDK_ROOT)/sources/android/native_app_glue
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
 
 
-LOCAL_STATIC_LIBRARIES := cocos2dx_static firebase-prebuilt firebase-analytics firebase-auth
+LOCAL_STATIC_LIBRARIES :=\
+	cocos2dx_static \
+	firebase_app \
+	firebase_auth \
+	firebase_analytics \
+	gpg
+
+#LOCAL_WHOLE_STATIC_LIBRARIES:=\
+#	android_native_app_glue
 
 # _COCOS_LIB_ANDROID_BEGIN
 # _COCOS_LIB_ANDROID_END
 
+LOCAL_LDLIBS:=-llog -landroid -latomic
+LOCAL_ARM_MODE:=arm
+LOCAL_LDFLAGS:=-Wl,-z,defs -Wl,--no-undefined
 include $(BUILD_SHARED_LIBRARY)
 
+$(call import-add-path,$(NDK_ROOT)/sources/android)
+#$(call import-module,android/native_app_glue)
 $(call import-module,.)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN

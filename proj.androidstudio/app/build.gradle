@@ -2,37 +2,41 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-    useLibrary  'org.apache.http.legacy'
+    buildToolsVersion "23.0.1"
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.lasertoast.lorafel"
         minSdkVersion 14
-        targetSdkVersion 14
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
     sourceSets.main {
-        jniLibs.srcDir 'src/main/libs'
+        jni.srcDirs = []
+        jniLibs.srcDir 'src/main/jniLibs'
         // This is not necessary unless you have precompiled libraries in your project.
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFile getDefaultProguardFile('proguard-android.txt')
+//            proguardFile file("/Users/delorenj/code/cocos2d/external/firebase_cpp_sdk/libs/android/app.pro")
+//            proguardFile file("/Users/delorenj/code/cocos2d/external/firebase_cpp_sdk/libs/android/auth.pro")
+//        }
+//    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-//    compile 'com.google.firebase:firebase-auth:9.4.0'
-//    compile 'com.google.android.gms:play-services-base:9.4.0'
-//    compile 'org.apache.httpcomponents:httpcore:4.4.3'
     compile project(':libcocos2dx')
+    provided 'org.apache.httpcomponents:httpcore:4.4.3'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    compile 'com.google.android.gms:play-services-base:9.4.0'
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
 }
 
 // Pre-experimental Gradle plug-in NDK boilerplate below.
@@ -76,24 +80,25 @@ project.ext {
 apply plugin: 'com.google.gms.google-services'
 
 
-//task ndkBuildCompile(type:Exec) {
-//    description 'Use ndk-build to compile the C++ application.'
-//    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
-//            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
-//            sprintf("APP_PLATFORM=android-%d",
-//                    android.defaultConfig.minSdkVersion.mApiLevel))
-//}
+task ndkBuildCompile(type: Exec) {
+    description 'Use ndk-build to compile the C++ application.'
+    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
+            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
+            sprintf("APP_PLATFORM=android-%d",
+                    android.defaultConfig.minSdkVersion.mApiLevel)
+    )
+}
 //
-//task ndkBuildClean(type:Exec) {
-//    description 'Use ndk-build to clean the C++ application.'
-//    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
-//            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
-//            "clean")
-//}
+task ndkBuildClean(type: Exec) {
+    description 'Use ndk-build to clean the C++ application.'
+    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
+            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
+            "clean")
+}
 
 // Once the Android Gradle plug-in has generated tasks, add dependencies for
 // the ndk-build targets.
-//project.afterEvaluate {
-//    preBuild.dependsOn(ndkBuildCompile)
-//    clean.dependsOn(ndkBuildClean)
-//}
+project.afterEvaluate {
+    preBuild.dependsOn(ndkBuildCompile)
+    clean.dependsOn(ndkBuildClean)
+}

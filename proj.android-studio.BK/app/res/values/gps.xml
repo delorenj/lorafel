@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="firebase_database_url" translatable="false">https://lorafel-53908.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">517389322164</string>
+  <string name="google_api_key" translatable="false">AIzaSyBCJ0FG-shbjQHfP8SA8Ho0hnS6XC345-M</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBCJ0FG-shbjQHfP8SA8Ho0hnS6XC345-M</string>
+  <string name="google_app_id" translatable="false">1:517389322164:android:73fd08142777ef65</string>
+</resources>

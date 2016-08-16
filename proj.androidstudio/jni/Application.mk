@@ -10,3 +10,9 @@ else
   APP_CPPFLAGS += -DNDEBUG
   APP_OPTIM := release
 endif
+
+#APP_PLATFORM:=android-14
+#NDK_TOOLCHAIN_VERSION=clang
+APP_ABI:=armeabi
+#APP_STL:=c++_static
+APP_MODULES:=cocos2dcpp_shared

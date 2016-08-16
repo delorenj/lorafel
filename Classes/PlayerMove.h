@@ -25,7 +25,7 @@ namespace lorafel {
         virtual bool isValid() = 0;
 
         bool isMatched() { return m_isMatched; }
-        bool setMatched(bool matched) { m_isMatched = matched; }
+        void setMatched(bool matched) { m_isMatched = matched; }
         const std::vector<cocos2d::Action*>* getActions() const { return m_pActions; }
         int getTag() const { return m_tag; }
         void setTag(int tag) { m_tag = tag; }
