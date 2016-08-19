@@ -10,6 +10,12 @@
 
 using namespace lorafel;
 
+//#define CC_TARGET_PLATFORM CC_PLATFORM_ANDROID
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 TitleScene::~TitleScene() {
     NDKHelper::removeSelectorsInGroup("AuthStateMachineSelectors");
 }
@@ -61,9 +67,9 @@ bool TitleScene::init() {
     m_pGoogleSignInButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     m_pGoogleSignInButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
         if(type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-            Value v;
-            v.Null;
-            sendMessageWithParams("signIn", v);
+			Value v;
+			v.Null;
+			sendMessageWithParams("signIn", v);
         }
     });
 
