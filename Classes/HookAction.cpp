@@ -12,7 +12,7 @@ void HookAction::run() {
     GameStateMachine::getInstance()->setState<HookFireStartState>();
     auto distance = m_pArrow->getPosition().getDistanceSq(PTILE_CENTER(m_pArrow->getParent()));
     float mag = 50000 + distance*2;
-    m_pArrow->getPhysicsBody()->applyImpulse(m_pArrow->getPhysicsBody()->local2World(cocos2d::Vec2(0,mag)));
+    m_pArrow->getPhysicsBody()->applyImpulse(cocos2d::Vec2(0,mag));
     m_pSwappyGrid->scheduleOnce(schedule_selector(Hook::onArrowTimeout), 1.0f);
 }
 
