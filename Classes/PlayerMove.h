@@ -13,12 +13,8 @@ namespace lorafel {
     public:
         PlayerMove(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
 
-//        virtual ~PlayerMove() {
-//            CCLOG("~PlayerMove()");
-//            if(m_pActions != nullptr) {
-//                CC_SAFE_DELETE(m_pActions);
-//            }
-//        };
+        virtual ~PlayerMove() {
+        };
 
         virtual void run() = 0;
         virtual void cancel() = 0;

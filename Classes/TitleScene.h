@@ -18,7 +18,9 @@ namespace lorafel {
         CREATE_FUNC(TitleScene);
 
         virtual void update(float delta) override;
-
+        void loadPlayer(cocos2d::Node* sender, cocos2d::Value data);
+        void changeStateSelector(cocos2d::Node* sender, cocos2d::Value data);
+        
     protected:
         cocos2d::Sprite* m_pBackground;
         StateMachine* m_pStateMachine;
@@ -26,7 +28,8 @@ namespace lorafel {
         cocos2d::Sprite* m_pLoader;
         cocos2d::ui::Button* m_pGoogleSignInButton;
 
-        void changeStateSelector(cocos2d::Node* sender, cocos2d::Value data);
+        
+        
     };
 }
 

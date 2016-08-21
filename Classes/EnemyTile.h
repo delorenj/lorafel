@@ -23,7 +23,7 @@ namespace lorafel {
 
         virtual const unsigned int getMinMatchSize() const override { return MIN_MATCH_SIZE+1; }
         virtual Tile* getRandomGlyph();
-        virtual bool isSwappable();
+        virtual bool isSwappable() override;
         virtual bool isMatch(Tile* pTile) const override {
             // Enemy tile matches all tiles for now
             return true;

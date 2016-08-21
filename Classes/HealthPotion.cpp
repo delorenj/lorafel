@@ -80,6 +80,7 @@ bool HealthPotion::addToInventory() {
     auto inventory = PlayerManager::getInstance()->getPlayer()->getInventory();
     inventory->addItem(this);
     _eventDispatcher->dispatchCustomEvent("itemAdded", this);
+    return true;
 }
 
 void HealthPotion::initItemName() {

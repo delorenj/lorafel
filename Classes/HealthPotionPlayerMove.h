@@ -13,7 +13,7 @@ namespace lorafel {
     class HealthPotionPlayerMove : public PlayerMove {
 
     public:
-        virtual void cancel();
+        virtual void cancel() override;
 
         virtual bool isValid() override;
         virtual void run() override;

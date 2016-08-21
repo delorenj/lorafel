@@ -22,6 +22,7 @@ bool LootTile::init() {
  */
 bool LootTile::addToInventory() {
     m_pLootItem->addToInventory();
+    return true;
 }
 
 

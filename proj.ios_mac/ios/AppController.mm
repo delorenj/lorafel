@@ -28,6 +28,7 @@
 #import "RootViewController.h"
 #import "FIRAuth.h"
 #import "FIRUser.h"
+#import "Firebase.h"
 #import "FIRGoogleAuthProvider.h"
 #import "IOSNDKHelper.h"
 
@@ -93,7 +94,7 @@ static AppDelegate s_sharedApplication;
 //
     [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
     [GIDSignIn sharedInstance].delegate = self;
-
+    
     app->run();
 
     return YES;
@@ -189,6 +190,18 @@ static AppDelegate s_sharedApplication;
                                   completion:^(FIRUser *u, NSError *e) {
                                       NSDictionary *p = @{@"state" : @"LoggedInState"};
                                       [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:p];
+                                      NSString *userID = u.uid;
+                                      _db = [[FIRDatabase database] reference];
+                                      [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                                          if(snapshot.exists) {
+                                              NSDictionary *user = snapshot.value;
+                                              [IOSNDKHelper sendMessage:@"loadPlayer" withParameters:user];
+                                          }
+                                          
+                                      } withCancelBlock:^(NSError * _Nonnull error) {
+                                          NSLog(@"%@", error.localizedDescription);
+                                      }];
+                                      
                                   }];
         parameters = @{@"state" : @"AuthenticatingState"};
 

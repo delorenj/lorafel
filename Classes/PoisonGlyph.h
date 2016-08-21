@@ -10,7 +10,7 @@
 namespace lorafel {
     class PoisonGlyph : public GlyphTile {
     public:
-        virtual void onMatch(Match* pMatch);
+        virtual void onMatch(Match* pMatch) override;
 
         virtual bool init() override;
         CREATE_FUNC(PoisonGlyph);

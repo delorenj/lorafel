@@ -13,11 +13,11 @@ namespace lorafel {
         bool init() override;
         CREATE_FUNC(FireballActionTile);
         void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) override;
-        virtual int getMpCost();
+        virtual int getMpCost() override;
 
     protected:
 
-        virtual void instantiatePlayerMove(Tile* pTile);
+        virtual void instantiatePlayerMove(Tile* pTile) override;
 
     };
 }

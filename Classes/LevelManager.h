@@ -34,25 +34,26 @@ namespace lorafel {
 
         // Increase the current XP amount by 'xp'
         virtual const unsigned long incrementXpBy(int xp, Match *pMatch) {
-                // If XP was enough to level player
-                // then fire off a levelup event
-                if(xp >= getLevelUpIn()) {
-                        cocos2d::EventCustom levelEvent("levelup");
-                        EventData* levelVal = new EventDataInteger((int) (getLevel()+1));
-                        levelEvent.setUserData(levelVal);
-                        m_pDispatcher->dispatchEvent(&levelEvent);
-                        CC_SAFE_DELETE(levelVal);
-                }
-
-                // Increment player xp
-                m_xp += xp;
-
-                // Fire off an XP event
-                cocos2d::EventCustom e("xp");
-                EventData* val = new EventDataFloatie(xp, pMatch->getTileSetCenter());
-                e.setUserData(val);
-                m_pDispatcher->dispatchEvent(&e);
-                CC_SAFE_DELETE(val);
+            // If XP was enough to level player
+            // then fire off a levelup event
+            if(xp >= getLevelUpIn()) {
+                cocos2d::EventCustom levelEvent("levelup");
+                EventData* levelVal = new EventDataInteger((int) (getLevel()+1));
+                levelEvent.setUserData(levelVal);
+                m_pDispatcher->dispatchEvent(&levelEvent);
+                CC_SAFE_DELETE(levelVal);
+            }
+            
+            // Increment player xp
+            m_xp += xp;
+            
+            // Fire off an XP event
+            cocos2d::EventCustom e("xp");
+            EventData* val = new EventDataFloatie(xp, pMatch->getTileSetCenter());
+            e.setUserData(val);
+            m_pDispatcher->dispatchEvent(&e);
+            CC_SAFE_DELETE(val);
+            return m_xp;
         }
 
         // Converts xp to level

@@ -225,17 +225,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // load the Sprite Sheet
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprites.plist");
 
-    auto userEmail = UserDefault::getInstance()->getStringForKey("email");
-
-    // load the player data
-    // TODO: Make secure using server-side code and encryption
-    auto player = lorafel::PlayerManager::getInstance()->loadPlayer(userEmail);
-
-    // No player found!
-    // make a new one!
-    // Or...wrong email?
-    CCASSERT(player, "Player not found!");
-
     lorafel::FirebaseAuth::getInstance()->getApp();
 
     // create a scene. it's an autorelease object

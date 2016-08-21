@@ -16,7 +16,7 @@
 namespace lorafel {
     FirebaseAuth* FirebaseAuth::_instance;
 
-    ::firebase::App* FirebaseAuth::getApp() {
+    firebase::App* FirebaseAuth::getApp() {
         if(m_pApp == nullptr) {
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
                 CCLOG("About to create the Firebase app");

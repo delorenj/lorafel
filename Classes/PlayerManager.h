@@ -22,7 +22,7 @@ namespace lorafel {
             return _instance;
         }
 
-        Player* loadPlayer(std::string email) {
+        Player* loadPlayer() {
             if(m_pPlayer != nullptr) {
                 delete m_pPlayer;
                 m_pPlayer = nullptr;

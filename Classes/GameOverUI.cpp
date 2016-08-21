@@ -97,7 +97,7 @@ void GameOverUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEvent
     if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
         cocos2d::Director::getInstance()->getRunningScene()->removeFromParentAndCleanup(true);
         cocos2d::Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
-        PlayerManager::getInstance()->loadPlayer("some_email@balls.net");
+        PlayerManager::getInstance()->loadPlayer();
 
         auto newScene = TestScene::createScene();
         cocos2d::Director::getInstance()->replaceScene(

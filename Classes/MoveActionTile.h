@@ -16,7 +16,7 @@ namespace lorafel {
         CREATE_FUNC(MoveActionTile);
 
     protected:
-        void toggleAction();
+        void toggleAction() override;
     };
 };
 

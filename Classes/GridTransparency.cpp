@@ -127,4 +127,6 @@ cocos2d::Sprite* GridTransparency::createTile(GridTransparency::Tile tile) {
         s->setOpacity(GridTransparency::opacity);
         return s;
     }
+    
+    return nullptr;
 }

@@ -94,7 +94,7 @@ InGameModal* InGameModal::createAndDropIn(cocos2d::Node* container) {
     return modal;
 }
 
-InGameModal* InGameModal::dismiss(std::function<void(void)> callback) {
+void InGameModal::dismiss(std::function<void(void)> callback) {
     auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 

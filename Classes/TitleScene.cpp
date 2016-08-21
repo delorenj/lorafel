@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "FirebaseAuth.h"
 #include "TestScene.h"
+#include "PlayerManager.h"
 #include "NDKHelper/NDKHelper.h"
 
 using namespace lorafel;
@@ -18,6 +19,7 @@ using namespace lorafel;
 
 TitleScene::~TitleScene() {
     NDKHelper::removeSelectorsInGroup("AuthStateMachineSelectors");
+    NDKHelper::removeSelectorsInGroup("PlayerManagerSelectors");
 }
 
 cocos2d::Scene* TitleScene::createScene() {
@@ -59,6 +61,7 @@ bool TitleScene::init() {
         }
     });
 
+
     addChild(m_pPlayButton, LayerOrder::UX);
 
     m_pGoogleSignInButton = cocos2d::ui::Button::create("google-signin-btn.png");
@@ -87,9 +90,19 @@ bool TitleScene::init() {
             CC_CALLBACK_2(TitleScene::changeStateSelector, this),
             this);
 
+    NDKHelper::addSelector("PlayerManagerSelectors",
+                           "loadPlayer",
+                           CC_CALLBACK_2(TitleScene::loadPlayer, this),
+                           this);
+
     scheduleUpdate();
 
     return true;
+}
+
+void TitleScene::loadPlayer(cocos2d::Node* sender, cocos2d::Value data) {
+    CCLOG("Loading player from native login...");
+    PlayerManager::getInstance()->loadPlayer();
 }
 
 void TitleScene::changeStateSelector(cocos2d::Node* sender, cocos2d::Value data) {

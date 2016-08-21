@@ -275,6 +275,13 @@
 			remoteGlobalIDString = A07A4C241783777C0073F6A7;
 			remoteInfo = "cocos2dx iOS";
 		};
+		BA4021CB1D67B22100D0DA05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
+			remoteInfo = "libcocos2d tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -674,6 +681,7 @@
 			children = (
 				1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
+				BA4021CC1D67B22100D0DA05 /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1145,6 +1153,13 @@
 			fileType = archive.ar;
 			path = "libcocos2d iOS.a";
 			remoteRef = 1AC6FB06180E9839004C840B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BA4021CC1D67B22100D0DA05 /* libcocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d tvOS.a";
+			remoteRef = BA4021CB1D67B22100D0DA05 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1682,8 +1697,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/editor-support",
 					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/external",
-					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
+					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1720,8 +1735,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/editor-support",
 					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/external",
-					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
+					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

@@ -11,7 +11,7 @@
 namespace lorafel {
     class StormGlyph : public GlyphTile {
     public:
-        virtual void onMatch(Match* pMatch);
+        virtual void onMatch(Match* pMatch) override;
         virtual bool init() override;
         CREATE_FUNC(StormGlyph);
 

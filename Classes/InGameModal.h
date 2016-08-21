@@ -16,7 +16,7 @@ namespace lorafel {
         CREATE_FUNC(InGameModal);
 
         static InGameModal* createAndDropIn(cocos2d::Node* container);
-        InGameModal* dismiss(std::function<void(void)> callback);
+        void dismiss(std::function<void(void)> callback);
 
     protected:
         const std::vector<const char*> NAV_BUTTONS = {

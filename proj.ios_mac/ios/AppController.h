@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <SignIn.h>
+#import "Firebase.h"
 
 @class RootViewController;
 
@@ -8,6 +9,7 @@
 }
 
 @property(nonatomic, readonly) RootViewController* viewController;
+@property (strong, nonatomic) FIRDatabaseReference *db;
 
 @end
 
