@@ -102,7 +102,20 @@ bool TitleScene::init() {
 
 void TitleScene::loadPlayer(cocos2d::Node* sender, cocos2d::Value data) {
     CCLOG("Loading player from native login...");
-    PlayerManager::getInstance()->loadPlayer();
+
+	if (!data.isNull() && data.getType() == Value::Type::MAP) {
+		ValueMap valueMap = data.asValueMap();
+
+		ValueVector itemVec = valueMap["items"].asValueVector();
+		for(auto itemVal : itemVec) {
+			ValueMap itemValMap = itemVal.asValueMap();
+			std::string itemName = itemValMap["name"].asString();
+			int itemQuantity = itemValMap["quantity"].asInt();
+			CCLOG("Response sent from native: %s : %d", itemName.c_str(), itemQuantity);
+		}
+	}
+
+	PlayerManager::getInstance()->loadPlayer();
 }
 
 void TitleScene::changeStateSelector(cocos2d::Node* sender, cocos2d::Value data) {
