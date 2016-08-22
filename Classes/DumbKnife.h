@@ -5,6 +5,8 @@
 #ifndef LORAFEL_DUMBKNIFE_H
 #define LORAFEL_DUMBKNIFE_H
 
+#include "Player.h"
+
 namespace lorafel {
     class DumbKnife : public Weapon {
     public:

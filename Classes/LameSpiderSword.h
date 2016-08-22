@@ -7,6 +7,7 @@
 
 
 #include "Weapon.h"
+#include "Player.h"
 
 namespace lorafel {
     class LameSpiderSword : public Weapon {

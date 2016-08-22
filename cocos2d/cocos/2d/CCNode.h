@@ -40,8 +40,6 @@
 
 #if CC_USE_PHYSICS
 #include "physics/CCPhysicsBody.h"
-	#import "FirebaseDatabase.h"
-
 #endif
 
 NS_CC_BEGIN

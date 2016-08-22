@@ -8,6 +8,7 @@
 #include "TestScene.h"
 #include "PlayerManager.h"
 #include "NDKHelper/NDKHelper.h"
+#include "FirebaseDatabase.h"
 
 using namespace lorafel;
 
@@ -25,7 +26,15 @@ TitleScene::~TitleScene() {
 cocos2d::Scene* TitleScene::createScene() {
     auto scene = cocos2d::Scene::create();
     auto layer = TitleScene::create();
-    scene->addChild(layer);
+
+	/**
+	 * Need to make sure this is called at least once
+	 * to call the init() method and get the NDKHelper
+	 * Listners registered for post-query callback
+	 */
+	auto db = lorafel::FirebaseDatabase::getInstance();
+	layer->addChild(db);
+	scene->addChild(layer);
     return scene;
 }
 

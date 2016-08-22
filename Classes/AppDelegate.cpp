@@ -11,6 +11,7 @@
 #include "firebase/app.h"
 #include "firebase/auth.h"
 #include "FirebaseAuth.h"
+#include "FirebaseDatabase.h"
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "platform/android/jni/JniHelper.h"
