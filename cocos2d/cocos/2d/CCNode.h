@@ -40,6 +40,8 @@
 
 #if CC_USE_PHYSICS
 #include "physics/CCPhysicsBody.h"
+	#import "FirebaseDatabase.h"
+
 #endif
 
 NS_CC_BEGIN
@@ -106,8 +108,7 @@ class EventListener;
 
  */
 
-class CC_DLL Node : public Ref
-{
+class CC_DLL Node : public Ref {
 public:
     /** Default tag used for all the nodes */
     static const int INVALID_TAG = -1;

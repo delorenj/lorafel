@@ -195,7 +195,7 @@ static AppDelegate s_sharedApplication;
                                       [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                                           if(snapshot.exists) {
                                               NSDictionary *user = snapshot.value;
-                                              [IOSNDKHelper sendMessage:@"loadPlayer" withParameters:user];
+                                              [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
                                           }
                                           
                                       } withCancelBlock:^(NSError * _Nonnull error) {

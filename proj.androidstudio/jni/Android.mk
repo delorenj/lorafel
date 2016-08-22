@@ -64,6 +64,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/FireballAction.cpp \
                    ../../Classes/FireballActionTile.cpp \
                    ../../Classes/FirebaseAuth.cpp \
+                   ../../Classes/FirebaseDatabase.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameOverUI.cpp \
                    ../../Classes/GameStateMachine.cpp \
@@ -89,6 +90,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/InventoryItemSlot.cpp \
                    ../../Classes/InventoryModal.cpp \
                    ../../Classes/Item.cpp \
+                   ../../Classes/ItemFactory.cpp \
                    ../../Classes/ItemSlot.cpp \
                    ../../Classes/Level.cpp \
                    ../../Classes/LootFactory.cpp \

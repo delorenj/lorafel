@@ -18,7 +18,7 @@ namespace lorafel {
         CREATE_FUNC(TitleScene);
 
         virtual void update(float delta) override;
-        void loadPlayer(cocos2d::Node* sender, cocos2d::Value data);
+        void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
         void changeStateSelector(cocos2d::Node* sender, cocos2d::Value data);
         
     protected:

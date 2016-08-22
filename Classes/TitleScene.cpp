@@ -90,32 +90,9 @@ bool TitleScene::init() {
             CC_CALLBACK_2(TitleScene::changeStateSelector, this),
             this);
 
-    NDKHelper::addSelector("PlayerManagerSelectors",
-                           "loadPlayer",
-                           CC_CALLBACK_2(TitleScene::loadPlayer, this),
-                           this);
-
     scheduleUpdate();
 
     return true;
-}
-
-void TitleScene::loadPlayer(cocos2d::Node* sender, cocos2d::Value data) {
-    CCLOG("Loading player from native login...");
-
-	if (!data.isNull() && data.getType() == Value::Type::MAP) {
-		ValueMap valueMap = data.asValueMap();
-
-		ValueVector itemVec = valueMap["items"].asValueVector();
-		for(auto itemVal : itemVec) {
-			ValueMap itemValMap = itemVal.asValueMap();
-			std::string itemName = itemValMap["name"].asString();
-			int itemQuantity = itemValMap["quantity"].asInt();
-			CCLOG("Response sent from native: %s : %d", itemName.c_str(), itemQuantity);
-		}
-	}
-
-	PlayerManager::getInstance()->loadPlayer();
 }
 
 void TitleScene::changeStateSelector(cocos2d::Node* sender, cocos2d::Value data) {

@@ -60,6 +60,7 @@
 		3167D504F192517D21351ACE /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D54A4D2622CCBA2C1C23 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */; };
 		3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
+		3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8F18F0E180942D55C28 /* ItemFactory.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
 		3167D5A540E9B6193A66BB3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DDB9CD851C38F804AA16 /* Rope.cpp */; };
@@ -69,7 +70,6 @@
 		3167D5E1B7AD3365164EE8A5 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */; };
 		3167D60596F53704DD288960 /* InventoryEquipGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9AC0E3B47D08E906C6D /* InventoryEquipGrid.cpp */; };
 		3167D606ED8469EF170CDF8B /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
-		3167D624FF2686415353C773 /* FirebaseDatabaseClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD39A3AC40F3E7AED8C7 /* FirebaseDatabaseClient.cpp */; };
 		3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167D64077AEEE55678E4EFD /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
 		3167D65F57002125C096ED0A /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
@@ -78,6 +78,7 @@
 		3167D6D7B1CC04F2E6CF6106 /* LootTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D39657152A6F3BCEEF46 /* LootTile.cpp */; };
 		3167D6F8F2A29344F1DF6E1F /* EquipItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D64DF3736FBC3CEF6B10 /* EquipItemSlot.cpp */; };
 		3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
+		3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */; };
 		3167D714D9CA38C5BBB01890 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
 		3167D75C677F0DBEBA8BE404 /* FirebaseAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */; };
 		3167D79C492BD952CEAC2A15 /* StatGuage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */; };
@@ -122,7 +123,6 @@
 		3167DCC0B85739D1C7FA47BB /* Consumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */; };
 		3167DCF900001EFC72F5EAE9 /* StormGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D67C7D373CBDF45F687F /* StormGlyph.cpp */; };
 		3167DD1DC8FE58A7F4E8800A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
-		3167DD3DF09D859665AE4AB7 /* FirebaseDatabaseClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD39A3AC40F3E7AED8C7 /* FirebaseDatabaseClient.cpp */; };
 		3167DD565943EAC37EC854CF /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
 		3167DD59027337A1D754F1B5 /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
 		3167DD9D019CAA55E69B3F40 /* ActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D89630700CB559F19ED5 /* ActionTile.cpp */; };
@@ -352,8 +352,8 @@
 		3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldUI.h; sourceTree = "<group>"; };
 		3167D57BA3A0CF8847F33AD6 /* LameSpiderSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameSpiderSword.h; sourceTree = "<group>"; };
 		3167D57F44E44D04FA0913E8 /* HeroTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroTile.cpp; sourceTree = "<group>"; };
+		3167D581C26696931B24E901 /* FirebaseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseDatabase.h; sourceTree = "<group>"; };
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
-		3167D58B10102E6AC9CC54ED /* FirebaseDatabaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseDatabaseClient.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
 		3167D5D41FB1ADDFF5FF59D5 /* LameSpiderSwordTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameSpiderSwordTile.h; sourceTree = "<group>"; };
@@ -375,6 +375,7 @@
 		3167D7411B55CD0C1499942D /* EventDataInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataInteger.h; sourceTree = "<group>"; };
 		3167D74728B7D5D4FADC213D /* Level__TestLevelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelTwo.h; sourceTree = "<group>"; };
 		3167D7496BDEFAAC3CD161CF /* GrapeTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeTile.h; sourceTree = "<group>"; };
+		3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirebaseDatabase.cpp; sourceTree = "<group>"; };
 		3167D7564FDA1E75B77C2270 /* MatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResult.h; sourceTree = "<group>"; };
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
@@ -394,6 +395,7 @@
 		3167D89630700CB559F19ED5 /* ActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionTile.cpp; sourceTree = "<group>"; };
 		3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemSlot.cpp; sourceTree = "<group>"; };
 		3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryModal.cpp; sourceTree = "<group>"; };
+		3167D8F18F0E180942D55C28 /* ItemFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemFactory.cpp; sourceTree = "<group>"; };
 		3167D8FD5B6617C26519A0D4 /* HealthPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotion.h; sourceTree = "<group>"; };
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
 		3167D9296BC28553AF292A0E /* Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serializer.h; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
+		3167DAE65E005076FC3B717A /* ItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFactory.h; sourceTree = "<group>"; };
 		3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		3167DAFD0D1B6CD25B352054 /* InGameModalNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameModalNavButton.h; sourceTree = "<group>"; };
 		3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldUI.cpp; sourceTree = "<group>"; };
@@ -443,7 +446,6 @@
 		3167DCDDEEFA942DCACD39F3 /* TurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnManager.h; sourceTree = "<group>"; };
 		3167DCE5F6560AA6833ED344 /* EventDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataItem.h; sourceTree = "<group>"; };
 		3167DD115E1C613057E511F9 /* InGameModalNavButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameModalNavButton.cpp; sourceTree = "<group>"; };
-		3167DD39A3AC40F3E7AED8C7 /* FirebaseDatabaseClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirebaseDatabaseClient.cpp; sourceTree = "<group>"; };
 		3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphTile.cpp; sourceTree = "<group>"; };
 		3167DD765D888EB77000827F /* EventDataFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataFloatie.h; sourceTree = "<group>"; };
 		3167DD81C73EF6CDF3B800CD /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -955,14 +957,16 @@
 				3167D2677BC18E2A72ED452C /* EquipSerializer.h */,
 				3167DC270BA4E3C90A1B810B /* InventorySlotSerializer.h */,
 				3167D9296BC28553AF292A0E /* Serializer.h */,
-				3167DD39A3AC40F3E7AED8C7 /* FirebaseDatabaseClient.cpp */,
-				3167D58B10102E6AC9CC54ED /* FirebaseDatabaseClient.h */,
 				3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */,
 				3167DF666AD0134D168F02B9 /* FirebaseAuth.h */,
 				3167DFBEA685F2B1A1A06B40 /* AuthStateMachine.cpp */,
 				3167D2E745B6EC79C8154279 /* AuthStateMachine.h */,
 				3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */,
 				3167D1D5D5DB2A51FA4BD953 /* TitleScene.h */,
+				3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */,
+				3167D581C26696931B24E901 /* FirebaseDatabase.h */,
+				3167D8F18F0E180942D55C28 /* ItemFactory.cpp */,
+				3167DAE65E005076FC3B717A /* ItemFactory.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1410,10 +1414,11 @@
 				3167DA42A1A77BF1709EBF74 /* InventoryEquipGrid.cpp in Sources */,
 				3167D48F90EAF43F43E8B8A9 /* ItemSlot.cpp in Sources */,
 				3167D6F8F2A29344F1DF6E1F /* EquipItemSlot.cpp in Sources */,
-				3167DD3DF09D859665AE4AB7 /* FirebaseDatabaseClient.cpp in Sources */,
 				3167D97CD71AA280E641658E /* FirebaseAuth.cpp in Sources */,
 				3167D30EE290D9EB9C855460 /* AuthStateMachine.cpp in Sources */,
 				3167D54A4D2622CCBA2C1C23 /* TitleScene.cpp in Sources */,
+				3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */,
+				3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1489,7 +1494,6 @@
 				3167D60596F53704DD288960 /* InventoryEquipGrid.cpp in Sources */,
 				3167DF9D4B256CCF243DC62E /* ItemSlot.cpp in Sources */,
 				3167DEEA746D5995C56A9E8E /* EquipItemSlot.cpp in Sources */,
-				3167D624FF2686415353C773 /* FirebaseDatabaseClient.cpp in Sources */,
 				3167D75C677F0DBEBA8BE404 /* FirebaseAuth.cpp in Sources */,
 				3167DF6E54E4C08102D161E5 /* AuthStateMachine.cpp in Sources */,
 				3167D5E1B7AD3365164EE8A5 /* TitleScene.cpp in Sources */,
