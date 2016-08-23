@@ -26,9 +26,13 @@
 #import <UIKit/UIKit.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 
+@class FIRDatabaseReference;
+
 @interface RootViewController : UIViewController <GIDSignInUIDelegate> {
 
 }
 - (BOOL) prefersStatusBarHidden;
+
+@property (strong, nonatomic) FIRDatabaseReference *db;
 
 @end

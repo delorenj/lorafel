@@ -6,9 +6,7 @@
 #include "Globals.h"
 #include "FirebaseAuth.h"
 #include "TestScene.h"
-#include "PlayerManager.h"
 #include "NDKHelper/NDKHelper.h"
-#include "FirebaseDatabase.h"
 
 using namespace lorafel;
 
@@ -20,7 +18,6 @@ using namespace lorafel;
 
 TitleScene::~TitleScene() {
     NDKHelper::removeSelectorsInGroup("AuthStateMachineSelectors");
-    NDKHelper::removeSelectorsInGroup("PlayerManagerSelectors");
 }
 
 cocos2d::Scene* TitleScene::createScene() {

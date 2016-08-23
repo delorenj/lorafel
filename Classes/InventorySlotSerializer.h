@@ -8,6 +8,7 @@
 #include "Serializer.h"
 #include "StringPatch.h"
 #include "Globals.h"
+#include "FirebaseDatabase.h"
 
 namespace lorafel {
     class InventorySlotSerializer : public Serializer<std::pair<int, int>, std::pair<std::string, int> > {
@@ -23,11 +24,13 @@ namespace lorafel {
             }
             auto combo = std::string(itemName + "|" + stackSize);
             cocos2d::UserDefault::getInstance()->setStringForKey(hash.c_str(), combo);
+            FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_slot_layout");
         }
 
         std::pair<std::string, int> unserialize(std::pair<int, int> key) override {
             auto hash = getHash(key);
             auto value = cocos2d::UserDefault::getInstance()->getStringForKey(hash.c_str());
+//            std::string value = FirebaseDatabase::getInstance()->getStringForKey(hash.c_str(), "inventory_slot_layout");
 
             if(value == "") {
                 return std::make_pair("", 0);

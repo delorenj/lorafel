@@ -5,9 +5,15 @@
 #ifndef LORAFEL_FIREBASEDATABASE_H
 #define LORAFEL_FIREBASEDATABASE_H
 
+#include "NDKHelper.h"
+
 namespace lorafel {
 	class FirebaseDatabase : public cocos2d::Node {
 	public:
+		virtual ~FirebaseDatabase() {
+			NDKHelper::removeSelectorsInGroup("FirebaseDatabaseSelectors");
+		}
+
 		bool init() override;
 		CREATE_FUNC(FirebaseDatabase);
 
@@ -18,10 +24,17 @@ namespace lorafel {
 			return _instance;
 		}
 
+		void setStringForKey(std::string key, std::string value, std::string child = "");
+
+		std::string getStringForKey(std::string key, std::string child);
+
 	protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
+		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
+
 		static FirebaseDatabase* _instance;
 
+		void serializeUserToLocalCache(cocos2d::Value value);
 	};
 }
 
