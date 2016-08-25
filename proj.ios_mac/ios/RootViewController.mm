@@ -184,6 +184,8 @@
                                if (snapshot.exists) {
                                    NSDictionary* keyval = snapshot.value;
                                    [IOSNDKHelper sendMessage:@"onCompleteLoadInventoryItemGrid" withParameters:keyval];
+                               } else {
+                                   [IOSNDKHelper sendMessage:@"onCompleteLoadInventoryItemGrid" withParameters:nullptr];
                                }
 
                            } withCancelBlock:^(NSError* _Nonnull error) {

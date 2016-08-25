@@ -12,6 +12,9 @@ bool InventoryModal::init() {
         return false;
     }
 
+    setName("InventoryModal");
+    setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
+
     m_pItemGrid = InventoryItemGrid::create(this);
     m_pItemGrid->setGlobalZOrder(LayerOrder::MODAL+1);
     m_pItemGrid->setAnchorPoint(cocos2d::Vec2(0.5f,1));
@@ -27,14 +30,11 @@ bool InventoryModal::init() {
     return true;
 }
 
-void InventoryModal::update(float delta) {
-}
-
 void InventoryModal::readyCheck(float dt) {
     if(m_pItemGrid->isInitialized()) { //&& m_pEquipGrid->isInitialized()) {
+        m_pItemGrid->setInitialized(0);
         m_callback(1);
         unschedule(schedule_selector(InventoryModal::readyCheck));
-        m_callback = nullptr;
     }
 }
 

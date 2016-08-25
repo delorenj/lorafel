@@ -59,13 +59,15 @@ namespace lorafel {
 
 		bool isInitialized() const { return m_initialized; }
 
-	protected:
+        void setInitialized(int i);
+
+    protected:
         std::shared_ptr<Grid<InventoryItemSlot*> > m_pGrid;
         bool isStackable(Item* pItem);
         Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
         void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);
         bool m_initialized = 0;
-	};
+    };
 }
 
 #endif //LORAFEL_INVENTORYITEMGRID_H

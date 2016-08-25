@@ -260,6 +260,10 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
     m_initialized = true;
 }
 
+void InventoryItemGrid::setInitialized(int i) {
+    m_initialized = i;
+}
+
 
 
 

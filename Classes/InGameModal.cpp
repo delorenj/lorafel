@@ -18,7 +18,7 @@ bool InGameModal::init() {
      */
     m_visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
     m_origin = cocos2d::Director::getInstance()->getVisibleOrigin();
-
+    
     /**
      * Create the main window
      * Set the anchor point to the center
@@ -79,13 +79,14 @@ InGameModal* InGameModal::createAndDropIn(cocos2d::Node* container) {
      * screen first
      */
     auto modal = InventoryModal::create();
-    auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(modal->getPosition().x, origin.y + visibleSize.height/2));
-    auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
-    auto seq = cocos2d::Sequence::create(ease, NULL);
     container->addChild(modal, LayerOrder::MODAL);
-//Need to somehow get seq in the closure
+
     modal->loadInventory([&](int res) {
         CCLOG("Done Loading from Firebase with result %d =D", res);
+        auto modal = cocos2d::Director::getInstance()->getRunningScene()->getChildByName("InventoryModal");
+        auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(modal->getPosition().x, origin.y + visibleSize.height/2+modal->getContentSize().height/2));
+        auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
+        auto seq = cocos2d::Sequence::create(ease, NULL);
         modal->runAction(seq);
         GameStateMachine::getInstance()->setState<CharacterModalState>();
     });
