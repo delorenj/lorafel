@@ -172,6 +172,19 @@
 
 }
 
+- (void)deleteKey:(NSObject *)parametersObject {
+    NSDictionary *parameters = (NSDictionary *)parametersObject;
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+
+    if (parameters != nil) {
+        NSString* key = (NSString*) parameters[@"key"];
+        NSString* child = (NSString*) parameters[@"child"];
+
+        [[[[[_db child:@"users"] child:user.uid] child:child] child:key] setValue:nil];
+    }
+}
+
 - (void)loadInventoryItemGrid:(NSObject *)parametersObject {
     _db = [[FIRDatabase database] reference];
     FIRUser *user = [[FIRAuth auth] currentUser];

@@ -23,9 +23,16 @@ namespace lorafel {
             } else {
                 stackSize = to_string(value.second);
             }
-            auto combo = std::string(itemName + "|" + stackSize);
-//            cocos2d::UserDefault::getInstance()->setStringForKey(hash.c_str(), combo);
-            FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_item_grid");
+            /**
+             * If clearing out a slot,
+             * delete instead of insert
+             */
+            if(itemName == "" || stackSize == 0) {
+                FirebaseDatabase::getInstance()->deleteKey(hash.c_str(), "inventory_item_grid");
+            } else {
+                auto combo = std::string(itemName + "|" + stackSize);
+                FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_item_grid");
+            }
         }
 
         std::map<std::pair<int, int>, std::pair<std::string, int> > unserialize(Value data) {

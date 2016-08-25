@@ -90,3 +90,14 @@ void FirebaseDatabase::loadInventoryEquipGrid() {
 	Value v(ValueMapNull);
 	sendMessageWithParams("loadInventoryEquipGrid", v);
 }
+
+void FirebaseDatabase::deleteKey(std::string key, std::string child) {
+	ValueMap vm;
+	vm["key"] = key;
+	vm["child"] = child;
+
+	Value v;
+	v = vm;
+
+	sendMessageWithParams("deleteKey", v);
+}
