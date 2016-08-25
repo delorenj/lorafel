@@ -18,6 +18,7 @@ namespace lorafel {
             _instance->addState<IdleState>();
                 _instance->addState<IdleHookModeState>();
             _instance->addState<BusyState>();
+                _instance->addState<LoadingState>();
                 _instance->addState<ModalState>();
                     _instance->addState<CharacterModalState>();
                 _instance->addState<WaitForAnimationState>();

@@ -16,13 +16,18 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
         return false;
     }
 
+    NDKHelper::addSelector("InGameModalSelectors",
+            "onCompleteLoadInventoryEquipGrid",
+            CC_CALLBACK_2(InventoryEquipGrid::onCompleteLoadInventoryEquipGrid, this),
+            this);
+
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
     /**
      * Create the background of the
      * grid container
      */
-    initWithFile("addEquipSlot-slot-container.png");
+    initWithFile("equip-slot-container.png");
 
     /**
      * Initialize each equip slot
@@ -142,6 +147,10 @@ void InventoryEquipGrid::loadInventory() {
 
         slot->setItem(pItem);
     }
+
+}
+
+void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
 
 }
 

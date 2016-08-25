@@ -15,7 +15,7 @@ namespace lorafel {
             cocos2d::UserDefault::getInstance()->setStringForKey(to_string(key).c_str(), value.c_str());
         }
 
-        std::string unserialize(int key) override {
+        std::string unserialize(int key) {
             return cocos2d::UserDefault::getInstance()->getStringForKey(to_string(key).c_str());
         }
     };

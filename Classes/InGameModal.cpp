@@ -83,13 +83,18 @@ InGameModal* InGameModal::createAndDropIn(cocos2d::Node* container) {
     auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
     auto seq = cocos2d::Sequence::create(ease, NULL);
     container->addChild(modal, LayerOrder::MODAL);
-    modal->runAction(seq);
-    modal->loadInventory();
+//Need to somehow get seq in the closure
+    modal->loadInventory([&](int res) {
+        CCLOG("Done Loading from Firebase with result %d =D", res);
+        modal->runAction(seq);
+        GameStateMachine::getInstance()->setState<CharacterModalState>();
+    });
+
     /**
      * Set game state to modal
      */
     GameStateMachine::getInstance()->pushState();
-    GameStateMachine::getInstance()->setState<CharacterModalState>();
+    GameStateMachine::getInstance()->setState<LoadingState>();
 
     return modal;
 }

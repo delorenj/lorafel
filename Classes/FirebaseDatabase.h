@@ -26,15 +26,19 @@ namespace lorafel {
 
 		void setStringForKey(std::string key, std::string value, std::string child = "");
 
-		std::string getStringForKey(std::string key, std::string child);
+		void getStringForKey(std::string key, std::string child);
+
+		void loadInventoryItemGrid();
+		void loadInventoryEquipGrid();
 
 	protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
 
 		static FirebaseDatabase* _instance;
-
 		void serializeUserToLocalCache(cocos2d::Value value);
+
+
 	};
 }
 

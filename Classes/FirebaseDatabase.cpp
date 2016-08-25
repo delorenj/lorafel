@@ -46,7 +46,7 @@ void FirebaseDatabase::setStringForKey(std::string key, std::string value, std::
 
 }
 
-std::string FirebaseDatabase::getStringForKey(std::string key, std::string child) {
+void FirebaseDatabase::getStringForKey(std::string key, std::string child) {
 	ValueMap vm;
 	vm["key"] = key;
 	vm["child"] = child;
@@ -55,7 +55,6 @@ std::string FirebaseDatabase::getStringForKey(std::string key, std::string child
 	v = vm;
 
 	sendMessageWithParams("getStringForKey", v);
-	return std::string();
 }
 
 void FirebaseDatabase::onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data) {
@@ -68,8 +67,8 @@ void FirebaseDatabase::serializeUserToLocalCache(cocos2d::Value data) {
 
 	if (!data.isNull() && data.getType() == Value::Type::MAP) {
 		ValueMap valueMap = data.asValueMap();
-		if(!valueMap["inventory_slot_layout"].isNull()) {
-			ValueMap slotLayouts = valueMap["inventory_slot_layout"].asValueMap();
+		if(!valueMap["inventory_item_grid"].isNull()) {
+			ValueMap slotLayouts = valueMap["inventory_item_grid"].asValueMap();
 
 			for(auto slotLayout : slotLayouts) {
 				std::string key = slotLayout.first;
@@ -80,4 +79,14 @@ void FirebaseDatabase::serializeUserToLocalCache(cocos2d::Value data) {
 	}
 
 
+}
+
+void FirebaseDatabase::loadInventoryItemGrid() {
+	Value v(ValueMapNull);
+	sendMessageWithParams("loadInventoryItemGrid", v);
+}
+
+void FirebaseDatabase::loadInventoryEquipGrid() {
+	Value v(ValueMapNull);
+	sendMessageWithParams("loadInventoryEquipGrid", v);
 }

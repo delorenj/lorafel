@@ -18,6 +18,10 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 
     m_pGrid = std::make_shared<Grid<InventoryItemSlot*> >();
 
+    NDKHelper::addSelector("InGameModalSelectors",
+            "onCompleteLoadInventoryItemGrid",
+            CC_CALLBACK_2(InventoryItemGrid::onCompleteLoadInventoryItemGrid, this),
+            this);
 
     /**
      * Create the background of the
@@ -53,57 +57,8 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 }
 
 void InventoryItemGrid::loadInventory() {
-    auto pPlayer = PlayerManager::getInstance()->getPlayer();
-    auto pInventory = pPlayer->getInventory();
-    auto itemDictionary = pInventory->getItemDictionary();
-    std::unordered_map<std::string, int> alreadyPlaced;
-
-    /**
-     * First, cycle through all slots on current page
-     * and populate the item grid accordingly
-     */
-    for(int i=0; i<NUM_ROWS; i++) {
-        for(int j=0; j<NUM_COLS; j++) {
-            auto pair = pPlayer->getInventorySlotSerializer()->unserialize(std::make_pair(i,j));
-            /**
-             * If slot contains nullptr for item
-             * just continue - nothing stored here.
-             */
-            if(pair.first == "") continue;
-
-            /**
-             * Otherwise, set the slot item and mark as
-             * 'already placed' so when we loop through
-             * all items next, we don't place the same
-             * item twice.
-             */
-            auto slot = getSlotFromCoords(std::make_pair(i,j));
-            auto pItem = pInventory->getItem(pair.first);
-            slot->setItem(pItem, pair.second);
-            alreadyPlaced.emplace(pair.first, pair.second);
-        }
-    }
-
-    /**
-     * Then, cycle through all items and place them in
-     * the next available slot IFF they have not already
-     * been placed in the previous loop.
-     */
-    for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
-        auto pItemQuatityPair = it->second;
-        auto pItem = pItemQuatityPair->first;
-        auto itemQuantity = pItemQuatityPair->second;
-        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
-
-        if(numAlreadyPlaced == 0) {
-            assignItemToSlot(it->second);
-        } else {
-            std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
-            pNewPair->first = pItem;
-            pNewPair->second = itemQuantity - numAlreadyPlaced;
-            assignItemToSlot(pNewPair);
-        }
-    }
+    m_initialized = 0;
+    FirebaseDatabase::getInstance()->loadInventoryItemGrid();
 }
 
 Item* InventoryItemGrid::assignItemToSlot(std::pair<Item*, int>* pItemPair) {
@@ -248,7 +203,62 @@ InventoryItemSlot* InventoryItemGrid::getSlotFromCoords(InventoryItemGrid::Coord
     return m_pGrid->get(pair);
 }
 
+void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data) {
+    auto pPlayer = PlayerManager::getInstance()->getPlayer();
+    auto pInventory = pPlayer->getInventory();
+    auto itemDictionary = pInventory->getItemDictionary();
+    std::unordered_map<std::string, int> alreadyPlaced;
 
+    auto pairs = pPlayer->getInventorySlotSerializer()->unserialize(data);
+
+    /**
+     * First, cycle through all slots on current page
+     * and populate the item grid accordingly
+     */
+    for(int i=0; i<NUM_ROWS; i++) {
+        for(int j=0; j<NUM_COLS; j++) {
+            auto pair = pairs[std::make_pair(i, j)];
+            /**
+             * If slot contains nullptr for item
+             * just continue - nothing stored here.
+             */
+            if(pair.first == "") continue;
+
+            /**
+             * Otherwise, set the slot item and mark as
+             * 'already placed' so when we loop through
+             * all items next, we don't place the same
+             * item twice.
+             */
+            auto slot = getSlotFromCoords(std::make_pair(i,j));
+            auto pItem = pInventory->getItem(pair.first);
+            slot->setItem(pItem, pair.second);
+            alreadyPlaced.emplace(pair.first, pair.second);
+        }
+    }
+
+    /**
+     * Then, cycle through all items and place them in
+     * the next available slot IFF they have not already
+     * been placed in the previous loop.
+     */
+    for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
+        auto pItemQuatityPair = it->second;
+        auto pItem = pItemQuatityPair->first;
+        auto itemQuantity = pItemQuatityPair->second;
+        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
+
+        if(numAlreadyPlaced == 0) {
+            assignItemToSlot(it->second);
+        } else {
+            std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
+            pNewPair->first = pItem;
+            pNewPair->second = itemQuantity - numAlreadyPlaced;
+            assignItemToSlot(pNewPair);
+        }
+    }
+    m_initialized = true;
+}
 
 
 

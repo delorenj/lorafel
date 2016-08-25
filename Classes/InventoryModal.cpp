@@ -30,3 +30,11 @@ bool InventoryModal::init() {
 void InventoryModal::update(float delta) {
 }
 
+void InventoryModal::readyCheck(float dt) {
+    if(m_pItemGrid->isInitialized()) { //&& m_pEquipGrid->isInitialized()) {
+        m_callback(1);
+        unschedule(schedule_selector(InventoryModal::readyCheck));
+        m_callback = nullptr;
+    }
+}
+

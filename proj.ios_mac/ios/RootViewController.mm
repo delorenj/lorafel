@@ -172,4 +172,43 @@
 
 }
 
+- (void)loadInventoryItemGrid:(NSObject *)parametersObject {
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+
+    [[[[_db child:@"users"]
+            child:user.uid]
+            child:@"inventory_item_grid"]
+            observeSingleEventOfType:FIRDataEventTypeValue
+                           withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
+                               if (snapshot.exists) {
+                                   NSDictionary* keyval = snapshot.value;
+                                   [IOSNDKHelper sendMessage:@"onCompleteLoadInventoryItemGrid" withParameters:keyval];
+                               }
+
+                           } withCancelBlock:^(NSError* _Nonnull error) {
+                NSLog(@"%@", error.localizedDescription);
+            }];
+
+}
+
+- (void)loadInventoryEquipGrid:(NSObject *)parametersObject {
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+
+    [[[[_db child:@"users"]
+            child:user.uid]
+            child:@"inventory_equip_grid"]
+            observeSingleEventOfType:FIRDataEventTypeValue
+                           withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
+                               if (snapshot.exists) {
+                                   NSDictionary* keyval = snapshot.value;
+                                   [IOSNDKHelper sendMessage:@"onCompleteLoadInventoryEquipGrid" withParameters:keyval];
+                               }
+
+                           } withCancelBlock:^(NSError* _Nonnull error) {
+                NSLog(@"%@", error.localizedDescription);
+            }];
+
+}
 @end

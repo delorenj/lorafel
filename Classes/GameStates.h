@@ -88,6 +88,11 @@ namespace lorafel {
         const std::string getName() const override { return "CharacterModalState"; }
     };
 
+    class LoadingState : public BusyState {
+    public:
+        const std::string getName() const override { return "LoadingState"; }
+    };
+
     class TileTouchState : public BusyState {
     public:
         virtual const std::string getName() const override { return "TileTouchState"; }
