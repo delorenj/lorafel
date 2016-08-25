@@ -31,7 +31,7 @@ bool InventoryModal::init() {
 }
 
 void InventoryModal::readyCheck(float dt) {
-    if(m_pItemGrid->isInitialized()) { //&& m_pEquipGrid->isInitialized()) {
+    if(m_pItemGrid->isInitialized() && m_pEquipGrid->isInitialized()) {
         m_pItemGrid->setInitialized(0);
         m_callback(1);
         unschedule(schedule_selector(InventoryModal::readyCheck));

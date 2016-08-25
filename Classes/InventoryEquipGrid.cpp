@@ -109,11 +109,16 @@ EquipItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
 }
 
 void InventoryEquipGrid::loadInventory() {
+    m_initialized = 0;
+    FirebaseDatabase::getInstance()->loadInventoryEquipGrid();
+}
+
+void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
     auto pPlayer = PlayerManager::getInstance()->getPlayer();
     auto pInventory = pPlayer->getInventory();
     auto pInventoryModal = static_cast<InventoryModal*>(getParent());
     auto pInventoryGrid = pInventoryModal->getItemGrid();
-
+    
     /**
      * Cycle through all equip item slots and if equipped, set them to the
      * appropriate slot
@@ -121,13 +126,13 @@ void InventoryEquipGrid::loadInventory() {
     for(auto slot : m_equipSlots) {
         auto slotType = slot->getEquipMask();
         Item* pItem  = pPlayer->getEquippedItemBySlotType(slotType);
-
+        
         /**
          * If player has nothing equipped in the current
          * slot type, then just continue
          */
         if(pItem == nullptr) continue;
-
+        
         /**
          * If item is equipped, then remove it
          * from the inventory grid and equip it
@@ -144,14 +149,9 @@ void InventoryEquipGrid::loadInventory() {
                 inventorySlot->setItem(nullptr);
             }
         }
-
+        
         slot->setItem(pItem);
     }
-
-}
-
-void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
-
 }
 
 

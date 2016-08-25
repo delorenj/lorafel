@@ -12,7 +12,25 @@ namespace lorafel {
     class EquipSerializer : public Serializer<int, std::string> {
     public:
         void serialize(int key, std::string value) override {
-            cocos2d::UserDefault::getInstance()->setStringForKey(to_string(key).c_str(), value.c_str());
+//            cocos2d::UserDefault::getInstance()->setStringForKey(to_string(key).c_str(), value.c_str());
+            auto hash = getHash(key);
+            auto itemName = value.first;
+            std::string stackSize;
+            if(itemName == "") {
+                stackSize = to_string(0);
+            } else {
+                stackSize = to_string(value.second);
+            }
+            /**
+             * If clearing out a slot,
+             * delete instead of insert
+             */
+            if(itemName == "" || stackSize == "0") {
+                FirebaseDatabase::getInstance()->deleteKey(hash.c_str(), "inventory_item_grid");
+            } else {
+                auto combo = std::string(itemName + "|" + stackSize);
+                FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_item_grid");
+            }
         }
 
         std::string unserialize(int key) {

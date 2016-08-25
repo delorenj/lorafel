@@ -35,8 +35,11 @@ namespace lorafel {
         virtual void addEquipSlot(EquipItemSlot* pSlot);
 
         void removeEquipSlot(EquipItemSlot* pSlot);
+        std::string getId() const { return m_id; }
+        void setId(std::string id) { m_id = id; }
 
     protected:
+        std::string m_id;
         std::string m_itemName;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;

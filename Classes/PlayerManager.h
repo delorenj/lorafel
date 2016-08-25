@@ -31,7 +31,6 @@ namespace lorafel {
 			// For now, just make a default player
 			// upon each load
 			m_pPlayer = new Player();
-			auto pInventory =m_pPlayer->getInventory();
 
 			//TODO: Load player avatar image from database
 			m_pPlayer->setTile(HeroTile::create("player.png"));
@@ -50,8 +49,9 @@ namespace lorafel {
 			Inventory* pInventory = m_pPlayer->getInventory();
 			ValueMap itemVec = valueMap["items"].asValueMap();
 			for(auto itemVal : itemVec) {
+                    auto itemId = itemVal.first;
 					ValueMap itemValMap = itemVal.second.asValueMap();
-					std::__1::string itemClass = itemValMap["class"].asString();
+					std::string itemClass = itemValMap["class"].asString();
 					/**
 					 * If any args passed in, set them here
 					 * or set null
@@ -74,7 +74,7 @@ namespace lorafel {
 
 					CCLOG(" - loading %d of item %s", itemQuantity, itemClass.c_str());
 					for(int i=0; i<itemQuantity; i++) {
-						Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs);
+						Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
 						pInventory->addItem(pItem);
 					}
 				}

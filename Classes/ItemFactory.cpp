@@ -15,13 +15,15 @@ bool ItemFactory::init() {
 	return cocos2d::Node::init();
 }
 
-Item* ItemFactory::createItem(std::string className, cocos2d::ValueVector args) {
+Item* ItemFactory::createItem(std::string className, cocos2d::ValueVector args, std::string id = "") {
+    Item* item = nullptr;
+    
 	if(className == "LameSpiderSword") {
-		return LameSpiderSword::create();
+		item = LameSpiderSword::create();
 	}
 
 	if(className == "DumbKnife") {
-		return DumbKnife::create();
+		item = DumbKnife::create();
 	}
 
 	if(className == "HealthPotion") {
@@ -30,8 +32,9 @@ Item* ItemFactory::createItem(std::string className, cocos2d::ValueVector args) 
 			val = arg.asFloat();
 			break;
 		}
-		return HealthPotion::create(val);
+		item = HealthPotion::create(val);
 	}
-
-	return nullptr;
+    
+    item->setId(id);
+	return item;
 }

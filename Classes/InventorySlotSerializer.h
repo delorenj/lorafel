@@ -27,7 +27,7 @@ namespace lorafel {
              * If clearing out a slot,
              * delete instead of insert
              */
-            if(itemName == "" || stackSize == 0) {
+            if(itemName == "" || stackSize == "0") {
                 FirebaseDatabase::getInstance()->deleteKey(hash.c_str(), "inventory_item_grid");
             } else {
                 auto combo = std::string(itemName + "|" + stackSize);

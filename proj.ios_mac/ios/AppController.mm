@@ -94,7 +94,9 @@ static AppDelegate s_sharedApplication;
 //
     [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
     [GIDSignIn sharedInstance].delegate = self;
-    
+
+    [FIRDatabase database].persistenceEnabled = YES;
+  
     app->run();
 
     return YES;
