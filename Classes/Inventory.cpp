@@ -18,43 +18,14 @@ const int Inventory::addItem(Item* pItem, int quantity) {
      * added to the database yet. Let's add it
      */
     if(pItem->getId() == "") {
-        std::string newId = FirebaseDatabase::getInstance()->addItem(pItem);
-        pItem->setId(newId);
+        int tempId = RandomHelper::random_int(1000000, 9999999);
+        pItem->setId(to_string(tempId));
+        FirebaseDatabase::getInstance()->addItem(pItem, quantity);
     }
     
     pItem->retain();
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
     auto p = std::make_pair(pItem->getId(), itemPair);
-    m_pItemDictionary->insert(p);
-    return quantity;
-}
-
-/**
- * This is only for adding MORE items of an already
- * existing item
- */
-const int Inventory::addItem(std::string itemName, int quantity) {
-    auto count = getItemCount(itemName);
-    auto itemPair = m_pItemDictionary->at(itemName);
-    count += quantity;
-    itemPair->second = count;
-    auto p = std::make_pair(itemName, itemPair);
-    m_pItemDictionary->insert(p);
-    return count;
-}
-
-/**
- * This is for adding an Item and setting the name of it,
- * thus overriding the default Item name returned in
- * the item's own getItemName() function
- */
-const int Inventory::addItem(std::string itemId, Item* pItem, int quantity) {
-    if(itemExists(itemId)) {
-        return addItem(itemId, quantity);
-    }
-    pItem->retain();
-    ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
-    auto p = std::make_pair(itemId, itemPair);
     m_pItemDictionary->insert(p);
     return quantity;
 }

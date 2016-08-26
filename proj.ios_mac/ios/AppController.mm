@@ -90,11 +90,14 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     // Use Firebase library to configure APIs
-//    [FIRApp configure];
+    [FIRApp configure];
 //
     [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
     [GIDSignIn sharedInstance].delegate = self;
 
+    /**
+     * Need to do this via callback from c++
+     */
     [FIRDatabase database].persistenceEnabled = YES;
   
     app->run();

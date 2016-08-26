@@ -151,11 +151,21 @@
     FIRUser *user = [[FIRAuth auth] currentUser];
     
     if (parameters != nil) {
+        NSString* tempId = (NSString*) parameters[@"tempId"];
         NSString* className = (NSString*) parameters[@"class"];
-        NSString* arguments = (NSString*) parameters[@"args"];
+        NSArray* arguments = (NSArray*) parameters[@"args"];
         NSString* quantity = (NSString*) parameters[@"quantity"];
         
-        [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:key] :value];
+        NSString *newId = [[[_db child:@"users"] child:@"items"] childByAutoId].key;
+
+        NSDictionary *item = @{@"class": className,
+                               @"arguments": arguments,
+                               @"quantity": quantity};
+        
+        [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
+
+        NSDictionary *parameters = @{@"oldId" : tempId, @"newId" : newId};
+        [IOSNDKHelper sendMessage:@"onCompleteAddItem" withParameters:parameters];
     }
 }
 

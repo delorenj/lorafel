@@ -24,6 +24,11 @@ bool FirebaseDatabase::init() {
 			CC_CALLBACK_2(FirebaseDatabase::onCompleteUserQuery, this),
 			this);
 
+    NDKHelper::addSelector("FirebaseDatabaseSelectors",
+                           "onCompleteAddItem",
+                           CC_CALLBACK_2(FirebaseDatabase::onCompleteAddItem, this),
+                           this);
+
 	return true;
 
 }
@@ -81,9 +86,10 @@ void FirebaseDatabase::serializeUserToLocalCache(cocos2d::Value data) {
 
 }
 
-std::string FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
+void FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
     ValueMap vm;
     
+    vm["tempId"] = pItem->getId();
     vm["class"] = pItem->getClassName();
     vm["arguments"] = pItem->getArguments();
     vm["quantity"] = quantity;
@@ -92,6 +98,22 @@ std::string FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
 
     sendMessageWithParams("addItem", v);
     
+}
+
+void FirebaseDatabase::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
+    if (!data.isNull() && data.getType() == Value::Type::MAP) {
+        ValueMap valueMap = data.asValueMap();
+        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
+            std::string newId = valueMap["newId"].asString();
+            std::string oldId = valueMap["oldId"].asString();
+            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+            Inventory::ItemQuantityPair* pair = items->at(oldId);
+            pair->first->setId(newId);
+            auto p = std::make_pair(newId, pair);
+            items->erase(oldId);
+            items->insert(p);
+        }
+    }
 }
 
 void FirebaseDatabase::loadInventoryItemGrid() {

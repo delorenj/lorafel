@@ -46,7 +46,8 @@ static void firebase_test()
     options.set_api_key("AIzaSyCouO_YdowioS2n7m5vBr1n5RqhSKo3s_8");
     app = ::firebase::App::Create(options, JniHelper::getEnv(), JniHelper::GetActivity());
 #else
-    app = ::firebase::App::Create(::firebase::AppOptions());
+    //app = ::firebase::App::Create(::firebase::AppOptions());
+    app = ::firebase::App::GetInstance();
 #endif  // defined(__ANDROID__)
 
     CCLOG("Created the firebase app %x",

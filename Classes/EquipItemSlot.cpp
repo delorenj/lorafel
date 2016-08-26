@@ -51,7 +51,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     m_stackSizeChange = true;
     pItem->addEquipSlot(this);
-    equipSerializer->serialize(getEquipMask(), pItem->getItemId());
+    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
 }
 

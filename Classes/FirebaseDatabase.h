@@ -31,12 +31,13 @@ namespace lorafel {
 
 		void loadInventoryItemGrid();
 		void loadInventoryEquipGrid();
-        std::string addItem(Item* pItem, int quantity);
+        void addItem(Item* pItem, int quantity);
 		void deleteKey(std::string key, std::string child);
 
 	protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
+        void onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data);
 
 		static FirebaseDatabase* _instance;
 		void serializeUserToLocalCache(cocos2d::Value value);
