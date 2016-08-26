@@ -13,7 +13,11 @@ bool HealthPotion::init(double amount) {
     if(!Consumable::init()) {
         return false;
     }
-
+    m_className = "HealthPotion";
+    ValueVector args;
+    Value arg1(amount);
+    args.push_back(arg1);
+    setArguments(args);
     m_amount = amount;
     initItemName();
     addEquipMask(Player::CONSUMABLE);

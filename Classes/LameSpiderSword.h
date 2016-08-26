@@ -16,7 +16,8 @@ namespace lorafel {
             if(!Weapon::init()) {
                 return false;
             }
-
+            m_className = "LameSpiderSword";
+            setArguments(ValueVectorNull);
             initWithSpriteFrameName("lame-spider-sword.png");
             m_damage = 500;
             addEquipMask(Player::LEFT_HAND);

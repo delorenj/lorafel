@@ -3,6 +3,7 @@
 //
 
 #include "Inventory.h"
+#include "FirebaseDatabase.h"
 
 using namespace lorafel;
 
@@ -12,7 +13,20 @@ using namespace lorafel;
  * in the inventory dictionary
  */
 const int Inventory::addItem(Item* pItem, int quantity) {
-    return addItem(pItem->getItemName(), pItem, quantity);
+    /**
+     * If id is empty, then it hasn't been
+     * added to the database yet. Let's add it
+     */
+    if(pItem->getId() == "") {
+        std::string newId = FirebaseDatabase::getInstance()->addItem(pItem);
+        pItem->setId(newId);
+    }
+    
+    pItem->retain();
+    ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+    auto p = std::make_pair(pItem->getId(), itemPair);
+    m_pItemDictionary->insert(p);
+    return quantity;
 }
 
 /**
@@ -34,37 +48,37 @@ const int Inventory::addItem(std::string itemName, int quantity) {
  * thus overriding the default Item name returned in
  * the item's own getItemName() function
  */
-const int Inventory::addItem(std::string itemName, Item* pItem, int quantity) {
-    if(itemExists(itemName)) {
-        return addItem(itemName, quantity);
+const int Inventory::addItem(std::string itemId, Item* pItem, int quantity) {
+    if(itemExists(itemId)) {
+        return addItem(itemId, quantity);
     }
     pItem->retain();
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
-    auto p = std::make_pair(itemName, itemPair);
+    auto p = std::make_pair(itemId, itemPair);
     m_pItemDictionary->insert(p);
     return quantity;
 }
 
-int Inventory::getItemCount(std::string itemName) {
-    if(!itemExists(itemName)) {
+int Inventory::getItemCount(std::string itemId) {
+    if(!itemExists(itemId)) {
         return 0;
     } else {
-        return m_pItemDictionary->at(itemName)->second;
+        return m_pItemDictionary->at(itemId)->second;
     }
 }
 
-bool Inventory::itemExists(std::string itemName) {
+bool Inventory::itemExists(std::string itemId) {
     try {
-        m_pItemDictionary->at(itemName);
+        m_pItemDictionary->at(itemId);
     } catch(std::out_of_range e) {
         return false;
     }
     return true;
 }
 
-Item* Inventory::getItem(std::string itemName) {
-    if(itemExists(itemName)) {
-        return m_pItemDictionary->at(itemName)->first;
+Item* Inventory::getItem(std::string itemId) {
+    if(itemExists(itemId)) {
+        return m_pItemDictionary->at(itemId)->first;
     } else {
         return nullptr;
     }

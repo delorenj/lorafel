@@ -22,7 +22,10 @@ namespace lorafel {
         virtual std::string getItemName() const { return m_itemName; }
         virtual void setItemName(const char* name) { m_itemName = to_string(name); }
         virtual void setItemName(std::string name) { m_itemName = name; }
-
+        virtual std::string getClassName() const { return m_className; }
+        virtual ValueVector getArguments() const { return m_arguments; }
+        virtual void setArguments(ValueVector args) { m_arguments = args; }
+        
         void addInventorySlotCoordinates(std::pair<int, int> coords);
         std::set<std::pair<int, int> > getInventorySlotCoordinates() const;
 
@@ -41,6 +44,8 @@ namespace lorafel {
     protected:
         std::string m_id;
         std::string m_itemName;
+        std::string m_className;
+        ValueVector m_arguments;
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;

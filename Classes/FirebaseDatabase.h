@@ -6,6 +6,7 @@
 #define LORAFEL_FIREBASEDATABASE_H
 
 #include "NDKHelper.h"
+#include "Item.h"
 
 namespace lorafel {
 	class FirebaseDatabase : public cocos2d::Node {
@@ -30,7 +31,7 @@ namespace lorafel {
 
 		void loadInventoryItemGrid();
 		void loadInventoryEquipGrid();
-
+        std::string addItem(Item* pItem, int quantity);
 		void deleteKey(std::string key, std::string child);
 
 	protected:

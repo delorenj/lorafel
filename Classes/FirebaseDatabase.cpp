@@ -81,6 +81,19 @@ void FirebaseDatabase::serializeUserToLocalCache(cocos2d::Value data) {
 
 }
 
+std::string FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
+    ValueMap vm;
+    
+    vm["class"] = pItem->getClassName();
+    vm["arguments"] = pItem->getArguments();
+    vm["quantity"] = quantity;
+    
+    Value v = Value(vm);
+
+    sendMessageWithParams("addItem", v);
+    
+}
+
 void FirebaseDatabase::loadInventoryItemGrid() {
 	Value v(ValueMapNull);
 	sendMessageWithParams("loadInventoryItemGrid", v);

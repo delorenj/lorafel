@@ -32,9 +32,9 @@ namespace lorafel {
         void addEvents(cocos2d::Node* pSwappyGrid);
 
         const int addItem(Item* pItem, int quantity = 1);
-        const int addItem(std::string itemName, int quantity = 1);
-        const int addItem(std::string itemName, Item* pItem, int quantity = 1);
-        Item* getItem(std::string itemName);
+        const int addItem(std::string itemId, int quantity = 1);
+        const int addItem(std::string itemid, Item* pItem, int quantity = 1);
+        Item* getItem(std::string itemId);
         ItemDictionary* getItemDictionary() { return m_pItemDictionary; }
         SlotItemStackDictionary* getSlotItemStackDictionary() { return m_pSlotItemStackDictionary; }
         int getItemCount(std::string itemName);
