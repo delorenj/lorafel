@@ -59,7 +59,7 @@ namespace lorafel {
 
 		bool isInitialized() const { return m_initialized; }
 
-        void setInitialized(int i);
+        void setInitialized(bool i);
 
     protected:
         std::shared_ptr<Grid<InventoryItemSlot*> > m_pGrid;

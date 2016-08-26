@@ -215,27 +215,15 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
      * First, cycle through all slots on current page
      * and populate the item grid accordingly
      */
-    for(int i=0; i<NUM_ROWS; i++) {
-        for(int j=0; j<NUM_COLS; j++) {
-            auto pair = pairs[std::make_pair(i, j)];
-            /**
-             * If slot contains nullptr for item
-             * just continue - nothing stored here.
-             */
-            if(pair.first == "") continue;
+	for(auto pair : pairs) {
+		auto coords = pair.first;
+		auto itemQuantPair = pair.second;
+		auto slot = getSlotFromCoords(coords);
+		Item* pItem = pInventory->getItem(itemQuantPair.first);
+		slot->setItem(pItem, itemQuantPair.second);
+		alreadyPlaced.emplace(itemQuantPair.first, itemQuantPair.second);
 
-            /**
-             * Otherwise, set the slot item and mark as
-             * 'already placed' so when we loop through
-             * all items next, we don't place the same
-             * item twice.
-             */
-            auto slot = getSlotFromCoords(std::make_pair(i,j));
-            auto pItem = pInventory->getItem(pair.first);
-            slot->setItem(pItem, pair.second);
-            alreadyPlaced.emplace(pair.first, pair.second);
-        }
-    }
+	}
 
     /**
      * Then, cycle through all items and place them in
@@ -257,10 +245,10 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
             assignItemToSlot(pNewPair);
         }
     }
-    m_initialized = true;
+    setInitialized(true);
 }
 
-void InventoryItemGrid::setInitialized(int i) {
+void InventoryItemGrid::setInitialized(bool i) {
     m_initialized = i;
 }
 

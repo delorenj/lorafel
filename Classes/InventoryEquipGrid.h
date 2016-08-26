@@ -37,7 +37,9 @@ namespace lorafel {
 
         bool isInitialized() const { return m_initialized; }
 
-	protected:
+        void setInitialized(bool i);
+
+    protected:
         std::vector<EquipItemSlot*> m_equipSlots;
         EquipItemSlot* m_pItemSlotBody;
         EquipItemSlot* m_pItemSlotHead;
@@ -53,7 +55,7 @@ namespace lorafel {
 
         void onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data);
 
-	};
+    };
 }
 
 #endif //LORAFEL_INVENTORYEQUIPGRID_H

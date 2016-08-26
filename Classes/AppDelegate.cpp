@@ -46,10 +46,11 @@ static void firebase_test()
     options.set_api_key("AIzaSyCouO_YdowioS2n7m5vBr1n5RqhSKo3s_8");
     app = ::firebase::App::Create(options, JniHelper::getEnv(), JniHelper::GetActivity());
 #else
-    //app = ::firebase::App::Create(::firebase::AppOptions());
-    app = ::firebase::App::GetInstance();
-#endif  // defined(__ANDROID__)
+    app = ::firebase::App::Create(::firebase::AppOptions());
+#endif
 
+    sendMessageWithParams("enableOfflineDatabase", cocos2d::Value(cocos2d::ValueMapNull));
+    
     CCLOG("Created the firebase app %x",
             static_cast<int>(reinterpret_cast<intptr_t>(app)));
     analytics::Initialize(*app);

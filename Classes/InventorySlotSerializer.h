@@ -16,9 +16,9 @@ namespace lorafel {
     public:
         virtual void serialize(std::pair<int, int> key, std::pair<std::string, int> value) override {
             auto hash = getHash(key);
-            auto itemName = value.first;
+            auto itemId = value.first;
             std::string stackSize;
-            if(itemName == "") {
+            if(itemId == "") {
                 stackSize = to_string(0);
             } else {
                 stackSize = to_string(value.second);
@@ -27,10 +27,10 @@ namespace lorafel {
              * If clearing out a slot,
              * delete instead of insert
              */
-            if(itemName == "" || stackSize == "0") {
+            if(itemId == "" || stackSize == "0") {
                 FirebaseDatabase::getInstance()->deleteKey(hash.c_str(), "inventory_item_grid");
             } else {
-                auto combo = std::string(itemName + "|" + stackSize);
+                auto combo = std::string(itemId + "|" + stackSize);
                 FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_item_grid");
             }
         }
@@ -50,10 +50,10 @@ namespace lorafel {
                         pair = std::make_pair("", 0);
                     } else {
                         auto sep = value.find("|");
-                        auto itemName = value.substr(0, sep);
+                        auto itemId = value.substr(0, sep);
                         auto stackSize = parseInt(value.substr(sep+1));
 
-                        pair = std::make_pair(itemName, stackSize);
+                        pair = std::make_pair(itemId, stackSize);
                     }
                     result[idx] = pair;
                 }

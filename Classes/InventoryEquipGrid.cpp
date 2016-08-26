@@ -115,7 +115,6 @@ void InventoryEquipGrid::loadInventory() {
 
 void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
     auto pPlayer = PlayerManager::getInstance()->getPlayer();
-    auto pInventory = pPlayer->getInventory();
     auto pInventoryModal = static_cast<InventoryModal*>(getParent());
     auto pInventoryGrid = pInventoryModal->getItemGrid();
     
@@ -152,6 +151,11 @@ void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender,
         
         slot->setItem(pItem);
     }
+    setInitialized(true);
+}
+
+void InventoryEquipGrid::setInitialized(bool i) {
+    m_initialized = i;
 }
 
 

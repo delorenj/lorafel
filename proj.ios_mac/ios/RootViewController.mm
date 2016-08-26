@@ -131,6 +131,10 @@
     [[GIDSignIn sharedInstance] signIn];
 }
 
+- (void)enableOfflineDatabase:(NSObject *)parametersObject {
+    [FIRDatabase database].persistenceEnabled = YES;
+}
+
 - (void)setStringForKey:(NSObject *)parametersObject {
     NSDictionary *parameters = (NSDictionary *)parametersObject;
     _db = [[FIRDatabase database] reference];

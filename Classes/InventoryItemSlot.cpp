@@ -246,7 +246,7 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
         pair->second = stackSize;
         slotStackDic->emplace(getCoords(), pair);
     }
-    inventorySlotSerializer->serialize(getCoords(), std::make_pair(pItem->getItemName(), stackSize));
+    inventorySlotSerializer->serialize(getCoords(), std::make_pair(pItem->getId(), stackSize));
     ItemSlot::setItem(pItem, stackSize);
 }
 
