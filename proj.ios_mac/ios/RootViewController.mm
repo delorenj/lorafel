@@ -162,11 +162,16 @@
         
         NSString *newId = [[[_db child:@"users"] child:@"items"] childByAutoId].key;
 
-        NSDictionary *item = @{@"class": className,
-                               @"arguments": arguments,
-                               @"quantity": quantity};
-        
-        [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
+        if(arguments == nil) {
+            NSDictionary *item = @{@"class": className,
+                                   @"quantity": quantity};
+            [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
+        } else {
+            NSDictionary *item = @{@"class": className,
+                                   @"arguments": arguments,
+                                   @"quantity": quantity};
+            [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
+        }
 
         NSDictionary *parameters = @{@"oldId" : tempId, @"newId" : newId};
         [IOSNDKHelper sendMessage:@"onCompleteAddItem" withParameters:parameters];
