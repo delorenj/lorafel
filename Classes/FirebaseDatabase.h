@@ -33,6 +33,7 @@ namespace lorafel {
 		void loadInventoryEquipGrid();
         void addItem(Item* pItem, int quantity);
 		void deleteKey(std::string key, std::string child);
+        void equipItem(int slot, Item* pItem);
 
 	protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);

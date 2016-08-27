@@ -32,6 +32,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
      * and assign the item back to the item grid
      */
     if(pItem == nullptr) {
+        PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), nullptr);
         m_pItemSprite->setVisible(false);
         m_pGhost->setVisible(false);
         setStackSize(0);
@@ -51,6 +52,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     m_stackSizeChange = true;
     pItem->addEquipSlot(this);
+    PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
 //    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
 }
@@ -163,8 +165,15 @@ void EquipItemSlot::addEvents() {
                  */
                 auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
                     ghostOff();
-                    itemGrid->assignItemToSlot(m_pItem, chsCoords);
+                    /**
+                     * Need to unequip first or the reassignment
+                     * will not work (you can't add an equipped
+                     * item to the inventory slot grid
+                     */
+                    auto theItem = m_pItem;
                     setItem(nullptr);
+                    itemGrid->assignItemToSlot(theItem, chsCoords);
+                    
                 });
 
                 seq = cocos2d::Sequence::create(s1, callback, nullptr);

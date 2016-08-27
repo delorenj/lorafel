@@ -221,6 +221,7 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
 		auto slot = getSlotFromCoords(coords);
 		Item* pItem = pInventory->getItem(itemQuantPair.first);
 		slot->setItem(pItem, itemQuantPair.second);
+		pItem->addInventorySlotCoordinates(coords);
 		alreadyPlaced.emplace(itemQuantPair.first, itemQuantPair.second);
 
 	}

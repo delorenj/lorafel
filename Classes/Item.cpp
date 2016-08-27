@@ -5,6 +5,7 @@
 #include "Item.h"
 #include "GameStateMachine.h"
 #include "Globals.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -72,8 +73,18 @@ void Item::addEquipSlot(EquipItemSlot* pSlot) {
     m_pEquipSlots.insert(pSlot);
 }
 
+bool Item::isEquipped() {
+    return PlayerManager::getInstance()->getPlayer()->isEquipped(this);
+}
+
+
 void Item::removeEquipSlot(EquipItemSlot* pSlot) {
     m_pEquipSlots.erase(pSlot);
+}
+
+bool Item::isStackable() {
+    IStackable* stackable = dynamic_cast<IStackable*>(this);
+    return stackable != nullptr;
 }
 
 

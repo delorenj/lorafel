@@ -113,5 +113,23 @@ void Player::equipHook() {
 }
 
 void Player::equipItem(int slot, Item* pItem) {
-    m_equipDictionary[slot] = pItem;
+    if(pItem == nullptr) {
+        m_equipDictionary.erase(slot);
+    } else {
+        m_equipDictionary[slot] = pItem;
+    }
+    
+    /**
+     * Update the database
+     */
+    FirebaseDatabase::getInstance()->equipItem(slot, pItem);
+}
+
+bool Player::isEquipped(Item* pItem) {
+    for(auto slot : m_equipDictionary) {
+        if(slot.second == pItem) {
+            return true;
+        }
+    }
+    return false;
 }

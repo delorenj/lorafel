@@ -131,3 +131,11 @@ void FirebaseDatabase::deleteKey(std::string key, std::string child) {
 
 	sendMessageWithParams("deleteKey", v);
 }
+
+void FirebaseDatabase::equipItem(int slot, Item* pItem) {
+    if(pItem == nullptr) {
+        deleteKey(to_string(slot), "equip_slots");
+    } else {
+        setStringForKey(to_string(slot), pItem->getId(), "equip_slots");
+    }
+}

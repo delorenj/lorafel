@@ -65,7 +65,8 @@ namespace lorafel {
         Item* getEquippedItemBySlotType(int equipMask) { return m_equipDictionary[equipMask]; }
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
         void equipItem(int slot, Item* pItem);
-        
+        bool isEquipped(Item* pItem);
+
     protected:
         // Current Stats
         int m_gold = 0;

@@ -234,6 +234,15 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
     }
 
     /**
+     * If item is equipped AND is non-stackable
+     * then do not add it to the inventory slot
+     * grid
+     */
+    if(pItem->isEquipped() && !pItem->isStackable()) {
+        return;
+    }
+    
+    /**
      * Persist this new slot item in the slotStack
      */
     if(stackIter != slotStackDic->end()) {

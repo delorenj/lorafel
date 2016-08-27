@@ -36,10 +36,13 @@ namespace lorafel {
         bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
 
         virtual void addEquipSlot(EquipItemSlot* pSlot);
+        virtual bool isEquipped();
 
         void removeEquipSlot(EquipItemSlot* pSlot);
         std::string getId() const { return m_id; }
         void setId(std::string id) { m_id = id; }
+
+        bool isStackable();
 
     protected:
         std::string m_id;
