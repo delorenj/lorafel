@@ -234,7 +234,7 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
         auto pItemQuatityPair = it->second;
         auto pItem = pItemQuatityPair->first;
         auto itemQuantity = pItemQuatityPair->second;
-        auto numAlreadyPlaced = alreadyPlaced[pItem->getItemName()];
+        auto numAlreadyPlaced = alreadyPlaced[pItem->getId()];
 
         if(numAlreadyPlaced == 0) {
             assignItemToSlot(it->second);
