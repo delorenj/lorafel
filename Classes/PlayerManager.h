@@ -59,8 +59,7 @@ namespace lorafel {
                 std::string itemId = equipSlot.second.asString();
                 Item* pItem = pInventory->getItem(itemId);
                 CCLOG(" - equipping slot %d with item id %s", slotId, pItem->getItemName().c_str());
-                auto dic = getPlayer()->getEquipDictionary();
-                dic.insert(std::make_pair(slotId, pItem));
+                getPlayer()->equipItem(slotId, pItem);
             }
         }
         

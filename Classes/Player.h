@@ -62,9 +62,9 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemName);
         bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
-        Item* getEquippedItemBySlotType(int equipMask);
+        Item* getEquippedItemBySlotType(int equipMask) { return m_equipDictionary[equipMask]; }
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
-        std::unordered_map<int, Item*> getEquipDictionary() { return m_equipDictionary; }
+        void equipItem(int slot, Item* pItem);
         
     protected:
         // Current Stats
