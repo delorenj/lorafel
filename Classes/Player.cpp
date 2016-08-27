@@ -112,7 +112,7 @@ void Player::equipHook() {
     m_pHook = Hook::create(m_pTile);
 }
 
-Item* Player::getEquippedItemBySlotType(int equipMask) const {
-    auto itemName = m_pEquipSerializer->unserialize(equipMask);
-    return m_pInventory->getItem(itemName);
+Item* Player::getEquippedItemBySlotType(int equipMask) {
+//    auto itemName = m_pEquipSerializer->unserialize(equipMask);
+    return getEquipDictionary()[equipMask];
 }

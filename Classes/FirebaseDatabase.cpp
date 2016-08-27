@@ -19,11 +19,6 @@ bool FirebaseDatabase::init() {
 			CC_CALLBACK_2(FirebaseDatabase::onCompleteUserQuery, this),
 			this);
 
-	NDKHelper::addSelector("FirebaseDatabaseSelectors",
-			"onCompleteGetStringForKeyQuery",
-			CC_CALLBACK_2(FirebaseDatabase::onCompleteUserQuery, this),
-			this);
-
     NDKHelper::addSelector("FirebaseDatabaseSelectors",
                            "onCompleteAddItem",
                            CC_CALLBACK_2(FirebaseDatabase::onCompleteAddItem, this),

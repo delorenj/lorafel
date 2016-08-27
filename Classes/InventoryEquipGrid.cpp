@@ -109,11 +109,7 @@ EquipItemSlot* InventoryEquipGrid::getSlotFromPosition(const Vec2& pos) {
 }
 
 void InventoryEquipGrid::loadInventory() {
-    m_initialized = 0;
-    FirebaseDatabase::getInstance()->loadInventoryEquipGrid();
-}
-
-void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
+    setInitialized(false);
     auto pPlayer = PlayerManager::getInstance()->getPlayer();
     auto pInventoryModal = static_cast<InventoryModal*>(getParent());
     auto pInventoryGrid = pInventoryModal->getItemGrid();
@@ -152,6 +148,10 @@ void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender,
         slot->setItem(pItem);
     }
     setInitialized(true);
+
+}
+
+void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
 }
 
 void InventoryEquipGrid::setInitialized(bool i) {

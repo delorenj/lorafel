@@ -39,12 +39,31 @@ namespace lorafel {
 				ValueMap valueMap = data.asValueMap();
 
 				loadInventory(valueMap);
+                loadEquipSlots(valueMap);
 			}
 
 //            m_pPlayer->equipConsumableSlot("Yummy Potion", 0);
             return m_pPlayer;
         }
 
+        void loadEquipSlots(ValueMap &valueMap) const {
+            Inventory* pInventory = m_pPlayer->getInventory();
+            
+            if(valueMap["equip_slots"].isNull() || valueMap["equip_slots"].getType() != Value::Type::MAP) {
+                return;
+            }
+            
+            ValueMap equipSlots = valueMap["equip_slots"].asValueMap();
+            for(auto equipSlot : equipSlots) {
+                int slotId = parseInt(equipSlot.first);
+                std::string itemId = equipSlot.second.asString();
+                Item* pItem = pInventory->getItem(itemId);
+                CCLOG(" - equipping slot %d with item id %s", slotId, pItem->getItemName().c_str());
+                auto dic = getPlayer()->getEquipDictionary();
+                dic.insert(std::make_pair(slotId, pItem));
+            }
+        }
+        
 		void loadInventory(ValueMap &valueMap) const {
 			Inventory* pInventory = m_pPlayer->getInventory();
 			ValueMap itemVec = valueMap["items"].asValueMap();

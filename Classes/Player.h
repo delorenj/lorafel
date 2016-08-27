@@ -62,10 +62,10 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemName);
         bool equipConsumableSlot(std::string itemName, int slot);
         Hook* getHook() const { return m_pHook; }
-        Item* getEquippedItemBySlotType(int equipMask) const;
-        std::shared_ptr<EquipSerializer> getEquipSerializer() const { return m_pEquipSerializer; }
+        Item* getEquippedItemBySlotType(int equipMask);
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
-
+        std::unordered_map<int, Item*> getEquipDictionary() { return m_equipDictionary; }
+        
     protected:
         // Current Stats
         int m_gold = 0;
@@ -86,6 +86,7 @@ namespace lorafel {
         Achievements* m_pAchievements;
         Inventory* m_pInventory;
         std::map<int, Consumable*> m_activeConsumables;
+        std::unordered_map<int, Item*> m_equipDictionary;
         Hook* m_pHook;
 
     protected:

@@ -17,7 +17,7 @@ bool EquipItemSlot::init() {
 }
 
 void EquipItemSlot::setItem(Item* pItem, int stackSize) {
-    auto equipSerializer = PlayerManager::getInstance()->getPlayer()->getEquipSerializer();
+//    auto equipSerializer = PlayerManager::getInstance()->getPlayer()->getEquipSerializer();
 
     /**
      * If previous item was equipped here, make sure
@@ -37,7 +37,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
         setStackSize(0);
         m_state = ItemSlot::State::EMPTY;
         m_pItem = nullptr;
-        equipSerializer->serialize(getEquipMask(), "");
+//        equipSerializer->serialize(getEquipMask(), "");
         return;
     }
 
@@ -51,7 +51,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     m_stackSizeChange = true;
     pItem->addEquipSlot(this);
-    equipSerializer->serialize(getEquipMask(), pItem->getId());
+//    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
 }
 
