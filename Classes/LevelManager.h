@@ -8,6 +8,7 @@
 #include "EventDataInteger.h"
 #include "EventDataFloatie.h"
 #include "Match.h"
+#include "FirebaseDatabase.h"
 
 namespace lorafel {
     class LevelManager {
@@ -31,7 +32,8 @@ namespace lorafel {
 
         // Returns the current XP
         virtual const unsigned long getXp() const  { return m_xp; }
-
+        virtual void setXp(unsigned int amount) { m_xp = amount; }
+        
         // Increase the current XP amount by 'xp'
         virtual const unsigned long incrementXpBy(int xp, Match *pMatch) {
             // If XP was enough to level player
@@ -46,7 +48,8 @@ namespace lorafel {
             
             // Increment player xp
             m_xp += xp;
-            
+            FirebaseDatabase::getInstance()->setXP(m_xp);
+
             // Fire off an XP event
             cocos2d::EventCustom e("xp");
             EventData* val = new EventDataFloatie(xp, pMatch->getTileSetCenter());

@@ -38,6 +38,7 @@ namespace lorafel {
 			if (!data.isNull() && data.getType() == Value::Type::MAP) {
 				ValueMap valueMap = data.asValueMap();
 
+                loadStats(valueMap);
 				loadInventory(valueMap);
                 loadEquipSlots(valueMap);
 			}
@@ -46,6 +47,19 @@ namespace lorafel {
             return m_pPlayer;
         }
 
+        void loadStats(ValueMap &valueMap) const {
+            if(!valueMap["gold"].isNull()) {
+                getPlayer()->setGold(valueMap["gold"].asUnsignedInt());
+            } else {
+                getPlayer()->setGold(0);
+            }
+            if(!valueMap["xp"].isNull()) {
+                getPlayer()->setXp(valueMap["xp"].asUnsignedInt());
+            } else {
+                getPlayer()->setXp(0);
+            }
+        }
+        
         void loadEquipSlots(ValueMap &valueMap) const {
             Inventory* pInventory = m_pPlayer->getInventory();
             

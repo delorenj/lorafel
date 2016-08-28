@@ -30,8 +30,9 @@ int Player::updateGoldBy(int amount, Match* pMatch) {
     amount = amount > m_maxGold - m_gold ? m_maxGold - m_gold : amount;
     if(amount == 0) return m_gold;
     m_gold += amount;
+	FirebaseDatabase::getInstance()->setGold(m_gold);
 
-    // Fire off an XP event
+    // Fire off a gold event
     cocos2d::EventCustom e("gold");
     EventData* val = new EventDataFloatie(amount, pMatch->getTileSetCenter());
     e.setUserData(val);

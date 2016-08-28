@@ -19,19 +19,12 @@ bool FirebaseDatabase::init() {
 			CC_CALLBACK_2(FirebaseDatabase::onCompleteUserQuery, this),
 			this);
 
-    NDKHelper::addSelector("FirebaseDatabaseSelectors",
-                           "onCompleteAddItem",
-                           CC_CALLBACK_2(FirebaseDatabase::onCompleteAddItem, this),
-                           this);
-
 	return true;
 
 }
 void FirebaseDatabase::onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data) {
 	CCLOG("Loading player from native login...");
 	PlayerManager::getInstance()->loadPlayer(data);
-	serializeUserToLocalCache(data);
-
 }
 
 void FirebaseDatabase::setStringForKey(std::string key, std::string value, std::string child) {
@@ -62,25 +55,6 @@ void FirebaseDatabase::onCompleteGetStringForKeyQuery(cocos2d::Node* sender, coc
 	CCLOG("Got query result =D");
 }
 
-void FirebaseDatabase::serializeUserToLocalCache(cocos2d::Value data) {
-	auto cache = cocos2d::UserDefault::getInstance();
-
-	if (!data.isNull() && data.getType() == Value::Type::MAP) {
-		ValueMap valueMap = data.asValueMap();
-		if(!valueMap["inventory_item_grid"].isNull()) {
-			ValueMap slotLayouts = valueMap["inventory_item_grid"].asValueMap();
-
-			for(auto slotLayout : slotLayouts) {
-				std::string key = slotLayout.first;
-				std::string value = slotLayout.second.asString();
-				cache->setStringForKey(key.c_str(), value);
-			}
-		}
-	}
-
-
-}
-
 void FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
     ValueMap vm;
     
@@ -93,22 +67,6 @@ void FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
 
     sendMessageWithParams("addItem", v);
     
-}
-
-void FirebaseDatabase::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
-    if (!data.isNull() && data.getType() == Value::Type::MAP) {
-        ValueMap valueMap = data.asValueMap();
-        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
-            std::string newId = valueMap["newId"].asString();
-            std::string oldId = valueMap["oldId"].asString();
-            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
-            Inventory::ItemQuantityPair* pair = items->at(oldId);
-            pair->first->setId(newId);
-            auto p = std::make_pair(newId, pair);
-            items->erase(oldId);
-            items->insert(p);
-        }
-    }
 }
 
 void FirebaseDatabase::loadInventoryItemGrid() {
@@ -138,4 +96,12 @@ void FirebaseDatabase::equipItem(int slot, Item* pItem) {
     } else {
         setStringForKey(to_string(slot), pItem->getId(), "equip_slots");
     }
+}
+
+void FirebaseDatabase::setGold(int amount) {
+	setStringForKey("gold", to_string(amount));
+}
+
+void FirebaseDatabase::setXP(unsigned long amount) {
+	setStringForKey("xp", to_string(amount));
 }

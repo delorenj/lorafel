@@ -32,6 +32,10 @@ bool SwappyGrid::init() {
 //    m_pWorld = new b2World(b2Vec2(0, 0));
 //    m_pWorld->SetAllowSleeping(false);
 
+    NDKHelper::addSelector("SwappyGridSelectors",
+                           "onCompleteAddItem",
+                           CC_CALLBACK_2(SwappyGrid::onCompleteAddItem, this),
+                           this);
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -122,6 +126,22 @@ bool SwappyGrid::init() {
 
     scheduleUpdate();
     return true;
+}
+
+void SwappyGrid::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
+    if (!data.isNull() && data.getType() == Value::Type::MAP) {
+        ValueMap valueMap = data.asValueMap();
+        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
+            std::string newId = valueMap["newId"].asString();
+            std::string oldId = valueMap["oldId"].asString();
+            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+            Inventory::ItemQuantityPair* pair = items->at(oldId);
+            pair->first->setId(newId);
+            auto p = std::make_pair(newId, pair);
+            items->erase(oldId);
+            items->insert(p);
+        }
+    }
 }
 
 void SwappyGrid::update(float delta) {
@@ -787,6 +807,8 @@ SwappyGrid::~SwappyGrid() {
     CC_SAFE_DELETE(m_pMoveStack);
     CC_SAFE_DELETE(m_pColumnStateMachines);
 
+    NDKHelper::removeSelectorsInGroup("SwappyGridSelectors");
+    
     for(auto q : *m_pTileDropQueues) {
         CC_SAFE_DELETE(q);
     }

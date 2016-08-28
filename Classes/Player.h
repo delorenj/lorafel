@@ -46,6 +46,8 @@ namespace lorafel {
         void equipHook();
         LevelManager* getLevelManager() const { return m_pLevelManager; }
         int updateGoldBy(int amount, Match* pMatch);
+        void setGold(unsigned int amount) { m_gold = amount; }
+        void setXp(unsigned int amount) { m_pLevelManager->setXp(amount); }
         int getGold() const { return m_gold; }
         int getMaxGold() const { return m_maxGold; }
         int getMaxHp() const { return m_maxHp; }

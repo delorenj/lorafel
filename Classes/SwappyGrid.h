@@ -132,6 +132,7 @@ namespace lorafel {
         void addTileBorderHighlight(TileSet* pSet, const Tile* tile, cocos2d::Vec2 anchorPos, float rotation);
         void onGameOver();
         bool onContactPostSolve(cocos2d::PhysicsContact& contact);
+        void onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data);
     };
 }
 

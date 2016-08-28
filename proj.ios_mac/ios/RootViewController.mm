@@ -145,7 +145,12 @@
         NSString* value = (NSString*) parameters[@"value"];
         NSString* child = (NSString*) parameters[@"child"];
 
-        [[[[[_db child:@"users"] child:user.uid] child:child] child:key] setValue:value];
+        if([child isEqual: @""]) {
+            [[[[_db child:@"users"] child:user.uid] child:key] setValue:value];
+        } else {
+            [[[[[_db child:@"users"] child:user.uid] child:child] child:key] setValue:value];
+        }
+        
     }
 }
 
