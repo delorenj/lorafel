@@ -33,6 +33,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':libcocos2dx')
     provided 'org.apache.httpcomponents:httpcore:4.4.3'
+    compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.android.gms:play-services-base:9.4.0'

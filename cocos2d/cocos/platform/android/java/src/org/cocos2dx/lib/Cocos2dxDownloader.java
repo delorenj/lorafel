@@ -43,20 +43,30 @@ class DataTaskHandler extends BinaryHttpResponseHandler {
         _downloader.onStart(_id);
     }
 
+//    @Override
+//    public void onFailure(int i, Header[] headers, byte[] errorResponse, Throwable throwable) {
+//        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable);
+//        String errStr = "";
+//        if (null != throwable) {
+//            errStr = throwable.toString();
+//        }
+//        _downloader.onFinish(_id, i, errStr, null);
+//    }
+//
+//    @Override
+//    public void onSuccess(int i, Header[] headers, byte[] binaryData) {
+//        LogD("onSuccess(i:" + i + " headers:" + headers);
+//        _downloader.onFinish(_id, 0, null, binaryData);
+//    }
+
     @Override
-    public void onFailure(int i, Header[] headers, byte[] errorResponse, Throwable throwable) {
-        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable);
-        String errStr = "";
-        if (null != throwable) {
-            errStr = throwable.toString();
-        }
-        _downloader.onFinish(_id, i, errStr, null);
+    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData) {
+
     }
 
     @Override
-    public void onSuccess(int i, Header[] headers, byte[] binaryData) {
-        LogD("onSuccess(i:" + i + " headers:" + headers);
-        _downloader.onFinish(_id, 0, null, binaryData);
+    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData, Throwable error) {
+
     }
 }
 
@@ -102,38 +112,48 @@ class FileTaskHandler extends FileAsyncHttpResponseHandler {
         _downloader.runNextTaskIfExists();
     }
 
+//    @Override
+//    public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
+//        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable + " file:" + file);
+//        String errStr = "";
+//        if (null != throwable) {
+//            errStr = throwable.toString();
+//        }
+//        _downloader.onFinish(_id, i, errStr, null);
+//    }
+//
+//    @Override
+//    public void onSuccess(int i, Header[] headers, File file) {
+//        LogD("onSuccess(i:" + i + " headers:" + headers + " file:" + file);
+//        String errStr = null;
+//        do {
+//            // rename temp file to final file
+//            // if final file exist, remove it
+//            if (_finalFile.exists()) {
+//                if (_finalFile.isDirectory()) {
+//                    errStr = "Dest file is directory:" + _finalFile.getAbsolutePath();
+//                    break;
+//                }
+//                if (false == _finalFile.delete()) {
+//                    errStr = "Can't remove old file:" + _finalFile.getAbsolutePath();
+//                    break;
+//                }
+//            }
+//
+//            File tempFile = getTargetFile();
+//            tempFile.renameTo(_finalFile);
+//        } while (false);
+//        _downloader.onFinish(_id, 0, errStr, null);
+//    }
+
     @Override
-    public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
-        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable + " file:" + file);
-        String errStr = "";
-        if (null != throwable) {
-            errStr = throwable.toString();
-        }
-        _downloader.onFinish(_id, i, errStr, null);
+    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, File file) {
+
     }
 
     @Override
-    public void onSuccess(int i, Header[] headers, File file) {
-        LogD("onSuccess(i:" + i + " headers:" + headers + " file:" + file);
-        String errStr = null;
-        do {
-            // rename temp file to final file
-            // if final file exist, remove it
-            if (_finalFile.exists()) {
-                if (_finalFile.isDirectory()) {
-                    errStr = "Dest file is directory:" + _finalFile.getAbsolutePath();
-                    break;
-                }
-                if (false == _finalFile.delete()) {
-                    errStr = "Can't remove old file:" + _finalFile.getAbsolutePath();
-                    break;
-                }
-            }
+    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, File file) {
 
-            File tempFile = getTargetFile();
-            tempFile.renameTo(_finalFile);
-        } while (false);
-        _downloader.onFinish(_id, 0, errStr, null);
     }
 }
 
@@ -182,7 +202,7 @@ public class Cocos2dxDownloader {
         Cocos2dxHelper.runOnGLThread(new Runnable() {
             @Override
             public void run() {
-                nativeOnProgress(_id, id, downloadBytes, downloadNow, downloadTotal);
+//                nativeOnProgress(_id, id, downloadBytes, downloadNow, downloadTotal);
             }
         });
     }
@@ -201,7 +221,7 @@ public class Cocos2dxDownloader {
         Cocos2dxHelper.runOnGLThread(new Runnable() {
             @Override
             public void run() {
-                nativeOnFinish(_id, id, errCode, errStr, data);
+//                nativeOnFinish(_id, id, errCode, errStr, data);
             }
         });
     }
@@ -258,7 +278,7 @@ public class Cocos2dxDownloader {
                         list.add(new BasicHeader("Range", "bytes=" + fileLen + "-"));
                         headers = list.toArray(new Header[list.size()]);
                     }
-                    task.handle = downloader._httpClient.get(Cocos2dxHelper.getActivity(), url, headers, null, task.handler);
+//                    task.handle = downloader._httpClient.get(Cocos2dxHelper.getActivity(), url, headers, null, task.handler);
                     //task.handle = downloader._httpClient.get(url, task.handler);
                 } while (false);
 
@@ -267,7 +287,7 @@ public class Cocos2dxDownloader {
                     Cocos2dxHelper.runOnGLThread(new Runnable() {
                         @Override
                         public void run() {
-                            downloader.nativeOnFinish(downloader._id, id, 0, errStr, null);
+//                            downloader.nativeOnFinish(downloader._id, id, 0, errStr, null);
                         }
                     });
                 } else {
@@ -320,6 +340,6 @@ public class Cocos2dxDownloader {
         }
     }
 
-    native void nativeOnProgress(int id, int taskId, long dl, long dlnow, long dltotal);
-    native void nativeOnFinish(int id, int taskId, int errCode, String errStr, final byte[] data);
+//    native void nativeOnProgress(int id, int taskId, long dl, long dlnow, long dltotal);
+//    native void nativeOnFinish(int id, int taskId, int errCode, String errStr, final byte[] data);
 }
