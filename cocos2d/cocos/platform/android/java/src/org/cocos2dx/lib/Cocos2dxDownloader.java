@@ -43,30 +43,20 @@ class DataTaskHandler extends BinaryHttpResponseHandler {
         _downloader.onStart(_id);
     }
 
-//    @Override
-//    public void onFailure(int i, Header[] headers, byte[] errorResponse, Throwable throwable) {
-//        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable);
-//        String errStr = "";
-//        if (null != throwable) {
-//            errStr = throwable.toString();
-//        }
-//        _downloader.onFinish(_id, i, errStr, null);
-//    }
-//
-//    @Override
-//    public void onSuccess(int i, Header[] headers, byte[] binaryData) {
-//        LogD("onSuccess(i:" + i + " headers:" + headers);
-//        _downloader.onFinish(_id, 0, null, binaryData);
-//    }
-
     @Override
     public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData) {
-
+        LogD("onSuccess(i:" + statusCode + " headers:" + headers);
+        _downloader.onFinish(_id, 0, null, binaryData);
     }
 
     @Override
     public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData, Throwable error) {
-
+        LogD("onFailure(i:" + statusCode + " headers:" + headers + " throwable:" + error);
+        String errStr = "";
+        if (null != error) {
+            errStr = error.toString();
+        }
+        _downloader.onFinish(_id, statusCode, errStr, null);
     }
 }
 
@@ -202,7 +192,7 @@ public class Cocos2dxDownloader {
         Cocos2dxHelper.runOnGLThread(new Runnable() {
             @Override
             public void run() {
-//                nativeOnProgress(_id, id, downloadBytes, downloadNow, downloadTotal);
+                nativeOnProgress(_id, id, downloadBytes, downloadNow, downloadTotal);
             }
         });
     }
@@ -221,7 +211,7 @@ public class Cocos2dxDownloader {
         Cocos2dxHelper.runOnGLThread(new Runnable() {
             @Override
             public void run() {
-//                nativeOnFinish(_id, id, errCode, errStr, data);
+                nativeOnFinish(_id, id, errCode, errStr, data);
             }
         });
     }
@@ -340,6 +330,6 @@ public class Cocos2dxDownloader {
         }
     }
 
-//    native void nativeOnProgress(int id, int taskId, long dl, long dlnow, long dltotal);
-//    native void nativeOnFinish(int id, int taskId, int errCode, String errStr, final byte[] data);
+    native void nativeOnProgress(int id, int taskId, long dl, long dlnow, long dltotal);
+    native void nativeOnFinish(int id, int taskId, int errCode, String errStr, final byte[] data);
 }
