@@ -22,6 +22,7 @@ namespace lorafel {
                 CCLOG("About to create the Firebase app");
                 m_pApp = ::firebase::App::Create(firebase::AppOptions(), cocos2d::JniHelper::getEnv(), cocos2d::JniHelper::GetActivity());
                 CCLOG("Done Creating the Firebase app");
+                CCLOG("Ancho-Salmon dong-deli");
             #else
                 m_pApp = firebase::App::Create(firebase::AppOptions());
             #endif

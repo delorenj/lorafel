@@ -24,6 +24,7 @@ namespace lorafel {
         }
 
         Player* loadPlayer(cocos2d::Value data) {
+            CCLOG("PlayerManager::loadPlayer() - Enter");
 			if(m_pPlayer != nullptr) {
 				delete m_pPlayer;
 				m_pPlayer = nullptr;
@@ -36,6 +37,7 @@ namespace lorafel {
 			m_pPlayer->setTile(HeroTile::create("player.png"));
 
 			if (!data.isNull() && data.getType() == Value::Type::MAP) {
+                CCLOG("PlayerManager::loadPlayer() - Database data is valid. About to load player into memory...");
 				ValueMap valueMap = data.asValueMap();
 
                 loadStats(valueMap);
@@ -48,6 +50,7 @@ namespace lorafel {
         }
 
         void loadStats(ValueMap &valueMap) const {
+            CCLOG("PlayerManager::loadStats() - Enter");
             if(!valueMap["gold"].isNull()) {
                 getPlayer()->setGold(valueMap["gold"].asUnsignedInt());
             } else {
@@ -61,6 +64,7 @@ namespace lorafel {
         }
         
         void loadEquipSlots(ValueMap &valueMap) const {
+            CCLOG("PlayerManager::loadEquipSlots() - Enter");
             Inventory* pInventory = m_pPlayer->getInventory();
             
             if(valueMap["equip_slots"].isNull() || valueMap["equip_slots"].getType() != Value::Type::MAP) {
@@ -78,6 +82,7 @@ namespace lorafel {
         }
         
 		void loadInventory(ValueMap &valueMap) const {
+            CCLOG("PlayerManager::loadInventory() - Enter");
 			Inventory* pInventory = m_pPlayer->getInventory();
 			ValueMap itemVec = valueMap["items"].asValueMap();
 			for(auto itemVal : itemVec) {

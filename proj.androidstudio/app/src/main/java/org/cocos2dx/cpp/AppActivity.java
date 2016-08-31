@@ -122,30 +122,35 @@ public class AppActivity extends Cocos2dxActivity implements
                         Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
                         Log.w(TAG, "getUser:got user");
                         JSONObject paramList = new JSONObject();
-                        Map<String, Object> items = (Map<String, Object>) user.get("items");
-                        Map<String, Object> equipSlots = (Map<String, Object>) user.get("equip_slots");
-
-                        Iterator it = items.entrySet().iterator();
-                        while (it.hasNext()) {
-                            Map.Entry pair = (Map.Entry)it.next();
-                            try {
-                                paramList.put(pair.getKey().toString(), pair.getValue());
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            it.remove(); // avoids a ConcurrentModificationException
-                        }
                         try {
-                            paramList.put("items", items);
+                            paramList.put(userId,user);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-                        try {
-                            paramList.put("equip_slots", equipSlots);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+//                        Map<String, Object> items = (Map<String, Object>) user.get("items");
+//                        Map<String, Object> equipSlots = (Map<String, Object>) user.get("equip_slots");
+//
+//                        Iterator it = items.entrySet().iterator();
+//                        while (it.hasNext()) {
+//                            Map.Entry pair = (Map.Entry)it.next();
+//                            try {
+//                                paramList.put(pair.getKey().toString(), pair.getValue());
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                            it.remove(); // avoids a ConcurrentModificationException
+//                        }
+//                        try {
+//                            paramList.put("items", items);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        try {
+//                            paramList.put("equip_slots", equipSlots);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
 
                         AndroidNDKHelper.SendMessageWithParameters("onCompleteUserQuery", paramList);
                     }
