@@ -39,7 +39,9 @@ namespace lorafel {
 			if (!data.isNull() && data.getType() == Value::Type::MAP) {
                 CCLOG("PlayerManager::loadPlayer() - Database data is valid. About to load player into memory...");
 				ValueMap valueMap = data.asValueMap();
-
+                for(auto v : valueMap) {
+                    CCLOG("PlayerManager::loadPlayer() - VMAP Values: %s", v.first.c_str());
+                }
                 loadStats(valueMap);
 				loadInventory(valueMap);
                 loadEquipSlots(valueMap);
@@ -52,12 +54,14 @@ namespace lorafel {
         void loadStats(ValueMap &valueMap) const {
             CCLOG("PlayerManager::loadStats() - Enter");
             if(!valueMap["gold"].isNull()) {
+                CCLOG("PlayerManager::loadStats() - Got Gold");
                 getPlayer()->setGold(valueMap["gold"].asUnsignedInt());
             } else {
                 getPlayer()->setGold(0);
             }
             if(!valueMap["xp"].isNull()) {
                 getPlayer()->setXp(valueMap["xp"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got Xp");
             } else {
                 getPlayer()->setXp(0);
             }
@@ -84,40 +88,72 @@ namespace lorafel {
 		void loadInventory(ValueMap &valueMap) const {
             CCLOG("PlayerManager::loadInventory() - Enter");
 			Inventory* pInventory = m_pPlayer->getInventory();
+
+            if(valueMap["items"].getType() == Value::Type::INT_KEY_MAP) {
+                CCLOG("PlayerManager::loadInventory() - intkeymap");
+            }
+            if(valueMap["items"].getType() == Value::Type::MAP) {
+                CCLOG("PlayerManager::loadInventory() - map");
+            }
+            if(valueMap["items"].getType() == Value::Type::NONE) {
+                CCLOG("PlayerManager::loadInventory() - none");
+            }
+            if(valueMap["items"].getType() == Value::Type::STRING) {
+                CCLOG("PlayerManager::loadInventory() - string: %s", valueMap["items"].asString().c_str());
+            }
+            if(valueMap["items"].getType() == Value::Type::UNSIGNED) {
+                CCLOG("PlayerManager::loadInventory() - unsigned");
+            }
+            if(valueMap["items"].getType() == Value::Type::VECTOR) {
+                CCLOG("PlayerManager::loadInventory() - vector");
+            }
+            if(valueMap["items"].getType() == Value::Type::BOOLEAN) {
+                CCLOG("PlayerManager::loadInventory() - bool");
+            }
+            if(valueMap["items"].getType() == Value::Type::BYTE) {
+                CCLOG("PlayerManager::loadInventory() - byte");
+            }
+            if(valueMap["items"].getType() == Value::Type::FLOAT) {
+                CCLOG("PlayerManager::loadInventory() - float");
+            }
+            CCLOG("TITS");
+            
 			ValueMap itemVec = valueMap["items"].asValueMap();
-			for(auto itemVal : itemVec) {
-                    auto itemId = itemVal.first;
-					ValueMap itemValMap = itemVal.second.asValueMap();
-					std::string itemClass = itemValMap["class"].asString();
-					/**
-					 * If any args passed in, set them here
-					 * or set null
-					 */
-					ValueVector itemArgs;
-					if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
-						itemArgs = itemValMap["arguments"].asValueVector();
-					} else {
-						itemArgs = ValueVectorNull;
-					}
-
-					/**
-					 * If a quantity was passed in, set it here
-					 * otherwise set quantity to 1
-					 */
-					int itemQuantity = 1;
-					if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
-						itemQuantity = itemValMap["quantity"].asInt();
-					}
-
-					CCLOG(" - loading %d of item %s", itemQuantity, itemClass.c_str());
-					for(int i=0; i<itemQuantity; i++) {
-						Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
-						pInventory->addItem(pItem);
-					}
-				}
-		}
-
-		Player* getPlayer() const { return m_pPlayer; }
+            CCLOG("PlayerManager::loadInventory() - chips");
+            for(auto itemVal : itemVec) {
+                auto itemId = itemVal.first;
+                ValueMap itemValMap = itemVal.second.asValueMap();
+                CCLOG("PlayerManager::loadInventory() - sauce");
+                std::string itemClass = itemValMap["class"].asString();
+                /**
+                 * If any args passed in, set them here
+                 * or set null
+                 */
+                ValueVector itemArgs;
+                if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
+                    itemArgs = itemValMap["arguments"].asValueVector();
+                } else {
+                    itemArgs = ValueVectorNull;
+                }
+                
+                /**
+                 * If a quantity was passed in, set it here
+                 * otherwise set quantity to 1
+                 */
+                int itemQuantity = 1;
+                if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
+                    itemQuantity = itemValMap["quantity"].asInt();
+                }
+                
+                CCLOG(" - loading %d of item %s", itemQuantity, itemClass.c_str());
+                for(int i=0; i<itemQuantity; i++) {
+                    Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
+                    pInventory->addItem(pItem);
+                }
+            }
+        }
+        
+        Player* getPlayer() const { return m_pPlayer; }
 
     protected:
         static PlayerManager *_instance;

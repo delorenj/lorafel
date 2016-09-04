@@ -1,23 +1,52 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 24
+    buildToolsVersion '24.0.1'
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.lasertoast.lorafel"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
-    sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir 'src/main/jniLibs'
-        // This is not necessary unless you have precompiled libraries in your project.
+    sourceSets {
+        main {
+            jni {
+                srcDirs = []
+//                srcDirs += '../../Classes'
+//                srcDirs += '../../Classes/NDKHelper'
+//                srcDirs += '../../Classes/jansson'
+//                srcDirs += '../../cocos2d/cocos'
+//                srcDirs += '../../cocos2d/external'
+//                srcDirs += '../../cocos2d/external/firebase_cpp_sdk/include'
+//                srcDirs += '../../cocos2d/external/gpg/android/include'
+//                srcDirs += '../../cocos2d'
+//                srcDirs += '/usr/include/c++/4.2.1'
+//                srcDirs += '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include'
+            }
+            jniLibs {
+                dependencies {
+                    srcDir 'src/main/jniLibs'
+                }
+            }
+        }
     }
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile file("/Users/delorenj/code/cocos2d/external/firebase_cpp_sdk/libs/android/app.pro")
+            proguardFile file("/Users/delorenj/code/cocos2d/external/firebase_cpp_sdk/libs/android/auth.pro")
+        }
+        debug {
+            debuggable = true
+            jniDebuggable = true
+        }
+    }
 //    buildTypes {
 //        release {
 //            minifyEnabled false
@@ -34,7 +63,8 @@ dependencies {
     compile project(':libcocos2dx')
     provided 'org.apache.httpcomponents:httpcore:4.4.3'
     compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.google.code.gson:gson:2.7'
     compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.firebase:firebase-database:9.4.0'
     compile 'com.google.android.gms:play-services-base:9.4.0'
@@ -68,15 +98,12 @@ project.ext {
     }
     // Check the NDK location using the same configuration options as the
     // experimental Gradle plug-in.
-    ndk_dir = project.android.ndkDirectory
-    if (ndk_dir == null || !ndk_dir.exists()) {
-        ndk_dir = System.getenv('ANDROID_NDK_HOME')
+        ndk_dir = "/Users/delorenj/Library/Android/sdk/ndk-bundle"
         if (ndk_dir == null || ndk_dir.isEmpty()) {
             throw new StopActionException(
                     'Android NDK directory should be specified using the ndk.dir ' +
                             'property or ANDROID_NDK_HOME environment variable.')
         }
-    }
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -21,7 +21,7 @@ namespace lorafel {
             #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
                 CCLOG("About to create the Firebase app");
                 m_pApp = ::firebase::App::Create(firebase::AppOptions(), cocos2d::JniHelper::getEnv(), cocos2d::JniHelper::GetActivity());
-                CCLOG("Done Creating the Firebase app");
+                CCLOG("Done Creating the Firebase appppp");
                 CCLOG("Ancho-Salmon dong-deli");
             #else
                 m_pApp = firebase::App::Create(firebase::AppOptions());

@@ -54,12 +54,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.lasertoast.lorafel.R;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -111,6 +115,224 @@ public class AppActivity extends Cocos2dxActivity implements
 
     }
 
+    public void loadInventoryItemGrid(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+        mDatabase
+                .child("users")
+                .child(userId)
+                .child("inventory_item_grid")
+                .addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
+                        Log.w(TAG, "got items");
+                        JSONObject paramList;
+                        try {
+                            Gson gson = new Gson();
+                            String jsonString = gson.toJson(user);
+                            paramList = new JSONObject(jsonString);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            paramList = new JSONObject();
+                        }
+                        AndroidNDKHelper.SendMessageWithParameters("onCompleteLoadInventoryItemGrid", paramList);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "loadInventoryItemGrid:onCancelled", databaseError.toException());
+                    }
+                });
+    }
+
+    public void loadInventoryEquipGrid(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+        mDatabase
+                .child("users")
+                .child(userId)
+                .child("inventory_equip_grid")
+                .addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
+                                Log.w(TAG, "got equip items");
+                                JSONObject paramList;
+                                try {
+                                    Gson gson = new Gson();
+                                    String jsonString = gson.toJson(user);
+                                    paramList = new JSONObject(jsonString);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    paramList = new JSONObject();
+                                }
+                                AndroidNDKHelper.SendMessageWithParameters("onCompleteLoadInventoryEquipGrid", paramList);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w(TAG, "loadInventoryEquipGrid:onCancelled", databaseError.toException());
+                            }
+                        });
+    }
+
+    public void enableOfflineDatabase(JSONObject parameters) {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    }
+
+    public void addItem(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+
+        if(parameters != null) {
+            try {
+                String tempId = parameters.getString("tempId");
+                String className = parameters.getString("class");
+                String arguments = parameters.getString("args");
+                String quantity = parameters.getString("quantity");
+                String newId = mDatabase.child("users").child(userId).child("items").push().getKey();
+
+                if(arguments == null || arguments == "") {
+                } else {
+                }
+                    mDatabase
+                            .child("users")
+                            .child(userId)
+                            .child(key)
+                            .setValue(value)
+                    ;
+
+                } else {
+                    mDatabase
+                            .child("users")
+                            .child(userId)
+                            .child(child)
+                            .child(key)
+                            .setValue(value)
+                    ;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void setStringForKey(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+
+        if(parameters != null) {
+            try {
+                String key = parameters.getString("key");
+                String value = parameters.getString("value");
+                String child = parameters.getString("child");
+
+                if(child == "") {
+                    mDatabase
+                            .child("users")
+                            .child(userId)
+                            .child(key)
+                            .setValue(value)
+                    ;
+
+                } else {
+                    mDatabase
+                            .child("users")
+                            .child(userId)
+                            .child(child)
+                            .child(key)
+                            .setValue(value)
+                    ;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void getStringForKey(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+
+        if(parameters != null) {
+            try {
+                String key = parameters.getString("key");
+                String child = parameters.getString("child");
+
+                mDatabase
+                        .child("users")
+                        .child(userId)
+                        .child(child)
+                        .child(key)
+                        .addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
+                                Log.w(TAG, "getStringForKey: got thing");
+                                JSONObject paramList;
+                                try {
+                                    Gson gson = new Gson();
+                                    String jsonString = gson.toJson(user);
+                                    paramList = new JSONObject(jsonString);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    paramList = new JSONObject();
+                                }
+                                AndroidNDKHelper.SendMessageWithParameters("onCompleteGetStringForKeyQuery", paramList);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w(TAG, "getStringForKey:onCancelled", databaseError.toException());
+                            }
+                        });
+                ;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void deleteKey(JSONObject parameters) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        final String userId = user.getUid();
+
+        if(parameters != null) {
+            try {
+                String key = parameters.getString("key");
+                String child = parameters.getString("child");
+
+                mDatabase
+                        .child("users")
+                        .child(userId)
+                        .child(child)
+                        .child(key)
+                        .setValue(null)
+                ;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void loadUserDataFromDatabase() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -121,37 +343,15 @@ public class AppActivity extends Cocos2dxActivity implements
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
                         Log.w(TAG, "getUser:got user");
-                        JSONObject paramList = new JSONObject();
+                        JSONObject paramList;
                         try {
-                            paramList.put(userId,user);
+                            Gson gson = new Gson();
+                            String jsonString = gson.toJson(user);
+                            paramList = new JSONObject(jsonString);
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            paramList = new JSONObject();
                         }
-//                        Map<String, Object> items = (Map<String, Object>) user.get("items");
-//                        Map<String, Object> equipSlots = (Map<String, Object>) user.get("equip_slots");
-//
-//                        Iterator it = items.entrySet().iterator();
-//                        while (it.hasNext()) {
-//                            Map.Entry pair = (Map.Entry)it.next();
-//                            try {
-//                                paramList.put(pair.getKey().toString(), pair.getValue());
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                            it.remove(); // avoids a ConcurrentModificationException
-//                        }
-//                        try {
-//                            paramList.put("items", items);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        try {
-//                            paramList.put("equip_slots", equipSlots);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-
                         AndroidNDKHelper.SendMessageWithParameters("onCompleteUserQuery", paramList);
                     }
 

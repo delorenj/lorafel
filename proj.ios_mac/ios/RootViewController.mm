@@ -165,7 +165,7 @@
         NSArray* arguments = (NSArray*) parameters[@"args"];
         NSString* quantity = (NSString*) parameters[@"quantity"];
         
-        NSString *newId = [[[_db child:@"users"] child:@"items"] childByAutoId].key;
+        NSString *newId = [[[[_db child:@"users"] child:user.uid ] child:@"items"] childByAutoId].key;
 
         if(arguments == nil) {
             NSDictionary *item = @{@"class": className,
