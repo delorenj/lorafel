@@ -128,12 +128,12 @@ public class AppActivity extends Cocos2dxActivity implements
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Map<String, Object> user =((Map<String, Object>)dataSnapshot.getValue());
+                        Map<String, Object> items =((Map<String, Object>)dataSnapshot.getValue());
                         Log.w(TAG, "got items");
                         JSONObject paramList;
                         try {
                             Gson gson = new Gson();
-                            String jsonString = gson.toJson(user);
+                            String jsonString = gson.toJson(items);
                             paramList = new JSONObject(jsonString);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -201,25 +201,24 @@ public class AppActivity extends Cocos2dxActivity implements
                 String quantity = parameters.getString("quantity");
                 String newId = mDatabase.child("users").child(userId).child("items").push().getKey();
 
-                if(arguments == null || arguments == "") {
-                } else {
+                HashMap<String, Object> thing = new HashMap<String, Object>();
+                thing.put("class", className);
+                thing.put("quantity", quantity);
+                if(arguments != null && arguments != "") {
+                    thing.put("arguments", arguments);
                 }
-                    mDatabase
-                            .child("users")
-                            .child(userId)
-                            .child(key)
-                            .setValue(value)
-                    ;
+                mDatabase
+                        .child("users")
+                        .child(userId)
+                        .child("items")
+                        .child(newId)
+                        .setValue(thing);
+                ;
 
-                } else {
-                    mDatabase
-                            .child("users")
-                            .child(userId)
-                            .child(child)
-                            .child(key)
-                            .setValue(value)
-                    ;
-                }
+                JSONObject paramList = new JSONObject();
+                paramList.put("oldId", tempId);
+                paramList.put("newId", newId);
+                AndroidNDKHelper.SendMessageWithParameters("onCompleteAddItem", paramList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
