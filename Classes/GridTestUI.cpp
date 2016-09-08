@@ -24,6 +24,7 @@ bool GridTestUI::init() {
     addChild(m_pLayout);
 
     addStateName();
+    addVersion();
 
 //    addFallingTileCount();
 
@@ -91,6 +92,16 @@ void GridTestUI::addStateName() {
     lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
     this->m_pState->setLayoutParameter(lp);
     this->m_pLayout->addChild(this->m_pState);
+}
+
+void GridTestUI::addVersion() {
+    auto lp = cocos2d::ui::LinearLayoutParameter::create();
+    auto v = cocos2d::ui::Text::create("Build 5","fonts/BebasNeue Bold.ttf", 18);
+    v->setColor(cocos2d::Color3B::BLACK);
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
+    lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
+    v->setLayoutParameter(lp);
+    this->m_pLayout->addChild(v);
 }
 
 void GridTestUI::update(float delta) {

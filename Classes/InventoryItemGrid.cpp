@@ -204,6 +204,7 @@ InventoryItemSlot* InventoryItemGrid::getSlotFromCoords(InventoryItemGrid::Coord
 }
 
 void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data) {
+    CCLOG("InventoryItemGrid::onCompleteLoadInventoryItemGrid() - enter");
     auto pPlayer = PlayerManager::getInstance()->getPlayer();
     auto pInventory = pPlayer->getInventory();
     auto itemDictionary = pInventory->getItemDictionary();

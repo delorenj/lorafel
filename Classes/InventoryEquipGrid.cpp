@@ -152,6 +152,7 @@ void InventoryEquipGrid::loadInventory() {
 }
 
 void InventoryEquipGrid::onCompleteLoadInventoryEquipGrid(cocos2d::Node* sender, cocos2d::Value data) {
+    CCLOG("InventoryEquipGrid::onCompleteLoadInventoryEquipGrid() - enter");
 }
 
 void InventoryEquipGrid::setInitialized(bool i) {

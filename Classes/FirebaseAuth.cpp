@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 8/7/16.
 //
 
+#include "Globals.h"
 #include "firebase/app.h"
 #include "firebase/auth.h"
 #include "FirebaseAuth.h"

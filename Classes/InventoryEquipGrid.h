@@ -5,6 +5,7 @@
 #ifndef LORAFEL_INVENTORYEQUIPGRID_H
 #define LORAFEL_INVENTORYEQUIPGRID_H
 
+#include "Globals.h"
 #include "cocos2d.h"
 #include "Item.h"
 #include "EquipItemSlot.h"

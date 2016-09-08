@@ -41,6 +41,7 @@ namespace lorafel {
         cocos2d::ui::Button* m_pSettingsButton;
         cocos2d::DrawNode* m_bg;
 
+        void addVersion();
         void addStateName();
         void addFallingTileCount();
         void addDropTileButtons() const;

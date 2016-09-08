@@ -33,6 +33,7 @@ void InGameModalNavButton::addEvents() {
         cocos2d::Rect rect = this->getBoundingBox();
 
         if (rect.containsPoint(p)) {
+            CCLOG("InGameModalNavButton::onTouchBegan()");
             InGameModal::createAndDropIn(cocos2d::Director::getInstance()->getRunningScene());
             return true;
         }

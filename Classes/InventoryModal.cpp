@@ -32,6 +32,7 @@ bool InventoryModal::init() {
 
 void InventoryModal::readyCheck(float dt) {
     if(m_pItemGrid->isInitialized()) {// && m_pEquipGrid->isInitialized()) {
+        CCLOG("InventoryModal::readyCheck() - initialized !");
         m_pItemGrid->setInitialized(false);
         m_pEquipGrid->setInitialized(false);
         m_callback(1);

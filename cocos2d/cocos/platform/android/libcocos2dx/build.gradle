@@ -1,5 +1,14 @@
 apply plugin: 'com.android.library'
 
+model {
+    components {
+        binaries.all {
+            cppCompiler.args '-DCOCOS2D_DEBUG=1'
+            cppCompiler.define 'COCOS2D_DEBUG=1', 'APP_DEBUG'
+        }
+    }
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.1'

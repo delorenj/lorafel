@@ -2,6 +2,7 @@
 #include "TestScene.h"
 #include "TitleScene.h"
 #include "PlayerManager.h"
+#include "Globals.h"
 
 // firebase
 #include "firebase/analytics.h"

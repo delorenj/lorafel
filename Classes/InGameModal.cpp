@@ -82,13 +82,18 @@ InGameModal* InGameModal::createAndDropIn(cocos2d::Node* container) {
     container->addChild(modal, LayerOrder::MODAL);
 
     modal->loadInventory([&](int res) {
-        CCLOG("Done Loading from Firebase with result %d =D", res);
+        CCLOG("InGameModal::loadInventoryCallback - Done Loading from Firebase with result %d =D", res);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        __android_log_print(ANDROID_LOG_DEBUG, "cocos2d-x debug info", "%s", "InGameModal::loadInventoryCallback - Done Loading from Firebase");
+#endif
+
         auto modal = cocos2d::Director::getInstance()->getRunningScene()->getChildByName("InventoryModal");
-        auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(modal->getPosition().x, origin.y + visibleSize.height/2+modal->getContentSize().height/2));
-        auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
-        auto seq = cocos2d::Sequence::create(ease, NULL);
-        modal->runAction(seq);
-        GameStateMachine::getInstance()->setState<CharacterModalState>();
+//        auto moveTo = cocos2d::MoveTo::create(0.5f, cocos2d::Vec2(modal->getPosition().x, origin.y + visibleSize.height/2+modal->getContentSize().height/2));
+//        auto ease = cocos2d::EaseBackOut::create(moveTo->clone());
+//        auto seq = cocos2d::Sequence::create(ease, NULL);
+//        modal->runAction(seq);
+//        GameStateMachine::getInstance()->setState<CharacterModalState>();
+        modal->setPosition(cocos2d::Vec2(200, 200));
     });
 
     /**

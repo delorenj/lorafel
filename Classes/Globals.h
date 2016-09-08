@@ -14,6 +14,14 @@ extern "C" {
     int	 atoi(const char *);
 };
 
+/**
+ * Some fucked up shit where COCOS2D_DEBUG=1 will
+ * not get set
+ */
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//#define CCLOG(format, ...)      cocos2d::log(format, ##__VA_ARGS__)
+//#endif
+
 namespace lorafel {
     #define DISABLE_RANDOM_SEED 1
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))

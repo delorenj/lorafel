@@ -5,6 +5,7 @@
 #ifndef LORAFEL_INVENTORYITEMGRID_H
 #define LORAFEL_INVENTORYITEMGRID_H
 
+#include "Globals.h"
 #include "cocos2d.h"
 #include "Grid.h"
 #include "Item.h"

@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 8/22/16.
 //
 
+#include "Globals.h"
 #include "FirebaseDatabase.h"
 #include "PlayerManager.h"
 

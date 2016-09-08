@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+model {
+    components {
+        binaries.all {
+            cppCompiler.args '-DCOCOS2D_DEBUG=1'
+            cppCompiler.define 'COCOS2D_DEBUG=1', 'APP_DEBUG'
+        }
+    }
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.1'
@@ -120,14 +129,14 @@ task ndkBuildCompile(type: Exec) {
 //
 task ndkBuildClean(type: Exec) {
     description 'Use ndk-build to clean the C++ application.'
-    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
-            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
-            "clean")
+//    commandLine("${project.ext.ndk_dir}${File.separator}ndk-build",
+//            "FIREBASE_CPP_SDK_DIR=${project.ext.firebase_cpp_sdk_dir}",
+//            "clean")
 }
 
 // Once the Android Gradle plug-in has generated tasks, add dependencies for
 // the ndk-build targets.
 project.afterEvaluate {
     preBuild.dependsOn(ndkBuildCompile)
-    clean.dependsOn(ndkBuildClean)
+//    clean.dependsOn(ndkBuildClean)
 }
