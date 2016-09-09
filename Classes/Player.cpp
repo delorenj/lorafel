@@ -6,6 +6,7 @@
 #include "cocos2d.h"
 #include "Globals.h"
 #include "InventorySlotSerializer.h"
+#include "EventDataPair.h"
 
 using namespace lorafel;
 
@@ -74,6 +75,16 @@ bool Player::equipConsumableSlot(std::string itemId) {
 }
 
 bool Player::equipConsumableSlot(std::string itemId, int slot) {
+	/**
+	 * Here, handle unequipping
+	 */
+	if(itemId == "") {
+		m_activeConsumables[slot] = nullptr;
+		EventDataPair<int, std::string>* data = new EventDataPair<int, std::string>(slot, "" );
+		m_pDispatcher->dispatchCustomEvent("equip_consumable", data);
+		return true;
+	}
+
     Item* pItem = getInventory()->getItem(itemId);
 
     /**
@@ -82,7 +93,9 @@ bool Player::equipConsumableSlot(std::string itemId, int slot) {
      */
     if(pItem == nullptr) {
         m_activeConsumables[slot] = nullptr;
-        return true;
+		EventDataPair<int, std::string>* data = new EventDataPair<int, std::string>(slot, "" );
+		m_pDispatcher->dispatchCustomEvent("equip_consumable", data);
+		return true;
     }
 
     /**
@@ -101,7 +114,14 @@ bool Player::equipConsumableSlot(std::string itemId, int slot) {
         return false;
     }
 
+	/**
+	 * If all is good, then equip item
+	 * and then fire off equip_consumable
+	 * to the let grid know to update the ux
+	 */
     m_activeConsumables[slot] = static_cast<Consumable*>(pItem);
+	EventDataPair<int, std::string>* data = new EventDataPair<int, std::string>(slot, itemId );
+	m_pDispatcher->dispatchCustomEvent("equip_consumable", data);
     return true;
 }
 
@@ -133,6 +153,7 @@ void Player::equipItem(int slot, Item* pItem) {
      * Update the database
      */
     FirebaseDatabase::getInstance()->equipItem(slot, pItem);
+
 }
 
 bool Player::isEquipped(Item* pItem) {

@@ -46,6 +46,7 @@ void HealthPotion::addEvents(cocos2d::Node* pNode) {
         {
             use(PlayerManager::getInstance()->getPlayer()->getTile());
             removeFromParentAndCleanup(true);
+            PlayerManager::getInstance()->getPlayer()->getInventory()->removeItem(getId(), 1);
             return true; // to indicate that we have consumed it.
         }
 

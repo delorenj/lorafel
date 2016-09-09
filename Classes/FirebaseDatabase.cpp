@@ -66,8 +66,22 @@ void FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
     
     Value v = Value(vm);
 
-    sendMessageWithParams("addItem", v);
-    
+	/**
+	 * If quantity is 0, then delete both the
+	 * item, and if possible, the grid placement
+	 *
+	 * Otherwise, just update the existing item
+	 * by decrementing the quantity
+	 */
+	if(quantity < 1) {
+		for(auto coords : pItem->getInventorySlotCoordinates()) {
+			std::string hash = to_string(coords.first) + "|" + to_string(coords.second);
+			deleteKey(hash, "inventory_item_grid");
+		}
+		deleteKey(pItem->getId(), "items");
+	} else {
+		sendMessageWithParams("addItem", v);
+	}
 }
 
 void FirebaseDatabase::loadInventoryItemGrid() {

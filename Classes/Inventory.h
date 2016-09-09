@@ -23,7 +23,10 @@ namespace lorafel {
         typedef std::pair<Item*, int> ItemQuantityPair;
         typedef std::unordered_map<std::string, ItemQuantityPair*> ItemDictionary;
         typedef std::unordered_map<std::pair<int, int>, ItemQuantityPair*> SlotItemStackDictionary;
-    public:
+
+		int removeItem(std::string itemId, int quantity);
+
+	public:
         Inventory() {
             m_pItemDictionary = new ItemDictionary();
             m_pSlotItemStackDictionary = new SlotItemStackDictionary();
@@ -41,7 +44,7 @@ namespace lorafel {
         ItemDictionary* m_pItemDictionary;
         SlotItemStackDictionary* m_pSlotItemStackDictionary;
         bool itemExists(std::string itemName);
-    };
+	};
 
 }
 #endif //LORAFEL_INVENTORY_H

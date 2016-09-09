@@ -11,10 +11,11 @@ namespace lorafel {
 	template<class K, class V>
 	class EventDataPair : public EventData {
 	public:
-		EventDataPair(K key, V val) {
-			val = std::make_pair(key, val);
-		} ;
-		const std::pair<K, V> val;
+		EventDataPair(K k, V v) {
+			val = std::make_pair(k, v);
+		}
+
+        std::pair<K, V> val;
 	};
 }
 

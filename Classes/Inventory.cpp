@@ -64,3 +64,30 @@ void Inventory::addEvents(cocos2d::Node* pSwappyGrid) {
     }
 }
 
+/**
+ * Reduce the quantity of an existing item. If quantity is
+ * one, then item will be deleted from inventory
+ *
+ * @param itemId
+ * @param quantity
+ */
+int Inventory::removeItem(std::string itemId, int quantity = 1) {
+    int currentQuantity = getItemCount(itemId);
+
+    /**
+     * If you don't have this item,
+     * then no use deleting it.
+     */
+    if(currentQuantity == 0) {
+        return 0;
+    }
+
+    auto pItem = getItem(itemId);
+    auto newQuantity = std::max(currentQuantity - quantity, 0);
+    ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
+    auto p = std::make_pair(itemId, itemPair);
+    m_pItemDictionary->insert(p);
+    FirebaseDatabase::getInstance()->addItem(pItem, newQuantity);
+    return newQuantity;
+}
+

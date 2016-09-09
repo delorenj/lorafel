@@ -205,6 +205,13 @@ void GridUI::initConsumableBar() {
         auto theSlot = m_consumableSlots[slot];
         if(itemId == "") {
             theSlot->removeAllChildrenWithCleanup(true);
+        } else {
+            auto item = PlayerManager::getInstance()->getPlayer()->getInventory()->getItem(itemId);
+            if(item->getParent() == nullptr) {
+                item->setAnchorPoint(cocos2d::Vec2(0, 1));
+                item->setPosition(theSlot->convertToNodeSpace(theSlot->getPosition()));
+                m_consumableSlots[slot]->addChild(item, LayerOrder::UX);
+            }
         }
 
     });
