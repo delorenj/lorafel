@@ -197,8 +197,8 @@ public class AppActivity extends Cocos2dxActivity implements
             try {
                 String tempId = parameters.getString("tempId");
                 String className = parameters.getString("class");
-                String arguments = parameters.getString("args");
-                String quantity = parameters.getString("quantity");
+                String arguments = parameters.has("args") ? parameters.getString("args") : null;
+                String quantity = parameters.has("quantity") ? parameters.getString("quantity") : "1";
                 String newId = mDatabase.child("users").child(userId).child("items").push().getKey();
 
                 HashMap<String, Object> thing = new HashMap<String, Object>();
