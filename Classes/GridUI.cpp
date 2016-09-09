@@ -14,6 +14,7 @@
 #include "InGameSettings.h"
 #include "GameStateMachine.h"
 #include "InGameModalNavButton.h"
+#include "EventDataPair.h"
 
 using namespace lorafel;
 
@@ -196,6 +197,19 @@ void GridUI::initConsumableBar() {
         addChild(slot);
 
     }
+    
+    auto _listener = cocos2d::EventListenerCustom::create("equip_consumable", [=](cocos2d::EventCustom* event){
+        EventDataPair<int, std::string>* data = static_cast<EventDataPair<int,std::string>* >(event->getUserData());
+        int slot = data->val.first;
+        std::string itemId = data->val.second;
+        auto theSlot = m_consumableSlots[slot];
+        if(itemId == "") {
+            theSlot->removeAllChildrenWithCleanup(true);
+        }
+
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
+
 }
 
 void GridUI::initButtons() {

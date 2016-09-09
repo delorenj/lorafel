@@ -47,7 +47,6 @@ namespace lorafel {
                 loadEquipSlots(valueMap);
 			}
 
-//            m_pPlayer->equipConsumableSlot("Yummy Potion", 0);
             return m_pPlayer;
         }
 
@@ -89,41 +88,10 @@ namespace lorafel {
             CCLOG("PlayerManager::loadInventory() - Enter");
 			Inventory* pInventory = m_pPlayer->getInventory();
 
-            if(valueMap["items"].getType() == Value::Type::INT_KEY_MAP) {
-                CCLOG("PlayerManager::loadInventory() - intkeymap");
-            }
-            if(valueMap["items"].getType() == Value::Type::MAP) {
-                CCLOG("PlayerManager::loadInventory() - map");
-            }
-            if(valueMap["items"].getType() == Value::Type::NONE) {
-                CCLOG("PlayerManager::loadInventory() - none");
-            }
-            if(valueMap["items"].getType() == Value::Type::STRING) {
-                CCLOG("PlayerManager::loadInventory() - string: %s", valueMap["items"].asString().c_str());
-            }
-            if(valueMap["items"].getType() == Value::Type::UNSIGNED) {
-                CCLOG("PlayerManager::loadInventory() - unsigned");
-            }
-            if(valueMap["items"].getType() == Value::Type::VECTOR) {
-                CCLOG("PlayerManager::loadInventory() - vector");
-            }
-            if(valueMap["items"].getType() == Value::Type::BOOLEAN) {
-                CCLOG("PlayerManager::loadInventory() - bool");
-            }
-            if(valueMap["items"].getType() == Value::Type::BYTE) {
-                CCLOG("PlayerManager::loadInventory() - byte");
-            }
-            if(valueMap["items"].getType() == Value::Type::FLOAT) {
-                CCLOG("PlayerManager::loadInventory() - float");
-            }
-            CCLOG("TITS");
-            
 			ValueMap itemVec = valueMap["items"].asValueMap();
-            CCLOG("PlayerManager::loadInventory() - chips");
             for(auto itemVal : itemVec) {
                 auto itemId = itemVal.first;
                 ValueMap itemValMap = itemVal.second.asValueMap();
-                CCLOG("PlayerManager::loadInventory() - sauce");
                 std::string itemClass = itemValMap["class"].asString();
                 /**
                  * If any args passed in, set them here
@@ -145,7 +113,7 @@ namespace lorafel {
                     itemQuantity = itemValMap["quantity"].asInt();
                 }
                 
-                CCLOG(" - loading %d of item %s", itemQuantity, itemClass.c_str());
+                CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
                 for(int i=0; i<itemQuantity; i++) {
                     Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
                     pInventory->addItem(pItem);

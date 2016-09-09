@@ -69,20 +69,20 @@ const int Player::getNumConsumableSlots() const {
     }
 }
 
-bool Player::equipConsumableSlot(std::string itemName) {
-    return equipConsumableSlot(itemName, 0);
+bool Player::equipConsumableSlot(std::string itemId) {
+    return equipConsumableSlot(itemId, 0);
 }
 
-bool Player::equipConsumableSlot(std::string itemName, int slot) {
-    Item* pItem = getInventory()->getItem(itemName);
+bool Player::equipConsumableSlot(std::string itemId, int slot) {
+    Item* pItem = getInventory()->getItem(itemId);
 
     /**
      * Item doesn't exist.
      * Can't equip it!
      */
     if(pItem == nullptr) {
-        CCLOG("Item not found!");
-        return false;
+        m_activeConsumables[slot] = nullptr;
+        return true;
     }
 
     /**
@@ -116,10 +116,19 @@ void Player::equipHook() {
 void Player::equipItem(int slot, Item* pItem) {
     if(pItem == nullptr) {
         m_equipDictionary.erase(slot);
+		if(slot == CONSUMABLE) {
+			equipConsumableSlot("");
+		}
+        
     } else {
         m_equipDictionary[slot] = pItem;
+
+        Consumable* c = dynamic_cast<Consumable*>(pItem);
+        if(c != nullptr) {
+            equipConsumableSlot(pItem->getId());
+        }
     }
-    
+
     /**
      * Update the database
      */

@@ -395,6 +395,7 @@
 		3167D89630700CB559F19ED5 /* ActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionTile.cpp; sourceTree = "<group>"; };
 		3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemSlot.cpp; sourceTree = "<group>"; };
 		3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryModal.cpp; sourceTree = "<group>"; };
+		3167D8CF2D68B01B75B5126B /* EventDataPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataPair.h; sourceTree = "<group>"; };
 		3167D8F18F0E180942D55C28 /* ItemFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemFactory.cpp; sourceTree = "<group>"; };
 		3167D8FD5B6617C26519A0D4 /* HealthPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotion.h; sourceTree = "<group>"; };
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
@@ -967,6 +968,7 @@
 				3167D581C26696931B24E901 /* FirebaseDatabase.h */,
 				3167D8F18F0E180942D55C28 /* ItemFactory.cpp */,
 				3167DAE65E005076FC3B717A /* ItemFactory.h */,
+				3167D8CF2D68B01B75B5126B /* EventDataPair.h */,
 			);
 			name = Classes;
 			path = ../Classes;

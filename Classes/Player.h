@@ -61,8 +61,8 @@ namespace lorafel {
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
         Inventory* getInventory() const { return m_pInventory; }
-        bool equipConsumableSlot(std::string itemName);
-        bool equipConsumableSlot(std::string itemName, int slot);
+        bool equipConsumableSlot(std::string itemId);
+        bool equipConsumableSlot(std::string itemId, int slot);
         Hook* getHook() const { return m_pHook; }
         Item* getEquippedItemBySlotType(int equipMask) { return m_equipDictionary[equipMask]; }
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
