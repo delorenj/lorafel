@@ -87,7 +87,7 @@ int Inventory::removeItem(std::string itemId, int quantity = 1) {
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
     auto p = std::make_pair(itemId, itemPair);
     m_pItemDictionary->insert(p);
-    FirebaseDatabase::getInstance()->addItem(pItem, newQuantity);
+    FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
     return newQuantity;
 }
 

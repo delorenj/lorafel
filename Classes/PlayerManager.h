@@ -79,8 +79,12 @@ namespace lorafel {
                 int slotId = parseInt(equipSlot.first);
                 std::string itemId = equipSlot.second.asString();
                 Item* pItem = pInventory->getItem(itemId);
-                CCLOG(" - equipping slot %d with item id %s", slotId, pItem->getItemName().c_str());
-                getPlayer()->equipItem(slotId, pItem);
+                if(pItem != nullptr) {
+                    CCLOG(" - equipping slot %d with item id %s", slotId, pItem->getItemName().c_str());
+                    getPlayer()->equipItem(slotId, pItem);
+                } else {
+                    CCLOG("PlayerManager::loadEquipSlots() - Tried to equip slot %d with item id %s, but failed", slotId, itemId.c_str());
+                }
             }
         }
         
@@ -114,10 +118,8 @@ namespace lorafel {
                 }
                 
                 CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
-                for(int i=0; i<itemQuantity; i++) {
-                    Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
-                    pInventory->addItem(pItem);
-                }
+                Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
+                pInventory->addItem(pItem, itemQuantity);
             }
         }
         

@@ -183,6 +183,49 @@
     }
 }
 
+- (void)updateItemQuantity:(NSObject *)parametersObject {
+    NSDictionary *parameters = (NSDictionary *)parametersObject;
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+    
+    if (parameters != nil) {
+        NSString* itemId = (NSString*) parameters[@"itemId"];
+        NSString* quantity = (NSString*) parameters[@"quantity"];
+        
+        /**
+         * Delete from equip slot, if equipped
+         */
+        if([quantity intValue] < 1) {
+            [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] setValue:nil];
+            
+            [[[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] queryEqualToValue:itemId] queryLimitedToFirst:1]  observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                if(snapshot.exists) {
+                    NSString* key = snapshot.key;
+                    [[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key] setValue:nil];
+                }
+                
+            } withCancelBlock:^(NSError * _Nonnull error) {
+                NSLog(@"%@", error.localizedDescription);
+            }];
+
+        } else {
+            [[[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] child:quantity] setValue:quantity];
+        }
+        
+        [[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"]
+           observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            if(snapshot.exists) {
+                NSString* key = snapshot.key;
+                [[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key] setValue:nil];
+            }
+            
+        } withCancelBlock:^(NSError * _Nonnull error) {
+            NSLog(@"%@", error.localizedDescription);
+        }];
+
+    }
+}
+
 - (void)getStringForKey:(NSObject *)parametersObject {
     NSDictionary *parameters = (NSDictionary *)parametersObject;
     _db = [[FIRDatabase database] reference];

@@ -15,7 +15,8 @@ int ItemSlot::incrementStack() {
 
 int ItemSlot::decrementStack() {
     m_stackSizeChange = true;
-    return --m_stackSize;
+    m_stackSize = std::max(m_stackSize-1, 0);
+    return m_stackSize;
 }
 
 bool ItemSlot::stackFull() const {
