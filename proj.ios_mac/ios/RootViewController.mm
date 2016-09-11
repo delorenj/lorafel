@@ -307,4 +307,20 @@
             }];
 
 }
+
+- (void)addMapToKey:(NSObject *)parametersObject {
+    NSDictionary *parameters = (NSDictionary *)parametersObject;
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+
+    if (parameters != nil) {
+        NSString* rootkey = (NSString*) parameters[@"rootkey"];
+        NSString* key = (NSString*) parameters[@"key"];
+        NSString* value = (NSString*) parameters[@"value"];
+        NSString* child = (NSString*) parameters[@"child"];
+
+        [[[[[[_db child:@"users"] child:user.uid] child:child] child:rootkey] child:key] setValue:value];
+    }
+}
+
 @end

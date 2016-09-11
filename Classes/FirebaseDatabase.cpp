@@ -116,3 +116,17 @@ void FirebaseDatabase::setGold(int amount) {
 void FirebaseDatabase::setXP(unsigned long amount) {
 	setStringForKey("xp", to_string(amount));
 }
+
+void FirebaseDatabase::setMapForKey(std::string key, ValueMap value, std::string child) {
+	value["key"] = key;
+	Value v = Value(value);
+	sendMessageWithParams("setMapForKey", v);
+
+}
+
+void FirebaseDatabase::addMapToKey(std::string key, ValueMap value, std::string child) {
+	value["rootkey"] = key;
+    value["child"] = child;
+	Value v = Value(value);
+	sendMessageWithParams("addMapToKey", v);
+}

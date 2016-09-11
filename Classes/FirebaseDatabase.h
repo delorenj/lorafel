@@ -39,6 +39,10 @@ namespace lorafel {
 
 		void setXP(unsigned long amount);
 
+		void setMapForKey(std::string key, ValueMap value, std::string child);
+
+		void addMapToKey(std::string key, ValueMap value, std::string child);
+
 	protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
