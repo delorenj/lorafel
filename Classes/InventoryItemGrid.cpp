@@ -79,7 +79,8 @@ Item* InventoryItemGrid::assignItemToSlot(std::pair<Item*, int>* pItemPair) {
                 assignItemToSlot(pItemPair->first, nextEmptySlotCoordinates());
             } else {
                 auto slot = m_pGrid->get(slotCoords);
-                slot->incrementStack();
+                auto newQuantity = slot->incrementStack();
+                PlayerManager::getInstance()->getPlayer()->getInventorySlotSerializer()->serialize(slotCoords, std::make_pair(pItemPair->first->getId(), newQuantity));
             }
         }
     }
@@ -239,7 +240,7 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
         auto numAlreadyPlaced = alreadyPlaced[pItem->getId()];
 
         if(numAlreadyPlaced == 0) {
-            assignItemToSlot(it->second);
+            assignItemToSlot(pItemQuatityPair);
         } else {
             std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
             pNewPair->first = pItem;
