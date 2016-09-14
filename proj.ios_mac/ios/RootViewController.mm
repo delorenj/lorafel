@@ -261,8 +261,13 @@
     if (parameters != nil) {
         NSString* key = (NSString*) parameters[@"key"];
         NSString* child = (NSString*) parameters[@"child"];
+        if([key isEqualToString:@""]) {
+            [[[[_db child:@"users"] child:user.uid] child:child] setValue:nil];
+        } else {
+            [[[[[_db child:@"users"] child:user.uid] child:child] child:key] setValue:nil];
+        }
 
-        [[[[[_db child:@"users"] child:user.uid] child:child] child:key] setValue:nil];
+        
     }
 }
 

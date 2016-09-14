@@ -29,7 +29,7 @@ namespace lorafel {
              */
             if(itemId == "" || stackSize == "0") {
                 FirebaseDatabase::getInstance()->deleteKey(hash.c_str(), "inventory_item_grid");
-                FirebaseDatabase::getInstance()->deleteKey(itemId, "inventory_item_grid_min_stack");
+                FirebaseDatabase::getInstance()->deleteKey("", "inventory_item_grid_min_stack");
             } else {
                 auto combo = std::string(itemId + "|" + stackSize);
                 FirebaseDatabase::getInstance()->setStringForKey(hash.c_str(), combo, "inventory_item_grid");
