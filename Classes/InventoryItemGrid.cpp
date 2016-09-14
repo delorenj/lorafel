@@ -224,8 +224,11 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
 		Item* pItem = pInventory->getItem(itemQuantPair.first);
 		slot->setItem(pItem, itemQuantPair.second);
 		pItem->addInventorySlotCoordinates(coords);
-		alreadyPlaced.emplace(itemQuantPair.first, itemQuantPair.second);
-
+        
+        /**
+         * TODO: Need to determine TOTAL placed, not just stack size placed!!
+         */
+        alreadyPlaced[itemQuantPair.first] += itemQuantPair.second;
 	}
 
     /**
@@ -239,9 +242,11 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
         auto itemQuantity = pItemQuatityPair->second;
         auto numAlreadyPlaced = alreadyPlaced[pItem->getId()];
 
+        if(pItem->isEquipped() && !pItem->isStackable()) continue;
+        
         if(numAlreadyPlaced == 0) {
             assignItemToSlot(pItemQuatityPair);
-        } else {
+        } else if(itemQuantity - numAlreadyPlaced > 0) {
             std::pair<Item*, int>* pNewPair = new std::pair<Item*, int>();
             pNewPair->first = pItem;
             pNewPair->second = itemQuantity - numAlreadyPlaced;
