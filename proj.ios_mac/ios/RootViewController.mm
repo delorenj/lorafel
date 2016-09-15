@@ -209,19 +209,46 @@
             }];
 
         } else {
-            [[[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] child:quantity] setValue:quantity];
+            [[[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] child:@"quantity"] setValue:quantity];
         }
         
-        [[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"]
-           observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        [[[[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] child:itemId] queryOrderedByValue]queryLimitedToFirst:1] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             if(snapshot.exists) {
-                NSString* key = snapshot.key;
-                [[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key] setValue:nil];
+                NSDictionary* keyval = snapshot.value;
+                NSArray* allValues = [keyval allValues];
+                NSArray* allKeys = [keyval allKeys];
+                NSString* slotKey = [allKeys firstObject];
+                int intQuant = [[allValues firstObject] intValue] - 1;
+                NSString* newValue = [NSString stringWithFormat:@"%d", intQuant];
+                
+                if([newValue isEqualToString:@"0"]) {
+                    [[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] removeValue];
+                    
+                    [[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid"] child:slotKey] setValue:nil];
+                } else {
+                    [[[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] child:itemId] child:slotKey] setValue:newValue];
+                    
+                    NSString* newHash = [NSString stringWithFormat:@"%@|%@", itemId, newValue];
+                    [[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid"] child:slotKey] setValue:newHash];
+
+                }
             }
             
         } withCancelBlock:^(NSError * _Nonnull error) {
             NSLog(@"%@", error.localizedDescription);
         }];
+
+        
+//        [[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"]
+//           observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//            if(snapshot.exists) {
+//                NSString* key = snapshot.key;
+//                [[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key] setValue:nil];
+//            }
+//            
+//        } withCancelBlock:^(NSError * _Nonnull error) {
+//            NSLog(@"%@", error.localizedDescription);
+//        }];
 
     }
 }

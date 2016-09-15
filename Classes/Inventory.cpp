@@ -83,7 +83,8 @@ int Inventory::removeItem(std::string itemId, int quantity = 1) {
     }
 
     auto pItem = getItem(itemId);
-    auto newQuantity = std::max(currentQuantity - quantity, 0);
+    auto newQuantity = currentQuantity - quantity;
+    newQuantity = std::max(newQuantity, 0);
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
     auto p = std::make_pair(itemId, itemPair);
     m_pItemDictionary->insert(p);
