@@ -24,7 +24,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
      * to remove this slot from its equipSlots
      */
     if(m_pItem != nullptr) {
-        m_pItem->removeEquipSlot(this);
+        m_pItem->setEquipSlot(NULL);
     }
 
     /**
@@ -51,7 +51,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     }
 
     m_stackSizeChange = true;
-    pItem->addEquipSlot(this);
+    pItem->setEquipSlot(getEquipMask());
     PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
 //    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
@@ -68,10 +68,11 @@ void EquipItemSlot::addEvents() {
         cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
         cocos2d::Rect rect = getBoundingBox();
 
+        ItemSlot* node = static_cast<ItemSlot*>(event->getCurrentTarget());
         /**
          * Touching a slot with something in it
          */
-        if(rect.containsPoint(p) && m_pItem != nullptr) {
+        if(rect.containsPoint(p) && node->getItem() != nullptr) {
             m_state = State::TOUCH_BEGIN;
             auto pItemEvent = new EventDataItem(m_pItem);
             _eventDispatcher->dispatchCustomEvent("inventory-item-selected", pItemEvent);
@@ -81,7 +82,7 @@ void EquipItemSlot::addEvents() {
         /**
          * Touching an empty slot
          */
-        return rect.containsPoint(p) && m_pItem == nullptr;
+        return false;
     };
 
     listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {

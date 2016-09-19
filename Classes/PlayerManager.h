@@ -91,35 +91,39 @@ namespace lorafel {
 		void loadInventory(ValueMap &valueMap) const {
             CCLOG("PlayerManager::loadInventory() - Enter");
 			Inventory* pInventory = m_pPlayer->getInventory();
-
-			ValueMap itemVec = valueMap["items"].asValueMap();
-            for(auto itemVal : itemVec) {
-                auto itemId = itemVal.first;
-                ValueMap itemValMap = itemVal.second.asValueMap();
-                std::string itemClass = itemValMap["class"].asString();
-                /**
-                 * If any args passed in, set them here
-                 * or set null
-                 */
-                ValueVector itemArgs;
-                if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
-                    itemArgs = itemValMap["arguments"].asValueVector();
-                } else {
-                    itemArgs = ValueVectorNull;
+            if(valueMap["items"].isNull()) {
+                // Extract else to valueMapToItem()
+            } else {
+                ValueMap itemVec = valueMap["items"].asValueMap();
+                for(auto itemVal : itemVec) {
+                    auto itemId = itemVal.first;
+                    ValueMap itemValMap = itemVal.second.asValueMap();
+                    std::string itemClass = itemValMap["class"].asString();
+                    /**
+                     * If any args passed in, set them here
+                     * or set null
+                     */
+                    ValueVector itemArgs;
+                    if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
+                        itemArgs = itemValMap["arguments"].asValueVector();
+                    } else {
+                        itemArgs = ValueVectorNull;
+                    }
+                    
+                    /**
+                     * If a quantity was passed in, set it here
+                     * otherwise set quantity to 1
+                     */
+                    int itemQuantity = 1;
+                    if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
+                        itemQuantity = itemValMap["quantity"].asInt();
+                    }
+                    
+                    CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
+                    Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
+                    pInventory->addItem(pItem, itemQuantity);
                 }
                 
-                /**
-                 * If a quantity was passed in, set it here
-                 * otherwise set quantity to 1
-                 */
-                int itemQuantity = 1;
-                if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
-                    itemQuantity = itemValMap["quantity"].asInt();
-                }
-                
-                CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
-                Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
-                pInventory->addItem(pItem, itemQuantity);
             }
         }
         

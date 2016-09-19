@@ -198,10 +198,14 @@
         if([quantity intValue] < 1) {
             [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] setValue:nil];
             
-            [[[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] queryEqualToValue:itemId] queryLimitedToFirst:1]  observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            [[[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] queryOrderedByValue] queryEqualToValue:itemId]  observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                 if(snapshot.exists) {
-                    NSString* key = snapshot.key;
-                    [[[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key] setValue:nil];
+                    NSDictionary* keyval = snapshot.value;
+                    NSString* key = [[keyval allKeys] firstObject];
+                    _db = [[FIRDatabase database] reference];
+                    FIRUser *user = [[FIRAuth auth] currentUser];
+                    FIRDatabaseReference* thing = [[[[_db child:@"users"] child:user.uid] child:@"equip_slots"] child:key];
+                    [thing removeValue];
                 }
                 
             } withCancelBlock:^(NSError * _Nonnull error) {
@@ -212,17 +216,26 @@
             [[[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] child:@"quantity"] setValue:quantity];
         }
         
-        [[[[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] child:itemId] queryOrderedByValue]queryLimitedToFirst:1] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-            if(snapshot.exists) {
+        [[[[[[[_db child:@"users"]
+            child:user.uid]
+           child:@"inventory_item_grid_min_stack"]
+          child:itemId]
+         queryOrderedByValue]
+         queryLimitedToFirst:1]
+         observeSingleEventOfType:FIRDataEventTypeValue
+         withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
+             if(snapshot.exists) {
                 NSDictionary* keyval = snapshot.value;
                 NSArray* allValues = [keyval allValues];
                 NSArray* allKeys = [keyval allKeys];
                 NSString* slotKey = [allKeys firstObject];
                 int intQuant = [[allValues firstObject] intValue] - 1;
                 NSString* newValue = [NSString stringWithFormat:@"%d", intQuant];
-                
+                _db = [[FIRDatabase database] reference];
+                FIRUser *user = [[FIRAuth auth] currentUser];
+
                 if([newValue isEqualToString:@"0"]) {
-                    [[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] removeValue];
+                    [[[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid_min_stack"] child:itemId ] child:slotKey] setValue:nil];
                     
                     [[[[[_db child:@"users"] child:user.uid] child:@"inventory_item_grid"] child:slotKey] setValue:nil];
                 } else {

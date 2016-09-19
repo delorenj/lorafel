@@ -120,6 +120,7 @@ bool Player::equipConsumableSlot(std::string itemId, int slot) {
 	 * to the let grid know to update the ux
 	 */
     m_activeConsumables[slot] = static_cast<Consumable*>(pItem);
+    
 	EventDataPair<int, std::string>* data = new EventDataPair<int, std::string>(slot, itemId );
 	m_pDispatcher->dispatchCustomEvent("equip_consumable", data);
     return true;
@@ -142,7 +143,7 @@ void Player::equipItem(int slot, Item* pItem) {
         
     } else {
         m_equipDictionary[slot] = pItem;
-
+        pItem->setEquipSlot(slot);
         Consumable* c = dynamic_cast<Consumable*>(pItem);
         if(c != nullptr) {
             equipConsumableSlot(pItem->getId());

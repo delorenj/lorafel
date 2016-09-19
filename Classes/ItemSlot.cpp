@@ -79,6 +79,11 @@ void ItemSlot::setStackSize(int stackSize) {
     if(m_stackSize != stackSize) {
         m_stackSize = stackSize;
         m_stackSizeChange = true;
+        if(stackSize == 1) {
+            m_pStackSizeLabel->setVisible(false);
+        } else {
+            m_pStackSizeLabel->setVisible(true);
+        }
     }
 }
 

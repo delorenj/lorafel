@@ -6,6 +6,7 @@
 #include "GameStateMachine.h"
 #include "Globals.h"
 #include "PlayerManager.h"
+#include "EquipItemSlot.h"
 
 using namespace lorafel;
 
@@ -15,7 +16,7 @@ bool Item::init() {
     }
 
     addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
-    m_pEquipSlots.clear();
+    m_equipSlot = -1;
 
     return true;
 }
@@ -39,7 +40,6 @@ void Item::addEvents(cocos2d::Node* pNode) {
 
         if(rect.containsPoint(p))
         {
-            CCLOG("Touched me 8==D");
             return true; // to indicate that we have consumed it.
         }
 
@@ -47,7 +47,6 @@ void Item::addEvents(cocos2d::Node* pNode) {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        CCLOG("You stopped touch me 8=====D");
     };
 
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -69,8 +68,8 @@ void Item::removeInventorySlotCoordinates(std::pair<int, int> coords) {
     m_inventorySlotCoordinates.erase(coords);
 }
 
-void Item::addEquipSlot(EquipItemSlot* pSlot) {
-    m_pEquipSlots.insert(pSlot);
+void Item::setEquipSlot(int equipMask) {
+    m_equipSlot = equipMask;
 }
 
 bool Item::isEquipped() {
@@ -78,16 +77,16 @@ bool Item::isEquipped() {
 }
 
 
-void Item::removeEquipSlot(EquipItemSlot* pSlot) {
-    m_pEquipSlots.erase(pSlot);
-}
-
 bool Item::isStackable() {
     IStackable* stackable = dynamic_cast<IStackable*>(this);
     return stackable != nullptr;
 }
 
-
+void Item::unequip() {
+    PlayerManager::getInstance()->getPlayer()->equipItem(m_equipSlot, nullptr);
+    m_equipSlot = -1;
+    
+}
 
 
 

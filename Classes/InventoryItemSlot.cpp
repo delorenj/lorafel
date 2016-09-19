@@ -63,7 +63,6 @@ void InventoryItemSlot::addEvents() {
             m_state = State::MOVING;
 
         } else if(m_state == State::MOVING) {
-            auto modal = static_cast<InventoryModal*>(m_pGrid->getParent());
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
         }
     };

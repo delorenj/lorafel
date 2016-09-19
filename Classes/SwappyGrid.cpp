@@ -131,16 +131,20 @@ bool SwappyGrid::init() {
 void SwappyGrid::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
     if (!data.isNull() && data.getType() == Value::Type::MAP) {
         ValueMap valueMap = data.asValueMap();
-        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
-            std::string newId = valueMap["newId"].asString();
-            std::string oldId = valueMap["oldId"].asString();
-            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
-            Inventory::ItemQuantityPair* pair = items->at(oldId);
-            pair->first->setId(newId);
-            auto p = std::make_pair(newId, pair);
-            items->erase(oldId);
-            items->insert(p);
-        }
+        PlayerManager::getInstance()->loadInventory(valueMap);
+//        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
+//            std::string newId = valueMap["newId"].asString();
+//            std::string oldId = valueMap["oldId"].asString();
+//            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+//            Inventory::ItemQuantityPair* pair = items->at(oldId);
+//            pair->first->setId(newId);
+//            auto p = std::make_pair(newId, pair);
+//            items->erase(oldId);
+//            items->insert(p);
+//            PlayerManager::getInstance()->getPlayer()->getInventory()->addItem(pair->first, pair->second);
+//        } else if(!valueMap["newId"].isNull()) {
+//            
+//        }
     }
 }
 

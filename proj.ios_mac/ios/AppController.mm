@@ -202,6 +202,20 @@ static AppDelegate s_sharedApplication;
                                           NSLog(@"%@", error.localizedDescription);
                                       }];
                                       
+                                      [[[[_db child:@"users"]
+                                         child:userID]
+                                        child:@"items"]
+                                       observeEventType:FIRDataEventTypeChildAdded
+                                       withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
+                                           if (snapshot.exists) {
+                                               NSDictionary* keyval = snapshot.value;
+                                               [IOSNDKHelper sendMessage:@"onCompleteAddItem" withParameters:keyval];
+                                           }
+                                           
+                                       } withCancelBlock:^(NSError* _Nonnull error) {
+                                           NSLog(@"%@", error.localizedDescription);
+                                       }];
+                                      
                                   }];
         parameters = @{@"state" : @"AuthenticatingState"};
 

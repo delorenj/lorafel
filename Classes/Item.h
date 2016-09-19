@@ -35,13 +35,13 @@ namespace lorafel {
         void addEquipMask(int mask) { m_equipMaskSet.insert(mask); }
         bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
 
-        virtual void addEquipSlot(EquipItemSlot* pSlot);
+        virtual void setEquipSlot(int equipMask);
         virtual bool isEquipped();
-
-        void removeEquipSlot(EquipItemSlot* pSlot);
+        virtual void unequip();
+        
         std::string getId() const { return m_id; }
         void setId(std::string id) { m_id = id; }
-
+        
         bool isStackable();
 
     protected:
@@ -52,7 +52,7 @@ namespace lorafel {
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
-        std::set<EquipItemSlot*> m_pEquipSlots;
+        int m_equipSlot;
     };
 }
 

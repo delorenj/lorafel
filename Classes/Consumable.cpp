@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "GameStateMachine.h"
 #include "SwappyGridScene.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -40,7 +41,6 @@ void Consumable::addEvents(cocos2d::Node* pNode) {
 
         if(rect.containsPoint(p))
         {
-            CCLOG("Touched me 8==D");
             return true; // to indicate that we have consumed it.
         }
 
@@ -48,12 +48,7 @@ void Consumable::addEvents(cocos2d::Node* pNode) {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        CCLOG("You stopped touch me 8=====D");
     };
 
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
-void Consumable::addEquipSlot(EquipItemSlot* pSlot) {
-    Item::addEquipSlot(pSlot);
 }

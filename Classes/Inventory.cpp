@@ -21,12 +21,12 @@ const int Inventory::addItem(Item* pItem, int quantity) {
         int tempId = RandomHelper::random_int(1000000, 9999999);
         pItem->setId(to_string(tempId));
         FirebaseDatabase::getInstance()->addItem(pItem, quantity);
+    } else {
+        pItem->retain();
+        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+        auto p = std::make_pair(pItem->getId(), itemPair);
+        m_pItemDictionary->insert(p);
     }
-    
-    pItem->retain();
-    ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
-    auto p = std::make_pair(pItem->getId(), itemPair);
-    m_pItemDictionary->insert(p);
     return quantity;
 }
 
@@ -87,7 +87,11 @@ int Inventory::removeItem(std::string itemId, int quantity = 1) {
     newQuantity = std::max(newQuantity, 0);
     ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
     auto p = std::make_pair(itemId, itemPair);
+    m_pItemDictionary->erase(itemId);
     m_pItemDictionary->insert(p);
+    if(newQuantity == 0 && pItem->isEquipped()) {
+        pItem->unequip();
+    }
     FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
     return newQuantity;
 }
