@@ -209,6 +209,7 @@ static AppDelegate s_sharedApplication;
                                        withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
                                            if (snapshot.exists) {
                                                NSDictionary* keyval = snapshot.value;
+                                               [keyval setValue:snapshot.key forKey:@"id"];
                                                [IOSNDKHelper sendMessage:@"onCompleteAddItem" withParameters:keyval];
                                            }
                                            

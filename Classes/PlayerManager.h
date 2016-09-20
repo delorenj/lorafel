@@ -88,43 +88,72 @@ namespace lorafel {
             }
         }
         
-		void loadInventory(ValueMap &valueMap) const {
+		void loadInventory(ValueMap &valueMap) {
             CCLOG("PlayerManager::loadInventory() - Enter");
 			Inventory* pInventory = m_pPlayer->getInventory();
+            /**
+             * If items is null, then only a single item is being
+             * passed in. This happens when an item is dynamically
+             * added through the database. The database will detect
+             * the new item and call this function.
+             *
+             * Items is NOT null when loading the game explicitly
+             * from the database. In this case, we need to loop
+             * through each item entry and create the item object
+             */
+            // TODO: Refactor ?
             if(valueMap["items"].isNull()) {
-                // Extract else to valueMapToItem()
+                std::string itemId = valueMap["id"].asString();
+                Item* pItem = createItemFromDatabaseEntry(itemId, valueMap);
+                
+                int itemQuantity = 1;
+                if(!valueMap["quantity"].isNull() && valueMap["quantity"].getType() == Value::Type::INTEGER) {
+                    itemQuantity = valueMap["quantity"].asInt();
+                }
+                
+                pInventory->addItem(pItem, itemQuantity);
+                
             } else {
                 ValueMap itemVec = valueMap["items"].asValueMap();
                 for(auto itemVal : itemVec) {
                     auto itemId = itemVal.first;
                     ValueMap itemValMap = itemVal.second.asValueMap();
-                    std::string itemClass = itemValMap["class"].asString();
-                    /**
-                     * If any args passed in, set them here
-                     * or set null
-                     */
-                    ValueVector itemArgs;
-                    if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
-                        itemArgs = itemValMap["arguments"].asValueVector();
-                    } else {
-                        itemArgs = ValueVectorNull;
-                    }
+                    Item* pItem = createItemFromDatabaseEntry(itemId, itemValMap);
                     
-                    /**
-                     * If a quantity was passed in, set it here
-                     * otherwise set quantity to 1
-                     */
                     int itemQuantity = 1;
                     if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
                         itemQuantity = itemValMap["quantity"].asInt();
                     }
                     
-                    CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
-                    Item* pItem = ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
                     pInventory->addItem(pItem, itemQuantity);
                 }
-                
             }
+        }
+        
+        Item* createItemFromDatabaseEntry(std::string itemId, ValueMap &itemValMap) {
+            std::string itemClass = itemValMap["class"].asString();
+            /**
+             * If any args passed in, set them here
+             * or set null
+             */
+            ValueVector itemArgs;
+            if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
+                itemArgs = itemValMap["arguments"].asValueVector();
+            } else {
+                itemArgs = ValueVectorNull;
+            }
+            
+            /**
+             * If a quantity was passed in, set it here
+             * otherwise set quantity to 1
+             */
+            int itemQuantity = 1;
+            if(!itemValMap["quantity"].isNull() && itemValMap["quantity"].getType() == Value::Type::INTEGER) {
+                itemQuantity = itemValMap["quantity"].asInt();
+            }
+            
+            CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
+            return ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
         }
         
         Player* getPlayer() const { return m_pPlayer; }
