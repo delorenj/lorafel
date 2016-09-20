@@ -68,6 +68,7 @@ namespace lorafel {
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
         void equipItem(int slot, Item* pItem);
         bool isEquipped(Item* pItem);
+        
 
     protected:
         // Current Stats

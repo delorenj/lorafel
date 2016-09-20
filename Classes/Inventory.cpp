@@ -13,6 +13,28 @@ using namespace lorafel;
  * in the inventory dictionary
  */
 const int Inventory::addItem(Item* pItem, int quantity) {
+
+    /**
+     * First, we have to determine it this item is stackable.
+     * If it is stackable, then we want to increase the
+     * quantity if it already exists instead of creating
+     * a new item with a unique itemId
+     */
+    if(pItem->isStackable()) {
+        Item* alreadyExistingItem = getItem(pItem->getClassName(), pItem->getArguments());
+        if(alreadyExistingItem != nullptr) {
+            /**
+             * If this duplicate item is in the database,
+             * let's remove it
+             */
+            if(pItem->getId() != "") {
+                FirebaseDatabase::getInstance()->updateItemQuantity(pItem, 0);
+            }
+
+            pItem = alreadyExistingItem;
+        }
+    }
+
     /**
      * If id is empty, then it hasn't been
      * added to the database yet. Let's add it
@@ -21,13 +43,19 @@ const int Inventory::addItem(Item* pItem, int quantity) {
         int tempId = RandomHelper::random_int(1000000, 9999999);
         pItem->setId(to_string(tempId));
         FirebaseDatabase::getInstance()->addItem(pItem, quantity);
+        return quantity;
     } else {
         pItem->retain();
-        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+        int currentQuantity = getItemCount(pItem->getId());
+        auto newQuantity = currentQuantity + quantity;
+        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
         auto p = std::make_pair(pItem->getId(), itemPair);
+        m_pItemDictionary->erase(pItem->getId());
         m_pItemDictionary->insert(p);
+        FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
+        return newQuantity;
     }
-    return quantity;
+
 }
 
 int Inventory::getItemCount(std::string itemId) {
@@ -53,7 +81,24 @@ Item* Inventory::getItem(std::string itemId) {
     } else {
         return nullptr;
     }
+}
 
+/**
+ * Look up an item in the player's inventory by the
+ * name of the class and the arguments used to create
+ * the item. This is needed for stackable items to know
+ * when to make a new items vs. increasing the quantity
+ * of already existing items
+ */
+Item* Inventory::getItem(std::string className, ValueVector arguments) {
+    for(auto item : *m_pItemDictionary) {
+        ItemQuantityPair* itemQuantityPair = item.second;
+        Item* pItem = itemQuantityPair->first;
+        if(pItem->getClassName() == className && pItem->getArguments() == arguments) {
+            return pItem;
+        }
+    }
+    return nullptr;
 }
 
 void Inventory::addEvents(cocos2d::Node* pSwappyGrid) {
