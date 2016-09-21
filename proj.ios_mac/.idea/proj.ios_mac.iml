@@ -89,6 +89,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NDKHelper/NDKCallbackNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ExponentialLevelManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Inventory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameModalNavButton.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MatchPattern.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.cpp" isTestSource="false" />
@@ -150,6 +151,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Assertion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FireballAction.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindow.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AIStrategy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FireballAction.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GrapeTile.h" isTestSource="false" />

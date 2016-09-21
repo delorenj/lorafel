@@ -81,6 +81,7 @@
 		3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */; };
 		3167D714D9CA38C5BBB01890 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
 		3167D75C677F0DBEBA8BE404 /* FirebaseAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */; };
+		3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */; };
 		3167D79C492BD952CEAC2A15 /* StatGuage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */; };
 		3167D7A01B7361FFC75BE1C7 /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
 		3167D7A1752231AB51E4244F /* PoisonGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */; };
@@ -305,6 +306,7 @@
 		3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Achievements.cpp; sourceTree = "<group>"; };
 		3167D158E63BA8AB24BBA71F /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
 		3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMatcher.cpp; sourceTree = "<group>"; };
+		3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindow.cpp; sourceTree = "<group>"; };
 		3167D1832B9DCD5C84646A52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		3167D19F68934CE0CC42D252 /* EnemyTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTile.h; sourceTree = "<group>"; };
 		3167D1D5D5DB2A51FA4BD953 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
 		3167DED2269D21779C04D7A3 /* MatchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSet.h; sourceTree = "<group>"; };
+		3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindow.h; sourceTree = "<group>"; };
 		3167DF1A060CBD1982A7BABF /* InventoryEquipGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryEquipGrid.h; sourceTree = "<group>"; };
 		3167DF44D30E7CF3B5F1BDBC /* StickMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickMan.h; sourceTree = "<group>"; };
 		3167DF458FA2E520FB3CED3C /* ToggleActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleActionTile.cpp; sourceTree = "<group>"; };
@@ -969,6 +972,8 @@
 				3167D8F18F0E180942D55C28 /* ItemFactory.cpp */,
 				3167DAE65E005076FC3B717A /* ItemFactory.h */,
 				3167D8CF2D68B01B75B5126B /* EventDataPair.h */,
+				3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */,
+				3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1421,6 +1426,7 @@
 				3167D54A4D2622CCBA2C1C23 /* TitleScene.cpp in Sources */,
 				3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */,
 				3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */,
+				3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
