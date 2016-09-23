@@ -331,6 +331,7 @@
 		3167D340925C32E2F6269696 /* TrajectoryParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrajectoryParticle.h; sourceTree = "<group>"; };
 		3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotion.cpp; sourceTree = "<group>"; };
 		3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMove.h; sourceTree = "<group>"; };
+		3167D36F06682ECAAE9775C3 /* ISellable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellable.h; sourceTree = "<group>"; };
 		3167D389262A77B17800B5FB /* GlyphTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphTile.h; sourceTree = "<group>"; };
 		3167D39657152A6F3BCEEF46 /* LootTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LootTile.cpp; sourceTree = "<group>"; };
 		3167D3A45EC56DC51C631728 /* InGameSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameSettings.h; sourceTree = "<group>"; };
@@ -979,6 +980,7 @@
 				3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */,
 				3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */,
 				3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */,
+				3167D36F06682ECAAE9775C3 /* ISellable.h */,
 			);
 			name = Classes;
 			path = ../Classes;

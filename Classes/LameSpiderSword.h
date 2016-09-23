@@ -8,9 +8,10 @@
 
 #include "Weapon.h"
 #include "Player.h"
+#include "ISellable.h"
 
 namespace lorafel {
-    class LameSpiderSword : public Weapon {
+    class LameSpiderSword : public Weapon, public ISellable {
     public:
         virtual bool init() override {
             if(!Weapon::init()) {
@@ -25,6 +26,8 @@ namespace lorafel {
             setItemName("Lame Spider Sword");
             return true;
         }
+
+		virtual int getPrice() const override { return 105; }
 
         CREATE_FUNC(LameSpiderSword);
 

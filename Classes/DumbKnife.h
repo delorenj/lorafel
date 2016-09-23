@@ -8,7 +8,7 @@
 #include "Player.h"
 
 namespace lorafel {
-    class DumbKnife : public Weapon {
+    class DumbKnife : public Weapon, public ISellable {
     public:
         virtual bool init() override {
             if(!Weapon::init()) {
@@ -22,6 +22,10 @@ namespace lorafel {
             addEquipMask(Player::RIGHT_HAND);
             setItemName("Dumb Knife");
             return true;
+        }
+
+        virtual int getPrice() const override {
+            return 5;
         }
 
         CREATE_FUNC(DumbKnife);
