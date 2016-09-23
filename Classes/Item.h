@@ -9,6 +9,7 @@
 #include "SwappyGrid.h"
 #include <string>
 #include "StringPatch.h"
+#include "ItemStat.h"
 
 USING_NS_CC;
 
@@ -52,6 +53,7 @@ namespace lorafel {
         SwappyGrid* m_pSwappyGrid;
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
+		std::set<ItemStat*> m_pItemStats;
         int m_equipSlot;
     };
 }

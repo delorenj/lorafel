@@ -92,6 +92,7 @@
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
+		3167D876068B9414634393B4 /* ItemStat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D7221F3E217642B296 /* ItemStat.cpp */; };
 		3167D87ADA6A9A75E69368B0 /* InGameModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D843C8A19C4FBD802915 /* InGameModal.cpp */; };
 		3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */; };
@@ -314,6 +315,7 @@
 		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
+		3167D21FC003793038B2A84B /* ItemStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStat.h; sourceTree = "<group>"; };
 		3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemGrid.cpp; sourceTree = "<group>"; };
 		3167D2432814485577EB6E9F /* GameStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStates.h; sourceTree = "<group>"; };
 		3167D2677BC18E2A72ED452C /* EquipSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipSerializer.h; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
 		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
+		3167D7D7221F3E217642B296 /* ItemStat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemStat.cpp; sourceTree = "<group>"; };
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
 		3167D7D918440E694548445F /* StupidRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StupidRandomizer.cpp; sourceTree = "<group>"; };
 		3167D7ED3DEF99FA190EEDFD /* EventDataString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataString.h; sourceTree = "<group>"; };
@@ -981,6 +984,8 @@
 				3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */,
 				3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */,
 				3167D36F06682ECAAE9775C3 /* ISellable.h */,
+				3167D7D7221F3E217642B296 /* ItemStat.cpp */,
+				3167D21FC003793038B2A84B /* ItemStat.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1435,6 +1440,7 @@
 				3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */,
 				3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */,
 				3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */,
+				3167D876068B9414634393B4 /* ItemStat.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

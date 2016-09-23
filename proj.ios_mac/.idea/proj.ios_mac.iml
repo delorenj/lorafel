@@ -121,6 +121,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HealthPotionPlayerMove.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AIStrategy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Statement.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemStat.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GameStates.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match5.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.h" isTestSource="false" />
@@ -242,6 +243,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpStatResult.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MeleeAttackTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Serializer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemStat.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FirebaseAuth.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StatGuage.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Item.h" isTestSource="false" />
