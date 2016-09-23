@@ -121,6 +121,7 @@
 		3167DC654406DD3D7D005C1B /* LootTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D39657152A6F3BCEEF46 /* LootTile.cpp */; };
 		3167DC66920A4A70EA6E9678 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
 		3167DC9F7BB2AE668694D0D1 /* InventoryModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */; };
+		3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */; };
 		3167DCC0B85739D1C7FA47BB /* Consumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */; };
 		3167DCF900001EFC72F5EAE9 /* StormGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D67C7D373CBDF45F687F /* StormGlyph.cpp */; };
 		3167DD1DC8FE58A7F4E8800A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
@@ -418,6 +419,7 @@
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
+		3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindowFactory.h; sourceTree = "<group>"; };
 		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
 		3167DA659FBDBFB961F1C50F /* DumbKnife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbKnife.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		3167DB3F8836CD055272AA38 /* Match5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match5.h; sourceTree = "<group>"; };
 		3167DB4E792CF937E33E0EE7 /* InventoryItemGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItemGrid.h; sourceTree = "<group>"; };
 		3167DB517CC5D9B549E8555B /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievements.h; sourceTree = "<group>"; };
+		3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindowFactory.cpp; sourceTree = "<group>"; };
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
 		3167DB81C65E9CCE8D2657AF /* ActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTile.h; sourceTree = "<group>"; };
 		3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragDropSwapPlayerMove.cpp; sourceTree = "<group>"; };
@@ -974,6 +977,8 @@
 				3167D8CF2D68B01B75B5126B /* EventDataPair.h */,
 				3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */,
 				3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */,
+				3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */,
+				3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1427,6 +1432,7 @@
 				3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */,
 				3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */,
 				3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */,
+				3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

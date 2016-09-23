@@ -7,6 +7,7 @@
 #include "EventDataItem.h"
 #include "InventoryModal.h"
 #include "ItemDetailWindow.h"
+#include "ItemDetailWindowFactory.h"
 
 using namespace lorafel;
 
@@ -76,8 +77,7 @@ void InventoryItemSlot::addEvents() {
          * or try to equip it
          */
         if(m_state == State::TOUCH_BEGIN) {
-            ItemDetailWindow* itemDetailWindow = ItemDetailWindow::create(this);
-            addChild(itemDetailWindow);
+			ItemDetailWindowFactory::getInstance()->create(this);
         } else {
             auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
             std::pair<int, int> chsCoords;

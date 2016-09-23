@@ -96,6 +96,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GridUI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Player.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InventoryEquipGrid.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Progress.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Globals.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Exception.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/CarrotTile.h" isTestSource="false" />
@@ -140,7 +141,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LootTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SQLiteCpp.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NormalDistributionRandomizer.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/Progress.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/Player.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Rope.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Arrow.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TitleScene.h" isTestSource="false" />
@@ -182,7 +183,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FirebaseDatabase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AuthStateMachine.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/Player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindowFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HookAction.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemFactory.cpp" isTestSource="false" />
@@ -226,6 +227,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StatGuage.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TileMatcher.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindowFactory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/SwappyGrid.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Arrow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.h" isTestSource="false" />
