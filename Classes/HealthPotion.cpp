@@ -14,9 +14,8 @@ bool HealthPotion::init(double amount) {
         return false;
     }
     m_className = "HealthPotion";
-    ValueVector args;
-    Value arg1(amount);
-    args.push_back(arg1);
+    ValueMap args;
+    args["amount"] = amount;
     setArguments(args);
     m_amount = amount;
     initItemName();

@@ -36,7 +36,7 @@ namespace lorafel {
 
         const int addItem(Item* pItem, int quantity = 1);
         Item* getItem(std::string itemId);
-        Item* getItem(std::string className, ValueVector arguments);
+        Item* getItem(std::string className, ValueMap arguments);
         
         ItemDictionary* getItemDictionary() { return m_pItemDictionary; }
         SlotItemStackDictionary* getSlotItemStackDictionary() { return m_pSlotItemStackDictionary; }

@@ -136,11 +136,11 @@ namespace lorafel {
              * If any args passed in, set them here
              * or set null
              */
-            ValueVector itemArgs;
+            ValueMap itemArgs;
             if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
-                itemArgs = itemValMap["arguments"].asValueVector();
+                itemArgs = itemValMap["arguments"].asValueMap();
             } else {
-                itemArgs = ValueVectorNull;
+                itemArgs = ValueMapNull;
             }
             
             /**

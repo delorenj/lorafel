@@ -90,7 +90,7 @@ Item* Inventory::getItem(std::string itemId) {
  * when to make a new items vs. increasing the quantity
  * of already existing items
  */
-Item* Inventory::getItem(std::string className, ValueVector arguments) {
+Item* Inventory::getItem(std::string className, ValueMap arguments) {
     for(auto item : *m_pItemDictionary) {
         ItemQuantityPair* itemQuantityPair = item.second;
         Item* pItem = itemQuantityPair->first;

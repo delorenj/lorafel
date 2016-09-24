@@ -71,7 +71,7 @@ void ItemDetailWindow::initContent() {
 	 */
 	auto name = cocos2d::Label::createWithTTF(m_pItem->getItemName(), "fonts/ProximaNovaCond-Semibold.ttf", 18);
 	name->setAnchorPoint(cocos2d::Vec2(0,1));
-	name->setPosition(cocos2d::Vec2(m_pCurrencyIcon->getPosition().x, m_pHeaderBg->getPosition().y-m_pHeaderBg->getContentSize().height*1.32f));
+	name->setPosition(cocos2d::Vec2(m_pHeaderBg->getContentSize().width * 0.05f, m_pHeaderBg->getPosition().y-m_pHeaderBg->getContentSize().height*1.32f));
 	name->setGlobalZOrder(LayerOrder::MODAL+11);
 	addChild(name);
 
@@ -80,12 +80,16 @@ void ItemDetailWindow::initContent() {
 	 */
 	cocos2d::Node* nodeAbove = name;
 
-	for(auto stat : *m_pItem->getItemStats()) {
-		auto statLabel = cocos2d::Label::createWithTTF(stat->getName() + ": " + stat->getValueString(), "fonts/ProximaNovaCond-Light.ttf", 16);
-		statLabel->setAnchorPoint(cocos2d::Vec2(0,1));
-		statLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*1.15f));
-		statLabel->setGlobalZOrder(LayerOrder::MODAL+11);
-		addChild(statLabel);
+	auto itemStats = m_pItem->getItemStats();
+	if(itemStats != nullptr) {
+		for(auto stat : *m_pItem->getItemStats()) {
+			auto statLabel = cocos2d::Label::createWithTTF(stat->getName() + ": " + stat->getValueAsString(), "fonts/ProximaNovaCond-Light.ttf", 16);
+			statLabel->setAnchorPoint(cocos2d::Vec2(0,1));
+			statLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*1.15f));
+			statLabel->setGlobalZOrder(LayerOrder::MODAL+11);
+			addChild(statLabel);
+			nodeAbove = statLabel;
+		}
 	}
 }
 

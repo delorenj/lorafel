@@ -15,9 +15,9 @@ namespace lorafel {
                 return false;
             }
             m_className = "DumbKnife";
-            setArguments(ValueVectorNull);
+            setArguments(ValueMapNull);
             initWithSpriteFrameName("dumb-knife.png");
-            m_damage = 100;
+            m_baseAttack = 100;
             addEquipMask(Player::LEFT_HAND);
             addEquipMask(Player::RIGHT_HAND);
             setItemName("Dumb Knife");
