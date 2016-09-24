@@ -91,6 +91,20 @@ void ItemDetailWindow::initContent() {
 			nodeAbove = statLabel;
 		}
 	}
+
+	auto midBg = cocos2d::Sprite::createWithSpriteFrameName("item-detail-window-mid.png");
+	float heightMidRow = midBg->getContentSize().height;
+	float fullHeight = std::fmaxf(m_pHeaderBg->getContentSize().height * 5.7f, getBoundingBox().size.height);
+
+	/**
+	 * How many mid-strips do we need to
+	 * fill out the full height of the window
+	 */
+	int numStrips = (int)(fullHeight/midBg->getContentSize().height);
+
+	for(int i=0; i<numStrips; i++) {
+		
+	}
 }
 
 void ItemDetailWindow::initFooter() {
