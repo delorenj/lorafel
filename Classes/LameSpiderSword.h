@@ -9,9 +9,10 @@
 #include "Weapon.h"
 #include "Player.h"
 #include "ISellable.h"
+#include "IUpgradable.h"
 
 namespace lorafel {
-    class LameSpiderSword : public Weapon, public ISellable {
+    class LameSpiderSword : public Weapon, public ISellable, public IUpgradable{
     public:
         virtual bool init(ValueMap args) {
             if(!Weapon::init()) {
@@ -37,8 +38,6 @@ namespace lorafel {
             return true;
         }
 
-		virtual int getPrice() const override { return 105; }
-
 		static LameSpiderSword* create(ValueMap args) {
 			LameSpiderSword* pRet = new(std::nothrow) LameSpiderSword();
 			if (pRet && pRet->init(args)) {
@@ -51,6 +50,17 @@ namespace lorafel {
 			}
 		}
 
+		virtual int getNextLevelCost() const override {
+			return 100;
+		}
+
+		virtual int getPrice() const override {
+			return 105;
+		}
+
+		virtual int getLevel() const override {
+			return 1;
+		}
 
 	};
 }

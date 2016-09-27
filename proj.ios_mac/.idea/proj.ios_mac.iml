@@ -124,7 +124,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemStat.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GameStates.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match5.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/IUpgradable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Database.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ActionTile.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Exception.h" isTestSource="false" />
@@ -238,7 +238,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Weapon.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameSettings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/BasicTurnManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ISellable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/XpStatResult.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MeleeAttackTile.cpp" isTestSource="false" />
@@ -265,6 +265,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TileSwapEventData.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/LinearLevelManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PoisonGlyph.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/BasicTurnManager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PoisonGlyph.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/AppDelegate.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Match.cpp" isTestSource="false" />
