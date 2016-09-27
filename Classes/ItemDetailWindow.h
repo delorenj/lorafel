@@ -31,7 +31,8 @@ namespace lorafel {
 
 	protected:
 		cocos2d::Sprite* m_pHeaderBg;
-		std::vector<cocos2d::Sprite*>* m_pVecMidBg;
+		cocos2d::Sprite* m_pLowestMid;
+		cocos2d::Node* m_pLowestStat;
 		cocos2d::Sprite* m_pFooterBg;
 		cocos2d::Sprite* m_pCurrencyIcon;
 		cocos2d::Label* m_pCurrencyText;
@@ -46,6 +47,8 @@ namespace lorafel {
 		void initHeader();
 		void initContent();
 		void initFooter();
+
+
 	};
 }
 
