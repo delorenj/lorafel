@@ -45,8 +45,9 @@ namespace lorafel {
         
         bool isStackable();
 		std::set<ItemStat*>* getItemStats() const { return m_pItemStats; }
+		std::set<ItemStat*>* getItemAttributes() const { return m_pItemAttributes; }
 
-    protected:
+	protected:
         std::string m_id;
         std::string m_itemName;
         std::string m_className;
@@ -55,8 +56,9 @@ namespace lorafel {
         std::set<std::pair<int, int> > m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
 		std::set<ItemStat*>* m_pItemStats;
+		std::set<ItemStat*>* m_pItemAttributes;
         int m_equipSlot;
-    };
+	};
 }
 
 #endif //LORAFEL_ITEM_H

@@ -94,6 +94,25 @@ void ItemDetailWindow::initContent() {
 		}
 	}
 
+	itemStats = m_pItem->getItemAttributes();
+	if(itemStats != nullptr) {
+		auto extraAttrLabel = cocos2d::Label::createWithTTF("Extra Attributes", "fonts/ProximaNovaCond-Semibold.ttf", 16);
+		extraAttrLabel->setAnchorPoint(cocos2d::Vec2(0,1));
+		extraAttrLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*3.15f));
+		extraAttrLabel->setGlobalZOrder(LayerOrder::MODAL+11);
+		addChild(extraAttrLabel);
+		nodeAbove = extraAttrLabel;
+
+		for(auto stat : *m_pItem->getItemAttributes()) {
+			auto statLabel = cocos2d::Label::createWithTTF(stat->getName(), "fonts/ProximaNovaCond-Light.ttf", 16);
+			statLabel->setAnchorPoint(cocos2d::Vec2(0,1));
+			statLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*1.15f));
+			statLabel->setGlobalZOrder(LayerOrder::MODAL+11);
+			addChild(statLabel);
+			nodeAbove = statLabel;
+		}
+	}
+
 	m_pLowestStat = static_cast<cocos2d::Node*>(nodeAbove);
 
 	/**
@@ -102,7 +121,7 @@ void ItemDetailWindow::initContent() {
 	 */
 	auto midBg = cocos2d::Sprite::createWithSpriteFrameName("item-detail-window-mid.png");
 	float heightMidRow = midBg->getContentSize().height-2;
-	float fullHeight = std::fmaxf(m_pHeaderBg->getContentSize().height * 3.9f, m_pLowestStat->getPosition().y + m_pLowestStat->getContentSize().height+2);
+	float fullHeight = std::fmaxf(m_pHeaderBg->getContentSize().height * 3.9f, m_pHeaderBg->getPosition().y - m_pLowestStat->getPosition().y + m_pLowestStat->getContentSize().height*3);
 
 	/**
 	 * Create the first strip

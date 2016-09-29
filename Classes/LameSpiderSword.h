@@ -28,9 +28,9 @@ namespace lorafel {
             addEquipMask(Player::RIGHT_HAND);
             setItemName("Lame Spider Sword");
 
-			std::function customAttribute = [=]() {
+			std::function<void(void)>* customAttribute = new std::function<void(void)>([=]() {
 				CCLOG("Thing! =D");
-			};
+			});
 
 			/**
 			 * Now we build what stats are shown in
@@ -39,7 +39,13 @@ namespace lorafel {
 			m_pItemStats = new std::set<ItemStat*>();
 			m_pItemStats->insert(new ItemStat("Attack", to_string(getAttack())));
 			m_pItemStats->insert(new ItemStat("Hit Distance", to_string(getHitDistance())));
-			m_pItemStats->insert(new ItemAttribute("10% Life Gained per Damage", customAttribute));
+
+			/**
+			 * Here we add special Attribute stats
+			 * that go in a different window section
+			 */
+			m_pItemAttributes = new std::set<ItemStat*>();
+			m_pItemAttributes->insert(new ItemStat("10% Life Gained per Damage", customAttribute));
 
             return true;
         }

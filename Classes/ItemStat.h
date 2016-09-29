@@ -12,6 +12,10 @@ namespace lorafel {
 
 		};
 
+		ItemStat(std::string name, std::function<void(void)>* pFunction) : m_name(name), m_pFunction(pFunction) {
+
+		};
+
 		virtual std::string getName() const {
 			return m_name;
 		}
@@ -26,12 +30,20 @@ namespace lorafel {
 
 		virtual double getValueAsFloat() const {
 			return atof(m_value.c_str());
+		}
 
+		bool isAttribute() {
+			return m_pFunction != nullptr;
+		}
+
+		std::function<void(void)>* getFunction() {
+			return m_pFunction;
 		}
 
 	protected:
 		std::string m_value;
 		std::string m_name;
+		std::function<void(void)>* m_pFunction;
 	};
 }
 
