@@ -12,7 +12,7 @@
 USING_NS_CC;
 
 namespace lorafel {
-	class ItemDetailWindow : public cocos2d::Node {
+	class ItemDetailWindow : public cocos2d::Sprite {
 	public:
 		virtual bool init(ItemSlot* pItemSlot);
 

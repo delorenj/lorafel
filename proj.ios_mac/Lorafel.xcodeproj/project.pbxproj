@@ -89,6 +89,7 @@
 		3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
 		3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */; };
 		3167D836E569DD3FED261E5D /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
+		3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */; };
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
@@ -321,6 +322,7 @@
 		3167D2677BC18E2A72ED452C /* EquipSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipSerializer.h; sourceTree = "<group>"; };
 		3167D26E887DBACCBB1454C8 /* Match.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match.cpp; sourceTree = "<group>"; };
 		3167D27EEDA9753245463E70 /* Consumable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consumable.h; sourceTree = "<group>"; };
+		3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemAttribute.cpp; sourceTree = "<group>"; };
 		3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelThree.h; sourceTree = "<group>"; };
 		3167D2B01A205F5230035BCB /* MatchFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchFactory.h; sourceTree = "<group>"; };
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 		3167D8CF2D68B01B75B5126B /* EventDataPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataPair.h; sourceTree = "<group>"; };
 		3167D8F18F0E180942D55C28 /* ItemFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemFactory.cpp; sourceTree = "<group>"; };
 		3167D8FD5B6617C26519A0D4 /* HealthPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotion.h; sourceTree = "<group>"; };
+		3167D90F02B189210B369755 /* ItemAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemAttribute.h; sourceTree = "<group>"; };
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
 		3167D9296BC28553AF292A0E /* Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serializer.h; sourceTree = "<group>"; };
 		3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveActionTile.cpp; sourceTree = "<group>"; };
@@ -988,6 +991,8 @@
 				3167D7D7221F3E217642B296 /* ItemStat.cpp */,
 				3167D21FC003793038B2A84B /* ItemStat.h */,
 				3167DA1ABB7483BE71175498 /* IUpgradable.h */,
+				3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */,
+				3167D90F02B189210B369755 /* ItemAttribute.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1443,6 +1448,7 @@
 				3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */,
 				3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */,
 				3167D876068B9414634393B4 /* ItemStat.cpp in Sources */,
+				3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,8 +17,8 @@ namespace lorafel {
 			return _instance;
 		}
 
-		void create(ItemSlot* pItemSlot);
-		void create(Item* pItem, cocos2d::Vec2 globalPosition);
+		ItemDetailWindow* create(ItemSlot* pItemSlot);
+		ItemDetailWindow* create(Item* pItem, cocos2d::Vec2 globalPosition);
 		void destroyExistingWindows();
 
 	protected:

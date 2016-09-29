@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "ISellable.h"
 #include "IUpgradable.h"
+#include "ItemAttribute.h"
 
 namespace lorafel {
     class LameSpiderSword : public Weapon, public ISellable, public IUpgradable{
@@ -27,6 +28,10 @@ namespace lorafel {
             addEquipMask(Player::RIGHT_HAND);
             setItemName("Lame Spider Sword");
 
+			std::function customAttribute = [=]() {
+				CCLOG("Thing! =D");
+			};
+
 			/**
 			 * Now we build what stats are shown in
 			 * the item detail window
@@ -34,6 +39,7 @@ namespace lorafel {
 			m_pItemStats = new std::set<ItemStat*>();
 			m_pItemStats->insert(new ItemStat("Attack", to_string(getAttack())));
 			m_pItemStats->insert(new ItemStat("Hit Distance", to_string(getHitDistance())));
+			m_pItemStats->insert(new ItemAttribute("10% Life Gained per Damage", customAttribute));
 
             return true;
         }

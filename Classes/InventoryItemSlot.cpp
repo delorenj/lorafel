@@ -78,6 +78,7 @@ void InventoryItemSlot::addEvents() {
          */
         if(m_state == State::TOUCH_BEGIN) {
 			ItemDetailWindowFactory::getInstance()->create(this);
+
         } else {
             auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
             std::pair<int, int> chsCoords;

@@ -34,6 +34,7 @@ bool ItemDetailWindow::init(ItemSlot* pItemSlot) {
 	initContent();
 	initFooter();
 
+	setContentSize(cocos2d::Size(m_pHeaderBg->getContentSize().width, m_pHeaderBg->getPosition().y - m_pFooterBg->getPosition().y + m_pFooterBg->getContentSize().height));
 	return true;
 }
 
