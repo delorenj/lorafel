@@ -8,7 +8,8 @@ gulp.task('sprites:pack', function () {
         .pipe(shell([
             'echo Packing sprites in <%= f(file.path) %>...',
             'mkdir -p <%= file.path %>/../../sheets/<%= f(file.path) %>',
-            'spriteglue <%= file.path %> --sheet <%= file.path %>/../../sheets/<%= f(file.path) %>/sprites.png --powerOf2 --padding=0 --max-size-w=2048 --max-size-h=2048',
+            'TexturePacker --data <%= file.path %>/../../sheets/<%= f(file.path) %>/sprites.plist --format cocos2d --sheet <%= file.path %>/../../sheets/<%= f(file.path) %>/sprites.png <%= file.path %>'
+            // 'spriteglue <%= file.path %> --sheet <%= file.path %>/../../sheets/<%= f(file.path) %>/sprites.png --margin=0 --padding=0 --max-size-w=2048 --max-size-h=2048 --trim=none',
         ], {
             templateData: {
                 f: function(s) {

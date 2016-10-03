@@ -46,6 +46,7 @@ namespace lorafel {
 			 */
 			m_pItemAttributes = new std::set<ItemStat*>();
 			m_pItemAttributes->insert(new ItemStat("10% Life Gained per Damage", customAttribute));
+			m_pItemAttributes->insert(new ItemStat("Chance to poison for 2 turns", customAttribute));
 
             return true;
         }

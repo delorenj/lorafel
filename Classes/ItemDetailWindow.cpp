@@ -29,7 +29,7 @@ bool ItemDetailWindow::init(ItemSlot* pItemSlot) {
 	m_pItem = pItemSlot->getItem();
 	setName("ItemDetailWindow");
 	setGlobalZOrder(LayerOrder::MODAL+10);
-
+	setCascadeOpacityEnabled(true);
 	initHeader();
 	initContent();
 	initFooter();
@@ -120,13 +120,13 @@ void ItemDetailWindow::initContent() {
 	 * to fill out the detail window
 	 */
 	auto midBg = cocos2d::Sprite::createWithSpriteFrameName("item-detail-window-mid.png");
-	float heightMidRow = midBg->getContentSize().height-2;
+	float heightMidRow = midBg->getContentSize().height;
 	float fullHeight = std::fmaxf(m_pHeaderBg->getContentSize().height * 3.9f, m_pHeaderBg->getPosition().y - m_pLowestStat->getPosition().y + m_pLowestStat->getContentSize().height*3);
 
 	/**
 	 * Create the first strip
 	 */
-	midBg->setPosition(cocos2d::Vec2(m_pHeaderBg->getPosition().x, m_pHeaderBg->getPosition().y-m_pHeaderBg->getContentSize().height+2));
+	midBg->setPosition(cocos2d::Vec2(m_pHeaderBg->getPosition().x, m_pHeaderBg->getPosition().y-m_pHeaderBg->getContentSize().height));
 	midBg->setAnchorPoint(cocos2d::Vec2(0,1));
 	midBg->setGlobalZOrder(LayerOrder::MODAL+10);
 	addChild(midBg);
@@ -136,7 +136,7 @@ void ItemDetailWindow::initContent() {
 	nodeAbove = midBg;
 	for(int i=0; i<numStrips; i++) {
 		midBg = cocos2d::Sprite::createWithSpriteFrameName("item-detail-window-mid.png");
-		midBg->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height+2));
+		midBg->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height));
 		midBg->setAnchorPoint(cocos2d::Vec2(0,1));
 		midBg->setGlobalZOrder(LayerOrder::MODAL+10);
 		addChild(midBg);
@@ -156,6 +156,7 @@ void ItemDetailWindow::initFooter() {
 		 * that will hold all the slices
 		 */
 		auto sellBtn = cocos2d::Sprite::create();
+		sellBtn->setCascadeOpacityEnabled(true);
 		sellBtn->setAnchorPoint(cocos2d::Vec2(0,0));
 		sellBtn->setGlobalZOrder(LayerOrder::MODAL+11);
 		float padding = m_pHeaderBg->getContentSize().width*0.05f;
@@ -241,6 +242,7 @@ void ItemDetailWindow::initFooter() {
 		 * that will hold all the slices
 		 */
 		auto upgradeBtn = cocos2d::Sprite::create();
+		upgradeBtn->setCascadeOpacityEnabled(true);
 		upgradeBtn->setAnchorPoint(cocos2d::Vec2(0,0));
 		upgradeBtn->setGlobalZOrder(LayerOrder::MODAL+11);
 		float padding = m_pHeaderBg->getContentSize().width*0.05f;
