@@ -50,24 +50,6 @@ ItemDetailWindow* ItemDetailWindowFactory::create(ItemSlot* pItemSlot) {
 	auto seq = cocos2d::Sequence::create(cocos2d::Spawn::create(fade, drop, nullptr), nullptr);
 	itemDetailWindow->runAction(seq);
 
-	auto dismissTouch = cocos2d::EventListenerTouchOneByOne::create();
-	dismissTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
-	{
-		cocos2d::Vec2 p = touch->getLocationInView();
-		p = cocos2d::Director::getInstance()->convertToGL(p);
-
-		cocos2d::Rect rect = cocos2d::Rect(x, y, itemDetailWindow->getContentSize().width, itemDetailWindow->getContentSize().height);
-		rect = cocos2d::RectApplyAffineTransform(rect, itemDetailWindow->getNodeToWorldAffineTransform());
-		if(!rect.containsPoint(p))
-		{
-			CCLOG("DISMISS!");
-			destroyExistingWindows();
-		}
-		return false; // we did not consume this event, pass thru.
-	};
-
-	itemDetailWindow->getEventDispatcher()->addEventListenerWithFixedPriority(dismissTouch, 1);
-
 	return itemDetailWindow;
 }
 
