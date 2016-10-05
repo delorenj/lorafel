@@ -334,14 +334,9 @@ void ItemDetailWindow::initFooter() {
 	addChild(m_pFooterBg);
 
 	auto dismissTouch = cocos2d::EventListenerTouchOneByOne::create();
-	dismissTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
+	dismissTouch->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
 	{
 		cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
-//		p = cocos2d::Director::getInstance()->convertToGL(p);
-//		auto pp = itemDetailWindow->convertToWorldSpace(itemDetailWindow->getPosition());
-//		pp = convertToNodeSpace(pp);
-//		cocos2d::Rect rect = cocos2d::Rect(pp.x, pp.y, itemDetailWindow->getContentSize().width, itemDetailWindow->getContentSize().height);
-//		rect = cocos2d::RectApplyAffineTransform(rect, itemDetailWindow->getPosition());
 		auto rect = cocos2d::Rect(m_pFooterBg->getPosition().x, m_pFooterBg->getPosition().y-m_pFooterBg->getContentSize().height, getContentSize().width, getContentSize().height);
 
 		if(!rect.containsPoint(p)) {
@@ -352,5 +347,6 @@ void ItemDetailWindow::initFooter() {
 	};
 
 	getEventDispatcher()->addEventListenerWithFixedPriority(dismissTouch, 1);
+	m_pDismissListener = dismissTouch;
 
 }

@@ -14,6 +14,12 @@ USING_NS_CC;
 namespace lorafel {
 	class ItemDetailWindow : public cocos2d::Sprite {
 	public:
+		virtual ~ItemDetailWindow() {
+			if(m_pDismissListener != nullptr) {
+				getEventDispatcher()->removeEventListener(m_pDismissListener);
+			}
+		}
+
 		virtual bool init(ItemSlot* pItemSlot);
 
 		static ItemDetailWindow* create(ItemSlot* pItemSlot) {
@@ -43,6 +49,7 @@ namespace lorafel {
 
 		ItemSlot* m_pItemSlot;
 		Item* m_pItem;
+		cocos2d::EventListener* m_pDismissListener;
 
 		void initHeader();
 		void initContent();
