@@ -6,6 +6,7 @@
 #include "GameStateMachine.h"
 #include "Globals.h"
 #include "InventoryModal.h"
+#include "ItemDetailWindowFactory.h"
 
 using namespace lorafel;
 
@@ -50,6 +51,7 @@ bool InGameModal::init() {
                 GameStateMachine::getInstance()->popState();
             };
 
+            ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
             dismiss(callback);
             return true; // to indicate that we have consumed it.
         }
