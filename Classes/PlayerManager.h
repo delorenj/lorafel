@@ -104,7 +104,9 @@ namespace lorafel {
             // TODO: Refactor ?
             if(valueMap["items"].isNull()) {
                 std::string itemId = valueMap["id"].asString();
-                Item* pItem = createItemFromDatabaseEntry(itemId, valueMap);
+                std::string oldId = valueMap["oldId"].asString();
+                std::string newId = valueMap["newId"].asString();
+                Item* pItem = createItemFromDatabaseEntry(newId, valueMap);
                 
                 int itemQuantity = 1;
                 if(!valueMap["quantity"].isNull() && valueMap["quantity"].getType() == Value::Type::INTEGER) {

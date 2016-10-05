@@ -42,6 +42,9 @@ const int Inventory::addItem(Item* pItem, int quantity) {
     if(pItem->getId() == "") {
         int tempId = RandomHelper::random_int(1000000, 9999999);
         pItem->setId(to_string(tempId));
+        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+        auto p = std::make_pair(pItem->getId(), itemPair);
+        m_pItemDictionary->insert(p);
         FirebaseDatabase::getInstance()->addItem(pItem, quantity);
         return quantity;
     } else {
