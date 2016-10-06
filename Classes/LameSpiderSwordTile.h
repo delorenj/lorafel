@@ -45,7 +45,7 @@ namespace lorafel {
         }
 
         virtual bool addToInventory() override {
-            m_pLootItem = LameSpiderSword::create();
+            m_pLootItem = LameSpiderSword::create(ValueMapNull);
             LootTile::addToInventory();
             return true;
         }

@@ -201,11 +201,11 @@ static AppDelegate s_sharedApplication;
                                       } withCancelBlock:^(NSError * _Nonnull error) {
                                           NSLog(@"%@", error.localizedDescription);
                                       }];
-                                      
-                                      [[[[_db child:@"users"]
-                                         child:userID]
-                                        child:@"items"]
-                                       observeEventType:FIRDataEventTypeChildAdded
+
+									  [[[[_db child:@"users"]
+											  child:userID]
+											  child:@"items"]
+											  observeSingleEventOfType:FIRDataEventTypeChildAdded
                                        withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
                                            if (snapshot.exists) {
                                                NSDictionary* keyval = snapshot.value;

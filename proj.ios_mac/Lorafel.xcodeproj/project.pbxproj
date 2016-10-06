@@ -81,6 +81,7 @@
 		3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */; };
 		3167D714D9CA38C5BBB01890 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
 		3167D75C677F0DBEBA8BE404 /* FirebaseAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */; };
+		3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */; };
 		3167D79C492BD952CEAC2A15 /* StatGuage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */; };
 		3167D7A01B7361FFC75BE1C7 /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
 		3167D7A1752231AB51E4244F /* PoisonGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */; };
@@ -88,9 +89,11 @@
 		3167D7F69729B25284EAC0E0 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6D9B2387600CAD15347 /* Inventory.cpp */; };
 		3167D7FC707925C52952BDDD /* InventoryItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8ACFC23C1BE193CDEF5 /* InventoryItemSlot.cpp */; };
 		3167D836E569DD3FED261E5D /* Match5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9FB7B3848B6E808AEDF /* Match5.cpp */; };
+		3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */; };
 		3167D8467168856A2CB66D3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D8520970C64A2E0EE9B8 /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D85EF0E9485FE3394851 /* GridUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D02CD9A763C3231B9AF8 /* GridUI.cpp */; };
+		3167D876068B9414634393B4 /* ItemStat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D7221F3E217642B296 /* ItemStat.cpp */; };
 		3167D87ADA6A9A75E69368B0 /* InGameModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D843C8A19C4FBD802915 /* InGameModal.cpp */; };
 		3167D8A5AB936000E49CF09F /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D8B442FB7DE5130A507F /* NonConsumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */; };
@@ -120,6 +123,7 @@
 		3167DC654406DD3D7D005C1B /* LootTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D39657152A6F3BCEEF46 /* LootTile.cpp */; };
 		3167DC66920A4A70EA6E9678 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
 		3167DC9F7BB2AE668694D0D1 /* InventoryModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */; };
+		3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */; };
 		3167DCC0B85739D1C7FA47BB /* Consumable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */; };
 		3167DCF900001EFC72F5EAE9 /* StormGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D67C7D373CBDF45F687F /* StormGlyph.cpp */; };
 		3167DD1DC8FE58A7F4E8800A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6BF39D1E520BFFD7883 /* Level.cpp */; };
@@ -305,17 +309,20 @@
 		3167D0FF049F6A7F7BEA0A79 /* Achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Achievements.cpp; sourceTree = "<group>"; };
 		3167D158E63BA8AB24BBA71F /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
 		3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMatcher.cpp; sourceTree = "<group>"; };
+		3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindow.cpp; sourceTree = "<group>"; };
 		3167D1832B9DCD5C84646A52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		3167D19F68934CE0CC42D252 /* EnemyTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTile.h; sourceTree = "<group>"; };
 		3167D1D5D5DB2A51FA4BD953 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
+		3167D21FC003793038B2A84B /* ItemStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStat.h; sourceTree = "<group>"; };
 		3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemGrid.cpp; sourceTree = "<group>"; };
 		3167D2432814485577EB6E9F /* GameStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStates.h; sourceTree = "<group>"; };
 		3167D2677BC18E2A72ED452C /* EquipSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipSerializer.h; sourceTree = "<group>"; };
 		3167D26E887DBACCBB1454C8 /* Match.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match.cpp; sourceTree = "<group>"; };
 		3167D27EEDA9753245463E70 /* Consumable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consumable.h; sourceTree = "<group>"; };
+		3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemAttribute.cpp; sourceTree = "<group>"; };
 		3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelThree.h; sourceTree = "<group>"; };
 		3167D2B01A205F5230035BCB /* MatchFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchFactory.h; sourceTree = "<group>"; };
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 		3167D340925C32E2F6269696 /* TrajectoryParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrajectoryParticle.h; sourceTree = "<group>"; };
 		3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotion.cpp; sourceTree = "<group>"; };
 		3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMove.h; sourceTree = "<group>"; };
+		3167D36F06682ECAAE9775C3 /* ISellable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellable.h; sourceTree = "<group>"; };
 		3167D389262A77B17800B5FB /* GlyphTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphTile.h; sourceTree = "<group>"; };
 		3167D39657152A6F3BCEEF46 /* LootTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LootTile.cpp; sourceTree = "<group>"; };
 		3167D3A45EC56DC51C631728 /* InGameSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameSettings.h; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
 		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
+		3167D7D7221F3E217642B296 /* ItemStat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemStat.cpp; sourceTree = "<group>"; };
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
 		3167D7D918440E694548445F /* StupidRandomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StupidRandomizer.cpp; sourceTree = "<group>"; };
 		3167D7ED3DEF99FA190EEDFD /* EventDataString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataString.h; sourceTree = "<group>"; };
@@ -398,6 +407,7 @@
 		3167D8CF2D68B01B75B5126B /* EventDataPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataPair.h; sourceTree = "<group>"; };
 		3167D8F18F0E180942D55C28 /* ItemFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemFactory.cpp; sourceTree = "<group>"; };
 		3167D8FD5B6617C26519A0D4 /* HealthPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthPotion.h; sourceTree = "<group>"; };
+		3167D90F02B189210B369755 /* ItemAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemAttribute.h; sourceTree = "<group>"; };
 		3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicTurnManager.cpp; sourceTree = "<group>"; };
 		3167D9296BC28553AF292A0E /* Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serializer.h; sourceTree = "<group>"; };
 		3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveActionTile.cpp; sourceTree = "<group>"; };
@@ -415,7 +425,9 @@
 		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
+		3167DA1ABB7483BE71175498 /* IUpgradable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpgradable.h; sourceTree = "<group>"; };
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
+		3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindowFactory.h; sourceTree = "<group>"; };
 		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
 		3167DA659FBDBFB961F1C50F /* DumbKnife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbKnife.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
@@ -428,6 +440,7 @@
 		3167DB3F8836CD055272AA38 /* Match5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match5.h; sourceTree = "<group>"; };
 		3167DB4E792CF937E33E0EE7 /* InventoryItemGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItemGrid.h; sourceTree = "<group>"; };
 		3167DB517CC5D9B549E8555B /* Achievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievements.h; sourceTree = "<group>"; };
+		3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindowFactory.cpp; sourceTree = "<group>"; };
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
 		3167DB81C65E9CCE8D2657AF /* ActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTile.h; sourceTree = "<group>"; };
 		3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragDropSwapPlayerMove.cpp; sourceTree = "<group>"; };
@@ -462,6 +475,7 @@
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
 		3167DED2269D21779C04D7A3 /* MatchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSet.h; sourceTree = "<group>"; };
+		3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindow.h; sourceTree = "<group>"; };
 		3167DF1A060CBD1982A7BABF /* InventoryEquipGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryEquipGrid.h; sourceTree = "<group>"; };
 		3167DF44D30E7CF3B5F1BDBC /* StickMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickMan.h; sourceTree = "<group>"; };
 		3167DF458FA2E520FB3CED3C /* ToggleActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleActionTile.cpp; sourceTree = "<group>"; };
@@ -534,6 +548,7 @@
 		BA0DBD721D54154D0084CD9D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Pods/Firebase/Firebase.framework; sourceTree = "<group>"; };
 		BA0DBD761D5426380084CD9D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		BA0DBD781D54264B0084CD9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		BA53CB351DA2877500F9C31C /* Lorafel-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lorafel-mobile.entitlements"; sourceTree = "<group>"; };
 		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
 		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
@@ -692,6 +707,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BA53CB351DA2877500F9C31C /* Lorafel-mobile.entitlements */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -969,6 +985,16 @@
 				3167D8F18F0E180942D55C28 /* ItemFactory.cpp */,
 				3167DAE65E005076FC3B717A /* ItemFactory.h */,
 				3167D8CF2D68B01B75B5126B /* EventDataPair.h */,
+				3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */,
+				3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */,
+				3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */,
+				3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */,
+				3167D36F06682ECAAE9775C3 /* ISellable.h */,
+				3167D7D7221F3E217642B296 /* ItemStat.cpp */,
+				3167D21FC003793038B2A84B /* ItemStat.h */,
+				3167DA1ABB7483BE71175498 /* IUpgradable.h */,
+				3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */,
+				3167D90F02B189210B369755 /* ItemAttribute.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1119,6 +1145,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = YJ7W7Z36FP;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Lorafel" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1421,6 +1457,10 @@
 				3167D54A4D2622CCBA2C1C23 /* TitleScene.cpp in Sources */,
 				3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */,
 				3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */,
+				3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */,
+				3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */,
+				3167D876068B9414634393B4 /* ItemStat.cpp in Sources */,
+				3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1523,9 +1563,11 @@
 			baseConfigurationReference = B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Lorafel-mobile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YJ7W7Z36FP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1569,9 +1611,11 @@
 			baseConfigurationReference = BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Lorafel-mobile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YJ7W7Z36FP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

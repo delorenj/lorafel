@@ -90,6 +90,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/InventoryItemSlot.cpp \
                    ../../Classes/InventoryModal.cpp \
                    ../../Classes/Item.cpp \
+                   ../../Classes/ItemDetailWindow.cpp \
                    ../../Classes/ItemFactory.cpp \
                    ../../Classes/ItemSlot.cpp \
                    ../../Classes/Level.cpp \

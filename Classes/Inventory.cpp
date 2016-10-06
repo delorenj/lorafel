@@ -42,6 +42,9 @@ const int Inventory::addItem(Item* pItem, int quantity) {
     if(pItem->getId() == "") {
         int tempId = RandomHelper::random_int(1000000, 9999999);
         pItem->setId(to_string(tempId));
+        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+        auto p = std::make_pair(pItem->getId(), itemPair);
+        m_pItemDictionary->insert(p);
         FirebaseDatabase::getInstance()->addItem(pItem, quantity);
         return quantity;
     } else {
@@ -90,11 +93,12 @@ Item* Inventory::getItem(std::string itemId) {
  * when to make a new items vs. increasing the quantity
  * of already existing items
  */
-Item* Inventory::getItem(std::string className, ValueVector arguments) {
+Item* Inventory::getItem(std::string className, ValueMap arguments) {
     for(auto item : *m_pItemDictionary) {
         ItemQuantityPair* itemQuantityPair = item.second;
         Item* pItem = itemQuantityPair->first;
         if(pItem->getClassName() == className && pItem->getArguments() == arguments) {
+            CCLOG("Item: %s | Amount: %f", pItem->getClassName().c_str(), pItem->getArguments()["amount"].asFloat());
             return pItem;
         }
     }

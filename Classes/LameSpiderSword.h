@@ -8,27 +8,74 @@
 
 #include "Weapon.h"
 #include "Player.h"
+#include "ISellable.h"
+#include "IUpgradable.h"
+#include "ItemAttribute.h"
 
 namespace lorafel {
-    class LameSpiderSword : public Weapon {
+    class LameSpiderSword : public Weapon, public ISellable, public IUpgradable{
     public:
-        virtual bool init() override {
+        virtual bool init(ValueMap args) {
             if(!Weapon::init()) {
                 return false;
             }
             m_className = "LameSpiderSword";
-            setArguments(ValueVectorNull);
+            setArguments(args);
             initWithSpriteFrameName("lame-spider-sword.png");
-            m_damage = 500;
+            m_baseAttack = 500;
+			m_baseHitDistance = 1;
             addEquipMask(Player::LEFT_HAND);
             addEquipMask(Player::RIGHT_HAND);
             setItemName("Lame Spider Sword");
+
+			std::function<void(void)>* customAttribute = new std::function<void(void)>([=]() {
+				CCLOG("Thing! =D");
+			});
+
+			/**
+			 * Now we build what stats are shown in
+			 * the item detail window
+			 */
+			m_pItemStats = new std::set<ItemStat*>();
+			m_pItemStats->insert(new ItemStat("Attack", to_string(getAttack())));
+			m_pItemStats->insert(new ItemStat("Hit Distance", to_string(getHitDistance())));
+
+			/**
+			 * Here we add special Attribute stats
+			 * that go in a different window section
+			 */
+			m_pItemAttributes = new std::set<ItemStat*>();
+			m_pItemAttributes->insert(new ItemStat("10% Life Gained per Damage", customAttribute));
+			m_pItemAttributes->insert(new ItemStat("Chance to poison for 2 turns", customAttribute));
+
             return true;
         }
 
-        CREATE_FUNC(LameSpiderSword);
+		static LameSpiderSword* create(ValueMap args) {
+			LameSpiderSword* pRet = new(std::nothrow) LameSpiderSword();
+			if (pRet && pRet->init(args)) {
+				pRet->autorelease();
+				return pRet;
+			} else {
+				delete pRet;
+				pRet = nullptr;
+				return nullptr;
+			}
+		}
 
-    };
+		virtual int getNextLevelCost() const override {
+			return 100;
+		}
+
+		virtual int getPrice() const override {
+			return 105;
+		}
+
+		virtual int getLevel() const override {
+			return 1;
+		}
+
+	};
 }
 
 #endif //LORAFEL_LAMESPIDERSWORDITEM_H
