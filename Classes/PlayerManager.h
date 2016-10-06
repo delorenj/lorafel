@@ -139,7 +139,7 @@ namespace lorafel {
              * or set null
              */
             ValueMap itemArgs;
-            if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::VECTOR) {
+            if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::MAP) {
                 itemArgs = itemValMap["arguments"].asValueMap();
             } else {
                 itemArgs = ValueMapNull;

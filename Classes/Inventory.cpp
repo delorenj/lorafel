@@ -98,6 +98,7 @@ Item* Inventory::getItem(std::string className, ValueMap arguments) {
         ItemQuantityPair* itemQuantityPair = item.second;
         Item* pItem = itemQuantityPair->first;
         if(pItem->getClassName() == className && pItem->getArguments() == arguments) {
+            CCLOG("Item: %s | Amount: %f", pItem->getClassName().c_str(), pItem->getArguments()["amount"].asFloat());
             return pItem;
         }
     }

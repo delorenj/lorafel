@@ -13,7 +13,7 @@ namespace lorafel {
     public:
         virtual bool init(double percent);
 
-        static HealthPotion* create(double percent) {
+        static HealthPotion* create(float percent) {
 
             HealthPotion* pRet = new(std::nothrow) HealthPotion();
             if (pRet && pRet->init(percent)) {
@@ -35,7 +35,7 @@ namespace lorafel {
 
     protected:
         void initItemName();
-        double m_amount;
+        float m_amount;
 
     };
 }
