@@ -242,6 +242,9 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
         auto itemQuantity = pItemQuatityPair->second;
         auto numAlreadyPlaced = alreadyPlaced[pItem->getId()];
 
+        /**
+         * Fix: Tic #133
+         */
         if(pItem->isEquipped() && !pItem->isStackable()) continue;
         
         if(numAlreadyPlaced == 0) {
