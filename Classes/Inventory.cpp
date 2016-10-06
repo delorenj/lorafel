@@ -4,6 +4,7 @@
 
 #include "Inventory.h"
 #include "FirebaseDatabase.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -143,5 +144,35 @@ int Inventory::removeItem(std::string itemId, int quantity = 1) {
     }
     FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
     return newQuantity;
+}
+
+void Inventory::sellItem(Item* pItem, int quantity) {
+	/**
+	 * Find out how many items of this type you own
+	 */
+	auto numItems = getItemCount(pItem->getId());
+
+	/**
+	 * Ensure you can't sell more than your current quantity
+	 */
+	quantity = std::min(quantity, numItems);
+	CCLOG("numItems=%d, numToSell=%d", numItems, quantity);
+
+	auto iSellable = dynamic_cast<ISellable*>(pItem);
+	if(iSellable == nullptr) {
+		return;
+	}
+
+	auto amount = iSellable->getPrice()*quantity;
+
+	/**
+	 * Remove the item(s) from your inventory
+	 */
+	removeItem(pItem->getId(), quantity);
+
+	/**
+	 * Add the appropriate amount of gold to the player
+	 */
+	PlayerManager::getInstance()->getPlayer()->updateGoldBy(amount);
 }
 

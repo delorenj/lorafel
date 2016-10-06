@@ -7,6 +7,7 @@
 #include "ISellable.h"
 #include "IUpgradable.h"
 #include "ItemDetailWindowFactory.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -150,8 +151,8 @@ void ItemDetailWindow::initContent() {
 void ItemDetailWindow::initFooter() {
 
 	float nextXPosForButtonPlacement = m_pHeaderBg->getPosition().x;
-
-	if(dynamic_cast<ISellable*>(m_pItem) != nullptr) {
+	auto iSellable = dynamic_cast<ISellable*>(m_pItem);
+	if(iSellable != nullptr) {
 		/**
 		 * Create the root child of the sell button
 		 * that will hold all the slices
@@ -219,7 +220,8 @@ void ItemDetailWindow::initFooter() {
 
 			if(rect.containsPoint(p))
 			{
-				CCLOG("SOLD!");
+				PlayerManager::getInstance()->getPlayer()->getInventory()->sellItem(m_pItem, 1);
+				ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
 				return true; // to indicate that we have consumed it.
 			}
 			return false; // we did not consume this event, pass thru.

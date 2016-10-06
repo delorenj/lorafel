@@ -26,6 +26,8 @@ namespace lorafel {
 
 		int removeItem(std::string itemId, int quantity);
 
+		void sellItem(Item* pItem, int quantity = 1);
+
 	public:
         Inventory() {
             m_pItemDictionary = new ItemDictionary();

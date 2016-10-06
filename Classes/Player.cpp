@@ -27,20 +27,29 @@ void Player::initFromServer() {
     CCASSERT(0, "Load player from server not yet implemented");
 }
 
-int Player::updateGoldBy(int amount, Match* pMatch) {
+int Player::updateGoldBy(int amount, cocos2d::Vec2 floatiePos) {
     amount = amount > m_maxGold - m_gold ? m_maxGold - m_gold : amount;
     if(amount == 0) return m_gold;
     m_gold += amount;
-	FirebaseDatabase::getInstance()->setGold(m_gold);
+    FirebaseDatabase::getInstance()->setGold(m_gold);
 
     // Fire off a gold event
     cocos2d::EventCustom e("gold");
-    EventData* val = new EventDataFloatie(amount, pMatch->getTileSetCenter());
+    EventData* val = new EventDataFloatie(amount, floatiePos);
     e.setUserData(val);
     m_pDispatcher->dispatchEvent(&e);
     CC_SAFE_DELETE(val);
 
     return m_gold;
+
+}
+
+int Player::updateGoldBy(int amount, Match* pMatch) {
+    return updateGoldBy(amount, pMatch->getTileSetCenter());
+}
+
+int Player::updateGoldBy(int amount) {
+    return updateGoldBy(amount, cocos2d::Vec2(30, 300));
 }
 
 int Player::updateHpBy(int val) {

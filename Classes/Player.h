@@ -46,6 +46,8 @@ namespace lorafel {
         void equipHook();
         LevelManager* getLevelManager() const { return m_pLevelManager; }
         int updateGoldBy(int amount, Match* pMatch);
+        int updateGoldBy(int amount, cocos2d::Vec2 floatiePos);
+        int updateGoldBy(int amount);
         void setGold(unsigned int amount) { m_gold = amount; }
         void setXp(unsigned int amount) { m_pLevelManager->setXp(amount); }
         int getGold() const { return m_gold; }
@@ -77,7 +79,7 @@ namespace lorafel {
         int m_mp = 3;
 
         // Stat Ranges
-        int m_maxGold = 1000;
+        int m_maxGold = 100000;
         int m_maxHp = 1000;
         int m_maxMp = 3;
 
