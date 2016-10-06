@@ -9,7 +9,7 @@
 
 using namespace lorafel;
 
-bool HealthPotion::init(double amount) {
+bool HealthPotion::init(float amount) {
     if(!Consumable::init()) {
         return false;
     }

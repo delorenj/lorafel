@@ -16,50 +16,47 @@ using namespace lorafel;
 const int Inventory::addItem(Item* pItem, int quantity) {
 
     /**
-     * First, we have to determine it this item is stackable.
-     * If it is stackable, then we want to increase the
-     * quantity if it already exists instead of creating
+     * increase the quantity if it already exists and
+     * has the exact matching arguments, instead of creating
      * a new item with a unique itemId
      */
-    if(pItem->isStackable()) {
-        Item* alreadyExistingItem = getItem(pItem->getClassName(), pItem->getArguments());
-        if(alreadyExistingItem != nullptr) {
-            /**
-             * If this duplicate item is in the database,
-             * let's remove it
-             */
-            if(pItem->getId() != "") {
-                FirebaseDatabase::getInstance()->updateItemQuantity(pItem, 0);
-            }
+	Item* alreadyExistsInInventoryItemDictionary = getItem(pItem->getClassName(), pItem->getArguments());
+	if(alreadyExistsInInventoryItemDictionary != nullptr) {
+		pItem = alreadyExistsInInventoryItemDictionary;
+		pItem->retain();
+		int currentQuantity = getItemCount(pItem->getId());
+		auto newQuantity = currentQuantity + quantity;
+		ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
+		auto p = std::make_pair(pItem->getId(), itemPair);
+		m_pItemDictionary->erase(pItem->getId());
+		m_pItemDictionary->insert(p);
+		FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
+		return newQuantity;
 
-            pItem = alreadyExistingItem;
-        }
-    }
+	} else {
+		/**
+		 * Otherwise, if item not in db
+		 * just create the new item
+		 * and add it to the database before adding to the
+		 * item dictionary
+		 */
+		pItem->retain();
+		if(pItem->getId() == "") {
+			int tempId = RandomHelper::random_int(1000000, 9999999);
+			pItem->setId(to_string(tempId));
+			FirebaseDatabase::getInstance()->addItem(pItem, quantity);
+		}
 
-    /**
-     * If id is empty, then it hasn't been
-     * added to the database yet. Let's add it
-     */
-    if(pItem->getId() == "") {
-        int tempId = RandomHelper::random_int(1000000, 9999999);
-        pItem->setId(to_string(tempId));
-        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
-        auto p = std::make_pair(pItem->getId(), itemPair);
-        m_pItemDictionary->insert(p);
-        FirebaseDatabase::getInstance()->addItem(pItem, quantity);
-        return quantity;
-    } else {
-        pItem->retain();
-        int currentQuantity = getItemCount(pItem->getId());
-        auto newQuantity = currentQuantity + quantity;
-        ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, newQuantity);
-        auto p = std::make_pair(pItem->getId(), itemPair);
-        m_pItemDictionary->erase(pItem->getId());
-        m_pItemDictionary->insert(p);
-        FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
-        return newQuantity;
-    }
+		/**
+		 * Now, add the item to the item dictionary
+		 * thus adding it to the inventory
+		 */
+		ItemQuantityPair* itemPair = new std::pair<Item*, int>(pItem, quantity);
+		auto p = std::make_pair(pItem->getId(), itemPair);
+		m_pItemDictionary->insert(p);
 
+		return quantity;
+	}
 }
 
 int Inventory::getItemCount(std::string itemId) {

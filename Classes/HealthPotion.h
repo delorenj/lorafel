@@ -11,7 +11,7 @@
 namespace lorafel {
     class HealthPotion : public Consumable {
     public:
-        virtual bool init(double percent);
+        virtual bool init(float percent);
 
         static HealthPotion* create(float percent) {
 

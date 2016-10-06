@@ -144,7 +144,7 @@ void SwappyGrid::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
             auto p = std::make_pair(newId, pair);
             items->erase(oldId);
             items->insert(p);
-            PlayerManager::getInstance()->getPlayer()->getInventory()->addItem(pair->first, pair->second);
+//            PlayerManager::getInstance()->getPlayer()->getInventory()->addItem(pair->first, pair->second);
         } else if(!valueMap["newId"].isNull()) {
 
         }
