@@ -21,7 +21,9 @@ const int Inventory::addItem(Item* pItem, int quantity) {
      * a new item with a unique itemId
      */
 	Item* alreadyExistsInInventoryItemDictionary = getItem(pItem->getClassName(), pItem->getArguments());
-	if(alreadyExistsInInventoryItemDictionary != nullptr) {
+	IStackable* iStackable = dynamic_cast<IStackable*>(alreadyExistsInInventoryItemDictionary);
+
+	if(alreadyExistsInInventoryItemDictionary != nullptr && iStackable != nullptr) {
 		pItem = alreadyExistsInInventoryItemDictionary;
 		pItem->retain();
 		int currentQuantity = getItemCount(pItem->getId());

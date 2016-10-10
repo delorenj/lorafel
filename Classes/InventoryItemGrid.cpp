@@ -245,7 +245,9 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
         /**
          * Fix: Tic #133
          */
-        if(pItem->isEquipped() && !pItem->isStackable()) continue;
+        if(pItem->isEquipped() && !pItem->isStackable()) {
+			continue;
+		}
         
         if(numAlreadyPlaced == 0) {
             assignItemToSlot(pItemQuatityPair);

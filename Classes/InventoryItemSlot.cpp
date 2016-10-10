@@ -250,9 +250,9 @@ void InventoryItemSlot::setItem(Item* pItem, int stackSize) {
      * then do not add it to the inventory slot
      * grid
      */
-    if(pItem->isEquipped() && !pItem->isStackable()) {
-        return;
-    }
+//    if(pItem->isEquipped() && !pItem->isStackable()) {
+//        return;
+//    }
     
     /**
      * Persist this new slot item in the slotStack
