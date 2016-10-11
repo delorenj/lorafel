@@ -39,8 +39,14 @@ namespace lorafel {
         virtual void setEquipSlot(int equipMask);
         virtual bool isEquipped();
         virtual void unequip();
-        
-        std::string getId() const { return m_id; }
+
+		virtual int getLevel() {
+			return m_arguments["level"].isNull() ?
+					1 : m_arguments["level"].asInt();
+
+		}
+
+		std::string getId() const { return m_id; }
         void setId(std::string id) { m_id = id; }
         
         bool isStackable();

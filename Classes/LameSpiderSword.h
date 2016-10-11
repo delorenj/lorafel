@@ -21,12 +21,14 @@ namespace lorafel {
             }
             m_className = "LameSpiderSword";
             setArguments(args);
-            initWithSpriteFrameName("lame-spider-sword.png");
+
+            initWithSpriteFrameName(getTileImage());
+
             m_baseAttack = 500;
 			m_baseHitDistance = 1;
             addEquipMask(Player::LEFT_HAND);
             addEquipMask(Player::RIGHT_HAND);
-            setItemName("Lame Spider Sword");
+            Item::setItemName(getItemName());
 
 			std::function<void(void)>* customAttribute = new std::function<void(void)>([=]() {
 				CCLOG("Thing! =D");
@@ -63,17 +65,43 @@ namespace lorafel {
 			}
 		}
 
-		virtual int getNextLevelCost() const override {
-			return 100;
+		virtual int getNextLevelCost() override {
+			switch(getLevel()) {
+				case 1: return 100;
+				case 2: return 4000;
+				case 3:
+				default: return 10000;
+			};
 		}
 
-		virtual int getPrice() const override {
-			return 105;
+		virtual int getPrice() override {
+			switch(getLevel()) {
+				case 1: return 105;
+				case 2: return 700;
+				case 3:
+				default: return 1250;
+			};
+
 		}
 
-		virtual int getLevel() const override {
-			return 1;
+		int getRequiredPlayerLevel() override {
+			switch(getLevel()) {
+				case 1: return 5;
+				case 2: return 9;
+				case 3:
+				default: return 12;
+			};
 		}
+
+		std::string getTileImage() {
+			return m_arguments["tile_image"].isNull() ?
+					"lame-spider-sword.png" : m_arguments["tile_image"].asString();
+		};
+
+		std::string getItemName() {
+			return m_arguments["item_name"].isNull() ?
+					"Lame Spider Sword" : m_arguments["item_name"].asString();
+		};
 
 	};
 }

@@ -8,7 +8,7 @@
 namespace lorafel {
 	class ISellable {
 	public:
-		virtual int getPrice() const = 0;
+		virtual int getPrice() = 0;
 	};
 }
 

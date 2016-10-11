@@ -24,7 +24,7 @@ namespace lorafel {
             return true;
         }
 
-        virtual int getPrice() const override {
+        virtual int getPrice() override {
             return 5;
         }
 
