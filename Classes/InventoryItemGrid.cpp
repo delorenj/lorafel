@@ -6,6 +6,7 @@
 #include "InventoryItemSlot.h"
 #include "PlayerManager.h"
 #include "InventoryModal.h"
+#include "EventDataPair.h"
 
 using namespace lorafel;
 
@@ -52,6 +53,40 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
             slot->setCoords(std::make_pair(i, j));
         }
     }
+
+	auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
+		auto itemData = static_cast<EventDataPair<Item*,int>*>(e->getUserData())->val;
+		Item* pItem = itemData.first;
+		int newQuantity = itemData.second;
+		auto iStackable = dynamic_cast<IStackable*>(pItem);
+
+		CCLOG("item=%s | newQuantity=%d", pItem->getItemName().c_str(), newQuantity);
+
+		/**
+		 * If item is NOT stackable then we're either
+		 * deleting an item from a slot, or adding
+		 * an item to a new slot
+		 */
+		if(iStackable == nullptr) {
+			if(newQuantity == 0) {
+				auto slotCoords = pItem->getInventorySlotCoordinates();
+				if(slotCoords.empty()) {
+					return;
+				}
+				auto it = slotCoords.begin();
+				auto slotCoord = *it;
+				auto slot = getSlotFromCoords(slotCoord);
+
+				if(slot == nullptr) {
+					return;
+				}
+
+				slot->setItem(nullptr, 0);
+			}
+		}
+	});
+
+	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
     return true;
 }

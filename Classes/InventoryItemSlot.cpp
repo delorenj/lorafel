@@ -30,6 +30,7 @@ void InventoryItemSlot::addEvents() {
 
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {
+		CCLOG("inventoryItemSlot: began");
         cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
         cocos2d::Rect rect = this->getBoundingBox();
 
@@ -70,13 +71,20 @@ void InventoryItemSlot::addEvents() {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-        /**
-         * If touch ended and there was no touch move,
-         * the we will select the item and show item detail
-         * window instead of trying to swap the item position
-         * or try to equip it
-         */
+		CCLOG("inventoryItemSlot: end");
+		/**
+		 * Turn off selection highlights no matter what
+		 */
+		_eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
+
+		/**
+		 * If touch ended and there was no touch move,
+		 * the we will select the item and show item detail
+		 * window instead of trying to swap the item position
+		 * or try to equip it
+		 */
         if(m_state == State::TOUCH_BEGIN) {
+			CCLOG("inventoryItemSlot: making a window");
 			ItemDetailWindowFactory::getInstance()->create(this);
 
         } else {
@@ -84,11 +92,6 @@ void InventoryItemSlot::addEvents() {
             std::pair<int, int> chsCoords;
             cocos2d::Sequence* seq;
             Consumable* consumable = dynamic_cast<Consumable*>(m_pItem);
-
-            /**
-			 * Turn off selection highlights no matter what
-			 */
-            _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 
             if(currentHoveredSlot != nullptr) {
                 /**

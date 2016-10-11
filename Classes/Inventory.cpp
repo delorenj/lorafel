@@ -5,6 +5,8 @@
 #include "Inventory.h"
 #include "FirebaseDatabase.h"
 #include "PlayerManager.h"
+#include "EventDataItem.h"
+#include "EventDataPair.h"
 
 using namespace lorafel;
 
@@ -142,6 +144,10 @@ int Inventory::removeItem(std::string itemId, int quantity = 1) {
         pItem->unequip();
     }
     FirebaseDatabase::getInstance()->updateItemQuantity(pItem, newQuantity);
+
+	auto itemData = new EventDataPair<Item*, int>(pItem, newQuantity);
+	cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("itemQuantityChange", itemData);
+
     return newQuantity;
 }
 

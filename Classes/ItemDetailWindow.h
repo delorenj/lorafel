@@ -42,6 +42,7 @@ namespace lorafel {
 		cocos2d::Sprite* m_pFooterBg;
 		cocos2d::Sprite* m_pCurrencyIcon;
 		cocos2d::Label* m_pCurrencyText;
+		cocos2d::Sprite* m_pSellBtn;
 		cocos2d::Sprite* m_pElementalIconImage;
 		cocos2d::Sprite* m_pElementalIconText;
 		cocos2d::Sprite* m_pGradient;
@@ -54,6 +55,7 @@ namespace lorafel {
 		void initHeader();
 		void initContent();
 		void initFooter();
+
 
 
 	};

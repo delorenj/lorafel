@@ -157,13 +157,13 @@ void ItemDetailWindow::initFooter() {
 		 * Create the root child of the sell button
 		 * that will hold all the slices
 		 */
-		auto sellBtn = cocos2d::Sprite::create();
-		sellBtn->setCascadeOpacityEnabled(true);
-		sellBtn->setAnchorPoint(cocos2d::Vec2(0,0));
-		sellBtn->setGlobalZOrder(LayerOrder::MODAL+11);
+		m_pSellBtn = cocos2d::Sprite::create();
+		m_pSellBtn->setCascadeOpacityEnabled(true);
+		m_pSellBtn->setAnchorPoint(cocos2d::Vec2(0,0));
+		m_pSellBtn->setGlobalZOrder(LayerOrder::MODAL+11);
 		float padding = m_pHeaderBg->getContentSize().width*0.05f;
-		sellBtn->setPosition(cocos2d::Vec2(nextXPosForButtonPlacement + padding, m_pLowestMid->getPosition().y - m_pLowestMid->getContentSize().height+padding));
-		addChild(sellBtn);
+		m_pSellBtn->setPosition(cocos2d::Vec2(nextXPosForButtonPlacement + padding, m_pLowestMid->getPosition().y - m_pLowestMid->getContentSize().height+padding));
+		addChild(m_pSellBtn);
 
 		/**
 		 * Create the left slice and add to the
@@ -173,7 +173,7 @@ void ItemDetailWindow::initFooter() {
 		sbl->setAnchorPoint(cocos2d::Vec2(0,0));
 		sbl->setPosition(0, 0);
 		sbl->setGlobalZOrder(LayerOrder::MODAL+11);
-		sellBtn->addChild(sbl);
+		m_pSellBtn->addChild(sbl);
 
 		/**
 		 * Create the button label and add to the
@@ -183,7 +183,7 @@ void ItemDetailWindow::initFooter() {
 		sellText->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
 		sellText->setPosition(padding, sbl->getContentSize().height/2);
 		sellText->setGlobalZOrder(LayerOrder::MODAL+12);
-		sellBtn->addChild(sellText);
+		m_pSellBtn->addChild(sellText);
 
 		/**
 		 * Add the rest of the button slices
@@ -196,7 +196,7 @@ void ItemDetailWindow::initFooter() {
 			sbm->setAnchorPoint(cocos2d::Vec2(0,0));
 			sbm->setGlobalZOrder(LayerOrder::MODAL+11);
 			sbm->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
-			sellBtn->addChild(sbm);
+			m_pSellBtn->addChild(sbm);
 			lastSbm = sbm;
 		}
 
@@ -208,32 +208,42 @@ void ItemDetailWindow::initFooter() {
 		sbr->setFlippedX(true);
 		sbr->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
 		sbr->setGlobalZOrder(LayerOrder::MODAL+11);
-		sellBtn->addChild(sbr);
-		sellBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
-		sellText->setPositionX(sellBtn->getContentSize().width/2);
+		m_pSellBtn->addChild(sbr);
+		m_pSellBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
+		sellText->setPositionX(m_pSellBtn->getContentSize().width/2);
 
 		auto sellTouch = cocos2d::EventListenerTouchOneByOne::create();
-		sellTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
+		sellTouch->setSwallowTouches(true);
+		sellTouch->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
+			CCLOG("sellTouch: began");
 			cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
-			cocos2d::Rect rect = sellBtn->getBoundingBox();
+			cocos2d::Rect rect = m_pSellBtn->getBoundingBox();
 
 			if(rect.containsPoint(p))
 			{
 				PlayerManager::getInstance()->getPlayer()->getInventory()->sellItem(m_pItem, 1);
-				ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
 				return true; // to indicate that we have consumed it.
 			}
 			return false; // we did not consume this event, pass thru.
 		};
 
-		sellBtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(sellTouch, this);
+		sellTouch->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+			CCLOG("sellTouch: moved");
+		};
+
+		sellTouch->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+			CCLOG("sellTouch: end");
+			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
+		};
+
+		cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(sellTouch, this);
 
 		/**
 		 * This is so the next button, if any
 		 * will go to the right of this button
 		 */
-		nextXPosForButtonPlacement = sellBtn->getPosition().x + sellBtn->getContentSize().width;
+		nextXPosForButtonPlacement = m_pSellBtn->getPosition().x + m_pSellBtn->getContentSize().width;
 	}
 
 	if(dynamic_cast<IUpgradable*>(m_pItem) != nullptr) {
