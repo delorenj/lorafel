@@ -63,6 +63,7 @@ void InventoryItemSlot::addEvents() {
             auto scaleTo = cocos2d::ScaleBy::create(0.2f, 3.0f);
             m_pGhost->runAction(scaleTo);
             m_state = State::MOVING;
+			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
 
         } else if(m_state == State::MOVING) {
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
