@@ -30,7 +30,6 @@ void InventoryItemSlot::addEvents() {
 
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {
-		CCLOG("inventoryItemSlot: began");
         cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
         cocos2d::Rect rect = this->getBoundingBox();
 
@@ -71,7 +70,6 @@ void InventoryItemSlot::addEvents() {
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-		CCLOG("inventoryItemSlot: end");
 		/**
 		 * Turn off selection highlights no matter what
 		 */
@@ -84,7 +82,7 @@ void InventoryItemSlot::addEvents() {
 		 * or try to equip it
 		 */
         if(m_state == State::TOUCH_BEGIN) {
-			CCLOG("inventoryItemSlot: making a window");
+			CCLOG("InventoryItemSlot:: Making a window");
 			ItemDetailWindowFactory::getInstance()->create(this);
 
         } else {

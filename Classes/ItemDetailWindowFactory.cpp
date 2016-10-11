@@ -9,9 +9,13 @@ using namespace lorafel;
 ItemDetailWindowFactory* ItemDetailWindowFactory::_instance;
 
 void ItemDetailWindowFactory::destroyExistingWindows() {
+
 	if(m_pCurrentWindow != nullptr) {
+		CCLOG("ItemDetailWindowFactory::destroyExistingWindows() - Destroying the window");
 		m_pCurrentWindow->removeFromParentAndCleanup(true);
 		m_pCurrentWindow = nullptr;
+	} else {
+		CCLOG("ItemDetailWindowFactory::destroyExistingWindows() - Nothing to destroy...");
 	}
 }
 
@@ -31,7 +35,7 @@ ItemDetailWindow* ItemDetailWindowFactory::create(ItemSlot* pItemSlot) {
 	 */
 	float x,y;
 
-	if(pItemSlot->getPositionX() > visibleSize.width/2) {
+	if(pItemSlot->getPositionX() > visibleSize.width/2 - 1) {
 		x = -itemDetailWindow->getContentSize().width;
 	} else {
 		x = pItemSlot->getContentSize().width;

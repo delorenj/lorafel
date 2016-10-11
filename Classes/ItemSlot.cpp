@@ -132,34 +132,7 @@ bool ItemSlot::init() {
 }
 
 void ItemSlot::addEvents() {
-    auto listener = cocos2d::EventListenerTouchOneByOne::create();
-    listener->setSwallowTouches(true);
-
-    listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
-    {
-        cocos2d::Vec2 p = _parent->convertToNodeSpace(touch->getLocation());
-        cocos2d::Rect rect = this->getBoundingBox();
-
-        /**
-         * Touching a slot with something in it
-         */
-        if(rect.containsPoint(p) && m_pItem != nullptr)
-        {
-            CCLOG("TouchBegin: %s", m_pItem->getItemName().c_str());
-            return true; // to indicate that we have consumed it.
-        }
-
-        return false; // we did not consume this event, pass thru.
-    };
-
-    listener->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-    };
-
-    listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-    };
-
-    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
+    // Nothing
 }
 
 

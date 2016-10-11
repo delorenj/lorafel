@@ -216,7 +216,6 @@ void ItemDetailWindow::initFooter() {
 		sellTouch->setSwallowTouches(true);
 		sellTouch->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
-			CCLOG("sellTouch: began");
 			cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
 			cocos2d::Rect rect = m_pSellBtn->getBoundingBox();
 
@@ -229,11 +228,9 @@ void ItemDetailWindow::initFooter() {
 		};
 
 		sellTouch->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-			CCLOG("sellTouch: moved");
 		};
 
 		sellTouch->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-			CCLOG("sellTouch: end");
 			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
 		};
 
@@ -352,10 +349,18 @@ void ItemDetailWindow::initFooter() {
 		auto rect = cocos2d::Rect(m_pFooterBg->getPosition().x, m_pFooterBg->getPosition().y-m_pFooterBg->getContentSize().height, getContentSize().width, getContentSize().height);
 
 		if(!rect.containsPoint(p)) {
-			CCLOG("DISMISS!");
 			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
+			return true;
 		}
 		return false; // we did not consume this event, pass thru.
+	};
+
+	dismissTouch->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+		// Nothing
+	};
+
+	dismissTouch->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+		// Nothing
 	};
 
 	getEventDispatcher()->addEventListenerWithFixedPriority(dismissTouch, 1);
