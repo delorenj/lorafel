@@ -9,7 +9,7 @@
 #include "LootTile.h"
 #include "Globals.h"
 #include "XpStatResult.h"
-#include "LameSpiderSword.h"
+#include "Weapon.h"
 
 namespace lorafel {
     class LameSpiderSwordTile : public LootTile {
@@ -45,7 +45,11 @@ namespace lorafel {
         }
 
         virtual bool addToInventory() override {
-            m_pLootItem = LameSpiderSword::create(ValueMapNull);
+            ValueMap args;
+            args["attack"] = 200;
+            args["item_name"] = "Loot Sword";
+            args["tile_image"] = "lame-spider-sword.png";
+            m_pLootItem = Weapon::create(args);
             LootTile::addToInventory();
             return true;
         }

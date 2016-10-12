@@ -8,8 +8,6 @@
 #include <string>
 #include "Player.h"
 #include "HealthPotion.h"
-#include "LameSpiderSword.h"
-#include "DumbKnife.h"
 #include "ItemFactory.h"
 
 namespace lorafel {

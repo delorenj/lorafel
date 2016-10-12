@@ -5,6 +5,7 @@
 #ifndef LORAFEL_WEAPON_H
 #define LORAFEL_WEAPON_H
 
+#include "Player.h"
 #include "NonConsumable.h"
 #include "ISellable.h"
 #include "IUpgradable.h"
@@ -34,7 +35,6 @@ namespace lorafel {
         int getPrice() override;
         int getRequiredPlayerLevel() override;
         std::string getTileImage();
-        std::string getItemName();
 
         std::vector<int> getEquipMasks();
     };

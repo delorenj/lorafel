@@ -3,9 +3,8 @@
 //
 
 #include "ItemFactory.h"
-#include "LameSpiderSword.h"
-#include "DumbKnife.h"
 #include "HealthPotion.h"
+#include "Weapon.h"
 
 using namespace lorafel;
 
@@ -18,12 +17,8 @@ bool ItemFactory::init() {
 Item* ItemFactory::createItem(std::string className, cocos2d::ValueMap args, std::string id = "") {
     Item* item = nullptr;
     
-	if(className == "LameSpiderSword") {
-		item = LameSpiderSword::create(args);
-	}
-
-	if(className == "DumbKnife") {
-		item = DumbKnife::create();
+	if(className == "Weapon") {
+		item = Weapon::create(args);
 	}
 
 	if(className == "HealthPotion") {

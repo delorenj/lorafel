@@ -358,7 +358,6 @@
 		3167D53672DC56EAFD01531E /* SwappyGridScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwappyGridScene.h; sourceTree = "<group>"; };
 		3167D53F7A6E35A701E5B1BA /* XpUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpUI.h; sourceTree = "<group>"; };
 		3167D55D265C6AD2FCBD5FD9 /* GoldUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldUI.h; sourceTree = "<group>"; };
-		3167D57BA3A0CF8847F33AD6 /* LameSpiderSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameSpiderSword.h; sourceTree = "<group>"; };
 		3167D57F44E44D04FA0913E8 /* HeroTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroTile.cpp; sourceTree = "<group>"; };
 		3167D581C26696931B24E901 /* FirebaseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseDatabase.h; sourceTree = "<group>"; };
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
@@ -429,7 +428,6 @@
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
 		3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindowFactory.h; sourceTree = "<group>"; };
 		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
-		3167DA659FBDBFB961F1C50F /* DumbKnife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbKnife.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
@@ -945,7 +943,6 @@
 				3167DED2269D21779C04D7A3 /* MatchSet.h */,
 				3167D7D918440E694548445F /* StupidRandomizer.cpp */,
 				3167D8097FD50C649DFA45E6 /* StupidRandomizer.h */,
-				3167D57BA3A0CF8847F33AD6 /* LameSpiderSword.h */,
 				3167D1DEE2F81382C6AA2085 /* Weapon.cpp */,
 				3167DC321971CA6CE427DAF7 /* Weapon.h */,
 				3167DC0CD40E3CD6BB52F55B /* NonConsumable.cpp */,
@@ -970,7 +967,6 @@
 				3167D64DF3736FBC3CEF6B10 /* EquipItemSlot.cpp */,
 				3167D40B103B97B902256E63 /* EquipItemSlot.h */,
 				3167DCE5F6560AA6833ED344 /* EventDataItem.h */,
-				3167DA659FBDBFB961F1C50F /* DumbKnife.h */,
 				3167D2677BC18E2A72ED452C /* EquipSerializer.h */,
 				3167DC270BA4E3C90A1B810B /* InventorySlotSerializer.h */,
 				3167D9296BC28553AF292A0E /* Serializer.h */,

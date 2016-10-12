@@ -107,8 +107,8 @@ std::vector<int> Weapon::getEquipMasks() {
     auto masks = std::vector<int>();
 
     if(m_arguments["equip_masks"].isNull()) {
-        masks.push_back(Player::LEFT_HAND);
-        masks.push_back(Player::RIGHT_HAND);
+        masks.push_back(2);
+        masks.push_back(3);
     } else {
         auto vv = m_arguments["equip_masks"].asValueVector();
         for(auto v : vv) {

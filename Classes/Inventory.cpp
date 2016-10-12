@@ -7,6 +7,7 @@
 #include "PlayerManager.h"
 #include "EventDataItem.h"
 #include "EventDataPair.h"
+#include "ISellable.h"
 
 using namespace lorafel;
 

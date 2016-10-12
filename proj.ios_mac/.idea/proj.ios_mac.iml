@@ -73,7 +73,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TrajectoryParticle.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Statement.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/LameSpiderSword.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/NonConsumable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelThree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindow.h" isTestSource="false" />
@@ -262,7 +261,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/TestScene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StickMan.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StringPatch.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/DumbKnife.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventDataString.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/MoneyBagTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/FireballActionTile.h" isTestSource="false" />
