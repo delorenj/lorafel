@@ -6,26 +6,37 @@
 #define LORAFEL_WEAPON_H
 
 #include "NonConsumable.h"
+#include "ISellable.h"
+#include "IUpgradable.h"
 
 namespace lorafel {
-    class Weapon : public NonConsumable {
+    class Weapon : public NonConsumable, public ISellable, public IUpgradable {
     public:
-        virtual bool init() override;
-        virtual bool addToInventory() override;
+        virtual bool init(ValueMap args);
 
-        virtual int getAttack() {
-            return m_arguments["attack"].isNull() ?
-                    m_baseAttack : m_baseAttack + m_arguments["attack"].asInt();
+        static Weapon* create(ValueMap args) {
+            Weapon* pRet = new(std::nothrow) Weapon();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
         }
 
-        virtual int getHitDistance() {
-            return m_arguments["hit_distance"].isNull() ?
-                    m_baseHitDistance : m_baseHitDistance + m_arguments["hit_distance"].asInt();
-        }
+        bool addToInventory() override;
 
-    protected:
-        int m_baseAttack;
-        int m_baseHitDistance;
+        int getAttack();
+        int getHitDistance();
+        int getNextLevelCost() override;
+        int getPrice() override;
+        int getRequiredPlayerLevel() override;
+        std::string getTileImage();
+        std::string getItemName();
+
+        std::vector<int> getEquipMasks();
     };
 }
 

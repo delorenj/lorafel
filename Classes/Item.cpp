@@ -88,6 +88,11 @@ void Item::unequip() {
     
 }
 
+std::string Item::getItemName() {
+    return m_arguments["item_name"].isNull() ?
+            "Item" : m_arguments["item_name"].asString();
+}
+
 
 
 

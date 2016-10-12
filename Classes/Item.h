@@ -20,7 +20,7 @@ namespace lorafel {
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode);
         virtual bool addToInventory() = 0;
-        virtual std::string getItemName() const { return m_itemName; }
+        virtual std::string getItemName();
         virtual void setItemName(const char* name) { m_itemName = to_string(name); }
         virtual void setItemName(std::string name) { m_itemName = name; }
         virtual std::string getClassName() const { return m_className; }
