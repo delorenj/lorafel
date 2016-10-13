@@ -29,8 +29,6 @@ namespace lorafel {
 
         virtual void addEvents(cocos2d::Node* pNode) override;
         virtual void use(Tile* pTarget) override;
-        virtual bool addToInventory() override;
-
         virtual int getMaxStack() const override { return 5; }
 
     protected:

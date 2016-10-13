@@ -80,13 +80,6 @@ void HealthPotion::use(Tile* pTarget) {
 
 }
 
-bool HealthPotion::addToInventory() {
-    auto inventory = PlayerManager::getInstance()->getPlayer()->getInventory();
-    inventory->addItem(this);
-    _eventDispatcher->dispatchCustomEvent("itemAdded", this);
-    return true;
-}
-
 void HealthPotion::initItemName() {
     /**
      * This is a percentage-based potion

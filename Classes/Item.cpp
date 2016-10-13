@@ -98,3 +98,16 @@ std::string Item::getTileImage() {
     return m_arguments["tile_image"].isNull() ?
             "lame-spider-sword.png" : m_arguments["tile_image"].asString();
 }
+
+bool Item::addToInventory() {
+	auto inventory = PlayerManager::getInstance()->getPlayer()->getInventory();
+	inventory->addItem(this);
+	_eventDispatcher->dispatchCustomEvent("itemAdded", this);
+
+	/**
+	 * TODO: Only return true if you
+	 * have room in your inventory; otherwise,
+	 * don't add the item or fire the event
+	 */
+	return true;
+}

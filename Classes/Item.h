@@ -10,16 +10,17 @@
 #include <string>
 #include "StringPatch.h"
 #include "ItemStat.h"
+#include "IInventoryable.h"
 
 USING_NS_CC;
 
 namespace lorafel {
     class EquipItemSlot;
-    class Item : public cocos2d::Sprite {
+    class Item : public cocos2d::Sprite, public IInventoryable {
     public:
         virtual bool init() override;
         virtual void addEvents(cocos2d::Node* pNode);
-        virtual bool addToInventory() = 0;
+        virtual bool addToInventory() override;
         virtual std::string getItemName();
         virtual void setItemName(const char* name) { m_itemName = to_string(name); }
         virtual void setItemName(std::string name) { m_itemName = name; }

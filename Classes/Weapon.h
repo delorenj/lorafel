@@ -27,8 +27,6 @@ namespace lorafel {
             }
         }
 
-        bool addToInventory() override;
-
         int getAttack();
         int getHitDistance();
         int getNextLevelCost() override;
