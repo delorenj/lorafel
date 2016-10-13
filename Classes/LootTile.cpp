@@ -32,7 +32,11 @@ bool LootTile::init(ValueMap args) {
         initOptions();
         addEvents();
         addStatResult(new XpStatResult(args["xp"].asInt()));
-        setGlow(Glow::GREEN);
+
+		if(!args["glow"].isNull()) {
+			setGlow(args["glow"].asInt());
+		}
+
 
         auto body = cocos2d::PhysicsBody::createBox(
                 cocos2d::Size(getContentSize().width/4, getContentSize().height),

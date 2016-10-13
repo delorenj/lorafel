@@ -28,6 +28,7 @@ namespace lorafel {
 #define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->create());
 #define STICKMAN col->emplace_back(StickMan::create());
 #define LAMESWORD col->emplace_back(LootTile::create(swordArgs));
+#define BOW col->emplace_back(LootTile::create(bowArgs));
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
     class Level__TestLevelFour : public SeededLevel {
@@ -51,8 +52,18 @@ namespace lorafel {
             swordArgs["hit_distance"] = 2;
             swordArgs["xp"] = 500;
             swordArgs["item_price"] = 1000;
+			swordArgs["glow"] = Glow::GREEN;
 
-            Tile::TileConfig* config = new Tile::TileConfig();
+			ValueMap bowArgs;
+			bowArgs["tile_image"] = "bow-arrow.png";
+			bowArgs["item_name"] = "Tomslop Bow of Health";
+			bowArgs["attack"] = 100;
+			bowArgs["hit_distance"] = 4;
+			bowArgs["xp"] = 500;
+			bowArgs["item_price"] = 1000;
+			bowArgs["glow"] = Glow::BLUE;
+
+			Tile::TileConfig* config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return AvocadoTile::create(); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
@@ -138,7 +149,7 @@ namespace lorafel {
 
                 // Col5
                 col = new TileColumn();
-                STICKMAN AVOCADO GRAPE AVOCADO CARROT GRAPE AVOCADO GRAPE GRAPE
+                STICKMAN AVOCADO BOW AVOCADO CARROT GRAPE AVOCADO GRAPE GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col6
