@@ -77,6 +77,23 @@ void LootFactory::loadBasicLoot() {
         args["hit_distance"] = 2;
         args["item_name"] = "Boh Clang";
         args["xp"] = 500;
+        args["glow"] = Glow::GREEN;
+        auto lootTile = LootTile::create(args);
+
+        return lootTile;
+    });
+    config->frequency = 10;
+    m_pTileConfigs->push_back(config);
+
+    config = new lorafel::Tile::TileConfig();
+    config->create = std::bind([=](){
+        ValueMap args;
+        args["tile_image"] = "bow-arrow.png";
+        args["attack"] = 500;
+        args["hit_distance"] = 4;
+        args["item_name"] = "Jipstick Bow";
+        args["xp"] = 500;
+        args["glow"] = Glow::PURPLE;
         auto lootTile = LootTile::create(args);
 
         return lootTile;
