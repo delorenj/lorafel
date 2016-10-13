@@ -80,6 +80,10 @@ int Weapon::getNextLevelCost() {
 }
 
 int Weapon::getPrice() {
+	if(!m_arguments["item_price"].isNull()) {
+		return m_arguments["item_price"].asInt();
+	}
+
     switch(getLevel()) {
         case 1: return 105;
         case 2: return 700;
@@ -96,11 +100,6 @@ int Weapon::getRequiredPlayerLevel() {
         case 3:
         default: return 12;
     };
-}
-
-std::string Weapon::getTileImage() {
-    return m_arguments["tile_image"].isNull() ?
-            "lame-spider-sword.png" : m_arguments["tile_image"].asString();
 }
 
 std::vector<int> Weapon::getEquipMasks() {

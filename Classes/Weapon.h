@@ -7,8 +7,8 @@
 
 #include "Player.h"
 #include "NonConsumable.h"
-#include "ISellable.h"
 #include "IUpgradable.h"
+#include "ISellable.h"
 
 namespace lorafel {
     class Weapon : public NonConsumable, public ISellable, public IUpgradable {
@@ -34,9 +34,8 @@ namespace lorafel {
         int getNextLevelCost() override;
         int getPrice() override;
         int getRequiredPlayerLevel() override;
-        std::string getTileImage();
 
-        std::vector<int> getEquipMasks();
+		std::vector<int> getEquipMasks();
     };
 }
 

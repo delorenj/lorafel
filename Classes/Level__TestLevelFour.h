@@ -7,13 +7,13 @@
 
 #include "SeededLevel.h"
 #include "Tile.h"
+#include "LootTile.h"
 #include "NormalDistributionRandomizer.h"
 #include "AvocadoTile.h"
 #include "GrapeTile.h"
 #include "CarrotTile.h"
 #include "MeleeAttackTile.h"
 #include "MoneyBagTile.h"
-#include "LameSpiderSwordTile.h"
 #include "StickMan.h"
 #include "PlayerManager.h"
 #include "BasicTurnManager.h"
@@ -27,7 +27,7 @@ namespace lorafel {
 #define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->create());
 #define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->create());
 #define STICKMAN col->emplace_back(StickMan::create());
-#define LAMESWORD col->emplace_back(LameSpiderSwordTile::create());
+#define LAMESWORD col->emplace_back(LootTile::create(swordArgs));
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
     class Level__TestLevelFour : public SeededLevel {
@@ -43,6 +43,14 @@ namespace lorafel {
                 #else
                             randomizer = new NormalDistributionRandomizer();
                 #endif
+
+            ValueMap swordArgs;
+            swordArgs["tile_image"] = "lame-spider-sword.png";
+            swordArgs["item_name"] = "Joe";
+            swordArgs["attack"] = 250;
+            swordArgs["hit_distance"] = 2;
+            swordArgs["xp"] = 500;
+            swordArgs["item_price"] = 1000;
 
             Tile::TileConfig* config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return AvocadoTile::create(); });

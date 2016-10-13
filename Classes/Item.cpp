@@ -94,5 +94,7 @@ std::string Item::getItemName() {
 }
 
 
-
-
+std::string Item::getTileImage() {
+    return m_arguments["tile_image"].isNull() ?
+            "lame-spider-sword.png" : m_arguments["tile_image"].asString();
+}

@@ -163,7 +163,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/PlayerManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Column.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/State.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Classes/LameSpiderSwordTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EnemyHitFloatie.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GoldUI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Achievements.h" isTestSource="false" />

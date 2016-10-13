@@ -53,6 +53,8 @@ namespace lorafel {
 		std::set<ItemStat*>* getItemStats() const { return m_pItemStats; }
 		std::set<ItemStat*>* getItemAttributes() const { return m_pItemAttributes; }
 
+		std::string getTileImage();
+
 	protected:
         std::string m_id;
         std::string m_itemName;

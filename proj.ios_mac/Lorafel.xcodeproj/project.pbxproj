@@ -363,7 +363,6 @@
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
 		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
-		3167D5D41FB1ADDFF5FF59D5 /* LameSpiderSwordTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameSpiderSwordTile.h; sourceTree = "<group>"; };
 		3167D5D9966B9101A21E90BF /* FireballAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballAction.cpp; sourceTree = "<group>"; };
 		3167D5FB0780249507F8EA0A /* InventoryModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryModal.h; sourceTree = "<group>"; };
 		3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeleeAttackTile.cpp; sourceTree = "<group>"; };
@@ -920,7 +919,6 @@
 				3167DB3F8836CD055272AA38 /* Match5.h */,
 				3167D63D919BFEEBDDA707B4 /* LootFactory.cpp */,
 				3167D9F002E2CE510A7C9DA8 /* LootFactory.h */,
-				3167D5D41FB1ADDFF5FF59D5 /* LameSpiderSwordTile.h */,
 				3167D39657152A6F3BCEEF46 /* LootTile.cpp */,
 				3167D47CE3770FAA07E48FF8 /* LootTile.h */,
 				3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */,

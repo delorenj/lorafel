@@ -12,7 +12,19 @@
 namespace lorafel {
     class LootTile : public Tile, public IInventoryable {
     public:
-        virtual bool init() override;
+        virtual bool init(ValueMap args);
+
+        static LootTile* create(ValueMap args) {
+            LootTile* pRet = new(std::nothrow) LootTile();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
 
         virtual bool isSwappable() override { return false; }
         bool isMatch(Tile* pTile) const override { return false; }

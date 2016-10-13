@@ -4,7 +4,7 @@
 
 #include "Globals.h"
 #include "LootFactory.h"
-#include "LameSpiderSwordTile.h"
+#include "LootTile.h"
 
 using namespace lorafel;
 
@@ -70,7 +70,17 @@ void LootFactory::loadBasicLoot() {
 //    m_pTileConfigs->push_back(config);
 
     config = new lorafel::Tile::TileConfig();
-    config->create = std::bind([=](){ return LameSpiderSwordTile::create();});
+    config->create = std::bind([=](){
+        ValueMap args;
+        args["tile_image"] = "lame-spider-sword.png";
+        args["attack"] = 500;
+        args["hit_distance"] = 2;
+        args["item_name"] = "Boh Clang";
+        args["xp"] = 500;
+        auto lootTile = LootTile::create(args);
+
+        return lootTile;
+    });
     config->frequency = 10;
     m_pTileConfigs->push_back(config);
 
