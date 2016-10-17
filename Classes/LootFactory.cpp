@@ -64,43 +64,21 @@ lorafel::Tile* LootFactory::createTile(lorafel::Tile* pTile) {
 void LootFactory::loadBasicLoot() {
     lorafel::Tile::TileConfig* config;
 
-//    config =new lorafel::Tile::TileConfig();
-//    config->create = std::bind([=](){ return MoneyBaglorafel::Tile::create();});
-//    config->frequency = 0;
-//    m_pTileConfigs->push_back(config);
-
     config = new lorafel::Tile::TileConfig();
-    config->create = std::bind([=](){
-        ValueMap args;
-        args["tile_image"] = "lame-spider-sword.png";
-        args["attack"] = 500;
-        args["hit_distance"] = 2;
-        args["item_name"] = "Boh Clang";
-        args["xp"] = 500;
-        args["glow"] = Glow::GREEN;
-        auto lootTile = LootTile::create(args);
 
-        return lootTile;
+    config->create = std::bind([&](){
+//        args["tile_image"] = "lame-spider-sword.png";
+//        args["attack"] = 500;
+//        args["hit_distance"] = 2;
+//        args["item_name"] = "Boh Clang";
+//        args["xp"] = 500;
+//        args["glow"] = Glow::GREEN;
+        ValueMap args = generateRandomItemArgs();
+        return LootTile::create(args);
     });
+
     config->frequency = 10;
     m_pTileConfigs->push_back(config);
-
-    config = new lorafel::Tile::TileConfig();
-    config->create = std::bind([=](){
-        ValueMap args;
-        args["tile_image"] = "bow-arrow.png";
-        args["attack"] = 500;
-        args["hit_distance"] = 4;
-        args["item_name"] = "Jipstick Bow";
-        args["xp"] = 500;
-        args["glow"] = Glow::PURPLE;
-        auto lootTile = LootTile::create(args);
-
-        return lootTile;
-    });
-    config->frequency = 10;
-    m_pTileConfigs->push_back(config);
-
 }
 
 lorafel::Tile::TileConfigs* LootFactory::getBasicLoot() {
@@ -113,6 +91,50 @@ lorafel::Tile::TileConfigs* LootFactory::getXpLoot() {
 
 lorafel::Tile::TileConfigs* LootFactory::getLevelLoot() {
     return new lorafel::Tile::TileConfigs();
+}
+
+ValueMap LootFactory::generateRandomItemArgs() {
+    ValueMap args;
+
+    ValueMap itemClass = getRandomValueMapFromValueMap(m_itemTree["items"].asValueMap());
+    ValueMap itemType = getRandomValueMapFromValueMap(itemClass["types"].asValueMap());
+    ValueMap itemImage = getRandomValueMapFromValueVector(itemType["tile_images"].asValueVector());
+
+    CCLOG("ItemImage Selected=%s", itemImage["tile_image"].asString().c_str());
+
+    args["tile_image"] = itemImage["tile_image"].asString();
+    args["attack"] = 500;
+    args["hit_distance"] = 2;
+    args["item_name"] = "Boh Clang";
+    args["xp"] = 500;
+    args["glow"] = Glow::GREEN;
+    return args;
+}
+
+void LootFactory::loadItemTree(Value data) {
+    if (!data.isNull() && data.getType() == Value::Type::MAP) {
+        m_itemTree = data.asValueMap();
+        CCLOG("LootFactory::loadItemTree() - Item tree loaded into memory");
+        CCLOG("LootFactory::loadItemTree() - Item tree size=%lu", sizeof(m_itemTree));
+    }
+}
+
+ValueMap LootFactory::getRandomValueMapFromValueMap(ValueMap& inValueMap) {
+    cocos2d::ValueMap outValueMap;
+    for(auto vm : inValueMap) {
+        outValueMap = vm.second.asValueMap();
+    }
+
+    return outValueMap;
+}
+
+ValueMap LootFactory::getRandomValueMapFromValueVector(ValueVector& inValueVector) {
+    ValueMap outValueMap;
+    for(auto vv : inValueVector) {
+        outValueMap = vv.asValueMap();
+    }
+
+    return outValueMap;
 }
 
 

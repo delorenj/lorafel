@@ -839,6 +839,14 @@ cocos2d::Size SwappyGrid::getTileSize() {
 }
 
 bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
+    /**
+     * Only test for contact when not still
+     * moving the arrow
+     */
+    GET_GAME_STATE;
+
+    if(state->getName() == "HookTouchMoveState" || state->getName() == "HookTouchStartState") return false;
+
     auto b1 = contact.getShapeA()->getBody();
     auto b2 = contact.getShapeB()->getBody();
 

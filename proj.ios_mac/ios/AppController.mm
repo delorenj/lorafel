@@ -202,7 +202,17 @@ static AppDelegate s_sharedApplication;
                                           NSLog(@"%@", error.localizedDescription);
                                       }];
 
-									  [[[[_db child:@"users"]
+                                      [[_db child:@"item_tree"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                                          if(snapshot.exists) {
+                                              NSDictionary *itemTree = snapshot.value;
+                                              [IOSNDKHelper sendMessage:@"onCompleteItemTreeQuery" withParameters:itemTree];
+                                          }
+
+                                      } withCancelBlock:^(NSError * _Nonnull error) {
+                                          NSLog(@"%@", error.localizedDescription);
+                                      }];
+
+                                      [[[[_db child:@"users"]
 											  child:userID]
 											  child:@"items"]
 											  observeSingleEventOfType:FIRDataEventTypeChildAdded
