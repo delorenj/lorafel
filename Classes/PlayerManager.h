@@ -101,18 +101,19 @@ namespace lorafel {
              */
             // TODO: Refactor ?
             if(valueMap["items"].isNull()) {
+				return;
                 std::string itemId = valueMap["id"].asString();
                 std::string oldId = valueMap["oldId"].asString();
                 std::string newId = valueMap["newId"].asString();
                 Item* pItem = createItemFromDatabaseEntry(newId, valueMap);
-                
+
                 int itemQuantity = 1;
                 if(!valueMap["quantity"].isNull() && valueMap["quantity"].getType() == Value::Type::INTEGER) {
                     itemQuantity = valueMap["quantity"].asInt();
                 }
-                
+
                 pInventory->addItem(pItem, itemQuantity);
-                
+
             } else {
                 ValueMap itemVec = valueMap["items"].asValueMap();
                 for(auto itemVal : itemVec) {
@@ -131,7 +132,10 @@ namespace lorafel {
         }
         
         Item* createItemFromDatabaseEntry(std::string itemId, ValueMap &itemValMap) {
+			if(itemValMap["class"].isNull()) return nullptr;
+
             std::string itemClass = itemValMap["class"].asString();
+
             /**
              * If any args passed in, set them here
              * or set null

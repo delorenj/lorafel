@@ -47,7 +47,7 @@ namespace lorafel {
 
             ValueMap swordArgs;
             swordArgs["tile_image"] = "lame-spider-sword.png";
-            swordArgs["item_name"] = "Joe";
+            swordArgs["item_type"] = "Sword";
             swordArgs["attack"] = 250;
             swordArgs["hit_distance"] = 2;
             swordArgs["xp"] = 500;
@@ -56,7 +56,7 @@ namespace lorafel {
 
 			ValueMap bowArgs;
 			bowArgs["tile_image"] = "bow-arrow.png";
-			bowArgs["item_name"] = "Tomslop Bow of Health";
+            bowArgs["item_type"] = "Bow";
 			bowArgs["attack"] = 100;
 			bowArgs["hit_distance"] = 4;
 			bowArgs["xp"] = 500;
