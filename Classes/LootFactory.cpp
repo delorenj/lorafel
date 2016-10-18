@@ -96,16 +96,19 @@ lorafel::Tile::TileConfigs* LootFactory::getLevelLoot() {
 ValueMap LootFactory::generateRandomItemArgs() {
     ValueMap args;
 
-    ValueMap itemClass = getRandomValueMapFromValueMap(m_itemTree["items"].asValueMap());
-    ValueMap itemType = getRandomValueMapFromValueMap(itemClass["types"].asValueMap());
+    std::string itemClassName, itemTypeName;
+    ValueMap itemClass = getRandomValueMapFromValueMap(m_itemTree["items"].asValueMap(), itemClassName);
+    ValueMap itemType = getRandomValueMapFromValueMap(itemClass["types"].asValueMap(), itemTypeName);
     ValueMap itemImage = getRandomValueMapFromValueVector(itemType["tile_images"].asValueVector());
 
     CCLOG("ItemImage Selected=%s", itemImage["tile_image"].asString().c_str());
 
+    args["item_class"] = itemClassName;
+    args["item_type"] = itemTypeName;
     args["tile_image"] = itemImage["tile_image"].asString();
     args["attack"] = 500;
     args["hit_distance"] = 2;
-    args["item_name"] = "Boh Clang";
+    args["item_name"] = ItemNameGenerator::getInstance()->getName(itemClassName);
     args["xp"] = 500;
     args["glow"] = Glow::GREEN;
     return args;
@@ -119,22 +122,18 @@ void LootFactory::loadItemTree(Value data) {
     }
 }
 
-ValueMap LootFactory::getRandomValueMapFromValueMap(ValueMap& inValueMap) {
-    cocos2d::ValueMap outValueMap;
-    for(auto vm : inValueMap) {
-        outValueMap = vm.second.asValueMap();
-    }
+ValueMap LootFactory::getRandomValueMapFromValueMap(ValueMap& inValueMap, std::string& outKey) {
+    auto idx = RandomHelper::random_int(0, (int)inValueMap.size()-1);
+    auto iter = inValueMap.begin();
+    std::advance(iter, idx);
+    outKey = iter->first;
+    return iter->second.asValueMap();
 
-    return outValueMap;
 }
 
 ValueMap LootFactory::getRandomValueMapFromValueVector(ValueVector& inValueVector) {
-    ValueMap outValueMap;
-    for(auto vv : inValueVector) {
-        outValueMap = vv.asValueMap();
-    }
-
-    return outValueMap;
+    auto idx = RandomHelper::random_int(0, (int)inValueVector.size()-1);
+    return inValueVector.at(idx).asValueMap();
 }
 
 

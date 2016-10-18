@@ -11,6 +11,7 @@
 #include "StringPatch.h"
 #include "ItemStat.h"
 #include "IInventoryable.h"
+#include "ItemNameGenerator.h"
 
 USING_NS_CC;
 

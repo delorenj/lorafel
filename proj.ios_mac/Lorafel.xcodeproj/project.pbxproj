@@ -80,6 +80,7 @@
 		3167D6FA578BF45EF2769E7C /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D711FABAF5DEEEC6D003 /* FirebaseDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */; };
 		3167D714D9CA38C5BBB01890 /* BasicTurnManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9209B91F3F0E976F847 /* BasicTurnManager.cpp */; };
+		3167D72D09BB4CEAD3E296E0 /* ItemNameGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DEC39B71DC1E9DD49935 /* ItemNameGenerator.cpp */; };
 		3167D75C677F0DBEBA8BE404 /* FirebaseAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */; };
 		3167D79A8F94E1250DAFA32D /* ItemDetailWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */; };
 		3167D79C492BD952CEAC2A15 /* StatGuage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */; };
@@ -315,6 +316,7 @@
 		3167D1D5D5DB2A51FA4BD953 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
+		3167D20D319B8EC1162E5691 /* ItemNameGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemNameGenerator.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
 		3167D21FC003793038B2A84B /* ItemStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStat.h; sourceTree = "<group>"; };
 		3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemGrid.cpp; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 		3167DE8C1E9C79420C008807 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
+		3167DEC39B71DC1E9DD49935 /* ItemNameGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemNameGenerator.cpp; sourceTree = "<group>"; };
 		3167DED2269D21779C04D7A3 /* MatchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSet.h; sourceTree = "<group>"; };
 		3167DEE0FFCFF933394EEB02 /* ItemDetailWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindow.h; sourceTree = "<group>"; };
 		3167DF1A060CBD1982A7BABF /* InventoryEquipGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryEquipGrid.h; sourceTree = "<group>"; };
@@ -989,6 +992,8 @@
 				3167DA1ABB7483BE71175498 /* IUpgradable.h */,
 				3167D2A253765AC2DCB0AF7D /* ItemAttribute.cpp */,
 				3167D90F02B189210B369755 /* ItemAttribute.h */,
+				3167DEC39B71DC1E9DD49935 /* ItemNameGenerator.cpp */,
+				3167D20D319B8EC1162E5691 /* ItemNameGenerator.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1455,6 +1460,7 @@
 				3167DCA1DAF0344EB23CA33E /* ItemDetailWindowFactory.cpp in Sources */,
 				3167D876068B9414634393B4 /* ItemStat.cpp in Sources */,
 				3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */,
+				3167D72D09BB4CEAD3E296E0 /* ItemNameGenerator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

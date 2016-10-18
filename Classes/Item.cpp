@@ -90,7 +90,7 @@ void Item::unequip() {
 
 std::string Item::getItemName() {
     return m_arguments["item_name"].isNull() ?
-            "Item" : m_arguments["item_name"].asString();
+            ItemNameGenerator::getInstance()->getName("weapon") : m_arguments["item_name"].asString();
 }
 
 

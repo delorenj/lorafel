@@ -139,6 +139,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Floatie.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StickMan.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HpUI.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemNameGenerator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/InGameSettings.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/StupidRandomizer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/EventDataTile.h" isTestSource="false" />
@@ -196,6 +197,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemDetailWindow.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GlyphTile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelFour.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Classes/ItemNameGenerator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/Level__TestLevelOne.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/GridTransparency.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Classes/HealthPotion.h" isTestSource="false" />

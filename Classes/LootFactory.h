@@ -60,7 +60,7 @@ namespace lorafel {
 
 		ValueMap generateRandomItemArgs();
 
-		ValueMap getRandomValueMapFromValueMap(ValueMap& inValueMap);
+		ValueMap getRandomValueMapFromValueMap(ValueMap& inValueMap, std::string& outKey);
 
 		ValueMap getRandomValueMapFromValueVector(ValueVector& inValueVector);
 	};
