@@ -41,18 +41,26 @@ lorafel::Tile* LootFactory::createTile(lorafel::Tile::TileConfigs* pTileConfigs)
     return pTileConfigs->at(result)->create();
 }
 
-lorafel::Tile* LootFactory::createTile(lorafel::Tile* pTile) {
+lorafel::Tile* LootFactory::createTile(lorafel::Tile* pTile = nullptr) {
     lorafel::Tile::TileConfigs* basicLoot = getBasicLoot();
     lorafel::Tile::TileConfigs* xpLoot = getXpLoot();
     lorafel::Tile::TileConfigs* levelLoot = getLevelLoot();
-    lorafel::Tile::TileConfigs* tileLoot = pTile->getLoot();
+
 
     lorafel::Tile::TileConfigs* allLoot = new lorafel::Tile::TileConfigs();
-    allLoot->reserve(basicLoot->size() + xpLoot->size() + levelLoot->size() + tileLoot->size());
+
+    if(pTile != nullptr) {
+        lorafel::Tile::TileConfigs* tileLoot = pTile->getLoot();
+        allLoot->reserve(basicLoot->size() + xpLoot->size() + levelLoot->size() + tileLoot->size());
+        allLoot->insert(allLoot->end(), tileLoot->begin(), tileLoot->end());
+    } else {
+        allLoot->reserve(basicLoot->size() + xpLoot->size() + levelLoot->size());
+    }
+
     allLoot->insert(allLoot->end(), basicLoot->begin(), basicLoot->end());
     allLoot->insert(allLoot->end(), xpLoot->begin(), xpLoot->end());
     allLoot->insert(allLoot->end(), levelLoot->begin(), levelLoot->end());
-    allLoot->insert(allLoot->end(), tileLoot->begin(), tileLoot->end());
+
 
     auto tile = createTile(allLoot);
 //    CC_SAFE_DELETE(xpLoot);
@@ -67,12 +75,6 @@ void LootFactory::loadBasicLoot() {
     config = new lorafel::Tile::TileConfig();
 
     config->create = std::bind([&](){
-//        args["tile_image"] = "lame-spider-sword.png";
-//        args["attack"] = 500;
-//        args["hit_distance"] = 2;
-//        args["item_name"] = "Boh Clang";
-//        args["xp"] = 500;
-//        args["glow"] = Glow::GREEN;
         ValueMap args = generateRandomItemArgs();
         return LootTile::create(args);
     });
@@ -108,7 +110,11 @@ ValueMap LootFactory::generateRandomItemArgs() {
     args["tile_image"] = itemImage["tile_image"].asString();
     args["attack"] = 500;
     args["hit_distance"] = 2;
-    args["item_name"] = ItemNameGenerator::getInstance()->getName(itemClassName);
+    std::string name;
+    do {
+      name = ItemNameGenerator::getInstance()->getName(itemTypeName);
+    } while(name.length() > 25);
+    args["item_name"] = name;
     args["xp"] = 500;
     args["glow"] = Glow::GREEN;
     return args;

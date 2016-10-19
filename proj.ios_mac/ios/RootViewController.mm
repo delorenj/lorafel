@@ -162,7 +162,7 @@
     if (parameters != nil) {
         NSString* tempId = (NSString*) parameters[@"tempId"];
         NSString* className = (NSString*) parameters[@"class"];
-        NSDictionary* arguments = (NSDictionary*) parameters[@"args"];
+        NSDictionary* arguments = (NSDictionary*) parameters[@"arguments"];
         NSString* quantity = (NSString*) parameters[@"quantity"];
         
         NSString *newId = [[[[_db child:@"users"] child:user.uid ] child:@"items"] childByAutoId].key;

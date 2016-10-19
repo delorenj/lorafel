@@ -19,6 +19,7 @@
 #include "BasicTurnManager.h"
 #include "GridTransparency.h"
 #include "StupidRandomizer.h"
+#include "LootFactory.h"
 
 namespace lorafel {
 #define AVOCADO col->emplace_back(m_pTileConfigs->at(0)->create());
@@ -27,8 +28,7 @@ namespace lorafel {
 #define MELEE_ATTACK col->emplace_back(m_pTileConfigs->at(3)->create());
 #define MONEYBAG col->emplace_back(m_pTileConfigs->at(4)->create());
 #define STICKMAN col->emplace_back(StickMan::create());
-#define LAMESWORD col->emplace_back(LootTile::create(swordArgs));
-#define BOW col->emplace_back(LootTile::create(bowArgs));
+#define LOOT col->emplace_back(LootFactory::getInstance()->createTile());
 #define HERO col->emplace_back(PlayerManager::getInstance()->getPlayer()->getTile());
 
     class Level__TestLevelFour : public SeededLevel {
@@ -44,24 +44,6 @@ namespace lorafel {
                 #else
                             randomizer = new NormalDistributionRandomizer();
                 #endif
-
-            ValueMap swordArgs;
-            swordArgs["tile_image"] = "lame-spider-sword.png";
-            swordArgs["item_type"] = "Sword";
-            swordArgs["attack"] = 250;
-            swordArgs["hit_distance"] = 2;
-            swordArgs["xp"] = 500;
-            swordArgs["item_price"] = 1000;
-			swordArgs["glow"] = Glow::GREEN;
-
-			ValueMap bowArgs;
-			bowArgs["tile_image"] = "bow-arrow.png";
-            bowArgs["item_type"] = "Bow";
-			bowArgs["attack"] = 100;
-			bowArgs["hit_distance"] = 4;
-			bowArgs["xp"] = 500;
-			bowArgs["item_price"] = 1000;
-			bowArgs["glow"] = Glow::BLUE;
 
 			Tile::TileConfig* config = new Tile::TileConfig();
                 config->create = std::bind([=]() { return AvocadoTile::create(); });
@@ -149,7 +131,7 @@ namespace lorafel {
 
                 // Col5
                 col = new TileColumn();
-                STICKMAN AVOCADO BOW AVOCADO CARROT GRAPE AVOCADO GRAPE GRAPE
+                STICKMAN AVOCADO LOOT AVOCADO CARROT GRAPE AVOCADO GRAPE GRAPE
                 m_initialGrid.push_back(col);
 
                 // Col6
@@ -159,7 +141,7 @@ namespace lorafel {
 
                 // Col7
                 col = new TileColumn();
-                LAMESWORD CARROT GRAPE AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
+                LOOT CARROT GRAPE AVOCADO CARROT GRAPE AVOCADO AVOCADO MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col8
