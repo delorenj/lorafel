@@ -42,6 +42,8 @@ namespace lorafel {
 
 		void loadItemTree(Value data);
 
+		float getRandomMultiplierForItemType(std::string itemClass, std::string itemType);
+
 	protected:
         static LootFactory *_instance;
         Player* m_pPlayer;

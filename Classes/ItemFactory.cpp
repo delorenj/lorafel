@@ -5,6 +5,8 @@
 #include "ItemFactory.h"
 #include "HealthPotion.h"
 #include "Weapon.h"
+#include "PlayerManager.h"
+#include "LootFactory.h"
 
 using namespace lorafel;
 
@@ -14,10 +16,12 @@ bool ItemFactory::init() {
 	return cocos2d::Node::init();
 }
 
-Item* ItemFactory::createItem(std::string className, cocos2d::ValueMap args, std::string id = "") {
+Item* ItemFactory::createItem(cocos2d::ValueMap args, std::string id) {
     Item* item = nullptr;
-    
+    auto className = args["item_class"].asString();
+
 	if(className == "Weapon") {
+		rollAttack(args);
 		item = Weapon::create(args);
 	}
 
@@ -28,4 +32,21 @@ Item* ItemFactory::createItem(std::string className, cocos2d::ValueMap args, std
     
     item->setId(id);
 	return item;
+}
+
+void ItemFactory::rollAttack(ValueMap& args) {
+	CCLOG("ItemFactory::rollAttack() - Rolling attack for item %s", args["item_name"]);
+
+	int baseAttack = PlayerManager::getInstance()->getPlayer()->getBaseAttack();
+	CCLOG("baseAttack=%d", baseAttack);
+	/**
+	 * Get base attack for class/type
+	 */
+	float multiplier = LootFactory::getInstance()->getRandomMultiplierForItemType(args["item_class"].asString(), args["item_type"].asString());
+	CCLOG("multiplier=%f", multiplier);
+
+	int attack = ROUND_2_INT(baseAttack * multiplier);
+	CCLOG("attack=%d", attack);
+
+	args["attack"] = attack;
 }

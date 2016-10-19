@@ -174,3 +174,7 @@ bool Player::isEquipped(Item* pItem) {
     }
     return false;
 }
+
+int Player::getBaseAttack() const {
+	return (int)getLevelManager()->getLevel() + m_str;
+}

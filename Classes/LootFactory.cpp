@@ -113,14 +113,6 @@ ValueMap LootFactory::generateRandomItemArgs() {
     args["tile_image"] = itemImage["tile_image"].asString();
 
     /**
-     * TODO: Roll some stats based on the class and
-     * type randomly selected from item tree
-     */
-    args["attack"] = 500;
-    args["hit_distance"] = 2;
-
-
-    /**
      * Ensure the name of the item does not
      * exceed 25 characters to prevent
      * window overflow
@@ -168,6 +160,13 @@ ValueMap LootFactory::getRandomValueMapFromValueMap(ValueMap& inValueMap, std::s
 ValueMap LootFactory::getRandomValueMapFromValueVector(ValueVector& inValueVector) {
     auto idx = RandomHelper::random_int(0, (int)inValueVector.size()-1);
     return inValueVector.at(idx).asValueMap();
+}
+
+float LootFactory::getRandomMultiplierForItemType(std::string itemClass, std::string itemType) {
+    ValueMap items = m_itemTree["items"].asValueMap();
+    ValueMap klass = items[itemClass.c_str()].asValueMap();
+    ValueMap type = klass[itemType.c_str()].asValueMap();
+    return type["minmul"].asFloat();
 }
 
 

@@ -33,15 +33,16 @@ namespace lorafel {
         static const int CONSUMABLE         = 10;
 
     public:
+
         Player();
         virtual ~Player();
-
         void initFromServer();
 
         /**
          * Getters and Setters
         */
         const int getNumConsumableSlots() const;
+
         Consumable* getConsumableSlotItem(int i);
         void equipHook();
         LevelManager* getLevelManager() const { return m_pLevelManager; }
@@ -70,13 +71,17 @@ namespace lorafel {
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
         void equipItem(int slot, Item* pItem);
         bool isEquipped(Item* pItem);
-        
+        int getBaseAttack() const;
+        int getStr() const { return m_str; }
+        void setStr(int str) { m_str = str; }
+
 
     protected:
         // Current Stats
         int m_gold = 0;
         int m_hp = 800;
         int m_mp = 3;
+        int m_str = 10;
 
         // Stat Ranges
         int m_maxGold = 100000;

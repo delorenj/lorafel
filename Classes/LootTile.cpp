@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "XpStatResult.h"
 #include "Weapon.h"
+#include "ItemFactory.h"
 
 using namespace lorafel;
 
@@ -22,7 +23,7 @@ bool LootTile::init(ValueMap args) {
      * Only after the the tile is hooked will the
      * item be added to the player's inventory.
      */
-    m_pLootItem = Weapon::create(args);
+    m_pLootItem = ItemFactory::getInstance()->createItem(args);
 	m_pLootItem->retain();
 
     if (initWithSpriteFrameName(m_pLootItem->getTileImage()))

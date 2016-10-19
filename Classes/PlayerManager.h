@@ -62,6 +62,13 @@ namespace lorafel {
             } else {
                 getPlayer()->setXp(0);
             }
+            if(!valueMap["str"].isNull()) {
+                getPlayer()->setStr(valueMap["str"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got str");
+            } else {
+                getPlayer()->setStr(0);
+            }
+
         }
         
         void loadEquipSlots(ValueMap &valueMap) const {
@@ -132,9 +139,6 @@ namespace lorafel {
         }
         
         Item* createItemFromDatabaseEntry(std::string itemId, ValueMap &itemValMap) {
-			if(itemValMap["class"].isNull()) return nullptr;
-
-            std::string itemClass = itemValMap["class"].asString();
 
             /**
              * If any args passed in, set them here
@@ -144,9 +148,11 @@ namespace lorafel {
             if(!itemValMap["arguments"].isNull() && itemValMap["arguments"].getType() == Value::Type::MAP) {
                 itemArgs = itemValMap["arguments"].asValueMap();
             } else {
-                itemArgs = ValueMapNull;
+                return nullptr;
             }
-            
+
+            std::string itemClass = itemArgs["item_class"].asString();
+
             /**
              * If a quantity was passed in, set it here
              * otherwise set quantity to 1
@@ -156,8 +162,8 @@ namespace lorafel {
                 itemQuantity = itemValMap["quantity"].asInt();
             }
             
-            CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemClass.c_str());
-            return ItemFactory::getInstance()->createItem(itemClass, itemArgs, itemId);
+            CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemArgs["item_name"].asString().c_str());
+            return ItemFactory::getInstance()->createItem(itemArgs, itemId);
         }
         
         Player* getPlayer() const { return m_pPlayer; }

@@ -20,10 +20,12 @@ namespace lorafel {
 			return _instance;
 		}
 
-        Item* createItem(std::string className, cocos2d::ValueMap args, std::string id);
+        Item* createItem(cocos2d::ValueMap args, std::string id = "");
 
 	protected:
 		static ItemFactory* _instance;
+
+		void rollAttack(ValueMap& args);
 	};
 }
 
