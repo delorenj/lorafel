@@ -98,25 +98,53 @@ lorafel::Tile::TileConfigs* LootFactory::getLevelLoot() {
 ValueMap LootFactory::generateRandomItemArgs() {
     ValueMap args;
 
+    /**
+     * Select a random item class, type,
+     * and image from the item tree in
+     * the database
+     */
     std::string itemClassName, itemTypeName;
     ValueMap itemClass = getRandomValueMapFromValueMap(m_itemTree["items"].asValueMap(), itemClassName);
     ValueMap itemType = getRandomValueMapFromValueMap(itemClass["types"].asValueMap(), itemTypeName);
     ValueMap itemImage = getRandomValueMapFromValueVector(itemType["tile_images"].asValueVector());
 
-    CCLOG("ItemImage Selected=%s", itemImage["tile_image"].asString().c_str());
-
     args["item_class"] = itemClassName;
     args["item_type"] = itemTypeName;
     args["tile_image"] = itemImage["tile_image"].asString();
+
+    /**
+     * TODO: Roll some stats based on the class and
+     * type randomly selected from item tree
+     */
     args["attack"] = 500;
     args["hit_distance"] = 2;
+
+
+    /**
+     * Ensure the name of the item does not
+     * exceed 25 characters to prevent
+     * window overflow
+     */
     std::string name;
     do {
-      name = ItemNameGenerator::getInstance()->getName(itemTypeName);
+        name = ItemNameGenerator::getInstance()->getName(itemTypeName);
     } while(name.length() > 25);
+
     args["item_name"] = name;
-    args["xp"] = 500;
+
+    /**
+     * TODO: Determine glow color based on
+     * cumulative stats and attributes. Better
+     * item rolls give better color rarities
+     */
     args["glow"] = Glow::GREEN;
+
+    /**
+     * TODO: Determine the amount of XP given
+     * based on cumulative stata and attributes
+     */
+    args["xp"] = 500;
+
     return args;
 }
 
