@@ -97,6 +97,18 @@ static AppDelegate s_sharedApplication;
   
     app->run();
 
+    _db = [[FIRDatabase database] reference];
+
+    [[_db child:@"item_tree"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if(snapshot.exists) {
+            NSDictionary *itemTree = snapshot.value;
+            [IOSNDKHelper sendMessage:@"onCompleteItemTreeQuery" withParameters:itemTree];
+        }
+
+    } withCancelBlock:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+
     return YES;
 }
 
@@ -192,20 +204,11 @@ static AppDelegate s_sharedApplication;
                                       [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:p];
                                       NSString *userID = u.uid;
                                       _db = [[FIRDatabase database] reference];
+
                                       [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                                           if(snapshot.exists) {
                                               NSDictionary *user = snapshot.value;
                                               [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
-                                          }
-                                          
-                                      } withCancelBlock:^(NSError * _Nonnull error) {
-                                          NSLog(@"%@", error.localizedDescription);
-                                      }];
-
-                                      [[_db child:@"item_tree"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                                          if(snapshot.exists) {
-                                              NSDictionary *itemTree = snapshot.value;
-                                              [IOSNDKHelper sendMessage:@"onCompleteItemTreeQuery" withParameters:itemTree];
                                           }
 
                                       } withCancelBlock:^(NSError * _Nonnull error) {

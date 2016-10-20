@@ -165,8 +165,11 @@ ValueMap LootFactory::getRandomValueMapFromValueVector(ValueVector& inValueVecto
 float LootFactory::getRandomMultiplierForItemType(std::string itemClass, std::string itemType) {
     ValueMap items = m_itemTree["items"].asValueMap();
     ValueMap klass = items[itemClass.c_str()].asValueMap();
-    ValueMap type = klass[itemType.c_str()].asValueMap();
-    return type["minmul"].asFloat();
+    ValueMap types = klass["types"].asValueMap();
+    ValueMap type = types[itemType.c_str()].asValueMap();
+    auto min = type["minmul"].asFloat();
+    auto max = type["maxmul"].asFloat();
+    return random(min, max);
 }
 
 

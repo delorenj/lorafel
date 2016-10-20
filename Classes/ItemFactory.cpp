@@ -21,7 +21,9 @@ Item* ItemFactory::createItem(cocos2d::ValueMap args, std::string id) {
     auto className = args["item_class"].asString();
 
 	if(className == "Weapon") {
-		rollAttack(args);
+		if(args["attack"].isNull()) {
+			rollAttack(args);
+		}
 		item = Weapon::create(args);
 	}
 
@@ -35,7 +37,7 @@ Item* ItemFactory::createItem(cocos2d::ValueMap args, std::string id) {
 }
 
 void ItemFactory::rollAttack(ValueMap& args) {
-	CCLOG("ItemFactory::rollAttack() - Rolling attack for item %s", args["item_name"]);
+	CCLOG("ItemFactory::rollAttack() - Rolling attack for item %s", args["item_name"].asString().c_str());
 
 	int baseAttack = PlayerManager::getInstance()->getPlayer()->getBaseAttack();
 	CCLOG("baseAttack=%d", baseAttack);
