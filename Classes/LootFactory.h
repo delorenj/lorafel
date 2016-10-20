@@ -17,54 +17,70 @@
 
 namespace lorafel {
     class LootFactory {
-    protected:
-        LootFactory() {
-            init();
-        };
+	protected:
+		LootFactory() {
+			init();
+		};
 
-        virtual void init();
+		virtual void init();
 
-    public:
-        static LootFactory* getInstance() {
-            if (_instance == nullptr) {
-                _instance = new LootFactory();
-            }
-            return _instance;
-        }
+	public:
+		static LootFactory* getInstance() {
+			if (_instance == nullptr) {
+				_instance = new LootFactory();
+			}
+			return _instance;
+		}
 
-        Tile* createTile();
-        Tile* createTile(Tile::TileConfigs* pTileConfigs);
-        Tile* createTile(Tile* pTile);
+		Tile* createTile();
 
-        Player* getPlayer() const { return m_pPlayer; }
-        void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
-        void setGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
+		Tile* createTile(Tile::TileConfigs* pTileConfigs);
+
+		Tile* createTile(Tile* pTile);
+
+		Player* getPlayer() const {
+			return m_pPlayer;
+		}
+
+		void setPlayer(Player* pPlayer) {
+			m_pPlayer = pPlayer;
+		}
+
+		void setGrid(SwappyGrid* pGrid) {
+			m_pSwappyGrid = pGrid;
+		}
 
 		void loadItemTree(Value data);
 
 		float getRandomMultiplierForItemType(std::string itemClass, std::string itemType);
 
+		int getRandomHitDistanceForItemType(std::string itemClass, std::string itemType);
+
+		std::string getRandomAttributeForItemClass(std::string itemClass);
+
 	protected:
-        static LootFactory *_instance;
-        Player* m_pPlayer;
-        SwappyGrid* m_pSwappyGrid;
-        Tile::TileConfigs* m_pTileConfigs;
-        IRandomizerStrategy* m_pRandomizer;
+		static LootFactory* _instance;
+		Player* m_pPlayer;
+		SwappyGrid* m_pSwappyGrid;
+		Tile::TileConfigs* m_pTileConfigs;
+		IRandomizerStrategy* m_pRandomizer;
 		ValueMap m_itemTree;
 
-        void loadBasicLoot();
+		void loadBasicLoot();
 
-        Tile::TileConfigs* getBasicLoot();
+		Tile::TileConfigs* getBasicLoot();
 
-        Tile::TileConfigs* getXpLoot();
+		Tile::TileConfigs* getXpLoot();
 
-        Tile::TileConfigs* getLevelLoot();
+		Tile::TileConfigs* getLevelLoot();
 
 		ValueMap generateRandomItemArgs();
 
 		ValueMap getRandomValueMapFromValueMap(ValueMap& inValueMap, std::string& outKey);
 
 		ValueMap getRandomValueMapFromValueVector(ValueVector& inValueVector);
+
+		Value getRandomValueFromValueVector(ValueVector& inValueVector);
 	};
 }
 

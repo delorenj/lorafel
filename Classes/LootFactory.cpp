@@ -162,6 +162,11 @@ ValueMap LootFactory::getRandomValueMapFromValueVector(ValueVector& inValueVecto
     return inValueVector.at(idx).asValueMap();
 }
 
+Value LootFactory::getRandomValueFromValueVector(ValueVector& inValueVector) {
+    auto idx = RandomHelper::random_int(0, (int)inValueVector.size()-1);
+    return inValueVector.at(idx);
+}
+
 float LootFactory::getRandomMultiplierForItemType(std::string itemClass, std::string itemType) {
     ValueMap items = m_itemTree["items"].asValueMap();
     ValueMap klass = items[itemClass.c_str()].asValueMap();
@@ -170,6 +175,27 @@ float LootFactory::getRandomMultiplierForItemType(std::string itemClass, std::st
     auto min = type["minmul"].asFloat();
     auto max = type["maxmul"].asFloat();
     return random(min, max);
+}
+
+int LootFactory::getRandomHitDistanceForItemType(std::string itemClass, std::string itemType) {
+    if(itemClass != "Weapon") {
+        return 0;
+    }
+
+    ValueMap items = m_itemTree["items"].asValueMap();
+    ValueMap klass = items[itemClass.c_str()].asValueMap();
+    ValueMap types = klass["types"].asValueMap();
+    ValueMap type = types[itemType.c_str()].asValueMap();
+    auto min = type["minhd"].asInt();
+    auto max = type["maxhd"].asInt();
+    return random(min, max);
+}
+
+std::string LootFactory::getRandomAttributeForItemClass(std::string itemClass) {
+    ValueMap items = m_itemTree["items"].asValueMap();
+    ValueMap klass = items[itemClass.c_str()].asValueMap();
+    ValueVector attributes = klass["attributes"].asValueVector();
+    return getRandomValueFromValueVector(attributes).asString();
 }
 
 
