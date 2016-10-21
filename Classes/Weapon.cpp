@@ -39,9 +39,14 @@ bool Weapon::init(ValueMap args) {
 	 * Here we add special Attribute stats
 	 * that go in a different window section
 	 */
-    m_pItemAttributes = new std::set<ItemStat*>();
-    m_pItemAttributes->insert(new ItemStat("10% Life Gained per Damage", customAttribute));
-    m_pItemAttributes->insert(new ItemStat("Chance to poison for 2 turns", customAttribute));
+	if(!args["attributes"].isNull()) {
+		m_pItemAttributes = new std::set<ItemStat*>();
+		auto attrs = args["attributes"].asValueVector();
+		for(int i=0; i<attrs.size(); i++) {
+			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
+			m_pItemAttributes->insert(itemAttr);
+		}
+	}
 
     return true;
 
