@@ -71,7 +71,6 @@ void FirebaseDatabase::addItem(Item* pItem, int quantity = 1) {
     ValueMap vm;
     
     vm["tempId"] = pItem->getId();
-    vm["class"] = pItem->getClassName();
     vm["arguments"] = pItem->getArguments();
     vm["quantity"] = quantity;
     

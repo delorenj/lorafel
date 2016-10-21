@@ -161,19 +161,16 @@
     
     if (parameters != nil) {
         NSString* tempId = (NSString*) parameters[@"tempId"];
-        NSString* className = (NSString*) parameters[@"class"];
         NSDictionary* arguments = (NSDictionary*) parameters[@"arguments"];
         NSString* quantity = (NSString*) parameters[@"quantity"];
         
         NSString *newId = [[[[_db child:@"users"] child:user.uid ] child:@"items"] childByAutoId].key;
 
         if(arguments == nil) {
-            NSDictionary *item = @{@"class": className,
-                                   @"quantity": quantity};
+            NSDictionary *item = @{@"quantity": quantity};
             [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
         } else {
-            NSDictionary *item = @{@"class": className,
-                                   @"arguments": arguments,
+            NSDictionary *item = @{@"arguments": arguments,
                                    @"quantity": quantity};
             [[[[[_db child:@"users"] child:user.uid] child:@"items"] child:newId] setValue:item];
         }

@@ -24,12 +24,8 @@ namespace lorafel {
 
 	protected:
 		static ItemFactory* _instance;
-
 		void rollAttack(ValueMap& args);
-
 		void rollHitDistance(ValueMap& args);
-
-		void rollExtraAttributes(ValueMap& args);
 	};
 }
 

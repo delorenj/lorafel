@@ -33,30 +33,23 @@ namespace lorafel {
 		}
 
 		Tile* createTile();
-
 		Tile* createTile(Tile::TileConfigs* pTileConfigs);
-
 		Tile* createTile(Tile* pTile);
 
 		Player* getPlayer() const {
 			return m_pPlayer;
 		}
 
-		void setPlayer(Player* pPlayer) {
-			m_pPlayer = pPlayer;
-		}
-
-		void setGrid(SwappyGrid* pGrid) {
-			m_pSwappyGrid = pGrid;
-		}
-
+		void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
+		void setGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
 		void loadItemTree(Value data);
-
 		float getRandomMultiplierForItemType(std::string itemClass, std::string itemType);
-
 		int getRandomHitDistanceForItemType(std::string itemClass, std::string itemType);
-
 		std::string getRandomAttributeForItemClass(std::string itemClass);
+		void rollExtraAttributes(ValueMap& args);
+		void rollAttack(ValueMap& args);
+		void rollHitDistance(ValueMap& args);
+
 
 	protected:
 		static LootFactory* _instance;
@@ -67,19 +60,12 @@ namespace lorafel {
 		ValueMap m_itemTree;
 
 		void loadBasicLoot();
-
 		Tile::TileConfigs* getBasicLoot();
-
 		Tile::TileConfigs* getXpLoot();
-
 		Tile::TileConfigs* getLevelLoot();
-
 		ValueMap generateRandomItemArgs();
-
 		ValueMap getRandomValueMapFromValueMap(ValueMap& inValueMap, std::string& outKey);
-
 		ValueMap getRandomValueMapFromValueVector(ValueVector& inValueVector);
-
 		Value getRandomValueFromValueVector(ValueVector& inValueVector);
 	};
 }

@@ -113,6 +113,12 @@ ValueMap LootFactory::generateRandomItemArgs() {
     args["tile_image"] = itemImage["tile_image"].asString();
 
     /**
+     * Determine some extra
+     * attributes
+     */
+    rollExtraAttributes(args);
+
+    /**
      * Ensure the name of the item does not
      * exceed 25 characters to prevent
      * window overflow
@@ -123,6 +129,20 @@ ValueMap LootFactory::generateRandomItemArgs() {
     } while(name.length() > 25);
 
     args["item_name"] = name;
+
+    /**
+     * Roll all class/type-specific stats
+     */
+    if(itemClassName == "Weapon") {
+        rollAttack(args);
+        rollHitDistance(args);
+    } else
+    if(itemClassName == "HealthPotion") {
+        //TODO: Roll for health potion amount
+    } else
+    if(itemClassName == "Armor") {
+        //TODO: Implement Armor class
+    }
 
     /**
      * TODO: Determine glow color based on
@@ -198,9 +218,57 @@ std::string LootFactory::getRandomAttributeForItemClass(std::string itemClass) {
     return getRandomValueFromValueVector(attributes).asString();
 }
 
+void LootFactory::rollExtraAttributes(ValueMap& args) {
+    CCLOG("LootFactory::rollExtraAttributes() - Rolling extra attributes for item %s", args["item_name"].asString().c_str());
+    auto rand = CCRANDOM_0_1();
+    int numAttr;
+    if(rand < 0.05) {
+        numAttr = 3;
+    } else if(rand < 0.08) {
+        numAttr = 2;
+    } else if(rand < 0.12) {
+        numAttr = 1;
+    } else {
+        args["arguments"] = ValueVectorNull;
+        return;
+    }
 
+    CCLOG("LootFactory::rollExtraAttributes() - Lucky player gets %d attributes for item %s", numAttr, args["item_name"].asString().c_str());
+    ValueVector attrs;
 
+    for(int i=0; i<numAttr; i++) {
+        std::string attr = getRandomAttributeForItemClass(args["item_class"].asString());
+        Value attrVal(attr);
+        attrs.push_back(attrVal);
+        CCLOG("LootFactory::rollExtraAttributes() - Attribute %d = %s", i+1, attrVal.asString().c_str());
+    }
 
+    args["attributes"] = attrs;
+}
+
+void LootFactory::rollAttack(ValueMap& args) {
+    CCLOG("LootFactory::rollAttack() - Rolling attack for item %s", args["item_name"].asString().c_str());
+    int baseAttack = PlayerManager::getInstance()->getPlayer()->getBaseAttack();
+    CCLOG("baseAttack=%d", baseAttack);
+    /** Get base attack for class/type */
+    float multiplier = getRandomMultiplierForItemType(args["item_class"].asString(), args["item_type"].asString());
+    CCLOG("multiplier=%f", multiplier);
+    int attack = ROUND_2_INT(baseAttack * multiplier);
+    CCLOG("attack=%d", attack);
+    args["attack"] = attack;
+}
+
+/**
+ * TODO: Refactor to use interface for determining
+ * it item implements Hit Distance
+ */
+void LootFactory::rollHitDistance(ValueMap& args) {
+    /** Hit distance only makes sense for weapons */
+    CCLOG("LootFactory::rollHitDistance() - Rolling hit_distance for item %s", args["item_name"].asString().c_str());
+    int hd = getRandomHitDistanceForItemType(args["item_class"].asString(), args["item_type"].asString());
+    CCLOG("hit_distance=%d", hd);
+    args["hit_distance"] = hd;
+}
 
 
 
