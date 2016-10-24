@@ -8,12 +8,9 @@
 namespace lorafel {
 	class ItemStat {
 	public:
-		ItemStat(std::string name, std::string value) : m_name(name), m_value(value) {
-
-		};
-
-		ItemStat(std::string name, std::function<void(void)>* pFunction) : m_name(name), m_pFunction(pFunction) {
-
+		ItemStat(cocos2d::Value& args) {
+			m_name = args.asValueMap()["name"].asString();
+			m_value = atoi(args.asValueMap()["value"].asString().c_str());
 		};
 
 		virtual std::string getName() const {
@@ -32,18 +29,9 @@ namespace lorafel {
 			return atof(m_value.c_str());
 		}
 
-		bool isAttribute() {
-			return m_pFunction != nullptr;
-		}
-
-		std::function<void(void)>* getFunction() {
-			return m_pFunction;
-		}
-
 	protected:
 		std::string m_value;
 		std::string m_name;
-		std::function<void(void)>* m_pFunction;
 	};
 }
 

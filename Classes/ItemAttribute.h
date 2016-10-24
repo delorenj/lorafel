@@ -8,17 +8,13 @@
 #include "ItemStat.h"
 
 namespace lorafel {
-	class ItemAttribute {
+	class ItemAttribute : public ItemStat {
 	public:
-		ItemAttribute(const std::string& description, const std::function<void(void)> function) :
-				m_description(description),
-				m_function(function) {
+		ItemAttribute(cocos2d::Value& args);
 
+		virtual void invoke(void) {
+			CCLOG("Doing thing with attribute %s", m_name);
 		};
-
-	protected:
-		std::string m_description;
-		std::function<void(void)> m_function;
 	};
 }
 

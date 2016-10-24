@@ -17,6 +17,7 @@
 		3167D03D49E418C94CDD31DE /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
 		3167D04250589B073A77E4D1 /* StickMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */; };
 		3167D0582326F2B81A8A7A76 /* PoisonGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */; };
+		3167D0665F6CCB785D907B25 /* AttrXLifeGainedPerDamage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAF5666FC0F6B6E82E97 /* AttrXLifeGainedPerDamage.cpp */; };
 		3167D090D78FDB78A4721B55 /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */; };
 		3167D09C37793B94FAECF730 /* GridTestUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */; };
 		3167D0DAEC202AF63530A399 /* MeleeAttackTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */; };
@@ -386,6 +387,7 @@
 		3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirebaseDatabase.cpp; sourceTree = "<group>"; };
 		3167D7564FDA1E75B77C2270 /* MatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResult.h; sourceTree = "<group>"; };
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
+		3167D7A919AC7529A72FF434 /* AttrXLifeGainedPerDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrXLifeGainedPerDamage.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
 		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
 		3167D7D7221F3E217642B296 /* ItemStat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemStat.cpp; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		3167DAC741FD073259B4C5B8 /* XpUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XpUI.cpp; sourceTree = "<group>"; };
 		3167DAE65E005076FC3B717A /* ItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFactory.h; sourceTree = "<group>"; };
 		3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
+		3167DAF5666FC0F6B6E82E97 /* AttrXLifeGainedPerDamage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttrXLifeGainedPerDamage.cpp; sourceTree = "<group>"; };
 		3167DAFD0D1B6CD25B352054 /* InGameModalNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InGameModalNavButton.h; sourceTree = "<group>"; };
 		3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldUI.cpp; sourceTree = "<group>"; };
 		3167DB3F8836CD055272AA38 /* Match5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match5.h; sourceTree = "<group>"; };
@@ -489,6 +492,7 @@
 		3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballActionTile.cpp; sourceTree = "<group>"; };
 		3167DFEFBC33BF81FB4F901F /* IInventoryable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IInventoryable.h; sourceTree = "<group>"; };
 		3167DFF164097D4A82449B44 /* EnemyHitFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyHitFloatie.h; sourceTree = "<group>"; };
+		3167DFFA39D742011CCC6C03 /* ItemStatFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStatFactory.h; sourceTree = "<group>"; };
 		3167DFFA821FDCDD595EF4C2 /* RandomAIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomAIStrategy.h; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
@@ -994,6 +998,9 @@
 				3167D90F02B189210B369755 /* ItemAttribute.h */,
 				3167DEC39B71DC1E9DD49935 /* ItemNameGenerator.cpp */,
 				3167D20D319B8EC1162E5691 /* ItemNameGenerator.h */,
+				3167DFFA39D742011CCC6C03 /* ItemStatFactory.h */,
+				3167DAF5666FC0F6B6E82E97 /* AttrXLifeGainedPerDamage.cpp */,
+				3167D7A919AC7529A72FF434 /* AttrXLifeGainedPerDamage.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1461,6 +1468,7 @@
 				3167D876068B9414634393B4 /* ItemStat.cpp in Sources */,
 				3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */,
 				3167D72D09BB4CEAD3E296E0 /* ItemNameGenerator.cpp in Sources */,
+				3167D0665F6CCB785D907B25 /* AttrXLifeGainedPerDamage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

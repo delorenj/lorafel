@@ -4,6 +4,7 @@
 
 #include "Weapon.h"
 #include "PlayerManager.h"
+#include "ItemStatFactory.h"
 
 using namespace lorafel;
 
@@ -43,7 +44,9 @@ bool Weapon::init(ValueMap args) {
 		m_pItemAttributes = new std::set<ItemStat*>();
 		auto attrs = args["attributes"].asValueVector();
 		for(int i=0; i<attrs.size(); i++) {
-			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
+            auto attrClassName = attrs[i].asString();
+//			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
+            auto itemAttr = ItemStatFactory::getInstance()->create(attrClassName);
 			m_pItemAttributes->insert(itemAttr);
 		}
 	}
