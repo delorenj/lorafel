@@ -6,17 +6,19 @@
 #define LORAFEL_ITEMSTATFACTORY_H
 
 
-#import "ItemStat.h"
+#include "cocos2d.h"
+#include "ItemStat.h"
 #include "AttrXLifeGainedPerDamage.h"
 
 namespace lorafel {
     class ItemStatFactory {
     protected:
         ItemStatFactory() {
-            m_reg.insert("AttrXLifeGainedPerDamage", std::bind([=](cocos2d::Value& args){
-                auto f = new AttrXLifeGainedPerDamage(args);
-                return f;
-            }));
+            std::function<ItemStat*<cocos2d::Value&> > func = std::bind([=](cocos2d::Value& args){
+                return new AttrXLifeGainedPerDamage(args);
+            });
+
+            m_reg.insert("AttrXLifeGainedPerDamage", func);
         };
 
         ~ItemStatFactory() { };
@@ -31,8 +33,7 @@ namespace lorafel {
         }
 
         ItemStat* create(std::string className, cocos2d::Value& args) {
-            return m_reg[
-                    className](args);
+            return m_reg[className](args);
         }
 
 

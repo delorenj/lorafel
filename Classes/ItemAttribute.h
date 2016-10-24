@@ -13,7 +13,7 @@ namespace lorafel {
 		ItemAttribute(cocos2d::Value& args);
 
 		virtual void invoke(void) {
-			CCLOG("Doing thing with attribute %s", m_name);
+			CCLOG("Doing thing with attribute %s", m_name.c_str());
 		};
 	};
 }

@@ -33,8 +33,16 @@ bool Weapon::init(ValueMap args) {
 	 * the item detail window
 	 */
     m_pItemStats = new std::set<ItemStat*>();
-    m_pItemStats->insert(new ItemStat("Attack", to_string(getAttack())));
-    m_pItemStats->insert(new ItemStat("Hit Distance", to_string(getHitDistance())));
+    cocos2d::ValueMap vm;
+    vm["name"] = "Attack";
+    vm["value"] = to_string(getAttack());
+    cocos2d::Value theArgs = Value(vm);
+    m_pItemStats->insert(new ItemStat(theArgs));
+
+    vm["name"] = "Hit Distance";
+    vm["value"] = to_string(getHitDistance());
+    theArgs = Value(vm);
+    m_pItemStats->insert(new ItemStat(theArgs));
 
     /**
 	 * Here we add special Attribute stats
@@ -46,7 +54,10 @@ bool Weapon::init(ValueMap args) {
 		for(int i=0; i<attrs.size(); i++) {
             auto attrClassName = attrs[i].asString();
 //			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
-            auto itemAttr = ItemStatFactory::getInstance()->create(attrClassName);
+            ValueMap vm;
+            vm["value"] = 10;
+            Value v(vm);
+            auto itemAttr = ItemStatFactory::getInstance()->create(attrClassName, v);
 			m_pItemAttributes->insert(itemAttr);
 		}
 	}
