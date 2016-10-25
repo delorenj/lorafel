@@ -237,13 +237,26 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
     ValueVector attrs;
 
     for(int i=0; i<numAttr; i++) {
-        std::string attr = getRandomAttributeForItemClass(args["item_class"].asString());
-        Value attrVal(attr);
+        auto attr = getRandomAttributeForItemClass(args["item_class"].asString());
+        auto min = getIntegerAttributeParam(attr, "min");
+        auto max = getIntegerAttributeParam(attr, "max");
+        int val = RandomHelper::random_int(min, max);
+        ValueMap vm;
+        vm["name"] = attr;
+        vm["value"] = val;
+        Value attrVal(vm);
         attrs.push_back(attrVal);
-        CCLOG("LootFactory::rollExtraAttributes() - Attribute %d = %s", i+1, attrVal.asString().c_str());
+        CCLOG("LootFactory::rollExtraAttributes() - Attribute %d = %s with value %d", i+1, vm["name"].asString().c_str(), vm["value"].asInt());
     }
 
     args["attributes"] = attrs;
+}
+
+int LootFactory::getIntegerAttributeParam(std::string attr, std::string param) {
+    auto attributes = m_itemTree["attributes"].asValueMap();
+    auto attribute = attributes[attr].asValueMap();
+    auto val = attribute[param].asInt();
+    return val;
 }
 
 void LootFactory::rollAttack(ValueMap& args) {

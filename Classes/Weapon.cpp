@@ -52,12 +52,8 @@ bool Weapon::init(ValueMap args) {
 		m_pItemAttributes = new std::set<ItemStat*>();
 		auto attrs = args["attributes"].asValueVector();
 		for(int i=0; i<attrs.size(); i++) {
-            auto attrClassName = attrs[i].asString();
-//			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
-            ValueMap vm;
-            vm["value"] = "10";
-            Value v(vm);
-            auto itemAttr = ItemStatFactory::getInstance()->create(attrClassName, v);
+            auto attrArgs = attrs[i].asValueMap();
+            auto itemAttr = ItemStatFactory::getInstance()->create(attrArgs);
 			m_pItemAttributes->insert(itemAttr);
 		}
 	}

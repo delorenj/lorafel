@@ -32,6 +32,13 @@ namespace lorafel {
                 return nullptr;
             }
         }
+
+        ItemStat* create(cocos2d::ValueMap args) {
+            auto className = args["name"].asString();
+            cocos2d::Value subArgs = cocos2d::Value(args);
+            return create(className, subArgs);
+        }
+
     };
 }
 

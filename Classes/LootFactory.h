@@ -67,7 +67,9 @@ namespace lorafel {
 		ValueMap getRandomValueMapFromValueMap(ValueMap& inValueMap, std::string& outKey);
 		ValueMap getRandomValueMapFromValueVector(ValueVector& inValueVector);
 		Value getRandomValueFromValueVector(ValueVector& inValueVector);
-	};
+		int getIntegerAttributeParam(std::string attr, std::string param);
+
+    };
 }
 
 #endif //LORAFEL_LOOTFACTORY_H
