@@ -3,8 +3,3 @@
 //
 
 #include "ItemAttribute.h"
-
-using namespace lorafel;
-
-ItemAttribute::ItemAttribute(cocos2d::Value& args) : ItemStat(args) {
-}

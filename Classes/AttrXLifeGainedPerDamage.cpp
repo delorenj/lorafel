@@ -7,8 +7,8 @@
 using namespace lorafel;
 
 AttrXLifeGainedPerDamage::AttrXLifeGainedPerDamage(cocos2d::Value& args) :
-    ItemAttribute(args) {
-
+        ItemAttribute("{{value}}% Life Gained per Damage",
+                args.asValueMap()["value"].asString()) {
 }
 
 void AttrXLifeGainedPerDamage::invoke() {

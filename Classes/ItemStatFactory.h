@@ -7,22 +7,14 @@
 
 
 #include "cocos2d.h"
-#include "ItemStat.h"
 #include "AttrXLifeGainedPerDamage.h"
 
 namespace lorafel {
     class ItemStatFactory {
     protected:
-        ItemStatFactory() {
-            std::function<ItemStat*<cocos2d::Value&> > func = std::bind([=](cocos2d::Value& args){
-                return new AttrXLifeGainedPerDamage(args);
-            });
-
-            m_reg.insert("AttrXLifeGainedPerDamage", func);
-        };
-
+        ItemStatFactory() { };
         ~ItemStatFactory() { };
-
+        static ItemStatFactory* _instance;
 
     public:
         static ItemStatFactory* getInstance() {
@@ -33,15 +25,14 @@ namespace lorafel {
         }
 
         ItemStat* create(std::string className, cocos2d::Value& args) {
-            return m_reg[className](args);
+            if(className == "AttrXLifeGainedPerDamage") {
+                return new AttrXLifeGainedPerDamage(args);
+            } else {
+                CCLOG("ItemStatFactory::create() - Unrecognized ItemStat: %s", className.c_str());
+                return nullptr;
+            }
         }
-
-
-    protected:
-        static ItemStatFactory* _instance;
-        std::map<std::string, std::function<ItemStat*(cocos2d::Value&)> > m_reg;
     };
 }
-
 
 #endif //LORAFEL_ITEMSTATFACTORY_H

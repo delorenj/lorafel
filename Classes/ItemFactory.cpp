@@ -5,8 +5,6 @@
 #include "ItemFactory.h"
 #include "HealthPotion.h"
 #include "Weapon.h"
-#include "PlayerManager.h"
-#include "LootFactory.h"
 
 using namespace lorafel;
 

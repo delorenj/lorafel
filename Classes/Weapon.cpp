@@ -55,7 +55,7 @@ bool Weapon::init(ValueMap args) {
             auto attrClassName = attrs[i].asString();
 //			auto itemAttr = new ItemStat("10% Life Gained per Damage", customAttribute);
             ValueMap vm;
-            vm["value"] = 10;
+            vm["value"] = "10";
             Value v(vm);
             auto itemAttr = ItemStatFactory::getInstance()->create(attrClassName, v);
 			m_pItemAttributes->insert(itemAttr);

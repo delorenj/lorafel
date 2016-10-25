@@ -6,7 +6,6 @@
 #define LORAFEL_ATTRXLIFEGAINEDPERDAMAGE_H
 
 
-#include "ItemStat.h"
 #include "ItemAttribute.h"
 
 namespace lorafel {
