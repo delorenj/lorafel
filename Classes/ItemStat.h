@@ -41,6 +41,10 @@ namespace lorafel {
 			return m_value;
 		}
 
+		virtual int getValueAsInteger() const {
+			return atoi(m_value.c_str());
+		}
+
 	protected:
 		std::string m_value;
 		std::string m_name;

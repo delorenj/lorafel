@@ -9,6 +9,7 @@
 #include "EnemyTile.h"
 #include "EventDataFloatie.h"
 #include "Globals.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -27,7 +28,7 @@ bool EnemyTile::init() {
 void EnemyTile::applyHit(Match* pMatch) {
     auto primaryTile = pMatch->getPrimaryTile();
     bool isStackable = primaryTile->isStackable();
-    int hitAmount = primaryTile->getRandHit(this);
+    int hitAmount = PlayerManager::getInstance()->getRandHit(pMatch, this);
     if(isStackable) {
         hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
     }

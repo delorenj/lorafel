@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "EnemyTile.h"
 #include "HeroTile.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -42,7 +43,8 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
                 for(auto elem : *pMatch->getEnemies()) {
                     EnemyTile* enemy = static_cast<EnemyTile*>(elem);
                     if(enemy != nullptr) {
-                        enemy->applyHit(pMatch);
+                        int hitAmount = PlayerManager::getInstance()->getPlayer()->getRandHit(pMatch, enemy);
+                        enemy->applyHit(hitAmount);
                     }
                 }
             } else {

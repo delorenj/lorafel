@@ -11,6 +11,6 @@ AttrXLifeGainedPerDamage::AttrXLifeGainedPerDamage(cocos2d::Value& args) :
                 args.asValueMap()["value"].asString()) {
 }
 
-void AttrXLifeGainedPerDamage::invoke() {
-    ItemAttribute::invoke();
+void AttrXLifeGainedPerDamage::invoke(cocos2d::Value& inout) {
+    ItemAttribute::invoke(inout);
 }

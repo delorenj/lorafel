@@ -12,7 +12,7 @@ namespace lorafel {
 	public:
 		ItemAttribute(std::string name, std::string value) : ItemStat(name, value) { }
 
-		virtual void invoke(void) {
+		virtual void invoke(cocos2d::Value& inout) {
 			CCLOG("Doing thing with attribute %s", m_name.c_str());
 		};
 	};

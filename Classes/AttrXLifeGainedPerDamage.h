@@ -12,7 +12,7 @@ namespace lorafel {
     class AttrXLifeGainedPerDamage : public ItemAttribute {
     public:
         AttrXLifeGainedPerDamage(cocos2d::Value& args);
-        void invoke(void) override;
+        void invoke(cocos2d::Value& inout) override;
     };
 }
 

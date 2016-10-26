@@ -14,6 +14,7 @@
 #include "Hook.h"
 #include "EquipSerializer.h"
 #include "InventorySlotSerializer.h"
+#include "NonConsumable.h"
 
 namespace lorafel {
     class Player {
@@ -31,6 +32,8 @@ namespace lorafel {
         static const int RIGHT_RING         = 8;
         static const int ACTIONITEM         = 9;
         static const int CONSUMABLE         = 10;
+
+        int getRandHit(Match *pMatch, EnemyTile *pEnemyTile);
 
     public:
 
@@ -74,7 +77,7 @@ namespace lorafel {
         int getBaseAttack() const;
         int getStr() const { return m_str; }
         void setStr(int str) { m_str = str; }
-
+        std::unordered_map<int, Item*> getEquippedItems();
 
     protected:
         // Current Stats
@@ -102,7 +105,6 @@ namespace lorafel {
 
     protected:
         Tile* m_pTile;
-
     };
 
 }

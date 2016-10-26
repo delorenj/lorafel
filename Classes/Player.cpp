@@ -7,6 +7,7 @@
 #include "Globals.h"
 #include "InventorySlotSerializer.h"
 #include "EventDataPair.h"
+#include "ItemAttribute.h"
 
 using namespace lorafel;
 
@@ -177,4 +178,31 @@ bool Player::isEquipped(Item* pItem) {
 
 int Player::getBaseAttack() const {
 	return (int)getLevelManager()->getLevel() + m_str;
+}
+
+int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
+    auto equippedItems = getEquippedItems();
+
+    int attack = getBaseAttack();
+
+    for(auto item : equippedItems) {
+        auto stats = item.second->getItemStats();
+        for(auto stat : *stats) {
+            if(stat->getName() == "attack") {
+                attack += stat->getValueAsInteger();
+            }
+        }
+
+        auto attrs = item.second->getItemAttributes();
+        for(auto attr : *attrs) {
+            Value v(attack);
+            static_cast<ItemAttribute*>(attr)->invoke(v);
+            CCLOG("Player::getRandHit() - Modifying attack by %d", v.asInt());
+            attack += v.asInt();
+        }
+    }
+}
+
+std::unordered_map<int, Item*> Player::getEquippedItems() {
+    return m_equipDictionary;
 }
