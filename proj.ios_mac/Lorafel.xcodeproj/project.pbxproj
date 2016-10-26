@@ -391,6 +391,7 @@
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
 		3167D7A919AC7529A72FF434 /* AttrXLifeGainedPerDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrXLifeGainedPerDamage.h; sourceTree = "<group>"; };
 		3167D7B92507EBE78E18983A /* TileMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMatcher.h; sourceTree = "<group>"; };
+		3167D7C259917276098CCEE5 /* LinearWeightedRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearWeightedRandomizer.h; sourceTree = "<group>"; };
 		3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTransparency.cpp; sourceTree = "<group>"; };
 		3167D7D7221F3E217642B296 /* ItemStat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemStat.cpp; sourceTree = "<group>"; };
 		3167D7D912AE697A30BF5DE7 /* Level__TestLevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelOne.h; sourceTree = "<group>"; };
@@ -1004,6 +1005,7 @@
 				3167DAF5666FC0F6B6E82E97 /* AttrXLifeGainedPerDamage.cpp */,
 				3167D7A919AC7529A72FF434 /* AttrXLifeGainedPerDamage.h */,
 				3167D0F339BC18F56D8CC088 /* ItemStatFactory.cpp */,
+				3167D7C259917276098CCEE5 /* LinearWeightedRandomizer.h */,
 			);
 			name = Classes;
 			path = ../Classes;

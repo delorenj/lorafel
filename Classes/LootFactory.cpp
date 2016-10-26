@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "LootFactory.h"
 #include "LootTile.h"
+#include "LinearWeightedRandomizer.h"
 
 using namespace lorafel;
 
@@ -240,7 +241,8 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
         auto attr = getRandomAttributeForItemClass(args["item_class"].asString());
         auto min = getIntegerAttributeParam(attr, "min");
         auto max = getIntegerAttributeParam(attr, "max");
-        int val = RandomHelper::random_int(min, max);
+        LinearWeightedRandomizer randomizer;
+        int val = randomizer.randomize(max, min);
         ValueMap vm;
         vm["name"] = attr;
         vm["value"] = val;
