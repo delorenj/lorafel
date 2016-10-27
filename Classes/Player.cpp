@@ -205,11 +205,12 @@ int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
             CCLOG("Player::getRandHit() - [Item = %s] [Attr = %s] Modifying attack by %d",
                     item->getItemName().c_str(),
                     attr->getName().c_str(),
-                    v.asInt()
+                    v.asInt() - attack
             );
-            attack += v.asInt();
+            attack = v.asInt();
         }
     }
+    CCLOG("Player::getRandHit() - Total attack = %d", attack);
     return attack;
 }
 

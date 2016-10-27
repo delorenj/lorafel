@@ -48,13 +48,13 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
         }
     }
 
-    if(m_pEnemies->size() > 0) {
-        CCLOG("Enemies in match: %d", (int)m_pEnemies->size());
-    }
-
-    if(m_pHero != nullptr) {
-        CCLOG("Hero in match");
-    }
+//    if(m_pEnemies->size() > 0) {
+//        CCLOG("Enemies in match: %d", (int)m_pEnemies->size());
+//    }
+//
+//    if(m_pHero != nullptr) {
+//        CCLOG("Hero in match");
+//    }
 
 }
 

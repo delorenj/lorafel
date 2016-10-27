@@ -263,6 +263,15 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
     auto move = cocos2d::MoveTo::create(dropTime, gridToScreen(column, tileRowIndex));
     auto easeAction = cocos2d::EaseBounceOut::create(move->clone());
 
+    /**
+     * If tile being dropped is an enemy,
+     * add enemy UI element
+     */
+    if(tile->getTag() == Tag::ENEMY) {
+        auto eventData = new EventDataTile(tile);
+        getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
+    }
+
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
         Tile* tile = static_cast<Tile*>(sender);
         SwappyGrid* obj = static_cast<SwappyGrid*>(tile->getParent());
@@ -408,11 +417,6 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
      */
     if (pTile->getTag() == Tag::HERO || pTile->getTag() == Tag::ENEMY) {
         m_pLevel->getTurnManager()->addPlayerTile(pTile);
-
-        if(pTile->getTag() == Tag::ENEMY) {
-            auto eventData = new EventDataTile(pTile);
-            getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
-        }
 
         if(pTile->getTag() == Tag::HERO) {
             PlayerManager::getInstance()->getPlayer()->equipHook();

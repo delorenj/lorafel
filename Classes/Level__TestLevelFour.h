@@ -106,7 +106,7 @@ namespace lorafel {
                 }
                 // Col0
                 auto col = new TileColumn();
-                CARROT GRAPE CARROT MELEE_ATTACK AVOCADO CARROT AVOCADO GRAPE MELEE_ATTACK
+                CARROT GRAPE CARROT MELEE_ATTACK MELEE_ATTACK CARROT AVOCADO GRAPE MELEE_ATTACK
                 m_initialGrid.push_back(col);
 
                 // Col1

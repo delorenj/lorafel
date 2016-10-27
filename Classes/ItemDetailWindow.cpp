@@ -105,13 +105,16 @@ void ItemDetailWindow::initContent() {
 		addChild(extraAttrLabel);
 		nodeAbove = extraAttrLabel;
 
-		for(auto stat : *m_pItem->getItemAttributes()) {
-			auto statLabel = cocos2d::Label::createWithTTF(stat->getName(), "fonts/ProximaNovaCond-Light.ttf", 16);
-			statLabel->setAnchorPoint(cocos2d::Vec2(0,1));
-			statLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*1.15f));
-			statLabel->setGlobalZOrder(LayerOrder::MODAL+11);
-			addChild(statLabel);
-			nodeAbove = statLabel;
+		if(m_pItem->getItemAttributes() != nullptr) {
+			for(auto stat : *m_pItem->getItemAttributes()) {
+				if(stat == NULL) continue;
+				auto statLabel = cocos2d::Label::createWithTTF(stat->getName(), "fonts/ProximaNovaCond-Light.ttf", 16);
+				statLabel->setAnchorPoint(cocos2d::Vec2(0,1));
+				statLabel->setPosition(cocos2d::Vec2(nodeAbove->getPosition().x, nodeAbove->getPosition().y-nodeAbove->getContentSize().height*1.15f));
+				statLabel->setGlobalZOrder(LayerOrder::MODAL+11);
+				addChild(statLabel);
+				nodeAbove = statLabel;
+			}
 		}
 	}
 

@@ -24,7 +24,6 @@ namespace lorafel {
 
         virtual Match* create(std::set<Tile*>& pTileSet) {
             Match* match;
-            CCLOG("tileset size: %d", pTileSet.size());
 
             /**
              * Here, we don't want to only check if the set
