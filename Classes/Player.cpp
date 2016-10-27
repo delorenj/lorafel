@@ -199,15 +199,17 @@ int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
         }
 
         auto attrs = item->getItemAttributes();
-        for(auto attr : *attrs) {
-            Value v(attack);
-            static_cast<ItemAttribute*>(attr)->invoke(v);
-            CCLOG("Player::getRandHit() - [Item = %s] [Attr = %s] Modifying attack by %d",
-                    item->getItemName().c_str(),
-                    attr->getName().c_str(),
-                    v.asInt() - attack
-            );
-            attack = v.asInt();
+        if(attrs != nullptr) {
+            for(auto attr : *attrs) {
+                Value v(attack);
+                static_cast<ItemAttribute*>(attr)->invoke(v);
+                CCLOG("Player::getRandHit() - [Item = %s] [Attr = %s] Modifying attack by %d",
+                        item->getItemName().c_str(),
+                        attr->getName().c_str(),
+                        v.asInt() - attack
+                );
+                attack = v.asInt();
+            }
         }
     }
     CCLOG("Player::getRandHit() - Total attack = %d", attack);
