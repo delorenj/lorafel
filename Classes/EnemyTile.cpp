@@ -25,16 +25,16 @@ bool EnemyTile::init() {
     return true;
 }
 
-void EnemyTile::applyHit(Match* pMatch) {
-    auto primaryTile = pMatch->getPrimaryTile();
-    bool isStackable = primaryTile->isStackable();
-    int hitAmount = PlayerManager::getInstance()->getRandHit(pMatch, this);
-    if(isStackable) {
-        hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
-    }
-
-    applyHit(hitAmount);
-}
+//void EnemyTile::applyHit(Match* pMatch) {
+//    auto primaryTile = pMatch->getPrimaryTile();
+//    bool isStackable = primaryTile->isStackable();
+//    int hitAmount = PlayerManager::getInstance()->getPlayer()->getRandHit(pMatch, this);
+//    if(isStackable) {
+//        hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
+//    }
+//
+//    applyHit(hitAmount);
+//}
 
 void EnemyTile::applyHit(int hitAmount) {
     decreaseHpBy(hitAmount);
@@ -88,7 +88,7 @@ bool EnemyTile::isSwappable() {
     return m_pSwappyGrid->getActivePlayerTile()->getTag() == Tag::ENEMY;
 }
 
-Tile* EnemyTile::getRandomGlyph() {
+lorafel::Tile* EnemyTile::getRandomGlyph() {
     /**
      * TODO: integrate the normal distribution here...
      */

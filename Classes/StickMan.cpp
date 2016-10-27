@@ -12,10 +12,10 @@
 
 using namespace lorafel;
 
-void StickMan::applyHit(Match* pMatch) {
-    if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
-        lorafel::EnemyTile::applyHit(pMatch);
-}
+//void StickMan::applyHit(Match* pMatch) {
+//    if(pMatch->getPrimaryTile()->getTag() == Tag::TILE)
+//        lorafel::EnemyTile::applyHit(pMatch);
+//}
 
 Tile* StickMan::getRandomGlyph() {
     return CCRANDOM_0_1() < 0.5f ? m_pSwappyGrid->getLevel()->getRandomTile() : EnemyTile::getRandomGlyph();

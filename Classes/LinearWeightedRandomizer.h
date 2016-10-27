@@ -15,16 +15,13 @@ namespace lorafel {
             double std  = 4.0;
             std::normal_distribution<double> normal(mean, std);
 
-            for(int i=0; i<1000; i++) {
-                double v;
-                do {
-                    v = std::abs(normal(generator) / scale);
-                } while (v >= 1.0);
-                auto result = (int)(v * max);
-                result = std::max(result, min);
-                CCLOG("%d", result);
-            }
-            return 10;
+            double v;
+            do {
+                v = std::abs(normal(generator) / scale);
+            } while (v >= 1.0);
+            auto result = (int)(v * max);
+            result = std::max(result, min);
+            return result;
         }
     };
 }

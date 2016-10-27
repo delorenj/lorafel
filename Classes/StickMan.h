@@ -13,7 +13,7 @@ namespace lorafel {
         virtual bool init() override;
         CREATE_FUNC(StickMan);
 
-        virtual void applyHit(Match* pMatch) override;
+//        virtual void applyHit(Match* pMatch) override;
 
     protected:
         /**

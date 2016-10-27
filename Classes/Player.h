@@ -77,7 +77,7 @@ namespace lorafel {
         int getBaseAttack() const;
         int getStr() const { return m_str; }
         void setStr(int str) { m_str = str; }
-        std::unordered_map<int, Item*> getEquippedItems();
+        std::vector<NonConsumable*> getEquippedItems();
 
     protected:
         // Current Stats

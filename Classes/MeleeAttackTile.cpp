@@ -48,9 +48,10 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
                     }
                 }
             } else {
-                auto enemy = m_pSwappyGrid->getRandomEnemy();
+                EnemyTile* enemy = static_cast<EnemyTile*>(m_pSwappyGrid->getRandomEnemy());
                 if(enemy != nullptr) {
-                    static_cast<EnemyTile*>(enemy)->applyHit(pMatch);
+                    int hitAmount = PlayerManager::getInstance()->getPlayer()->getRandHit(pMatch, enemy);
+                    enemy->applyHit(hitAmount);
                 }
             }
         } else {

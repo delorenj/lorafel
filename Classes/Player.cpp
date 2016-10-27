@@ -184,25 +184,40 @@ int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 
     int attack = getBaseAttack();
+    CCLOG("Player::getRandHit() - [Base Attack] %d", attack);
 
     for(auto item : equippedItems) {
-        auto stats = item.second->getItemStats();
+        auto stats = item->getItemStats();
         for(auto stat : *stats) {
-            if(stat->getName() == "attack") {
+            if(stat->getName() == "Attack") {
+                CCLOG("Player::getRandHit() - [Item = %s] [Attr = attack] Modifying attack by %d",
+                        item->getItemName().c_str(),
+                        stat->getValueAsInteger()
+                );
                 attack += stat->getValueAsInteger();
             }
         }
 
-        auto attrs = item.second->getItemAttributes();
+        auto attrs = item->getItemAttributes();
         for(auto attr : *attrs) {
             Value v(attack);
             static_cast<ItemAttribute*>(attr)->invoke(v);
-            CCLOG("Player::getRandHit() - Modifying attack by %d", v.asInt());
+            CCLOG("Player::getRandHit() - [Item = %s] [Attr = %s] Modifying attack by %d",
+                    item->getItemName().c_str(),
+                    attr->getName().c_str(),
+                    v.asInt()
+            );
             attack += v.asInt();
         }
     }
+    return attack;
 }
 
-std::unordered_map<int, Item*> Player::getEquippedItems() {
-    return m_equipDictionary;
+std::vector<NonConsumable*> Player::getEquippedItems() {
+    std::vector<NonConsumable*> items;
+    for(auto item : m_equipDictionary) {
+        if(item.second == nullptr) continue;
+        items.push_back((NonConsumable*) item.second);
+    }
+    return items;
 }
