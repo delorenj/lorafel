@@ -11,8 +11,14 @@
 namespace lorafel {
     class AttrXLifeGainedPerDamage : public ItemAttribute {
     public:
-        AttrXLifeGainedPerDamage(cocos2d::Value& args);
-        void invoke(cocos2d::Value& inout) override;
+        AttrXLifeGainedPerDamage(cocos2d::Value& args) :
+                ItemAttribute("{{value}}% Life Gained per Damage",
+                        args.asValueMap()["value"].asString()) {
+        }
+
+        void invoke(cocos2d::Value& inout) {
+            ItemAttribute::invoke(inout);
+        }
     };
 }
 
