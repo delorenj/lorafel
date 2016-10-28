@@ -75,13 +75,15 @@ namespace lorafel {
             CCLOG("PlayerManager::loadEquipSlots() - Enter");
             Inventory* pInventory = m_pPlayer->getInventory();
             
-            if(valueMap["equip_slots"].isNull() || valueMap["equip_slots"].getType() != Value::Type::MAP) {
+            if(valueMap["equip_slots"].isNull()) {
                 return;
             }
             
             ValueMap equipSlots = valueMap["equip_slots"].asValueMap();
             for(auto equipSlot : equipSlots) {
-                int slotId = parseInt(equipSlot.first);
+                std::string s = equipSlot.first;
+                s = s.substr(0, s.size()-1);
+                int slotId = parseInt(s);
                 std::string itemId = equipSlot.second.asString();
                 Item* pItem = pInventory->getItem(itemId);
                 if(pItem != nullptr) {

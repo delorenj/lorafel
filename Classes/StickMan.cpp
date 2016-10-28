@@ -31,8 +31,8 @@ bool StickMan::init() {
         initOptions();
         addEvents();
         addStatResult(new XpStatResult(200));
-        setHp(5000);
-        setMaxHp(5000);
+        setHp(300);
+        setMaxHp(300);
         setStrategy(new RandomAIStrategy());
 
         m_pTileConfigs = new TileConfigs();

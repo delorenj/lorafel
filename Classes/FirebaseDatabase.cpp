@@ -112,10 +112,16 @@ void FirebaseDatabase::deleteKey(std::string key, std::string child) {
 }
 
 void FirebaseDatabase::equipItem(int slot, Item* pItem) {
+	/**
+	 * Fucking stupid bug with Firebase. Can't have an
+	 * integer - even as a string - as a ValueMap key.
+	 * It automatically parses as a ValueVector
+	 */
+	std::string s = to_string(slot) + "|";
     if(pItem == nullptr) {
-        deleteKey(to_string(slot), "equip_slots");
+        deleteKey(s, "equip_slots");
     } else {
-        setStringForKey(to_string(slot), pItem->getId(), "equip_slots");
+        setStringForKey(s, pItem->getId(), "equip_slots");
     }
 }
 
