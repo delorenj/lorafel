@@ -9,18 +9,16 @@
 
 using namespace lorafel;
 
-bool HealthPotion::init(float amount) {
+bool HealthPotion::init(ValueMap args) {
     if(!Consumable::init()) {
         return false;
     }
     m_className = "HealthPotion";
-    ValueMap args;
-    args["amount"] = amount;
     setArguments(args);
-    m_amount = amount;
+    m_amount = args["amount"].asFloat();
     initItemName();
     addEquipMask(Player::CONSUMABLE);
-    initWithSpriteFrameName("PoisonGlyph.png");
+    initWithSpriteFrameName(getTileImage());
     return true;
 }
 

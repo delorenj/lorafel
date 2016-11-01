@@ -75,8 +75,11 @@ namespace lorafel {
         void equipItem(int slot, Item* pItem);
         bool isEquipped(Item* pItem);
         int getBaseAttack() const;
+        int getBaseDefend() const;
         int getStr() const { return m_str; }
+        int getDef() const { return m_def; }
         void setStr(int str) { m_str = str; }
+        void setDef(int def) { m_def = def; }
         std::vector<NonConsumable*> getEquippedItems();
 
     protected:
@@ -85,6 +88,7 @@ namespace lorafel {
         int m_hp = 800;
         int m_mp = 3;
         int m_str = 10;
+        int m_def = 10;
 
         // Stat Ranges
         int m_maxGold = 100000;

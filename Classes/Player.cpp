@@ -180,6 +180,10 @@ int Player::getBaseAttack() const {
 	return (int)getLevelManager()->getLevel() + m_str;
 }
 
+int Player::getBaseDefend() const {
+    return (int)getLevelManager()->getLevel() + m_def;
+}
+
 int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 

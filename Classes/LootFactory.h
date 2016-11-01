@@ -48,6 +48,7 @@ namespace lorafel {
 		std::string getRandomAttributeForItemClass(std::string itemClass);
 		void rollExtraAttributes(ValueMap& args);
 		void rollAttack(ValueMap& args);
+        void rollDefend(ValueMap& args);
 		void rollHitDistance(ValueMap& args);
 
 
@@ -69,7 +70,8 @@ namespace lorafel {
 		Value getRandomValueFromValueVector(ValueVector& inValueVector);
 		int getIntegerAttributeParam(std::string attr, std::string param);
 
-    };
+		void rollPotionAmount(ValueMap &args);
+	};
 }
 
 #endif //LORAFEL_LOOTFACTORY_H

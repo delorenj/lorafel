@@ -9,6 +9,7 @@
 #include "cocos2d.h"
 #include "AttrXLifeGainedPerDamage.h"
 #include "AttrChanceToPoisonForXTurns.h"
+#include "AttrFireDamage.h"
 
 namespace lorafel {
     class ItemStatFactory {
@@ -30,6 +31,8 @@ namespace lorafel {
                 return new AttrXLifeGainedPerDamage(args);
             } else if(className == "AttrChanceToPoisonForXTurns") {
                 return new AttrChanceToPoisonForXTurns(args);
+            } else if(className == "AttrFireDamage") {
+                return new AttrFireDamage(args);
             } else {
                 CCLOG("ItemStatFactory::create() - Unrecognized ItemStat: %s", className.c_str());
                 return nullptr;

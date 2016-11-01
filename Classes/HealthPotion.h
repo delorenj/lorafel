@@ -11,12 +11,12 @@
 namespace lorafel {
     class HealthPotion : public Consumable {
     public:
-        virtual bool init(float percent);
+        virtual bool init(ValueMap args);
 
-        static HealthPotion* create(float percent) {
+        static HealthPotion* create(cocos2d::ValueMap args) {
 
             HealthPotion* pRet = new(std::nothrow) HealthPotion();
-            if (pRet && pRet->init(percent)) {
+            if (pRet && pRet->init(args)) {
                 pRet->autorelease();
                 return pRet;
             }

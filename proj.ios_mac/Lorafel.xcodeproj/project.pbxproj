@@ -462,6 +462,7 @@
 		3167DCBDD3425DF38F2B9641 /* Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hook.h; sourceTree = "<group>"; };
 		3167DCDDEEFA942DCACD39F3 /* TurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnManager.h; sourceTree = "<group>"; };
 		3167DCE5F6560AA6833ED344 /* EventDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataItem.h; sourceTree = "<group>"; };
+		3167DCED10C762F512C2DB2D /* AttrFireDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrFireDamage.h; sourceTree = "<group>"; };
 		3167DD115E1C613057E511F9 /* InGameModalNavButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameModalNavButton.cpp; sourceTree = "<group>"; };
 		3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphTile.cpp; sourceTree = "<group>"; };
 		3167DD6E3DE1328ABD92FFCF /* AttrChanceToPoisonForXTurns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrChanceToPoisonForXTurns.h; sourceTree = "<group>"; };
@@ -1005,6 +1006,7 @@
 				3167D0F339BC18F56D8CC088 /* ItemStatFactory.cpp */,
 				3167D7C259917276098CCEE5 /* LinearWeightedRandomizer.h */,
 				3167DD6E3DE1328ABD92FFCF /* AttrChanceToPoisonForXTurns.h */,
+				3167DCED10C762F512C2DB2D /* AttrFireDamage.h */,
 			);
 			name = Classes;
 			path = ../Classes;

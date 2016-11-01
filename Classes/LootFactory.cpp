@@ -96,6 +96,10 @@ lorafel::Tile::TileConfigs* LootFactory::getLevelLoot() {
     return new lorafel::Tile::TileConfigs();
 }
 
+/**
+ * I feel as though this should be part of the Item
+ * instead of having an if/else here for each item
+ */
 ValueMap LootFactory::generateRandomItemArgs() {
     ValueMap args;
 
@@ -138,11 +142,11 @@ ValueMap LootFactory::generateRandomItemArgs() {
         rollAttack(args);
         rollHitDistance(args);
     } else
-    if(itemClassName == "HealthPotion") {
-        //TODO: Roll for health potion amount
+    if(itemClassName == "Potion") {
+        rollPotionAmount(args);
     } else
     if(itemClassName == "Armor") {
-        //TODO: Implement Armor class
+        rollDefend(args);
     }
 
     /**
@@ -154,7 +158,7 @@ ValueMap LootFactory::generateRandomItemArgs() {
 
     /**
      * TODO: Determine the amount of XP given
-     * based on cumulative stata and attributes
+     * based on cumulative state and attributes
      */
     args["xp"] = 500;
 
@@ -215,6 +219,10 @@ int LootFactory::getRandomHitDistanceForItemType(std::string itemClass, std::str
 std::string LootFactory::getRandomAttributeForItemClass(std::string itemClass) {
     ValueMap items = m_itemTree["items"].asValueMap();
     ValueMap klass = items[itemClass.c_str()].asValueMap();
+    if(klass["attributes"].isNull()) {
+        return "none";
+    }
+
     ValueVector attributes = klass["attributes"].asValueVector();
     return getRandomValueFromValueVector(attributes).asString();
 }
@@ -239,6 +247,13 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
 
     for(int i=0; i<numAttr; i++) {
         auto attr = getRandomAttributeForItemClass(args["item_class"].asString());
+        /**
+         * If item has no attributes
+         * then just return early
+         */
+        if(attr == "none") {
+            return;
+        }
         auto min = getIntegerAttributeParam(attr, "min");
         auto max = getIntegerAttributeParam(attr, "max");
         LinearWeightedRandomizer randomizer;
@@ -273,6 +288,18 @@ void LootFactory::rollAttack(ValueMap& args) {
     args["attack"] = attack;
 }
 
+void LootFactory::rollDefend(ValueMap& args) {
+    CCLOG("LootFactory::rollDefend() - Rolling defend for item %s", args["item_name"].asString().c_str());
+    int baseDefend = PlayerManager::getInstance()->getPlayer()->getBaseDefend();
+    CCLOG("baseDefend=%d", baseDefend);
+    /** Get base defend for class/type */
+    float multiplier = getRandomMultiplierForItemType(args["item_class"].asString(), args["item_type"].asString());
+    CCLOG("multiplier=%f", multiplier);
+    int defend = ROUND_2_INT(baseDefend * multiplier);
+    CCLOG("defend=%d", defend);
+    args["defend"] = defend;
+}
+
 /**
  * TODO: Refactor to use interface for determining
  * it item implements Hit Distance
@@ -283,6 +310,14 @@ void LootFactory::rollHitDistance(ValueMap& args) {
     int hd = getRandomHitDistanceForItemType(args["item_class"].asString(), args["item_type"].asString());
     CCLOG("hit_distance=%d", hd);
     args["hit_distance"] = hd;
+}
+
+void LootFactory::rollPotionAmount(ValueMap &args) {
+    CCLOG("LootFactory::rollPotionAmount() - Rolling potionAmount for item %s", args["item_name"].asString().c_str());
+    /** Get base potionAmount for class/type */
+    float amount = getRandomMultiplierForItemType(args["item_class"].asString(), args["item_type"].asString());
+    CCLOG("amount=%f", amount);
+    args["amount"] = amount;
 }
 
 

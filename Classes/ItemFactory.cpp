@@ -21,8 +21,12 @@ Item* ItemFactory::createItem(cocos2d::ValueMap args, std::string id) {
 	if(className == "Weapon") {
 		item = Weapon::create(args);
 	} else
-	if(className == "HealthPotion") {
-		item = HealthPotion::create(args["amount"].asFloat());
+	if(className == "Potion") {
+		/**
+		 * Right now, there's only one potion type,
+		 * so just always create it
+		 */
+		item = HealthPotion::create(args);
 	} else
 	if(className == "Armor") {
 		//TODO: Implement Armor class
