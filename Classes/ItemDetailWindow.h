@@ -42,23 +42,23 @@ namespace lorafel {
 		cocos2d::Sprite* m_pFooterBg;
 		cocos2d::Sprite* m_pCurrencyIcon;
 		cocos2d::Label* m_pCurrencyText;
+		cocos2d::Label* m_pLevelText;
 		cocos2d::Sprite* m_pSellBtn;
 		cocos2d::Sprite* m_pElementalIconImage;
 		cocos2d::Sprite* m_pElementalIconText;
+
+
 		cocos2d::Sprite* m_pGradient;
-
-
 		ItemSlot* m_pItemSlot;
 		Item* m_pItem;
-		cocos2d::EventListener* m_pDismissListener;
 
+		cocos2d::EventListener* m_pDismissListener;
 		void initHeader();
 		void initContent();
+
+
 		void initFooter();
-
-
-
-	};
+    };
 }
 
 #endif //LORAFEL_ITEMDETAILWINDOW_H

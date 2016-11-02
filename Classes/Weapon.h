@@ -33,6 +33,12 @@ namespace lorafel {
         int getPrice() override;
         int getRequiredPlayerLevel() override;
 
+        int getLevel() override {
+            return m_arguments["level"].isNull() ?
+                    1 : m_arguments["level"].asInt();
+
+        }
+
 		std::vector<int> getEquipMasks();
     };
 }

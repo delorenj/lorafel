@@ -11,6 +11,7 @@ namespace lorafel {
 	class IUpgradable {
 	public:
 		virtual int getMaxLevel() const { return 3; }
+		virtual int getLevel() = 0;
 		virtual int getNextLevelCost() = 0;
 		virtual std::set<Item*>* getRequiredItems() { return nullptr; }
 		virtual int getRequiredPlayerLevel() = 0;

@@ -123,15 +123,24 @@ ValueMap LootFactory::generateRandomItemArgs() {
      */
     rollExtraAttributes(args);
 
-    /**
-     * Ensure the name of the item does not
-     * exceed 25 characters to prevent
-     * window overflow
-     */
     std::string name;
-    do {
-        name = ItemNameGenerator::getInstance()->getName(itemTypeName);
-    } while(name.length() > 25);
+    if(itemType["name"].isNull()) {
+        /**
+         * Ensure the name of the item does not
+         * exceed 25 characters to prevent
+         * window overflow
+         */
+        do {
+            name = ItemNameGenerator::getInstance()->getName(itemTypeName);
+        } while(name.length() > 25);
+    } else {
+        /**
+         * If name is provided in the itemType
+         * section, then use that instead of
+         * generating an item name.
+         */
+        name = itemType["name"].asString();
+    }
 
     args["item_name"] = name;
 
@@ -142,8 +151,8 @@ ValueMap LootFactory::generateRandomItemArgs() {
         rollAttack(args);
         rollHitDistance(args);
     } else
-    if(itemClassName == "Potion") {
-        rollPotionAmount(args);
+    if(itemClassName == "HealthPotion") {
+        args["amount"] = itemType["amount"];
     } else
     if(itemClassName == "Armor") {
         rollDefend(args);
@@ -154,13 +163,32 @@ ValueMap LootFactory::generateRandomItemArgs() {
      * cumulative stats and attributes. Better
      * item rolls give better color rarities
      */
-    args["glow"] = Glow::GREEN;
+     if(!args["attributes"].isNull()) {
+         switch(args["attributes"].asValueVector().size()) {
+             case 1:
+                 args["glow"] = Glow::GREEN;
+                 args["xp"] = 500;
+                 break;
+             case 2:
+                 args["glow"] = Glow::YELLOW;
+                 args["xp"] = 750;
+                 break;
+             case 3:
+                 args["glow"] = Glow::BLUE;
+                 args["xp"] = 1500;
+                 break;
+             default:
+                 args["glow"] = Glow::NONE;
+                 args["xp"] = 100;
+                 break;
+         };
+     }
 
     /**
      * TODO: Determine the amount of XP given
      * based on cumulative state and attributes
      */
-    args["xp"] = 500;
+
 
     return args;
 }
@@ -229,13 +257,15 @@ std::string LootFactory::getRandomAttributeForItemClass(std::string itemClass) {
 
 void LootFactory::rollExtraAttributes(ValueMap& args) {
     CCLOG("LootFactory::rollExtraAttributes() - Rolling extra attributes for item %s", args["item_name"].asString().c_str());
-    auto rand = CCRANDOM_0_1();
+    std::vector<int> bucket(4);
     int numAttr;
+    
+    auto rand = CCRANDOM_0_1();
     if(rand < 0.05) {
         numAttr = 3;
-    } else if(rand < 0.08) {
-        numAttr = 2;
     } else if(rand < 0.12) {
+        numAttr = 2;
+    } else if(rand < 0.4) {
         numAttr = 1;
     } else {
         args["arguments"] = ValueVectorNull;
@@ -245,8 +275,21 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
     CCLOG("LootFactory::rollExtraAttributes() - Lucky player gets %d attributes for item %s", numAttr, args["item_name"].asString().c_str());
     ValueVector attrs;
 
+    std::map<std::string, int> attrmap;
     for(int i=0; i<numAttr; i++) {
         auto attr = getRandomAttributeForItemClass(args["item_class"].asString());
+        /**
+         * If this attribute has already been selected,
+         * then continue on - this item loses out on
+         * it's rightful item prop number =(
+         *
+         * TODO: Make at least 4 attributes for every type
+         * to ensure we can pick the max of 3 different
+         * attributes for each attributable item
+         */
+        if(attrmap[attr] > 0) continue;
+        attrmap[attr]++;
+
         /**
          * If item has no attributes
          * then just return early

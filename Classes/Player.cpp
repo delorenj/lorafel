@@ -191,6 +191,11 @@ int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
     CCLOG("Player::getRandHit() - [Base Attack] %d", attack);
 
     for(auto item : equippedItems) {
+        /**
+         * If item is a consumable,
+         * don't try to look up stats
+         */
+        if(dynamic_cast<Consumable*>(item) != nullptr) continue;
         auto stats = item->getItemStats();
         for(auto stat : *stats) {
             if(stat->getName() == "Attack") {
