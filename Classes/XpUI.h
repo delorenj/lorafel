@@ -15,6 +15,11 @@ namespace lorafel {
         CREATE_FUNC(XpUI);
         virtual bool init() override;
         void tween(float dt);
+        void setPercent(float value) {
+            if(m_pXpBar != nullptr) {
+                m_pXpBar->setPercent(value);
+            }
+        }
 
     protected:
         Player* m_pPlayer;

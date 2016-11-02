@@ -7,6 +7,7 @@
 #include "GameStateMachine.h"
 #include "StringPatch.h"
 #include "InGameSettings.h"
+#include "PlayerManager.h"
 
 using namespace lorafel;
 
@@ -31,7 +32,7 @@ bool GridTestUI::init() {
 //    addDropTileButtons();
 
 //    addSettingsButton();
-
+    addLevelUpInfo();
     scheduleUpdate();
 
     return true;
@@ -84,6 +85,16 @@ void GridTestUI::addFallingTileCount() {
     m_pLayout->addChild(m_pNumFallingTiles);
 }
 
+void GridTestUI::addLevelUpInfo() {
+    auto lp = cocos2d::ui::LinearLayoutParameter::create();
+    m_pLevelUpIn = cocos2d::ui::Text::create(to_string(0),"fonts/BebasNeue Bold.ttf", 24);
+    m_pLevelUpIn->setColor(cocos2d::Color3B::BLACK);
+    lp->setGravity(cocos2d::ui::LinearLayoutParameter::LinearGravity::TOP);
+    lp->setMargin(cocos2d::ui::Margin(0,5.0f,0,10.0f));
+    m_pLevelUpIn->setLayoutParameter(lp);
+    m_pLayout->addChild(m_pLevelUpIn);
+}
+
 void GridTestUI::addStateName() {
     auto lp = cocos2d::ui::LinearLayoutParameter::create();
     this->m_pState = cocos2d::ui::Text::create(GameStateMachine::getInstance()->getState()->getName().c_str(),"fonts/BebasNeue Bold.ttf", 24);
@@ -105,8 +116,10 @@ void GridTestUI::addVersion() {
 }
 
 void GridTestUI::update(float delta) {
+    auto lm = PlayerManager::getInstance()->getPlayer()->getLevelManager();
     if(m_pState != nullptr) m_pState->setString(GameStateMachine::getInstance()->getState()->getName().c_str());
     if(m_pGrid != nullptr && m_pNumFallingTiles != nullptr) m_pNumFallingTiles->setString(lorafel::to_string(m_pGrid->getNumberOfFallingTiles()));
+    if(m_pGrid != nullptr && m_pLevelUpIn != nullptr) m_pLevelUpIn->setString(lorafel::to_string(lm->getXp()) + "/" + to_string(lm->levelToXp(lm->getLevel()+1)) + " - " + to_string(lm->getLevelUpInPercent()) + "%");
 //    if(m_pGrid != nullptr) {
 //        m_bg->setContentSize(m_pGrid->getContentSize());
 //        m_bg->drawRect(m_pGrid->getBoundingBox().origin, cocos2d::Vec2(m_pGrid->getBoundingBox().size.width, m_pGrid->getBoundingBox().size.height), cocos2d::Color4F::RED);

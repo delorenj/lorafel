@@ -125,6 +125,7 @@ void GridUI::initXpUI() {
     m_pXpUI->setPosition(cocos2d::Vec2(m_origin.x+5, m_visibleSize.height-13));
     m_pXpUI->setTag(lorafel::Tag::UI);
     m_pXpUI->setName("XpBar");
+    m_pXpUI->setPercent(PlayerManager::getInstance()->getPlayer()->getLevelManager()->getLevelUpInPercent());
     addChild(m_pXpUI);
 
     auto _listener = cocos2d::EventListenerCustom::create("xp", [=](cocos2d::EventCustom* event){

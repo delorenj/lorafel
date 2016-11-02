@@ -37,6 +37,7 @@ namespace lorafel {
         cocos2d::ui::Text* m_pTitle;
         cocos2d::ui::Text* m_pState;
         cocos2d::ui::Text *m_pNumFallingTiles;
+        cocos2d::ui::Text *m_pLevelUpIn;
         cocos2d::ui::Layout *m_pLayout;
         cocos2d::ui::Button* m_pSettingsButton;
         cocos2d::DrawNode* m_bg;
@@ -44,6 +45,7 @@ namespace lorafel {
         void addVersion();
         void addStateName();
         void addFallingTileCount();
+        void addLevelUpInfo();
         void addDropTileButtons() const;
         void addSettingsButton();
     };

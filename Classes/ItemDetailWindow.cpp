@@ -72,7 +72,7 @@ void ItemDetailWindow::initHeader() {
 		auto upgradableItem = dynamic_cast<IUpgradable*>(m_pItem);
 		m_pLevelText = cocos2d::Label::createWithTTF("Level " + to_string(upgradableItem->getLevel()), "fonts/ProximaNovaCond-Semibold.ttf", 18);
 		m_pLevelText->setAnchorPoint(cocos2d::Vec2(1,0.5f));
-		m_pLevelText->setPosition(cocos2d::Vec2(m_pHeaderBg->getContentSize().width - 5, m_pCurrencyIcon->getPosition().y));
+		m_pLevelText->setPosition(cocos2d::Vec2(m_pHeaderBg->getContentSize().width - 8, m_pCurrencyIcon->getPosition().y));
 		m_pLevelText->setGlobalZOrder(LayerOrder::MODAL+11);
 		m_pHeaderBg->addChild(m_pLevelText);
 	}
