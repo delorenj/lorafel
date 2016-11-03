@@ -3,8 +3,8 @@
 //
 
 #include "Weapon.h"
-#include "PlayerManager.h"
 #include "ItemStatFactory.h"
+#include "EventDataItem.h"
 
 using namespace lorafel;
 
@@ -43,12 +43,20 @@ bool Weapon::init(ValueMap args) {
     vm["value"] = to_string(getHitDistance());
     theArgs = Value(vm);
     m_pItemStats->insert(new ItemStat(theArgs));
+    updateAttributes(args);
 
-    /**
+    return true;
+
+}
+
+void Weapon::updateAttributes(cocos2d::ValueMap &args) {/**
 	 * Here we add special Attribute stats
 	 * that go in a different window section
 	 */
-	if(!args["attributes"].isNull()) {
+    if(!args["attributes"].isNull()) {
+        if(m_pItemAttributes != nullptr) {
+            delete (m_pItemAttributes);
+        }
 		m_pItemAttributes = new std::set<ItemStat*>();
 		auto attrs = args["attributes"].asValueVector();
 		for(int i=0; i<attrs.size(); i++) {
@@ -57,9 +65,6 @@ bool Weapon::init(ValueMap args) {
 			m_pItemAttributes->insert(itemAttr);
 		}
 	}
-
-    return true;
-
 }
 
 int Weapon::getAttack() {
@@ -117,6 +122,22 @@ std::vector<int> Weapon::getEquipMasks() {
         }
     }
     return masks;
+}
+
+void Weapon::upgrade() {
+    IUpgradable* upgradable = dynamic_cast<IUpgradable*>(this);
+    auto lf = LootFactory::getInstance();
+
+    upgradable->upgrade(m_arguments);
+
+    updateAttributes(m_arguments);
+
+    FirebaseDatabase::getInstance()->updateItem(this);
+
+    auto data = new EventDataItem(this);
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("item_change", data);
+
+//    lf->rollImprovedAttack(m_arguments);
 }
 
 

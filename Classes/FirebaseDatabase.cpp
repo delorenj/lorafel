@@ -146,3 +146,15 @@ void FirebaseDatabase::addMapToKey(std::string key, ValueMap value, std::string 
 	Value v = Value(value);
 	sendMessageWithParams("addMapToKey", v);
 }
+
+void FirebaseDatabase::updateItem(Item *pItem) {
+	ValueMap vm;
+
+	vm["itemId"] = pItem->getId();
+	vm["arguments"] = pItem->getArguments();
+
+	Value v = Value(vm);
+
+	sendMessageWithParams("updateItem", v);
+
+}

@@ -263,6 +263,19 @@
     }
 }
 
+- (void)updateItem:(NSObject *)parametersObject {
+    NSDictionary *parameters = (NSDictionary *)parametersObject;
+    _db = [[FIRDatabase database] reference];
+    FIRUser *user = [[FIRAuth auth] currentUser];
+
+    if (parameters != nil) {
+        NSString* itemId = (NSString*) parameters[@"itemId"];
+        NSString* arguments = (NSString*) parameters[@"arguments"];
+
+        [[[[[[_db child:@"users"] child:user.uid] child:@"items"] child:itemId] child:@"arguments"] setValue:arguments];
+    }
+}
+
 - (void)getStringForKey:(NSObject *)parametersObject {
     NSDictionary *parameters = (NSDictionary *)parametersObject;
     _db = [[FIRDatabase database] reference];

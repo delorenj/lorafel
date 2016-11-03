@@ -18,6 +18,15 @@ namespace lorafel {
 			if(m_pDismissListener != nullptr) {
 				getEventDispatcher()->removeEventListener(m_pDismissListener);
 			}
+
+			if(m_pItemChangeListener != nullptr) {
+				getEventDispatcher()->removeEventListener(m_pItemChangeListener);
+			}
+
+			if(m_pUpgradeTouch != nullptr) {
+				getEventDispatcher()->removeEventListener(m_pUpgradeTouch);
+			}
+
 		}
 
 		virtual bool init(ItemSlot* pItemSlot);
@@ -35,6 +44,8 @@ namespace lorafel {
 			}
 		}
 
+		void onItemChange(cocos2d::EventCustom* event);
+
 	protected:
 		cocos2d::Sprite* m_pHeaderBg;
 		cocos2d::Sprite* m_pLowestMid;
@@ -46,19 +57,26 @@ namespace lorafel {
 		cocos2d::Sprite* m_pSellBtn;
 		cocos2d::Sprite* m_pElementalIconImage;
 		cocos2d::Sprite* m_pElementalIconText;
-
-
+		cocos2d::Sprite* m_pUpgradeBtn;
 		cocos2d::Sprite* m_pGradient;
-		ItemSlot* m_pItemSlot;
-		Item* m_pItem;
 
+		ItemSlot* m_pItemSlot;
+
+		Item* m_pItem;
 		cocos2d::EventListener* m_pDismissListener;
+		cocos2d::EventListenerCustom *m_pItemChangeListener;
+		cocos2d::EventListenerTouchOneByOne* m_pUpgradeTouch;
+
+		cocos2d::EventListenerTouchOneByOne* m_pSellTouch;
+
+
 		void initHeader();
+
+
 		void initContent();
 
-
 		void initFooter();
-    };
+	};
 }
 
 #endif //LORAFEL_ITEMDETAILWINDOW_H

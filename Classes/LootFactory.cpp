@@ -277,39 +277,8 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
 
     std::map<std::string, int> attrmap;
     for(int i=0; i<numAttr; i++) {
-        auto attr = getRandomAttributeForItemClass(args["item_class"].asString());
-        /**
-         * If this attribute has already been selected,
-         * then continue on - this item loses out on
-         * it's rightful item prop number =(
-         *
-         * TODO: Make at least 4 attributes for every type
-         * to ensure we can pick the max of 3 different
-         * attributes for each attributable item
-         */
-        if(attrmap[attr] > 0) continue;
-        attrmap[attr]++;
-
-        /**
-         * If item has no attributes
-         * then just return early
-         */
-        if(attr == "none") {
-            return;
-        }
-        auto min = getIntegerAttributeParam(attr, "min");
-        auto max = getIntegerAttributeParam(attr, "max");
-        LinearWeightedRandomizer randomizer;
-        int val = randomizer.randomize(max, min);
-        ValueMap vm;
-        vm["name"] = attr;
-        vm["value"] = val;
-        Value attrVal(vm);
-        attrs.push_back(attrVal);
-        CCLOG("LootFactory::rollExtraAttributes() - Attribute %d = %s with value %d", i+1, vm["name"].asString().c_str(), vm["value"].asInt());
+        rollAttribute(args);
     }
-
-    args["attributes"] = attrs;
 }
 
 int LootFactory::getIntegerAttributeParam(std::string attr, std::string param) {
@@ -361,6 +330,55 @@ void LootFactory::rollPotionAmount(ValueMap &args) {
     float amount = getRandomMultiplierForItemType(args["item_class"].asString(), args["item_type"].asString());
     CCLOG("amount=%f", amount);
     args["amount"] = amount;
+}
+
+void LootFactory::rollAttribute(ValueMap &args) {
+    std::string attr;
+    int tries = 0;
+
+    if(!args["attributes"].isNull()) {
+        /**
+         * Cap the amount of attributes at 3
+         */
+        if(args["attributes"].asValueVector().size() >=3 ) return;
+        
+        auto existingAttrs = args["attributes"].asValueVector();
+        bool foundMatch;
+        do {
+            tries++;
+            attr = getRandomAttributeForItemClass(args["item_class"].asString());
+            foundMatch = 0;
+            for(auto existingAttr : existingAttrs) {
+                if( existingAttr.asValueMap()["name"].asString() == attr ) {
+                    foundMatch = 1;
+                    break;
+                }
+            }
+        } while(tries <= 10 && foundMatch == 1);
+
+    } else {
+        attr = getRandomAttributeForItemClass(args["item_class"].asString());
+        args["attributes"] = cocos2d::ValueVectorNull;
+    }
+
+    /**
+     * If item has no attributes
+     * then just return early
+     */
+    if(tries >= 10 || attr == "none") {
+        return;
+    }
+    auto min = getIntegerAttributeParam(attr, "min");
+    auto max = getIntegerAttributeParam(attr, "max");
+    LinearWeightedRandomizer randomizer;
+    int val = randomizer.randomize(max, min);
+    ValueMap vm;
+    vm["name"] = attr;
+    vm["value"] = val;
+    Value attrVal(vm);
+    args["attributes"].asValueVector().push_back(attrVal);
+    CCLOG("LootFactory::rollExtraAttribute() - %s with value %d", vm["name"].asString().c_str(), vm["value"].asInt());
+
 }
 
 

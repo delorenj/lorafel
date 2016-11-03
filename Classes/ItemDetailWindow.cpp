@@ -8,6 +8,7 @@
 #include "IUpgradable.h"
 #include "ItemDetailWindowFactory.h"
 #include "PlayerManager.h"
+#include "EventDataItem.h"
 
 using namespace lorafel;
 
@@ -37,7 +38,32 @@ bool ItemDetailWindow::init(ItemSlot* pItemSlot) {
 	initFooter();
 
 	setContentSize(cocos2d::Size(m_pHeaderBg->getContentSize().width, m_pHeaderBg->getPosition().y - m_pFooterBg->getPosition().y + m_pFooterBg->getContentSize().height));
+
+	m_pItemChangeListener = cocos2d::EventListenerCustom::create("item_change", CC_CALLBACK_1(ItemDetailWindow::onItemChange, this));
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_pItemChangeListener, this);
+
 	return true;
+}
+
+void ItemDetailWindow::onItemChange(cocos2d::EventCustom* event) {
+	EventDataItem* data = static_cast<EventDataItem*>(event->getUserData());
+	Item* pItem = data->val;
+
+	CCLOG("Item Change!: %s", pItem->getItemName().c_str());
+
+	/**
+	 * Redraw the window
+	 * with the new stats
+	 */
+	if(m_pDismissListener != nullptr) {
+		getEventDispatcher()->removeEventListener(m_pDismissListener);
+	}
+
+	removeAllChildrenWithCleanup(true);
+	initHeader();
+	initContent();
+	initFooter();
+	setContentSize(cocos2d::Size(m_pHeaderBg->getContentSize().width, m_pHeaderBg->getPosition().y - m_pFooterBg->getPosition().y + m_pFooterBg->getContentSize().height));
 }
 
 void ItemDetailWindow::initHeader() {
@@ -225,9 +251,9 @@ void ItemDetailWindow::initFooter() {
 		m_pSellBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
 		sellText->setPositionX(m_pSellBtn->getContentSize().width/2);
 
-		auto sellTouch = cocos2d::EventListenerTouchOneByOne::create();
-		sellTouch->setSwallowTouches(true);
-		sellTouch->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+		m_pSellTouch = cocos2d::EventListenerTouchOneByOne::create();
+		m_pSellTouch->setSwallowTouches(true);
+		m_pSellTouch->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
 			cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
 			cocos2d::Rect rect = m_pSellBtn->getBoundingBox();
@@ -240,14 +266,14 @@ void ItemDetailWindow::initFooter() {
 			return false; // we did not consume this event, pass thru.
 		};
 
-		sellTouch->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+		m_pSellTouch->onTouchMoved = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
 		};
 
-		sellTouch->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+		m_pSellTouch->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
 			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
 		};
 
-		cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(sellTouch, this);
+		cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pSellTouch, this);
 
 		/**
 		 * This is so the next button, if any
@@ -264,13 +290,13 @@ void ItemDetailWindow::initFooter() {
 		 * Create the root child of the upgrade button
 		 * that will hold all the slices
 		 */
-		auto upgradeBtn = cocos2d::Sprite::create();
-		upgradeBtn->setCascadeOpacityEnabled(true);
-		upgradeBtn->setAnchorPoint(cocos2d::Vec2(0,0));
-		upgradeBtn->setGlobalZOrder(LayerOrder::MODAL+11);
+		m_pUpgradeBtn = cocos2d::Sprite::create();
+		m_pUpgradeBtn->setCascadeOpacityEnabled(true);
+		m_pUpgradeBtn->setAnchorPoint(cocos2d::Vec2(0,0));
+		m_pUpgradeBtn->setGlobalZOrder(LayerOrder::MODAL+11);
 		float padding = m_pHeaderBg->getContentSize().width*0.05f;
-		upgradeBtn->setPosition(cocos2d::Vec2(nextXPosForButtonPlacement + padding, m_pLowestMid->getPosition().y - m_pLowestMid->getContentSize().height+padding));
-		addChild(upgradeBtn);
+		m_pUpgradeBtn->setPosition(cocos2d::Vec2(nextXPosForButtonPlacement + padding, m_pLowestMid->getPosition().y - m_pLowestMid->getContentSize().height+padding));
+		addChild(m_pUpgradeBtn);
 
 		/**
 		 * Create the left slice and add to the
@@ -280,7 +306,7 @@ void ItemDetailWindow::initFooter() {
 		sbl->setAnchorPoint(cocos2d::Vec2(0,0));
 		sbl->setPosition(0, 0);
 		sbl->setGlobalZOrder(LayerOrder::MODAL+11);
-		upgradeBtn->addChild(sbl);
+		m_pUpgradeBtn->addChild(sbl);
 
 		/**
 		 * Create the button label and add to the
@@ -290,20 +316,20 @@ void ItemDetailWindow::initFooter() {
 		upgradeText->setAnchorPoint(cocos2d::Vec2(0,0.5f));
 		upgradeText->setPosition(padding, sbl->getContentSize().height/2);
 		upgradeText->setGlobalZOrder(LayerOrder::MODAL+12);
-		upgradeBtn->addChild(upgradeText);
+		m_pUpgradeBtn->addChild(upgradeText);
 
 		auto coin = cocos2d::Sprite::createWithSpriteFrameName("coin.png");
 		coin->setAnchorPoint(cocos2d::Vec2(0,0.5f));
 		coin->setGlobalZOrder(LayerOrder::MODAL+12);
 		coin->setScale(0.45);
 		coin->setPosition(upgradeText->getPosition().x + upgradeText->getContentSize().width + padding/2, upgradeText->getPosition().y);
-		upgradeBtn->addChild(coin);
+		m_pUpgradeBtn->addChild(coin);
 
 		auto upgradeAmount = cocos2d::Label::createWithTTF(to_string(item->getNextLevelCost()).c_str(), "fonts/ProximaNovaCond-Semibold.ttf", 17);
 		upgradeAmount->setAnchorPoint(cocos2d::Vec2(0,0.5f));
 		upgradeAmount->setPosition(coin->getPosition().x + coin->getBoundingBox().size.width, upgradeText->getPosition().y);
 		upgradeAmount->setGlobalZOrder(LayerOrder::MODAL+12);
-		upgradeBtn->addChild(upgradeAmount);
+		m_pUpgradeBtn->addChild(upgradeAmount);
 
 		/**
 		 * Add the rest of the button slices
@@ -316,7 +342,7 @@ void ItemDetailWindow::initFooter() {
 			sbm->setAnchorPoint(cocos2d::Vec2(0,0));
 			sbm->setGlobalZOrder(LayerOrder::MODAL+11);
 			sbm->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
-			upgradeBtn->addChild(sbm);
+			m_pUpgradeBtn->addChild(sbm);
 			lastSbm = sbm;
 		}
 
@@ -328,25 +354,25 @@ void ItemDetailWindow::initFooter() {
 		sbr->setFlippedX(true);
 		sbr->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
 		sbr->setGlobalZOrder(LayerOrder::MODAL+11);
-		upgradeBtn->addChild(sbr);
-		upgradeBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
-//		upgradeText->setPositionX(upgradeBtn->getContentSize().width/2);
+		m_pUpgradeBtn->addChild(sbr);
+		m_pUpgradeBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
+//		upgradeText->setPositionX(m_pUpgradeBtn->getContentSize().width/2);
 
-		auto upgradeTouch = cocos2d::EventListenerTouchOneByOne::create();
-		upgradeTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
+		m_pUpgradeTouch = cocos2d::EventListenerTouchOneByOne::create();
+		m_pUpgradeTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
 			cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());
-			cocos2d::Rect rect = upgradeBtn->getBoundingBox();
+			cocos2d::Rect rect = m_pUpgradeBtn->getBoundingBox();
 
 			if(rect.containsPoint(p))
 			{
-				CCLOG("UPGRADED!");
+				item->upgrade();
 				return true; // to indicate that we have consumed it.
 			}
 			return false; // we did not consume this event, pass thru.
 		};
 
-		upgradeBtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(upgradeTouch, this);
+		m_pUpgradeBtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pUpgradeTouch, this);
 	}
 
 	m_pFooterBg = cocos2d::Sprite::createWithSpriteFrameName("item-detail-window-bot.png");

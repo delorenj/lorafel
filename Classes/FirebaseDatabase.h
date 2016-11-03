@@ -43,13 +43,15 @@ namespace lorafel {
 
 		void addMapToKey(std::string key, ValueMap value, std::string child);
 
-	protected:
+        void updateItem(lorafel::Item *pItem);
+
+    protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteItemTreeQuery(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
 
 		static FirebaseDatabase* _instance;
-	};
+    };
 }
 
 #endif //LORAFEL_FIREBASEDATABASE_H
