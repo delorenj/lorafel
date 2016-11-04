@@ -159,32 +159,6 @@ ValueMap LootFactory::generateRandomItemArgs() {
     }
 
     /**
-     * TODO: Determine glow color based on
-     * cumulative stats and attributes. Better
-     * item rolls give better color rarities
-     */
-     if(!args["attributes"].isNull()) {
-         switch(args["attributes"].asValueVector().size()) {
-             case 1:
-                 args["glow"] = Glow::GREEN;
-                 args["xp"] = 500;
-                 break;
-             case 2:
-                 args["glow"] = Glow::YELLOW;
-                 args["xp"] = 750;
-                 break;
-             case 3:
-                 args["glow"] = Glow::BLUE;
-                 args["xp"] = 1500;
-                 break;
-             default:
-                 args["glow"] = Glow::NONE;
-                 args["xp"] = 100;
-                 break;
-         };
-     }
-
-    /**
      * TODO: Determine the amount of XP given
      * based on cumulative state and attributes
      */
@@ -415,6 +389,45 @@ void LootFactory::rollImprovedAttack(ValueMap& args) {
 
 void LootFactory::rollImprovedHitDistance(ValueMap& args) {
 
+}
+
+const int LootFactory::calculateGlowFromArgs(ValueMap args) {
+    /**
+     * TODO: Determine glow color based on
+     * cumulative stats and attributes. Better
+     * item rolls give better color rarities
+     */
+     if(!args["attributes"].isNull()) {
+         switch(args["attributes"].asValueVector().size()) {
+             case 1:
+                 return Glow::GREEN;
+             case 2:
+                 return Glow::YELLOW;
+             case 3:
+                 return Glow::BLUE;
+             default:
+                 return Glow::NONE;
+         };
+     }
+}
+
+int LootFactory::calculateXpFromArgs(ValueMap args) {
+    /**
+     * TODO: Balance this so higher levels get
+     * a little more (or something)
+     */
+    if(!args["attributes"].isNull()) {
+        switch(args["attributes"].asValueVector().size()) {
+            case 1:
+                return 250;
+            case 2:
+                return 600;
+            case 3:
+                return 1250;
+            default:
+                100;
+        };
+    }
 }
 
 

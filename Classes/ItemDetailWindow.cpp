@@ -359,6 +359,7 @@ void ItemDetailWindow::initFooter() {
 //		upgradeText->setPositionX(m_pUpgradeBtn->getContentSize().width/2);
 
 		m_pUpgradeTouch = cocos2d::EventListenerTouchOneByOne::create();
+        m_pUpgradeTouch->setSwallowTouches(true);
 		m_pUpgradeTouch->onTouchBegan = [=](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
 			cocos2d::Vec2 p = convertToNodeSpace(touch->getLocation());

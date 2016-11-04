@@ -17,16 +17,19 @@ using namespace lorafel;
  * in the inventory dictionary
  */
 const int Inventory::addItem(Item* pItem, int quantity) {
-
+/**
+ * CANT FUCKING STACK CONSUMABLES!!!!
+ */
+    
     /**
      * increase the quantity if it already exists and
      * has the exact matching arguments, instead of creating
      * a new item with a unique itemId
      */
 	Item* alreadyExistsInInventoryItemDictionary = getItem(pItem->getClassName(), pItem->getArguments());
-	IStackable* iStackable = dynamic_cast<IStackable*>(alreadyExistsInInventoryItemDictionary);
+    Consumable* consumable = dynamic_cast<Consumable*>(alreadyExistsInInventoryItemDictionary);
 
-	if(alreadyExistsInInventoryItemDictionary != nullptr && iStackable != nullptr) {
+	if(alreadyExistsInInventoryItemDictionary != nullptr && consumable != nullptr) {
 		pItem = alreadyExistsInInventoryItemDictionary;
 		pItem->retain();
 		int currentQuantity = getItemCount(pItem->getId());

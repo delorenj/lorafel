@@ -32,11 +32,9 @@ bool LootTile::init(ValueMap args) {
         setTileName(m_pLootItem->getItemName());
         initOptions();
         addEvents();
-        addStatResult(new XpStatResult(args["xp"].asInt()));
+        addStatResult(new XpStatResult(LootFactory::getInstance()->calculateXpFromArgs(args)));
 
-		if(!args["glow"].isNull()) {
-			setGlow(args["glow"].asInt());
-		}
+        setGlow(LootFactory::getInstance()->calculateGlowFromArgs(args));
 
 
         auto body = cocos2d::PhysicsBody::createBox(
