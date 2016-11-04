@@ -7,6 +7,7 @@
 #include "Globals.h"
 #include "PlayerManager.h"
 #include "EquipItemSlot.h"
+#include "ItemStatFactory.h"
 
 using namespace lorafel;
 
@@ -111,3 +112,23 @@ bool Item::addToInventory() {
 	 */
 	return true;
 }
+
+void Item::updateAttributes(cocos2d::ValueMap &args) {
+    /**
+	 * Here we add special Attribute stats
+	 * that go in a different window section
+	 */
+    if(!args["attributes"].isNull()) {
+        if(m_pItemAttributes != nullptr) {
+            delete (m_pItemAttributes);
+        }
+        m_pItemAttributes = new std::set<ItemStat*>();
+        auto attrs = args["attributes"].asValueVector();
+        for(int i=0; i<attrs.size(); i++) {
+            auto attrArgs = attrs[i].asValueMap();
+            auto itemAttr = ItemStatFactory::getInstance()->create(attrArgs);
+            m_pItemAttributes->insert(itemAttr);
+        }
+    }
+}
+

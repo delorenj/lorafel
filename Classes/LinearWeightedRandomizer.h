@@ -8,7 +8,7 @@
 namespace lorafel {
     class LinearWeightedRandomizer {
     public:
-        int randomize(int max, int min=0, double scale=10.0) {
+        int randomize(int min, int max, double scale=10.0) {
             std::random_device rd;
             std::mt19937 generator(rd());
             double mean = 3.0;

@@ -40,10 +40,7 @@ namespace lorafel {
         }
 
 		std::vector<int> getEquipMasks();
-
         void upgrade() override;
-
-        void updateAttributes(cocos2d::ValueMap &args);
     };
 }
 

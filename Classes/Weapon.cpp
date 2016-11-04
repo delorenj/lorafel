@@ -49,24 +49,6 @@ bool Weapon::init(ValueMap args) {
 
 }
 
-void Weapon::updateAttributes(cocos2d::ValueMap &args) {/**
-	 * Here we add special Attribute stats
-	 * that go in a different window section
-	 */
-    if(!args["attributes"].isNull()) {
-        if(m_pItemAttributes != nullptr) {
-            delete (m_pItemAttributes);
-        }
-		m_pItemAttributes = new std::set<ItemStat*>();
-		auto attrs = args["attributes"].asValueVector();
-		for(int i=0; i<attrs.size(); i++) {
-            auto attrArgs = attrs[i].asValueMap();
-            auto itemAttr = ItemStatFactory::getInstance()->create(attrArgs);
-			m_pItemAttributes->insert(itemAttr);
-		}
-	}
-}
-
 int Weapon::getAttack() {
     return m_arguments["attack"].isNull() ?
             0 : m_arguments["attack"].asInt();
@@ -129,15 +111,20 @@ void Weapon::upgrade() {
     auto lf = LootFactory::getInstance();
 
     upgradable->upgrade(m_arguments);
-
     updateAttributes(m_arguments);
+    lf->rollImprovedAttack(m_arguments);
+
+    for(auto stat : *m_pItemStats) {
+        if(stat->getName() == "Attack") {
+            stat->setValue(to_string(m_arguments["attack"].asInt()));
+        }
+    }
 
     FirebaseDatabase::getInstance()->updateItem(this);
 
     auto data = new EventDataItem(this);
     cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("item_change", data);
 
-//    lf->rollImprovedAttack(m_arguments);
 }
 
 

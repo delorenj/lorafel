@@ -261,9 +261,9 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
     int numAttr;
     
     auto rand = CCRANDOM_0_1();
-    if(rand < 0.05) {
+    if(rand < 0.01) {
         numAttr = 3;
-    } else if(rand < 0.12) {
+    } else if(rand < 0.10) {
         numAttr = 2;
     } else if(rand < 0.4) {
         numAttr = 1;
@@ -371,16 +371,51 @@ void LootFactory::rollAttribute(ValueMap &args) {
     auto min = getIntegerAttributeParam(attr, "min");
     auto max = getIntegerAttributeParam(attr, "max");
     LinearWeightedRandomizer randomizer;
-    int val = randomizer.randomize(max, min);
+    int val = randomizer.randomize(min, max, 50.0);
     ValueMap vm;
     vm["name"] = attr;
     vm["value"] = val;
     Value attrVal(vm);
     args["attributes"].asValueVector().push_back(attrVal);
     CCLOG("LootFactory::rollExtraAttribute() - %s with value %d", vm["name"].asString().c_str(), vm["value"].asInt());
-
 }
 
+void LootFactory::rollImprovedAttack(ValueMap& args) {
+    LinearWeightedRandomizer randomizer;
+    ValueMap items = m_itemTree["items"].asValueMap();
+    ValueMap klass = items[args["item_class"].asString().c_str()].asValueMap();
+    ValueMap types = klass["types"].asValueMap();
+    ValueMap type = types[args["item_type"].asString().c_str()].asValueMap();
+    auto max = type["maxmul"].asFloat();
+
+    auto itemLevel = args["level"].isNull() ? 1 : args["level"].asInt();
+    float mul = 1.0;
+    switch(itemLevel) {
+        case 1:
+            mul = randomizer.randomize(5, 8);
+            break;
+        case 2:
+            mul = randomizer.randomize(8, 12);
+            break;
+        case 3:
+            mul = randomizer.randomize(12, 15);
+            break;
+        default:
+            mul = 1; // no improvement above level 3
+    }
+
+    auto increment = (max * (mul/100));
+    CCLOG("LootFactory::rollImprovedAttack - Increasing attack multiplier using equation (%f * (%f/100)) = %f", max, mul, increment);
+    CCLOG("LootFactory::rollImprovedAttack - Increasing attack: Current = %d, New = %f",
+            args["attack"].asInt(),
+            args["attack"].asInt() + ROUND_2_INT(args["attack"].asInt() * mul)
+    );
+    args["attack"] = args["attack"].asInt() + ROUND_2_INT(args["attack"].asInt() * increment);
+}
+
+void LootFactory::rollImprovedHitDistance(ValueMap& args) {
+
+}
 
 
 

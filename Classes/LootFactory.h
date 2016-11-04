@@ -51,7 +51,8 @@ namespace lorafel {
         void rollDefend(ValueMap& args);
 		void rollHitDistance(ValueMap& args);
 
-
+		void rollImprovedAttack(ValueMap& args);
+		void rollImprovedHitDistance(ValueMap& args);
         void rollAttribute(ValueMap &args);
 
     protected:

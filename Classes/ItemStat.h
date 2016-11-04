@@ -45,6 +45,10 @@ namespace lorafel {
 			return atoi(m_value.c_str());
 		}
 
+		void setValue(std::string val) {
+			m_value = val;
+		}
+
 	protected:
 		std::string m_value;
 		std::string m_name;
