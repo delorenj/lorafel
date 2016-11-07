@@ -312,30 +312,43 @@ void ItemDetailWindow::initFooter() {
 		 * Create the button label and add to the
 		 * root button container
 		 */
-		auto upgradeText = cocos2d::Label::createWithTTF("Upgrade", "fonts/ProximaNovaCond-Semibold.ttf", 17);
-		upgradeText->setAnchorPoint(cocos2d::Vec2(0,0.5f));
-		upgradeText->setPosition(padding, sbl->getContentSize().height/2);
-		upgradeText->setGlobalZOrder(LayerOrder::MODAL+12);
-		m_pUpgradeBtn->addChild(upgradeText);
+		int sbmSliceCount = 0;
+		auto sbm = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-m.png");
+		CCLOG("%s - %d/%d", m_pItem->getItemName().c_str(), item->getLevel(), item->getMaxLevel());
+		if(item->getMaxLevel() == item->getLevel()) {
+			m_pUpgradeBtn->setCascadeColorEnabled(true);
+			m_pUpgradeBtn->setColor(cocos2d::Color3B(140,140,140));
+			auto upgradeText = cocos2d::Label::createWithTTF("Max Level", "fonts/ProximaNovaCond-Semibold.ttf", 17);
+			upgradeText->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+			upgradeText->setPosition(padding, sbl->getContentSize().height/2);
+			upgradeText->setGlobalZOrder(LayerOrder::MODAL+12);
+			m_pUpgradeBtn->addChild(upgradeText);
+			sbmSliceCount = (int)(upgradeText->getPosition().x + upgradeText->getContentSize().width + padding)/(int)(sbm->getContentSize().width-2);
+		} else {
+			auto upgradeText = cocos2d::Label::createWithTTF("Upgrade", "fonts/ProximaNovaCond-Semibold.ttf", 17);
+			upgradeText->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+			upgradeText->setPosition(padding, sbl->getContentSize().height/2);
+			upgradeText->setGlobalZOrder(LayerOrder::MODAL+12);
+			m_pUpgradeBtn->addChild(upgradeText);
 
-		auto coin = cocos2d::Sprite::createWithSpriteFrameName("coin.png");
-		coin->setAnchorPoint(cocos2d::Vec2(0,0.5f));
-		coin->setGlobalZOrder(LayerOrder::MODAL+12);
-		coin->setScale(0.45);
-		coin->setPosition(upgradeText->getPosition().x + upgradeText->getContentSize().width + padding/2, upgradeText->getPosition().y);
-		m_pUpgradeBtn->addChild(coin);
+			auto coin = cocos2d::Sprite::createWithSpriteFrameName("coin.png");
+			coin->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+			coin->setGlobalZOrder(LayerOrder::MODAL+12);
+			coin->setScale(0.45);
+			coin->setPosition(upgradeText->getPosition().x + upgradeText->getContentSize().width + padding/2, upgradeText->getPosition().y);
+			m_pUpgradeBtn->addChild(coin);
 
-		auto upgradeAmount = cocos2d::Label::createWithTTF(to_string(item->getNextLevelCost()).c_str(), "fonts/ProximaNovaCond-Semibold.ttf", 17);
-		upgradeAmount->setAnchorPoint(cocos2d::Vec2(0,0.5f));
-		upgradeAmount->setPosition(coin->getPosition().x + coin->getBoundingBox().size.width, upgradeText->getPosition().y);
-		upgradeAmount->setGlobalZOrder(LayerOrder::MODAL+12);
-		m_pUpgradeBtn->addChild(upgradeAmount);
+			auto upgradeAmount = cocos2d::Label::createWithTTF(to_string(item->getNextLevelCost()).c_str(), "fonts/ProximaNovaCond-Semibold.ttf", 17);
+			upgradeAmount->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+			upgradeAmount->setPosition(coin->getPosition().x + coin->getBoundingBox().size.width, upgradeText->getPosition().y);
+			upgradeAmount->setGlobalZOrder(LayerOrder::MODAL+12);
+			m_pUpgradeBtn->addChild(upgradeAmount);
+			sbmSliceCount = (int)(upgradeAmount->getPosition().x + upgradeAmount->getContentSize().width - upgradeText->getPosition().x + padding)/(int)(sbm->getContentSize().width-2);
+		}
 
 		/**
 		 * Add the rest of the button slices
 		 */
-		auto sbm = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-m.png");
-		int sbmSliceCount = (int)(upgradeAmount->getPosition().x + upgradeAmount->getContentSize().width - upgradeText->getPosition().x + padding)/(int)(sbm->getContentSize().width-2);
 		auto lastSbm = sbl;
 		for(int i=0; i<sbmSliceCount; i++) {
 			sbm = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-m.png");
@@ -356,7 +369,6 @@ void ItemDetailWindow::initFooter() {
 		sbr->setGlobalZOrder(LayerOrder::MODAL+11);
 		m_pUpgradeBtn->addChild(sbr);
 		m_pUpgradeBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
-//		upgradeText->setPositionX(m_pUpgradeBtn->getContentSize().width/2);
 
 		m_pUpgradeTouch = cocos2d::EventListenerTouchOneByOne::create();
         m_pUpgradeTouch->setSwallowTouches(true);
@@ -367,7 +379,65 @@ void ItemDetailWindow::initFooter() {
 
 			if(rect.containsPoint(p))
 			{
-				item->upgrade();
+				if(item->getLevel() < item->getMaxLevel()) {
+					item->upgrade();
+					return true;
+				}
+
+				m_pUpgradeBtn->removeAllChildren();
+				m_pUpgradeBtn->setCascadeColorEnabled(true);
+				m_pUpgradeBtn->setColor(cocos2d::Color3B(140,140,140));
+				/**
+                 * Create the left slice and add to the
+                 * root button container
+                 */
+				auto sbl = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-l.png");
+				sbl->setAnchorPoint(cocos2d::Vec2(0,0));
+				sbl->setPosition(0, 0);
+				sbl->setGlobalZOrder(LayerOrder::MODAL+11);
+				m_pUpgradeBtn->addChild(sbl);
+
+				/**
+                 * Create the button label and add to the
+                 * root button container
+                 */
+				int sbmSliceCount = 0;
+				auto sbm = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-m.png");
+				CCLOG("%s - %d/%d", m_pItem->getItemName().c_str(), item->getLevel(), item->getMaxLevel());
+				m_pUpgradeBtn->setCascadeColorEnabled(true);
+				m_pUpgradeBtn->setColor(cocos2d::Color3B(140,140,140));
+				auto upgradeText = cocos2d::Label::createWithTTF("Max Level", "fonts/ProximaNovaCond-Semibold.ttf", 17);
+				upgradeText->setAnchorPoint(cocos2d::Vec2(0,0.5f));
+				upgradeText->setPosition(padding, sbl->getContentSize().height/2);
+				upgradeText->setGlobalZOrder(LayerOrder::MODAL+12);
+				upgradeText->setTag(Tag::CONTENTS);
+				m_pUpgradeBtn->addChild(upgradeText);
+				sbmSliceCount = (int)(upgradeText->getPosition().x + upgradeText->getContentSize().width + padding)/(int)(sbm->getContentSize().width-2);
+
+				/**
+                 * Add the rest of the button slices
+                 */
+				auto lastSbm = sbl;
+				for(int i=0; i<sbmSliceCount; i++) {
+					sbm = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-m.png");
+					sbm->setAnchorPoint(cocos2d::Vec2(0,0));
+					sbm->setGlobalZOrder(LayerOrder::MODAL+11);
+					sbm->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
+					m_pUpgradeBtn->addChild(sbm);
+					lastSbm = sbm;
+				}
+
+				/**
+                 * Add the end cap
+                 */
+				auto sbr = cocos2d::Sprite::createWithSpriteFrameName("item-detail-btn-l.png");
+				sbr->setAnchorPoint(cocos2d::Vec2(0,0));
+				sbr->setFlippedX(true);
+				sbr->setPosition(lastSbm->getPosition().x + lastSbm->getContentSize().width-2, lastSbm->getPosition().y);
+				sbr->setGlobalZOrder(LayerOrder::MODAL+11);
+				m_pUpgradeBtn->addChild(sbr);
+				m_pUpgradeBtn->setContentSize(cocos2d::Size(sbr->getPosition().x + sbr->getContentSize().width-2, sbr->getContentSize().height));
+
 				return true; // to indicate that we have consumed it.
 			}
 			return false; // we did not consume this event, pass thru.

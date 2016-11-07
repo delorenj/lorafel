@@ -91,6 +91,7 @@ namespace lorafel {
         static const int HOOKABLE_BODY = 12;
         static const int ARROW = 13;
         static const int TILE_DONT_REMOVE_FROM_GRID = 14;
+        static const int CONTENTS = 15;
     };
 
     struct LayerOrder {
