@@ -242,7 +242,6 @@ void LootFactory::rollExtraAttributes(ValueMap& args) {
     } else if(rand < 0.4) {
         numAttr = 1;
     } else {
-        args["arguments"] = ValueVectorNull;
         return;
     }
 

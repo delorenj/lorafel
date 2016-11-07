@@ -17,9 +17,6 @@ using namespace lorafel;
  * in the inventory dictionary
  */
 const int Inventory::addItem(Item* pItem, int quantity) {
-/**
- * CANT FUCKING STACK CONSUMABLES!!!!
- */
     
     /**
      * increase the quantity if it already exists and
@@ -103,6 +100,49 @@ Item* Inventory::getItem(std::string className, ValueMap arguments) {
     for(auto item : *m_pItemDictionary) {
         ItemQuantityPair* itemQuantityPair = item.second;
         Item* pItem = itemQuantityPair->first;
+
+//        if(arguments["attributes"].isNull()) {
+//            arguments.erase("attributes");
+//        }
+//        if(arguments["arguments"].isNull()) {
+//            arguments.erase("arguments");
+//        }
+//
+//        CCLOG("------------CHIPS-----------");
+//        for(auto elem : pItem->getArguments()) {
+//            std::string s;
+//            if(elem.second.getType() == cocos2d::Value::Type::FLOAT) s = to_string(elem.second.asFloat());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::STRING) s = to_string(elem.second.asString());
+//            if(elem.second.getType() == cocos2d::Value::Type::INTEGER) s = to_string(elem.second.asInt());
+//            if(elem.second.getType() == cocos2d::Value::Type::VECTOR) s = "VECTOR";
+//            if(elem.second.getType() == cocos2d::Value::Type::MAP) s = "MAP";
+//            CCLOG("%s = %s", elem.first.c_str(), s.c_str());
+//        }
+//        CCLOG("------------TACOS-----------");
+//        for(auto elem : arguments) {
+//            std::string s;
+//            if(elem.second.getType() == cocos2d::Value::Type::FLOAT) s = to_string(elem.second.asFloat());
+//            if(elem.second.getType() == cocos2d::Value::Type::DOUBLE) s = to_string(elem.second.asDouble());
+//            if(elem.second.getType() == cocos2d::Value::Type::STRING) s = to_string(elem.second.asString());
+//            if(elem.second.getType() == cocos2d::Value::Type::INTEGER) s = to_string(elem.second.asInt());
+//            if(elem.second.getType() == cocos2d::Value::Type::VECTOR) {
+//                s = "VECTOR";
+//                for(auto v : elem.second.asValueVector()) {
+//                    CCLOG("---%s", v.asValueMap()["name"].asString().c_str());
+//                }
+//            }
+//            if(elem.second.getType() == cocos2d::Value::Type::MAP) s = "MAP";
+//            CCLOG("%s = %s", elem.first.c_str(), s.c_str());
+//
+//        }
+
         if(pItem->getClassName() == className && pItem->getArguments() == arguments) {
             CCLOG("Item: %s | Amount: %f", pItem->getClassName().c_str(), pItem->getArguments()["amount"].asFloat());
             return pItem;
