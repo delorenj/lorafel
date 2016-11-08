@@ -156,11 +156,6 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
         return moves;
     }
 
-//    if(pTile->getVisitOrder() > 0) {
-//        return moves;
-//    }
-
-//    pTile->setVisitOrder(distance);
     moves->insert(pTile);
 
     if(distance < getMaxMoveDistance()) {
