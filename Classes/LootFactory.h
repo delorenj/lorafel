@@ -59,7 +59,9 @@ namespace lorafel {
 
 		int calculateXpFromArgs(ValueMap args);
 
-	protected:
+        void rollImprovedDefend(ValueMap &args);
+
+    protected:
 		static LootFactory* _instance;
 		Player* m_pPlayer;
 		SwappyGrid* m_pSwappyGrid;
@@ -78,7 +80,7 @@ namespace lorafel {
 		int getIntegerAttributeParam(std::string attr, std::string param);
 
 		void rollPotionAmount(ValueMap &args);
-	};
+    };
 }
 
 #endif //LORAFEL_LOOTFACTORY_H

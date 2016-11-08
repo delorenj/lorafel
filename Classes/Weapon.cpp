@@ -83,12 +83,12 @@ int Weapon::getPrice() {
 }
 
 int Weapon::getRequiredPlayerLevel() {
-    switch(getLevel()) {
-        case 1: return 5;
-        case 2: return 9;
-        case 3:
-        default: return 12;
-    };
+        switch(getLevel()) {
+            case 1: return 5;
+            case 2: return 9;
+            case 3:
+            default: return 12;
+        };
 }
 
 std::vector<int> Weapon::getEquipMasks() {

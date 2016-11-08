@@ -5,6 +5,7 @@
 #include "ItemFactory.h"
 #include "HealthPotion.h"
 #include "Weapon.h"
+#include "Armor.h"
 
 using namespace lorafel;
 
@@ -29,8 +30,7 @@ Item* ItemFactory::createItem(cocos2d::ValueMap args, std::string id) {
 		item = HealthPotion::create(args);
 	} else
 	if(className == "Armor") {
-		//TODO: Implement Armor class
-		item = Weapon::create(args);
+		item = Armor::create(args);
 	} else {
 		CCLOG("ItemFactory::createItem() - Invalid item class: %s", args["item_class"].asString().c_str());
 		return nullptr;

@@ -103,6 +103,7 @@
 		3167D944C99BE91471AB7082 /* TileMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */; };
 		3167D97CD71AA280E641658E /* FirebaseAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4DEABC56C8B9AAB627F /* FirebaseAuth.cpp */; };
 		3167D98276A220AA4DE9B6BA /* Hook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBEE19A2E31B3DF46261 /* Hook.cpp */; };
+		3167D9CD8E374D3A5BDF936C /* Armor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6F4A6917B45488AEE35 /* Armor.cpp */; };
 		3167D9E273ED8A52968EFD2A /* GameStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */; };
 		3167DA2C7C35EB792FE179EE /* InGameSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DC2AE84C1A83049F49DC /* InGameSettings.cpp */; };
 		3167DA40E20AEE55BCE869CA /* GoldUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DB3A5FA5D91FDBED7A2B /* GoldUI.cpp */; };
@@ -380,6 +381,7 @@
 		3167D6C48A8D16D57213B01D /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		3167D6CDF6C1BC634E8E1BEE /* GridTransparency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTransparency.h; sourceTree = "<group>"; };
 		3167D6D9B2387600CAD15347 /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = "<group>"; };
+		3167D6F4A6917B45488AEE35 /* Armor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Armor.cpp; sourceTree = "<group>"; };
 		3167D7107F6E585B0E9D0DFD /* PlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMove.h; sourceTree = "<group>"; };
 		3167D7233A0AA901871761E8 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		3167D7411B55CD0C1499942D /* EventDataInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataInteger.h; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 		3167D83138851224CC3DF240 /* GridTestUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridTestUI.h; sourceTree = "<group>"; };
 		3167D836466E117847AC4CFA /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		3167D83AE5EE3B11ED35AF6B /* Consumable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Consumable.cpp; sourceTree = "<group>"; };
+		3167D841BC16FD568620872B /* Armor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Armor.h; sourceTree = "<group>"; };
 		3167D843C8A19C4FBD802915 /* InGameModal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameModal.cpp; sourceTree = "<group>"; };
 		3167D84B29A5E82970A45F5D /* StormGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StormGlyph.h; sourceTree = "<group>"; };
 		3167D87F51E76C8213EF5A5C /* EventDataTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataTile.h; sourceTree = "<group>"; };
@@ -1007,6 +1010,8 @@
 				3167D7C259917276098CCEE5 /* LinearWeightedRandomizer.h */,
 				3167DD6E3DE1328ABD92FFCF /* AttrChanceToPoisonForXTurns.h */,
 				3167DCED10C762F512C2DB2D /* AttrFireDamage.h */,
+				3167D6F4A6917B45488AEE35 /* Armor.cpp */,
+				3167D841BC16FD568620872B /* Armor.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1475,6 +1480,7 @@
 				3167D83E89AEB0202AD7F674 /* ItemAttribute.cpp in Sources */,
 				3167D72D09BB4CEAD3E296E0 /* ItemNameGenerator.cpp in Sources */,
 				3167DE843355DB98A77967DF /* ItemStatFactory.cpp in Sources */,
+				3167D9CD8E374D3A5BDF936C /* Armor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

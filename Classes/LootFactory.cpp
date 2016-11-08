@@ -113,6 +113,10 @@ ValueMap LootFactory::generateRandomItemArgs() {
     ValueMap itemType = getRandomValueMapFromValueMap(itemClass["types"].asValueMap(), itemTypeName);
     ValueMap itemImage = getRandomValueMapFromValueVector(itemType["tile_images"].asValueVector());
 
+    if(!itemType["equip_masks"].isNull()) {
+        args["equip_masks"] = itemType["equip_masks"];
+    }
+
     args["item_class"] = itemClassName;
     args["item_type"] = itemTypeName;
     args["tile_image"] = itemImage["tile_image"].asString();
@@ -427,6 +431,39 @@ int LootFactory::calculateXpFromArgs(ValueMap args) {
                 100;
         };
     }
+}
+
+void LootFactory::rollImprovedDefend(ValueMap &args) {
+    LinearWeightedRandomizer randomizer;
+    ValueMap items = m_itemTree["items"].asValueMap();
+    ValueMap klass = items[args["item_class"].asString().c_str()].asValueMap();
+    ValueMap types = klass["types"].asValueMap();
+    ValueMap type = types[args["item_type"].asString().c_str()].asValueMap();
+    auto max = type["maxmul"].asFloat();
+
+    auto itemLevel = args["level"].isNull() ? 1 : args["level"].asInt();
+    float mul = 1.0;
+    switch(itemLevel) {
+        case 1:
+            mul = randomizer.randomize(5, 8);
+            break;
+        case 2:
+            mul = randomizer.randomize(8, 12);
+            break;
+        case 3:
+            mul = randomizer.randomize(12, 15);
+            break;
+        default:
+            mul = 1; // no improvement above level 3
+    }
+
+    auto increment = (max * (mul/100));
+    CCLOG("LootFactory::rollImprovedDefend - Increasing defend multiplier using equation (%f * (%f/100)) = %f", max, mul, increment);
+    CCLOG("LootFactory::rollImprovedDefend - Increasing defend: Current = %d, New = %f",
+            args["defend"].asInt(),
+            args["defend"].asInt() + ROUND_2_INT(args["defend"].asInt() * mul)
+    );
+    args["defend"] = args["defend"].asInt() + ROUND_2_INT(args["defend"].asInt() * increment);
 }
 
 
