@@ -39,13 +39,18 @@ void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSe
      * match sets that don't meet the minimum
      * match number criteria.
      *
-     * Add 1 to min match length IFF there is at least
-     * one enemy and hero in match
+     * Add 1 to min match length IFF hero is in match
+     * If enemy in match, just return
      */
-    auto matchLength = (match->getNumEnemies() > 0 && match->containsHero() > 0 ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
+    if(match->getNumEnemies() > 0) {
+        return;
+    }
+
+    auto matchLength = (match->containsHero() > 0 ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
     if(match->getTileSetSize() >= matchLength) {
         inOutMatchSets.insert(match);
     }
+
 }
 
 bool TileMatcher::_findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz) {

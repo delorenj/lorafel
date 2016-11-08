@@ -68,6 +68,10 @@ namespace lorafel {
             } else {
                 getPlayer()->setStr(0);
             }
+            if(!valueMap["max_move_distance"].isNull()) {
+                getPlayer()->setMaxMoveDistance(valueMap["max_move_distance"].asInt());
+                CCLOG("PlayerManager::loadStats() - Got max_move_distance");
+            }
 
         }
         

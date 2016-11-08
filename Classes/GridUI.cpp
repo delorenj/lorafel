@@ -59,7 +59,8 @@ void GridUI::initEnemyUIs() {
 
         m_vecEnemyHpUI.push_back(guage);
         guage->setAnchorPoint(cocos2d::Vec2(1,1));
-        guage->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (getContentSize().height * m_vecEnemyHpUI.size())));
+        CCLOG("Adding enemy guage at y=%f, #guages=%d", m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (getContentSize().height * m_vecEnemyHpUI.size()),(int)m_vecEnemyHpUI.size());
+        guage->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (guage->getContentSize().height * m_vecEnemyHpUI.size())));
         guage->setTag(Tag::UI);
         guage->setName("EnemyHpUI");
         addChild(guage);

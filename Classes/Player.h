@@ -80,6 +80,8 @@ namespace lorafel {
         int getDef() const { return m_def; }
         void setStr(int str) { m_str = str; }
         void setDef(int def) { m_def = def; }
+        int getMaxMoveDistance() { return m_maxMoveDistance; }
+        void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<NonConsumable*> getEquippedItems();
 
     protected:
@@ -94,6 +96,7 @@ namespace lorafel {
         int m_maxGold = 100000;
         int m_maxHp = 1000;
         int m_maxMp = 3;
+        int m_maxMoveDistance = 2;
 
         cocos2d::EventDispatcher* m_pDispatcher;
 

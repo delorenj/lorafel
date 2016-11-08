@@ -156,11 +156,11 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
         return moves;
     }
 
-    if(pTile->getVisitOrder() > 0) {
-        return moves;
-    }
+//    if(pTile->getVisitOrder() > 0) {
+//        return moves;
+//    }
 
-    pTile->setVisitOrder(distance);
+//    pTile->setVisitOrder(distance);
     moves->insert(pTile);
 
     if(distance < getMaxMoveDistance()) {
@@ -177,7 +177,7 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
 }
 
 int HeroTile::getMaxMoveDistance() {
-    return 2;
+    return PlayerManager::getInstance()->getPlayer()->getMaxMoveDistance();
 }
 
 bool HeroTile::init(const char* string) {
