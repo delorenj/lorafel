@@ -10,6 +10,7 @@
 #include "GameOverUI.h"
 #include "EventDataTile.h"
 #include "EventDataString.h"
+#include "MeleeAttackTile.h"
 #include <cstring>
 
 using namespace lorafel;
@@ -946,7 +947,9 @@ void SwappyGrid::ProcessAttackState() {
     if(dynamic_cast<AnimationStartAttackState*>(state)) {
         CCLOG("Doing animation!");
         for(auto tile : *m_pCurrentMatch->getTileSet()) {
-            CCLOG("Tile: %s", tile->getTileName().c_str());
+            if(dynamic_cast<MeleeAttackTile*>(tile)) {
+                CCLOG("Tile: %s", tile->getTileName().c_str());
+            }
         }
 
         cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(m_pAttackGestureListener);
