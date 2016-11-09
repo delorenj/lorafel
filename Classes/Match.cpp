@@ -16,7 +16,6 @@ bool Match::init(std::set<Tile*>& tileSet) {
     std::set<Tile*>* tileSetCopy = new std::set<Tile*>(tileSet);
     m_pTilesToReplace = new std::map<Tile*, Tile*>();
     setTileSet(tileSetCopy);
-
     return true;
 }
 
@@ -71,18 +70,16 @@ void Match::run() {
     // Iterate through all tile stat results
     // and apply them to your score/XP/HP/etc...
     for(StatResult* mr : *results) {
-        mr->setMultiplier(m_pTileSet->size());
+        mr->setMultiplier((int)m_pTileSet->size());
         mr->setMatch(this);
         mr->apply();
     }
 
     // Iterate through each tile in the match
     // set and remove it from the grid
-    for(auto tile : *m_pTileSet) {
-        tile->onMatch(this);
+    for(auto t : *m_pTileSet) {
+        t->onMatch(this);
     }
-
-    GameStateMachine::getInstance()->enterState<TileRemovedState>();
 
 }
 

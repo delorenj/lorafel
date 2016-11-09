@@ -492,6 +492,17 @@ void SwappyGrid::ProcessMatches() {
         for (auto match : matches) {
             match->run();
         }
+
+        /**
+         * Wait until all matches are run to see if we
+         * need to transition into AttackState or
+         * continue to TileRemovedState
+         */
+        auto nextstate = GameStateMachine::getInstance()->getState();
+        if(dynamic_cast<AttackState*>(nextstate) == nullptr) {
+            GameStateMachine::getInstance()->enterState<TileRemovedState>();
+        }
+
     } else if(!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
         /**
          * If the player clicked on a consumable, process that
@@ -946,14 +957,16 @@ void SwappyGrid::ProcessAttackState() {
 
     if(dynamic_cast<AnimationStartAttackState*>(state)) {
         CCLOG("Doing animation!");
-        for(auto tile : *m_pCurrentMatch->getTileSet()) {
-            if(dynamic_cast<MeleeAttackTile*>(tile)) {
-                CCLOG("Tile: %s", tile->getTileName().c_str());
+        if(m_pCurrentMatch != nullptr) {
+            for(auto tile : *m_pCurrentMatch->getTileSet()) {
+                if(dynamic_cast<MeleeAttackTile*>(tile)) {
+                    tile->remove();
+                }
             }
         }
 
         cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(m_pAttackGestureListener);
-        CC_SAFE_DELETE(m_pAttackGestureListener);
-        GameStateMachine::getInstance()->setState<MatchFoundState>();
+        m_pAttackGestureListener = nullptr;
+        GameStateMachine::getInstance()->setState<TileRemovedState>();
     }
 }

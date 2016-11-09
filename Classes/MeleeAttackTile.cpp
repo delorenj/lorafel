@@ -47,7 +47,11 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
              * Set the grid's currentMatch to pMatch
              * and then kick off the attack mechanic
              */
-            m_pSwappyGrid->setCurrentMatch(pMatch);
+            auto ts = new std::set<Tile*>();
+            ts = pMatch->getTileSet();
+            auto match = new Match();
+            match->setTileSet(ts);
+            m_pSwappyGrid->setCurrentMatch(match);
             GameStateMachine::getInstance()->setState<IdleAttackState>();
         } else {
             auto hero = m_pSwappyGrid->getHeroTile();
