@@ -67,6 +67,32 @@ namespace lorafel {
         }
     };
 
+    // Waiting for player's attack
+    class AttackState : public IdleState {
+    public:
+        virtual const std::string getName() const override { return "AttackState"; }
+    };
+
+    class IdleAttackState : public AttackState {
+    public:
+        virtual const std::string getName() const override { return "IdleAttackState"; }
+    };
+
+    class GestureStartAttackState : public AttackState {
+    public:
+        virtual const std::string getName() const override { return "GestureStartAttackState"; }
+    };
+
+    class AnimationStartAttackState : public AttackState {
+    public:
+        virtual const std::string getName() const override { return "AnimationStartAttackState"; }
+    };
+
+    class PostAttackState : public AttackState {
+    public:
+        virtual const std::string getName() const override { return "PostAttackState"; }
+    };
+
     class BusyState : public GameState {
     public:
         const std::string getName() const override { return "BusyState"; }

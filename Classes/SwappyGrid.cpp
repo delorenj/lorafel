@@ -155,6 +155,8 @@ void SwappyGrid::update(float delta) {
 
 //    DrawDebugData();
 
+    ProcessAttackState();
+
     RemoveDeadTiles();
 
     ReplenishTiles();
@@ -892,9 +894,63 @@ void SwappyGrid::setIdleState() {
     }
 }
 
+void SwappyGrid::ProcessAttackState() {
+    GET_GAME_STATE;
+    /**
+     * If not in attack state,
+     * then just return
+     */
+    if(dynamic_cast<AttackState*>(state) == nullptr) {
+        return;
+    }
 
+    if(m_pAttackGestureListener == nullptr) {
+        m_pAttackGestureListener = cocos2d::EventListenerTouchOneByOne::create();
+        m_pAttackGestureListener->setSwallowTouches(true);
 
+        m_pAttackGestureListener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
+        {
+            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
+            if(_state->getName() != "IdleAttackState") {
+                return false;
+            }
 
+            CCLOG("Attack Gesture: Start");
+            return true;
+        };
 
+        m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
+            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
+            if(_state->getName() != "IdleAttackState") {
+                return false;
+            }
 
+            CCLOG("Attack Gesture: Move");
+            GameStateMachine::getInstance()->setState<GestureStartAttackState>();
+            return true;
+        };
 
+        m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
+            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
+            if(_state->getName() != "GestureStartAttackState") {
+                return false;
+            }
+
+            CCLOG("Attack Gesture: End");
+            GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+            return true;
+        };
+        cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pAttackGestureListener, this);
+    }
+
+    if(dynamic_cast<AnimationStartAttackState*>(state)) {
+        CCLOG("Doing animation!");
+        for(auto tile : *m_pCurrentMatch->getTileSet()) {
+            CCLOG("Tile: %s", tile->getTileName().c_str());
+        }
+
+        cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(m_pAttackGestureListener);
+        CC_SAFE_DELETE(m_pAttackGestureListener);
+        GameStateMachine::getInstance()->setState<MatchFoundState>();
+    }
+}

@@ -17,6 +17,11 @@ namespace lorafel {
         static void initStates() {
             _instance->addState<IdleState>();
                 _instance->addState<IdleHookModeState>();
+                _instance->addState<AttackState>();
+                    _instance->addState<IdleAttackState>();
+                    _instance->addState<GestureStartAttackState>();
+                    _instance->addState<AnimationStartAttackState>();
+                    _instance->addState<PostAttackState>();
             _instance->addState<BusyState>();
                 _instance->addState<LoadingState>();
                 _instance->addState<ModalState>();

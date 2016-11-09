@@ -37,10 +37,8 @@ namespace lorafel {
         static const int SWAPPING_ACTION_TAG = 1;
 
 
-        cocos2d::Size getTileSize();
-
-    public:
         virtual ~SwappyGrid();
+
         bool init() override;
         void update(float delta) override;
         void onLevelCleared();
@@ -65,6 +63,9 @@ namespace lorafel {
         TileSwapEventData* getTileSwapEventData() const;
         unsigned int getNumberOfFallingTiles() const;
         void setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles);
+        cocos2d::Size getTileSize();
+        void setCurrentMatch(Match *pMatch) { m_pCurrentMatch = pMatch; }
+        Match* getCurrentMatch() { return m_pCurrentMatch; }
         void setCurrentTouchId(unsigned int i);
         std::stack<PlayerMove*>* getMoveStack() {return m_pMoveStack;}
         bool isTilePresentAt(cocos2d::Vec2 pos);
@@ -110,6 +111,7 @@ namespace lorafel {
         TileSwapEventData* m_pTileSwapEventData;
         Tile* m_pActivePlayerTile;
         int m_currentTouchId;
+        Match* m_pCurrentMatch;
         const char* m_currentSelectedAction;
 
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
@@ -133,6 +135,10 @@ namespace lorafel {
         void onGameOver();
         bool onContactPostSolve(cocos2d::PhysicsContact& contact);
         void onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data);
+
+        void ProcessAttackState();
+
+        cocos2d::EventListenerTouchOneByOne* m_pAttackGestureListener;
     };
 }
 

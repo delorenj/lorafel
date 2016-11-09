@@ -7,6 +7,7 @@
 #include "EnemyTile.h"
 #include "HeroTile.h"
 #include "PlayerManager.h"
+#include "GameStateMachine.h"
 
 using namespace lorafel;
 
@@ -30,6 +31,7 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
         auto activePlayerTile = m_pSwappyGrid->getActivePlayerTile();
         auto isEnemyTurn = activePlayerTile->getTag() == Tag::ENEMY;
         /*
+         * [DEPRECATED]
          * if enemy is part of the match, only attack
          * that enemy. Attack is always critical
          *
@@ -37,33 +39,26 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
          * and apply a regular hit
          */
 
-        // If it's the hero's turn, hurt the enemy
+        /**
+         * If kick off attack mechanic state
+         */
         if(!isEnemyTurn) {
-            if(pMatch->getNumEnemies() > 0) {
-                for(auto elem : *pMatch->getEnemies()) {
-                    EnemyTile* enemy = static_cast<EnemyTile*>(elem);
-                    if(enemy != nullptr) {
-                        int hitAmount = PlayerManager::getInstance()->getPlayer()->getRandHit(pMatch, enemy);
-                        enemy->applyHit(hitAmount);
-                    }
-                }
-            } else {
-                EnemyTile* enemy = static_cast<EnemyTile*>(m_pSwappyGrid->getRandomEnemy());
-                if(enemy != nullptr) {
-                    int hitAmount = PlayerManager::getInstance()->getPlayer()->getRandHit(pMatch, enemy);
-                    enemy->applyHit(hitAmount);
-                }
-            }
+            /**
+             * Set the grid's currentMatch to pMatch
+             * and then kick off the attack mechanic
+             */
+            m_pSwappyGrid->setCurrentMatch(pMatch);
+            GameStateMachine::getInstance()->setState<IdleAttackState>();
         } else {
             auto hero = m_pSwappyGrid->getHeroTile();
             if(hero != nullptr) {
                 static_cast<HeroTile*>(m_pSwappyGrid->getHeroTile())->applyHit(pMatch);
             }
+            pMatch->setPrimaryTileProcessed(true);
+            remove();
         }
-        pMatch->setPrimaryTileProcessed(true);
     }
 
-    remove();
 }
 
 
