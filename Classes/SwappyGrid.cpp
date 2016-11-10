@@ -916,48 +916,101 @@ void SwappyGrid::ProcessAttackState() {
         return;
     }
 
-    if(m_pAttackGestureListener == nullptr) {
-        m_pAttackGestureListener = cocos2d::EventListenerTouchOneByOne::create();
-        m_pAttackGestureListener->setSwallowTouches(true);
+    if(dynamic_cast<InitAttackState*>(state) != nullptr) {
+        /**
+         * Set up the gesture listener
+         * if not yet instantiated.
+         */
+        if (m_pAttackGestureListener == nullptr) {
+            m_pAttackGestureListener = cocos2d::EventListenerTouchOneByOne::create();
+            m_pAttackGestureListener->setSwallowTouches(true);
 
-        m_pAttackGestureListener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
-        {
-            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
-            if(_state->getName() != "IdleAttackState") {
-                return false;
+            m_pAttackGestureListener->onTouchBegan = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
+                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
+                if (_state->getName() != "IdleAttackState") {
+                    return false;
+                }
+
+                CCLOG("Attack Gesture: Start");
+                return true;
+            };
+
+            m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch *touch, cocos2d::Event *event) {
+                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
+                if (_state->getName() != "IdleAttackState") {
+                    return false;
+                }
+
+                CCLOG("Attack Gesture: Move");
+                GameStateMachine::getInstance()->setState<GestureStartAttackState>();
+                return true;
+            };
+
+            m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
+                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
+                if (_state->getName() != "GestureStartAttackState") {
+                    return false;
+                }
+
+                CCLOG("Attack Gesture: End");
+                GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+                return true;
+            };
+            cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pAttackGestureListener, this);
+        }
+
+        if(m_pCurrentMatch != nullptr) {
+            highlightTiles(m_pCurrentMatch->getTileSet());
+        }
+
+        m_pGridTransparency->setColor(cocos2d::Color3B(140,140,140));
+
+        for(int x=0; x<NUM_COLUMNS; x++){
+            for(int y=0; y<NUM_ROWS; y++) {
+                auto tile = getTileAt(x,y);
+                if(dynamic_cast<EnemyTile*>(tile)) {
+                    // Do something to highlight enemies ?
+                } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
+                    tile->setColor(cocos2d::Color3B(140,140,140));
+                }
             }
 
-            CCLOG("Attack Gesture: Start");
-            return true;
-        };
+        }
 
-        m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch* touch, cocos2d::Event* event) {
-            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
-            if(_state->getName() != "IdleAttackState") {
-                return false;
-            }
-
-            CCLOG("Attack Gesture: Move");
-            GameStateMachine::getInstance()->setState<GestureStartAttackState>();
-            return true;
-        };
-
-        m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-            auto _state = (GameState*) GameStateMachine::getInstance()->getState();
-            if(_state->getName() != "GestureStartAttackState") {
-                return false;
-            }
-
-            CCLOG("Attack Gesture: End");
-            GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
-            return true;
-        };
-        cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pAttackGestureListener, this);
+        GameStateMachine::getInstance()->setState<IdleAttackState>();
     }
 
+    /**
+     * Handle the IdleAttackState.
+     * This is where we dim the screen, or
+     * highlight enemies or something and let the
+     * user decide how to attack.
+     */
+    if(dynamic_cast<IdleAttackState*>(state)) {
+
+    }
+
+    /**
+     * Handle the AnimationStartAttackState
+     */
     if(dynamic_cast<AnimationStartAttackState*>(state)) {
         CCLOG("Doing animation!");
         if(m_pCurrentMatch != nullptr) {
+            for(int x=0; x<NUM_COLUMNS; x++){
+                for(int y=0; y<NUM_ROWS; y++) {
+                    auto tile = getTileAt(x,y);
+                    if(dynamic_cast<EnemyTile*>(tile)) {
+                        // Do something to highlight enemies ?
+                    } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
+                        tile->setColor(cocos2d::Color3B(255,255,255));
+                    }
+                }
+
+            }
+
+            m_pGridTransparency->setColor(cocos2d::Color3B(255,255,255));
+
+            unhighlightTiles();
             for(auto tile : *m_pCurrentMatch->getTileSet()) {
                 if(dynamic_cast<MeleeAttackTile*>(tile)) {
                     tile->remove();
@@ -968,5 +1021,15 @@ void SwappyGrid::ProcessAttackState() {
         cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(m_pAttackGestureListener);
         m_pAttackGestureListener = nullptr;
         GameStateMachine::getInstance()->setState<TileRemovedState>();
+    }
+}
+
+void SwappyGrid::unhighlightTiles() {
+    for(auto node : getChildren()) {
+        if(node->getTag() == Tag::PARTICLE) {
+            auto pe = (cocos2d::ParticleSystem*) node;
+            pe->stopSystem();
+            pe->setDuration(0.1f);
+        }
     }
 }

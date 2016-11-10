@@ -92,6 +92,8 @@ namespace lorafel {
         bool isPointInsideGrid(cocos2d::Vec2 pos);
         void setIdleState();
 
+        void unhighlightTiles();
+
     protected:
         Level* m_pLevel;
         cocos2d::Size visibleSize;

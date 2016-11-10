@@ -12,6 +12,8 @@ bool GridTransparency::init() {
         return false;
     }
 
+    setCascadeColorEnabled(true);
+
     return true;
 }
 
@@ -20,6 +22,7 @@ void GridTransparency::insertTile(cocos2d::Vec2 pos, GridTransparency::Tile tile
     node->setPosition(pos);
     node->setScale(1.15);
     node->setAnchorPoint(cocos2d::Vec2(0,0));
+    node->setCascadeColorEnabled(true);
     addChild(node);
 }
 
@@ -77,6 +80,7 @@ cocos2d::Sprite* GridTransparency::createTile(GridTransparency::Tile tile) {
         }
 
         s->setOpacity(GridTransparency::opacity);
+        s->setCascadeColorEnabled(true);
         return s;
     }
 
@@ -125,8 +129,15 @@ cocos2d::Sprite* GridTransparency::createTile(GridTransparency::Tile tile) {
         }
 
         s->setOpacity(GridTransparency::opacity);
+        s->setCascadeColorEnabled(true);
         return s;
     }
     
     return nullptr;
+}
+
+void GridTransparency::setColor(cocos2d::Color3B color) {
+    for(auto t : getChildren()) {
+        t->setColor(color);
+    }
 }

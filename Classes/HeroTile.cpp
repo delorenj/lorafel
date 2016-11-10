@@ -109,13 +109,7 @@ void HeroTile::addEvents() {
 
             // No matter what, get rid of all the particle
             // tile highlight effects
-            for(auto node : m_pSwappyGrid->getChildren()) {
-                if(node->getTag() == Tag::PARTICLE) {
-                    auto pe = (cocos2d::ParticleSystem*) node;
-                    pe->stopSystem();
-                    pe->setDuration(0.1f);
-                }
-            }
+            m_pSwappyGrid->unhighlightTiles();
 
             // Only perform the move if the finger is over
             // a valid move position. Otherwise, move the

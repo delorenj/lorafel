@@ -52,7 +52,7 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
             auto match = new Match();
             match->setTileSet(ts);
             m_pSwappyGrid->setCurrentMatch(match);
-            GameStateMachine::getInstance()->setState<IdleAttackState>();
+            GameStateMachine::getInstance()->setState<InitAttackState>();
         } else {
             auto hero = m_pSwappyGrid->getHeroTile();
             if(hero != nullptr) {

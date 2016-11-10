@@ -18,6 +18,7 @@ namespace lorafel {
             _instance->addState<IdleState>();
                 _instance->addState<IdleHookModeState>();
                 _instance->addState<AttackState>();
+                    _instance->addState<InitAttackState>();
                     _instance->addState<IdleAttackState>();
                     _instance->addState<GestureStartAttackState>();
                     _instance->addState<AnimationStartAttackState>();

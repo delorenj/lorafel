@@ -73,6 +73,11 @@ namespace lorafel {
         virtual const std::string getName() const override { return "AttackState"; }
     };
 
+    class InitAttackState : public AttackState {
+    public:
+        virtual const std::string getName() const override { return "InitAttackState"; }
+    };
+
     class IdleAttackState : public AttackState {
     public:
         virtual const std::string getName() const override { return "IdleAttackState"; }

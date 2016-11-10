@@ -47,6 +47,8 @@ namespace lorafel {
         virtual bool init() override;
         CREATE_FUNC(GridTransparency);
 
+        void setColor(cocos2d::Color3B color);
+
         void insertTile(cocos2d::Vec2 pos, GridTransparency::Tile tile);
 
     protected:
