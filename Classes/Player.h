@@ -35,6 +35,8 @@ namespace lorafel {
 
         int getRandHit(Match *pMatch, EnemyTile *pEnemyTile);
 
+        bool tileWithinHitDistance(Tile *pTile);
+
     public:
 
         Player();

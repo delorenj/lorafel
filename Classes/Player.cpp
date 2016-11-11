@@ -8,6 +8,7 @@
 #include "InventorySlotSerializer.h"
 #include "EventDataPair.h"
 #include "ItemAttribute.h"
+#include "Weapon.h"
 
 using namespace lorafel;
 
@@ -232,4 +233,27 @@ std::vector<NonConsumable*> Player::getEquippedItems() {
         items.push_back((NonConsumable*) item.second);
     }
     return items;
+}
+
+bool Player::tileWithinHitDistance(Tile *pTile) {
+    auto lh = getEquippedItemBySlotType(LEFT_HAND);
+    auto rh = getEquippedItemBySlotType(RIGHT_HAND);
+
+    auto maxHitDistance = 0;
+    if(dynamic_cast<Weapon*>(lh)) {
+        Weapon* weapon = dynamic_cast<Weapon*>(lh);
+        maxHitDistance = weapon->getHitDistance();
+
+    }
+
+    if(dynamic_cast<Weapon*>(rh)) {
+        Weapon* weapon = dynamic_cast<Weapon*>(rh);
+        maxHitDistance = std::max(maxHitDistance, weapon->getHitDistance());
+    }
+
+    auto epos = pTile->getGridPos();
+    auto hpos = m_pTile->getGridPos();
+    auto xdistance = std::abs(epos.x - hpos.x);
+    auto ydistance = std::abs(epos.y - hpos.y);
+    return xdistance+ydistance <= maxHitDistance;
 }

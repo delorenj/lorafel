@@ -956,7 +956,7 @@ void SwappyGrid::ProcessAttackState() {
                 GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                 return true;
             };
-            cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(m_pAttackGestureListener, this);
+            cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
         }
 
         if(m_pCurrentMatch != nullptr) {
@@ -968,7 +968,7 @@ void SwappyGrid::ProcessAttackState() {
         for(int x=0; x<NUM_COLUMNS; x++){
             for(int y=0; y<NUM_ROWS; y++) {
                 auto tile = getTileAt(x,y);
-                if(dynamic_cast<EnemyTile*>(tile)) {
+                if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                     // Do something to highlight enemies ?
                 } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
                     tile->setColor(cocos2d::Color3B(140,140,140));

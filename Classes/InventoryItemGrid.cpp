@@ -257,6 +257,10 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
 		auto itemQuantPair = pair.second;
 		auto slot = getSlotFromCoords(coords);
 		Item* pItem = pInventory->getItem(itemQuantPair.first);
+        if(pItem == nullptr) {
+            CCLOG("Item was null when loading inventory! WTF?");
+            continue;
+        }
 		slot->setItem(pItem, itemQuantPair.second);
 		pItem->addInventorySlotCoordinates(coords);
         
@@ -274,6 +278,12 @@ void InventoryItemGrid::onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, c
     for(auto it = itemDictionary->begin(); it != itemDictionary->end(); ++it) {
         auto pItemQuatityPair = it->second;
         auto pItem = pItemQuatityPair->first;
+
+        if(pItem == nullptr) {
+            CCLOG("Item was null when loading inventory! WTF?");
+            continue;
+        }
+
         auto itemQuantity = pItemQuatityPair->second;
         auto numAlreadyPlaced = alreadyPlaced[pItem->getId()];
 

@@ -58,7 +58,7 @@ void lorafel::Tile::addEvents() {
     listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
     {
         auto state = (GameState*) GameStateMachine::getInstance()->getState();
-        if(state->isBusy()) {
+        if(state->isBusy() || dynamic_cast<AttackState*>(state)) {
             return false;
         }
 
