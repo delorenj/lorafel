@@ -931,29 +931,43 @@ void SwappyGrid::ProcessAttackState() {
                     return false;
                 }
 
-                CCLOG("Attack Gesture: Start");
+                CCLOG("Attack Gesture: Start = %f,%f", touch->getStartLocation().x, touch->getStartLocation().y);
+
                 return true;
             };
 
             m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch *touch, cocos2d::Event *event) {
                 auto _state = (GameState *) GameStateMachine::getInstance()->getState();
-                if (_state->getName() != "IdleAttackState") {
-                    return false;
-                }
+                auto gridPos = screenToGrid(convertToNodeSpace(touch->getLocation()));
+                auto tile = this->getTileAt(gridPos);
 
-                CCLOG("Attack Gesture: Move");
-                GameStateMachine::getInstance()->setState<GestureStartAttackState>();
-                return true;
+                if(dynamic_cast<EnemyTile*>(tile)) {
+                    if(m_startAttack.isZero()) {
+                        m_startAttack = convertToNodeSpace(touch->getLocation());
+                        CCLOG("Attack Gesture: Move - Start Attack = %s, %f,%f", tile->getTileName().c_str(),m_startAttack.x, m_startAttack.y);
+                        GameStateMachine::getInstance()->setState<GestureStartAttackState>();
+                        return true;
+                    }
+                } else {
+                    if(!m_startAttack.isZero()) {
+                        m_endAttack = convertToNodeSpace(touch->getLocation());
+                        CCLOG("Attack Gesture: Move - End Attack = %s, %f,%f", tile->getTileName().c_str(),m_endAttack.x, m_endAttack.y);
+                        GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+                        m_startAttack = cocos2d::Vec2::ZERO;
+                        m_endAttack = cocos2d::Vec2::ZERO;
+                        return false;
+                    }
+                }
             };
 
             m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
-                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
-                if (_state->getName() != "GestureStartAttackState") {
-                    return false;
-                }
-
-                CCLOG("Attack Gesture: End");
-                GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+//                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
+//                if (_state->getName() != "GestureStartAttackState") {
+//                    return false;
+//                }
+//
+//                CCLOG("Attack Gesture: End = %f,%f", touch->getLocation().x, touch->getLocation().y);
+//                GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                 return true;
             };
             cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
@@ -999,7 +1013,7 @@ void SwappyGrid::ProcessAttackState() {
             for(int x=0; x<NUM_COLUMNS; x++){
                 for(int y=0; y<NUM_ROWS; y++) {
                     auto tile = getTileAt(x,y);
-                    if(dynamic_cast<EnemyTile*>(tile)) {
+                    if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                         // Do something to highlight enemies ?
                     } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
                         tile->setColor(cocos2d::Color3B(255,255,255));

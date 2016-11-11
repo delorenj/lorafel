@@ -141,6 +141,7 @@ namespace lorafel {
         void ProcessAttackState();
 
         cocos2d::EventListenerTouchOneByOne* m_pAttackGestureListener;
+        cocos2d::Vec2 m_startAttack, m_endAttack;
     };
 }
 
