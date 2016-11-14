@@ -91,8 +91,9 @@ namespace lorafel {
         std::set<Tile*> getEnemyTilesFromDropQueue();
         bool isPointInsideGrid(cocos2d::Vec2 pos);
         void setIdleState();
-
         void unhighlightTiles();
+        void setGridUI(GridUI *pUI) { m_pGridUI = pUI; }
+        GridUI* getGridUI() { return m_pGridUI; }
 
     protected:
         Level* m_pLevel;
@@ -114,8 +115,9 @@ namespace lorafel {
         Tile* m_pActivePlayerTile;
         int m_currentTouchId;
         Match* m_pCurrentMatch;
-        const char* m_currentSelectedAction;
+        GridUI *m_pGridUI;
 
+        const char* m_currentSelectedAction;
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);
         void dropTile(int column, Tile* pTile); // Drop a specific tile
@@ -137,11 +139,10 @@ namespace lorafel {
         void onGameOver();
         bool onContactPostSolve(cocos2d::PhysicsContact& contact);
         void onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data);
-
         void ProcessAttackState();
-
         cocos2d::EventListenerTouchOneByOne* m_pAttackGestureListener;
         cocos2d::Vec2 m_startAttack, m_endAttack;
+        cocos2d::Vec2 touchToGrid(cocos2d::Touch *pTouch);
     };
 }
 

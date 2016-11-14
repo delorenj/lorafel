@@ -11,7 +11,7 @@
 #include "EventDataTile.h"
 #include "EventDataString.h"
 #include "MeleeAttackTile.h"
-#include <cstring>
+#include "GridUI.h"
 
 using namespace lorafel;
 
@@ -930,28 +930,24 @@ void SwappyGrid::ProcessAttackState() {
                 if (_state->getName() != "IdleAttackState") {
                     return false;
                 }
-
-                CCLOG("Attack Gesture: Start = %f,%f", touch->getStartLocation().x, touch->getStartLocation().y);
-
                 return true;
             };
 
             m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch *touch, cocos2d::Event *event) {
                 auto _state = (GameState *) GameStateMachine::getInstance()->getState();
-                auto gridPos = screenToGrid(convertToNodeSpace(touch->getLocation()));
+                auto gridPos = touchToGrid(touch);
                 auto tile = this->getTileAt(gridPos);
 
                 if(dynamic_cast<EnemyTile*>(tile)) {
                     if(m_startAttack.isZero()) {
                         m_startAttack = convertToNodeSpace(touch->getLocation());
-                        CCLOG("Attack Gesture: Move - Start Attack = %s, %f,%f", tile->getTileName().c_str(),m_startAttack.x, m_startAttack.y);
                         GameStateMachine::getInstance()->setState<GestureStartAttackState>();
                         return true;
                     }
                 } else {
                     if(!m_startAttack.isZero()) {
                         m_endAttack = convertToNodeSpace(touch->getLocation());
-                        CCLOG("Attack Gesture: Move - End Attack = %s, %f,%f", tile->getTileName().c_str(),m_endAttack.x, m_endAttack.y);
+                        m_pGridUI->drawSlash(m_startAttack, m_endAttack);
                         GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                         m_startAttack = cocos2d::Vec2::ZERO;
                         m_endAttack = cocos2d::Vec2::ZERO;
@@ -1046,4 +1042,15 @@ void SwappyGrid::unhighlightTiles() {
             pe->setDuration(0.1f);
         }
     }
+}
+
+cocos2d::Vec2 SwappyGrid::touchToGrid(cocos2d::Touch *pTouch) {
+    return screenToGrid(
+            convertToNodeSpace(
+                    cocos2d::Vec2(
+                            pTouch->getLocation().x - m_tileSize.width/2*m_tileScaleFactor,
+                            pTouch->getLocation().y - m_tileSize.height/2*m_tileScaleFactor
+                    )
+            )
+    );
 }

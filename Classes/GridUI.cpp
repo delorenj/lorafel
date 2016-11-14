@@ -231,3 +231,14 @@ void GridUI::initButtons() {
     ));
     addChild(m_pCharacterBtn);
 }
+
+void GridUI::drawSlash(cocos2d::Vec2 p1, cocos2d::Vec2 p2) {
+    auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
+    p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    p->setTag(Tag::PARTICLE);
+    p->setPosition(convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p1)));
+    p->setRotation(45);
+    p->setAutoRemoveOnFinish(true);
+    p->setPosVar(cocos2d::Vec2(0, 0));
+    addChild(p,lorafel::LayerOrder::PARTICLES);
+}
