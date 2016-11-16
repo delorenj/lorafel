@@ -42,6 +42,7 @@ bool GridUI::init() {
     });
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);
 
+    scheduleUpdate();
     return true;
 }
 
@@ -233,12 +234,28 @@ void GridUI::initButtons() {
 }
 
 void GridUI::drawSlash(cocos2d::Vec2 p1, cocos2d::Vec2 p2) {
-    auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-    p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    p->setTag(Tag::PARTICLE);
-    p->setPosition(convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p1)));
-    p->setRotation(45);
-    p->setAutoRemoveOnFinish(true);
-    p->setPosVar(cocos2d::Vec2(0, 0));
+    auto p = cocos2d::Sprite::createWithSpriteFrameName("slash.png");
+    auto slashLength = m_pSwappyGrid->getTileSize().width*1.05f;
+    auto p1Map = convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p1));
+    auto p2Map = convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p2));
+    CCLOG("p1=%f,%f | p2=%f,%f", p1.x, p1.y, p2.x,p2.y);
+    CCLOG("p1Map=%f,%f | p2Map=%f,%f", p1Map.x, p1Map.y, p2Map.x,p2Map.y);
+//    p1Map.y -= slashLength/2;
+
+    p->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
+    p->setPosition(p1Map);
+    auto norm = p1Map-p2Map;
+    auto rotation = getAngleToPoint(norm)+90;
+    p->setRotation(rotation);
+    CCLOG("norm = %f,%f", (norm).x, (norm).y);
+    CCLOG("p1 angle p2 = %f", rotation);
     addChild(p,lorafel::LayerOrder::PARTICLES);
+}
+
+void GridUI::update(float delta) {
+//    for(auto n : getChildren()) {
+//        if(n->getName() == "slash") {
+//            n->setRotation(n->getRotation()+5);
+//        }
+//    }
 }

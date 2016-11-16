@@ -38,6 +38,7 @@ namespace lorafel {
         SwappyGrid* getGrid() const { return m_pSwappyGrid; }
 
         void drawSlash(cocos2d::Vec2 p1, cocos2d::Vec2 p2);
+        void update(float delta) override;
 
     protected:
         cocos2d::Size m_visibleSize;
