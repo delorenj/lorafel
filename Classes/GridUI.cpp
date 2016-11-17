@@ -235,21 +235,29 @@ void GridUI::initButtons() {
 
 void GridUI::drawSlash(cocos2d::Vec2 p1, cocos2d::Vec2 p2) {
     auto p = cocos2d::Sprite::createWithSpriteFrameName("slash.png");
-    auto slashLength = m_pSwappyGrid->getTileSize().width*1.05f;
     auto p1Map = convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p1));
     auto p2Map = convertToNodeSpace(m_pSwappyGrid->convertToWorldSpace(p2));
-    CCLOG("p1=%f,%f | p2=%f,%f", p1.x, p1.y, p2.x,p2.y);
-    CCLOG("p1Map=%f,%f | p2Map=%f,%f", p1Map.x, p1Map.y, p2Map.x,p2Map.y);
-//    p1Map.y -= slashLength/2;
+    auto norm = p1Map-p2Map;
+    auto rotation = getAngleToPoint(norm)+180;
 
     p->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
     p->setPosition(p1Map);
-    auto norm = p1Map-p2Map;
-    auto rotation = getAngleToPoint(norm)+180;
     p->setRotation(rotation);
-    CCLOG("norm = %f,%f", (norm).x, (norm).y);
-    CCLOG("p1 angle p2 = %f", rotation);
     addChild(p,lorafel::LayerOrder::PARTICLES);
+
+    auto fadeOut = cocos2d::FadeOut::create(0.4f);
+    auto cleanup = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
+        cocos2d::Sprite* s = static_cast<cocos2d::Sprite*>(sender);
+        s->removeFromParentAndCleanup(true);
+    });
+
+    auto flash = cocos2d::ParticleSystemQuad::create("spark.plist");
+    flash->setAutoRemoveOnFinish(true);
+    flash->setPosition(p1Map);
+    addChild(flash, LayerOrder::PARTICLES);
+
+    auto seq = cocos2d::Sequence::create(fadeOut, cleanup, nullptr);
+    p->runAction(fadeOut);
 }
 
 void GridUI::update(float delta) {
