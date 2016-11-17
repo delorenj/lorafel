@@ -245,7 +245,7 @@ void GridUI::drawSlash(cocos2d::Vec2 p1, cocos2d::Vec2 p2) {
     p->setAnchorPoint(cocos2d::Vec2(0.0f,0.0f));
     p->setPosition(p1Map);
     auto norm = p1Map-p2Map;
-    auto rotation = getAngleToPoint(norm)+90;
+    auto rotation = getAngleToPoint(norm)+180;
     p->setRotation(rotation);
     CCLOG("norm = %f,%f", (norm).x, (norm).y);
     CCLOG("p1 angle p2 = %f", rotation);
