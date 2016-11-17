@@ -113,10 +113,11 @@ namespace lorafel {
         unsigned int m_numberOfFallingTiles = 0;
         TileSwapEventData* m_pTileSwapEventData;
         Tile* m_pActivePlayerTile;
+        Tile* m_pActiveEnemyTile;
         int m_currentTouchId;
         Match* m_pCurrentMatch;
-        GridUI *m_pGridUI;
 
+        GridUI *m_pGridUI;
         const char* m_currentSelectedAction;
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
         cocos2d::Vec2 getColumnDropPosition(int column);

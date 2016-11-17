@@ -33,9 +33,11 @@ namespace lorafel {
         static const int ACTIONITEM         = 9;
         static const int CONSUMABLE         = 10;
 
-        int getRandHit(Match *pMatch, EnemyTile *pEnemyTile);
+        int getRandHit(EnemyTile *pEnemyTile);
 
         bool tileWithinHitDistance(Tile *pTile);
+
+        void attack(EnemyTile *pTile);
 
     public:
 

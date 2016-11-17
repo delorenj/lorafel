@@ -3,12 +3,10 @@
 //
 
 #include "Player.h"
-#include "cocos2d.h"
-#include "Globals.h"
-#include "InventorySlotSerializer.h"
 #include "EventDataPair.h"
 #include "ItemAttribute.h"
 #include "Weapon.h"
+#include "EnemyTile.h"
 
 using namespace lorafel;
 
@@ -185,7 +183,7 @@ int Player::getBaseDefend() const {
     return (int)getLevelManager()->getLevel() + m_def;
 }
 
-int Player::getRandHit(Match *pMatch, EnemyTile *pEnemyTile) {
+int Player::getRandHit(EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 
     int attack = getBaseAttack();
@@ -256,4 +254,8 @@ bool Player::tileWithinHitDistance(Tile *pTile) {
     auto xdistance = std::abs(epos.x - hpos.x);
     auto ydistance = std::abs(epos.y - hpos.y);
     return xdistance+ydistance <= maxHitDistance;
+}
+
+void Player::attack(EnemyTile *pTile) {
+    pTile->applyHit(getRandHit(pTile));
 }
