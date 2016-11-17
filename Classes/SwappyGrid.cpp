@@ -957,13 +957,6 @@ void SwappyGrid::ProcessAttackState() {
             };
 
             m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
-//                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
-//                if (_state->getName() != "GestureStartAttackState") {
-//                    return false;
-//                }
-//
-//                CCLOG("Attack Gesture: End = %f,%f", touch->getLocation().x, touch->getLocation().y);
-//                GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                 return true;
             };
             cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
@@ -973,7 +966,8 @@ void SwappyGrid::ProcessAttackState() {
             highlightTiles(m_pCurrentMatch->getTileSet());
         }
 
-        m_pGridTransparency->setColor(cocos2d::Color3B(140,140,140));
+        auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140,140,140));
+        m_pGridTransparency->runAction(tint);
 
         for(int x=0; x<NUM_COLUMNS; x++){
             for(int y=0; y<NUM_ROWS; y++) {
@@ -981,7 +975,8 @@ void SwappyGrid::ProcessAttackState() {
                 if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                     // Do something to highlight enemies ?
                 } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
-                    tile->setColor(cocos2d::Color3B(140,140,140));
+                    auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140,140,140));
+                    tile->runAction(tileTint);
                 }
             }
 
@@ -1012,13 +1007,14 @@ void SwappyGrid::ProcessAttackState() {
                     if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                         // Do something to highlight enemies ?
                     } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
-                        tile->setColor(cocos2d::Color3B(255,255,255));
+                        auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255,255,255));
+                        tile->runAction(tileTint);
                     }
                 }
 
             }
-
-            m_pGridTransparency->setColor(cocos2d::Color3B(255,255,255));
+            auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255,255,255));
+            m_pGridTransparency->runAction(tint);
 
             unhighlightTiles();
             for(auto tile : *m_pCurrentMatch->getTileSet()) {
