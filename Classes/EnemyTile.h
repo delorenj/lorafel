@@ -6,6 +6,7 @@
 #define LORAFEL_ENEMYTILE_H
 
 #include "Tile.h"
+#include "Globals.h"
 
 namespace lorafel {
     class EnemyTile : public Tile {
@@ -25,8 +26,8 @@ namespace lorafel {
         virtual Tile* getRandomGlyph();
         virtual bool isSwappable() override;
         virtual bool isMatch(Tile* pTile) const override {
-            // Enemy tile matches all tiles for now
-            return true;
+            // Enemy tile matches all tiles except loot, hero
+            return (pTile->getTag() != Tag::HERO) && (pTile->getTag() != Tag::LOOT);
         };
         virtual bool freelyMovable() override { return true; }
 

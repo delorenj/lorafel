@@ -36,8 +36,8 @@ namespace lorafel {
         cocos2d::Vec2 getTileSetCenter();
         Tile* getPrimaryTile() const;
 
-        unsigned long getTileSetSize();
-        unsigned long getNumEnemies();
+        int getTileSetSize();
+        int getNumEnemies();
         std::set<Tile*>* getEnemies() const;
 
         bool containsHero();

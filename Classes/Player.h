@@ -15,6 +15,7 @@
 #include "EquipSerializer.h"
 #include "InventorySlotSerializer.h"
 #include "NonConsumable.h"
+#include "EnemyTile.h"
 
 namespace lorafel {
     class Player {

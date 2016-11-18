@@ -26,7 +26,6 @@
 namespace lorafel {
     class SwappyGrid;
     class StatResult;
-    class EnemyTile;
     class Match;
     class Tile : public cocos2d::Sprite {
 

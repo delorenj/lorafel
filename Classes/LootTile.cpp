@@ -3,10 +3,8 @@
 //
 
 #include "LootTile.h"
-#include "Globals.h"
 #include "XpStatResult.h"
 #include "Weapon.h"
-#include "ItemFactory.h"
 
 using namespace lorafel;
 

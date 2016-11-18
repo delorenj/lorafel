@@ -93,11 +93,11 @@ Tile* Match::getPrimaryTile() const {
     return m_pPrimaryTile;
 }
 
-unsigned long Match::getTileSetSize() {
+int Match::getTileSetSize() {
     return m_pTileSet->size();
 }
 
-unsigned long Match::getNumEnemies() {
+int Match::getNumEnemies() {
     return m_pEnemies->size();
 }
 

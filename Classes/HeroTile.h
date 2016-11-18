@@ -6,6 +6,7 @@
 #define LORAFEL_AVATAR_H
 
 #include "Tile.h"
+#include "Globals.h"
 
 namespace lorafel {
     class HeroTile : public Tile {
@@ -34,8 +35,8 @@ namespace lorafel {
         virtual void applyHit(Match* pMatch);
 
         virtual bool isMatch(Tile* pTile) const override {
-            // Enemy tile matches all tiles for now
-            return true;
+            // Hero tile matches all tiles except loot and enemy
+            return pTile->getTag() != Tag::LOOT && pTile->getTag() != Tag::ENEMY;
         };
 
         TileSet* getValidMoves(Tile* pTile, int distance);

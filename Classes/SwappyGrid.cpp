@@ -697,7 +697,15 @@ void SwappyGrid::ProcessTurnManager() {
 
         auto turnManager = m_pLevel->getTurnManager();
         auto tile = turnManager->getNextPlayerTile();
+        
         m_pActivePlayerTile = tile;  // set this for faster access in the game loop
+
+        /**
+         * Reset num enemies within reach
+         * so it is calculated again.
+         */
+        m_numEnemiesWithinReach = -1;
+
         if (tile->getTag() == Tag::ENEMY) {
 //            GameStateMachine::getInstance()->setState<EnemyTurnState>();
             GameStateMachine::getInstance()->setState<BusyState>();
@@ -969,6 +977,12 @@ void SwappyGrid::ProcessAttackState() {
         auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140,140,140));
         m_pGridTransparency->runAction(tint);
 
+        /**
+         * Need to keep track of how many enemies are within reach.
+         * If none, then need to end state without action
+         */
+        m_numEnemiesWithinReach = -1;
+
         for(int x=0; x<NUM_COLUMNS; x++){
             for(int y=0; y<NUM_ROWS; y++) {
                 auto tile = getTileAt(x,y);
@@ -983,6 +997,28 @@ void SwappyGrid::ProcessAttackState() {
         }
 
         GameStateMachine::getInstance()->setState<IdleAttackState>();
+    }
+
+    if(dynamic_cast<IdleAttackState*>(state)) {
+        /**
+         * For caching result.
+         * -1 means it has not been calculated yet.
+         */
+        if(m_numEnemiesWithinReach == -1) {
+            m_numEnemiesWithinReach = numTilesWithinHitDistance();
+        }
+
+        /**
+         * If you can't hit anything
+         * Make the player sad by letting him/her
+         * know and then change state.
+         */
+        if(m_numEnemiesWithinReach <= 0) {
+            /**
+             * TODO: Make sweet drop-down NOPE text
+             */
+             GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+        }
     }
 
     /**
@@ -1039,4 +1075,19 @@ cocos2d::Vec2 SwappyGrid::touchToGrid(cocos2d::Touch *pTouch) {
                     )
             )
     );
+}
+
+int SwappyGrid::numTilesWithinHitDistance() {
+    auto numEnemiesWithinReach = 0;
+
+    for(int x=0; x<NUM_COLUMNS; x++){
+        for(int y=0; y<NUM_ROWS; y++) {
+            auto tile = getTileAt(x,y);
+            if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
+                numEnemiesWithinReach++;
+            }
+        }
+    }
+    return numEnemiesWithinReach;
+
 }

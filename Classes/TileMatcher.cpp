@@ -31,7 +31,8 @@ std::set<Match *> TileMatcher::findMatches() {
     return matchSets.unique();
 }
 
-void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSets) const {// Create copy of the local tileSet
+void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSets) const {
+    // Create copy of the local tileSet
     auto match = MatchFactory::getInstance()->create(tileSet);
 
     /**
@@ -42,11 +43,14 @@ void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSe
      * Add 1 to min match length IFF hero is in match
      * If enemy in match, just return
      */
-    if(match->getNumEnemies() > 0) {
-        return;
+    auto matchLength = 0;
+
+    if(match->getNumEnemies() > 0 && !match->containsHero()) {
+        matchLength = match->getPrimaryTile()->getMinMatchSize() + match->getNumEnemies()-1;
+    } else {
+        matchLength = match->getPrimaryTile()->getMinMatchSize();
     }
 
-    auto matchLength = (match->containsHero() > 0 ? 1 : 0) + match->getPrimaryTile()->getMinMatchSize();
     if(match->getTileSetSize() >= matchLength) {
         inOutMatchSets.insert(match);
     }

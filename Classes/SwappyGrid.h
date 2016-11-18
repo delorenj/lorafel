@@ -144,6 +144,9 @@ namespace lorafel {
         cocos2d::EventListenerTouchOneByOne* m_pAttackGestureListener;
         cocos2d::Vec2 m_startAttack, m_endAttack;
         cocos2d::Vec2 touchToGrid(cocos2d::Touch *pTouch);
+        int m_numEnemiesWithinReach;
+
+        int numTilesWithinHitDistance();
     };
 }
 

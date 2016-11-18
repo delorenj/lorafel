@@ -17,7 +17,7 @@
 namespace lorafel {
     class GridUI : public cocos2d::Node {
     public:
-        virtual bool init();
+        virtual bool init() override;
 //        virtual void update(float delta) override;
 
         static GridUI* create(SwappyGrid* grid) {
