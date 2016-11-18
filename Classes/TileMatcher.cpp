@@ -47,7 +47,9 @@ void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSe
 
     if(match->getNumEnemies() > 0 && !match->containsHero()) {
         matchLength = match->getPrimaryTile()->getMinMatchSize() + match->getNumEnemies()-1;
-    } else {
+    } else if(match->getNumEnemies() > 0 && match->containsHero()) {
+        matchLength = match->getPrimaryTile()->getMinMatchSize() + match->getNumEnemies();
+    } else{
         matchLength = match->getPrimaryTile()->getMinMatchSize();
     }
 
@@ -90,6 +92,12 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
         while ((t = t->getRight()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
+        /**
+         * Watch out here! Possible bug.
+         * Checking for getMinMatchSize()
+         * but in line 48 we modify minMatchSize
+         * based on contents of match.
+         */
         if (matches == pTile->getMinMatchSize()) {
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
