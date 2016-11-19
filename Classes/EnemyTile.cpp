@@ -10,6 +10,7 @@
 #include "EventDataFloatie.h"
 #include "Globals.h"
 #include "PlayerManager.h"
+#include "Level.h"
 
 using namespace lorafel;
 
@@ -79,6 +80,7 @@ void EnemyTile::remove() {
     particle->setDuration(0.2);
     particle->setPosition(TILE_CENTER);
     m_pSwappyGrid->addChild(particle, LayerOrder::PARTICLES);
+    m_pSwappyGrid->getLevel()->getTurnManager()->removePlayerTile(this);
     setVisible(false);
     m_pSwappyGrid->addTileToRemoveQueue(static_cast<Tile*>(this));
 
