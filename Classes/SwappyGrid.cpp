@@ -12,6 +12,7 @@
 #include "EventDataString.h"
 #include "MeleeAttackTile.h"
 #include "GridUI.h"
+#include "LevelClearedUI.h"
 
 using namespace lorafel;
 
@@ -669,7 +670,8 @@ std::set<lorafel::Tile*> SwappyGrid::getEnemyTiles() {
 
 void SwappyGrid::onLevelCleared() {
     GameStateMachine::getInstance()->enterState<LevelClearedState>();
-    CCLOG("YAY!");
+    auto levelCleared = LevelClearedUI::create();
+    levelCleared->show();
 }
 
 void SwappyGrid::ProcessTurnManager() {

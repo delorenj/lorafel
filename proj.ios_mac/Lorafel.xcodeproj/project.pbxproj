@@ -59,6 +59,7 @@
 		3167D4E9F84B1EE8F292825B /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D504F192517D21351ACE /* XpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAC741FD073259B4C5B8 /* XpUI.cpp */; };
 		3167D54A4D2622CCBA2C1C23 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DAF268F1CD12C563BFF3 /* TitleScene.cpp */; };
+		3167D5654CF4C067985D810D /* LevelClearedUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D18B6E9FA4D27299FD90 /* LevelClearedUI.cpp */; };
 		3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8F18F0E180942D55C28 /* ItemFactory.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
@@ -315,6 +316,7 @@
 		3167D16551F2FAB5EA0996B0 /* TileMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMatcher.cpp; sourceTree = "<group>"; };
 		3167D17CEC5E792B57DD2156 /* ItemDetailWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindow.cpp; sourceTree = "<group>"; };
 		3167D1832B9DCD5C84646A52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		3167D18B6E9FA4D27299FD90 /* LevelClearedUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelClearedUI.cpp; sourceTree = "<group>"; };
 		3167D19F68934CE0CC42D252 /* EnemyTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTile.h; sourceTree = "<group>"; };
 		3167D1D5D5DB2A51FA4BD953 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		3167D1DEE2F81382C6AA2085 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		3167D2A5DAA640E7E9256059 /* Level__TestLevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelThree.h; sourceTree = "<group>"; };
 		3167D2B01A205F5230035BCB /* MatchFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchFactory.h; sourceTree = "<group>"; };
 		3167D2B666FBBF150E75754A /* SwappyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwappyGrid.cpp; sourceTree = "<group>"; };
+		3167D2C5EEA1CB8CC6BC2819 /* LevelClearedUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelClearedUI.h; sourceTree = "<group>"; };
 		3167D2D4485795E3FC0CC6B7 /* StringPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringPatch.h; sourceTree = "<group>"; };
 		3167D2E745B6EC79C8154279 /* AuthStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthStateMachine.h; sourceTree = "<group>"; };
 		3167D2EA20DB699433739D20 /* GameStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateMachine.h; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 				3167DCED10C762F512C2DB2D /* AttrFireDamage.h */,
 				3167D6F4A6917B45488AEE35 /* Armor.cpp */,
 				3167D841BC16FD568620872B /* Armor.h */,
+				3167D18B6E9FA4D27299FD90 /* LevelClearedUI.cpp */,
+				3167D2C5EEA1CB8CC6BC2819 /* LevelClearedUI.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1481,6 +1486,7 @@
 				3167D72D09BB4CEAD3E296E0 /* ItemNameGenerator.cpp in Sources */,
 				3167DE843355DB98A77967DF /* ItemStatFactory.cpp in Sources */,
 				3167D9CD8E374D3A5BDF936C /* Armor.cpp in Sources */,
+				3167D5654CF4C067985D810D /* LevelClearedUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
