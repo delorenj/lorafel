@@ -323,6 +323,7 @@
 		3167D1FF28CECFDBF7656B73 /* TileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileFactory.h; sourceTree = "<group>"; };
 		3167D20D319B8EC1162E5691 /* ItemNameGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemNameGenerator.h; sourceTree = "<group>"; };
 		3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoisonGlyph.h; sourceTree = "<group>"; };
+		3167D21BE23E70DB09B5F561 /* Level__TestLevelFive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFive.h; sourceTree = "<group>"; };
 		3167D21FC003793038B2A84B /* ItemStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStat.h; sourceTree = "<group>"; };
 		3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryItemGrid.cpp; sourceTree = "<group>"; };
 		3167D2432814485577EB6E9F /* GameStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStates.h; sourceTree = "<group>"; };
@@ -339,9 +340,10 @@
 		3167D2EA20DB699433739D20 /* GameStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateMachine.h; sourceTree = "<group>"; };
 		3167D2F1AB967E5816B7F045 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		3167D30C46F60751A970285B /* PlayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerManager.cpp; sourceTree = "<group>"; };
-		3167D3406BE17AF097D31D68 /* ExponentialLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExponentialLevelManager.h; sourceTree = "<group>"; };
+		3167D3406BE17AF097D31D68 /* ExponentialXpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExponentialXpManager.h; sourceTree = "<group>"; };
 		3167D340925C32E2F6269696 /* TrajectoryParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrajectoryParticle.h; sourceTree = "<group>"; };
 		3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotion.cpp; sourceTree = "<group>"; };
+		3167D35A416C5C766DB4B21D /* DeathBearTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathBearTile.h; sourceTree = "<group>"; };
 		3167D365F616E4419E7BBE05 /* BasicPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPlayerMove.h; sourceTree = "<group>"; };
 		3167D36F06682ECAAE9775C3 /* ISellable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellable.h; sourceTree = "<group>"; };
 		3167D389262A77B17800B5FB /* GlyphTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphTile.h; sourceTree = "<group>"; };
@@ -370,7 +372,7 @@
 		3167D581C26696931B24E901 /* FirebaseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseDatabase.h; sourceTree = "<group>"; };
 		3167D5843257CBC9B2791664 /* DragDropSwapPlayerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropSwapPlayerMove.h; sourceTree = "<group>"; };
 		3167D5BEDB0C567E18CE6611 /* GridTestUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridTestUI.cpp; sourceTree = "<group>"; };
-		3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearLevelManager.h; sourceTree = "<group>"; };
+		3167D5C2B6735AA2DAEE9D67 /* LinearXpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearXpManager.h; sourceTree = "<group>"; };
 		3167D5D9966B9101A21E90BF /* FireballAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireballAction.cpp; sourceTree = "<group>"; };
 		3167D5FB0780249507F8EA0A /* InventoryModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryModal.h; sourceTree = "<group>"; };
 		3167D5FBC9B03370290E3593 /* MeleeAttackTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeleeAttackTile.cpp; sourceTree = "<group>"; };
@@ -432,7 +434,7 @@
 		3167D9E6F6E99ED879995593 /* MatchSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatchSet.cpp; sourceTree = "<group>"; };
 		3167D9F002E2CE510A7C9DA8 /* LootFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LootFactory.h; sourceTree = "<group>"; };
 		3167D9FB7B3848B6E808AEDF /* Match5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match5.cpp; sourceTree = "<group>"; };
-		3167DA0832CDB0A3BDBC3936 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		3167DA0832CDB0A3BDBC3936 /* XpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpManager.h; sourceTree = "<group>"; };
 		3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HealthPotionPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DA1A7283678A11151C32 /* TileSwapEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSwapEventData.h; sourceTree = "<group>"; };
 		3167DA1ABB7483BE71175498 /* IUpgradable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpgradable.h; sourceTree = "<group>"; };
@@ -864,9 +866,9 @@
 				3167DB517CC5D9B549E8555B /* Achievements.h */,
 				3167D6D9B2387600CAD15347 /* Inventory.cpp */,
 				3167DDC0564A01C1B77285C0 /* Inventory.h */,
-				3167D3406BE17AF097D31D68 /* ExponentialLevelManager.h */,
-				3167DA0832CDB0A3BDBC3936 /* LevelManager.h */,
-				3167D5C2B6735AA2DAEE9D67 /* LinearLevelManager.h */,
+				3167D3406BE17AF097D31D68 /* ExponentialXpManager.h */,
+				3167DA0832CDB0A3BDBC3936 /* XpManager.h */,
+				3167D5C2B6735AA2DAEE9D67 /* LinearXpManager.h */,
 				3167D02CD9A763C3231B9AF8 /* GridUI.cpp */,
 				3167DB81789A13D86665DA3A /* GridUI.h */,
 				3167DAC741FD073259B4C5B8 /* XpUI.cpp */,
@@ -1017,6 +1019,8 @@
 				3167D841BC16FD568620872B /* Armor.h */,
 				3167D18B6E9FA4D27299FD90 /* LevelClearedUI.cpp */,
 				3167D2C5EEA1CB8CC6BC2819 /* LevelClearedUI.h */,
+				3167D21BE23E70DB09B5F561 /* Level__TestLevelFive.h */,
+				3167D35A416C5C766DB4B21D /* DeathBearTile.h */,
 			);
 			name = Classes;
 			path = ../Classes;

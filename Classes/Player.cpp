@@ -11,7 +11,7 @@
 using namespace lorafel;
 
 Player::Player() {
-    m_pLevelManager = new LinearLevelManager();
+    m_pXpManager = new LinearXpManager();
     m_pInventory = new Inventory();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
     //m_activeConsumables.reserve(3);
@@ -20,7 +20,7 @@ Player::Player() {
 }
 
 Player::~Player() {
-    CC_SAFE_DELETE(m_pLevelManager);
+    CC_SAFE_DELETE(m_pXpManager);
 }
 
 void Player::initFromServer() {
@@ -68,7 +68,7 @@ lorafel::Tile* Player::getTile() const {
 }
 
 const int Player::getNumConsumableSlots() const {
-    auto level = getLevelManager()->getLevel();
+    auto level = getXpManager()->getLevel();
 
     if (level < Player::UNLOCK_CONSUMABLE_SLOT_2) {
         return 1;
@@ -176,11 +176,11 @@ bool Player::isEquipped(Item* pItem) {
 }
 
 int Player::getBaseAttack() const {
-	return (int)getLevelManager()->getLevel() + m_str;
+	return (int) getXpManager()->getLevel() + m_str;
 }
 
 int Player::getBaseDefend() const {
-    return (int)getLevelManager()->getLevel() + m_def;
+    return (int) getXpManager()->getLevel() + m_def;
 }
 
 int Player::getRandHit(EnemyTile *pEnemyTile) {

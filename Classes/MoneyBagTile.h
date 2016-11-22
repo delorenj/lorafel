@@ -12,7 +12,7 @@
 namespace lorafel {
     class MoneyBagTile : public Tile {
     public:
-        virtual bool init() override {
+        virtual bool init(cocos2d::ValueMap args) override {
             if(!Tile::init()) {
                 return false;
             }
@@ -29,7 +29,17 @@ namespace lorafel {
 
         }
 
-        CREATE_FUNC(MoneyBagTile)
+        static MoneyBagTile *create(cocos2d::ValueMap args) {
+            MoneyBagTile * pRet = new(std::nothrow) MoneyBagTile();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
     };
 }
 #endif //LORAFEL_MONEYBAGTILE_H

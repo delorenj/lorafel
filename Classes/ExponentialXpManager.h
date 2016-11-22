@@ -5,14 +5,14 @@
 #ifndef LORAFEL_EXPONENTIALLEVELMANAGER_H
 #define LORAFEL_EXPONENTIALLEVELMANAGER_H
 
-#include "LevelManager.h"
+#include "XpManager.h"
 
 namespace lorafel {
 
-    class ExponentialLevelManager : public LevelManager {
+    class ExponentialXpManager : public XpManager {
     public:
-        ExponentialLevelManager() : LevelManager(0) {} ;
-        ExponentialLevelManager(unsigned long xp) : LevelManager(xp) {} ;
+        ExponentialXpManager() : XpManager(0) {} ;
+        ExponentialXpManager(unsigned long xp) : XpManager(xp) {} ;
 
 
     };

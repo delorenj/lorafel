@@ -11,9 +11,9 @@
 #include "FirebaseDatabase.h"
 
 namespace lorafel {
-    class LevelManager {
+    class XpManager {
     public:
-        LevelManager(unsigned long xp) : m_xp(xp) {
+        XpManager(unsigned long xp) : m_xp(xp) {
                 m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
         };
 

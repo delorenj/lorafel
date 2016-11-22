@@ -10,7 +10,7 @@ using namespace lorafel;
 
 bool XpUI::init() {
     m_pPlayer = PlayerManager::getInstance()->getPlayer();
-    m_pLevelMananger = m_pPlayer->getLevelManager();
+    m_pLevelMananger = m_pPlayer->getXpManager();
     m_pXpBar = cocos2d::ui::LoadingBar::create();
     m_pXpBar->loadTexture("xp_bar.png",cocos2d::ui::Widget::TextureResType::PLIST);
     m_pXpText = cocos2d::ui::Text::create("XP","fonts/BebasNeue Bold.ttf", 14);

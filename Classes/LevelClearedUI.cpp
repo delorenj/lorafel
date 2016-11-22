@@ -72,7 +72,6 @@ void LevelClearedUI::showButtons() {
     auto tryAgainToPos = cocos2d::Vec2(center.x, center.y - m_pLevelCleared->getContentSize().height/2 - 10);
     m_tryAgainButton->setPosition(tryAgainToPos);
     m_tryAgainButton->setScale(0.1);
-    m_tryAgainButton->setTitleText("Retry");
     m_tryAgainButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.5f, 1.0f)));
 
     m_tryAgainButton->addTouchEventListener(CC_CALLBACK_2(LevelClearedUI::tryAgain, this));
@@ -80,12 +79,11 @@ void LevelClearedUI::showButtons() {
     addChild(m_tryAgainButton);
 
     m_nextButton= cocos2d::ui::Button::create();
-    m_nextButton->loadTextures("next_button.png","next_button_pressed.png", "", cocos2d::ui::Widget::TextureResType::PLIST);
+    m_nextButton->loadTextures("next_level.png","next_level.png", "", cocos2d::ui::Widget::TextureResType::PLIST);
     m_nextButton->setAnchorPoint(cocos2d::Vec2(0.5,1));
     auto nextToPos = cocos2d::Vec2(center.x, m_tryAgainButton->getPosition().y - m_tryAgainButton->getContentSize().height - 10);
     m_nextButton->setPosition(nextToPos);
     m_nextButton->setScale(0.1);
-    m_nextButton->setTitleText("Next Level");
     m_nextButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.5f, 1.0f)));
     addChild(m_nextButton);
 

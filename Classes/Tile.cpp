@@ -13,10 +13,11 @@
 #include "LootFactory.h"
 #include "SwappyGridScene.h"
 #include "IInventoryable.h"
+#include "XpStatResult.h"
 
 using namespace lorafel;
 
-bool lorafel::Tile::init() {
+bool lorafel::Tile::init(cocos2d::ValueMap args) {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
@@ -24,6 +25,24 @@ bool lorafel::Tile::init() {
     m_pLoot = new TileConfigs();
     setTag(Tag::TILE);
     retain();
+
+    std::string image = m_arguments["tile_image"].isNull() ?
+            "close-modal-x.png" : m_arguments["tile_image"].asString();
+
+    std::string tileName = m_arguments["name"].isNull() ?
+            "Attack" : m_arguments["name"].asString();
+
+    int xp = m_arguments["xp"].isNull() ?
+            0 : m_arguments["xp"].asInteger();
+
+    if(xp > 0) {
+        addStatResult(new XpStatResult(xp));
+    }
+
+    initWithSpriteFrameName(image);
+    setTileName(tileName);
+    initOptions();
+    addEvents();
 
     return true;
 }
@@ -427,6 +446,7 @@ void lorafel::Tile::onHooked() {
     m_pSwappyGrid->removeTileFromGrid(this);
     runAction(sequence);
 }
+
 
 
 

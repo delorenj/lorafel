@@ -7,7 +7,7 @@
 
 #include "ui/CocosGUI.h"
 #include "Player.h"
-#include "LevelManager.h"
+#include "XpManager.h"
 
 namespace lorafel {
     class XpUI : public cocos2d::Node {
@@ -23,7 +23,7 @@ namespace lorafel {
 
     protected:
         Player* m_pPlayer;
-        LevelManager* m_pLevelMananger;
+        XpManager* m_pLevelMananger;
         cocos2d::ui::Text* m_pXpText;
         cocos2d::ui::Text* m_pNextXpText;
         cocos2d::ui::LoadingBar* m_pXpBar;

@@ -5,14 +5,14 @@
 #ifndef LORAFEL_LINEARLEVELMANAGER_H
 #define LORAFEL_LINEARLEVELMANAGER_H
 
-#include "LevelManager.h"
+#include "XpManager.h"
 
 namespace lorafel {
 
-    class LinearLevelManager : public LevelManager {
+    class LinearXpManager : public XpManager {
     public:
-        LinearLevelManager() : LevelManager(0) {} ;
-        LinearLevelManager(unsigned long xp) : LevelManager(xp) {} ;
+        LinearXpManager() : XpManager(0) {} ;
+        LinearXpManager(unsigned long xp) : XpManager(xp) {} ;
 
         // Converts xp to level
         virtual const unsigned long xpToLevel(const unsigned long xp) const override {

@@ -4,25 +4,18 @@
 
 #include "MeleeAttackTile.h"
 #include "Globals.h"
-#include "EnemyTile.h"
 #include "HeroTile.h"
 #include "PlayerManager.h"
 #include "GameStateMachine.h"
 
 using namespace lorafel;
 
-bool MeleeAttackTile::init() {
-    if(!Tile::init()) {
+bool MeleeAttackTile::init(cocos2d::ValueMap args) {
+    if(!Tile::init(args)) {
         return false;
     }
 
-    if (initWithSpriteFrameName("sword.png")) {
-        setTileName("Melee Attack");
-        initOptions();
-        addEvents();
-        return true;
-    }
-    return false;
+    return true;
 }
 
 void MeleeAttackTile::onMatch(Match* pMatch) {
@@ -64,5 +57,3 @@ void MeleeAttackTile::onMatch(Match* pMatch) {
     }
 
 }
-
-

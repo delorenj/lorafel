@@ -116,7 +116,7 @@ void GridTestUI::addVersion() {
 }
 
 void GridTestUI::update(float delta) {
-    auto lm = PlayerManager::getInstance()->getPlayer()->getLevelManager();
+    auto lm = PlayerManager::getInstance()->getPlayer()->getXpManager();
     if(m_pState != nullptr) m_pState->setString(GameStateMachine::getInstance()->getState()->getName().c_str());
     if(m_pGrid != nullptr && m_pNumFallingTiles != nullptr) m_pNumFallingTiles->setString(lorafel::to_string(m_pGrid->getNumberOfFallingTiles()));
     if(m_pGrid != nullptr && m_pLevelUpIn != nullptr) m_pLevelUpIn->setString(lorafel::to_string(lm->getXp()) + "/" + to_string(lm->levelToXp(lm->getLevel()+1)) + " - " + to_string(lm->getLevelUpInPercent()) + "%");

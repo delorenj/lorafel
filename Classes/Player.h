@@ -8,7 +8,7 @@
 #include "Progress.h"
 #include "Achievements.h"
 #include "Inventory.h"
-#include "LinearLevelManager.h"
+#include "LinearXpManager.h"
 #include "HeroTile.h"
 #include "Consumable.h"
 #include "Hook.h"
@@ -53,12 +53,12 @@ namespace lorafel {
 
         Consumable* getConsumableSlotItem(int i);
         void equipHook();
-        LevelManager* getLevelManager() const { return m_pLevelManager; }
+        XpManager* getXpManager() const { return m_pXpManager; }
         int updateGoldBy(int amount, Match* pMatch);
         int updateGoldBy(int amount, cocos2d::Vec2 floatiePos);
         int updateGoldBy(int amount);
         void setGold(unsigned int amount) { m_gold = amount; }
-        void setXp(unsigned int amount) { m_pLevelManager->setXp(amount); }
+        void setXp(unsigned int amount) { m_pXpManager->setXp(amount); }
         int getGold() const { return m_gold; }
         int getMaxGold() const { return m_maxGold; }
         int getMaxHp() const { return m_maxHp; }
@@ -105,7 +105,7 @@ namespace lorafel {
 
         cocos2d::EventDispatcher* m_pDispatcher;
 
-        LinearLevelManager* m_pLevelManager;
+        LinearXpManager* m_pXpManager;
         std::shared_ptr<EquipSerializer> m_pEquipSerializer;
         std::shared_ptr<InventorySlotSerializer> m_pInventorySlotSerializer;
         Progress*   m_pProgress;

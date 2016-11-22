@@ -45,7 +45,7 @@ namespace lorafel {
             BLACK       // Is not part of a match set
         };
 
-        virtual bool init() override;
+        virtual bool init(cocos2d::ValueMap args);
 
         virtual void onMatch(Match* pMatch);
 
@@ -101,8 +101,12 @@ namespace lorafel {
 
         void onHooked();
 
+
+
     protected:
         std::string m_tileName;
+        std::string m_className;
+        cocos2d::ValueMap m_arguments;
         SwappyGrid* m_pSwappyGrid;
         AIStrategy* m_pStrategy;
         Color m_color = NONE;

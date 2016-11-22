@@ -1,27 +1,27 @@
 //
-// Created by Jarad DeLorenzo on 1/25/16.
+// Created by Jarad M DeLorenzo on 11/21/16.
 //
 
-#ifndef LORAFEL_STICKMAN_H
-#define LORAFEL_STICKMAN_H
+#ifndef LORAFEL_DEATHBEARTILE_H
+#define LORAFEL_DEATHBEARTILE_H
 
 #include "EnemyTile.h"
-#include "RandomAIStrategy.h"
+#include "Level.h"
 #include "XpStatResult.h"
+#include "RandomAIStrategy.h"
 #include "PoisonGlyph.h"
 #include "StormGlyph.h"
-#include "Level.h"
 
 namespace lorafel {
-    class StickMan : public EnemyTile {
+    class DeathBearTile : public EnemyTile {
     public:
         virtual bool init() override {
             if(!EnemyTile::init()) {
                 return false;
             }
-            if (initWithSpriteFrameName("enemy1.png"))
+            if (initWithSpriteFrameName("bear.png"))
             {
-                setTileName("Stick Man");
+                setTileName("Death Bear");
                 initOptions();
                 addEvents();
                 addStatResult(new XpStatResult(200));
@@ -45,9 +45,7 @@ namespace lorafel {
 
             return false;
         }
-        CREATE_FUNC(StickMan);
-
-//        virtual void applyHit(Match* pMatch) override;
+        CREATE_FUNC(DeathBearTile);
 
     protected:
         /**
@@ -60,4 +58,4 @@ namespace lorafel {
     };
 }
 
-#endif //LORAFEL_STICKMAN_H
+#endif //LORAFEL_DEATHBEARTILE_H

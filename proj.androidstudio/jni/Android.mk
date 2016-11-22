@@ -111,7 +111,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Rope.cpp \
                    ../../Classes/SeededLevel.cpp \
                    ../../Classes/StatGuage.cpp \
-                   ../../Classes/StickMan.cpp \
                    ../../Classes/StormGlyph.cpp \
                    ../../Classes/StupidRandomizer.cpp \
                    ../../Classes/SwappyGrid.cpp \
@@ -125,6 +124,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Weapon.cpp \
                    ../../Classes/XpFloatie.cpp \
                    ../../Classes/XPStatResult.cpp \
+                   ../../Classes/XpTile.cpp \
                    ../../Classes/XpUI.cpp \
                    ../../Classes/NDKHelper/CallFuncNV.cpp \
                    ../../Classes/NDKHelper/NDKCallbackNode.cpp \
