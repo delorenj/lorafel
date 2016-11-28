@@ -99,10 +99,10 @@ static AppDelegate s_sharedApplication;
 
     _db = [[FIRDatabase database] reference];
 
-    [[_db child:@"item_tree"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[_db child:@"global"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if(snapshot.exists) {
             NSDictionary *itemTree = snapshot.value;
-            [IOSNDKHelper sendMessage:@"onCompleteItemTreeQuery" withParameters:itemTree];
+            [IOSNDKHelper sendMessage:@"onCompleteGlobalQuery" withParameters:itemTree];
         }
 
     } withCancelBlock:^(NSError * _Nonnull error) {

@@ -47,7 +47,7 @@ namespace lorafel {
 
     protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
-		void onCompleteItemTreeQuery(cocos2d::Node* sender, cocos2d::Value data);
+		void onCompleteGlobalQuery(cocos2d::Node *sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
 
 		static FirebaseDatabase* _instance;

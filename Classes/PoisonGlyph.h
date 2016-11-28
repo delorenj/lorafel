@@ -12,8 +12,18 @@ namespace lorafel {
     public:
         virtual void onMatch(Match* pMatch) override;
 
-        virtual bool init() override;
-        CREATE_FUNC(PoisonGlyph);
+        static PoisonGlyph *create(cocos2d::ValueMap args) {
+            PoisonGlyph * pRet = new(std::nothrow) PoisonGlyph();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
 
     };
 }

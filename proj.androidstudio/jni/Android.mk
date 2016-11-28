@@ -68,7 +68,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Floatie.cpp \
                    ../../Classes/GameOverUI.cpp \
                    ../../Classes/GameStateMachine.cpp \
-                   ../../Classes/GlyphTile.cpp \
                    ../../Classes/GoldStatResult.cpp \
                    ../../Classes/GoldUI.cpp \
                    ../../Classes/GridTestUI.cpp \
@@ -94,6 +93,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/ItemFactory.cpp \
                    ../../Classes/ItemSlot.cpp \
                    ../../Classes/Level.cpp \
+                   ../../Classes/LevelManager.cpp \
                    ../../Classes/LootFactory.cpp \
                    ../../Classes/LootTile.cpp \
                    ../../Classes/Match.cpp \

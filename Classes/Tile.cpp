@@ -12,7 +12,6 @@
 #include "Globals.h"
 #include "LootFactory.h"
 #include "SwappyGridScene.h"
-#include "IInventoryable.h"
 #include "XpStatResult.h"
 
 using namespace lorafel;

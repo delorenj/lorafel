@@ -173,7 +173,7 @@ ValueMap LootFactory::generateRandomItemArgs() {
 
 void LootFactory::loadItemTree(Value data) {
     if (!data.isNull() && data.getType() == Value::Type::MAP) {
-        m_itemTree = data.asValueMap();
+        m_itemTree = data.asValueMap()["item_tree"].asValueMap();
         CCLOG("LootFactory::loadItemTree() - Item tree loaded into memory");
         CCLOG("LootFactory::loadItemTree() - Item tree size=%lu", sizeof(m_itemTree));
     }

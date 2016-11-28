@@ -48,7 +48,6 @@
 		3167D4048E9806496EF2F6F7 /* GridTransparency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D7D6EA7843455A44BC8C /* GridTransparency.cpp */; };
 		3167D40C299C7B181AE565DB /* XpStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D506937A45C22D96B536 /* XpStatResult.cpp */; };
 		3167D433E3AA7638CEE883E1 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
-		3167D4529143497A6EF69C6E /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
 		3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
 		3167D46DC6F8F83AE6CCEA72 /* InventoryItemGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */; };
 		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
@@ -63,6 +62,7 @@
 		3167D56F0B6625B034AACF4C /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D96A2683A5494A40827F /* Arrow.cpp */; };
 		3167D5984434AB0A06FF37BD /* ItemFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8F18F0E180942D55C28 /* ItemFactory.cpp */; };
 		3167D598FA8953E29AB6225F /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
+		3167D5A0BC47782EE1A4B9E5 /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D46E06AA3EEC8171F5DB /* LevelManager.cpp */; };
 		3167D5A540E9B6193A66BB3C /* FireballActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA93E9CCAD5AC506B9 /* FireballActionTile.cpp */; };
 		3167D5BFE5E8E232B59CA701 /* Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DDB9CD851C38F804AA16 /* Rope.cpp */; };
 		3167D5CDC4C852F7DEF2FBFC /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D30C46F60751A970285B /* PlayerManager.cpp */; };
@@ -73,7 +73,6 @@
 		3167D606ED8469EF170CDF8B /* MoveActionTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D92F8DBFB8EB219B3B4C /* MoveActionTile.cpp */; };
 		3167D634C8D04931B829AD82 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167D64077AEEE55678E4EFD /* HeroTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D57F44E44D04FA0913E8 /* HeroTile.cpp */; };
-		3167D65F57002125C096ED0A /* GlyphTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */; };
 		3167D6670F04CFB304C74978 /* InventoryModal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D8BC6D6C70C71EB0B8BD /* InventoryModal.cpp */; };
 		3167D687ED8F745DC9DB6618 /* Floatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D4214B4637FF17045DC5 /* Floatie.cpp */; };
 		3167D6D7B1CC04F2E6CF6106 /* LootTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D39657152A6F3BCEEF46 /* LootTile.cpp */; };
@@ -357,6 +356,7 @@
 		3167D40B103B97B902256E63 /* EquipItemSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipItemSlot.h; sourceTree = "<group>"; };
 		3167D4214B4637FF17045DC5 /* Floatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floatie.cpp; sourceTree = "<group>"; };
 		3167D43152C240F722DEE01C /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		3167D46E06AA3EEC8171F5DB /* LevelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelManager.cpp; sourceTree = "<group>"; };
 		3167D46F39AA3A96F8A94545 /* EnemyHitFloatie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyHitFloatie.cpp; sourceTree = "<group>"; };
 		3167D47CE3770FAA07E48FF8 /* LootTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LootTile.h; sourceTree = "<group>"; };
 		3167D4B152E11F80350371B8 /* ItemSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSlot.h; sourceTree = "<group>"; };
@@ -472,7 +472,6 @@
 		3167DCE5F6560AA6833ED344 /* EventDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataItem.h; sourceTree = "<group>"; };
 		3167DCED10C762F512C2DB2D /* AttrFireDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrFireDamage.h; sourceTree = "<group>"; };
 		3167DD115E1C613057E511F9 /* InGameModalNavButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InGameModalNavButton.cpp; sourceTree = "<group>"; };
-		3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphTile.cpp; sourceTree = "<group>"; };
 		3167DD6E3DE1328ABD92FFCF /* AttrChanceToPoisonForXTurns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttrChanceToPoisonForXTurns.h; sourceTree = "<group>"; };
 		3167DD765D888EB77000827F /* EventDataFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataFloatie.h; sourceTree = "<group>"; };
 		3167DD81C73EF6CDF3B800CD /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -496,6 +495,7 @@
 		3167DF65FA4EF7BB542BE7BA /* StickMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StickMan.cpp; sourceTree = "<group>"; };
 		3167DF666AD0134D168F02B9 /* FirebaseAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseAuth.h; sourceTree = "<group>"; };
 		3167DF67F8EC669975DF5874 /* BasicTurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTurnManager.h; sourceTree = "<group>"; };
+		3167DF6C8A00ABC3B28D19FA /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		3167DF8E1B3D593BCE2452B7 /* StatGuage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatGuage.cpp; sourceTree = "<group>"; };
 		3167DF9921A93AA17D12B6C8 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		3167DFBEA685F2B1A1A06B40 /* AuthStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AuthStateMachine.cpp; sourceTree = "<group>"; };
@@ -897,7 +897,6 @@
 				3167D644A16126625AD28D6C /* AIStrategy.h */,
 				3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */,
 				3167DFFA821FDCDD595EF4C2 /* RandomAIStrategy.h */,
-				3167DD4D0A5D0EA0154EFEE7 /* GlyphTile.cpp */,
 				3167D389262A77B17800B5FB /* GlyphTile.h */,
 				3167D03319F8408AEBF07C39 /* PoisonGlyph.cpp */,
 				3167D216D0FF1062DF24BCBC /* PoisonGlyph.h */,
@@ -1021,6 +1020,8 @@
 				3167D2C5EEA1CB8CC6BC2819 /* LevelClearedUI.h */,
 				3167D21BE23E70DB09B5F561 /* Level__TestLevelFive.h */,
 				3167D35A416C5C766DB4B21D /* DeathBearTile.h */,
+				3167D46E06AA3EEC8171F5DB /* LevelManager.cpp */,
+				3167DF6C8A00ABC3B28D19FA /* LevelManager.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1427,7 +1428,6 @@
 				BAA9ECAF1D596AB1002C57FA /* pack_unpack.c in Sources */,
 				3167DFF8737A98857B7869FF /* RandomAIStrategy.cpp in Sources */,
 				BA8A0FB01D536AD50017E0EB /* Database.cpp in Sources */,
-				3167D4529143497A6EF69C6E /* GlyphTile.cpp in Sources */,
 				BAA9ECB21D596AB1002C57FA /* utf.c in Sources */,
 				3167D0582326F2B81A8A7A76 /* PoisonGlyph.cpp in Sources */,
 				3167D2903E512367412739EC /* StormGlyph.cpp in Sources */,
@@ -1491,6 +1491,7 @@
 				3167DE843355DB98A77967DF /* ItemStatFactory.cpp in Sources */,
 				3167D9CD8E374D3A5BDF936C /* Armor.cpp in Sources */,
 				3167D5654CF4C067985D810D /* LevelClearedUI.cpp in Sources */,
+				3167D5A0BC47782EE1A4B9E5 /* LevelManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1526,7 +1527,6 @@
 				3167DD59027337A1D754F1B5 /* HeroTile.cpp in Sources */,
 				3167D2A62650524EC789DA51 /* BasicTurnManager.cpp in Sources */,
 				3167D5CEFCFD7C8EAF2759A3 /* RandomAIStrategy.cpp in Sources */,
-				3167D65F57002125C096ED0A /* GlyphTile.cpp in Sources */,
 				3167D7A1752231AB51E4244F /* PoisonGlyph.cpp in Sources */,
 				3167DCF900001EFC72F5EAE9 /* StormGlyph.cpp in Sources */,
 				3167DC66920A4A70EA6E9678 /* DragDropSwapPlayerMove.cpp in Sources */,

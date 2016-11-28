@@ -10,14 +10,6 @@
 
 using namespace lorafel;
 
-bool MeleeAttackTile::init(cocos2d::ValueMap args) {
-    if(!Tile::init(args)) {
-        return false;
-    }
-
-    return true;
-}
-
 void MeleeAttackTile::onMatch(Match* pMatch) {
     // Only do the primary tile stuff once!
     if(pMatch->processPrimaryTile()) {

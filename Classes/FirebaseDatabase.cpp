@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "FirebaseDatabase.h"
 #include "PlayerManager.h"
+#include "LevelManager.h"
 #include "LootFactory.h"
 
 using namespace lorafel;
@@ -22,8 +23,8 @@ bool FirebaseDatabase::init() {
 			this);
 
 	NDKHelper::addSelector("FirebaseDatabaseSelectors",
-			"onCompleteItemTreeQuery",
-			CC_CALLBACK_2(FirebaseDatabase::onCompleteItemTreeQuery, this),
+			"onCompleteGlobalQuery",
+			CC_CALLBACK_2(FirebaseDatabase::onCompleteGlobalQuery, this),
 			this);
 
 	return true;
@@ -34,9 +35,12 @@ void FirebaseDatabase::onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value
 	PlayerManager::getInstance()->loadPlayer(data);
 }
 
-void FirebaseDatabase::onCompleteItemTreeQuery(cocos2d::Node* sender, cocos2d::Value data) {
+void FirebaseDatabase::onCompleteGlobalQuery(cocos2d::Node *sender, cocos2d::Value data) {
 	CCLOG("Loading item tree for LootFactory item generation...");
 	LootFactory::getInstance()->loadItemTree(data);
+	LevelManager::getInstance()->loadLevelTree(data);
+	LevelManager::getInstance()->loadTileTree(data);
+
 }
 
 void FirebaseDatabase::setStringForKey(std::string key, std::string value, std::string child) {

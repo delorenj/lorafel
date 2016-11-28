@@ -5,14 +5,12 @@
 #ifndef LORAFEL_LEVEL_TESTLEVELFIVE_H
 #define LORAFEL_LEVEL_TESTLEVELFIVE_H
 
-#include "PlayerManager.h"
+#include "cocos2d.h"
 #include "LootFactory.h"
 #include "SeededLevel.h"
 #include "StupidRandomizer.h"
 #include "BasicTurnManager.h"
-#include "AvocadoTile.h"
-#include "CarrotTile.h"
-#include "GrapeTile.h"
+#include "Tile.h"
 #include "MeleeAttackTile.h"
 #include "MoneyBagTile.h"
 #include "DeathBearTile.h"
@@ -42,29 +40,50 @@ namespace lorafel {
                 #endif
 
                 Tile::TileConfig* config = new Tile::TileConfig();
-                config->create = std::bind([=]() { return AvocadoTile::create(); });
+
+                cocos2d::ValueMap avocadoArgs;
+                avocadoArgs["class"] = cocos2d::Value("Tile");
+                avocadoArgs["name"] = cocos2d::Value("Avocado");
+                avocadoArgs["tile_image"] = cocos2d::Value("avocado.png");
+                avocadoArgs["type"] = cocos2d::Value("generic");
+                avocadoArgs["xp"] = cocos2d::Value(50);
+                config->create = std::bind([=]() { return Tile::create(avocadoArgs); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
                 config = new Tile::TileConfig();
-                config->create = std::bind([=]() { return CarrotTile::create(); });
+                cocos2d::ValueMap stickManArgs;
+                stickManArgs["class"] = cocos2d::Value("StickMan");
+                stickManArgs["name"] = cocos2d::Value("Stick Man");
+                stickManArgs["tile_image"] = cocos2d::Value("enemy1.png");
+                stickManArgs["type"] = cocos2d::Value("enemy");
+                stickManArgs["xp"] = cocos2d::Value(500);
+                stickManArgs["hp"] = cocos2d::Value(500);
+                stickManArgs["ai"] = cocos2d::Value("RandomAIStrategy");
+                stickManArgs["avatar_image"] = cocos2d::Value("stick_man_avatar.png");
+                cocos2d::ValueVector glyphVec;
+                cocos2d::ValueMap g1;
+                g1["f"] = cocos2d::Value(5);
+                g1["id"] = cocos2d::Value("poison");
+                glyphVec.push_back(g1);
+                cocos2d::ValueMap g2;
+                g2["f"] = cocos2d::Value(5);
+                g2["id"] = cocos2d::Value("storm");
+                glyphVec.push_back(g2);
+                stickManArgs["glyphs"] = glyphVec;
+                config->create = std::bind([=]() { return StickMan::create(stickManArgs); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
-                config = new Tile::TileConfig();
-                config->create = std::bind([=]() { return GrapeTile::create(); });
+                cocos2d::ValueMap meleeArgs;
+                meleeArgs["class"] = cocos2d::Value("MeleeAttackTile");
+                meleeArgs["name"] = cocos2d::Value("Sword");
+                meleeArgs["tile_image"] = cocos2d::Value("sword.png");
+                meleeArgs["type"] = cocos2d::Value("melee");
+                config->create = std::bind([=]() { return MeleeAttackTile::create(meleeArgs); });
                 config->frequency = 7;
                 m_pTileConfigs->push_back(config);
 
-                config = new Tile::TileConfig();
-                config->create = std::bind([=]() { return MeleeAttackTile::create(); });
-                config->frequency = 2;
-                m_pTileConfigs->push_back(config);
-
-                config = new Tile::TileConfig();
-                config->create = std::bind([=]() { return MoneyBagTile::create(); });
-                config->frequency = 1;
-                m_pTileConfigs->push_back(config);
 
                 /**
                  * Insert background transparency tiles

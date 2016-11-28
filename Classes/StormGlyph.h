@@ -12,8 +12,18 @@ namespace lorafel {
     class StormGlyph : public GlyphTile {
     public:
         virtual void onMatch(Match* pMatch) override;
-        virtual bool init() override;
-        CREATE_FUNC(StormGlyph);
+
+        static StormGlyph *create(cocos2d::ValueMap args) {
+            StormGlyph * pRet = new(std::nothrow) StormGlyph();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
 
     };
 }
