@@ -12,7 +12,20 @@ namespace lorafel {
     public:
         virtual void onMatch(Match* pMatch) override;
 
-        static PoisonGlyph *create(cocos2d::ValueMap args) {
+        bool init() override {
+            cocos2d::ValueMap args;
+            args["class"] = cocos2d::Value("PoisonGlyph");
+            args["name"] = cocos2d::Value("Poison");
+            args["tile_image"] = cocos2d::Value("PoisonGlyph.png");
+            args["type"] = cocos2d::Value("glyph");
+            return init(args);
+        }
+
+        bool init(cocos2d::ValueMap args) override {
+            return Tile::init(args);
+        }
+
+        static PoisonGlyph* create(cocos2d::ValueMap args) {
             PoisonGlyph * pRet = new(std::nothrow) PoisonGlyph();
             if (pRet && pRet->init(args)) {
                 pRet->autorelease();
@@ -24,6 +37,7 @@ namespace lorafel {
             }
         }
 
+        CREATE_FUNC(PoisonGlyph);
 
     };
 }

@@ -12,23 +12,34 @@
 namespace lorafel {
     class GrapeTile : public Tile {
     public:
-        virtual bool init() override {
-            if(!Tile::init()) {
-                return false;
-            }
+        bool init() override {
+            cocos2d::ValueMap args;
+            args["class"] = cocos2d::Value("Tile");
+            args["name"] = cocos2d::Value("Grapes");
+            args["tile_image"] = cocos2d::Value("grapes.png");
+            args["type"] = cocos2d::Value("generic");
+            args["xp"] = cocos2d::Value(10);
 
-            if (initWithSpriteFrameName("grapes.png"))
-            {
-                setTileName("Grapes");
-                initOptions();
-                addEvents();
-                addStatResult(new XpStatResult(2));
-                return true;
-            }
-            return false;
+            return init(args);
+        }
+
+        bool init(cocos2d::ValueMap args) override {
+            return Tile::init(args);
         }
 
         CREATE_FUNC(GrapeTile);
+
+        static GrapeTile* create(cocos2d::ValueMap args) {
+            GrapeTile * pRet = new(std::nothrow) GrapeTile();
+            if (pRet && pRet->init(args)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
     };
 }
 

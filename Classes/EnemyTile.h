@@ -11,7 +11,7 @@
 namespace lorafel {
     class EnemyTile : public Tile {
     public:
-        bool init() override;
+        bool init(cocos2d::ValueMap args) override;
 
         virtual void onMatch(Match* pMatch) override;
         virtual void onHit(cocos2d::EventCustom* event);

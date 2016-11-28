@@ -8,14 +8,13 @@
 
 #include "EnemyTile.h"
 #include "EventDataFloatie.h"
-#include "Globals.h"
 #include "PlayerManager.h"
 #include "Level.h"
 
 using namespace lorafel;
 
-bool EnemyTile::init() {
-    if(!Tile::init()) {
+bool EnemyTile::init(cocos2d::ValueMap args) {
+    if(!Tile::init(args)) {
         return false;
     }
     // Add event listener for onHit()

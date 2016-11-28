@@ -50,6 +50,20 @@ namespace lorafel {
         virtual void onMatch(Match* pMatch);
 
 //        CREATE_FUNC(Tile);
+        static Tile* create(cocos2d::ValueMap args) {
+            Tile *pRet = new(std::nothrow) Tile();
+            if (pRet && pRet->init(args))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
 
         const unsigned int MIN_MATCH_SIZE = 3;
         void addStatResult(StatResult* pStatResult) { m_pStatResults->insert(pStatResult); }

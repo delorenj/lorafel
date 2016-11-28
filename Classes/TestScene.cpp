@@ -32,7 +32,7 @@ bool TestScene::init() {
     m_pSwappyGrid = SwappyGrid::create();
 
     // Load the level
-    m_pLevel =  new Level__TestLevelFive(m_pSwappyGrid);
+    m_pLevel =  new Level__TestLevelFour(m_pSwappyGrid);
 
     return SwappyGridScene::init();
 }

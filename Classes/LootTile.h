@@ -12,7 +12,7 @@
 namespace lorafel {
     class LootTile : public Tile, public IInventoryable {
     public:
-        virtual bool init(ValueMap args);
+        virtual bool init(ValueMap args) override;
 
         static LootTile* create(ValueMap args) {
             LootTile* pRet = new(std::nothrow) LootTile();

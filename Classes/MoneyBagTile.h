@@ -12,21 +12,18 @@
 namespace lorafel {
     class MoneyBagTile : public Tile {
     public:
+        bool init() override {
+            cocos2d::ValueMap args;
+            args["class"] = cocos2d::Value("MoneyBagTile");
+            args["name"] = cocos2d::Value("Money");
+            args["tile_image"] = cocos2d::Value("money_bag_1.png");
+            args["type"] = cocos2d::Value("money");
+
+            return init(args);
+        }
         virtual bool init(cocos2d::ValueMap args) override {
-            if(!Tile::init()) {
-                return false;
-            }
-
-            if (initWithSpriteFrameName("money_bag_1.png"))
-            {
-                setTileName("MoneyBag");
-                initOptions();
-                addEvents();
-                addStatResult(new GoldStatResult(100));
-                return true;
-            }
-            return false;
-
+            addStatResult(new GoldStatResult(100));
+            return Tile::init(args);
         }
 
         static MoneyBagTile *create(cocos2d::ValueMap args) {
@@ -40,6 +37,8 @@ namespace lorafel {
                 return nullptr;
             }
         }
+
+        CREATE_FUNC(MoneyBagTile);
     };
 }
 #endif //LORAFEL_MONEYBAGTILE_H

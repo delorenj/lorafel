@@ -32,7 +32,7 @@ bool lorafel::Tile::init(cocos2d::ValueMap args) {
             "Attack" : m_arguments["name"].asString();
 
     int xp = m_arguments["xp"].isNull() ?
-            0 : m_arguments["xp"].asInteger();
+            0 : m_arguments["xp"].asInt();
 
     if(xp > 0) {
         addStatResult(new XpStatResult(xp));

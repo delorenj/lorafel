@@ -13,6 +13,19 @@ namespace lorafel {
     public:
         virtual void onMatch(Match* pMatch) override;
 
+        bool init() override {
+            cocos2d::ValueMap args;
+            args["class"] = cocos2d::Value("StormGlyph");
+            args["name"] = cocos2d::Value("Storm");
+            args["tile_image"] = cocos2d::Value("Storm.png");
+            args["type"] = cocos2d::Value("glyph");
+            return init(args);
+        }
+
+        bool init(cocos2d::ValueMap args) override {
+            return Tile::init(args);
+        }
+
         static StormGlyph *create(cocos2d::ValueMap args) {
             StormGlyph * pRet = new(std::nothrow) StormGlyph();
             if (pRet && pRet->init(args)) {
@@ -25,6 +38,7 @@ namespace lorafel {
             }
         }
 
+        CREATE_FUNC(StormGlyph);
     };
 }
 
