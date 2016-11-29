@@ -23,7 +23,7 @@ extern "C" {
 //#endif
 
 namespace lorafel {
-    #define DISABLE_RANDOM_SEED 1
+    #define DISABLE_RANDOM_SEED 0
     #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
     #define DISTRIBUTE(idx, total, size) ((float)size/(2*total) * (1+2*idx))
     #define PTM_RATIO 300.0f  // Pixels-to-Meters

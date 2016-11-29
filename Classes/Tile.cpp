@@ -20,6 +20,7 @@ bool lorafel::Tile::init(cocos2d::ValueMap args) {
     if(!cocos2d::Sprite::init()) {
         return false;
     }
+    m_arguments = args;
     m_pStatResults = new std::set<StatResult*>();
     m_pLoot = new TileConfigs();
     setTag(Tag::TILE);
@@ -29,7 +30,7 @@ bool lorafel::Tile::init(cocos2d::ValueMap args) {
             "close-modal-x.png" : m_arguments["tile_image"].asString();
 
     std::string tileName = m_arguments["name"].isNull() ?
-            "Attack" : m_arguments["name"].asString();
+            "BaseTile" : m_arguments["name"].asString();
 
     int xp = m_arguments["xp"].isNull() ?
             0 : m_arguments["xp"].asInt();

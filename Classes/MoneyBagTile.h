@@ -22,8 +22,13 @@ namespace lorafel {
             return init(args);
         }
         virtual bool init(cocos2d::ValueMap args) override {
+            if(!Tile::init(args)) {
+                return false;
+            }
+
             addStatResult(new GoldStatResult(100));
-            return Tile::init(args);
+
+            return true;
         }
 
         static MoneyBagTile *create(cocos2d::ValueMap args) {
