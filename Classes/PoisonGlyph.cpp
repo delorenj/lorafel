@@ -15,20 +15,3 @@ void PoisonGlyph::onMatch(Match* pMatch) {
         Tile::onMatch(pMatch);
     }
 }
-
-bool PoisonGlyph::init() {
-    if(!GlyphTile::init()) {
-        return false;
-    }
-
-    if (initWithSpriteFrameName("PoisonGlyph.png"))
-    {
-        setTileName("PoisonGlyph");
-        initOptions();
-        addEvents();
-        return true;
-    }
-    return false;
-}
-
-

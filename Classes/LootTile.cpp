@@ -9,7 +9,7 @@
 using namespace lorafel;
 
 bool LootTile::init(ValueMap args) {
-    if(!Tile::init()) {
+    if(!Tile::init(args)) {
         return false;
     }
 

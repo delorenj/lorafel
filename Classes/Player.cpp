@@ -6,7 +6,7 @@
 #include "EventDataPair.h"
 #include "ItemAttribute.h"
 #include "Weapon.h"
-#include "EnemyTile.h"
+#include "LinearXpManager.h"
 
 using namespace lorafel;
 

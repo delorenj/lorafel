@@ -2,8 +2,8 @@
 // Created by Jarad DeLorenzo on 1/18/16.
 //
 
-#ifndef LORAFEL_LEVELMANAGER_H
-#define LORAFEL_LEVELMANAGER_H
+#ifndef LORAFEL_XPMANAGER_H
+#define LORAFEL_XPMANAGER_H
 
 #include "EventDataInteger.h"
 #include "EventDataFloatie.h"
@@ -71,4 +71,4 @@ namespace lorafel {
     };
 
 }
-#endif //LORAFEL_LEVELMANAGER_H
+#endif //LORAFEL_XPMANAGER_H

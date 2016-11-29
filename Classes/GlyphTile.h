@@ -12,14 +12,12 @@ namespace lorafel {
     class GlyphTile : public Tile {
     public:
         virtual bool init(cocos2d::ValueMap args) override {
-            if(!Tile::init(args)) {
-                return false;
-            }
-
+            args["type"] = cocos2d::Value("glyph");
             setTag(Tag::GLYPH);
             initOptions();
             addEvents();
-            return true;
+
+            return Tile::init(args);
         }
 
         virtual void onMatch(Match* pMatch) override = 0;

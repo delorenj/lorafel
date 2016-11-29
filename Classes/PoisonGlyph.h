@@ -17,12 +17,11 @@ namespace lorafel {
             args["class"] = cocos2d::Value("PoisonGlyph");
             args["name"] = cocos2d::Value("Poison");
             args["tile_image"] = cocos2d::Value("PoisonGlyph.png");
-            args["type"] = cocos2d::Value("glyph");
             return init(args);
         }
 
         bool init(cocos2d::ValueMap args) override {
-            return Tile::init(args);
+            return GlyphTile::init(args);
         }
 
         static PoisonGlyph* create(cocos2d::ValueMap args) {

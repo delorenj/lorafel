@@ -5,10 +5,10 @@
 #ifndef LORAFEL_PLAYER_H
 #define LORAFEL_PLAYER_H
 
+#include "XpManager.h"
 #include "Progress.h"
 #include "Achievements.h"
 #include "Inventory.h"
-#include "LinearXpManager.h"
 #include "HeroTile.h"
 #include "Consumable.h"
 #include "Hook.h"
@@ -105,7 +105,7 @@ namespace lorafel {
 
         cocos2d::EventDispatcher* m_pDispatcher;
 
-        LinearXpManager* m_pXpManager;
+        XpManager* m_pXpManager;
         std::shared_ptr<EquipSerializer> m_pEquipSerializer;
         std::shared_ptr<InventorySlotSerializer> m_pInventorySlotSerializer;
         Progress*   m_pProgress;

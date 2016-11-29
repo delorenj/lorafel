@@ -170,19 +170,18 @@ int HeroTile::getMaxMoveDistance() {
 }
 
 bool HeroTile::init(const char* string) {
-    if(!Tile::init()) {
+    cocos2d::ValueMap args;
+    args["class"] = cocos2d::Value("HeroTile");
+    args["name"] = cocos2d::Value("Hero");
+    args["tile_image"] = cocos2d::Value(string);
+    args["type"] = cocos2d::Value("hero");
+
+    if(!Tile::init(args)) {
         return false;
     }
     
-    if (initWithSpriteFrameName(string))
-    {
-        setTileName("Hero");
-        initOptions();
-        addEvents();
-        setTag(Tag::HERO);
-        return true;
-    }
-    return false;
+    setTag(Tag::HERO);
+    return true;
 }
 
 

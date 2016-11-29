@@ -3,9 +3,9 @@
 //
 
 #include "Globals.h"
+#include "LevelManager.h"
 #include "FirebaseDatabase.h"
 #include "PlayerManager.h"
-#include "LevelManager.h"
 #include "LootFactory.h"
 
 using namespace lorafel;

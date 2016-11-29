@@ -18,7 +18,6 @@ namespace lorafel {
             args["class"] = cocos2d::Value("StormGlyph");
             args["name"] = cocos2d::Value("Storm");
             args["tile_image"] = cocos2d::Value("Storm.png");
-            args["type"] = cocos2d::Value("glyph");
             return init(args);
         }
 

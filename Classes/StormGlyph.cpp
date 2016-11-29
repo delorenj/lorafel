@@ -16,18 +16,3 @@ void StormGlyph::onMatch(Match* pMatch) {
     }
 }
 
-bool StormGlyph::init() {
-    if(!GlyphTile::init()) {
-        return false;
-    }
-    if (initWithSpriteFrameName("Storm.png"))
-    {
-        setTileName("StormGlyph");
-        initOptions();
-        addEvents();
-        return true;
-    }
-    return false;
-}
-
-
