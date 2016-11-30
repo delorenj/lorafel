@@ -17,14 +17,14 @@ namespace lorafel {
     public:
         bool init() override {
             cocos2d::ValueMap args;
-            args["class"] = cocos2d::Value("StickMan");
-            args["name"] = cocos2d::Value("Stick Man");
-            args["tile_image"] = cocos2d::Value("enemy1.png");
+            args["class"] = cocos2d::Value("DeathBearTile");
+            args["name"] = cocos2d::Value("Death Bear");
+            args["tile_image"] = cocos2d::Value("bear.png");
             args["type"] = cocos2d::Value("enemy");
             args["xp"] = cocos2d::Value(500);
             args["hp"] = cocos2d::Value(500);
             args["ai"] = cocos2d::Value("RandomAIStrategy");
-            args["avatar_image"] = cocos2d::Value("stick_man_avatar.png");
+            args["avatar_image"] = cocos2d::Value("bear.png");
             cocos2d::ValueVector glyphVec;
             cocos2d::ValueMap g1;
             g1["f"] = cocos2d::Value(5);
@@ -60,6 +60,21 @@ namespace lorafel {
 
             return true;
 
+        }
+
+        static DeathBearTile* create(cocos2d::ValueMap args) {
+            DeathBearTile *pRet = new(std::nothrow) DeathBearTile();
+            if (pRet && pRet->init(args))
+            {
+                pRet->autorelease();
+                return pRet;
+            }
+            else
+            {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
         }
 
         CREATE_FUNC(DeathBearTile);

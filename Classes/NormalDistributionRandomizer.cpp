@@ -48,3 +48,7 @@ int NormalDistributionRandomizer::randomize(std::vector<int> freqs) {
     }
     return closest.at(0);
 }
+
+int NormalDistributionRandomizer::randomize(unsigned long size) {
+    return 0;
+}

@@ -12,6 +12,7 @@ namespace lorafel {
     class NormalDistributionRandomizer : public IRandomizerStrategy {
     public:
         virtual int randomize(std::vector<int>);
+        virtual int randomize(unsigned long size);
 
     };
 }

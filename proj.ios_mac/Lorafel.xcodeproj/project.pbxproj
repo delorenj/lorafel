@@ -50,6 +50,7 @@
 		3167D433E3AA7638CEE883E1 /* DragDropSwapPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */; };
 		3167D4611C0E4D3D96CA7B85 /* HealthPotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D348CBC09FA0BADA4EC3 /* HealthPotion.cpp */; };
 		3167D46DC6F8F83AE6CCEA72 /* InventoryItemGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D23DCFE93538B0B58DE1 /* InventoryItemGrid.cpp */; };
+		3167D478D13A6EBFBB179A79 /* TileFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D74EBE66B20CC445B202 /* TileFactory.cpp */; };
 		3167D479605B30DDA161077B /* BasicPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9D17AF091C13F049D49 /* BasicPlayerMove.cpp */; };
 		3167D48F90EAF43F43E8B8A9 /* ItemSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0C811C57107CDCDBC35 /* ItemSlot.cpp */; };
 		3167D4B06AAC1D06E119952A /* SwappyGridScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DFCA43B41F588C909E35 /* SwappyGridScene.cpp */; };
@@ -392,6 +393,7 @@
 		3167D7411B55CD0C1499942D /* EventDataInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataInteger.h; sourceTree = "<group>"; };
 		3167D74728B7D5D4FADC213D /* Level__TestLevelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelTwo.h; sourceTree = "<group>"; };
 		3167D7496BDEFAAC3CD161CF /* GrapeTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrapeTile.h; sourceTree = "<group>"; };
+		3167D74EBE66B20CC445B202 /* TileFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileFactory.cpp; sourceTree = "<group>"; };
 		3167D751BB27D11D8CE6DD09 /* FirebaseDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirebaseDatabase.cpp; sourceTree = "<group>"; };
 		3167D7564FDA1E75B77C2270 /* MatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResult.h; sourceTree = "<group>"; };
 		3167D78F09EBD46C0BDDFAE9 /* NormalDistributionRandomizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDistributionRandomizer.h; sourceTree = "<group>"; };
@@ -1022,6 +1024,7 @@
 				3167D35A416C5C766DB4B21D /* DeathBearTile.h */,
 				3167D46E06AA3EEC8171F5DB /* LevelManager.cpp */,
 				3167DF6C8A00ABC3B28D19FA /* LevelManager.h */,
+				3167D74EBE66B20CC445B202 /* TileFactory.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1492,6 +1495,7 @@
 				3167D9CD8E374D3A5BDF936C /* Armor.cpp in Sources */,
 				3167D5654CF4C067985D810D /* LevelClearedUI.cpp in Sources */,
 				3167D5A0BC47782EE1A4B9E5 /* LevelManager.cpp in Sources */,
+				3167D478D13A6EBFBB179A79 /* TileFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

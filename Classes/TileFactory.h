@@ -6,10 +6,31 @@
 #ifndef LORAFEL_TILEFACTORY_H
 #define LORAFEL_TILEFACTORY_H
 
-#include <vector>
+
+#import "Tile.h"
 
 namespace lorafel {
-    class Tile;
+    class TileFactory {
+    protected:
+        TileFactory() {
+            init();
+        };
+
+        virtual void init();
+
+    public:
+        static TileFactory* getInstance() {
+            if (_instance == nullptr) {
+                _instance = new TileFactory();
+            }
+            return _instance;
+        }
+
+        lorafel::Tile* create(cocos2d::ValueMap args);
+
+    protected:
+        static TileFactory* _instance;
+    };
 
 }
 

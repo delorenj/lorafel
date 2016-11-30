@@ -4,6 +4,7 @@
 
 #include "Level.h"
 #include "LootFactory.h"
+#include "TileFactory.h"
 
 using namespace lorafel;
 
@@ -37,4 +38,17 @@ lorafel::Tile* Level::getRandomLoot(Tile* sourceTile) {
      * passed in. For now, let's just try it plain-style
      */
     return LootFactory::getInstance()->createTile();
+}
+
+lorafel::Tile * Level::createTileFromGridPos(int x, int y) {
+    for(auto entry : m_staticTiles) {
+        auto pos = entry.first;
+        auto tileArgs = entry.second;
+
+        if(pos.first == x && pos.second == y) {
+            return TileFactory::getInstance()->create(tileArgs);
+        }
+    }
+
+    return nullptr;
 }
