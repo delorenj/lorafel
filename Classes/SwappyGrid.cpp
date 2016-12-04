@@ -13,6 +13,7 @@
 #include "MeleeAttackTile.h"
 #include "GridUI.h"
 #include "LevelClearedUI.h"
+#include "LevelManager.h"
 
 using namespace lorafel;
 
@@ -235,7 +236,7 @@ void SwappyGrid::ReplenishTiles() {
     if(state->getName() == "WaitForAnimationState") return;
 
     if(m_pActivePlayerTile == nullptr)
-        m_pActivePlayerTile = m_pLevel->getTurnManager()->getNextPlayerTile();
+        m_pActivePlayerTile = LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->getNextPlayerTile();
     
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
@@ -420,7 +421,7 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
      * add it to the turn manager
      */
     if (pTile->getTag() == Tag::HERO || pTile->getTag() == Tag::ENEMY) {
-        m_pLevel->getTurnManager()->addPlayerTile(pTile);
+        LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addPlayerTile(pTile);
 
         if(pTile->getTag() == Tag::HERO) {
             PlayerManager::getInstance()->getPlayer()->equipHook();
@@ -436,7 +437,7 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
 }
 
 void SwappyGrid::addRandomTileToDropQueue(int column) {
-    Tile* tile = getLevel()->getRandomTile();
+    Tile* tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
     addTileToDropQueue(column, tile);
 }
 
@@ -526,7 +527,7 @@ void SwappyGrid::ProcessMatches() {
             setIdleState();
         }
 
-    } else if (m_pLevel->isCleared()) {
+    } else if (LevelManager::getInstance()->getCurrentLevel()->isCleared()) {
         // Check to see if level is cleared
         // If so, fire off the end level state
         onLevelCleared();
@@ -587,14 +588,6 @@ void SwappyGrid::clearVisitStates() {
             tile->setVisitOrder(0);
         }
     }
-}
-
-void SwappyGrid::setLevel(Level* pLevel) {
-    m_pLevel = pLevel;
-}
-
-Level* SwappyGrid::getLevel() {
-    return m_pLevel;
 }
 
 int SwappyGrid::lowestVacancyInColumn(int i) {
@@ -697,7 +690,7 @@ void SwappyGrid::ProcessTurnManager() {
             return;
         }
 
-        auto turnManager = m_pLevel->getTurnManager();
+        auto turnManager = LevelManager::getInstance()->getCurrentLevel()->getTurnManager();
         auto tile = turnManager->getNextPlayerTile();
 
         m_pActivePlayerTile = tile;  // set this for faster access in the game loop
@@ -751,7 +744,7 @@ void SwappyGrid::ProcessEnemyTurns() {
 void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
     getMoveStack()->push(pMove);
     getMoveStack()->top()->run();
-    getLevel()->getTurnManager()->addMove(pMove);
+    LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addMove(pMove);
 }
 
 lorafel::Tile* SwappyGrid::getActivePlayerTile() {
@@ -850,7 +843,7 @@ SwappyGrid::~SwappyGrid() {
 
     CC_SAFE_DELETE(m_pTileRemoveQueue);
     CC_SAFE_DELETE(m_pGrid);
-//    CC_SAFE_DELETE(m_pLevel);
+//    CC_SAFE_DELETE(LevelManager::getInstance()->getCurrentLevel());
     CC_SAFE_DELETE(m_pTileMatcher);
 }
 

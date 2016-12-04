@@ -13,7 +13,7 @@ lorafel::Tile* Level::getRandomTile() {
     for (int i = 0; i < m_pTileConfigs->size(); ++i) {
         probs.push_back(m_pTileConfigs->at(i)->frequency);
     }
-    int result = randomizer->randomize(probs);
+    int result = m_pRandomizer->randomize(probs);
     return m_pTileConfigs->at(result)->create();
 }
 
@@ -51,4 +51,45 @@ lorafel::Tile * Level::createTileFromGridPos(int x, int y) {
     }
 
     return nullptr;
+}
+
+void Level::addTransparencyGrid() {
+    /**
+     * Insert background transparency tiles
+     */
+    for (int i = 0; i < SwappyGrid::NUM_COLUMNS; i++) {
+        for (int j = 0; j < SwappyGrid::NUM_ROWS; j++) {
+            GridTransparency::Tile::Color color = (i + j) % 2 == 0 ? GridTransparency::Tile::Color::LIGHT : GridTransparency::Tile::Color::DARK;
+            GridTransparency::Tile::Type type;
+
+            if (i == 0 && j == SwappyGrid::NUM_ROWS - 1) { // TopLeft
+                type = GridTransparency::Tile::Type::TOP_LEFT;
+            } else if (i == 0 && j > 0 && j < SwappyGrid::NUM_ROWS - 1) {
+                type = GridTransparency::Tile::Type::LEFT;
+            } else if (i == 0 && j == 0) {
+                type = GridTransparency::Tile::Type::BOTTOM_LEFT;
+            } else if (i > 0 && j == 0 && i < SwappyGrid::NUM_COLUMNS - 1) {
+                type = GridTransparency::Tile::Type::BOTTOM;
+            } else if (j == 0 && i == SwappyGrid::NUM_COLUMNS - 1) {
+                type = GridTransparency::Tile::Type::BOTTOM_RIGHT;
+            } else if (j < SwappyGrid::NUM_ROWS - 1 && j > 0 && i == SwappyGrid::NUM_COLUMNS - 1) {
+                type = GridTransparency::Tile::Type::RIGHT;
+            } else if (j == SwappyGrid::NUM_ROWS - 1 && i == SwappyGrid::NUM_COLUMNS - 1) {
+                type = GridTransparency::Tile::Type::TOP_RIGHT;
+            } else if (i > 0 && i < SwappyGrid::NUM_COLUMNS - 1 && j == SwappyGrid::NUM_ROWS - 1) {
+                type = GridTransparency::Tile::Type::TOP;
+            } else {
+                type = GridTransparency::Tile::Type::CENTER;
+            }
+
+            m_pSwappyGrid->getGridTransparency()->insertTile(
+                    m_pSwappyGrid->gridToScreen(i, j),
+                    GridTransparency::Tile(color, type)
+            );
+        }
+    }
+}
+
+void Level::addStaticTile(std::pair<int, int> pos, ValueMap args) {
+    m_staticTiles[pos] = args;
 }

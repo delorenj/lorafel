@@ -17,7 +17,7 @@ namespace lorafel {
     public:
         Level__TestLevelOne(SwappyGrid *grid) : SeededLevel(grid) {
             m_pTileConfigs = new TileConfigs();
-            randomizer = new NormalDistributionRandomizer();
+            m_pRandomizer = new NormalDistributionRandomizer();
             TileConfig *config = new TileConfig();
             config->factory = AvocadoFactory::getInstance();
             config->frequency = 5;

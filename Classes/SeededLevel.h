@@ -11,10 +11,9 @@
 namespace lorafel {
     class SeededLevel : public Level {
     public:
-        SeededLevel(SwappyGrid* grid) : Level(grid) { };
-
-        virtual ~SeededLevel() {
-            while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
+        SeededLevel(SwappyGrid* grid) : Level() {
+            setSwappyGrid(grid);
+            addTransparencyGrid();
         };
 
         virtual void load() override {

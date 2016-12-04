@@ -11,6 +11,7 @@
 #include "RandomAIStrategy.h"
 #include "PoisonGlyph.h"
 #include "StormGlyph.h"
+#include "LevelManager.h"
 
 namespace lorafel {
     class DeathBearTile : public EnemyTile {
@@ -85,7 +86,8 @@ namespace lorafel {
          * drop normal tiles mixed in with the mean glyphs
          */
         Tile* getRandomGlyph() override {
-            return CCRANDOM_0_1() < 0.5f ? m_pSwappyGrid->getLevel()->getRandomTile() : EnemyTile::getRandomGlyph();
+            auto level = LevelManager::getInstance()->getCurrentLevel();
+            return CCRANDOM_0_1() < 0.5f ? level->getRandomTile() : EnemyTile::getRandomGlyph();
         };
     };
 }

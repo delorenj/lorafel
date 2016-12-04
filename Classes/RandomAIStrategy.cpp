@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "BasicPlayerMove.h"
 #include "Level.h"
+#include "LevelManager.h"
 
 using namespace lorafel;
 
@@ -41,7 +42,7 @@ std::vector<PlayerMove*> RandomAIStrategy::getValidMoves() {
      * Get the active playing tile. If hero, there's a lot
      * more valid moves. If enemy, just can move adjacent
      */
-    auto tile = m_pSwappyGrid->getLevel()->getTurnManager()->getActivePlayerTile();
+    auto tile = LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->getActivePlayerTile();
 
     // If enemy, just get adjacent moves
     if(tile->getTag() == Tag::ENEMY) {

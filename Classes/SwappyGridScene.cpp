@@ -26,7 +26,6 @@ bool SwappyGridScene::init() {
     m_pGridUI->ignoreAnchorPointForPosition(false);
     addChild(m_pGridUI,LayerOrder::UX);
 
-    m_pSwappyGrid->setLevel(m_pLevel);
     m_pSwappyGrid->setGridUI(m_pGridUI);
     addChild(m_pSwappyGrid, LayerOrder::TILES);
     m_pLevel->load();

@@ -72,10 +72,9 @@ namespace lorafel {
         Tile* getTileAt(const cocos2d::Vec2 pos) const;
         Tile* getTileAt(const int x, const int y) const;
         void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
-        void setLevel(Level* pLevel);
         float getTileScaleFactor() const {return m_tileScaleFactor;}
         void addTileToRemoveQueue(Tile* pTile);
-        Level* getLevel();
+
         int getNumberOfRemainingEnemies();
         std::set<Tile*> getEnemyTiles();
         void executePlayerMove(PlayerMove* pMove);

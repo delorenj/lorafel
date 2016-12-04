@@ -19,64 +19,27 @@
 #include "PlayerManager.h"
 
 namespace lorafel {
-    class Level {
+    class Level : public Ref {
 
     public:
-        Level(SwappyGrid* grid) : m_pSwappyGrid(grid) {
-            m_pTurnManager = new BasicTurnManager();
-            m_pTurnManager->setSwappyGrid(m_pSwappyGrid);
-
+        Level() {
             m_pTileConfigs = new Tile::TileConfigs();
-            #ifdef DISABLE_RANDOM_SEED
-                        randomizer = new StupidRandomizer();
-            #else
-                        randomizer = new NormalDistributionRandomizer();
-            #endif
 
-            /**
-             * Insert background transparency tiles
-             */
-            for (int i = 0; i < SwappyGrid::NUM_COLUMNS; i++) {
-                for (int j = 0; j < SwappyGrid::NUM_ROWS; j++) {
-                    GridTransparency::Tile::Color color = (i + j) % 2 == 0 ? GridTransparency::Tile::Color::LIGHT : GridTransparency::Tile::Color::DARK;
-                    GridTransparency::Tile::Type type;
-
-                    if (i == 0 && j == SwappyGrid::NUM_ROWS - 1) { // TopLeft
-                        type = GridTransparency::Tile::Type::TOP_LEFT;
-                    } else if (i == 0 && j > 0 && j < SwappyGrid::NUM_ROWS - 1) {
-                        type = GridTransparency::Tile::Type::LEFT;
-                    } else if (i == 0 && j == 0) {
-                        type = GridTransparency::Tile::Type::BOTTOM_LEFT;
-                    } else if (i > 0 && j == 0 && i < SwappyGrid::NUM_COLUMNS - 1) {
-                        type = GridTransparency::Tile::Type::BOTTOM;
-                    } else if (j == 0 && i == SwappyGrid::NUM_COLUMNS - 1) {
-                        type = GridTransparency::Tile::Type::BOTTOM_RIGHT;
-                    } else if (j < SwappyGrid::NUM_ROWS - 1 && j > 0 && i == SwappyGrid::NUM_COLUMNS - 1) {
-                        type = GridTransparency::Tile::Type::RIGHT;
-                    } else if (j == SwappyGrid::NUM_ROWS - 1 && i == SwappyGrid::NUM_COLUMNS - 1) {
-                        type = GridTransparency::Tile::Type::TOP_RIGHT;
-                    } else if (i > 0 && i < SwappyGrid::NUM_COLUMNS - 1 && j == SwappyGrid::NUM_ROWS - 1) {
-                        type = GridTransparency::Tile::Type::TOP;
-                    } else {
-                        type = GridTransparency::Tile::Type::CENTER;
-                    }
-
-                    m_pSwappyGrid->getGridTransparency()->insertTile(
-                            m_pSwappyGrid->gridToScreen(i, j),
-                            GridTransparency::Tile(color, type)
-                    );
-                }
-            }
         };
 
-        virtual ~Level() { };
+        virtual ~Level() {
+            while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
+        };
 
         Level(Tile::TileConfigs* configs) {
             this->m_pTileConfigs = configs;
         }
 
         virtual bool isCleared() const;
+        virtual void addTransparencyGrid();
 
+        void setSwappyGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
+        SwappyGrid* getSwappyGrid() const { return m_pSwappyGrid; }
         Tile::TileConfigs* getTileConfigs() { return m_pTileConfigs; }
         void setTileConfigs(Tile::TileConfigs* configs) { this->m_pTileConfigs = configs; }
 
@@ -98,12 +61,27 @@ namespace lorafel {
         }
 
         TurnManager* getTurnManager();
+        void setTurnManager(TurnManager* tm) { m_pTurnManager = tm; }
+
+        IRandomizerStrategy* getRandomizer() { return m_pRandomizer; }
+        void setRandomizer(IRandomizerStrategy* randomizerStrategy) { m_pRandomizer = randomizerStrategy; }
+
+        void addTileConfig(Tile::TileConfig* tileConfig) {
+            m_pTileConfigs->push_back(tileConfig);
+        }
+
+        void addStaticTile(std::pair<int, int> pos, ValueMap args);
+
+        std::string getImage() { return m_image; }
+        void setImage(std::string image) { m_image = image; }
 
     protected:
         SwappyGrid* m_pSwappyGrid;
+
         Tile::TileConfigs* m_pTileConfigs;
-        IRandomizerStrategy* randomizer;
+        IRandomizerStrategy* m_pRandomizer;
         TurnManager* m_pTurnManager;
+        std::string m_image = "bg1.png";
         std::map<std::pair<int, int>, cocos2d::ValueMap > m_staticTiles;
     };
 }

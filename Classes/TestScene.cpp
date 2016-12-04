@@ -9,6 +9,7 @@
 #include "TestScene.h"
 #include "Level__TestLevelFour.h"
 #include "Level__TestLevelFive.h"
+#include "LevelManager.h"
 
 
 using namespace lorafel;
@@ -25,14 +26,16 @@ bool TestScene::init() {
         return false;
     }
 
-    // Set the background
-    m_pBackground = Sprite::create("bg1.png");
 
     // Create the grid
     m_pSwappyGrid = SwappyGrid::create();
 
     // Load the level
-    m_pLevel =  new Level__TestLevelFive(m_pSwappyGrid);
+    LevelManager::getInstance()->setSwappyGrid(m_pSwappyGrid);
+    m_pLevel = LevelManager::getInstance()->createLevel(1);
+
+    // Set the background
+    m_pBackground = Sprite::create(m_pLevel->getImage());
 
     return SwappyGridScene::init();
 }

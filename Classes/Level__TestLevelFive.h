@@ -21,7 +21,7 @@ namespace lorafel {
     class Level__TestLevelFive : public Level {
     public:
 
-        Level__TestLevelFive(SwappyGrid *grid) : Level(grid) {
+        Level__TestLevelFive(SwappyGrid *grid) : Level() {
 
             Tile::TileConfig *config = new Tile::TileConfig();
 
