@@ -103,30 +103,27 @@ Level* LevelManager::createLevel(int levelId) {
     /**
      * Static Tiles
      */
-    cocos2d::ValueMap args;
-    args["class"] = cocos2d::Value("HeroTile");
-    auto pair = std::make_pair(2,3);
-    level->addStaticTile(pair, args);
+    auto staticTiles = levelConfig["static"].asValueVector();
 
-    args["class"] = cocos2d::Value("StickMan");
-    args["name"] = cocos2d::Value("Stick Man");
-    args["tile_image"] = cocos2d::Value("enemy1.png");
-    args["type"] = cocos2d::Value("enemy");
-    args["xp"] = cocos2d::Value(500);
-    args["hp"] = cocos2d::Value(500);
-    args["ai"] = cocos2d::Value("RandomAIStrategy");
-    args["avatar_image"] = cocos2d::Value("stick_man_avatar.png");
-    cocos2d::ValueVector glyphVec;
-    cocos2d::ValueMap g1;
-    g1["f"] = cocos2d::Value(5);
-    g1["id"] = cocos2d::Value("poison");
-    glyphVec.push_back(cocos2d::Value(g1));
-    cocos2d::ValueMap g2;
-    g2["f"] = cocos2d::Value(5);
-    g2["id"] = cocos2d::Value("storm");
-    glyphVec.push_back(cocos2d::Value(g2));
-    args["glyphs"] = glyphVec;
-    level->addStaticTile(std::make_pair(6,7), args);
+    for(auto tileConfig : staticTiles) {
+        int x,y;
+        auto id = tileConfig.asValueMap()["id"].asString();
+
+        if(!tileConfig.asValueMap()["x"].isNull()) {
+            x = tileConfig.asValueMap()["x"].asInt();
+        } else {
+            x = RandomHelper::random_int(0, SwappyGrid::NUM_COLUMNS);
+        }
+
+        if(!tileConfig.asValueMap()["y"].isNull()) {
+            y = tileConfig.asValueMap()["y"].asInt();
+        } else {
+            y = RandomHelper::random_int(0, SwappyGrid::NUM_ROWS);
+        }
+
+        auto args = tileDefs[id].asValueMap();
+        level->addStaticTile(std::make_pair(x,y), args);
+    }
 
     m_pCurrentLevel = level;
     return m_pCurrentLevel;
