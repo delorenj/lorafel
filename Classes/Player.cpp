@@ -194,7 +194,10 @@ int Player::getRandHit(EnemyTile *pEnemyTile) {
          * If item is a consumable,
          * don't try to look up stats
          */
-        if(dynamic_cast<Consumable*>(item) != nullptr) continue;
+        auto thing = dynamic_cast<Consumable*>(item);
+        if(thing != nullptr) {
+            continue;
+        }
         auto stats = item->getItemStats();
         for(auto stat : *stats) {
             if(stat->getName() == "Attack") {
@@ -224,11 +227,12 @@ int Player::getRandHit(EnemyTile *pEnemyTile) {
     return attack;
 }
 
-std::vector<NonConsumable*> Player::getEquippedItems() {
-    std::vector<NonConsumable*> items;
+std::vector<Item*> Player::getEquippedItems() {
+    std::vector<Item*> items;
     for(auto item : m_equipDictionary) {
         if(item.second == nullptr) continue;
-        items.push_back((NonConsumable*) item.second);
+        Item* i = item.second;
+        items.push_back(i);
     }
     return items;
 }

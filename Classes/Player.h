@@ -87,7 +87,7 @@ namespace lorafel {
         void setDef(int def) { m_def = def; }
         int getMaxMoveDistance() { return m_maxMoveDistance; }
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
-        std::vector<NonConsumable*> getEquippedItems();
+        std::vector<Item*> getEquippedItems();
 
     protected:
         // Current Stats
