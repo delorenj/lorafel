@@ -50,7 +50,7 @@ void GridUI::initEnemyUIs() {
     auto _listener = cocos2d::EventListenerCustom::create("new_enemy", [=](cocos2d::EventCustom* event){
         auto eventData = static_cast<EventDataTile*>(event->getUserData());
         auto tile = eventData->data;
-        auto guage = StatGuage::create(
+        auto gauge = StatGuage::create(
                 "stick_man_avatar.png",
                 "enemy_bar.png",
                 std::bind([](){ return 0;}),
@@ -58,13 +58,13 @@ void GridUI::initEnemyUIs() {
                 std::bind([=](){ return tile->getHp();})
         );
 
-        m_vecEnemyHpUI.push_back(guage);
-        guage->setAnchorPoint(cocos2d::Vec2(1,1));
-        CCLOG("Adding enemy guage at y=%f, #guages=%d", m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (getContentSize().height * m_vecEnemyHpUI.size()),(int)m_vecEnemyHpUI.size());
-        guage->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (guage->getContentSize().height * m_vecEnemyHpUI.size())));
-        guage->setTag(Tag::UI);
-        guage->setName("EnemyHpUI");
-        addChild(guage);
+        m_vecEnemyHpUI.push_back(gauge);
+        gauge->setAnchorPoint(cocos2d::Vec2(1,1));
+        CCLOG("Adding enemy gauge at y=%f, #gauges=%d", m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (getContentSize().height * m_vecEnemyHpUI.size()),(int)m_vecEnemyHpUI.size());
+        gauge->setPosition(cocos2d::Vec2(m_origin.x+ m_visibleSize.width, m_visibleSize.height  - m_pHpUI->getContentSize().height - m_pGoldUI->getContentSize().height - 39 - (gauge->getContentSize().height * m_vecEnemyHpUI.size())));
+        gauge->setTag(Tag::UI);
+        gauge->setName("EnemyHpUI");
+        addChild(gauge);
     });
 
     _eventDispatcher->addEventListenerWithFixedPriority(_listener, 2);

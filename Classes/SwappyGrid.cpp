@@ -125,7 +125,7 @@ bool SwappyGrid::init() {
         m_currentSelectedAction = data->val;
     });
 
-    cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(actionBarEventListener, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(actionBarEventListener, this);
 
     scheduleUpdate();
     return true;
@@ -275,6 +275,7 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
     if(tile->getTag() == Tag::ENEMY) {
         auto eventData = new EventDataTile(tile);
         getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
+        LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addPlayerTile(tile);
     }
 
     auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
@@ -420,12 +421,9 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
      * If the tile is a PlayerTile,
      * add it to the turn manager
      */
-    if (pTile->getTag() == Tag::HERO || pTile->getTag() == Tag::ENEMY) {
+    if (pTile->getTag() == Tag::HERO) {
         LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addPlayerTile(pTile);
-
-        if(pTile->getTag() == Tag::HERO) {
-            PlayerManager::getInstance()->getPlayer()->equipHook();
-        }
+        PlayerManager::getInstance()->getPlayer()->equipHook();
     }
 
     // Drop the random tile in the given column
@@ -960,9 +958,20 @@ void SwappyGrid::ProcessAttackState() {
             };
 
             m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
+                GET_GAME_STATE
+                if(dynamic_cast<GestureStartAttackState*>(state) != nullptr) {
+                    m_endAttack = convertToNodeSpace(touch->getLocation());
+                    m_pGridUI->drawSlash(m_startAttack, m_endAttack);
+                    GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+                    m_startAttack = cocos2d::Vec2::ZERO;
+                    m_endAttack = cocos2d::Vec2::ZERO;
+                    PlayerManager::getInstance()->getPlayer()->attack((EnemyTile*) m_pActiveEnemyTile);
+
+                }
                 m_pActiveEnemyTile = nullptr;
+                return false;
             };
-            cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
+            _eventDispatcher->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
         }
 
         if(m_pCurrentMatch != nullptr) {
@@ -1045,7 +1054,7 @@ void SwappyGrid::ProcessAttackState() {
             }
         }
 
-        cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(m_pAttackGestureListener);
+        _eventDispatcher->removeEventListener(m_pAttackGestureListener);
         m_pAttackGestureListener = nullptr;
         GameStateMachine::getInstance()->setState<TileRemovedState>();
     }

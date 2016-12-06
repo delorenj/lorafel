@@ -11,6 +11,10 @@
 namespace lorafel {
     class EnemyTile : public Tile {
     public:
+        virtual ~EnemyTile() {
+            _eventDispatcher->removeAllEventListeners();
+        }
+
         bool init(cocos2d::ValueMap args) override;
 
         virtual void onMatch(Match* pMatch) override;
