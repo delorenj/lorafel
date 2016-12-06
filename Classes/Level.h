@@ -54,7 +54,7 @@ namespace lorafel {
                     if(auto tile = createTileFromGridPos(i, j)) {
                         m_pSwappyGrid->addTileToDropQueue(i, tile);
                     } else {
-                        m_pSwappyGrid->addRandomTileToDropQueue(i);
+                        m_pSwappyGrid->addRandomNonMatchingTileToDropQueue(i);
                     }
                 }
             }

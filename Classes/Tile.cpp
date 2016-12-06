@@ -163,10 +163,14 @@ cocos2d::Vec2 lorafel::Tile::getSwapVec(cocos2d::Touch *pTouch) {
 }
 
 
-lorafel::Tile* lorafel::Tile::getLeft() const {
-    auto pos = getGridPos();
-    if(pos.x == 0) return nullptr;
-    return m_pSwappyGrid->getTileAt(pos.x -1, pos.y);
+lorafel::Tile * lorafel::Tile::getLeft(TileGrid *pGrid) const {
+    auto pos;
+    if(pGrid == nullptr) {
+        pos = getGridPos();
+        if(pos.x == 0) return nullptr;
+    }
+
+    return m_pSwappyGrid->getTileAt(pos.x -1, pos.y, pGrid);
 }
 
 lorafel::Tile* lorafel::Tile::getTop() const {

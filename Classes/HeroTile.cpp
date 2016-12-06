@@ -155,7 +155,7 @@ TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
     if(distance < getMaxMoveDistance()) {
         auto top = getValidMoves(pTile->getTop(), distance+1);
         auto bottom = getValidMoves(pTile->getBottom(), distance+1);
-        auto left = getValidMoves(pTile->getLeft(), distance+1);
+        auto left = getValidMoves(pTile->getLeft(nullptr), distance+1);
         auto right = getValidMoves(pTile->getRight(), distance+1);
         moves->insert(std::begin(*top), std::end(*top));
         moves->insert(std::begin(*bottom), std::end(*bottom));

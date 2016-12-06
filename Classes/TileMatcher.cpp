@@ -9,12 +9,20 @@
 
 using namespace lorafel;
 
-std::set<Match *> TileMatcher::findMatches() {
+/**
+ * Find matches using any grid (namely, a temp
+ * grid to find matches before a grid is actually
+ * in play
+ *
+ * @param pGrid
+ * @return
+ */
+std::set<Match *> TileMatcher::findMatches(TileGrid *pGrid) {
     MatchSet matchSets;
 
     for (int x = 0; x < SwappyGrid::NUM_COLUMNS; ++x) {
         for (int y = 0; y < SwappyGrid::NUM_ROWS; ++y) {
-            auto tile = m_pSwappyGrid->getTileAt(x,y);
+            auto tile = m_pSwappyGrid->getTileAt(x,y, pGrid);
             std::set<Tile*> tileSetVert, tileSetHorz;
 
             _findMatch(tile, tileSetVert, tileSetHorz);
@@ -29,6 +37,16 @@ std::set<Match *> TileMatcher::findMatches() {
         }
     }
     return matchSets.unique();
+
+}
+
+/**
+ * Use the real grid to find match sets
+ *
+ * @return
+ */
+std::set<Match *> TileMatcher::findMatches() {
+    return findMatches(m_pSwappyGrid->getGrid());
 }
 
 void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSets) const {
@@ -75,7 +93,7 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
         pTile->setVisitColor(Tile::RED);
         pTile->setVisitOrder(order + 1);
 
-        auto left = pTile->getLeft();
+        auto left = pTile->getLeft(nullptr);
         auto right = pTile->getRight();
 
         if (right && right->isMatch(pTile)) {
@@ -110,14 +128,14 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
 
         matches = 1;
         t = pTile;
-        while ((t = t->getLeft()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
+        while ((t = t->getLeft(nullptr)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
         if (matches == pTile->getMinMatchSize()) {
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
             t = pTile;
-            while ((t = t->getLeft()) && t->isMatch(pTile)) {
+            while ((t = t->getLeft(nullptr)) && t->isMatch(pTile)) {
                 t->setVisitColor(Tile::GREEN);
                 inOutResult.insert(t);
             }
@@ -226,7 +244,44 @@ void TileMatcher::debugDraw(Tile* pTile) const {// If debug draw is on, then dra
     dn->addChild(orderText, LayerOrder::DEBUG);
 }
 
+/**
+ * This function will take the current state of the grid
+ * and combine with it the current state of the drop queue
+ * and determine if placing the next tile in the queue will
+ * cause a match.
+ *
+ * @param col
+ * @param pTile
+ * @return
+ */
+bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
+    auto tempGrid(m_pSwappyGrid->getGrid());
+    auto tempQueues(m_pSwappyGrid->getDropQueues());
 
+    tempQueues->at(col)->push(pTile);
 
+    /**
+     * Here, we combine the queues into the temp grid.
+     * We will use the temp grid to calculate the matches,
+     * kinda like we're pretending that the matches are happening,
+     * but just returning true if one is found.
+     */
+    for (int x = 0; x < tempQueues->size(); x++) {
+        while(!tempQueues->at(x)->empty()) {
+            auto gridCol = tempGrid->at(x);
+            auto q = tempQueues->at(x);
+            auto tile = q->front();
+            q->pop();
+            for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
+                if(gridCol->at(y) == nullptr) {
+                    gridCol->at(y) = tile;
+                    break;
+                }
+            }
+        }
+    }
 
+    auto matches = findMatches(tempGrid);
+    return !matches.empty();
 
+}

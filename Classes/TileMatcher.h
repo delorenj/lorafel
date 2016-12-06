@@ -14,6 +14,12 @@ namespace lorafel {
     class SwappyGrid;
     class Match;
     class MatchSet;
+
+    typedef std::vector<Tile*> TileColumn;
+    typedef std::set<Tile*> TileSet;
+    typedef std::vector<TileColumn*> TileGrid;
+    typedef std::queue<Tile*> TileQueue;
+
     class TileMatcher {
     public:
         TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
@@ -23,10 +29,14 @@ namespace lorafel {
         } ;
 
         virtual std::set<Match *> findMatches();
+        virtual std::set<Match *> findMatches(lorafel::TileGrid* pGrid);
         bool getDebugDraw() const { return m_debugDraw; }
         void setDebugDraw(const bool val) { m_debugDraw = val; }
 
         static const int DEBUG_TAG = 15515;
+
+        bool isMatchInQueue(int col, Tile *pTile);
+
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
         bool m_debugDraw = 1;

@@ -81,7 +81,7 @@ namespace lorafel {
         virtual void setVisitOrder(int firstVisit) { Tile::m_firstVisit = firstVisit; }
         virtual std::string getVisitCountAsString();
 
-        Tile* getLeft() const;
+        Tile* getLeft(TileGrid *pGrid = nullptr) const;
         Tile* getTop() const;
         Tile* getBottom() const;
         Tile* getRight() const;

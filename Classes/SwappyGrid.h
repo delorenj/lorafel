@@ -71,6 +71,9 @@ namespace lorafel {
         bool isTilePresentAt(cocos2d::Vec2 pos);
         Tile* getTileAt(const cocos2d::Vec2 pos) const;
         Tile* getTileAt(const int x, const int y) const;
+        Tile* getTileAt(const cocos2d::Vec2 pos, TileGrid* pGrid) const; // override which grid to use
+        Tile* getTileAt(const int x, const int y, TileGrid* pGrid) const; // override which grid to use
+
         void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
         float getTileScaleFactor() const {return m_tileScaleFactor;}
         void addTileToRemoveQueue(Tile* pTile);
@@ -93,6 +96,10 @@ namespace lorafel {
         void unhighlightTiles();
         void setGridUI(GridUI *pUI) { m_pGridUI = pUI; }
         GridUI* getGridUI() { return m_pGridUI; }
+
+        void addRandomNonMatchingTileToDropQueue(int col);
+
+        std::vector<TileQueue *> *getDropQueues();
 
     protected:
         Level* m_pLevel;

@@ -96,7 +96,7 @@ std::vector<PlayerMove*> RandomAIStrategy::getValidMoves(Tile* pTile) {
         }
     }
 
-    if(pTile->getLeft() && pTile->getLeft()->getVisitColor() != Tile::Color::RED) {
+    if(pTile->getLeft(nullptr) && pTile->getLeft(nullptr)->getVisitColor() != Tile::Color::RED) {
         move = new BasicPlayerMove(m_pSwappyGrid, pTile, cocos2d::Vec2(-1, 0));
         if (move->isValid()) {
             moves.push_back(move);

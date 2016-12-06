@@ -439,6 +439,16 @@ void SwappyGrid::addRandomTileToDropQueue(int column) {
     addTileToDropQueue(column, tile);
 }
 
+void SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
+    Tile* tile;
+    std::set<Match *> matches;
+
+    do {
+        tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
+    } while(m_pTileMatcher->isMatchInQueue(col, tile));
+    addTileToDropQueue(col, tile);
+}
+
 bool SwappyGrid::columnReadyToDropTile(int column) {
     /**
      * Loop through all sprites in that column
@@ -560,12 +570,16 @@ void SwappyGrid::setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles) {
     SwappyGrid::m_numberOfFallingTiles = m_numberOfFallingTiles;
 }
 
-lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
-    if (pos.x >= m_pGrid->size()) {
+lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid *pGrid) const {
+    if(pGrid == nullptr) {
+        pGrid = m_pGrid;
+    }
+
+    if (pos.x >= pGrid->size()) {
         return nullptr;
     }
 
-    TileColumn* col = m_pGrid->at(pos.x);
+    TileColumn* col = pGrid->at(pos.x);
     if (pos.y >= col->size()) {
         return nullptr;
     } else {
@@ -573,8 +587,21 @@ lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
     }
 }
 
+lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y, lorafel::TileGrid *pGrid) const {
+    if(pGrid == nullptr) {
+        return getTileAt(cocos2d::Vec2(x, y));
+
+    } else {
+        return getTileAt(cocos2d::Vec2(x, y), pGrid);
+    }
+}
+
+lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
+    return getTileAt(pos, m_pGrid);
+}
+
 lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y) const {
-    return getTileAt(cocos2d::Vec2(x, y));
+    return getTileAt(cocos2d::Vec2(x, y), m_pGrid);
 }
 
 void SwappyGrid::clearVisitStates() {
@@ -759,7 +786,7 @@ void SwappyGrid::highlightTiles(TileSet* pSet) {
         // Not necessarily a valid match though
         tile->setVisitColor(Tile::Color::YELLOW);
 
-        if(tile->getLeft() == nullptr || pSet->find(tile->getLeft()) == pSet->end()) {
+        if(tile->getLeft(nullptr) == nullptr || pSet->find(tile->getLeft(nullptr)) == pSet->end()) {
             addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x, tile->getPosition().y + m_tileSize.height/2), 0);
         }
 
@@ -1094,4 +1121,8 @@ int SwappyGrid::numTilesWithinHitDistance() {
     }
     return numEnemiesWithinReach;
 
+}
+
+std::vector<TileQueue *> *SwappyGrid::getDropQueues() {
+    return m_pTileDropQueues;
 }
