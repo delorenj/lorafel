@@ -575,12 +575,12 @@ lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid 
         pGrid = m_pGrid;
     }
 
-    if (pos.x >= pGrid->size()) {
+    if (pos.x >= pGrid->size() || pos.x < 0) {
         return nullptr;
     }
 
     TileColumn* col = pGrid->at(pos.x);
-    if (pos.y >= col->size()) {
+    if (pos.y >= col->size() || pos.y < 0) {
         return nullptr;
     } else {
         return col->at(pos.y);

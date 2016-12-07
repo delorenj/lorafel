@@ -27,6 +27,10 @@ namespace lorafel {
     class SwappyGrid;
     class StatResult;
     class Match;
+
+    typedef std::vector<Tile*> TileColumn;
+    typedef std::vector<TileColumn*> TileGrid;
+
     class Tile : public cocos2d::Sprite {
 
     public:
@@ -81,11 +85,12 @@ namespace lorafel {
         virtual void setVisitOrder(int firstVisit) { Tile::m_firstVisit = firstVisit; }
         virtual std::string getVisitCountAsString();
 
-        Tile* getLeft(TileGrid *pGrid = nullptr) const;
-        Tile* getTop() const;
-        Tile* getBottom() const;
-        Tile* getRight() const;
+        Tile* getLeft(lorafel::TileGrid *pGrid = nullptr) const;
+        Tile* getTop(TileGrid* pGrid = nullptr) const;
+        Tile* getBottom(TileGrid* pGrid = nullptr) const;
+        Tile* getRight(TileGrid* pGrid = nullptr) const;
         const cocos2d::Vec2 getGridPos() const;
+        const cocos2d::Vec2 getGridPosInTempGrid(TileGrid* pGrid) const;
 
         // Default tile matching algorithm is simple...
         // If the tiles have the same name, they match
@@ -114,10 +119,11 @@ namespace lorafel {
         TileConfigs* getLoot();
 
         void onHooked();
-
+        int getId() { return m_id; }
 
 
     protected:
+        int m_id;
         std::string m_tileName;
         std::string m_className;
         cocos2d::ValueMap m_arguments;

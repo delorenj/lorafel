@@ -25,7 +25,7 @@ std::set<Match *> TileMatcher::findMatches(TileGrid *pGrid) {
             auto tile = m_pSwappyGrid->getTileAt(x,y, pGrid);
             std::set<Tile*> tileSetVert, tileSetHorz;
 
-            _findMatch(tile, tileSetVert, tileSetHorz);
+            _findMatch(tile, tileSetVert, tileSetHorz, pGrid);
 
             if(tileSetVert.size() > 0) {
                 createMatchSet(tileSetVert, matchSets);
@@ -77,15 +77,15 @@ void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSe
 
 }
 
-bool TileMatcher::_findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz) {
+bool TileMatcher::_findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz, TileGrid* pGrid) {
     m_pSwappyGrid->clearVisitStates();
-    _findMatchHorizontal(pTile, inOutResultHorz, 0);
+    _findMatchHorizontal(pTile, inOutResultHorz, 0, pGrid);
 
     m_pSwappyGrid->clearVisitStates();
-    _findMatchVertical(pTile, inOutResultVert, 0);
+    _findMatchVertical(pTile, inOutResultVert, 0, pGrid);
 }
 
-bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult, int order) {
+bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult, int order, TileGrid* pGrid) {
     if(pTile == nullptr) return false;                      // no tile in this pos
     if(pTile->getVisitColor() == Tile::NONE) {
 
@@ -93,21 +93,21 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
         pTile->setVisitColor(Tile::RED);
         pTile->setVisitOrder(order + 1);
 
-        auto left = pTile->getLeft(nullptr);
-        auto right = pTile->getRight();
+        auto left = pTile->getLeft(pGrid);
+        auto right = pTile->getRight(pGrid);
 
         if (right && right->isMatch(pTile)) {
-            _findMatchHorizontal(right, inOutResult, order + 1);
+            _findMatchHorizontal(right, inOutResult, order + 1, pGrid);
         }
 
         if (left && left->isMatch(pTile)) {
-            _findMatchHorizontal(left, inOutResult, order + 1);
+            _findMatchHorizontal(left, inOutResult, order + 1, pGrid);
         }
 
         int matches = 1;
         auto t = pTile;
         // MinMatch should be largest minmatch in match group
-        while ((t = t->getRight()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
+        while ((t = t->getRight(pGrid)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
         /**
@@ -120,7 +120,7 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
             t = pTile;
-            while ((t = t->getRight()) && t->isMatch(pTile)) {
+            while ((t = t->getRight(pGrid)) && t->isMatch(pTile)) {
                 t->setVisitColor(Tile::GREEN);
                 inOutResult.insert(t);
             }
@@ -128,14 +128,14 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
 
         matches = 1;
         t = pTile;
-        while ((t = t->getLeft(nullptr)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
+        while ((t = t->getLeft(pGrid)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
         if (matches == pTile->getMinMatchSize()) {
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
             t = pTile;
-            while ((t = t->getLeft(nullptr)) && t->isMatch(pTile)) {
+            while ((t = t->getLeft(pGrid)) && t->isMatch(pTile)) {
                 t->setVisitColor(Tile::GREEN);
                 inOutResult.insert(t);
             }
@@ -149,7 +149,7 @@ bool TileMatcher::_findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult
     return true;
 }
 
-bool TileMatcher::_findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, int order) {
+bool TileMatcher::_findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, int order, TileGrid* pGrid) {
     if(pTile == nullptr) return false;                      // no tile in this pos
     if(pTile->getVisitColor() == Tile::NONE) {
 
@@ -157,28 +157,28 @@ bool TileMatcher::_findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, 
         pTile->setVisitColor(Tile::RED);
         pTile->setVisitOrder(order + 1);
 
-        auto bottom = pTile->getBottom();
-        auto top = pTile->getTop();
+        auto bottom = pTile->getBottom(pGrid);
+        auto top = pTile->getTop(pGrid);
 
         if (bottom && bottom->isMatch(pTile)) {
-            _findMatchVertical(bottom, inOutResult, order + 1);
+            _findMatchVertical(bottom, inOutResult, order + 1, pGrid);
         }
 
         if (top && top->isMatch(pTile)) {
-            _findMatchVertical(top, inOutResult, order + 1);
+            _findMatchVertical(top, inOutResult, order + 1, pGrid);
         }
 
         int matches = 1;
         auto t = pTile;
 
-        while ((t = t->getBottom()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
+        while ((t = t->getBottom(pGrid)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
         if (matches == pTile->getMinMatchSize()) {
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
             t = pTile;
-            while ((t = t->getBottom()) && t->isMatch(pTile)) {
+            while ((t = t->getBottom(pGrid)) && t->isMatch(pTile)) {
                 t->setVisitColor(Tile::GREEN);
                 inOutResult.insert(t);
             }
@@ -186,14 +186,14 @@ bool TileMatcher::_findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, 
 
         matches = 1;
         t = pTile;
-        while ((t = t->getTop()) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
+        while ((t = t->getTop(pGrid)) && t->isMatch(pTile) && matches < pTile->getMinMatchSize()) {
             matches++;
         }
         if (matches == pTile->getMinMatchSize()) {
             pTile->setVisitColor(Tile::GREEN);
             inOutResult.insert(pTile);
             t = pTile;
-            while ((t = t->getTop()) && t->isMatch(pTile)) {
+            while ((t = t->getTop(pGrid)) && t->isMatch(pTile)) {
                 t->setVisitColor(Tile::GREEN);
                 inOutResult.insert(t);
             }

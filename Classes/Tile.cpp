@@ -24,6 +24,7 @@ bool lorafel::Tile::init(cocos2d::ValueMap args) {
     m_pStatResults = new std::set<StatResult*>();
     m_pLoot = new TileConfigs();
     setTag(Tag::TILE);
+    m_id = generateUniqueId();
     retain();
 
     std::string image = m_arguments["tile_image"].isNull() ?
@@ -163,33 +164,64 @@ cocos2d::Vec2 lorafel::Tile::getSwapVec(cocos2d::Touch *pTouch) {
 }
 
 
-lorafel::Tile * lorafel::Tile::getLeft(TileGrid *pGrid) const {
-    auto pos;
-    if(pGrid == nullptr) {
-        pos = getGridPos();
+lorafel::Tile * lorafel::Tile::getLeft(TileGrid* pGrid) const {
+    if(pGrid== nullptr) {
+        auto pos = getGridPos();
         if(pos.x == 0) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x -1, pos.y);
+    } else {
+        auto pos = getGridPosInTempGrid(pGrid);
+        if(pos.x == -1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x -1, pos.y, pGrid);
     }
-
-    return m_pSwappyGrid->getTileAt(pos.x -1, pos.y, pGrid);
 }
 
-lorafel::Tile* lorafel::Tile::getTop() const {
-    auto pos = getGridPos();
-    if(pos.y == SwappyGrid::NUM_ROWS-1) return nullptr;
-    return m_pSwappyGrid->getTileAt(pos.x, pos.y+1);
-
+lorafel::Tile* lorafel::Tile::getTop(TileGrid* pGrid) const {
+    if(pGrid== nullptr) {
+        auto pos = getGridPos();
+        if(pos.y == SwappyGrid::NUM_ROWS-1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x, pos.y+1);
+    } else {
+        auto pos = getGridPosInTempGrid(pGrid);
+        if(pos.y == -1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x, pos.y+1, pGrid);
+    }
 }
 
-lorafel::Tile* lorafel::Tile::getBottom() const {
-    auto pos = getGridPos();
-    if(pos.y == 0) return nullptr;
-    return m_pSwappyGrid->getTileAt(pos.x, pos.y-1);
+lorafel::Tile* lorafel::Tile::getBottom(TileGrid* pGrid) const {
+    if(pGrid== nullptr) {
+        auto pos = getGridPos();
+        if(pos.y == 0) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x, pos.y-1);
+    } else {
+        auto pos = getGridPosInTempGrid(pGrid);
+        if(pos.y == -1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x, pos.y-1, pGrid);
+    }
 }
 
-lorafel::Tile* lorafel::Tile::getRight() const {
-    auto pos = getGridPos();
-    if(pos.x == SwappyGrid::NUM_COLUMNS-1) return nullptr;
-    return m_pSwappyGrid->getTileAt(pos.x+1, (pos.y));
+lorafel::Tile* lorafel::Tile::getRight(TileGrid* pGrid) const {
+    if(pGrid== nullptr) {
+        auto pos = getGridPos();
+        if(pos.x == SwappyGrid::NUM_COLUMNS-1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x+1, (pos.y));
+    } else {
+        auto pos = getGridPosInTempGrid(pGrid);
+        if(pos.x == -1) return nullptr;
+        return m_pSwappyGrid->getTileAt(pos.x+1, (pos.y), pGrid);
+    }
+}
+
+const cocos2d::Vec2 lorafel::Tile::getGridPosInTempGrid(TileGrid *pGrid) const {
+    for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
+        for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
+            auto tile = pGrid->at(x)->at(y);
+            if(tile->getId() == m_id) {
+                return cocos2d::Vec2(x,y);
+            }
+        }
+    }
+    return cocos2d::Vec2(-1,-1);
 }
 
 const cocos2d::Vec2 lorafel::Tile::getGridPos() const {

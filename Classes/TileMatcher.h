@@ -24,9 +24,7 @@ namespace lorafel {
     public:
         TileMatcher(SwappyGrid* pGrid) : m_pSwappyGrid(pGrid) { };
 
-        virtual ~TileMatcher() {
-            CCLOG("~TileMatcher()");
-        } ;
+        virtual ~TileMatcher() { } ;
 
         virtual std::set<Match *> findMatches();
         virtual std::set<Match *> findMatches(lorafel::TileGrid* pGrid);
@@ -39,15 +37,11 @@ namespace lorafel {
 
     protected:
         SwappyGrid* m_pSwappyGrid;                  // The underlying SwappyGrid
-        bool m_debugDraw = 1;
-        bool _findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz);
-
-        bool _findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult, int i);
-
-        bool _findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, int order);
-
+        bool m_debugDraw = 0;
+        bool _findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz, TileGrid* pGrid = nullptr);
+        bool _findMatchHorizontal(Tile* pTile, std::set<Tile*>& inOutResult, int i, TileGrid* pGrid = nullptr);
+        bool _findMatchVertical(Tile* pTile, std::set<Tile*>& inOutResult, int order, TileGrid* pGrid = nullptr);
         void debugDraw(Tile* pTile) const;
-
         void createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSets) const;
     };
 }
