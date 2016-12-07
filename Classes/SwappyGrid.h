@@ -74,7 +74,7 @@ namespace lorafel {
         Tile* getTileAt(const cocos2d::Vec2 pos, TileGrid* pGrid) const; // override which grid to use
         Tile* getTileAt(const int x, const int y, TileGrid* pGrid) const; // override which grid to use
 
-        void clearVisitStates(); // Sets all tiles color visit state to Tile::NONE
+        void clearVisitStates(TileGrid* pGrid = nullptr); // Sets all tiles color visit state to Tile::NONE
         float getTileScaleFactor() const {return m_tileScaleFactor;}
         void addTileToRemoveQueue(Tile* pTile);
 

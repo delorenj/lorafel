@@ -255,10 +255,26 @@ void TileMatcher::debugDraw(Tile* pTile) const {// If debug draw is on, then dra
  * @return
  */
 bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
-    auto tempGrid(m_pSwappyGrid->getGrid());
-    auto tempQueues(m_pSwappyGrid->getDropQueues());
+    TileGrid* tempGrid = new TileGrid();
+    TileGrid* grid = m_pSwappyGrid->getGrid();
+    tempGrid->reserve(SwappyGrid::NUM_COLUMNS*2);
+    for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
+        for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
+            tempGrid->at(x)->reserve(SwappyGrid::NUM_ROWS*2);
+            tempGrid->at(x)->at(y) = grid->at(x)->at(y);
+        }
+    }
 
+    std::vector<TileQueue*>* tempQueues = new std::vector<TileQueue*>();
+    auto queues = m_pSwappyGrid->getDropQueues();
     tempQueues->at(col)->push(pTile);
+    tempQueues->reserve(SwappyGrid::NUM_COLUMNS*2);
+    for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
+        for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
+            tempQueues->at(x)->reserve(SwappyGrid::NUM_ROWS*2);
+            tempGrid->at(x)->at(y) = grid->at(x)->at(y);
+        }
+    }
 
     /**
      * Here, we combine the queues into the temp grid.

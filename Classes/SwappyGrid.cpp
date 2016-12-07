@@ -604,10 +604,10 @@ lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y) const {
     return getTileAt(cocos2d::Vec2(x, y), m_pGrid);
 }
 
-void SwappyGrid::clearVisitStates() {
+void SwappyGrid::clearVisitStates(TileGrid* pGrid) {
     for (int i = 0; i < NUM_COLUMNS; ++i) {
         for (int j = 0; j < NUM_ROWS; ++j) {
-            auto tile = getTileAt(i, j);
+            auto tile = getTileAt(i, j, pGrid);
             if (!tile) continue;
             tile->setVisitColor(Tile::NONE);
             tile->setVisitOrder(0);
