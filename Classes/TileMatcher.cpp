@@ -257,24 +257,36 @@ void TileMatcher::debugDraw(Tile* pTile) const {// If debug draw is on, then dra
 bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
     TileGrid* tempGrid = new TileGrid();
     TileGrid* grid = m_pSwappyGrid->getGrid();
-    tempGrid->reserve(SwappyGrid::NUM_COLUMNS*2);
     for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
+        tempGrid->push_back(new TileColumn(SwappyGrid::NUM_ROWS * 2));
         for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
-            tempGrid->at(x)->reserve(SwappyGrid::NUM_ROWS*2);
             tempGrid->at(x)->at(y) = grid->at(x)->at(y);
         }
     }
 
-    std::vector<TileQueue*>* tempQueues = new std::vector<TileQueue*>();
+    std::vector<TileQueue*>* tempQueues = new std::vector<TileQueue*>(SwappyGrid::NUM_COLUMNS);
     auto queues = m_pSwappyGrid->getDropQueues();
-    tempQueues->at(col)->push(pTile);
-    tempQueues->reserve(SwappyGrid::NUM_COLUMNS*2);
     for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
-        for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
-            tempQueues->at(x)->reserve(SwappyGrid::NUM_ROWS*2);
-            tempGrid->at(x)->at(y) = grid->at(x)->at(y);
+        auto queue = queues->at(x);
+        std::vector<Tile*> elems;
+        TileQueue* newQueue = new TileQueue();
+        tempQueues->at(x) = newQueue;
+        while(!queue->empty()) {
+            auto tile = queue->front();
+            queue->pop();
+            newQueue->push(tile);
+            elems.push_back(tile);
+        }
+        for(auto iter = elems.begin(); iter != elems.end(); iter++) {
+            queue->push(*iter);
         }
     }
+
+    /**
+     * Push in the new tile we're testing for
+     * in the column requested
+     */
+    tempQueues->at(col)->push(pTile);
 
     /**
      * Here, we combine the queues into the temp grid.

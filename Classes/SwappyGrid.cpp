@@ -73,7 +73,7 @@ bool SwappyGrid::init() {
     // Create Tile Grid
     m_pGrid = new TileGrid();
     for (int i = 0; i < NUM_COLUMNS; ++i) {
-        m_pGrid->push_back(new TileColumn(NUM_COLUMNS * 2));
+        m_pGrid->push_back(new TileColumn(NUM_ROWS * 2));
     }
 
     // Create Tile Drop Queues
