@@ -179,7 +179,7 @@ void SwappyGrid::DropTiles() {
         if (queue->empty()) continue;
         if (!columnReadyToDropTile(k)) continue;
         lorafel::Tile* tile = queue->front();
-        queue->pop();
+        queue->pop_front();
         dropTile(k, tile);
     }
 }
@@ -198,7 +198,7 @@ void SwappyGrid::RemoveDeadTiles() {
     std::set<lorafel::Tile*> removed;
     while (!queue->empty()) {
         lorafel::Tile* tile = queue->front();
-        queue->pop();
+        queue->pop_front();
         auto it = removed.find(tile);
         if(it != removed.end()) continue;
         removed.insert(tile);
@@ -430,7 +430,7 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
     // using the drop queue to ensure it only
     // drops when allowed
     TileQueue* q = m_pTileDropQueues->at(column);
-    q->push(pTile);
+    q->push_back(pTile);
 
 }
 
@@ -656,7 +656,7 @@ void SwappyGrid::removeTileFromGrid(Tile* tile) {
 
 
 void SwappyGrid::addTileToRemoveQueue(lorafel::Tile* pTile) {
-    m_pTileRemoveQueue->push(pTile);
+    m_pTileRemoveQueue->push_back(pTile);
 }
 
 void SwappyGrid::DrawDebugData() {

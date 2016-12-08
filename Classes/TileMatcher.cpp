@@ -78,10 +78,10 @@ void TileMatcher::createMatchSet(std::set<Tile*> tileSet, MatchSet& inOutMatchSe
 }
 
 bool TileMatcher::_findMatch(Tile* pTile, std::set<Tile*>& inOutResultVert, std::set<Tile*>& inOutResultHorz, TileGrid* pGrid) {
-    m_pSwappyGrid->clearVisitStates();
+    m_pSwappyGrid->clearVisitStates(pGrid);
     _findMatchHorizontal(pTile, inOutResultHorz, 0, pGrid);
 
-    m_pSwappyGrid->clearVisitStates();
+    m_pSwappyGrid->clearVisitStates(pGrid);
     _findMatchVertical(pTile, inOutResultVert, 0, pGrid);
 }
 
@@ -268,17 +268,10 @@ bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
     auto queues = m_pSwappyGrid->getDropQueues();
     for(int x=0; x<SwappyGrid::NUM_COLUMNS; x++) {
         auto queue = queues->at(x);
-        std::vector<Tile*> elems;
         TileQueue* newQueue = new TileQueue();
         tempQueues->at(x) = newQueue;
-        while(!queue->empty()) {
-            auto tile = queue->front();
-            queue->pop();
-            newQueue->push(tile);
-            elems.push_back(tile);
-        }
-        for(auto iter = elems.begin(); iter != elems.end(); iter++) {
-            queue->push(*iter);
+        for(auto t : *queue) {
+            newQueue->push_back(t);
         }
     }
 
@@ -286,7 +279,7 @@ bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
      * Push in the new tile we're testing for
      * in the column requested
      */
-    tempQueues->at(col)->push(pTile);
+    tempQueues->at(col)->push_back(pTile);
 
     /**
      * Here, we combine the queues into the temp grid.
@@ -299,7 +292,7 @@ bool TileMatcher::isMatchInQueue(int col, Tile *pTile) {
             auto gridCol = tempGrid->at(x);
             auto q = tempQueues->at(x);
             auto tile = q->front();
-            q->pop();
+            q->pop_front();
             for(int y=0; y<SwappyGrid::NUM_ROWS; y++) {
                 if(gridCol->at(y) == nullptr) {
                     gridCol->at(y) = tile;

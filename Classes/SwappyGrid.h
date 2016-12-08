@@ -28,7 +28,7 @@ namespace lorafel {
     typedef std::vector<Tile*> TileColumn;
     typedef std::set<Tile*> TileSet;
     typedef std::vector<TileColumn*> TileGrid;
-    typedef std::queue<Tile*> TileQueue;
+    typedef std::list<Tile*> TileQueue;
 
     class SwappyGrid : public cocos2d::Node {
     public:
