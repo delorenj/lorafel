@@ -459,6 +459,7 @@ bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
      * is a failure.
      */
     if(tries >= 10) {
+        CCLOG("Bad State! Resetting");
         return false;
     }
     addTileToDropQueue(col, tile);
