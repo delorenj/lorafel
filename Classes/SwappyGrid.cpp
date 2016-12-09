@@ -439,14 +439,30 @@ void SwappyGrid::addRandomTileToDropQueue(int column) {
     addTileToDropQueue(column, tile);
 }
 
-void SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
+bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
     Tile* tile;
     std::set<Match *> matches;
 
+    auto tries = 0;
+
     do {
+        tries++;
         tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
-    } while(m_pTileMatcher->isMatchInQueue(col, tile));
+    } while(m_pTileMatcher->isMatchInQueue(col, tile) && tries < 10);
+
+    /**
+     * If we tried this many times, then there is
+     * a static tile conflicting with previous
+     * tile match that it could not know apriori.
+
+     * Return false, so the caller knows this state
+     * is a failure.
+     */
+    if(tries >= 10) {
+        return false;
+    }
     addTileToDropQueue(col, tile);
+    return true;
 }
 
 bool SwappyGrid::columnReadyToDropTile(int column) {
@@ -1125,4 +1141,10 @@ int SwappyGrid::numTilesWithinHitDistance() {
 
 std::vector<TileQueue *> *SwappyGrid::getDropQueues() {
     return m_pTileDropQueues;
+}
+
+void SwappyGrid::clearAllDropQueues() {
+    for(auto q : *m_pTileDropQueues) {
+        q->clear();
+    }
 }
