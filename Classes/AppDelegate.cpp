@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "TestScene.h"
+#include "GameScene.h"
 #include "TitleScene.h"
 #include "PlayerManager.h"
 #include "Globals.h"

@@ -6,7 +6,7 @@
 #include "GameOverUI.h"
 #include "Globals.h"
 #include "SwappyGridScene.h"
-#include "TestScene.h"
+#include "GameScene.h"
 #include "PlayerManager.h"
 
 using namespace lorafel;
@@ -99,7 +99,7 @@ void GameOverUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEvent
         cocos2d::Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
 //		PlayerManager::getInstance()->loadPlayer();
 
-        auto newScene = TestScene::createScene();
+        auto newScene = GameScene::createScene();
         cocos2d::Director::getInstance()->replaceScene(
                 cocos2d::TransitionFade::create(0.1, newScene, cocos2d::Color3B(0,0,0))
         );

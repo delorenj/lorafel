@@ -4,7 +4,7 @@
 
 #include "LevelClearedUI.h"
 #include "Globals.h"
-#include "TestScene.h"
+#include "GameScene.h"
 
 using namespace lorafel;
 
@@ -91,11 +91,9 @@ void LevelClearedUI::showButtons() {
 
 void LevelClearedUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
     if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
-        cocos2d::Director::getInstance()->getRunningScene()->removeFromParentAndCleanup(true);
-        cocos2d::Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
-//		PlayerManager::getInstance()->loadPlayer();
-
-        auto newScene = TestScene::createScene();
+        auto runningScene = cocos2d::Director::getInstance()->getRunningScene();
+        runningScene->removeAllChildrenWithCleanup(true);
+        auto newScene = GameScene::createScene();
         cocos2d::Director::getInstance()->replaceScene(
                 cocos2d::TransitionFade::create(0.1, newScene, cocos2d::Color3B(0,0,0))
         );

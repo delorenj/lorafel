@@ -1,5 +1,5 @@
 //
-//  TestScene.h
+//  GameScene.h
 //
 //
 //  Created by Jarad DeLorenzo.
@@ -12,11 +12,11 @@
 #include "SwappyGridScene.h"
 
 namespace lorafel {
-    class TestScene : public SwappyGridScene {
+    class GameScene : public SwappyGridScene {
     public:
         static cocos2d::Scene* createScene();
         virtual bool init() override;
-        CREATE_FUNC(TestScene);
+        CREATE_FUNC(GameScene);
     };
 }
 

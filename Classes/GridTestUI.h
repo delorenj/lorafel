@@ -13,6 +13,12 @@ namespace lorafel {
     class GridTestUI : public cocos2d::Node{
     public:
         virtual bool init() override;
+
+        virtual void onExit() override {
+            cocos2d::Node::onExit();
+            removeAllChildrenWithCleanup(true);
+        }
+
         virtual void update(float delta) override;
 
         static GridTestUI* create(SwappyGrid* grid) {

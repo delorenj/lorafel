@@ -40,6 +40,7 @@ namespace lorafel {
         virtual ~SwappyGrid();
 
         bool init() override;
+        virtual void onExit() override;
         void update(float delta) override;
         void onLevelCleared();
         CREATE_FUNC(SwappyGrid);

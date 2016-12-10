@@ -48,7 +48,10 @@ namespace lorafel {
         CREATE_FUNC(GridTransparency);
 
         void setColor(cocos2d::Color3B color);
-
+        virtual void onExit() override {
+            cocos2d::Node::onExit();
+            removeAllChildrenWithCleanup(true);
+        }
         void insertTile(cocos2d::Vec2 pos, GridTransparency::Tile tile);
 
     protected:

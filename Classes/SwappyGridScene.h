@@ -18,6 +18,7 @@ namespace lorafel {
     public:
         virtual bool init() override;
         virtual ~SwappyGridScene();
+        virtual void onExit() override;
         GridUI* getGridUI() { return m_pGridUI; }
 
     protected:

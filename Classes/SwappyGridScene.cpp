@@ -43,3 +43,9 @@ bool SwappyGridScene::init() {
 SwappyGridScene::~SwappyGridScene() {
     CCLOG("~SwappyGridScene()");
 }
+
+void SwappyGridScene::onExit() {
+    Node::onExit();
+
+    removeAllChildrenWithCleanup(true);
+}

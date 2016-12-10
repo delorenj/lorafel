@@ -200,8 +200,8 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
-		BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
-		BA078CD91C22E57F00B0E1EA /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* TestScene.cpp */; };
+		BA078CD81C22E57F00B0E1EA /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* GameScene.cpp */; };
+		BA078CD91C22E57F00B0E1EA /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* GameScene.cpp */; };
 		BA078CE11C22E89E00B0E1EA /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDA1C22E89D00B0E1EA /* ipad */; };
 		BA078CE21C22E89E00B0E1EA /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDA1C22E89D00B0E1EA /* ipad */; };
 		BA078CE31C22E89E00B0E1EA /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDB1C22E89E00B0E1EA /* ipadhd */; };
@@ -550,8 +550,8 @@
 		918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
 		BA00F1AF1D559474001BBFAD /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = "../cocos2d/external/gpg-cpp-sdk/ios/gpg.framework"; sourceTree = "<group>"; };
-		BA078CD61C22E57F00B0E1EA /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
-		BA078CD71C22E57F00B0E1EA /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
+		BA078CD61C22E57F00B0E1EA /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		BA078CD71C22E57F00B0E1EA /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		BA078CDA1C22E89D00B0E1EA /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
 		BA078CDB1C22E89E00B0E1EA /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
 		BA078CDC1C22E89E00B0E1EA /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
@@ -811,8 +811,8 @@
 				BACEE7B61C7DE889000AF703 /* GoldStatResult.h */,
 				BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */,
 				BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */,
-				BA078CD61C22E57F00B0E1EA /* TestScene.cpp */,
-				BA078CD71C22E57F00B0E1EA /* TestScene.h */,
+				BA078CD61C22E57F00B0E1EA /* GameScene.cpp */,
+				BA078CD71C22E57F00B0E1EA /* GameScene.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				3167D2B666FBBF150E75754A /* SwappyGrid.cpp */,
@@ -1389,7 +1389,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				BAA9ECBB1D596AC0002C57FA /* NDKCallbackNode.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				BA078CD81C22E57F00B0E1EA /* TestScene.cpp in Sources */,
+				BA078CD81C22E57F00B0E1EA /* GameScene.cpp in Sources */,
 				BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */,
 				BAA9ECAB1D596AB1002C57FA /* error.c in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -1498,7 +1498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA078CD91C22E57F00B0E1EA /* TestScene.cpp in Sources */,
+				BA078CD91C22E57F00B0E1EA /* GameScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				3167D027EE7C4D681CE79592 /* SwappyGrid.cpp in Sources */,

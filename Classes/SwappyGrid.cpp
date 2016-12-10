@@ -1149,3 +1149,8 @@ void SwappyGrid::clearAllDropQueues() {
         q->clear();
     }
 }
+
+void SwappyGrid::onExit() {
+    cocos2d::Node::onExit();
+    removeAllChildrenWithCleanup(true);
+}

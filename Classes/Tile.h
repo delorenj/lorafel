@@ -50,7 +50,10 @@ namespace lorafel {
         };
 
         virtual bool init(cocos2d::ValueMap args);
-
+        virtual void onExit() override {
+            cocos2d::Node::onExit();
+            removeAllChildrenWithCleanup(true);
+        }
         virtual void onMatch(Match* pMatch);
 
 //        CREATE_FUNC(Tile);

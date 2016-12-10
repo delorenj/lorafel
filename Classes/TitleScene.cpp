@@ -5,7 +5,7 @@
 #include "TitleScene.h"
 #include "Globals.h"
 #include "FirebaseAuth.h"
-#include "TestScene.h"
+#include "GameScene.h"
 #include "NDKHelper/NDKHelper.h"
 
 using namespace lorafel;
@@ -62,7 +62,7 @@ bool TitleScene::init() {
     m_pPlayButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     m_pPlayButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
         if(type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-            auto scene = lorafel::TestScene::createScene();
+            auto scene = lorafel::GameScene::createScene();
             cocos2d::Director::getInstance()->replaceScene(scene);
         }
     });
