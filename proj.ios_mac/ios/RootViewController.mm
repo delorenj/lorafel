@@ -127,7 +127,7 @@
     [super dealloc];
 }
 
-- (void)signIn:(NSObject *)parametersObject {
+- (void)signInGoogle:(NSObject *)parametersObject {
     [[GIDSignIn sharedInstance] signIn];
 }
 

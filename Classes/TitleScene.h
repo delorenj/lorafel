@@ -26,7 +26,7 @@ namespace lorafel {
         cocos2d::ui::Button* m_pPlayButton;
         cocos2d::Sprite* m_pLoader;
         cocos2d::ui::Button* m_pGoogleSignInButton;
-
+        std::string m_accountId;
         
         
     };

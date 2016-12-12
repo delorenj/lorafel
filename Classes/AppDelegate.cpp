@@ -230,6 +230,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprites.plist");
 
     lorafel::FirebaseAuth::getInstance()->getApp();
+    sendMessageWithParams("enableOfflineDatabase", cocos2d::Value(cocos2d::ValueMapNull));
+
 
     // create a scene. it's an autorelease object
     auto scene = lorafel::TitleScene::createScene();

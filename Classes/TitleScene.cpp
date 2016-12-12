@@ -73,12 +73,12 @@ bool TitleScene::init() {
     m_pGoogleSignInButton = cocos2d::ui::Button::create("google-signin-btn.png");
     m_pGoogleSignInButton->setVisible(false);
     m_pGoogleSignInButton->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    m_pGoogleSignInButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    m_pGoogleSignInButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 100));
     m_pGoogleSignInButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
         if(type == cocos2d::ui::Widget::TouchEventType::ENDED) {
 			Value v;
 			v.Null;
-			sendMessageWithParams("signIn", v);
+			sendMessageWithParams("signInGoogle", v);
         }
     });
 
@@ -87,8 +87,25 @@ bool TitleScene::init() {
     m_pLoader = cocos2d::Sprite::createWithSpriteFrameName("avocado.png");
     m_pLoader->setVisible(false);
     m_pLoader->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    m_pLoader->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    m_pLoader->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 100);
     addChild(m_pLoader, LayerOrder::UX);
+
+    /**
+     * Check if ever logged in before.
+     * If not, create account using device params.
+     * If logged in through Google Auth, don't show button
+     * If online, load player and levels from firebase
+     * If offline, load player and levels from local store
+     */
+    m_accountId = cocos2d::UserDefault::getInstance()->getStringForKey("account");
+    if(m_accountId == "") {
+        /**
+         * Create new account because
+         * this device has not played this
+         * game yet.
+         */
+    }
+
 
     // Adds a selector association to be called from native end
     NDKHelper::addSelector("AuthStateMachineSelectors",
@@ -122,11 +139,12 @@ void TitleScene::update(float delta) {
     auto state = m_pStateMachine->getState();
 
     if (state->getName() == "LoggedOutState") {
+        CCLOG("LoggedOutState");
         /**
          * If not logged in, then try logging in
          */
-        m_pPlayButton->setVisible(false);
-        m_pGoogleSignInButton->setVisible(false);
+        m_pPlayButton->setVisible(true);
+        m_pGoogleSignInButton->setVisible(true);
         m_pLoader->setVisible(true);
         m_pLoader->stopAllActions();
 
@@ -135,16 +153,18 @@ void TitleScene::update(float delta) {
         }
 
 
-    } else if (state->getName() == "NeverLoggedInState" || state->getName() == "AuthenticationFailedState") {
+    } else if (state->getName() == "AuthenticationFailedState") {
+        CCLOG("AuthenticationFailedState");
         /**
-         * If user hasn't authorized a login, the
-         * show the login buttons
+         * If user hasn't authorized a login,
+         * then show the login buttons
          */
-        m_pPlayButton->setVisible(false);
+        m_pPlayButton->setVisible(true);
         m_pGoogleSignInButton->setVisible(true);
         m_pLoader->setVisible(false);
         m_pLoader->stopAllActions();
     } else if (state->getName() == "LoggedInState") {
+        CCLOG("LoggedInState");
         /**
          * If user is logged in and all is good,
          * then show the PLAY buttons and such
@@ -156,30 +176,35 @@ void TitleScene::update(float delta) {
         auto user = FirebaseAuth::getInstance()->getAuth()->SignInWithCustomTokenLastResult();
 
     } else if (state->getName() == "AuthenticatingState") {
+        CCLOG("AuthenticatingState");
         /**
          * If currently trying to log in, then show
          * some sort of loader or something
          */
-        m_pPlayButton->setVisible(false);
+        m_pPlayButton->setVisible(true);
         m_pGoogleSignInButton->setVisible(false);
         m_pLoader->setVisible(true);
 
         if (m_pLoader->getNumberOfRunningActions() == 0) {
+            CCLOG("--Starting loader");
             auto spin = cocos2d::EaseQuadraticActionInOut::create(cocos2d::RotateBy::create(1.0f, 720.0f));
             m_pLoader->runAction(cocos2d::RepeatForever::create(spin));
         }
 
         auto future = FirebaseAuth::getInstance()->getCurrentFuture();
         if (future.Status() == firebase::kFutureStatusComplete) {
+            CCLOG("Switching to authenticating state");
             AuthStateMachine::getInstance()->setState<AuthenticatingState>();
         } else if (future.Status() == firebase::kFutureStatusInvalid) {
+            CCLOG("switching to authentication failed state");
             AuthStateMachine::getInstance()->setState<AuthenticationFailedState>();
         }
         else {
             /**
              * huh?
              */
-            m_pPlayButton->setVisible(false);
+            CCLOG("huh?");
+            m_pPlayButton->setVisible(true);
             m_pGoogleSignInButton->setVisible(true);
             m_pLoader->setVisible(false);
             m_pLoader->stopAllActions();
