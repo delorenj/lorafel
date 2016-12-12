@@ -94,8 +94,50 @@ static AppDelegate s_sharedApplication;
 //
     [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
     [GIDSignIn sharedInstance].delegate = self;
-  
+
+
     app->run();
+
+    NSDictionary *parameters;
+
+    [[FIRAuth auth]
+            signInAnonymouslyWithCompletion:^(FIRUser *_Nullable u, NSError *_Nullable error) {
+                NSDictionary *p = @{@"state" : @"LoggedInState"};
+                [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:p];
+                NSString *userID = u.uid;
+                _db = [[FIRDatabase database] reference];
+
+                [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    if(snapshot.exists) {
+                        NSDictionary *user = snapshot.value;
+                        [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
+                    }
+
+                } withCancelBlock:^(NSError * _Nonnull error) {
+                    NSLog(@"%@", error.localizedDescription);
+                }];
+
+                [[[[_db child:@"users"]
+                        child:userID]
+                        child:@"items"]
+                        observeSingleEventOfType:FIRDataEventTypeChildAdded
+                                       withBlock:^(FIRDataSnapshot* _Nonnull snapshot) {
+                                           if (snapshot.exists) {
+                                               NSDictionary* keyval = snapshot.value;
+                                               [keyval setValue:snapshot.key forKey:@"id"];
+                                               [IOSNDKHelper sendMessage:@"onCompleteAddItem" withParameters:keyval];
+                                           }
+
+                                       } withCancelBlock:^(NSError* _Nonnull error) {
+                            NSLog(@"%@", error.localizedDescription);
+                        }];
+
+            }];
+    // Send C++ a message with parameters
+    // C++ will receive this message only if the selector list has a method
+    // of the same name as specified - in this case, "gameTestMethod"
+    [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:parameters];
+
 
     _db = [[FIRDatabase database] reference];
 

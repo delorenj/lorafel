@@ -57,7 +57,7 @@ bool TitleScene::init() {
     addChild(m_pBackground, LayerOrder::BACKGROUND);
 
     m_pPlayButton = cocos2d::ui::Button::create("play-btn.png");
-    m_pPlayButton->setVisible(false);
+    m_pPlayButton->setVisible(true);
     m_pPlayButton->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
     m_pPlayButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     m_pPlayButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
@@ -70,24 +70,24 @@ bool TitleScene::init() {
 
     addChild(m_pPlayButton, LayerOrder::UX);
 
-    m_pGoogleSignInButton = cocos2d::ui::Button::create("google-signin-btn.png");
-    m_pGoogleSignInButton->setVisible(false);
-    m_pGoogleSignInButton->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    m_pGoogleSignInButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 100));
-    m_pGoogleSignInButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
-        if(type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-			Value v;
-			v.Null;
-			sendMessageWithParams("signInGoogle", v);
-        }
-    });
-
-    addChild(m_pGoogleSignInButton, LayerOrder::UX);
+//    m_pGoogleSignInButton = cocos2d::ui::Button::create("google-signin-btn.png");
+//    m_pGoogleSignInButton->setVisible(false);
+//    m_pGoogleSignInButton->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
+//    m_pGoogleSignInButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 200));
+//    m_pGoogleSignInButton->addTouchEventListener([&](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type){
+//        if(type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+//			Value v;
+//			v.Null;
+//			sendMessageWithParams("signInGoogle", v);
+//        }
+//    });
+//
+//    addChild(m_pGoogleSignInButton, LayerOrder::UX);
 
     m_pLoader = cocos2d::Sprite::createWithSpriteFrameName("avocado.png");
     m_pLoader->setVisible(false);
     m_pLoader->setAnchorPoint(cocos2d::Vec2(0.5f, 0.5f));
-    m_pLoader->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 100);
+    m_pLoader->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 100));
     addChild(m_pLoader, LayerOrder::UX);
 
     /**
@@ -143,8 +143,8 @@ void TitleScene::update(float delta) {
         /**
          * If not logged in, then try logging in
          */
-        m_pPlayButton->setVisible(true);
-        m_pGoogleSignInButton->setVisible(true);
+        m_pPlayButton->setVisible(false);
+//        m_pGoogleSignInButton->setVisible(true);
         m_pLoader->setVisible(true);
         m_pLoader->stopAllActions();
 
@@ -154,23 +154,21 @@ void TitleScene::update(float delta) {
 
 
     } else if (state->getName() == "AuthenticationFailedState") {
-        CCLOG("AuthenticationFailedState");
         /**
          * If user hasn't authorized a login,
          * then show the login buttons
          */
         m_pPlayButton->setVisible(true);
-        m_pGoogleSignInButton->setVisible(true);
+//        m_pGoogleSignInButton->setVisible(true);
         m_pLoader->setVisible(false);
         m_pLoader->stopAllActions();
     } else if (state->getName() == "LoggedInState") {
-        CCLOG("LoggedInState");
         /**
          * If user is logged in and all is good,
          * then show the PLAY buttons and such
          */
         m_pPlayButton->setVisible(true);
-        m_pGoogleSignInButton->setVisible(false);
+//        m_pGoogleSignInButton->setVisible(false);
         m_pLoader->setVisible(false);
         m_pLoader->stopAllActions();
         auto user = FirebaseAuth::getInstance()->getAuth()->SignInWithCustomTokenLastResult();
@@ -181,8 +179,8 @@ void TitleScene::update(float delta) {
          * If currently trying to log in, then show
          * some sort of loader or something
          */
-        m_pPlayButton->setVisible(true);
-        m_pGoogleSignInButton->setVisible(false);
+        m_pPlayButton->setVisible(false);
+//        m_pGoogleSignInButton->setVisible(false);
         m_pLoader->setVisible(true);
 
         if (m_pLoader->getNumberOfRunningActions() == 0) {
@@ -204,9 +202,9 @@ void TitleScene::update(float delta) {
              * huh?
              */
             CCLOG("huh?");
-            m_pPlayButton->setVisible(true);
-            m_pGoogleSignInButton->setVisible(true);
-            m_pLoader->setVisible(false);
+            m_pPlayButton->setVisible(false);
+//            m_pGoogleSignInButton->setVisible(true);
+            m_pLoader->setVisible(true);
             m_pLoader->stopAllActions();
         }
     }
