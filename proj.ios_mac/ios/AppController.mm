@@ -111,6 +111,10 @@ static AppDelegate s_sharedApplication;
                     if(snapshot.exists) {
                         NSDictionary *user = snapshot.value;
                         [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
+                    } else {
+                        NSLog(@"groamps?");
+                        NSDictionary *params = @{@"uid" : @"userID"};
+                        [IOSNDKHelper sendMessage:@"onNewUser" withParameters:params];
                     }
 
                 } withCancelBlock:^(NSError * _Nonnull error) {
@@ -136,7 +140,7 @@ static AppDelegate s_sharedApplication;
     // Send C++ a message with parameters
     // C++ will receive this message only if the selector list has a method
     // of the same name as specified - in this case, "gameTestMethod"
-    [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:parameters];
+    [IOSNDKHelper sendMessage:@"changeStateSelector" withParameters:@{@"state" : @"AuthenticatingState"}];
 
 
     _db = [[FIRDatabase database] reference];

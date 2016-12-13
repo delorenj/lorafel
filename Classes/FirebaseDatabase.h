@@ -47,6 +47,7 @@ namespace lorafel {
 
     protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
+		void onNewUser(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGlobalQuery(cocos2d::Node *sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
 
