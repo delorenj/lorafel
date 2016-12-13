@@ -29,6 +29,7 @@ namespace lorafel {
 
 		void getStringForKey(std::string key, std::string child);
 
+        void createUser(std::string uid);
 		void loadInventoryItemGrid();
 		void loadInventoryEquipGrid();
         void addItem(Item* pItem, int quantity);

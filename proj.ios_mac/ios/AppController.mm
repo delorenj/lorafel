@@ -112,9 +112,23 @@ static AppDelegate s_sharedApplication;
                         NSDictionary *user = snapshot.value;
                         [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
                     } else {
-                        NSLog(@"groamps?");
-                        NSDictionary *params = @{@"uid" : @"userID"};
-                        [IOSNDKHelper sendMessage:@"onNewUser" withParameters:params];
+                        NSDictionary *initialParams = @{
+                                @"gold" : 0,
+                                @"xp" : 0,
+                                @"inventory_item_grid" : @{}
+                        };
+                        [[[_db child:@"users"] child:u.uid] setValue:initialParams];
+
+
+                        [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                            if (snapshot.exists) {
+                                NSDictionary *user = snapshot.value;
+                                [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
+                            }
+                        }withCancelBlock:^(NSError * _Nonnull error) {
+                            NSLog(@"%@", error.localizedDescription);
+                        }];
+
                     }
 
                 } withCancelBlock:^(NSError * _Nonnull error) {
