@@ -23,11 +23,6 @@ bool FirebaseDatabase::init() {
 			this);
 
 	NDKHelper::addSelector("FirebaseDatabaseSelectors",
-			"onNewUser",
-			CC_CALLBACK_2(FirebaseDatabase::onNewUser, this),
-			this);
-
-	NDKHelper::addSelector("FirebaseDatabaseSelectors",
 			"onCompleteGlobalQuery",
 			CC_CALLBACK_2(FirebaseDatabase::onCompleteGlobalQuery, this),
 			this);
@@ -38,22 +33,6 @@ bool FirebaseDatabase::init() {
 void FirebaseDatabase::onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data) {
 	CCLOG("Loading player from native login...");
 	PlayerManager::getInstance()->loadPlayer(data);
-}
-
-void FirebaseDatabase::createUser(std::string uid) {
-    ValueMap vm;
-
-    vm["tempId"] = pItem->getId();
-    vm["arguments"] = pItem->getArguments();
-    vm["quantity"] = quantity;
-
-    Value v = Value(vm);
-    sendMessageWithParams("createUser", v);
-}
-
-void FirebaseDatabase::onNewUser(cocos2d::Node* sender, cocos2d::Value data) {
-	CCLOG("Initializing a new player from native login...");
-    createUser(data.asValueMap()["uid"].asString());
 }
 
 void FirebaseDatabase::onCompleteGlobalQuery(cocos2d::Node *sender, cocos2d::Value data) {

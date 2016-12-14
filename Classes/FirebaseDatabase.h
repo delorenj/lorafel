@@ -29,7 +29,6 @@ namespace lorafel {
 
 		void getStringForKey(std::string key, std::string child);
 
-        void createUser(std::string uid);
 		void loadInventoryItemGrid();
 		void loadInventoryEquipGrid();
         void addItem(Item* pItem, int quantity);
@@ -48,7 +47,6 @@ namespace lorafel {
 
     protected:
 		void onCompleteUserQuery(cocos2d::Node* sender, cocos2d::Value data);
-		void onNewUser(cocos2d::Node* sender, cocos2d::Value data);
 		void onCompleteGlobalQuery(cocos2d::Node *sender, cocos2d::Value data);
 		void onCompleteGetStringForKeyQuery(cocos2d::Node* sender, cocos2d::Value data);
 

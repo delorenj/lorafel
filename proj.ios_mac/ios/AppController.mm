@@ -113,14 +113,14 @@ static AppDelegate s_sharedApplication;
                         [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
                     } else {
                         NSDictionary *initialParams = @{
-                                @"gold" : 0,
-                                @"xp" : 0,
-                                @"inventory_item_grid" : @{}
+                                @"gold" : @0,
+                                @"xp" : @0
                         };
-                        [[[_db child:@"users"] child:u.uid] setValue:initialParams];
+                        auto __db = [[FIRDatabase database] reference];
+                        [[[__db child:@"users"] child:u.uid] setValue:initialParams];
 
 
-                        [[[_db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                        [[[__db child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                             if (snapshot.exists) {
                                 NSDictionary *user = snapshot.value;
                                 [IOSNDKHelper sendMessage:@"onCompleteUserQuery" withParameters:user];
@@ -158,6 +158,8 @@ static AppDelegate s_sharedApplication;
 
 
     _db = [[FIRDatabase database] reference];
+
+    [_db keepSynced:YES];
 
     [[_db child:@"global"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if(snapshot.exists) {
