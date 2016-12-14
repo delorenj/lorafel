@@ -61,6 +61,7 @@ namespace lorafel {
                             reload = true;
                             m_pSwappyGrid->clearAllDropQueues();
                             m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
+                            m_pTurnManager->clearPlayerTiles();
                             break;
                         }
                     }

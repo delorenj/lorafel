@@ -47,6 +47,15 @@ namespace lorafel {
             }
         };
 
+        void clearPlayerTiles() {
+            m_pPlayerTiles->clear();
+            while(!m_pTurnStack->empty()) {
+                m_pTurnStack->pop();
+            }
+            m_activePlayerTileIndex = 0;
+            m_playerTileIndex = 0;
+        }
+
     protected:
         int m_playerTileIndex;
         int m_activePlayerTileIndex;

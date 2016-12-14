@@ -15,7 +15,20 @@ namespace lorafel {
     class GameScene : public SwappyGridScene {
     public:
         static cocos2d::Scene* createScene();
-        virtual bool init() override;
+        virtual bool init(int levelId = 0);
+
+        static GameScene *create(int levelId) {
+            GameScene* pRet = new GameScene();
+            if (pRet && pRet->init(levelId)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
         CREATE_FUNC(GameScene);
     };
 }

@@ -88,6 +88,7 @@ namespace lorafel {
         int getMaxMoveDistance() { return m_maxMoveDistance; }
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<Item*> getEquippedItems();
+        Progress* getProgress() const { return m_pProgress; }
 
     protected:
         // Current Stats

@@ -13,6 +13,7 @@ using namespace lorafel;
 Player::Player() {
     m_pXpManager = new LinearXpManager();
     m_pInventory = new Inventory();
+    m_pProgress = new Progress();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
     //m_activeConsumables.reserve(3);
     m_pInventorySlotSerializer = std::make_shared<InventorySlotSerializer>();

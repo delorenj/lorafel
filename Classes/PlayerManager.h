@@ -43,6 +43,7 @@ namespace lorafel {
                 loadStats(valueMap);
 				loadInventory(valueMap);
                 loadEquipSlots(valueMap);
+                loadProgress(valueMap);
 			}
 
             return m_pPlayer;
@@ -171,7 +172,12 @@ namespace lorafel {
             CCLOG("PlayerManager::loadInventory() - loading %d of item %s", itemQuantity, itemArgs["item_name"].asString().c_str());
             return ItemFactory::getInstance()->createItem(itemArgs, itemId);
         }
-        
+
+
+        void loadProgress(cocos2d::ValueMap data) {
+            m_pPlayer->getProgress()->onLoadComplete(data);
+        }
+
         Player* getPlayer() const { return m_pPlayer; }
 
     protected:

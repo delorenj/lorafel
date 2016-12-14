@@ -885,7 +885,7 @@ SwappyGrid::~SwappyGrid() {
 
     CC_SAFE_DELETE(m_pTileRemoveQueue);
     CC_SAFE_DELETE(m_pGrid);
-//    CC_SAFE_DELETE(LevelManager::getInstance()->getCurrentLevel());
+//    CC_SAFE_DELETE(LevelManager::getInstance()->getCurrentLevelId());
     CC_SAFE_DELETE(m_pTileMatcher);
 }
 
