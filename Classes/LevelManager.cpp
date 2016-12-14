@@ -3,13 +3,7 @@
 //
 
 #include "LevelManager.h"
-#include "AvocadoTile.h"
-#include "CarrotTile.h"
-#include "GrapeTile.h"
-#include "MeleeAttackTile.h"
-#include "MoneyBagTile.h"
 #include "StupidRandomizer.h"
-#include "Tile.h"
 #include "TileFactory.h"
 
 using namespace lorafel;
@@ -37,9 +31,9 @@ void LevelManager::loadTileTree(cocos2d::Value data) {
 }
 
 Level* LevelManager::createLevel(int levelId) {
-    cocos2d::ValueVector levelRoot = m_levelTree["levels"].asValueVector();
+    cocos2d::ValueVector levelRoot = (std::vector<Value> &&) m_levelTree["levels"].asValueVector();
 
-    cocos2d::ValueMap levelConfig = levelRoot[levelId].asValueMap();
+    cocos2d::ValueMap levelConfig = (std::unordered_map<std::string, Value> &&) levelRoot[levelId].asValueMap();
 
     Level* level = new Level();
     level->setSwappyGrid(m_pSwappyGrid);
@@ -83,13 +77,13 @@ Level* LevelManager::createLevel(int levelId) {
     /**
      * Random Tiles
      */
-    auto tileSet = levelConfig["tile_set"].asValueVector();
-    auto tileDefs = m_tileTree["tiles"].asValueMap();
+    auto tileSet = (std::vector<Value> &&) levelConfig["tile_set"].asValueVector();
+    auto tileDefs = (std::unordered_map<std::string, Value> &&) m_tileTree["tiles"].asValueMap();
 
     for(auto tileConfig : tileSet) {
         auto f = tileConfig.asValueMap()["f"].asInt();
         auto id = tileConfig.asValueMap()["id"].asString();
-        auto args = tileDefs[id].asValueMap();
+        auto args = (std::unordered_map<std::string, Value> &&) tileDefs[id].asValueMap();
         auto config = new Tile::TileConfig();
 
         config->create = std::bind([=]() {
@@ -103,7 +97,7 @@ Level* LevelManager::createLevel(int levelId) {
     /**
      * Static Tiles
      */
-    auto staticTiles = levelConfig["static"].asValueVector();
+    auto staticTiles = (std::vector<Value> &&) levelConfig["static"].asValueVector();
 
     for(auto tileConfig : staticTiles) {
         int x,y;
@@ -121,7 +115,7 @@ Level* LevelManager::createLevel(int levelId) {
             y = RandomHelper::random_int(0, SwappyGrid::NUM_ROWS);
         }
 
-        auto args = tileDefs[id].asValueMap();
+        auto args = (std::unordered_map<std::string, Value> &&) tileDefs[id].asValueMap();
         level->addStaticTile(std::make_pair(x,y), args);
     }
 

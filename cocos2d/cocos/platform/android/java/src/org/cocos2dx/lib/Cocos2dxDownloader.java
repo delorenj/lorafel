@@ -6,8 +6,8 @@ import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
 
-import org.apache.http.Header;
-import org.apache.http.message.BasicHeader;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.message.BasicHeader;
 
 import java.io.File;
 import java.util.*;
@@ -44,19 +44,19 @@ class DataTaskHandler extends BinaryHttpResponseHandler {
     }
 
     @Override
-    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData) {
-        LogD("onSuccess(i:" + statusCode + " headers:" + headers);
-        _downloader.onFinish(_id, 0, null, binaryData);
+    public void onFailure(int i, Header[] headers, byte[] errorResponse, Throwable throwable) {
+        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable);
+        String errStr = "";
+        if (null != throwable) {
+            errStr = throwable.toString();
+        }
+        _downloader.onFinish(_id, i, errStr, null);
     }
 
     @Override
-    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] binaryData, Throwable error) {
-        LogD("onFailure(i:" + statusCode + " headers:" + headers + " throwable:" + error);
-        String errStr = "";
-        if (null != error) {
-            errStr = error.toString();
-        }
-        _downloader.onFinish(_id, statusCode, errStr, null);
+    public void onSuccess(int i, Header[] headers, byte[] binaryData) {
+        LogD("onSuccess(i:" + i + " headers:" + headers);
+        _downloader.onFinish(_id, 0, null, binaryData);
     }
 }
 
@@ -102,48 +102,38 @@ class FileTaskHandler extends FileAsyncHttpResponseHandler {
         _downloader.runNextTaskIfExists();
     }
 
-//    @Override
-//    public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
-//        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable + " file:" + file);
-//        String errStr = "";
-//        if (null != throwable) {
-//            errStr = throwable.toString();
-//        }
-//        _downloader.onFinish(_id, i, errStr, null);
-//    }
-//
-//    @Override
-//    public void onSuccess(int i, Header[] headers, File file) {
-//        LogD("onSuccess(i:" + i + " headers:" + headers + " file:" + file);
-//        String errStr = null;
-//        do {
-//            // rename temp file to final file
-//            // if final file exist, remove it
-//            if (_finalFile.exists()) {
-//                if (_finalFile.isDirectory()) {
-//                    errStr = "Dest file is directory:" + _finalFile.getAbsolutePath();
-//                    break;
-//                }
-//                if (false == _finalFile.delete()) {
-//                    errStr = "Can't remove old file:" + _finalFile.getAbsolutePath();
-//                    break;
-//                }
-//            }
-//
-//            File tempFile = getTargetFile();
-//            tempFile.renameTo(_finalFile);
-//        } while (false);
-//        _downloader.onFinish(_id, 0, errStr, null);
-//    }
-
     @Override
-    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, File file) {
-
+    public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
+        LogD("onFailure(i:" + i + " headers:" + headers + " throwable:" + throwable + " file:" + file);
+        String errStr = "";
+        if (null != throwable) {
+            errStr = throwable.toString();
+        }
+        _downloader.onFinish(_id, i, errStr, null);
     }
 
     @Override
-    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, File file) {
+    public void onSuccess(int i, Header[] headers, File file) {
+        LogD("onSuccess(i:" + i + " headers:" + headers + " file:" + file);
+        String errStr = null;
+        do {
+            // rename temp file to final file
+            // if final file exist, remove it
+            if (_finalFile.exists()) {
+                if (_finalFile.isDirectory()) {
+                    errStr = "Dest file is directory:" + _finalFile.getAbsolutePath();
+                    break;
+                }
+                if (false == _finalFile.delete()) {
+                    errStr = "Can't remove old file:" + _finalFile.getAbsolutePath();
+                    break;
+                }
+            }
 
+            File tempFile = getTargetFile();
+            tempFile.renameTo(_finalFile);
+        } while (false);
+        _downloader.onFinish(_id, 0, errStr, null);
     }
 }
 
@@ -268,7 +258,7 @@ public class Cocos2dxDownloader {
                         list.add(new BasicHeader("Range", "bytes=" + fileLen + "-"));
                         headers = list.toArray(new Header[list.size()]);
                     }
-//                    task.handle = downloader._httpClient.get(Cocos2dxHelper.getActivity(), url, headers, null, task.handler);
+                    task.handle = downloader._httpClient.get(Cocos2dxHelper.getActivity(), url, headers, null, task.handler);
                     //task.handle = downloader._httpClient.get(url, task.handler);
                 } while (false);
 
@@ -277,7 +267,7 @@ public class Cocos2dxDownloader {
                     Cocos2dxHelper.runOnGLThread(new Runnable() {
                         @Override
                         public void run() {
-//                            downloader.nativeOnFinish(downloader._id, id, 0, errStr, null);
+                            downloader.nativeOnFinish(downloader._id, id, 0, errStr, null);
                         }
                     });
                 } else {

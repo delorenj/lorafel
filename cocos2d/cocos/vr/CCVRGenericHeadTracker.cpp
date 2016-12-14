@@ -28,6 +28,8 @@
 // To change this behvior, use the File Inspector from Xcode
 
 #include "vr/CCVRGenericHeadTracker.h"
+
+#include <cmath>
 #include "platform/CCPlatformMacros.h"
 #include "platform/CCDevice.h"
 
@@ -127,15 +129,15 @@ Vec3 lowPass(const Vec3& input, const Vec3& prev)
 
 static Mat4 getRotateEulerMatrix(float x, float y, float z)
 {
-    x *= (float)(M_PI / 180.0f);
-    y *= (float)(M_PI / 180.0f);
-    z *= (float)(M_PI / 180.0f);
-    float cx = (float) cos(x);
-    float sx = (float) sin(x);
-    float cy = (float) cos(y);
-    float sy = (float) sin(y);
-    float cz = (float) cos(z);
-    float sz = (float) sin(z);
+    x *= static_cast<float>(M_PI) / 180.0f;
+    y *= static_cast<float>(M_PI) / 180.0f;
+    z *= static_cast<float>(M_PI) / 180.0f;
+    float cx = std::cos(x);
+    float sx = std::sin(x);
+    float cy = std::cos(y);
+    float sy = std::sin(y);
+    float cz = std::cos(z);
+    float sz = std::sin(z);
     float cxsy = cx * sy;
     float sxsy = sx * sy;
     Mat4 matrix;
@@ -241,23 +243,22 @@ Mat4 VRGenericHeadTracker::getLocalRotation()
     return Mat4::IDENTITY;
 
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    static Vec3 prevAccel = Vec3(0,0,0);
-//    static Vec3 prevCompass = Vec3(0,0,0);
-//
-//    Vec3 accel = JniHelper::callStaticVec3Method("org/cocos2dx/lib/Cocos2dxHelper", "getAccelValue");
-//    Vec3 compass = JniHelper::callStaticVec3Method("org/cocos2dx/lib/Cocos2dxHelper", "getCompassValue");
-//
+    static Vec3 prevAccel = Vec3(0,0,0);
+    static Vec3 prevCompass = Vec3(0,0,0);
+
+    Vec3 accel = JniHelper::callStaticVec3Method("org/cocos2dx/lib/Cocos2dxHelper", "getAccelValue");
+    Vec3 compass = JniHelper::callStaticVec3Method("org/cocos2dx/lib/Cocos2dxHelper", "getCompassValue");
+
 //    CCLOG("accel: %f, %f, %f.... compass: %f, %f, %f", accel.x, accel.y, accel.z, compass.x, compass.y, compass.z);
-//    prevAccel = lowPass(accel, prevAccel);
-//    prevCompass = lowPass(compass, prevCompass);
+    prevAccel = lowPass(accel, prevAccel);
+    prevCompass = lowPass(compass, prevCompass);
 //    CCLOG("low pass accel: %f, %f, %f.... compass: %f, %f, %f", prevAccel.x, prevAccel.y, prevAccel.z, prevCompass.x, prevCompass.y, prevCompass.z);
-//
-//    Mat4 rotMatrix = getRotationMatrix(prevAccel, prevCompass);
-//
-//    Mat4 inertialReferenceFrameToDevice(rotMatrix);
-//    Mat4 worldToDevice =  inertialReferenceFrameToDevice * _worldToInertialReferenceFrame;
-//    return  _deviceToDisplay * worldToDevice;
-    return Mat4::IDENTITY; //TODO: Implement
+
+    Mat4 rotMatrix = getRotationMatrix(prevAccel, prevCompass);
+
+    Mat4 inertialReferenceFrameToDevice(rotMatrix);
+    Mat4 worldToDevice =  inertialReferenceFrameToDevice * _worldToInertialReferenceFrame;
+    return  _deviceToDisplay * worldToDevice;
 #else
     return Mat4::IDENTITY;
 #endif

@@ -2,6 +2,7 @@
 proj.ios_mac/Pods/**/*
 node_modules
 cocos2d/external/gpg-cpp-sdk
+cocos2d.3.12
 *.apk
 dexedLibs
 cocos2d/cocos/platform/android/java/bin/classes.jar
