@@ -17,8 +17,8 @@ namespace lorafel {
         int getCurrentWorldId() const { return m_currentWorldId; }
         LevelScoreMap getLevelScoreMap() const { return m_mapLevelScores; }
         int getLevelScore(int levelId) const { return m_mapLevelScores.at(levelId); }
-        void setLevelScore(int levelId, int score) { m_mapLevelScores[levelId] = score; }
-
+        Progress* setLevelScore(int levelId, int score);
+        Progress* setLevelScore(int score);
         void save();
         void load();
         void onLoadComplete(cocos2d::ValueMap data);

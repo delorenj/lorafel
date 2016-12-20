@@ -87,6 +87,8 @@ namespace lorafel {
         std::string getImage() { return m_image; }
         void setImage(std::string image) { m_image = image; }
 
+        void onLevelCleared();
+
     protected:
         SwappyGrid* m_pSwappyGrid;
 

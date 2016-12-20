@@ -5,6 +5,7 @@
 #include "Level.h"
 #include "LootFactory.h"
 #include "TileFactory.h"
+#include "LevelClearedUI.h"
 
 using namespace lorafel;
 
@@ -92,4 +93,12 @@ void Level::addTransparencyGrid() {
 
 void Level::addStaticTile(std::pair<int, int> pos, ValueMap args) {
     m_staticTiles[pos] = args;
+}
+
+void Level::onLevelCleared() {
+    GameStateMachine::getInstance()->enterState<LevelClearedState>();
+    LevelClearedUI::create()->show();
+    PlayerManager::getInstance()->getPlayer()->getProgress()
+            ->setLevelScore(3)
+            ->save();
 }

@@ -555,7 +555,7 @@ void SwappyGrid::ProcessMatches() {
     } else if (LevelManager::getInstance()->getCurrentLevel()->isCleared()) {
         // Check to see if level is cleared
         // If so, fire off the end level state
-        onLevelCleared();
+        LevelManager::getInstance()->getCurrentLevel()->onLevelCleared();
     } else {
         setIdleState();
     }
@@ -701,12 +701,6 @@ std::set<lorafel::Tile*> SwappyGrid::getEnemyTiles() {
         }
     }
     return enemies;
-}
-
-void SwappyGrid::onLevelCleared() {
-    GameStateMachine::getInstance()->enterState<LevelClearedState>();
-    auto levelCleared = LevelClearedUI::create();
-    levelCleared->show();
 }
 
 void SwappyGrid::ProcessTurnManager() {

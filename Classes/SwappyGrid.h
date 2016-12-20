@@ -36,14 +36,13 @@ namespace lorafel {
         static const int NUM_ROWS = 9;
         static const int SWAPPING_ACTION_TAG = 1;
 
+        CREATE_FUNC(SwappyGrid);
 
         virtual ~SwappyGrid();
 
         bool init() override;
         virtual void onExit() override;
         void update(float delta) override;
-        void onLevelCleared();
-        CREATE_FUNC(SwappyGrid);
         void loadLevel(Level* level);
         GridTransparency* getGridTransparency();
         void addTileToDropQueue(int column, Tile* pTile);
