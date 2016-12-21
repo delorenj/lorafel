@@ -21,8 +21,10 @@ void Progress::onLoadComplete(cocos2d::ValueMap data) {
         auto levelScores = data["level_score"].asValueVector();
         std::set<int> completedLevelIds;
         for(auto levelScore : levelScores) {
-            int completedLevel = levelScore.first;
-            int score = levelScore.second.asInt();
+            if(levelScore.isNull()) continue;
+            auto map = levelScore.asValueMap();
+            int completedLevel = map["id"].asInt();
+            int score = map["score"].asInt();
             m_mapLevelScores[completedLevel] = score;
             completedLevelIds.insert(completedLevel);
         }
@@ -46,6 +48,14 @@ Progress *Progress::setLevelScore(int score) {
 
 Progress *Progress::setLevelScore(int levelId, int score) {
     m_mapLevelScores[levelId] = score;
-    FirebaseDatabase::getInstance()->setStringForKey(to_string(levelId), to_string(score), "level_score");
+    ValueMap vm;
+    vm["key"] = "id";
+    vm["value"] = cocos2d::Value(to_string(levelId));
+    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
+
+    vm["key"] = "score";
+    vm["value"] = cocos2d::Value(to_string(score));
+    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
+
     return this;
 }
