@@ -14,7 +14,7 @@
 namespace lorafel {
     class GameScene : public SwappyGridScene {
     public:
-        static cocos2d::Scene* createScene();
+        static cocos2d::Scene* createScene(int levelId = 0);
         virtual bool init(int levelId = 0);
 
         static GameScene *create(int levelId) {

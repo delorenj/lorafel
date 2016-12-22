@@ -68,7 +68,6 @@ namespace lorafel {
                 }
                 if(reload) break;
             }
-
             if(reload) load();
         }
 
@@ -83,11 +82,11 @@ namespace lorafel {
         }
 
         void addStaticTile(std::pair<int, int> pos, ValueMap args);
-
         std::string getImage() { return m_image; }
         void setImage(std::string image) { m_image = image; }
-
         void onLevelCleared();
+        void setLevelId(int levelId) { m_levelId = levelId; }
+        int getLevelId() const { return m_levelId; }
 
     protected:
         SwappyGrid* m_pSwappyGrid;
@@ -97,6 +96,7 @@ namespace lorafel {
         TurnManager* m_pTurnManager;
         std::string m_image = "bg1.png";
         std::map<std::pair<int, int>, cocos2d::ValueMap > m_staticTiles;
+        int m_levelId;
     };
 }
 

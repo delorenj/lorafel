@@ -17,6 +17,10 @@ namespace lorafel {
             init();
         };
 
+        ~LevelManager() {
+            CCLOG("LevelManager::~LevelManager()");
+        }
+
         virtual void init();
         static LevelManager* _instance;
         cocos2d::ValueMap m_levelTree;

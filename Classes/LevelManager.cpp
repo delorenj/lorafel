@@ -119,8 +119,8 @@ Level* LevelManager::createLevel(int levelId) {
         level->addStaticTile(std::make_pair(x,y), args);
     }
 
-    m_pCurrentLevel = level;
-    return m_pCurrentLevel;
+    setCurrentLevel(level);
+    return getCurrentLevel();
 
 }
 

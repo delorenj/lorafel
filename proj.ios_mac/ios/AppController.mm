@@ -163,17 +163,21 @@ static AppDelegate s_sharedApplication;
 
     [[[_db child:@"global"] child:@"test"] setValue:@"poop"];
 
+    [self queryGlobal];
+
+    return YES;
+}
+
+- (void)queryGlobal {
     [[_db child:@"global"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if(snapshot.exists) {
             NSDictionary *itemTree = snapshot.value;
             [IOSNDKHelper sendMessage:@"onCompleteGlobalQuery" withParameters:itemTree];
         }
 
-    } withCancelBlock:^(NSError * _Nonnull error) {
+    }                               withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
     }];
-
-    return YES;
 }
 
 

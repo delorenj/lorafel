@@ -14,9 +14,9 @@
 
 using namespace lorafel;
 
-cocos2d::Scene* GameScene::createScene() {
+cocos2d::Scene* GameScene::createScene(int levelId) {
     auto scene = cocos2d::Scene::createWithPhysics();
-    auto layer = GameScene::create();
+    auto layer = GameScene::create(levelId);
     scene->addChild(layer);
     return scene;
 }
