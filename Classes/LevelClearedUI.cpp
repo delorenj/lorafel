@@ -19,7 +19,7 @@ bool LevelClearedUI::init() {
     m_pLayout = cocos2d::ui::Layout::create();
     m_pLayout->setLayoutType(cocos2d::ui::Layout::Type::RELATIVE);
     m_pLayout->setAnchorPoint(cocos2d::Vec2(0, 0));
-    m_pLayout->setPosition(origin);
+    m_pLayout->setPosition(cocos2d::Vec2(0,0));
     m_pLayout->setContentSize(visibleSize);
     m_pLayout->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
     m_pLayout->setBackGroundColor(cocos2d::Color3B(0,0,0));
@@ -36,7 +36,7 @@ bool LevelClearedUI::init() {
 
 void LevelClearedUI::show() {
     auto director = cocos2d::Director::getInstance();
-    setPosition(director->getVisibleOrigin());
+    this->setPosition(director->getVisibleOrigin());
     director->getRunningScene()->addChild(this, LayerOrder::GAMEOVER);
     runAction(cocos2d::Sequence::create(
             cocos2d::FadeIn::create(0.25f),
@@ -49,22 +49,20 @@ void LevelClearedUI::show() {
 }
 
 void LevelClearedUI::tweenText() {
-    auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     auto size = cocos2d::Director::getInstance()->getVisibleSize();
     m_pLevelCleared = cocos2d::Sprite::create("level_cleared.png");
 
     m_pLevelCleared->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
-    auto gameOverToPos = cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height/2);
-    m_pLevelCleared->setPosition(cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height+ m_pLevelCleared->getContentSize().height));
+    auto gameOverToPos = cocos2d::Vec2(size.width/2, size.height/2);
+    m_pLevelCleared->setPosition(cocos2d::Vec2(size.width/2, size.height+ m_pLevelCleared->getContentSize().height));
     m_pLevelCleared->runAction(cocos2d::EaseBackOut::create(cocos2d::MoveTo::create(0.5f, gameOverToPos)));
     addChild(m_pLevelCleared);
 
 }
 
 void LevelClearedUI::showButtons() {
-    auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     auto size = cocos2d::Director::getInstance()->getVisibleSize();
-    auto center = cocos2d::Vec2(origin.x + size.width/2, origin.y + size.height/2);
+    auto center = cocos2d::Vec2(size.width/2, size.height/2);
 
     m_tryAgainButton = cocos2d::ui::Button::create();
     m_tryAgainButton->loadTextures("try_again_button.png","try_again_button_pressed.png","", cocos2d::ui::Widget::TextureResType::PLIST);

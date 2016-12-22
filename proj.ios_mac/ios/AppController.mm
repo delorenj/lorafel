@@ -161,6 +161,8 @@ static AppDelegate s_sharedApplication;
 
     [_db keepSynced:YES];
 
+    [[[_db child:@"global"] child:@"test"] setValue:@"poop"];
+
     [[_db child:@"global"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if(snapshot.exists) {
             NSDictionary *itemTree = snapshot.value;

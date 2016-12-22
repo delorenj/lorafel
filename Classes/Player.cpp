@@ -242,7 +242,7 @@ bool Player::tileWithinHitDistance(Tile *pTile) {
     auto lh = getEquippedItemBySlotType(LEFT_HAND);
     auto rh = getEquippedItemBySlotType(RIGHT_HAND);
 
-    auto maxHitDistance = 0;
+    auto maxHitDistance = 2;
     if(dynamic_cast<Weapon*>(lh)) {
         Weapon* weapon = dynamic_cast<Weapon*>(lh);
         maxHitDistance = weapon->getHitDistance();
