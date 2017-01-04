@@ -51,11 +51,11 @@ Progress *Progress::setLevelScore(int levelId, int score) {
     ValueMap vm;
     vm["key"] = "id";
     vm["value"] = cocos2d::Value(to_string(levelId));
-    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
+//    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
 
     vm["key"] = "score";
     vm["value"] = cocos2d::Value(to_string(score));
-    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
+//    FirebaseDatabase::getInstance()->addMapToKey(to_string(levelId), vm, "level_score");
 
     return this;
 }

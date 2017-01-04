@@ -13,6 +13,7 @@
 #include "firebase/auth.h"
 #include "FirebaseAuth.h"
 #include "FirebaseDatabase.h"
+#include "LevelManager.h"
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include "platform/android/jni/JniHelper.h"
@@ -231,7 +232,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     lorafel::FirebaseAuth::getInstance()->getApp();
     sendMessageWithParams("enableOfflineDatabase", cocos2d::Value(cocos2d::ValueMapNull));
-
 
     // create a scene. it's an autorelease object
     auto scene = lorafel::TitleScene::createScene();

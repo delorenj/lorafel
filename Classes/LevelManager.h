@@ -11,7 +11,7 @@
 USING_NS_CC;
 
 namespace lorafel {
-    class LevelManager : public Ref {
+    class LevelManager : public cocos2d::Ref {
     protected:
         LevelManager() {
             init();

@@ -26,7 +26,6 @@ bool GameScene::init(int levelId) {
         return false;
     }
 
-
     if(levelId == 0) {
         auto pProgress = PlayerManager::getInstance()->getPlayer()->getProgress();
         levelId = pProgress->getCurrentLevelId();
@@ -34,7 +33,6 @@ bool GameScene::init(int levelId) {
 
     // Create the grid
     m_pSwappyGrid = SwappyGrid::create();
-
 
     // Load the level
     LevelManager::getInstance()->setSwappyGrid(m_pSwappyGrid);

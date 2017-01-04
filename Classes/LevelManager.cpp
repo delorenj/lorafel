@@ -11,7 +11,6 @@ using namespace lorafel;
 LevelManager* LevelManager::_instance;
 
 void LevelManager::init() {
-
 }
 
 void LevelManager::loadLevelTree(cocos2d::Value data) {
