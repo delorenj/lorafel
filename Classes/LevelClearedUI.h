@@ -33,6 +33,7 @@ namespace lorafel {
         cocos2d::ui::Button* m_nextButton;
 
         void tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
+        void nextLevel(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
 
     };
 }

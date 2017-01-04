@@ -29,6 +29,7 @@ namespace lorafel {
         ValueMap* m_pTileTree;
         SwappyGrid* m_pSwappyGrid;
         Level* m_pCurrentLevel;
+        int m_currentLevelId = 0;
 
     public:
 
@@ -44,6 +45,7 @@ namespace lorafel {
         ValueMap* getLevelTree() const { return m_pLevelTree; }
         ValueMap* getTileTree() const { return m_pTileTree; }
         Level* getCurrentLevel() const { return m_pCurrentLevel; }
+        int getCurrentLevelId() const { return m_currentLevelId; }
         void setCurrentLevel(Level* level) { m_pCurrentLevel = level; }
         void setSwappyGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
         SwappyGrid* getSwappyGrid() const { return m_pSwappyGrid; }

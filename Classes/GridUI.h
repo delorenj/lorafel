@@ -21,6 +21,7 @@ namespace lorafel {
 
         virtual void onExit() override {
             cocos2d::Node::onExit();
+            _eventDispatcher->removeAllEventListeners();
             removeAllChildrenWithCleanup(true);
         }
 

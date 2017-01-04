@@ -33,7 +33,7 @@ bool GridTestUI::init() {
 
 //    addSettingsButton();
     addLevelUpInfo();
-    scheduleUpdate();
+//    scheduleUpdate();
 
     return true;
 }

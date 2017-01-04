@@ -21,6 +21,12 @@ namespace lorafel {
             }
         }
 
+        virtual void onExit() override {
+            cocos2d::Node::onExit();
+            _eventDispatcher->removeAllEventListeners();
+            removeAllChildrenWithCleanup(true);
+        }
+
     protected:
         Player* m_pPlayer;
         XpManager* m_pLevelMananger;

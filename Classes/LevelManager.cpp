@@ -36,6 +36,8 @@ Level* LevelManager::createLevel(int levelId) {
 
     auto levelConfig = levelRoot[levelId].asValueMap();
 
+    m_currentLevelId = levelId;
+
     Level* level = new Level();
     level->setSwappyGrid(m_pSwappyGrid);
     level->addTransparencyGrid();

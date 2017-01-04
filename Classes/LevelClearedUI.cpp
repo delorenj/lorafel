@@ -84,6 +84,9 @@ void LevelClearedUI::showButtons() {
     m_nextButton->setPosition(nextToPos);
     m_nextButton->setScale(0.1);
     m_nextButton->runAction(cocos2d::EaseBackOut::create(cocos2d::ScaleTo::create(0.5f, 1.0f)));
+
+    m_nextButton->addTouchEventListener(CC_CALLBACK_2(LevelClearedUI::nextLevel, this));
+
     addChild(m_nextButton);
 
 }
@@ -91,11 +94,19 @@ void LevelClearedUI::showButtons() {
 void LevelClearedUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
     if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
         auto runningScene = cocos2d::Director::getInstance()->getRunningScene();
-        auto lt = LevelManager::getInstance()->getLevelTree();
-        auto levelRoot = lt->at("levels").asValueVector();
-        auto levelConfig = levelRoot[1].asValueMap();
         runningScene->removeAllChildrenWithCleanup(true);
-        auto newScene = GameScene::createScene(LevelManager::getInstance()->getCurrentLevel()->getLevelId());
+        auto newScene = GameScene::createScene(LevelManager::getInstance()->getCurrentLevelId());
+        cocos2d::Director::getInstance()->replaceScene(
+                cocos2d::TransitionFade::create(0.1, newScene, cocos2d::Color3B(0,0,0))
+        );
+    }
+}
+
+void LevelClearedUI::nextLevel(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
+    if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+        auto runningScene = cocos2d::Director::getInstance()->getRunningScene();
+        runningScene->removeAllChildrenWithCleanup(true);
+        auto newScene = GameScene::createScene(LevelManager::getInstance()->getCurrentLevelId()+1);
         cocos2d::Director::getInstance()->replaceScene(
                 cocos2d::TransitionFade::create(0.1, newScene, cocos2d::Color3B(0,0,0))
         );
