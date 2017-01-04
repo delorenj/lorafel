@@ -92,7 +92,7 @@ void LevelClearedUI::tryAgain(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchE
     if(eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
         auto runningScene = cocos2d::Director::getInstance()->getRunningScene();
         auto lt = LevelManager::getInstance()->getLevelTree();
-        auto levelRoot = lt["levels"].asValueVector();
+        auto levelRoot = lt->at("levels").asValueVector();
         auto levelConfig = levelRoot[1].asValueMap();
         runningScene->removeAllChildrenWithCleanup(true);
         auto newScene = GameScene::createScene(LevelManager::getInstance()->getCurrentLevel()->getLevelId());

@@ -11,28 +11,30 @@ using namespace lorafel;
 LevelManager* LevelManager::_instance;
 
 void LevelManager::init() {
+    m_pLevelTree = new cocos2d::ValueMap();
+    m_pTileTree = new cocos2d::ValueMap();
 }
 
 void LevelManager::loadLevelTree(cocos2d::Value data) {
     if (!data.isNull() && data.getType() == cocos2d::Value::Type::MAP) {
-        m_levelTree = data.asValueMap()["level_tree"].asValueMap();
+        *m_pLevelTree = data.asValueMap()["level_tree"].asValueMap();
         CCLOG("LevelManager::loadLevelTree() - Level tree loaded into memory");
-        CCLOG("LevelManager::loadLevelTree() - Level tree size=%lu", sizeof(m_levelTree));
+        CCLOG("LevelManager::loadLevelTree() - Level tree size=%lu", sizeof(m_pLevelTree));
     }
 }
 
 void LevelManager::loadTileTree(cocos2d::Value data) {
     if (!data.isNull() && data.getType() == cocos2d::Value::Type::MAP) {
-        m_tileTree = data.asValueMap()["tile_tree"].asValueMap();
+        *m_pTileTree = data.asValueMap()["tile_tree"].asValueMap();
         CCLOG("LevelManager::loadTileTree() - Tile tree loaded into memory");
-        CCLOG("LevelManager::loadTileTree() - Tile tree size=%lu", sizeof(m_tileTree));
+        CCLOG("LevelManager::loadTileTree() - Tile tree size=%lu", sizeof(m_pTileTree));
     }
 }
 
 Level* LevelManager::createLevel(int levelId) {
-    cocos2d::ValueVector levelRoot = (std::vector<Value> &&) m_levelTree["levels"].asValueVector();
+    auto levelRoot = m_pLevelTree->at("levels").asValueVector();
 
-    cocos2d::ValueMap levelConfig = (std::unordered_map<std::string, Value> &&) levelRoot[levelId].asValueMap();
+    auto levelConfig = levelRoot[levelId].asValueMap();
 
     Level* level = new Level();
     level->setSwappyGrid(m_pSwappyGrid);
@@ -76,13 +78,13 @@ Level* LevelManager::createLevel(int levelId) {
     /**
      * Random Tiles
      */
-    auto tileSet = (std::vector<Value> &&) levelConfig["tile_set"].asValueVector();
-    auto tileDefs = (std::unordered_map<std::string, Value> &&) m_tileTree["tiles"].asValueMap();
+    auto tileSet = levelConfig["tile_set"].asValueVector();
+    auto tileDefs = m_pTileTree->at("tiles").asValueMap();
 
     for(auto tileConfig : tileSet) {
         auto f = tileConfig.asValueMap()["f"].asInt();
         auto id = tileConfig.asValueMap()["id"].asString();
-        auto args = (std::unordered_map<std::string, Value> &&) tileDefs[id].asValueMap();
+        auto args = tileDefs[id].asValueMap();
         auto config = new Tile::TileConfig();
 
         config->create = std::bind([=]() {
@@ -96,7 +98,7 @@ Level* LevelManager::createLevel(int levelId) {
     /**
      * Static Tiles
      */
-    auto staticTiles = (std::vector<Value> &&) levelConfig["static"].asValueVector();
+    auto staticTiles = levelConfig["static"].asValueVector();
 
     for(auto tileConfig : staticTiles) {
         int x,y;
@@ -114,7 +116,7 @@ Level* LevelManager::createLevel(int levelId) {
             y = RandomHelper::random_int(0, SwappyGrid::NUM_ROWS);
         }
 
-        auto args = (std::unordered_map<std::string, Value> &&) tileDefs[id].asValueMap();
+        auto args = tileDefs[id].asValueMap();
         level->addStaticTile(std::make_pair(x,y), args);
     }
 

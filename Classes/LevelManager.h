@@ -19,12 +19,14 @@ namespace lorafel {
 
         ~LevelManager() {
             CCLOG("LevelManager::~LevelManager()");
+            CC_SAFE_DELETE(m_pLevelTree);
+            CC_SAFE_DELETE(m_pTileTree);
         }
 
         virtual void init();
         static LevelManager* _instance;
-        cocos2d::ValueMap m_levelTree;
-        cocos2d::ValueMap m_tileTree;
+        ValueMap* m_pLevelTree;
+        ValueMap* m_pTileTree;
         SwappyGrid* m_pSwappyGrid;
         Level* m_pCurrentLevel;
 
@@ -39,8 +41,8 @@ namespace lorafel {
         void loadLevelTree(cocos2d::Value data);
         void loadTileTree(cocos2d::Value data);
 
-        cocos2d::ValueMap getLevelTree() const { return m_levelTree; }
-        cocos2d::ValueMap getTileTree() const { return m_tileTree; }
+        ValueMap* getLevelTree() const { return m_pLevelTree; }
+        ValueMap* getTileTree() const { return m_pTileTree; }
         Level* getCurrentLevel() const { return m_pCurrentLevel; }
         void setCurrentLevel(Level* level) { m_pCurrentLevel = level; }
         void setSwappyGrid(SwappyGrid* pGrid) { m_pSwappyGrid = pGrid; }
