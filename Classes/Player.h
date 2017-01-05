@@ -44,7 +44,6 @@ namespace lorafel {
 
         Player();
         virtual ~Player();
-        void initFromServer();
 
         /**
          * Getters and Setters
@@ -62,12 +61,14 @@ namespace lorafel {
         int getGold() const { return m_gold; }
         int getMaxGold() const { return m_maxGold; }
         int getMaxHp() const { return m_maxHp; }
+        void setMaxHp(int val) { m_maxHp = val; }
         int updateHpBy(int val);
         int getHp() const { return m_hp; }
         void setHp(int val) { m_hp = std::max(val, m_maxHp); }
         int updateMpBy(int val);
         int getMp() const { return m_mp; }
         int getMaxMp() const { return m_maxMp; }
+        void setMaxMp(int val) { m_maxMp = val; }
         void setMp(int val) { m_mp = std::max(val, m_maxMp); }
         Tile* getTile() const;
         void setTile(Tile* tile) { m_pTile = tile; }
@@ -92,17 +93,17 @@ namespace lorafel {
 
     protected:
         // Current Stats
-        int m_gold = 0;
-        int m_hp = 800;
-        int m_mp = 3;
-        int m_str = 10;
-        int m_def = 10;
+        int m_gold;
+        int m_hp;
+        int m_mp;
+        int m_str;
+        int m_def;
 
         // Stat Ranges
         int m_maxGold = 100000;
-        int m_maxHp = 1000;
-        int m_maxMp = 3;
-        int m_maxMoveDistance = 2;
+        int m_maxHp;
+        int m_maxMp;
+        int m_maxMoveDistance;
 
         cocos2d::EventDispatcher* m_pDispatcher;
 

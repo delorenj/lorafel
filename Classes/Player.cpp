@@ -24,10 +24,6 @@ Player::~Player() {
     CC_SAFE_DELETE(m_pXpManager);
 }
 
-void Player::initFromServer() {
-    CCASSERT(0, "Load player from server not yet implemented");
-}
-
 int Player::updateGoldBy(int amount, cocos2d::Vec2 floatiePos) {
     amount = amount > m_maxGold - m_gold ? m_maxGold - m_gold : amount;
     if(amount == 0) return m_gold;

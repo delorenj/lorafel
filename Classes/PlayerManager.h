@@ -69,11 +69,34 @@ namespace lorafel {
             } else {
                 getPlayer()->setStr(0);
             }
+            if(!valueMap["def"].isNull()) {
+                getPlayer()->setDef(valueMap["def"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got def");
+            } else {
+                getPlayer()->setDef(0);
+            }
+            if(!valueMap["max_hp"].isNull()) {
+                getPlayer()->setMaxHp(valueMap["max_hp"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got max_hp");
+            } else {
+                getPlayer()->setMaxHp(1000);
+            }
+            if(!valueMap["max_mp"].isNull()) {
+                getPlayer()->setMaxMp(valueMap["max_mp"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got max_mp");
+            } else {
+                getPlayer()->setMaxMp(3);
+            }
             if(!valueMap["max_move_distance"].isNull()) {
                 getPlayer()->setMaxMoveDistance(valueMap["max_move_distance"].asInt());
                 CCLOG("PlayerManager::loadStats() - Got max_move_distance");
             }
 
+            /**
+             * Always load player with 100% of health and magic
+             */
+            getPlayer()->setHp(getPlayer()->getMaxHp());
+            getPlayer()->setMp(getPlayer()->getMaxMp());
         }
         
         void loadEquipSlots(ValueMap &valueMap) const {
