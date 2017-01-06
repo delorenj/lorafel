@@ -41,5 +41,8 @@ bool GameScene::init(int levelId) {
     // Set the background
     m_pBackground = Sprite::create(m_pLevel->getImage());
 
+    // Set initial player state - fully recovered
+    PlayerManager::getInstance()->resetPlayerStats();
+
     return SwappyGridScene::init();
 }

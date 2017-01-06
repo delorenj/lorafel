@@ -49,7 +49,12 @@ namespace lorafel {
             return m_pPlayer;
         }
 
-        void loadStats(ValueMap &valueMap) const {
+        void resetPlayerStats() {
+            getPlayer()->setHp(getPlayer()->getMaxHp());
+            getPlayer()->setMp(getPlayer()->getMaxMp());
+        }
+
+        void loadStats(ValueMap &valueMap) {
             CCLOG("PlayerManager::loadStats() - Enter");
             if(!valueMap["gold"].isNull()) {
                 CCLOG("PlayerManager::loadStats() - Got Gold");
@@ -95,8 +100,7 @@ namespace lorafel {
             /**
              * Always load player with 100% of health and magic
              */
-            getPlayer()->setHp(getPlayer()->getMaxHp());
-            getPlayer()->setMp(getPlayer()->getMaxMp());
+            resetPlayerStats();
         }
         
         void loadEquipSlots(ValueMap &valueMap) const {

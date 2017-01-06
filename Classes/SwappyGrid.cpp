@@ -158,6 +158,8 @@ void SwappyGrid::update(float delta) {
 
 //    DrawDebugData();
 
+    UpdateProgress();
+
     ProcessAttackState();
 
     RemoveDeadTiles();
@@ -1147,4 +1149,17 @@ void SwappyGrid::clearAllDropQueues() {
 void SwappyGrid::onExit() {
     cocos2d::Node::onExit();
     removeAllChildrenWithCleanup(true);
+}
+
+void SwappyGrid::UpdateProgress() {
+    GET_GAME_STATE
+    if(!dynamic_cast<IdleState*>(state)) {
+        return;
+    }
+
+    if (LevelManager::getInstance()->getCurrentLevel()->isCleared()) {
+        // Check to see if level is cleared
+        // If so, fire off the end level state
+        LevelManager::getInstance()->getCurrentLevel()->onLevelCleared();
+    }
 }

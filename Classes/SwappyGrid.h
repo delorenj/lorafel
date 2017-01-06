@@ -90,7 +90,6 @@ namespace lorafel {
         Tile* getRandomEnemy();
         Tile* getHeroTile();
         void initGameOverScreen(float dt);
-        std::set<Tile*> getEnemyTilesFromDropQueue();
         bool isPointInsideGrid(cocos2d::Vec2 pos);
         void setIdleState();
         void unhighlightTiles();
@@ -102,6 +101,8 @@ namespace lorafel {
         std::vector<TileQueue *> *getDropQueues();
 
         void clearAllDropQueues();
+
+        bool tileDropQueuesEmpty();
 
     protected:
         Level* m_pLevel;
@@ -123,8 +124,8 @@ namespace lorafel {
         Tile* m_pActivePlayerTile;
         Tile* m_pActiveEnemyTile;
         int m_currentTouchId;
-        Match* m_pCurrentMatch;
 
+        Match* m_pCurrentMatch;
         GridUI *m_pGridUI;
         const char* m_currentSelectedAction;
         int insertTileIntoColumn(int columnNumber, Tile*, bool fromTop = true);
@@ -136,7 +137,6 @@ namespace lorafel {
         void ReplenishTiles();
         void DropTiles();
         void ProcessMatches();
-        bool tileDropQueuesEmpty();
         int lowestVacancyInColumn(int i);
         void RemoveDeadTiles();
         Tile* getNextTileAbove(int x, int y) const;
@@ -155,6 +155,8 @@ namespace lorafel {
         int m_numEnemiesWithinReach;
 
         int numTilesWithinHitDistance();
+
+        void UpdateProgress();
     };
 }
 
