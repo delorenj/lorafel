@@ -137,6 +137,7 @@
 		3167DE0B4AD91ABB3DF4171F /* MatchSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D9E6F6E99ED879995593 /* MatchSet.cpp */; };
 		3167DE417343D058CABDB86C /* TrajectoryParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0FC8B4800F20D8D49BC /* TrajectoryParticle.cpp */; };
 		3167DE511FD9D32C4D9DE8A1 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D836466E117847AC4CFA /* Tile.cpp */; };
+		3167DE66FD24FEB382E1ECE6 /* InventoryStatsBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA50D805F480A2E04B08 /* InventoryStatsBar.cpp */; };
 		3167DE8014349C819649EA4B /* Progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D401384F1525922B53D2 /* Progress.cpp */; };
 		3167DE843355DB98A77967DF /* ItemStatFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D0F339BC18F56D8CC088 /* ItemStatFactory.cpp */; };
 		3167DEA93DAD326A3A92A532 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D509392B9AE47F44A368 /* Player.cpp */; };
@@ -440,6 +441,7 @@
 		3167DA1ABB7483BE71175498 /* IUpgradable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpgradable.h; sourceTree = "<group>"; };
 		3167DA2F57425026D319BE86 /* HookActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookActionTile.h; sourceTree = "<group>"; };
 		3167DA3584FED0C0D1B2C143 /* ItemDetailWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailWindowFactory.h; sourceTree = "<group>"; };
+		3167DA50D805F480A2E04B08 /* InventoryStatsBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InventoryStatsBar.cpp; sourceTree = "<group>"; };
 		3167DA5343064B77FE4ED1BD /* IStackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IStackable.h; sourceTree = "<group>"; };
 		3167DA9541B751B36D9D50BF /* GameStateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateMachine.cpp; sourceTree = "<group>"; };
 		3167DABB1FDF1F56214D4156 /* Progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progress.h; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 		3167DB7F6251F21633FBD930 /* ItemDetailWindowFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemDetailWindowFactory.cpp; sourceTree = "<group>"; };
 		3167DB81789A13D86665DA3A /* GridUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridUI.h; sourceTree = "<group>"; };
 		3167DB81C65E9CCE8D2657AF /* ActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTile.h; sourceTree = "<group>"; };
+		3167DBC82144C6B4D55499D0 /* InventoryStatsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryStatsBar.h; sourceTree = "<group>"; };
 		3167DBCCF8A55E0DE5941330 /* DragDropSwapPlayerMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragDropSwapPlayerMove.cpp; sourceTree = "<group>"; };
 		3167DBDFBC2CAA57AAAA39CD /* HookAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HookAction.cpp; sourceTree = "<group>"; };
 		3167DBEE19A2E31B3DF46261 /* Hook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hook.cpp; sourceTree = "<group>"; };
@@ -1021,6 +1024,8 @@
 				3167D46E06AA3EEC8171F5DB /* LevelManager.cpp */,
 				3167DF6C8A00ABC3B28D19FA /* LevelManager.h */,
 				3167D74EBE66B20CC445B202 /* TileFactory.cpp */,
+				3167DA50D805F480A2E04B08 /* InventoryStatsBar.cpp */,
+				3167DBC82144C6B4D55499D0 /* InventoryStatsBar.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1491,6 +1496,7 @@
 				3167D5654CF4C067985D810D /* LevelClearedUI.cpp in Sources */,
 				3167D5A0BC47782EE1A4B9E5 /* LevelManager.cpp in Sources */,
 				3167D478D13A6EBFBB179A79 /* TileFactory.cpp in Sources */,
+				3167DE66FD24FEB382E1ECE6 /* InventoryStatsBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

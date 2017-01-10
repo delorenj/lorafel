@@ -8,6 +8,7 @@
 #include "InGameModal.h"
 #include "InventoryItemGrid.h"
 #include "InventoryEquipGrid.h"
+#include "InventoryStatsBar.h"
 #include "NDKHelper.h"
 
 USING_NS_CC;
@@ -37,6 +38,7 @@ namespace lorafel {
     protected:
         InventoryItemGrid* m_pItemGrid;
         InventoryEquipGrid* m_pEquipGrid;
+        InventoryStatsBar* m_pStatsBar;
         cocos2d::DrawNode* m_pDebugDraw;
         std::function<void(int)> m_callback;
     };

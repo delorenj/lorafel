@@ -27,6 +27,12 @@ bool InventoryModal::init() {
     m_pEquipGrid->setPosition(getContentSize().width/2, getContentSize().height - getContentSize().height*0.493);
     addChild(m_pEquipGrid);
 
+    m_pStatsBar = InventoryStatsBar::create(this);
+    m_pStatsBar->setGlobalZOrder(LayerOrder::MODAL+1);
+    m_pStatsBar->setAnchorPoint(cocos2d::Vec2(0.5f,1));
+    m_pStatsBar->setPosition(getContentSize().width/2, getContentSize().height - getContentSize().height*0.74);
+    addChild(m_pStatsBar);
+
     return true;
 }
 
