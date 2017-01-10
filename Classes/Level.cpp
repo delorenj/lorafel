@@ -41,7 +41,7 @@ lorafel::Tile* Level::getRandomLoot(Tile* sourceTile) {
     return LootFactory::getInstance()->createTile();
 }
 
-lorafel::Tile * Level::createTileFromGridPos(int x, int y) {
+lorafel::Tile * Level:: createTileFromGridPos(int x, int y) {
     for(auto entry : m_staticTiles) {
         auto pos = entry.first;
         auto tileArgs = entry.second;

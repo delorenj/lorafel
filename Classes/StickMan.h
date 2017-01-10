@@ -44,9 +44,14 @@ namespace lorafel {
             if(!EnemyTile::init(args)) {
                 return false;
             }
-                addStatResult(new XpStatResult(200));
-                setHp(100);
-                setMaxHp(100);
+                addStatResult(new XpStatResult(args["xp"].asInt()));
+                setHp(args["hp"].asInt());
+                if(args["max_hp"].isNull()) {
+                    setMaxHp(args["hp"].asInt());
+                } else {
+                    setMaxHp(args["max_hp"].asInt());
+                }
+
                 setStrategy(new RandomAIStrategy());
 
                 m_pTileConfigs = new TileConfigs();

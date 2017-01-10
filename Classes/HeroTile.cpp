@@ -144,25 +144,35 @@ void HeroTile::addEvents() {
 }
 
 TileSet* HeroTile::getValidMoves(Tile* pTile, int distance) {
+
     TileSet* moves = new TileSet();
 
     if(pTile == nullptr) {
         return moves;
     }
 
-    moves->insert(pTile);
+    if(pTile->getVisitColor() == Color::NONE) {
+        pTile->setVisitColor(Color::RED);
+        moves->insert(pTile);
 
-    if(distance < getMaxMoveDistance()) {
-        auto top = getValidMoves(pTile->getTop(), distance+1);
-        auto bottom = getValidMoves(pTile->getBottom(), distance+1);
-        auto left = getValidMoves(pTile->getLeft(nullptr), distance+1);
-        auto right = getValidMoves(pTile->getRight(), distance+1);
-        moves->insert(std::begin(*top), std::end(*top));
-        moves->insert(std::begin(*bottom), std::end(*bottom));
-        moves->insert(std::begin(*left), std::end(*left));
-        moves->insert(std::begin(*right), std::end(*right));
+        if(distance < getMaxMoveDistance()) {
+            auto top = getValidMoves(pTile->getTop(), distance+1);
+            auto bottom = getValidMoves(pTile->getBottom(), distance+1);
+            auto left = getValidMoves(pTile->getLeft(), distance+1);
+            auto right = getValidMoves(pTile->getRight(), distance+1);
+            moves->insert(std::begin(*top), std::end(*top));
+            moves->insert(std::begin(*bottom), std::end(*bottom));
+            moves->insert(std::begin(*left), std::end(*left));
+            moves->insert(std::begin(*right), std::end(*right));
+        }
+        pTile->setVisitColor(Color::BLACK);
+    }
+
+    if(pTile->getVisitColor() != Color::GREEN) {
+        pTile->setVisitColor(Color::BLACK);
     }
     return moves;
+
 }
 
 int HeroTile::getMaxMoveDistance() {

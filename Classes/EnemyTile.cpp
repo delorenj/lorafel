@@ -54,6 +54,7 @@ void EnemyTile::applyHit(int hitAmount) {
     if(m_hp <= 0) {
         //enemy is dead
         remove();
+        GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
     }
 
 }

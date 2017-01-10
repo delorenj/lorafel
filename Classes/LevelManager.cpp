@@ -109,13 +109,13 @@ Level* LevelManager::createLevel(int levelId) {
         if(!tileConfig.asValueMap()["x"].isNull()) {
             x = tileConfig.asValueMap()["x"].asInt();
         } else {
-            x = RandomHelper::random_int(0, SwappyGrid::NUM_COLUMNS);
+            x = RandomHelper::random_int(0, SwappyGrid::NUM_COLUMNS-1);
         }
 
         if(!tileConfig.asValueMap()["y"].isNull()) {
             y = tileConfig.asValueMap()["y"].asInt();
         } else {
-            y = RandomHelper::random_int(0, SwappyGrid::NUM_ROWS);
+            y = RandomHelper::random_int(0, SwappyGrid::NUM_ROWS-1);
         }
 
         auto args = tileDefs[id].asValueMap();
