@@ -10,27 +10,40 @@
 
 USING_NS_CC;
 
-class InventoryStatsBar : public cocos2d::Sprite {
-public:
+namespace lorafel {
+    class InventoryStatsBar : public cocos2d::Node {
+    public:
 
-    bool init(cocos2d::Node* container);
-    static InventoryStatsBar* create(cocos2d::Node* container)
-    {
-        InventoryStatsBar *pRet = new(std::nothrow) InventoryStatsBar();
-        if (pRet && pRet->init(container))
-        {
-            pRet->autorelease();
-            return pRet;
+        bool init(cocos2d::Node *container);
+
+        static InventoryStatsBar *create(cocos2d::Node *container) {
+            InventoryStatsBar *pRet = new(std::nothrow) InventoryStatsBar();
+            if (pRet && pRet->init(container)) {
+                pRet->autorelease();
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
         }
-        else
-        {
-            delete pRet;
-            pRet = nullptr;
-            return nullptr;
-        }
-    }
 
-};
+        void setStat(const std::string stat, int val);
 
+    protected:
+        cocos2d::Label* m_pStr;
+        cocos2d::Label* m_pInt;
+        cocos2d::Label* m_pDef;
+        cocos2d::Label* m_pDex;
+        cocos2d::Label* m_pMov;
+
+        cocos2d::Label* m_pStrVal;
+        cocos2d::Label* m_pIntVal;
+        cocos2d::Label* m_pDefVal;
+        cocos2d::Label* m_pDexVal;
+        cocos2d::Label* m_pMovVal;
+
+    };
+}
 
 #endif //LORAFEL_INVENTORYSTATSBAR_H
