@@ -16,6 +16,8 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
 
 //    setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
+    m_pContainer = container;
+    
     auto height = container->getContentSize().width * 0.069f;
     auto width = container->getContentSize().width;
     CCLOG("StatsBar | Width=%f, Height=%f", width, height);
@@ -36,24 +38,17 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
 
     auto player = PlayerManager::getInstance()->getPlayer();
 
+    
     /**
      * Create and position the stat labels
      * and their values
      */
-//    createStatLabel(m_pStr, m_pStrVal, "Str", 0, 0.029f);
-
-    m_pDef = cocos2d::Label::createWithTTF("Def:", "fonts/BebasNeue Bold.ttf", 28);
-    m_pDef->setAnchorPoint(cocos2d::Vec2(0,0));
-    m_pDef->setPosition(cocos2d::Vec2(width*0.208f,0));
-    m_pDef->setGlobalZOrder(LayerOrder::MODAL+3);
-    addChild(m_pDef);
-
-    m_pDefVal = cocos2d::Label::createWithTTF(to_string(player->getDef()), "fonts/BebasNeue Bold.ttf", 28);
-    m_pDefVal->setAnchorPoint(cocos2d::Vec2(0,0));
-    m_pDefVal->setPosition(cocos2d::Vec2(m_pDef->getPositionX() + +m_pDef->getContentSize().width + m_pDef->getContentSize().width * 0.19f, 0));
-    m_pDefVal->setGlobalZOrder(LayerOrder::MODAL+3);
-    addChild(m_pDefVal);
-
+    createStatLabel(m_pStr, m_pStrVal, "Str", player->getHitAmount(nullptr), 0.029f);
+    createStatLabel(m_pDef, m_pDefVal, "Def", 0, 0.208f);
+    createStatLabel(m_pInt, m_pIntVal, "Int", 0, 0.410f);
+    createStatLabel(m_pHit, m_pHitVal, "Hit", 0, 0.609f);
+    createStatLabel(m_pMov, m_pMovVal, "Mov", 0, 0.825f);
+    
     return true;
 }
 
@@ -61,7 +56,7 @@ void InventoryStatsBar::createStatLabel(cocos2d::Label *statNameLabel, cocos2d::
     auto statString = statName + ":";
     statNameLabel = cocos2d::Label::createWithTTF(statString.c_str(), "fonts/BebasNeue Bold.ttf", 28);
     statNameLabel->setAnchorPoint(Vec2(0,0));
-    statNameLabel->setPosition(Vec2(_parent->getContentSize().width * xPosPercent,0));
+    statNameLabel->setPosition(Vec2(m_pContainer->getContentSize().width * xPosPercent,0));
     statNameLabel->setGlobalZOrder(LayerOrder::MODAL+3);
     addChild(statNameLabel);
 
@@ -82,7 +77,7 @@ void InventoryStatsBar::setStat(const std::string stat, int val) {
     } else if(stat == "def") {
         label = m_pDefVal;
     } else if(stat == "dex") {
-        label = m_pDexVal;
+        label = m_pHitVal;
     } else if(stat == "mov") {
         label = m_pMovVal;
     } else {

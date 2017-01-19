@@ -34,15 +34,17 @@ namespace lorafel {
         cocos2d::Label* m_pStr;
         cocos2d::Label* m_pInt;
         cocos2d::Label* m_pDef;
-        cocos2d::Label* m_pDex;
+        cocos2d::Label* m_pHit;
         cocos2d::Label* m_pMov;
 
         cocos2d::Label* m_pStrVal;
         cocos2d::Label* m_pIntVal;
         cocos2d::Label* m_pDefVal;
-        cocos2d::Label* m_pDexVal;
+        cocos2d::Label* m_pHitVal;
         cocos2d::Label* m_pMovVal;
 
+        cocos2d::Node* m_pContainer;
+        
         void createStatLabel(cocos2d::Label *statNameLabel, cocos2d::Label *statValLabel, const std::string statName, int val, float xPosPercent);
     };
 }

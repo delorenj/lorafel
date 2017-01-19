@@ -180,11 +180,11 @@ int Player::getBaseDefend() const {
     return (int) getXpManager()->getLevel() + m_def;
 }
 
-int Player::getRandHit(EnemyTile *pEnemyTile) {
+int Player::getHitAmount(EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 
     int attack = getBaseAttack();
-    CCLOG("Player::getRandHit() - [Base Attack] %d", attack);
+    CCLOG("Player::getHitAmount() - [Base Attack] %d", attack);
 
     for(auto item : equippedItems) {
         /**
@@ -198,7 +198,7 @@ int Player::getRandHit(EnemyTile *pEnemyTile) {
         auto stats = item->getItemStats();
         for(auto stat : *stats) {
             if(stat->getName() == "Attack") {
-                CCLOG("Player::getRandHit() - [Item = %s] [Attr = attack] Modifying attack by %d",
+                CCLOG("Player::getHitAmount() - [Item = %s] [Attr = attack] Modifying attack by %d",
                         item->getItemName().c_str(),
                         stat->getValueAsInteger()
                 );
@@ -211,7 +211,7 @@ int Player::getRandHit(EnemyTile *pEnemyTile) {
             for(auto attr : *attrs) {
                 Value v(attack);
                 static_cast<ItemAttribute*>(attr)->invoke(v);
-                CCLOG("Player::getRandHit() - [Item = %s] [Attr = %s] Modifying attack by %d",
+                CCLOG("Player::getHitAmount() - [Item = %s] [Attr = %s] Modifying attack by %d",
                         item->getItemName().c_str(),
                         attr->getName().c_str(),
                         v.asInt() - attack
@@ -220,7 +220,7 @@ int Player::getRandHit(EnemyTile *pEnemyTile) {
             }
         }
     }
-    CCLOG("Player::getRandHit() - Total attack = %d", attack);
+    CCLOG("Player::getHitAmount() - Total attack = %d", attack);
     return attack;
 }
 
@@ -258,5 +258,5 @@ bool Player::tileWithinHitDistance(Tile *pTile) {
 }
 
 void Player::attack(EnemyTile *pTile) {
-    pTile->applyHit(getRandHit(pTile));
+    pTile->applyHit(getHitAmount(pTile));
 }
