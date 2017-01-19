@@ -29,8 +29,7 @@ bool InventoryModal::init() {
 
     m_pStatsBar = InventoryStatsBar::create(this);
     m_pStatsBar->setGlobalZOrder(LayerOrder::MODAL+1);
-    m_pStatsBar->setAnchorPoint(cocos2d::Vec2(0.5f,1));
-    m_pStatsBar->setPosition(getContentSize().width/2, getContentSize().height - getContentSize().height*0.74);
+    m_pStatsBar->setPosition(0, getContentSize().height*(0.215f) + m_pStatsBar->getContentSize().height/2);
     addChild(m_pStatsBar);
 
     return true;

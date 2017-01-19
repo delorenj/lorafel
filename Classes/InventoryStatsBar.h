@@ -43,6 +43,7 @@ namespace lorafel {
         cocos2d::Label* m_pDexVal;
         cocos2d::Label* m_pMovVal;
 
+        void createStatLabel(cocos2d::Label *statNameLabel, cocos2d::Label *statValLabel, const std::string statName, int val, float xPosPercent);
     };
 }
 
