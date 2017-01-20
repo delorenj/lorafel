@@ -34,12 +34,6 @@ namespace lorafel {
         static const int ACTIONITEM         = 9;
         static const int CONSUMABLE         = 10;
 
-        int getHitAmount(EnemyTile *pEnemyTile);
-
-        bool tileWithinHitDistance(Tile *pTile);
-
-        void attack(EnemyTile *pTile);
-
     public:
 
         Player();
@@ -90,6 +84,10 @@ namespace lorafel {
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<Item*> getEquippedItems();
         Progress* getProgress() const { return m_pProgress; }
+        int getHitAmount(EnemyTile *pEnemyTile);
+        int getDefAmount(EnemyTile *pEnemyTile);
+        bool tileWithinHitDistance(Tile *pTile);
+        void attack(EnemyTile *pTile);
 
     protected:
         // Current Stats

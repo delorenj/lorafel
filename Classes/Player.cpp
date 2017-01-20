@@ -224,6 +224,50 @@ int Player::getHitAmount(EnemyTile *pEnemyTile) {
     return attack;
 }
 
+int Player::getDefAmount(EnemyTile *pEnemyTile) {
+    auto equippedItems = getEquippedItems();
+    
+    int val = getBaseDefend();
+    CCLOG("Player::getDefAmount() - [Base Defend] %d", val);
+    
+    for(auto item : equippedItems) {
+        /**
+         * If item is a consumable,
+         * don't try to look up stats
+         */
+        auto thing = dynamic_cast<Consumable*>(item);
+        if(thing != nullptr) {
+            continue;
+        }
+        auto stats = item->getItemStats();
+        for(auto stat : *stats) {
+            if(stat->getName() == "Defend") {
+                CCLOG("Player::getDefAmount() - [Item = %s] [Attr = defend] Modifying defend by %d",
+                      item->getItemName().c_str(),
+                      stat->getValueAsInteger()
+                      );
+                val += stat->getValueAsInteger();
+            }
+        }
+        
+        auto attrs = item->getItemAttributes();
+        if(attrs != nullptr) {
+            for(auto attr : *attrs) {
+                Value v(val);
+                static_cast<ItemAttribute*>(attr)->invoke(v);
+                CCLOG("Player::getDefAmount() - [Item = %s] [Attr = %s] Modifying defend by %d",
+                      item->getItemName().c_str(),
+                      attr->getName().c_str(),
+                      v.asInt() - val
+                      );
+                val = v.asInt();
+            }
+        }
+    }
+    CCLOG("Player::getDefAmount() - Total defend = %d", val);
+    return val;
+}
+
 std::vector<Item*> Player::getEquippedItems() {
     std::vector<Item*> items;
     for(auto item : m_equipDictionary) {
