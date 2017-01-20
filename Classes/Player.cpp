@@ -184,16 +184,16 @@ int Player::getBaseIntelligence() const {
     return (int) getXpManager()->getLevel() + m_int;
 }
 
-int Player::getHitAmount(EnemyTile *pEnemyTile) {
+int Player::getAttackAmount(EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 
     int val = getBaseAttack();
-    CCLOG("Player::getHitAmount() - [Base Attack] %d", val);
+    CCLOG("Player::getAttackAmount() - [Base Attack] %d", val);
 
     for(auto item : equippedItems) {
         val += calculateItemStat(item, "Attack");
     }
-    CCLOG("Player::getHitAmount() - Total attack = %d", val);
+    CCLOG("Player::getAttackAmount() - Total attack = %d", val);
     return val;
 }
 
@@ -222,6 +222,18 @@ int Player::getIntAmount() {
     }
     CCLOG("Player::getDefAmount() - Total defend = %d", val);
     return val;
+}
+
+int Player::getHitDistance() {
+    auto equippedItems = getEquippedItems();
+    
+    for(auto item : equippedItems) {
+        auto thing = dynamic_cast<Weapon*>(item);
+        if(thing != nullptr) {
+            return thing->getHitDistance();
+        }
+        return 1;
+    
 }
 
 int Player::calculateItemStat(Item* item, std::string statName) {
@@ -296,5 +308,5 @@ bool Player::tileWithinHitDistance(Tile *pTile) {
 }
 
 void Player::attack(EnemyTile *pTile) {
-    pTile->applyHit(getHitAmount(pTile));
+    pTile->applyHit(getAttackAmount(pTile));
 }

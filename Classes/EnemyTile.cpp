@@ -29,7 +29,7 @@ bool EnemyTile::init(cocos2d::ValueMap args) {
 //void EnemyTile::applyHit(Match* pMatch) {
 //    auto primaryTile = pMatch->getPrimaryTile();
 //    bool isStackable = primaryTile->isStackable();
-//    int hitAmount = PlayerManager::getInstance()->getPlayer()->getHitAmount(pMatch, this);
+//    int hitAmount = PlayerManager::getInstance()->getPlayer()->getAttackAmount(pMatch, this);
 //    if(isStackable) {
 //        hitAmount *= (pMatch->getTileSetSize() - pMatch->getNumEnemies());
 //    }

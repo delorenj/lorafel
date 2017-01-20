@@ -87,9 +87,10 @@ namespace lorafel {
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<Item*> getEquippedItems();
         Progress* getProgress() const { return m_pProgress; }
-        int getHitAmount(EnemyTile *pEnemyTile);
+        int getAttackAmount(EnemyTile *pEnemyTile);
         int getDefAmount(EnemyTile *pEnemyTile);
         int getIntAmount();
+        int getHitDistance();
         bool tileWithinHitDistance(Tile *pTile);
         void attack(EnemyTile *pTile);
 
