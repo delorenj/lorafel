@@ -80,6 +80,12 @@ namespace lorafel {
             } else {
                 getPlayer()->setDef(0);
             }
+            if(!valueMap["int"].isNull()) {
+                getPlayer()->setDef(valueMap["int"].asUnsignedInt());
+                CCLOG("PlayerManager::loadStats() - Got int");
+            } else {
+                getPlayer()->setInt(0);
+            }
             if(!valueMap["max_hp"].isNull()) {
                 getPlayer()->setMaxHp(valueMap["max_hp"].asUnsignedInt());
                 CCLOG("PlayerManager::loadStats() - Got max_hp");

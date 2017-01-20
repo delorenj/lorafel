@@ -45,7 +45,7 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
      */
     createStatLabel(m_pStr, m_pStrVal, "Str", player->getHitAmount(nullptr), 0.029f);
     createStatLabel(m_pDef, m_pDefVal, "Def", player->getDefAmount(nullptr), 0.208f);
-    createStatLabel(m_pInt, m_pIntVal, "Int", 0, 0.410f);
+    createStatLabel(m_pInt, m_pIntVal, "Int", player->getIntAmount(), 0.410f);
     createStatLabel(m_pHit, m_pHitVal, "Hit", 0, 0.609f);
     createStatLabel(m_pMov, m_pMovVal, "Mov", 0, 0.825f);
     

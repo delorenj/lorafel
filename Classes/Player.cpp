@@ -180,48 +180,21 @@ int Player::getBaseDefend() const {
     return (int) getXpManager()->getLevel() + m_def;
 }
 
+int Player::getBaseIntelligence() const {
+    return (int) getXpManager()->getLevel() + m_int;
+}
+
 int Player::getHitAmount(EnemyTile *pEnemyTile) {
     auto equippedItems = getEquippedItems();
 
-    int attack = getBaseAttack();
-    CCLOG("Player::getHitAmount() - [Base Attack] %d", attack);
+    int val = getBaseAttack();
+    CCLOG("Player::getHitAmount() - [Base Attack] %d", val);
 
     for(auto item : equippedItems) {
-        /**
-         * If item is a consumable,
-         * don't try to look up stats
-         */
-        auto thing = dynamic_cast<Consumable*>(item);
-        if(thing != nullptr) {
-            continue;
-        }
-        auto stats = item->getItemStats();
-        for(auto stat : *stats) {
-            if(stat->getName() == "Attack") {
-                CCLOG("Player::getHitAmount() - [Item = %s] [Attr = attack] Modifying attack by %d",
-                        item->getItemName().c_str(),
-                        stat->getValueAsInteger()
-                );
-                attack += stat->getValueAsInteger();
-            }
-        }
-
-        auto attrs = item->getItemAttributes();
-        if(attrs != nullptr) {
-            for(auto attr : *attrs) {
-                Value v(attack);
-                static_cast<ItemAttribute*>(attr)->invoke(v);
-                CCLOG("Player::getHitAmount() - [Item = %s] [Attr = %s] Modifying attack by %d",
-                        item->getItemName().c_str(),
-                        attr->getName().c_str(),
-                        v.asInt() - attack
-                );
-                attack = v.asInt();
-            }
-        }
+        val += calculateItemStat(item, "Attack");
     }
-    CCLOG("Player::getHitAmount() - Total attack = %d", attack);
-    return attack;
+    CCLOG("Player::getHitAmount() - Total attack = %d", val);
+    return val;
 }
 
 int Player::getDefAmount(EnemyTile *pEnemyTile) {
@@ -231,43 +204,64 @@ int Player::getDefAmount(EnemyTile *pEnemyTile) {
     CCLOG("Player::getDefAmount() - [Base Defend] %d", val);
     
     for(auto item : equippedItems) {
-        /**
-         * If item is a consumable,
-         * don't try to look up stats
-         */
-        auto thing = dynamic_cast<Consumable*>(item);
-        if(thing != nullptr) {
-            continue;
-        }
+        val += calculateItemStat(item, "Defend");
+    }
+    CCLOG("Player::getDefAmount() - Total defend = %d", val);
+    return val;
+}
+
+int Player::getIntAmount() {
+    auto equippedItems = getEquippedItems();
+    
+    int val = getBaseIntelligence();
+    
+    CCLOG("Player::getIntAmount() - [Base Intelligence] %d", val);
+    
+    for(auto item : equippedItems) {
+        val += calculateItemStat(item, "Intelligence");
+    }
+    CCLOG("Player::getDefAmount() - Total defend = %d", val);
+    return val;
+}
+
+int Player::calculateItemStat(Item* item, std::string statName) {
+    int additionalVal = 0;
+    /**
+     * If item is a consumable,
+     * don't try to look up stats
+     */
+    auto thing = dynamic_cast<Consumable*>(item);
+    if(thing == nullptr) {
         auto stats = item->getItemStats();
         for(auto stat : *stats) {
-            if(stat->getName() == "Defend") {
-                CCLOG("Player::getDefAmount() - [Item = %s] [Attr = defend] Modifying defend by %d",
+            if(stat->getName() == statName.c_str()) {
+                CCLOG("Player::calculateItemStat() - [Item = %s] [Attr = %s] Modifying %s by %d",
                       item->getItemName().c_str(),
+                      statName.c_str(),
+                      statName.c_str(),
                       stat->getValueAsInteger()
                       );
-                val += stat->getValueAsInteger();
+                additionalVal += stat->getValueAsInteger();
             }
         }
         
         auto attrs = item->getItemAttributes();
         if(attrs != nullptr) {
             for(auto attr : *attrs) {
-                Value v(val);
+                Value v(additionalVal);
                 static_cast<ItemAttribute*>(attr)->invoke(v);
-                CCLOG("Player::getDefAmount() - [Item = %s] [Attr = %s] Modifying defend by %d",
+                CCLOG("Player::calculateItemStat() - [Item = %s] [Attr = %s] Modifying %s by %d",
                       item->getItemName().c_str(),
                       attr->getName().c_str(),
-                      v.asInt() - val
+                      statName.c_str(),
+                      v.asInt() - additionalVal
                       );
-                val = v.asInt();
+                additionalVal = v.asInt();
             }
         }
     }
-    CCLOG("Player::getDefAmount() - Total defend = %d", val);
-    return val;
+    return additionalVal;
 }
-
 std::vector<Item*> Player::getEquippedItems() {
     std::vector<Item*> items;
     for(auto item : m_equipDictionary) {

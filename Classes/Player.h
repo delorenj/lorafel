@@ -76,16 +76,20 @@ namespace lorafel {
         bool isEquipped(Item* pItem);
         int getBaseAttack() const;
         int getBaseDefend() const;
+        int getBaseIntelligence() const;
         int getStr() const { return m_str; }
         int getDef() const { return m_def; }
-        void setStr(int str) { m_str = str; }
-        void setDef(int def) { m_def = def; }
+        int getInt() const { return m_int; }
+        void setStr(int val) { m_str = val; }
+        void setDef(int val) { m_def = val; }
+        void setInt(int val) { m_int = val; }
         int getMaxMoveDistance() { return m_maxMoveDistance; }
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<Item*> getEquippedItems();
         Progress* getProgress() const { return m_pProgress; }
         int getHitAmount(EnemyTile *pEnemyTile);
         int getDefAmount(EnemyTile *pEnemyTile);
+        int getIntAmount();
         bool tileWithinHitDistance(Tile *pTile);
         void attack(EnemyTile *pTile);
 
@@ -96,6 +100,7 @@ namespace lorafel {
         int m_mp;
         int m_str;
         int m_def;
+        int m_int;
 
         // Stat Ranges
         int m_maxGold = 100000;
@@ -114,9 +119,9 @@ namespace lorafel {
         std::map<int, Consumable*> m_activeConsumables;
         std::unordered_map<int, Item*> m_equipDictionary;
         Hook* m_pHook;
-
-    protected:
         Tile* m_pTile;
+        
+        int calculateItemStat(Item* item, std::string statName);
     };
 
 }
