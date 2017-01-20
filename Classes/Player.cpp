@@ -227,13 +227,31 @@ int Player::getIntAmount() {
 int Player::getHitDistance() {
     auto equippedItems = getEquippedItems();
     
+    int val = 1;
+    
+    CCLOG("Player::getHitDistance() - [Base Hit] %d", val);
+    
     for(auto item : equippedItems) {
         auto thing = dynamic_cast<Weapon*>(item);
         if(thing != nullptr) {
+            CCLOG("Player::getHitDistance() - Total Hit = %d", thing->getHitDistance());
             return thing->getHitDistance();
         }
-        return 1;
+    }
+    return val;
+}
+
+int Player::getMaxMoveDistance() {
+    auto val = m_maxMoveDistance;
     
+    auto equippedItems = getEquippedItems();
+    
+    CCLOG("Player::getMaxMoveDistance() - [Base Max Move Distance] %d", val);
+    
+    for(auto item : equippedItems) {
+        val += calculateItemStat(item, "move_distance");
+    }
+    return val;
 }
 
 int Player::calculateItemStat(Item* item, std::string statName) {

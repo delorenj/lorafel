@@ -44,12 +44,39 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
      * and their values
      */
     createStatLabel(m_pStr, m_pStrVal, "Str", player->getAttackAmount(nullptr), 0.029f);
-    createStatLabel(m_pDef, m_pDefVal, "Def", player->getDefAmount(nullptr), 0.208f);
-    createStatLabel(m_pInt, m_pIntVal, "Int", player->getIntAmount(), 0.410f);
-    createStatLabel(m_pHit, m_pHitVal, "Hit", player->getHitDistance(), 0.609f);
-    createStatLabel(m_pMov, m_pMovVal, "Mov", 0, 0.825f);
+    createStatLabel(m_pDef, m_pDefVal, "Def", player->getDefAmount(nullptr), 0.224f);
+    createStatLabel(m_pInt, m_pIntVal, "Int", player->getIntAmount(), 0.421f);
+    createStatLabel(m_pHit, m_pHitVal, "Hit", player->getHitDistance(), 0.615f);
+    createStatLabel(m_pMov, m_pMovVal, "Mov", player->getMaxMoveDistance(), 0.795f);
     
+    auto onSelectListener = cocos2d::EventListenerCustom::create("inventory-item-selected", CC_CALLBACK_1(InventoryStatsBar::onItemSelected, this));
+    auto offSelectListener = cocos2d::EventListenerCustom::create("inventory-item-unselected", CC_CALLBACK_1(InventoryStatsBar::onItemUnselected, this));
+    auto onEquipListener = cocos2d::EventListenerCustom::create("inventory-item-equipped", CC_CALLBACK_0(InventoryStatsBar::onStatChange, this));
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(onSelectListener, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(offSelectListener, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(onEquipListener, this);
+
     return true;
+}
+
+void InventoryStatsBar::onStatChange(void) {
+    CCLOG("InventoryStatsBar::onStatChange() : Updating stats...");
+    auto p = PlayerManager::getInstance()->getPlayer();
+    
+    m_pStrVal->setString("ass");
+//    setStat("str", p->getAttackAmount(nullptr));
+//    setStat("def", p->getDefAmount(nullptr));
+//    setStat("int", p->getIntAmount());
+//    setStat("hit", p->getHitDistance());
+//    setStat("mov", p->getMaxMoveDistance());
+}
+void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
+    CCLOG("InventoryStatsBar::onItemSelected()");
+}
+
+void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
+    CCLOG("InventoryStatsBar::onItemUnselected()");
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label *statNameLabel, cocos2d::Label *statValLabel, const std::string statName, int val, float xPosPercent) {
@@ -76,7 +103,7 @@ void InventoryStatsBar::setStat(const std::string stat, int val) {
         label = m_pIntVal;
     } else if(stat == "def") {
         label = m_pDefVal;
-    } else if(stat == "dex") {
+    } else if(stat == "hit") {
         label = m_pHitVal;
     } else if(stat == "mov") {
         label = m_pMovVal;

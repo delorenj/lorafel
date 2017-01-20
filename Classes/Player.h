@@ -83,7 +83,7 @@ namespace lorafel {
         void setStr(int val) { m_str = val; }
         void setDef(int val) { m_def = val; }
         void setInt(int val) { m_int = val; }
-        int getMaxMoveDistance() { return m_maxMoveDistance; }
+        int getMaxMoveDistance();
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
         std::vector<Item*> getEquippedItems();
         Progress* getProgress() const { return m_pProgress; }
