@@ -460,6 +460,7 @@ void ItemDetailWindow::initFooter() {
 
 		if(!rect.containsPoint(p)) {
 			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
+            _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 			return true;
 		}
 		return false; // we did not consume this event, pass thru.

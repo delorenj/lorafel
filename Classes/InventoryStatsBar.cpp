@@ -62,10 +62,6 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
 }
 
 void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
-    CCLOG("InventoryStatsBar::onStatChange() : Updating stats...");
-//    auto scene = cocos2d::Director::getInstance()->getRunningScene();
-//    auto modal = static_cast<InventoryModal*>(scene->getChildByName("InventoryModal"));
-//    auto statsBar = modal->getStatsBar();
     auto p = PlayerManager::getInstance()->getPlayer();
     
     setStat("str", p->getAttackAmount(nullptr));

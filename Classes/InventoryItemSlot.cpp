@@ -64,17 +64,15 @@ void InventoryItemSlot::addEvents() {
             m_pGhost->runAction(scaleTo);
             m_state = State::MOVING;
 			ItemDetailWindowFactory::getInstance()->destroyExistingWindows();
-
+            auto pItemEvent = new EventDataItem(m_pItem);
+            _eventDispatcher->dispatchCustomEvent("inventory-item-selected", pItemEvent);
         } else if(m_state == State::MOVING) {
             m_pGhost->setPosition(convertToNodeSpace(touch->getLocation()));
+            
         }
     };
 
     listener->onTouchEnded = [&](cocos2d::Touch* touch, cocos2d::Event* event) {
-		/**
-		 * Turn off selection highlights no matter what
-		 */
-		_eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 
 		/**
 		 * If touch ended and there was no touch move,
@@ -87,6 +85,11 @@ void InventoryItemSlot::addEvents() {
 			ItemDetailWindowFactory::getInstance()->create(this);
 
         } else {
+            /**
+             * Turn off selection highlights no matter what
+             */
+            _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
+
             auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
             std::pair<int, int> chsCoords;
             cocos2d::Sequence* seq;
