@@ -25,7 +25,8 @@ namespace lorafel {
 
         InventoryItemGrid* getItemGrid() const { return m_pItemGrid; }
         InventoryEquipGrid* getEquipGrid() const { return m_pEquipGrid; }
-
+        InventoryStatsBar* getStatsBar() const { return m_pStatsBar; }
+        
         void loadInventory(std::function<void(int)> callback) {
             m_callback = callback;
             schedule(schedule_selector(InventoryModal::readyCheck), 0.01f);

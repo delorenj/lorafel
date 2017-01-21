@@ -29,7 +29,7 @@ namespace lorafel {
         }
 
         void setStat(const std::string stat, int val);
-        void onStatChange(void);
+        void onStatChange(cocos2d::EventCustom* event);
         void onItemSelected(cocos2d::EventCustom* event);
         void onItemUnselected(cocos2d::EventCustom* event);
         
@@ -48,7 +48,7 @@ namespace lorafel {
 
         cocos2d::Node* m_pContainer;
         
-        void createStatLabel(cocos2d::Label *statNameLabel, cocos2d::Label *statValLabel, const std::string statName, int val, float xPosPercent);
+        void createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent);
     };
 }
 

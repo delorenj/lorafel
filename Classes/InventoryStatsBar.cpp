@@ -6,6 +6,7 @@
 #include "InventoryStatsBar.h"
 #include "StringPatch.h"
 #include "PlayerManager.h"
+#include "InventoryModal.h"
 
 using namespace lorafel;
 
@@ -43,15 +44,15 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
      * Create and position the stat labels
      * and their values
      */
-    createStatLabel(m_pStr, m_pStrVal, "Str", player->getAttackAmount(nullptr), 0.029f);
-    createStatLabel(m_pDef, m_pDefVal, "Def", player->getDefAmount(nullptr), 0.224f);
-    createStatLabel(m_pInt, m_pIntVal, "Int", player->getIntAmount(), 0.421f);
-    createStatLabel(m_pHit, m_pHitVal, "Hit", player->getHitDistance(), 0.615f);
-    createStatLabel(m_pMov, m_pMovVal, "Mov", player->getMaxMoveDistance(), 0.795f);
+    createStatLabel(&m_pStr, &m_pStrVal, "Str", player->getAttackAmount(nullptr), 0.029f);
+    createStatLabel(&m_pDef, &m_pDefVal, "Def", player->getDefAmount(nullptr), 0.224f);
+    createStatLabel(&m_pInt, &m_pIntVal, "Int", player->getIntAmount(), 0.421f);
+    createStatLabel(&m_pHit, &m_pHitVal, "Hit", player->getHitDistance(), 0.615f);
+    createStatLabel(&m_pMov, &m_pMovVal, "Mov", player->getMaxMoveDistance(), 0.795f);
     
     auto onSelectListener = cocos2d::EventListenerCustom::create("inventory-item-selected", CC_CALLBACK_1(InventoryStatsBar::onItemSelected, this));
     auto offSelectListener = cocos2d::EventListenerCustom::create("inventory-item-unselected", CC_CALLBACK_1(InventoryStatsBar::onItemUnselected, this));
-    auto onEquipListener = cocos2d::EventListenerCustom::create("inventory-item-equipped", CC_CALLBACK_0(InventoryStatsBar::onStatChange, this));
+    auto onEquipListener = cocos2d::EventListenerCustom::create("inventory-item-equipped", CC_CALLBACK_1(InventoryStatsBar::onStatChange, this));
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(onSelectListener, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(offSelectListener, this);
@@ -60,16 +61,18 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
     return true;
 }
 
-void InventoryStatsBar::onStatChange(void) {
+void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onStatChange() : Updating stats...");
+//    auto scene = cocos2d::Director::getInstance()->getRunningScene();
+//    auto modal = static_cast<InventoryModal*>(scene->getChildByName("InventoryModal"));
+//    auto statsBar = modal->getStatsBar();
     auto p = PlayerManager::getInstance()->getPlayer();
     
-    m_pStrVal->setString("ass");
-//    setStat("str", p->getAttackAmount(nullptr));
-//    setStat("def", p->getDefAmount(nullptr));
-//    setStat("int", p->getIntAmount());
-//    setStat("hit", p->getHitDistance());
-//    setStat("mov", p->getMaxMoveDistance());
+    setStat("str", p->getAttackAmount(nullptr));
+    setStat("def", p->getDefAmount(nullptr));
+    setStat("int", p->getIntAmount());
+    setStat("hit", p->getHitDistance());
+    setStat("mov", p->getMaxMoveDistance());
 }
 void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
@@ -79,19 +82,20 @@ void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
 }
 
-void InventoryStatsBar::createStatLabel(cocos2d::Label *statNameLabel, cocos2d::Label *statValLabel, const std::string statName, int val, float xPosPercent) {
+void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {
     auto statString = statName + ":";
-    statNameLabel = cocos2d::Label::createWithTTF(statString.c_str(), "fonts/BebasNeue Bold.ttf", 28);
-    statNameLabel->setAnchorPoint(Vec2(0,0));
-    statNameLabel->setPosition(Vec2(m_pContainer->getContentSize().width * xPosPercent,0));
-    statNameLabel->setGlobalZOrder(LayerOrder::MODAL+3);
-    addChild(statNameLabel);
+    *statNameLabel = cocos2d::Label::createWithTTF(statString.c_str(), "fonts/BebasNeue Bold.ttf", 28);
+    
+    (*statNameLabel)->setAnchorPoint(Vec2(0,0));
+    (*statNameLabel)->setPosition(Vec2(m_pContainer->getContentSize().width * xPosPercent,0));
+    (*statNameLabel)->setGlobalZOrder(LayerOrder::MODAL+3);
+    addChild(*statNameLabel);
 
-    statValLabel = cocos2d::Label::createWithTTF(to_string(val), "fonts/BebasNeue Bold.ttf", 28);
-    statValLabel->setAnchorPoint(Vec2(0,0));
-    statValLabel->setPosition(Vec2(statNameLabel->getPositionX() + +statNameLabel->getContentSize().width + statNameLabel->getContentSize().width * 0.19f, 0));
-    statValLabel->setGlobalZOrder(LayerOrder::MODAL+3);
-    addChild(statValLabel);
+    *statValLabel = cocos2d::Label::createWithTTF(to_string(val), "fonts/BebasNeue Bold.ttf", 28);
+    (*statValLabel)->setAnchorPoint(Vec2(0,0));
+    (*statValLabel)->setPosition(Vec2((*statNameLabel)->getPositionX() + (*statNameLabel)->getContentSize().width + (*statNameLabel)->getContentSize().width * 0.19f, 0));
+    (*statValLabel)->setGlobalZOrder(LayerOrder::MODAL+3);
+    addChild(*statValLabel);
 }
 
 void InventoryStatsBar::setStat(const std::string stat, int val) {

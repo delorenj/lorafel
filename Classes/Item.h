@@ -49,7 +49,7 @@ namespace lorafel {
 		std::set<ItemStat*>* getItemStats() const { return m_pItemStats; }
 		std::set<ItemStat*>* getItemAttributes() const { return m_pItemAttributes; }
 		void updateAttributes(cocos2d::ValueMap &args);
-
+        SwappyGrid* getSwappyGrid() { return m_pSwappyGrid; }
 		std::string getTileImage();
 
 	protected:
