@@ -74,10 +74,23 @@ void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
 }
 void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
+    auto arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-up.png");
+    arrow->setAnchorPoint(cocos2d::Vec2(0,0));
+    arrow->setPosition(cocos2d::Vec2(m_pStrVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
+    arrow->setGlobalZOrder(LayerOrder::MODAL+4);
+    m_pStrVal->addChild(arrow);
+    
+    arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-down.png");
+    arrow->setAnchorPoint(cocos2d::Vec2(0,0));
+    arrow->setPosition(cocos2d::Vec2(m_pDefVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
+    arrow->setGlobalZOrder(LayerOrder::MODAL+4);
+    m_pDefVal->addChild(arrow);
 }
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
+    m_pStrVal->removeAllChildrenWithCleanup(true);
+    m_pDefVal->removeAllChildrenWithCleanup(true);
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {
