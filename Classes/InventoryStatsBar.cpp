@@ -78,7 +78,6 @@ void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
-    onStatChange(event);
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {

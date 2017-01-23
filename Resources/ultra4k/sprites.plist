@@ -15,7 +15,7 @@
                 <key>spriteSourceSize</key>
                 <string>{200,200}</string>
                 <key>textureRect</key>
-                <string>{{1757,723},{90,142}}</string>
+                <string>{{1757,737},{90,142}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{200,200}</string>
                 <key>textureRect</key>
-                <string>{{1685,547},{174,172}}</string>
+                <string>{{1685,561},{174,172}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -302,7 +302,7 @@
                 <key>textureRect</key>
                 <string>{{1547,1459},{130,134}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>dark_bg.png</key>
             <dict>
@@ -540,7 +540,7 @@
                 <key>spriteSourceSize</key>
                 <string>{22,122}</string>
                 <key>textureRect</key>
-                <string>{{1263,565},{22,122}}</string>
+                <string>{{1835,195},{22,122}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -555,7 +555,7 @@
                 <key>spriteSourceSize</key>
                 <string>{16,122}</string>
                 <key>textureRect</key>
-                <string>{{599,1001},{16,122}}</string>
+                <string>{{241,1577},{16,122}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -720,7 +720,7 @@
                 <key>spriteSourceSize</key>
                 <string>{200,200}</string>
                 <key>textureRect</key>
-                <string>{{1707,345},{144,196}}</string>
+                <string>{{1707,363},{144,196}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -859,6 +859,36 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>stat-down.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{60,166}</string>
+                <key>spriteSourceSize</key>
+                <string>{60,166}</string>
+                <key>textureRect</key>
+                <string>{{527,1533},{60,166}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>stat-up.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{60,166}</string>
+                <key>spriteSourceSize</key>
+                <string>{60,166}</string>
+                <key>textureRect</key>
+                <string>{{1773,195},{60,166}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>stick_man_avatar.png</key>
             <dict>
                 <key>aliases</key>
@@ -870,9 +900,9 @@
                 <key>spriteSourceSize</key>
                 <string>{130,134}</string>
                 <key>textureRect</key>
-                <string>{{1683,1465},{128,112}}</string>
+                <string>{{1679,1465},{128,112}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>store.png</key>
             <dict>
@@ -1081,9 +1111,9 @@
             <key>realTextureFileName</key>
             <string>sprites.png</string>
             <key>size</key>
-            <string>{1858,1590}</string>
+            <string>{1858,1594}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:dfb54d69a167a4ab20a1828a77b6fe70:878fd1bef774c29acce42532ce627cc3:db71e206b3c010bfb176561963c50b15$</string>
+            <string>$TexturePacker:SmartUpdate:5c25d15170d342ff5f810f6ba23bd7a7:589906fcf3d3e442f84684a97adfcba5:db71e206b3c010bfb176561963c50b15$</string>
             <key>textureFileName</key>
             <string>sprites.png</string>
         </dict>
