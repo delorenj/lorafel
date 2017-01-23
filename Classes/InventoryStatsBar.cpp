@@ -53,11 +53,13 @@ bool InventoryStatsBar::init(cocos2d::Node *container) {
     auto onSelectListener = cocos2d::EventListenerCustom::create("inventory-item-selected", CC_CALLBACK_1(InventoryStatsBar::onItemSelected, this));
     auto offSelectListener = cocos2d::EventListenerCustom::create("inventory-item-unselected", CC_CALLBACK_1(InventoryStatsBar::onItemUnselected, this));
     auto onEquipListener = cocos2d::EventListenerCustom::create("inventory-item-equipped", CC_CALLBACK_1(InventoryStatsBar::onStatChange, this));
+    auto onUnequipListener = cocos2d::EventListenerCustom::create("inventory-item-unequipped", CC_CALLBACK_1(InventoryStatsBar::onStatChange, this));
+
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(onSelectListener, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(offSelectListener, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(onEquipListener, this);
-
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(onUnequipListener, this);
     return true;
 }
 
@@ -76,6 +78,7 @@ void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
+    onStatChange(event);
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {

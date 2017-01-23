@@ -145,22 +145,25 @@ void Player::equipItem(int slot, Item* pItem) {
         m_equipDictionary.erase(slot);
 		if(slot == CONSUMABLE) {
 			equipConsumableSlot("");
-		}
-        
+        } else {
+            m_pDispatcher->dispatchCustomEvent("inventory-item-unequipped");
+        }
     } else {
         m_equipDictionary[slot] = pItem;
         pItem->setEquipSlot(slot);
         Consumable* c = dynamic_cast<Consumable*>(pItem);
         if(c != nullptr) {
             equipConsumableSlot(pItem->getId());
+        } else {
+            m_pDispatcher->dispatchCustomEvent("inventory-item-equipped", pItem->getSwappyGrid());
         }
+        
     }
 
     /**
      * Update the database
      */
     FirebaseDatabase::getInstance()->equipItem(slot, pItem);
-
 }
 
 bool Player::isEquipped(Item* pItem) {

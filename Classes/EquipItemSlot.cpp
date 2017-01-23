@@ -55,7 +55,6 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
 //    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
-    _eventDispatcher->dispatchCustomEvent("inventory-item-equipped", pItem->getSwappyGrid());
 }
 
 void EquipItemSlot::addEvents() {
