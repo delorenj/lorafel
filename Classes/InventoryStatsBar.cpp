@@ -72,25 +72,24 @@ void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
     setStat("hit", p->getHitDistance());
     setStat("mov", p->getMaxMoveDistance());
 }
+
 void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
-    auto arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-up.png");
-    arrow->setAnchorPoint(cocos2d::Vec2(0,0));
-    arrow->setPosition(cocos2d::Vec2(m_pStrVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
-    arrow->setGlobalZOrder(LayerOrder::MODAL+4);
-    m_pStrVal->addChild(arrow);
-    
-    arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-down.png");
-    arrow->setAnchorPoint(cocos2d::Vec2(0,0));
-    arrow->setPosition(cocos2d::Vec2(m_pDefVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
-    arrow->setGlobalZOrder(LayerOrder::MODAL+4);
-    m_pDefVal->addChild(arrow);
+    setStatPreview(m_pStr, m_pStrVal, 80);
+    setStatPreview(m_pDef, m_pDefVal, 10);
 }
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
     m_pStrVal->removeAllChildrenWithCleanup(true);
     m_pDefVal->removeAllChildrenWithCleanup(true);
+
+    m_pStr->setColor(cocos2d::Color3B::WHITE);
+    m_pStrVal->setColor(cocos2d::Color3B::WHITE);
+    m_pDef->setColor(cocos2d::Color3B::WHITE);
+    m_pDefVal->setColor(cocos2d::Color3B::WHITE);
+    
+    onStatChange(event);
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {
@@ -127,4 +126,36 @@ void InventoryStatsBar::setStat(const std::string stat, int val) {
         return;
     }
     label->setString(to_string(val));
+}
+
+void InventoryStatsBar::setStatPreview(cocos2d::Label *pName, cocos2d::Label *pVal, int newVal) {
+    int oldVal = parseInt(pVal->getString());
+    cocos2d::Sprite* arrow;
+
+    pVal->setString(to_string(newVal));
+    
+    if(newVal > oldVal) {
+        arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-up.png");
+        pName->setColor(cocos2d::Color3B::GREEN);
+        pVal->setColor(cocos2d::Color3B::GREEN);
+    } else {
+        arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-down.png");
+        pName->setColor(cocos2d::Color3B::RED);
+        pVal->setColor(cocos2d::Color3B::RED);
+
+    }
+
+    arrow->setAnchorPoint(cocos2d::Vec2(0, 0));
+    arrow->setPosition(cocos2d::Vec2(pVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
+    arrow->setGlobalZOrder(LayerOrder::MODAL + 4);
+    pVal->addChild(arrow);
+    
+    cocos2d::Label* deltaLabel = cocos2d::Label::createWithTTF(to_string(std::abs(newVal-oldVal)), "fonts/BebasNeue Bold.ttf", 14);
+    
+    deltaLabel->setAnchorPoint(Vec2(0,0));
+    deltaLabel->setPosition(Vec2(arrow->getContentSize().width + arrow->getContentSize().width * 0.06f,arrow->getPositionY()));
+    deltaLabel->setGlobalZOrder(LayerOrder::MODAL+4);
+    deltaLabel->setColor(pVal->getColor());
+    arrow->addChild(deltaLabel);
+
 }

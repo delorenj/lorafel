@@ -29,6 +29,7 @@ namespace lorafel {
         }
 
         void setStat(const std::string stat, int val);
+        void setStatPreview(cocos2d::Label* pName, cocos2d::Label* pVal, int newVal);
         void onStatChange(cocos2d::EventCustom* event);
         void onItemSelected(cocos2d::EventCustom* event);
         void onItemUnselected(cocos2d::EventCustom* event);
