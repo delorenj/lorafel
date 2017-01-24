@@ -153,7 +153,7 @@ void InventoryStatsBar::setStatPreview(cocos2d::Label *pName, cocos2d::Label *pV
     cocos2d::Label* deltaLabel = cocos2d::Label::createWithTTF(to_string(std::abs(newVal-oldVal)), "fonts/BebasNeue Bold.ttf", 14);
     
     deltaLabel->setAnchorPoint(Vec2(0,0));
-    deltaLabel->setPosition(Vec2(arrow->getContentSize().width + arrow->getContentSize().width * 0.06f,arrow->getPositionY()));
+    deltaLabel->setPosition(Vec2(arrow->getContentSize().width + arrow->getContentSize().width * 0.06f,arrow->getPositionY() - arrow->getContentSize().height/2 + arrow->getContentSize().height * 0.2f));
     deltaLabel->setGlobalZOrder(LayerOrder::MODAL+4);
     deltaLabel->setColor(pVal->getColor());
     arrow->addChild(deltaLabel);
