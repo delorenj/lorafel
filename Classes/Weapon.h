@@ -39,7 +39,7 @@ namespace lorafel {
 
         }
 
-		std::vector<int> getEquipMasks();
+        std::vector<int> getEquipMasks() override;
         void upgrade() override;
     };
 }

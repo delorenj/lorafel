@@ -142,7 +142,7 @@ void Player::equipHook() {
 
 void Player::equipItem(int slot, Item* pItem) {
     if(pItem == nullptr) {
-        m_equipDictionary.erase(slot);
+        m_equipDictionary.at(slot) = nullptr;
 		if(slot == CONSUMABLE) {
 			equipConsumableSlot("");
         } else {

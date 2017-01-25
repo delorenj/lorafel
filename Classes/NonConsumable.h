@@ -12,6 +12,7 @@ namespace lorafel {
     public:
 
         virtual bool init() override;
+        virtual std::vector<int> getEquipMasks() = 0;
     };
 }
 

@@ -78,11 +78,60 @@ void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
 void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
     auto p = PlayerManager::getInstance()->getPlayer();
-
+    auto pItem = static_cast<EventDataItem*>(event->getUserData())->val;
     auto equipDictionary = p->getEquipDictionary();
+    
+    if(dynamic_cast<NonConsumable*>(pItem) == nullptr) {
+        return;
+    }
 
-    EventDataItem* pItemData = static_cast<EventDataItem*>(event->getUserData());
-    auto pItem = pItemData->val;
+    auto equippableItem = dynamic_cast<NonConsumable*>(pItem);
+    
+    auto validSlotNumbers = equippableItem->getEquipMasks();
+    
+    /**
+     * If item can go in more than one slot
+     * loop through each slot and select the
+     * first empty slot. If none are empty
+     * then pick the slot which gives the
+     * largest increase in stats.
+     * If a decrease in both, the pick the one
+     * with the smallest decrease
+     */
+    if(validSlotNumbers.size() > 1) {
+        bool itemSet = false;
+        for(int i=0; i<validSlotNumbers.size(); i++) {
+            if(equipDictionary.at(validSlotNumbers[i]) == nullptr) {
+                equipDictionary.at(validSlotNumbers[i]) = pItem;
+                itemSet = true;
+                break;
+            }
+        }
+        
+        /**
+         * No slots were empty
+         */
+        if(!itemSet) {
+            int best = 0;
+            for(int i=0; i<validSlotNumbers.size(); i++) {
+                int delta = 0;
+                auto temp = equipDictionary.at(validSlotNumbers[i]);
+                equipDictionary.at(validSlotNumbers[i]) = pItem;
+                delta += p->getAttackAmount(nullptr, &equipDictionary);
+                delta += p->getDefAmount(nullptr, &equipDictionary);
+                delta += p->getIntAmount(&equipDictionary);
+                delta += p->getHitDistance(&equipDictionary);
+                delta += p->getMaxMoveDistance(&equipDictionary);
+                
+                best = delta > best ? validSlotNumbers[i] : best;
+                
+                equipDictionary.at(validSlotNumbers[i]) = temp;
+            }
+            equipDictionary.at(best) = pItem;
+        }
+    } else if(validSlotNumbers.size() == 1) {
+        equipDictionary.at(validSlotNumbers.front()) = pItem;
+    }
     setStatPreview(m_pStr, m_pStrVal, p->getAttackAmount(nullptr, &equipDictionary));
     setStatPreview(m_pDef, m_pDefVal, p->getDefAmount(nullptr, &equipDictionary));
     setStatPreview(m_pInt, m_pIntVal, p->getIntAmount(&equipDictionary));
@@ -119,16 +168,16 @@ void InventoryStatsBar::resetStat(cocos2d::Label *pName, cocos2d::Label *pVal) {
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {
     auto statString = statName + ":";
-    *statNameLabel = cocos2d::Label::createWithTTF(statString.c_str(), "fonts/BebasNeue Bold.ttf", 28);
+    *statNameLabel = cocos2d::Label::createWithTTF(statString.c_str(), "fonts/BebasNeue Bold.ttf", 22);
     
     (*statNameLabel)->setAnchorPoint(Vec2(0,0));
-    (*statNameLabel)->setPosition(Vec2(m_pContainer->getContentSize().width * xPosPercent,0));
+    (*statNameLabel)->setPosition(Vec2(m_pContainer->getContentSize().width * xPosPercent,(*statNameLabel)->getContentSize().height/4));
     (*statNameLabel)->setGlobalZOrder(LayerOrder::MODAL+3);
     addChild(*statNameLabel);
 
-    *statValLabel = cocos2d::Label::createWithTTF(to_string(val), "fonts/BebasNeue Bold.ttf", 28);
+    *statValLabel = cocos2d::Label::createWithTTF(to_string(val), "fonts/BebasNeue Bold.ttf", 22);
     (*statValLabel)->setAnchorPoint(Vec2(0,0));
-    (*statValLabel)->setPosition(Vec2((*statNameLabel)->getPositionX() + (*statNameLabel)->getContentSize().width + (*statNameLabel)->getContentSize().width * 0.19f, 0));
+    (*statValLabel)->setPosition(Vec2((*statNameLabel)->getPositionX() + (*statNameLabel)->getContentSize().width + (*statNameLabel)->getContentSize().width * 0.19f, (*statNameLabel)->getContentSize().height/4));
     (*statValLabel)->setGlobalZOrder(LayerOrder::MODAL+3);
     addChild(*statValLabel);
 }
@@ -164,16 +213,18 @@ void InventoryStatsBar::setStatPreview(cocos2d::Label *pName, cocos2d::Label *pV
         arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-up.png");
         pName->setColor(cocos2d::Color3B::GREEN);
         pVal->setColor(cocos2d::Color3B::GREEN);
-        deltaPosY = arrow->getPositionY() + arrow->getContentSize().height/2 - arrow->getContentSize().height * 0.2f;
-    } else {
+        deltaPosY = arrow->getPositionY() + arrow->getContentSize().height/2 - arrow->getContentSize().height * 0.1f;
+    } else if(newVal < oldVal) {
         arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-down.png");
         pName->setColor(cocos2d::Color3B::RED);
         pVal->setColor(cocos2d::Color3B::RED);
-        deltaPosY = arrow->getPositionY() - arrow->getContentSize().height/2 + arrow->getContentSize().height * 0.4f;
+        deltaPosY = arrow->getPositionY() - arrow->getContentSize().height/2 + arrow->getContentSize().height * 0.3f;
+    } else {
+        return;
     }
 
     arrow->setAnchorPoint(cocos2d::Vec2(0, 0));
-    arrow->setPosition(cocos2d::Vec2(pVal->getContentSize().width + arrow->getContentSize().width * 0.5f, arrow->getContentSize().height * 0.2f));
+    arrow->setPosition(cocos2d::Vec2(pVal->getContentSize().width + arrow->getContentSize().width * 0.5f, 0));
     arrow->setGlobalZOrder(LayerOrder::MODAL + 4);
     pVal->addChild(arrow);
     
