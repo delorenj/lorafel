@@ -84,14 +84,14 @@ namespace lorafel {
         void setStr(int val) { m_str = val; }
         void setDef(int val) { m_def = val; }
         void setInt(int val) { m_int = val; }
-        int getMaxMoveDistance();
         void setMaxMoveDistance(int moveDistance) { m_maxMoveDistance = moveDistance; }
-        std::vector<Item*> getEquippedItems();
+        std::vector<Item*> getEquippedItems(std::unordered_map<int, Item*>* equipDictionary = nullptr);
         Progress* getProgress() const { return m_pProgress; }
-        int getAttackAmount(EnemyTile *pEnemyTile);
-        int getDefAmount(EnemyTile *pEnemyTile);
-        int getIntAmount();
-        int getHitDistance();
+        int getAttackAmount(EnemyTile *pEnemyTile, std::unordered_map<int, Item*>* equipDictionary = nullptr);
+        int getDefAmount(EnemyTile *pEnemyTile, std::unordered_map<int, Item*>* equipDictionary = nullptr);
+        int getIntAmount(std::unordered_map<int, Item*>* equipDictionary = nullptr);
+        int getHitDistance(std::unordered_map<int, Item*>* equipDictionary = nullptr);
+        int getMaxMoveDistance(std::unordered_map<int, Item*>* equipDictionary = nullptr);
         bool tileWithinHitDistance(Tile *pTile);
         void attack(EnemyTile *pTile);
         int calculateItemStat(Item* item, std::string statName);

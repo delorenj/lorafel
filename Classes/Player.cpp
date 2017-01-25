@@ -187,8 +187,8 @@ int Player::getBaseIntelligence() const {
     return (int) getXpManager()->getLevel() + m_int;
 }
 
-int Player::getAttackAmount(EnemyTile *pEnemyTile) {
-    auto equippedItems = getEquippedItems();
+int Player::getAttackAmount(EnemyTile *pEnemyTile, std::unordered_map<int, Item*>* equipDictionary) {
+    auto equippedItems = getEquippedItems(equipDictionary);
 
     int val = getBaseAttack();
     CCLOG("Player::getAttackAmount() - [Base Attack] %d", val);
@@ -200,8 +200,8 @@ int Player::getAttackAmount(EnemyTile *pEnemyTile) {
     return val;
 }
 
-int Player::getDefAmount(EnemyTile *pEnemyTile) {
-    auto equippedItems = getEquippedItems();
+int Player::getDefAmount(EnemyTile *pEnemyTile, std::unordered_map<int, Item*>* equipDictionary) {
+    auto equippedItems = getEquippedItems(equipDictionary);
     
     int val = getBaseDefend();
     CCLOG("Player::getDefAmount() - [Base Defend] %d", val);
@@ -213,8 +213,8 @@ int Player::getDefAmount(EnemyTile *pEnemyTile) {
     return val;
 }
 
-int Player::getIntAmount() {
-    auto equippedItems = getEquippedItems();
+int Player::getIntAmount(std::unordered_map<int, Item*>* equipDictionary) {
+    auto equippedItems = getEquippedItems(equipDictionary);
     
     int val = getBaseIntelligence();
     
@@ -227,8 +227,8 @@ int Player::getIntAmount() {
     return val;
 }
 
-int Player::getHitDistance() {
-    auto equippedItems = getEquippedItems();
+int Player::getHitDistance(std::unordered_map<int, Item*>* equipDictionary) {
+    auto equippedItems = getEquippedItems(equipDictionary);
     
     int val = 1;
     
@@ -244,10 +244,10 @@ int Player::getHitDistance() {
     return val;
 }
 
-int Player::getMaxMoveDistance() {
+int Player::getMaxMoveDistance(std::unordered_map<int, Item*>* equipDictionary) {
     auto val = m_maxMoveDistance;
     
-    auto equippedItems = getEquippedItems();
+    auto equippedItems = getEquippedItems(equipDictionary);
     
     CCLOG("Player::getMaxMoveDistance() - [Base Max Move Distance] %d", val);
     
@@ -295,9 +295,14 @@ int Player::calculateItemStat(Item* item, std::string statName) {
     }
     return additionalVal;
 }
-std::vector<Item*> Player::getEquippedItems() {
+    
+std::vector<Item*> Player::getEquippedItems(std::unordered_map<int, Item*>* equipDictionary) {
+    if(equipDictionary == nullptr) {
+        equipDictionary = &m_equipDictionary;
+    }
+    
     std::vector<Item*> items;
-    for(auto item : m_equipDictionary) {
+    for(auto item : *equipDictionary) {
         if(item.second == nullptr) continue;
         Item* i = item.second;
         items.push_back(i);

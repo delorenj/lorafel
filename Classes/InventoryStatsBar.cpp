@@ -79,20 +79,20 @@ void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
     auto p = PlayerManager::getInstance()->getPlayer();
 
-    auto currentEquipDictionary = p->getEquipDictionary();
+    auto equipDictionary = p->getEquipDictionary();
 
     EventDataItem* pItemData = static_cast<EventDataItem*>(event->getUserData());
     auto pItem = pItemData->val;
-    setStatPreview(m_pStr, m_pStrVal, p->getAttackAmount(nullptr));
-    setStatPreview(m_pDef, m_pDefVal, p->getDefAmount(nullptr));
-    setStatPreview(m_pInt, m_pIntVal, p->getIntAmount());
+    setStatPreview(m_pStr, m_pStrVal, p->getAttackAmount(nullptr, &equipDictionary));
+    setStatPreview(m_pDef, m_pDefVal, p->getDefAmount(nullptr, &equipDictionary));
+    setStatPreview(m_pInt, m_pIntVal, p->getIntAmount(&equipDictionary));
 
     auto thing = dynamic_cast<Weapon*>(pItem);
     if(thing != nullptr) {
-        setStatPreview(m_pHit, m_pHitVal, p->getHitDistance());
+        setStatPreview(m_pHit, m_pHitVal, p->getHitDistance(&equipDictionary));
     }
 
-    setStatPreview(m_pMov, m_pMovVal, p->getMaxMoveDistance());
+    setStatPreview(m_pMov, m_pMovVal, p->getMaxMoveDistance(&equipDictionary));
 }
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
