@@ -7,6 +7,8 @@
 #include "StringPatch.h"
 #include "PlayerManager.h"
 #include "InventoryModal.h"
+#include "EventDataItem.h"
+#include "Weapon.h"
 
 using namespace lorafel;
 
@@ -75,21 +77,44 @@ void InventoryStatsBar::onStatChange(cocos2d::EventCustom* event) {
 
 void InventoryStatsBar::onItemSelected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemSelected()");
-    setStatPreview(m_pStr, m_pStrVal, 80);
-    setStatPreview(m_pDef, m_pDefVal, 10);
+    auto p = PlayerManager::getInstance()->getPlayer();
+
+    auto currentEquipDictionary = p->getEquipDictionary();
+
+    EventDataItem* pItemData = static_cast<EventDataItem*>(event->getUserData());
+    auto pItem = pItemData->val;
+    setStatPreview(m_pStr, m_pStrVal, p->getAttackAmount(nullptr));
+    setStatPreview(m_pDef, m_pDefVal, p->getDefAmount(nullptr));
+    setStatPreview(m_pInt, m_pIntVal, p->getIntAmount());
+
+    auto thing = dynamic_cast<Weapon*>(pItem);
+    if(thing != nullptr) {
+        setStatPreview(m_pHit, m_pHitVal, p->getHitDistance());
+    }
+
+    setStatPreview(m_pMov, m_pMovVal, p->getMaxMoveDistance());
 }
 
 void InventoryStatsBar::onItemUnselected(cocos2d::EventCustom* event) {
     CCLOG("InventoryStatsBar::onItemUnselected()");
-    m_pStrVal->removeAllChildrenWithCleanup(true);
-    m_pDefVal->removeAllChildrenWithCleanup(true);
+    resetStatPreview(event);
 
-    m_pStr->setColor(cocos2d::Color3B::WHITE);
-    m_pStrVal->setColor(cocos2d::Color3B::WHITE);
-    m_pDef->setColor(cocos2d::Color3B::WHITE);
-    m_pDefVal->setColor(cocos2d::Color3B::WHITE);
-    
+}
+
+void InventoryStatsBar::resetStatPreview(EventCustom *event) {
+    resetStat(m_pStr, m_pStrVal);
+    resetStat(m_pDef, m_pDefVal);
+    resetStat(m_pInt, m_pIntVal);
+    resetStat(m_pHit, m_pHitVal);
+    resetStat(m_pMov, m_pMovVal);
+
     onStatChange(event);
+}
+
+void InventoryStatsBar::resetStat(cocos2d::Label *pName, cocos2d::Label *pVal) {
+    pVal->removeAllChildrenWithCleanup(true);
+    pName->setColor(Color3B::WHITE);
+    pVal->setColor(Color3B::WHITE);
 }
 
 void InventoryStatsBar::createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent) {
@@ -133,16 +158,18 @@ void InventoryStatsBar::setStatPreview(cocos2d::Label *pName, cocos2d::Label *pV
     cocos2d::Sprite* arrow;
 
     pVal->setString(to_string(newVal));
-    
+
+    float deltaPosY;
     if(newVal > oldVal) {
         arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-up.png");
         pName->setColor(cocos2d::Color3B::GREEN);
         pVal->setColor(cocos2d::Color3B::GREEN);
+        deltaPosY = arrow->getPositionY() + arrow->getContentSize().height/2 - arrow->getContentSize().height * 0.2f;
     } else {
         arrow = cocos2d::Sprite::createWithSpriteFrameName("stat-down.png");
         pName->setColor(cocos2d::Color3B::RED);
         pVal->setColor(cocos2d::Color3B::RED);
-
+        deltaPosY = arrow->getPositionY() - arrow->getContentSize().height/2 + arrow->getContentSize().height * 0.4f;
     }
 
     arrow->setAnchorPoint(cocos2d::Vec2(0, 0));
@@ -153,7 +180,7 @@ void InventoryStatsBar::setStatPreview(cocos2d::Label *pName, cocos2d::Label *pV
     cocos2d::Label* deltaLabel = cocos2d::Label::createWithTTF(to_string(std::abs(newVal-oldVal)), "fonts/BebasNeue Bold.ttf", 14);
     
     deltaLabel->setAnchorPoint(Vec2(0,0));
-    deltaLabel->setPosition(Vec2(arrow->getContentSize().width + arrow->getContentSize().width * 0.06f,arrow->getPositionY() - arrow->getContentSize().height/2 + arrow->getContentSize().height * 0.2f));
+    deltaLabel->setPosition(Vec2(arrow->getContentSize().width + arrow->getContentSize().width * 0.06f,deltaPosY));
     deltaLabel->setGlobalZOrder(LayerOrder::MODAL+4);
     deltaLabel->setColor(pVal->getColor());
     arrow->addChild(deltaLabel);

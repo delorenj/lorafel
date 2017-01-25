@@ -70,6 +70,7 @@ namespace lorafel {
         bool equipConsumableSlot(std::string itemId);
         bool equipConsumableSlot(std::string itemId, int slot);
         Hook* getHook() const { return m_pHook; }
+        std::unordered_map<int, Item*> getEquipDictionary() { return m_equipDictionary; }
         Item* getEquippedItemBySlotType(int equipMask) { return m_equipDictionary[equipMask]; }
         std::shared_ptr<InventorySlotSerializer> getInventorySlotSerializer() const { return m_pInventorySlotSerializer; }
         void equipItem(int slot, Item* pItem);
@@ -93,6 +94,7 @@ namespace lorafel {
         int getHitDistance();
         bool tileWithinHitDistance(Tile *pTile);
         void attack(EnemyTile *pTile);
+        int calculateItemStat(Item* item, std::string statName);
 
     protected:
         // Current Stats
@@ -121,8 +123,6 @@ namespace lorafel {
         std::unordered_map<int, Item*> m_equipDictionary;
         Hook* m_pHook;
         Tile* m_pTile;
-        
-        int calculateItemStat(Item* item, std::string statName);
     };
 
 }

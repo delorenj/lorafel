@@ -50,6 +50,8 @@ namespace lorafel {
         cocos2d::Node* m_pContainer;
         
         void createStatLabel(cocos2d::Label **statNameLabel, cocos2d::Label **statValLabel, const std::string statName, int val, float xPosPercent);
+        void resetStatPreview(EventCustom *event);
+        void resetStat(Label *pName, Label *pVal);
     };
 }
 
