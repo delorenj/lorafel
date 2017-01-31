@@ -32,7 +32,13 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
      * and assign the item back to the item grid
      */
     if(pItem == nullptr) {
-        PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), nullptr);
+        if(pItem->getUsesWholeEquipMaskSet()) {
+            for(auto mask : pItem->getEquipMasks()) {
+                PlayerManager::getInstance()->getPlayer()->equipItem(mask, nullptr);
+            }
+        } else {
+            PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), nullptr);
+        }
         m_pItemSprite->setVisible(false);
         m_pGhost->setVisible(false);
         setStackSize(0);
@@ -44,7 +50,16 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     auto consumable = dynamic_cast<Consumable*>(pItem);
     if(consumable == nullptr) {
-        setStackSize(1);
+        if(pItem->getUsesWholeEquipMaskSet()) {
+            for(auto mask : pItem->getEquipMasks()) {
+                //get slot by num ???
+                PlayerManager::getInstance()->getPlayer()->equipItem(mask, nullptr);
+            }
+        } else {
+            setStackSize(1);
+        }
+
+
     } else {
         int total = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemCount(pItem->getItemName());
         setStackSize(total);

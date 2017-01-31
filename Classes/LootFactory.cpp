@@ -117,6 +117,10 @@ ValueMap LootFactory::generateRandomItemArgs() {
         args["equip_masks"] = itemType["equip_masks"];
     }
 
+    if(!itemType["two_handed"].isNull()) {
+        args["two_handed"] = itemType["two_handed"];
+    }
+
     args["item_class"] = itemClassName;
     args["item_type"] = itemTypeName;
     args["tile_image"] = itemImage["tile_image"].asString();

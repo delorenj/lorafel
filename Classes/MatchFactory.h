@@ -34,7 +34,7 @@ namespace lorafel {
              * consecutive tiles get passed to the match
              * factory
              */
-            if(pTileSet.size() >= 5) {
+            if(pTileSet.size() >= 3) {
                 /**
                  * A special, cool match that drops
                  * snaggable loot !

@@ -103,6 +103,11 @@ std::vector<int> Weapon::getEquipMasks() {
             masks.push_back(v.asInt());
         }
     }
+
+    if(!m_arguments["two_handed"].isNull()) {
+        m_usesWholeEquipMaskSet = m_arguments["two_handed"].asBool();
+    }
+
     return masks;
 }
 
