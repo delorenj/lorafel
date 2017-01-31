@@ -50,10 +50,11 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
 
     auto consumable = dynamic_cast<Consumable*>(pItem);
     if(consumable == nullptr) {
+        PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
+        
         if(pItem->getUsesWholeEquipMaskSet()) {
-            for(auto mask : pItem->getEquipMasks()) {
-                //get slot by num ???
-                PlayerManager::getInstance()->getPlayer()->equipItem(mask, nullptr);
+            for(auto slot : *getSiblingSlots()) {
+                PlayerManager::getInstance()->getPlayer()->equipItem(slot, pItem);
             }
         } else {
             setStackSize(1);

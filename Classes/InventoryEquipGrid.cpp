@@ -43,12 +43,14 @@ bool InventoryEquipGrid::init(cocos2d::Node* container) {
 
     m_pItemSlotLH = EquipItemSlot::create();
     m_pItemSlotLH->setEquipMask(Player::LEFT_HAND);
+    m_pItemSlotLH->addSiblingSlot(Player::RIGHT_HAND);
     m_pItemSlotLH->setPosition(m_pItemSlotBody->getPositionX() - wh - pad, m_pItemSlotBody->getPositionY());
     addChild(m_pItemSlotLH);
     m_equipSlots.push_back(m_pItemSlotLH);
 
     m_pItemSlotRH = EquipItemSlot::create();
     m_pItemSlotRH->setEquipMask(Player::RIGHT_HAND);
+    m_pItemSlotRH->addSiblingSlot(Player::LEFT_HAND);
     m_pItemSlotRH->setPosition(m_pItemSlotBody->getPositionX() + wh + pad, m_pItemSlotBody->getPositionY());
     addChild(m_pItemSlotRH);
     m_equipSlots.push_back(m_pItemSlotRH);
