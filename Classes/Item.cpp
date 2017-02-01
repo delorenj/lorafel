@@ -17,7 +17,7 @@ bool Item::init() {
     }
 
     addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
-    m_pEquipSlots->clear();
+    m_pEquipSlots = new std::vector<int>();
 
     return true;
 }
