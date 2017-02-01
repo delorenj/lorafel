@@ -17,7 +17,7 @@ bool Item::init() {
     }
 
     addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
-    m_equipSlot = -1;
+    m_pEquipSlots->clear();
 
     return true;
 }
@@ -70,7 +70,8 @@ void Item::removeInventorySlotCoordinates(std::pair<int, int> coords) {
 }
 
 void Item::setEquipSlot(int equipMask) {
-    m_equipSlot = equipMask;
+    m_pEquipSlots->clear();
+    m_pEquipSlots->push_back(equipMask);
 }
 
 bool Item::isEquipped() {
@@ -84,9 +85,10 @@ bool Item::isStackable() {
 }
 
 void Item::unequip() {
-    PlayerManager::getInstance()->getPlayer()->equipItem(m_equipSlot, nullptr);
-    m_equipSlot = -1;
-    
+    for(auto slot : *m_pEquipSlots) {
+        PlayerManager::getInstance()->getPlayer()->equipItem(slot, nullptr);
+    }
+    m_pEquipSlots->clear();
 }
 
 std::string Item::getItemName() {
@@ -130,5 +132,9 @@ void Item::updateAttributes(cocos2d::ValueMap &args) {
             m_pItemAttributes->insert(itemAttr);
         }
     }
+}
+
+void Item::addEquipSlot(int i) {
+    m_pEquipSlots->push_back(i);
 }
 

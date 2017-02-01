@@ -53,7 +53,9 @@ namespace lorafel {
         SwappyGrid* getSwappyGrid() { return m_pSwappyGrid; }
 		std::string getTileImage();
 
-	protected:
+        void addEquipSlot(int i);
+
+    protected:
         std::string m_id;
         std::string m_itemName;
         std::string m_className;
@@ -64,8 +66,8 @@ namespace lorafel {
 		bool m_usesWholeEquipMaskSet = false;
 		std::set<ItemStat*>* m_pItemStats;
 		std::set<ItemStat*>* m_pItemAttributes;
-        int m_equipSlot;
-	};
+        std::vector<int>* m_pEquipSlots;
+    };
 }
 
 #endif //LORAFEL_ITEM_H

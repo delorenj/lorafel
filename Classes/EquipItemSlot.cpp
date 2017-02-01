@@ -12,8 +12,12 @@
 using namespace lorafel;
 
 bool EquipItemSlot::init() {
-    return ItemSlot::init();
-
+    if(!ItemSlot::init()) {
+        return false;
+    }
+    
+    m_pSiblingSlots = new std::vector<EquipItemSlot*>();
+    return true;
 }
 
 void EquipItemSlot::setItem(Item* pItem, int stackSize) {
@@ -30,15 +34,19 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     /**
      * If clearing slot, then set item to null
      * and assign the item back to the item grid
+     *
+     * If item takes more than one slot, clear those
+     * slots as well
      */
     if(pItem == nullptr) {
-        if(pItem->getUsesWholeEquipMaskSet()) {
-            for(auto mask : pItem->getEquipMasks()) {
-                PlayerManager::getInstance()->getPlayer()->equipItem(mask, nullptr);
+        PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), nullptr);
+
+        if(m_pItem != nullptr && m_pItem->getUsesWholeEquipMaskSet()) {
+            for(auto slot : *getSiblingSlots()) {
+                slot->setItem(pItem, stackSize);
             }
-        } else {
-            PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), nullptr);
         }
+
         m_pItemSprite->setVisible(false);
         m_pGhost->setVisible(false);
         setStackSize(0);
@@ -51,15 +59,17 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     auto consumable = dynamic_cast<Consumable*>(pItem);
     if(consumable == nullptr) {
         PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
-        
+        pItem->setEquipSlot(getEquipMask());
+
         if(pItem->getUsesWholeEquipMaskSet()) {
             for(auto slot : *getSiblingSlots()) {
-                PlayerManager::getInstance()->getPlayer()->equipItem(slot, pItem);
+                if(slot->getItem() != pItem) {
+                    slot->setItem(pItem, stackSize);
+                    pItem->addEquipSlot(getEquipMask());
+                }
             }
-        } else {
-            setStackSize(1);
         }
-
+        setStackSize(1);
 
     } else {
         int total = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemCount(pItem->getItemName());
@@ -67,9 +77,7 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize) {
     }
 
     m_stackSizeChange = true;
-    pItem->setEquipSlot(getEquipMask());
     PlayerManager::getInstance()->getPlayer()->equipItem(getEquipMask(), pItem);
-//    equipSerializer->serialize(getEquipMask(), pItem->getId());
     ItemSlot::setItem(pItem, stackSize);
 }
 

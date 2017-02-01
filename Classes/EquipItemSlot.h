@@ -21,12 +21,13 @@ namespace lorafel {
         virtual void setItem(Item* pItem, int stackSize = 1) override;
         void setEquipMask(int mask) { m_equipMask = mask; }
         int getEquipMask() const { return m_equipMask; }
-        std::vector<int>* getSiblingSlots() { return m_pSiblingSlots; }
+        std::vector<EquipItemSlot*>* getSiblingSlots() { return m_pSiblingSlots; }
+        void addSiblingSlot(EquipItemSlot* slot) { m_pSiblingSlots->push_back(slot); }
         virtual void addEvents() override;
 
     protected:
         int m_equipMask;
-        std::vector<int>* m_pSiblingSlots;
+        std::vector<EquipItemSlot*>* m_pSiblingSlots;
 
     };
 }
