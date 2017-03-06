@@ -45,14 +45,17 @@ void EquipItemSlot::setItem(Item* pItem, int stackSize, int level) {
         m_pGhost->setVisible(false);
         setStackSize(0);
         m_state = ItemSlot::State::EMPTY;
-        m_pItem = nullptr;
 
-        if(m_pItem != nullptr && m_pItem->getUsesWholeEquipMaskSet()) {
-            for(auto slot : *getSiblingSlots()) {
-                slot->setItem(pItem, stackSize);
-            }
+        if(level == 1) {
+            if(m_pItem != nullptr && m_pItem->getUsesWholeEquipMaskSet()) {
+                for(auto slot : *getSiblingSlots()) {
+                    slot->setItem(pItem, stackSize, level+1);
+                }
+            }            
         }
 
+        m_pItem = nullptr;
+        
         return;
     }
 
