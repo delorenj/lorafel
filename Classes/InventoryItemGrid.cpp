@@ -17,11 +17,6 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
-    m_pGrid = std::make_shared<Grid<InventoryItemSlot*> >();
-    
-    m_pPages = new std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >();
-    m_pPages->push_front(m_pGrid);
-
     NDKHelper::addSelector("InGameModalSelectors",
             "onCompleteLoadInventoryItemGrid",
             CC_CALLBACK_2(InventoryItemGrid::onCompleteLoadInventoryItemGrid, this),
@@ -38,25 +33,11 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
      * in the center of the background, with
      * some pre-calculated padding
      */
-    float hmargin = 0.03f * getContentSize().width;
-    float vmargin = 0.05f * getContentSize().height;
-    for(int i=0; i<NUM_ROWS; i++) {
-        for(int j=0; j<NUM_COLS; j++) {
-            auto slot = InventoryItemSlot::create(this);
-            slot->setPosition(
-                    hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
-                    vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
-            );
-            addChild(slot);
-            /**
-             * Also, right here we insert the grid slot
-             * into the underlying grid structure
-             */
-            m_pGrid->insert(slot, i, j);
-            slot->setCoords(std::make_pair(i, j));
-        }
-    }
-
+    m_pGrid = createGrid();
+    
+    m_pPages = new std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >();
+    m_pPages->push_front(m_pGrid);
+    
 	auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
 		auto itemData = static_cast<EventDataPair<Item*,int>*>(e->getUserData())->val;
 		Item* pItem = itemData.first;
@@ -94,6 +75,31 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     return true;
 }
 
+std::shared_ptr<Grid<InventoryItemSlot*> > InventoryItemGrid::createGrid() {
+    float hmargin = 0.03f * getContentSize().width;
+    float vmargin = 0.05f * getContentSize().height;
+    
+    std::shared_ptr<Grid<InventoryItemSlot*> > grid = std::make_shared<Grid<InventoryItemSlot*> >();
+
+    for(int i=0; i<NUM_ROWS; i++) {
+        for(int j=0; j<NUM_COLS; j++) {
+            auto slot = InventoryItemSlot::create(this);
+            slot->setPosition(
+                              hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
+                              vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
+                              );
+            addChild(slot);
+            /**
+             * Also, right here we insert the grid slot
+             * into the underlying grid structure
+             */
+            grid->insert(slot, i, j);
+            slot->setCoords(std::make_pair(i, j));
+        }
+    }
+    
+    return grid;
+}
 void InventoryItemGrid::loadInventory() {
     m_initialized = 0;
     FirebaseDatabase::getInstance()->loadInventoryItemGrid();
