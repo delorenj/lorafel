@@ -18,6 +18,9 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     setContentSize(cocos2d::Size(container->getContentSize().width, container->getContentSize().width * 0.53f));
 
     m_pGrid = std::make_shared<Grid<InventoryItemSlot*> >();
+    
+    m_pPages = new std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >();
+    m_pPages->push_front(m_pGrid);
 
     NDKHelper::addSelector("InGameModalSelectors",
             "onCompleteLoadInventoryItemGrid",

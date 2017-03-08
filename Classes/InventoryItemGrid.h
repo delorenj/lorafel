@@ -68,6 +68,8 @@ namespace lorafel {
         Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
         void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);
         bool m_initialized = 0;
+        int m_currentPage = 1;
+        std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >* m_pPages;
     };
 }
 
