@@ -34,10 +34,10 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
      * some pre-calculated padding
      */
     m_pGrid = createGrid();
-    
+
     m_pPages = new std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >();
     m_pPages->push_front(m_pGrid);
-    
+
 	auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
 		auto itemData = static_cast<EventDataPair<Item*,int>*>(e->getUserData())->val;
 		Item* pItem = itemData.first;
@@ -78,7 +78,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
 std::shared_ptr<Grid<InventoryItemSlot*> > InventoryItemGrid::createGrid() {
     float hmargin = 0.03f * getContentSize().width;
     float vmargin = 0.05f * getContentSize().height;
-    
+
     std::shared_ptr<Grid<InventoryItemSlot*> > grid = std::make_shared<Grid<InventoryItemSlot*> >();
 
     for(int i=0; i<NUM_ROWS; i++) {
@@ -97,7 +97,7 @@ std::shared_ptr<Grid<InventoryItemSlot*> > InventoryItemGrid::createGrid() {
             slot->setCoords(std::make_pair(i, j));
         }
     }
-    
+
     return grid;
 }
 void InventoryItemGrid::loadInventory() {
