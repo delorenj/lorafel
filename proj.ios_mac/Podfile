@@ -1,12 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
-
-target 'Lorafel-desktop' do
-  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for Lorafel-desktop
-end
+platform :ios, '10.0'
 
 target 'Lorafel-mobile' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
@@ -18,5 +11,7 @@ target 'Lorafel-mobile' do
   pod 'Firebase/Database'
   pod 'Firebase/AdMob'
   pod 'Firebase/Auth'
+  pod 'Google'
   pod 'Google/SignIn'
+  pod 'GooglePlayGames'
 end

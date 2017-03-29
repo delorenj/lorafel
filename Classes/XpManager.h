@@ -13,6 +13,8 @@
 namespace lorafel {
     class XpManager {
     public:
+        virtual ~XpManager() { };
+        
         XpManager(unsigned long xp) : m_xp(xp) {
                 m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
         };

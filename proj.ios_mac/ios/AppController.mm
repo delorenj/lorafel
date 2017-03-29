@@ -24,7 +24,7 @@
 
 #import "AppController.h"
 #import "platform/ios/CCEAGLView-ios.h"
-#import "AppDelegate.h"
+#include "AppDelegate.h"
 #import "RootViewController.h"
 #import "FIRAuth.h"
 #import "FIRUser.h"
@@ -38,7 +38,7 @@
 #pragma mark Application lifecycle
 
 // cocos2d application instance
-static AppDelegate s_sharedApplication;
+static AppDelegate *s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
