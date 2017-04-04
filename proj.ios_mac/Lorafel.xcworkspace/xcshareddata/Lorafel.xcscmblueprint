@@ -4,13 +4,15 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FCA0A5D9769E199F810B0B8F60863D3051A7B6C5" : 0,
     "286C88A8696781E1BBA079A9E68FAC0030D17AFC" : 0,
-    "FCA0A5D9769E199F810B0B8F60863D3051A7B6C5" : 0
+    "852ED3691A47A99B0D19C820A500AE9772B2A44E" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DF78CD3D-0952-4A6B-B825-9E7557D8FD30",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "286C88A8696781E1BBA079A9E68FAC0030D17AFC" : "Lorafel\/",
-    "FCA0A5D9769E199F810B0B8F60863D3051A7B6C5" : "EasyNDK-for-cocos2dx3\/"
+    "FCA0A5D9769E199F810B0B8F60863D3051A7B6C5" : "EasyNDK-for-cocos2dx3\/",
+    "286C88A8696781E1BBA079A9E68FAC0030D17AFC" : "lorafel\/",
+    "852ED3691A47A99B0D19C820A500AE9772B2A44E" : "cocos2d-x.git\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Lorafel",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:delorenj\/lorafel",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "286C88A8696781E1BBA079A9E68FAC0030D17AFC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cocos2d\/cocos2d-x.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "852ED3691A47A99B0D19C820A500AE9772B2A44E"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alfonsocejudo\/EasyNDK-for-cocos2dx3.git",

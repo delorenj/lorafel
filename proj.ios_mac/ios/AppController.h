@@ -1,11 +1,10 @@
 #import <UIKit/UIKit.h>
-#import <SignIn.h>
 #import "Firebase.h"
 
 @class RootViewController;
 
-@interface AppController : NSObject <UIApplicationDelegate, GIDSignInDelegate> {
-    UIWindow *window;
+@interface AppController : NSObject <UIApplicationDelegate> {
+    
 }
 
 @property(nonatomic, readonly) RootViewController* viewController;

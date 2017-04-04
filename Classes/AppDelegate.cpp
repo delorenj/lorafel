@@ -1,4 +1,9 @@
 #include "AppDelegate.h"
+
+#ifdef SDKBOX_ENABLED
+#include "PluginGPG/PluginGPG.h"
+#endif
+
 #include "GameScene.h"
 #include "TitleScene.h"
 #include "PlayerManager.h"
@@ -124,6 +129,11 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    
+#ifdef SDKBOX_ENABLED
+    sdkbox::PluginGPG::init();
+#endif
+    
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
