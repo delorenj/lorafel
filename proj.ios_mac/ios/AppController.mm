@@ -34,6 +34,8 @@
 
 @implementation AppController
 
+@synthesize window;
+
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -93,7 +95,7 @@ static AppDelegate *s_sharedApplication;
 //    [FIRApp configure];
 //
     [GIDSignIn sharedInstance].clientID = @"517389322164-qfbodp7f8o571q9kppl1d4nqtmanuifp.apps.googleusercontent.com";
-    [GIDSignIn sharedInstance].delegate = self;
+    [GIDSignIn sharedInstance].uiDelegate = _viewController;
 
 
     app->run();

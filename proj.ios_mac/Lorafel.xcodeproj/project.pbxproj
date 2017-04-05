@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05357CD0EF94A8063F9615A1 /* libPods-Lorafel-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */; };
+		06794092969FA51937F53899 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336045B3AEA065E333D85143 /* SafariServices.framework */; };
+		08824BF190B4FC342740EAFE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B24CA9B2EC2E9C00ED6447 /* CoreLocation.framework */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		23E74E0789CDB0669B9F3DF7 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92B4634825F434E13D007FB /* GoogleOpenSource.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		3167D027EE7C4D681CE79592 /* SwappyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D2B666FBBF150E75754A /* SwappyGrid.cpp */; };
 		3167D03D49E418C94CDD31DE /* XpFloatie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DE5A93B0953649C6C566 /* XpFloatie.cpp */; };
@@ -156,9 +161,10 @@
 		3167DFE1F535647944F4D7E5 /* FireballAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167D5D9966B9101A21E90BF /* FireballAction.cpp */; };
 		3167DFE43A7F387D45C2E166 /* HealthPotionPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DA161A366AE862719D82 /* HealthPotionPlayerMove.cpp */; };
 		3167DFF8737A98857B7869FF /* RandomAIStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167DCB387D4302A12AB0A30 /* RandomAIStrategy.cpp */; };
-		349ECB25211EF9763C9DB5B7 /* libPods-Lorafel-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46952CB0D61CDC68B32D5D93 /* libPods-Lorafel-mobile.a */; };
+		3C1543BEAD890140D9041FAF /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966E42EF98984EFFF04AF43F /* AddressBook.framework */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
+		44E541FF911749693B8202CF /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3B4A8ABBC6E43199B5EA0C /* GoogleSymbolUtilities.framework */; };
 		46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
 		46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
@@ -170,6 +176,7 @@
 		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
 		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		5087E76817EB910900C73F5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -196,7 +203,25 @@
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
+		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		55634E5DAAB76060456F41B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0B41F2A07A7841BAF07595 /* StoreKit.framework */; };
+		57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */; };
+		591A487D808E2AD598694330 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6D429CABE2F43530CF6A9A /* CoreData.framework */; };
+		5B2E4C3BAE5246A693B546C1 /* sdkbox_config.json in Resources */ = {isa = PBXBuildFile; fileRef = AB5242FF909040FBDFE750C4 /* sdkbox_config.json */; };
+		5D354024929457A83B1992E6 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DD6462EA255766B4BF830D7 /* gpg.bundle */; };
+		68F640E295ED4B4648C81FA6 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3904E909348586C8A97ADB5 /* GoogleAppUtilities.framework */; };
+		6BD84FF4A99B8128EA9E7291 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04E484EB646C3FDB71D6A72 /* CoreText.framework */; };
+		6DC948049F7529764CABC710 /* sdkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8444E26B83FA283B942B563 /* sdkbox.framework */; };
+		71954DF8A70D3885B6E7AA14 /* GoogleAuthUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C384BF5AA0163DCAB9943B8 /* GoogleAuthUtilities.framework */; };
+		791B4A2AA16A7823E812ED4E /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BD4623B6D9A3D1F31B7082 /* GooglePlus.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		82AE458A98BE3F43608415EE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4D4798AD24F91063EEEC69 /* AssetsLibrary.framework */; };
+		83154D3D8E6063EE7BA78C49 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F34D4C0FAD3A7E196AA2C13D /* libc++.dylib */; };
+		89314629B559E86A57661572 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333545B09DA2D3333B592CAA /* GoogleUtilities.framework */; };
+		9F5A49BABE4EA3CF95A25E54 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FA48C18D7FCDA99CAEA35D /* GoogleNetworkingUtilities.framework */; };
+		A4694CAFB1B77D7F882E19EE /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 143545D8B538A8DDFE59075C /* GooglePlus.bundle */; };
+		AD014E1098218EFD1ACBD1FA /* Plugingpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959C4C61BB529FE2721DC7BC /* Plugingpg.framework */; };
+		B9BB44FF966A0994AFEBDA2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD24B2CB4416113FF965D51 /* SystemConfiguration.framework */; };
 		BA078CD81C22E57F00B0E1EA /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* GameScene.cpp */; };
 		BA078CD91C22E57F00B0E1EA /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA078CD61C22E57F00B0E1EA /* GameScene.cpp */; };
 		BA078CE11C22E89E00B0E1EA /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDA1C22E89D00B0E1EA /* ipad */; };
@@ -211,8 +236,9 @@
 		BA078CEA1C22E89E00B0E1EA /* iphonehd5 in Resources */ = {isa = PBXBuildFile; fileRef = BA078CDE1C22E89E00B0E1EA /* iphonehd5 */; };
 		BA078CED1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
 		BA078CEE1C22E89E00B0E1EA /* ultra4k in Resources */ = {isa = PBXBuildFile; fileRef = BA078CE01C22E89E00B0E1EA /* ultra4k */; };
-		BA2864411E8BFAE7002AE6BA /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2864401E8BFAE7002AE6BA /* GameController.framework */; };
-		BA2864441E8BFAEF002AE6BA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2864431E8BFAEF002AE6BA /* MediaPlayer.framework */; };
+		BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD761D5426380084CD9D /* MediaPlayer.framework */; };
+		BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0DBD781D54264B0084CD9D /* GameController.framework */; };
+		BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA77BA371D536045009E2195 /* libsqlite3.0.tbd */; };
 		BA8A0FAE1D536AD50017E0EB /* Backup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA01D536AD50017E0EB /* Backup.cpp */; };
 		BA8A0FAF1D536AD50017E0EB /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA21D536AD50017E0EB /* Column.cpp */; };
 		BA8A0FB01D536AD50017E0EB /* Database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA8A0FA41D536AD50017E0EB /* Database.cpp */; };
@@ -236,15 +262,20 @@
 		BAA9ECC11D596B4A002C57FA /* IOSNDKHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA9ECC01D596B4A002C57FA /* IOSNDKHelper.mm */; };
 		BABFB8A51C815A7700AFD266 /* HpUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BABFB8A31C815A7700AFD266 /* HpUI.cpp */; };
 		BACEE7B71C7DE889000AF703 /* GoldStatResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */; };
-		BAD244461E8BD1BE0054C10F /* firebase_analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD244421E8BD1BD0054C10F /* firebase_analytics.framework */; };
-		BAD244471E8BD1BE0054C10F /* firebase_auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD244431E8BD1BD0054C10F /* firebase_auth.framework */; };
-		BAD244481E8BD1BE0054C10F /* firebase_database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD244441E8BD1BD0054C10F /* firebase_database.framework */; };
-		BAD244491E8BD1BE0054C10F /* firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD244451E8BD1BE0054C10F /* firebase.framework */; };
 		BAF8971F1C56F30D00F5E5E7 /* EnemyTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */; };
+		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
+		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C0AD43EA974ECEC7270C0B80 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C1145999612AFBD144869B0 /* GoogleSignIn.bundle */; };
+		C89B4F1ABDAAD4578FC7FC67 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 669D4C3F9E62A6227DDD65A0 /* GoogleSignIn.framework */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E42A4E6D889521CAD495C149 /* PluginGPGCppHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 556A4FDAA3E39C98F9612623 /* PluginGPGCppHelper.cpp */; };
+		E662432CB96C4DE05E79E7C1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE240C28788E6DCA581D224 /* CoreTelephony.framework */; };
+		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
+		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,19 +307,17 @@
 			remoteGlobalIDString = A07A4C241783777C0073F6A7;
 			remoteInfo = "cocos2dx iOS";
 		};
-		BA4021CB1D67B22100D0DA05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
-			remoteInfo = "libcocos2d tvOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-desktop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop.debug.xcconfig"; sourceTree = "<group>"; };
+		0C384BF5AA0163DCAB9943B8 /* GoogleAuthUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAuthUtilities.framework; sourceTree = SOURCE_ROOT; };
+		143545D8B538A8DDFE59075C /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ./GooglePlus.bundle; sourceTree = SOURCE_ROOT; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
+		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Lorafel-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lorafel-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3167D017A46EA6946EAFC531 /* Floatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floatie.h; sourceTree = "<group>"; };
 		3167D02CD9A763C3231B9AF8 /* GridUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridUI.cpp; sourceTree = "<group>"; };
@@ -498,11 +527,13 @@
 		3167DFF164097D4A82449B44 /* EnemyHitFloatie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyHitFloatie.h; sourceTree = "<group>"; };
 		3167DFFA39D742011CCC6C03 /* ItemStatFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStatFactory.h; sourceTree = "<group>"; };
 		3167DFFA821FDCDD595EF4C2 /* RandomAIStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomAIStrategy.h; sourceTree = "<group>"; };
+		333545B09DA2D3333B592CAA /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
+		336045B3AEA065E333D85143 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		3C1145999612AFBD144869B0 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = ./GoogleSignIn.bundle; sourceTree = SOURCE_ROOT; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		46952CB0D61CDC68B32D5D93 /* libPods-Lorafel-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -513,6 +544,7 @@
 		503AE0FF17EB989F00D1A890 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		503AE10317EB98FF00D1A890 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = mac/main.cpp; sourceTree = "<group>"; };
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
+		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5087E76F17EB910900C73F5D /* Lorafel-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lorafel-desktop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087E77217EB970100C73F5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -537,9 +569,26 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		556A4FDAA3E39C98F9612623 /* PluginGPGCppHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginGPGCppHelper.cpp; path = ../Classes/PluginGPGCppHelper.cpp; sourceTree = SOURCE_ROOT; };
+		5A6D429CABE2F43530CF6A9A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		5BD24B2CB4416113FF965D51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		5DD6462EA255766B4BF830D7 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = ./gpg.bundle; sourceTree = SOURCE_ROOT; };
+		669D4C3F9E62A6227DDD65A0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = SOURCE_ROOT; };
+		66FA48C18D7FCDA99CAEA35D /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = SOURCE_ROOT; };
+		67B24CA9B2EC2E9C00ED6447 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		6A3B4A8ABBC6E43199B5EA0C /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = SOURCE_ROOT; };
+		6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-desktop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop.release.xcconfig"; sourceTree = "<group>"; };
+		7B4D4798AD24F91063EEEC69 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8F69EED559FD063CEF59B68B /* Pods-Lorafel-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.release.xcconfig"; sourceTree = "<group>"; };
-		A8DE6D5E64B28FE546442906 /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EE240C28788E6DCA581D224 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lorafel-desktop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		959C4C61BB529FE2721DC7BC /* Plugingpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Plugingpg.framework; sourceTree = SOURCE_ROOT; };
+		966E42EF98984EFFF04AF43F /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
+		AB5242FF909040FBDFE750C4 /* sdkbox_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = sdkbox_config.json; path = ../Resources/sdkbox_config.json; sourceTree = SOURCE_ROOT; };
+		B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		BA00F1AF1D559474001BBFAD /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = "../cocos2d/external/gpg-cpp-sdk/ios/gpg.framework"; sourceTree = "<group>"; };
 		BA078CD61C22E57F00B0E1EA /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		BA078CD71C22E57F00B0E1EA /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		BA078CDA1C22E89D00B0E1EA /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
@@ -549,9 +598,12 @@
 		BA078CDE1C22E89E00B0E1EA /* iphonehd5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphonehd5; sourceTree = "<group>"; };
 		BA078CDF1C22E89E00B0E1EA /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		BA078CE01C22E89E00B0E1EA /* ultra4k */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ultra4k; sourceTree = "<group>"; };
-		BA2864401E8BFAE7002AE6BA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
-		BA2864431E8BFAEF002AE6BA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BA0DBD721D54154D0084CD9D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Pods/Firebase/Firebase.framework; sourceTree = "<group>"; };
+		BA0DBD761D5426380084CD9D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		BA0DBD781D54264B0084CD9D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		BA2864491E8C00A7002AE6BA /* Firebase */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Firebase; path = Pods/Firebase; sourceTree = "<group>"; };
 		BA53CB351DA2877500F9C31C /* Lorafel-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lorafel-mobile.entitlements"; sourceTree = "<group>"; };
+		BA77BA371D536045009E2195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		BA8A0F9F1D536AD50017E0EB /* Assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assertion.h; sourceTree = "<group>"; };
 		BA8A0FA01D536AD50017E0EB /* Backup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backup.cpp; sourceTree = "<group>"; };
 		BA8A0FA11D536AD50017E0EB /* Backup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backup.h; sourceTree = "<group>"; };
@@ -598,16 +650,24 @@
 		BACEE7B21C7DE555000AF703 /* MoneyBagTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyBagTile.h; sourceTree = "<group>"; };
 		BACEE7B51C7DE889000AF703 /* GoldStatResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldStatResult.cpp; sourceTree = "<group>"; };
 		BACEE7B61C7DE889000AF703 /* GoldStatResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldStatResult.h; sourceTree = "<group>"; };
-		BAD244421E8BD1BD0054C10F /* firebase_analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = firebase_analytics.framework; sourceTree = "<group>"; };
-		BAD244431E8BD1BD0054C10F /* firebase_auth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = firebase_auth.framework; sourceTree = "<group>"; };
-		BAD244441E8BD1BD0054C10F /* firebase_database.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = firebase_database.framework; sourceTree = "<group>"; };
-		BAD244451E8BD1BE0054C10F /* firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = firebase.framework; sourceTree = "<group>"; };
 		BAF8971E1C56F30D00F5E5E7 /* EnemyTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyTile.cpp; sourceTree = "<group>"; };
+		BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C6BD4623B6D9A3D1F31B7082 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = SOURCE_ROOT; };
+		C8444E26B83FA283B942B563 /* sdkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sdkbox.framework; sourceTree = SOURCE_ROOT; };
+		C92B4634825F434E13D007FB /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = SOURCE_ROOT; };
+		D04E484EB646C3FDB71D6A72 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		DB0B55520E0314D79E164662 /* Pods-Lorafel-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lorafel-mobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		DF0B41F2A07A7841BAF07595 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F34D4C0FAD3A7E196AA2C13D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libc++.dylib"; sourceTree = DEVELOPER_DIR; };
+		F3904E909348586C8A97ADB5 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -615,20 +675,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2864441E8BFAEF002AE6BA /* MediaPlayer.framework in Frameworks */,
-				BA2864411E8BFAE7002AE6BA /* GameController.framework in Frameworks */,
+				BA0DBD791D54264B0084CD9D /* GameController.framework in Frameworks */,
+				BA0DBD771D5426380084CD9D /* MediaPlayer.framework in Frameworks */,
+				BA77BA381D536046009E2195 /* libsqlite3.0.tbd in Frameworks */,
+				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
+				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
+				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
+				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
-				BAD244491E8BD1BE0054C10F /* firebase.framework in Frameworks */,
-				BAD244461E8BD1BE0054C10F /* firebase_analytics.framework in Frameworks */,
-				BAD244471E8BD1BE0054C10F /* firebase_auth.framework in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
-				BAD244481E8BD1BE0054C10F /* firebase_database.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
-				349ECB25211EF9763C9DB5B7 /* libPods-Lorafel-mobile.a in Frameworks */,
+				05357CD0EF94A8063F9615A1 /* libPods-Lorafel-mobile.a in Frameworks */,
+				AD014E1098218EFD1ACBD1FA /* Plugingpg.framework in Frameworks */,
+				6DC948049F7529764CABC710 /* sdkbox.framework in Frameworks */,
+				791B4A2AA16A7823E812ED4E /* GooglePlus.framework in Frameworks */,
+				89314629B559E86A57661572 /* GoogleUtilities.framework in Frameworks */,
+				44E541FF911749693B8202CF /* GoogleSymbolUtilities.framework in Frameworks */,
+				9F5A49BABE4EA3CF95A25E54 /* GoogleNetworkingUtilities.framework in Frameworks */,
+				71954DF8A70D3885B6E7AA14 /* GoogleAuthUtilities.framework in Frameworks */,
+				68F640E295ED4B4648C81FA6 /* GoogleAppUtilities.framework in Frameworks */,
+				23E74E0789CDB0669B9F3DF7 /* GoogleOpenSource.framework in Frameworks */,
+				C89B4F1ABDAAD4578FC7FC67 /* GoogleSignIn.framework in Frameworks */,
+				3C1543BEAD890140D9041FAF /* AddressBook.framework in Frameworks */,
+				82AE458A98BE3F43608415EE /* AssetsLibrary.framework in Frameworks */,
+				591A487D808E2AD598694330 /* CoreData.framework in Frameworks */,
+				08824BF190B4FC342740EAFE /* CoreLocation.framework in Frameworks */,
+				E662432CB96C4DE05E79E7C1 /* CoreTelephony.framework in Frameworks */,
+				6BD84FF4A99B8128EA9E7291 /* CoreText.framework in Frameworks */,
+				06794092969FA51937F53899 /* SafariServices.framework in Frameworks */,
+				55634E5DAAB76060456F41B0 /* StoreKit.framework in Frameworks */,
+				B9BB44FF966A0994AFEBDA2D /* SystemConfiguration.framework in Frameworks */,
+				83154D3D8E6063EE7BA78C49 /* libc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +719,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
+				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
 				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
 				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
 				5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */,
@@ -646,6 +731,7 @@
 				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
 				5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */,
 				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
+				57A0F962986A6D05D258C767 /* libPods-Lorafel-desktop.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,11 +755,13 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		123CEFB550CFCBEB43E9D131 /* Pods */ = {
+		164DAE682E591C1530FBB0D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DB0B55520E0314D79E164662 /* Pods-Lorafel-mobile.debug.xcconfig */,
-				8F69EED559FD063CEF59B68B /* Pods-Lorafel-mobile.release.xcconfig */,
+				05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */,
+				73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */,
+				B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */,
+				BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -692,7 +780,6 @@
 			children = (
 				1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
-				BA4021CC1D67B22100D0DA05 /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -708,7 +795,7 @@
 				080E96DDFE201D6D7F000001 /* ios */,
 				503AE10617EB990700D1A890 /* mac */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				123CEFB550CFCBEB43E9D131 /* Pods */,
+				164DAE682E591C1530FBB0D7 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -716,24 +803,56 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BA2864431E8BFAEF002AE6BA /* MediaPlayer.framework */,
-				BA2864401E8BFAE7002AE6BA /* GameController.framework */,
-				BAD244421E8BD1BD0054C10F /* firebase_analytics.framework */,
-				BAD244431E8BD1BD0054C10F /* firebase_auth.framework */,
-				BAD244441E8BD1BD0054C10F /* firebase_database.framework */,
-				BAD244451E8BD1BE0054C10F /* firebase.framework */,
+				BA2864491E8C00A7002AE6BA /* Firebase */,
+				BA00F1AF1D559474001BBFAD /* gpg.framework */,
+				BA0DBD781D54264B0084CD9D /* GameController.framework */,
+				BA0DBD761D5426380084CD9D /* MediaPlayer.framework */,
+				BA0DBD721D54154D0084CD9D /* Firebase.framework */,
+				BA77BA371D536045009E2195 /* libsqlite3.0.tbd */,
+				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
+				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
+				52B47A461A53D09B004E4C60 /* Security.framework */,
+				D6B0611A1803AB670077942B /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
+				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
 				5087E78A17EB975400C73F5D /* OpenGL.framework */,
 				5087E78817EB974C00C73F5D /* AppKit.framework */,
+				1ACB3243164770DE00914215 /* libcurl.a */,
+				BF170DB412928DE900B8313A /* libz.dylib */,
 				D44C620F132DFF4E0009C878 /* AudioToolbox.framework */,
 				D44C620D132DFF430009C878 /* AVFoundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				D44C620B132DFF330009C878 /* OpenAL.framework */,
+				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
-				A8DE6D5E64B28FE546442906 /* libPods-Lorafel-desktop.a */,
-				46952CB0D61CDC68B32D5D93 /* libPods-Lorafel-mobile.a */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				918C281193F7B4916324C373 /* libPods-Lorafel-desktop.a */,
+				6E24BC2EBD0E957B48DD833C /* libPods-Lorafel-mobile.a */,
+				959C4C61BB529FE2721DC7BC /* Plugingpg.framework */,
+				C8444E26B83FA283B942B563 /* sdkbox.framework */,
+				C6BD4623B6D9A3D1F31B7082 /* GooglePlus.framework */,
+				333545B09DA2D3333B592CAA /* GoogleUtilities.framework */,
+				6A3B4A8ABBC6E43199B5EA0C /* GoogleSymbolUtilities.framework */,
+				66FA48C18D7FCDA99CAEA35D /* GoogleNetworkingUtilities.framework */,
+				0C384BF5AA0163DCAB9943B8 /* GoogleAuthUtilities.framework */,
+				F3904E909348586C8A97ADB5 /* GoogleAppUtilities.framework */,
+				C92B4634825F434E13D007FB /* GoogleOpenSource.framework */,
+				669D4C3F9E62A6227DDD65A0 /* GoogleSignIn.framework */,
+				143545D8B538A8DDFE59075C /* GooglePlus.bundle */,
+				3C1145999612AFBD144869B0 /* GoogleSignIn.bundle */,
+				5DD6462EA255766B4BF830D7 /* gpg.bundle */,
+				966E42EF98984EFFF04AF43F /* AddressBook.framework */,
+				7B4D4798AD24F91063EEEC69 /* AssetsLibrary.framework */,
+				5A6D429CABE2F43530CF6A9A /* CoreData.framework */,
+				67B24CA9B2EC2E9C00ED6447 /* CoreLocation.framework */,
+				8EE240C28788E6DCA581D224 /* CoreTelephony.framework */,
+				D04E484EB646C3FDB71D6A72 /* CoreText.framework */,
+				336045B3AEA065E333D85143 /* SafariServices.framework */,
+				DF0B41F2A07A7841BAF07595 /* StoreKit.framework */,
+				5BD24B2CB4416113FF965D51 /* SystemConfiguration.framework */,
+				F34D4C0FAD3A7E196AA2C13D /* libc++.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -751,6 +870,7 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
+				AB5242FF909040FBDFE750C4 /* sdkbox_config.json */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -994,6 +1114,7 @@
 				3167D74EBE66B20CC445B202 /* TileFactory.cpp */,
 				3167DA50D805F480A2E04B08 /* InventoryStatsBar.cpp */,
 				3167DBC82144C6B4D55499D0 /* InventoryStatsBar.h */,
+				556A4FDAA3E39C98F9612623 /* PluginGPGCppHelper.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1099,12 +1220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Lorafel-mobile" */;
 			buildPhases = (
-				986AEBE74793980CE60B1F5A /* [CP] Check Pods Manifest.lock */,
+				9A0A4F8786FB556C1C384040 /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				2DD56ABCB181CC686775D1C6 /* [CP] Embed Pods Frameworks */,
-				8F91FF27A066F34FD2192B81 /* [CP] Copy Pods Resources */,
+				8E6B44B51054AEACBCFF33CA /* [CP] Embed Pods Frameworks */,
+				8EF62D6D3F15BABAF99B75E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1120,9 +1241,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5087E76C17EB910900C73F5D /* Build configuration list for PBXNativeTarget "Lorafel-desktop" */;
 			buildPhases = (
+				333607A79585A059A1DDF34C /* [CP] Check Pods Manifest.lock */,
 				5087E74817EB910900C73F5D /* Resources */,
 				5087E75617EB910900C73F5D /* Sources */,
 				5087E75C17EB910900C73F5D /* Frameworks */,
+				A0C896E40FD5303BFFF976E5 /* [CP] Embed Pods Frameworks */,
+				6EB451E035BD58E986972573 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1194,13 +1318,6 @@
 			remoteRef = 1AC6FB06180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BA4021CC1D67B22100D0DA05 /* libcocos2d tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libcocos2d tvOS.a";
-			remoteRef = BA4021CB1D67B22100D0DA05 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1236,6 +1353,10 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				A4694CAFB1B77D7F882E19EE /* GooglePlus.bundle in Resources */,
+				C0AD43EA974ECEC7270C0B80 /* GoogleSignIn.bundle in Resources */,
+				5D354024929457A83B1992E6 /* gpg.bundle in Resources */,
+				5B2E4C3BAE5246A693B546C1 /* sdkbox_config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,7 +1380,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DD56ABCB181CC686775D1C6 /* [CP] Embed Pods Frameworks */ = {
+		333607A79585A059A1DDF34C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6EB451E035BD58E986972573 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E6B44B51054AEACBCFF33CA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1274,7 +1425,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F91FF27A066F34FD2192B81 /* [CP] Copy Pods Resources */ = {
+		8EF62D6D3F15BABAF99B75E4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1289,7 +1440,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-mobile/Pods-Lorafel-mobile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		986AEBE74793980CE60B1F5A /* [CP] Check Pods Manifest.lock */ = {
+		9A0A4F8786FB556C1C384040 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1302,6 +1453,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A0C896E40FD5303BFFF976E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lorafel-desktop/Pods-Lorafel-desktop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1418,6 +1584,7 @@
 				3167D5A0BC47782EE1A4B9E5 /* LevelManager.cpp in Sources */,
 				3167D478D13A6EBFBB179A79 /* TileFactory.cpp in Sources */,
 				3167DE66FD24FEB382E1ECE6 /* InventoryStatsBar.cpp in Sources */,
+				E42A4E6D889521CAD495C149 /* PluginGPGCppHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1515,7 +1682,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB0B55520E0314D79E164662 /* Pods-Lorafel-mobile.debug.xcconfig */;
+			baseConfigurationReference = B039F488A80CCA1831AFA61B /* Pods-Lorafel-mobile.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Lorafel-mobile.entitlements";
@@ -1526,7 +1693,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1546,25 +1714,28 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64",
+					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/universal",
+					"\"Plugingpg.framework\"",
+					"\"sdkbox.framework\"",
+					"\"GooglePlus.framework\"",
+					"\"GoogleUtilities.framework\"",
+					"\"GoogleSymbolUtilities.framework\"",
+					"\"GoogleNetworkingUtilities.framework\"",
+					"\"GoogleAuthUtilities.framework\"",
+					"\"GoogleAppUtilities.framework\"",
+					"\"GoogleOpenSource.framework\"",
+					"\"GoogleSignIn.framework\"",
+					"$(SRCROOT)/../cocos2d/external/websockets",
 				);
-				"LIBRARY_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64",
-				);
+				OTHER_CFLAGS = "-DSDKBOX_ENABLED";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 					"$(inherited)",
-				);
-				"OTHER_LDFLAGS[arch=*]" = (
-					"$(_COCOS_LIB_IOS_BEGIN)",
-					"$(_COCOS_LIB_IOS_END)",
-					"$(inherited)",
-					"-liconv",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lasertoast.lorafel;
 				SDKROOT = iphoneos;
@@ -1576,7 +1747,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F69EED559FD063CEF59B68B /* Pods-Lorafel-mobile.release.xcconfig */;
+			baseConfigurationReference = BC3F88440189E9CFC16180AC /* Pods-Lorafel-mobile.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Lorafel-mobile.entitlements";
@@ -1587,7 +1758,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Firebase",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1605,21 +1777,28 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/x86_64",
+					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/libs/ios/universal",
+					"\"Plugingpg.framework\"",
+					"\"sdkbox.framework\"",
+					"\"GooglePlus.framework\"",
+					"\"GoogleUtilities.framework\"",
+					"\"GoogleSymbolUtilities.framework\"",
+					"\"GoogleNetworkingUtilities.framework\"",
+					"\"GoogleAuthUtilities.framework\"",
+					"\"GoogleAppUtilities.framework\"",
+					"\"GoogleOpenSource.framework\"",
+					"\"GoogleSignIn.framework\"",
+					"$(SRCROOT)/../cocos2d/external/websockets",
 				);
+				OTHER_CFLAGS = "-DSDKBOX_ENABLED";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 					"$(inherited)",
-				);
-				"OTHER_LDFLAGS[arch=*]" = (
-					"$(_COCOS_LIB_IOS_BEGIN)",
-					"$(_COCOS_LIB_IOS_END)",
-					"$(inherited)",
-					"-liconv",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lasertoast.lorafel;
 				SDKROOT = iphoneos;
@@ -1631,6 +1810,7 @@
 		};
 		5087E76D17EB910900C73F5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05584BEED7153742FDD803E9 /* Pods-Lorafel-desktop.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1667,6 +1847,7 @@
 		};
 		5087E76E17EB910900C73F5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73D0B1EF7AFC61FB5DD4F762 /* Pods-Lorafel-desktop.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1702,10 +1883,8 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1727,7 +1906,7 @@
 					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1735,21 +1914,18 @@
 					"-lanalytics",
 					"-lapp",
 					"-lauth",
-					"-liconv",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1768,7 +1944,7 @@
 					"$(SRCROOT)/../cocos2d/external/firebase_cpp_sdk/include",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -1776,11 +1952,10 @@
 					"-lanalytics",
 					"-lapp",
 					"-lauth",
-					"-liconv",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
