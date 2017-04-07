@@ -11,10 +11,10 @@
 #include "FirebaseDatabase.h"
 
 namespace lorafel {
-    class InventorySlotSerializer : public Serializer<std::pair<int, int>,
+    class InventorySlotSerializer : public Serializer<PaginatedCoords,
                                             std::pair<std::string, int> > {
     public:
-        virtual void serialize(std::pair<int, int> key, std::pair<std::string, int> value) override {
+        virtual void serialize(PaginatedCoords key, std::pair<std::string, int> value) override {
             auto hash = getHash(key);
             auto itemId = value.first;
             std::string stackSize;
@@ -42,8 +42,8 @@ namespace lorafel {
             }
         }
 
-        std::map<std::pair<int, int>, std::pair<std::string, int> > unserialize(Value data) {
-            std::map<std::pair<int, int>, std::pair<std::string, int> > result;
+        std::map<PaginatedCoords, std::pair<std::string, int> > unserialize(Value data) {
+            std::map<PaginatedCoords, std::pair<std::string, int> > result;
             if (!data.isNull() && data.getType() == Value::Type::MAP) {
                 ValueMap slotLayouts = data.asValueMap();
                 for(auto slotLayout : slotLayouts) {
@@ -69,16 +69,21 @@ namespace lorafel {
         }
 
     protected:
-        std::string getHash(std::pair<int, int> key) const {
-            return  to_string(key.first) + "|" +  to_string(key.second);
+        std::string getHash(PaginatedCoords key) const {
+            return  to_string(key.page) + ":" + to_string(key.coords.first) + "|" +  to_string(key.coords.second);
         }
 
-        std::pair<int,int> hashToIdx(std::string key) const {
-            auto sep = key.find("|");
-            auto i = parseInt(key.substr(0, sep));
-            auto j = parseInt(key.substr(sep+1));
-
-            return std::make_pair(i,j);
+        PaginatedCoords hashToIdx(std::string key) const {
+            auto sep = key.find(":");
+            auto page = parseInt(key.substr(0, sep));
+            auto coords = key.substr(sep+1);
+            sep = coords.find("|");
+            auto i = parseInt(coords.substr(0, sep));
+            auto j = parseInt(coords.substr(sep+1));
+            PaginatedCoords pc;
+            pc.page = page;
+            pc.coords = std::make_pair(i,j);
+            return pc;
         }
 
     };

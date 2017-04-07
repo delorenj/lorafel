@@ -12,6 +12,7 @@
 #include "ItemStat.h"
 #include "IInventoryable.h"
 #include "ItemNameGenerator.h"
+#include "InventoryItemGrid.h"
 
 USING_NS_CC;
 
@@ -29,11 +30,11 @@ namespace lorafel {
         virtual ValueMap getArguments() const { return m_arguments; }
         virtual void setArguments(ValueMap args) { m_arguments = args; }
         
-        void addInventorySlotCoordinates(std::pair<int, int> coords);
-        std::set<std::pair<int, int> > getInventorySlotCoordinates() const;
+        void addInventorySlotCoordinates(PaginatedCoords coords);
+        std::set<PaginatedCoords> getInventorySlotCoordinates() const;
 
 
-        void removeInventorySlotCoordinates(std::pair<int, int> coords);
+        void removeInventorySlotCoordinates(PaginatedCoords coords);
 
         void addEquipMask(int mask) { m_equipMaskSet.insert(mask); }
         bool canEquip(int mask) { return m_equipMaskSet.find(mask) != m_equipMaskSet.end(); }
@@ -61,7 +62,7 @@ namespace lorafel {
         std::string m_className;
         ValueMap m_arguments;
         SwappyGrid* m_pSwappyGrid;
-        std::set<std::pair<int, int> > m_inventorySlotCoordinates;
+        std::set<PaginatedCoords> m_inventorySlotCoordinates;
         std::set<int> m_equipMaskSet;
 		bool m_usesWholeEquipMaskSet = false;
 		std::set<ItemStat*>* m_pItemStats;

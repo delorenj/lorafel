@@ -35,14 +35,14 @@ namespace lorafel {
         }
 
 
-        std::pair<int, int> getCoords() const { return m_coords; }
-        void setCoords(std::pair<int, int> coords) { m_coords = coords; }
+        PaginatedCoords getCoords() const { return m_coords; }
+        void setCoords(PaginatedCoords paginatedCoords) { m_coords = paginatedCoords; }
 
         virtual void setItem(Item* pItem, int stackSize = 1) override;
 
     protected:
         InventoryItemGrid* m_pGrid;
-        std::pair<int, int> m_coords;
+        PaginatedCoords m_coords;
         void addEvents() override;
 
     };

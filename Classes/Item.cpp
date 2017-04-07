@@ -53,7 +53,7 @@ void Item::addEvents(cocos2d::Node* pNode) {
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Item::addInventorySlotCoordinates(std::pair<int, int> coords) {
+void Item::addInventorySlotCoordinates(PaginatedCoords coords) {
     if(coords == NULL_COORDINATES) {
         m_inventorySlotCoordinates.clear();
     } else {
@@ -61,11 +61,11 @@ void Item::addInventorySlotCoordinates(std::pair<int, int> coords) {
     }
 }
 
-std::set<std::pair<int, int> >Item::getInventorySlotCoordinates() const {
+std::set<PaginatedCoords>Item::getInventorySlotCoordinates() const {
     return m_inventorySlotCoordinates;
 }
 
-void Item::removeInventorySlotCoordinates(std::pair<int, int> coords) {
+void Item::removeInventorySlotCoordinates(PaginatedCoords coords) {
     m_inventorySlotCoordinates.erase(coords);
 }
 

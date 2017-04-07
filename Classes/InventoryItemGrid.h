@@ -20,8 +20,7 @@ namespace lorafel {
     public:
         static const int NUM_ROWS = 4;
         static const int NUM_COLS = 8;
-        typedef std::pair<int, int> Coords;
-
+        typedef Grid<InventoryItemSlot*> ItemSlotPage;
         bool init(cocos2d::Node* container);
         static InventoryItemGrid* create(cocos2d::Node* container)
         {
@@ -39,22 +38,22 @@ namespace lorafel {
             }
         }
 
-        bool isEmpty(Coords pair);
-        Coords nextEmptySlotCoordinates();
+        bool isEmpty(PaginatedCoords pair);
+        PaginatedCoords nextEmptySlotCoordinates();
 
         Item* assignItemToSlot(std::pair<Item*, int>* pItemPair);
-        Item* assignItemToSlot(Item* pItem, Coords slotCoords);
+        Item* assignItemToSlot(Item* pItem, PaginatedCoords slotCoords);
 
         InventoryItemSlot* getSlotFromPosition(Vec2 coords);
 
         void highlightsOff();
 
         void swap(InventoryItemSlot* pSlot1, InventoryItemSlot* pSlot2);
-        void swap(std::pair<int, int> pSlot1Coords, std::pair<int, int> pSlot2Coords);
+        void swap(Coords pSlot1Coords, Coords pSlot2Coords);
 
         EquipItemSlot* getEquipSlotFromPosition(const Vec2& pos);
 
-        InventoryItemSlot* getSlotFromCoords(Coords pair) const;
+        InventoryItemSlot* getSlotFromCoords(PaginatedCoords pair) const;
 
         void loadInventory();
 
@@ -64,15 +63,15 @@ namespace lorafel {
 
 
     protected:
-        std::shared_ptr<Grid<InventoryItemSlot*> > m_pGrid;
+        std::shared_ptr<ItemSlotPage> m_pGrid;
+        std::vector<std::shared_ptr<ItemSlotPage> >* m_pPages;
+        std::shared_ptr<ItemSlotPage> createGrid();
         bool isStackable(Item* pItem);
-        Coords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
-        void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);
         bool m_initialized = 0;
         int m_currentPage = 1;
-        std::list<std::shared_ptr<Grid<InventoryItemSlot*> > >* m_pPages;
+        PaginatedCoords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
 
-        std::shared_ptr<Grid<InventoryItemSlot*> > createGrid();
+        void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);
     };
 }
 
