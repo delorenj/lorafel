@@ -39,10 +39,29 @@ namespace lorafel {
 
     static const std::pair<int, int> NULL_COORDINATES = std::make_pair(-1,-1);
     typedef std::pair<int, int> Coords;
-    typedef struct {
+    struct PaginatedCoords {
         int page;
         Coords coords;
-    } PaginatedCoords;
+
+        bool operator< (const PaginatedCoords& rhs) const
+        {
+            if(this->page < rhs.page) {
+                return true;
+            }
+            if(this->page > rhs.page) {
+                return false;
+            }
+            return this->coords < rhs.coords;
+        }
+
+        bool operator== (const PaginatedCoords& rhs) const
+        {
+            return this->coords == rhs.coords && this->page == rhs.page;
+        }
+
+    };
+
+    typedef struct PaginatedCoords PaginatedCoords;
 
     static int generateUniqueId() {
         return cocos2d::RandomHelper::random_int(0, RAND_MAX);

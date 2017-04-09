@@ -91,7 +91,6 @@ void InventoryItemSlot::addEvents() {
             _eventDispatcher->dispatchCustomEvent("inventory-item-unselected");
 
             auto currentHoveredSlot = m_pGrid->getSlotFromPosition(m_pGrid->convertToNodeSpace(touch->getLocation()));
-            std::pair<int, int> chsCoords;
             cocos2d::Sequence* seq;
             Consumable* consumable = dynamic_cast<Consumable*>(m_pItem);
 
@@ -113,7 +112,7 @@ void InventoryItemSlot::addEvents() {
 				 */
                 auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
                     ghostOff();
-                    m_pGrid->swap(this->getCoords(), chsCoords);
+                    m_pGrid->swap(this->getCoords().coords, chsCoords.coords);
                 });
 
                 seq = cocos2d::Sequence::create(s1, callback, nullptr);

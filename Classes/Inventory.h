@@ -6,13 +6,14 @@
 #define LORAFEL_INVENTORY_H
 
 #include <unordered_map>
+#include "Globals.h"
 #include "Item.h"
 
 namespace std {
     template<>
-    struct hash<std::pair<int, int> > {
-        size_t operator()(const std::pair<int, int>& pt) const {
-            return std::hash<int>()(pt.first) ^ std::hash<int>()(pt.second);
+    struct hash<lorafel::PaginatedCoords> {
+        size_t operator()(const lorafel::PaginatedCoords& pt) const {
+            return std::hash<int>()(pt.page) ^ std::hash<int>()(pt.coords.first) ^ std::hash<int>()(pt.coords.second);
         }
     };
 }
@@ -22,7 +23,7 @@ namespace lorafel {
     public:
         typedef std::pair<Item*, int> ItemQuantityPair;
         typedef std::unordered_map<std::string, ItemQuantityPair*> ItemDictionary;
-        typedef std::unordered_map<std::pair<int, int>, ItemQuantityPair*> SlotItemStackDictionary;
+        typedef std::unordered_map<PaginatedCoords, ItemQuantityPair*> SlotItemStackDictionary;
 
 		int removeItem(std::string itemId, int quantity);
 

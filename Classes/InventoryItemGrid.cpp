@@ -75,7 +75,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     return true;
 }
 
-std::shared_ptr<ItemSlotPage> InventoryItemGrid::createGrid() {
+std::shared_ptr<lorafel::InventoryItemGrid::ItemSlotPage> InventoryItemGrid::createGrid() {
     float hmargin = 0.03f * getContentSize().width;
     float vmargin = 0.05f * getContentSize().height;
 
@@ -95,7 +95,7 @@ std::shared_ptr<ItemSlotPage> InventoryItemGrid::createGrid() {
              */
             grid->insert(slot, i, j);
             PaginatedCoords pg;
-            pg.page = m_pPages->size()+1;
+            pg.page = m_pPages->size();
             pg.coords = std::make_pair(i, j);
             slot->setCoords(pg);
         }
@@ -123,7 +123,7 @@ Item* InventoryItemGrid::assignItemToSlot(std::pair<Item*, int>* pItemPair) {
          */
         for(int i=0; i<pItemPair->second; i++) {
             auto slotCoords = findNonMaxedSlotCoordinatesOfItem(pItemPair->first);
-            if(slotCoords == NULL_COORDINATES) {
+            if(slotCoords.page < 0) {
                 assignItemToSlot(pItemPair->first, nextEmptySlotCoordinates());
             } else {
                 auto slot = getSlotFromCoords(slotCoords);
@@ -163,29 +163,34 @@ Item* InventoryItemGrid::assignItemToSlot(Item* pItem, PaginatedCoords slotCoord
     /**
      * Assign the item to the slot
      */
-    auto slot = m_pGrid->get(slotCoords);
+    auto slot = getSlotFromCoords(slotCoords);
     slot->setItem(pItem);
 
     return pItem;
 }
 
 bool InventoryItemGrid::isEmpty(PaginatedCoords pair) {
-    //TODO: Loop through each page
-    auto slot = m_pGrid->get(pair);
+    auto slot = getSlotFromCoords(pair);
     return slot->isEmpty();
 }
 
 PaginatedCoords InventoryItemGrid::nextEmptySlotCoordinates() {
-    //TODO: Loop through each page
-    for(int i=0; i<NUM_ROWS; i++) {
-        for(int j=0; j<NUM_COLS; j++) {
-            auto coords = std::make_pair(i,j);
-            if(isEmpty(coords)) {
-                return coords;
+    for(int page=0; page<m_pPages->size(); page++) {
+        for(int i=0; i<NUM_ROWS; i++) {
+            for(int j=0; j<NUM_COLS; j++) {
+                PaginatedCoords paginatedCoords;
+                paginatedCoords.page = page;
+                paginatedCoords.coords = std::make_pair(i,j);
+                if(isEmpty(paginatedCoords)) {
+                    return paginatedCoords;
+                }
             }
         }
     }
-    return NULL_COORDINATES;
+
+    PaginatedCoords pg;
+    pg.page = -1;
+    return pg;
 }
 
 bool InventoryItemGrid::isStackable(Item* pItem) {
@@ -194,26 +199,35 @@ bool InventoryItemGrid::isStackable(Item* pItem) {
 }
 
 PaginatedCoords InventoryItemGrid::findNonMaxedSlotCoordinatesOfItem(Item* pItem) {
-    //TODO: Loop through each page
-    for(int i=0; i<NUM_ROWS; i++) {
-        for(int j=0; j<NUM_COLS; j++) {
-            auto slot = m_pGrid->get(i, j);
-            if(slot->getItem() != pItem) {
-                continue;
-            }
+    for(int page=0; page<m_pPages->size(); page++) {
+        for(int i=0; i<NUM_ROWS; i++) {
+            for(int j=0; j<NUM_COLS; j++) {
+                PaginatedCoords paginatedCoords;
+                paginatedCoords.page = page;
+                paginatedCoords.coords = std::make_pair(i, j);
+                auto slot = getSlotFromCoords(paginatedCoords);
+                if(slot->getItem() != pItem) {
+                    continue;
+                }
 
-            if(!slot->stackFull()) {
-                return std::make_pair(i,j);
+                if(!slot->stackFull()) {
+                    return paginatedCoords;
+                }
             }
         }
     }
-    return NULL_COORDINATES;
+    PaginatedCoords pg;
+    pg.page = -1;
+    return pg;
 }
 
 InventoryItemSlot* InventoryItemGrid::getSlotFromPosition(Vec2 coords) {
     for (int i = 0; i < NUM_ROWS; i++) {
         for (int j = 0; j < NUM_COLS; j++) {
-            auto slot = m_pGrid->get(i,j);
+            PaginatedCoords pg;
+            pg.page = m_currentPage;
+            pg.coords = std::make_pair(i, j);
+            auto slot = getSlotFromCoords(pg);
             if(slot->getBoundingBox().containsPoint(coords)) {
                 return slot;
             }
@@ -223,10 +237,15 @@ InventoryItemSlot* InventoryItemGrid::getSlotFromPosition(Vec2 coords) {
 }
 
 void InventoryItemGrid::highlightsOff() {
-    for (int i = 0; i < NUM_ROWS; i++) {
-        for (int j = 0; j < NUM_COLS; j++) {
-            auto slot = m_pGrid->get(i,j);
-            slot->highlightOff();
+    for(int page=0; page<m_pPages->size(); page++) {
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+                PaginatedCoords pg;
+                pg.page = page;
+                pg.coords = std::make_pair(i,j);
+                auto slot = getSlotFromCoords(pg);
+                slot->highlightOff();
+            }
         }
     }
 }

@@ -16,7 +16,9 @@ bool Item::init() {
         return false;
     }
 
-    addInventorySlotCoordinates(lorafel::NULL_COORDINATES);
+    PaginatedCoords pg;
+    pg.page = -1;
+    addInventorySlotCoordinates(pg);
     m_pEquipSlots = new std::vector<int>();
 
     return true;
@@ -54,7 +56,7 @@ void Item::addEvents(cocos2d::Node* pNode) {
 }
 
 void Item::addInventorySlotCoordinates(PaginatedCoords coords) {
-    if(coords == NULL_COORDINATES) {
+    if(coords.page < 0) {
         m_inventorySlotCoordinates.clear();
     } else {
         m_inventorySlotCoordinates.insert(coords);

@@ -9,6 +9,7 @@
 #include "InventoryItemGrid.h"
 
 namespace lorafel {
+    class Item;
     class ItemSlot : public cocos2d::Sprite {
     public:
         virtual bool init() override;

@@ -15,7 +15,9 @@
 USING_NS_CC;
 
 namespace lorafel {
+    class Item;
     class InventoryItemSlot;
+    class EquipItemSlot;
     class InventoryItemGrid : public cocos2d::Sprite {
     public:
         static const int NUM_ROWS = 4;
@@ -68,7 +70,7 @@ namespace lorafel {
         std::shared_ptr<ItemSlotPage> createGrid();
         bool isStackable(Item* pItem);
         bool m_initialized = 0;
-        int m_currentPage = 1;
+        int m_currentPage = 0;
         PaginatedCoords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
 
         void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);

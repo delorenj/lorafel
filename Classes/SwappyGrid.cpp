@@ -23,8 +23,8 @@ bool SwappyGrid::init() {
 
     // Get a reference to the state machine
     m_pGameStateMachine = GameStateMachine::getInstance();
-    m_pColumnStateMachines = new std::vector<StateMachine*>();
-    m_pMoveStack = new std::stack<PlayerMove*>();
+    m_pColumnStateMachines = new std::vector<StateMachine *>();
+    m_pMoveStack = new std::stack<PlayerMove *>();
     m_pTileMatcher = new TileMatcher(this);
     m_pTileMatcher->setDebugDraw(false);
     m_currentSelectedAction = "Move";
@@ -36,9 +36,9 @@ bool SwappyGrid::init() {
 //    m_pWorld->SetAllowSleeping(false);
 
     NDKHelper::addSelector("SwappyGridSelectors",
-                           "onCompleteAddItem",
-                           CC_CALLBACK_2(SwappyGrid::onCompleteAddItem, this),
-                           this);
+            "onCompleteAddItem",
+            CC_CALLBACK_2(SwappyGrid::onCompleteAddItem, this),
+            this);
     setName("SwappyGrid");
 
     for (int k = 0; k < NUM_COLUMNS; ++k) {
@@ -68,7 +68,7 @@ bool SwappyGrid::init() {
 
     // Create the Grid Transparency;
     m_pGridTransparency = new GridTransparency();
-    addChild(m_pGridTransparency, LayerOrder::TILES-5);
+    addChild(m_pGridTransparency, LayerOrder::TILES - 5);
 
     // Create Tile Grid
     m_pGrid = new TileGrid();
@@ -77,7 +77,7 @@ bool SwappyGrid::init() {
     }
 
     // Create Tile Drop Queues
-    m_pTileDropQueues = new std::vector<TileQueue*>();
+    m_pTileDropQueues = new std::vector<TileQueue *>();
 
     // Create Tile Remove Queues
     // We need a queue so we only remove tiles in one
@@ -120,8 +120,8 @@ bool SwappyGrid::init() {
     contactListener->onContactPreSolve = CC_CALLBACK_1(SwappyGrid::onContactPostSolve, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
-    auto actionBarEventListener = cocos2d::EventListenerCustom::create("ToggleAction", [=](cocos2d::EventCustom* event) {
-        EventDataString* data = static_cast<EventDataString*>(event->getUserData());
+    auto actionBarEventListener = cocos2d::EventListenerCustom::create("ToggleAction", [=](cocos2d::EventCustom *event) {
+        EventDataString *data = static_cast<EventDataString *>(event->getUserData());
         m_currentSelectedAction = data->val;
     });
 
@@ -131,24 +131,24 @@ bool SwappyGrid::init() {
     return true;
 }
 
-void SwappyGrid::onCompleteAddItem(cocos2d::Node* sender, cocos2d::Value data) {
+void SwappyGrid::onCompleteAddItem(cocos2d::Node *sender, cocos2d::Value data) {
     if (!data.isNull() && data.getType() == Value::Type::MAP) {
         ValueMap valueMap = data.asValueMap();
-        if(!valueMap["loadInventory"].isNull() && valueMap["loadInventory"].asBool()) {
+        if (!valueMap["loadInventory"].isNull() && valueMap["loadInventory"].asBool()) {
             PlayerManager::getInstance()->loadInventory(valueMap);
         }
 
-        if(!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
+        if (!valueMap["newId"].isNull() && !valueMap["oldId"].isNull()) {
             std::string newId = valueMap["newId"].asString();
             std::string oldId = valueMap["oldId"].asString();
-            Inventory::ItemDictionary* items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
-            Inventory::ItemQuantityPair* pair = items->at(oldId);
+            Inventory::ItemDictionary *items = PlayerManager::getInstance()->getPlayer()->getInventory()->getItemDictionary();
+            Inventory::ItemQuantityPair *pair = items->at(oldId);
             pair->first->setId(newId);
             auto p = std::make_pair(newId, pair);
             items->erase(oldId);
             items->insert(p);
 //            PlayerManager::getInstance()->getPlayer()->getInventory()->addItem(pair->first, pair->second);
-        } else if(!valueMap["newId"].isNull()) {
+        } else if (!valueMap["newId"].isNull()) {
 
         }
     }
@@ -177,10 +177,10 @@ void SwappyGrid::update(float delta) {
 
 void SwappyGrid::DropTiles() {
     for (int k = 0; k < m_pTileDropQueues->size(); k++) {
-        TileQueue* queue = m_pTileDropQueues->at(k);
+        TileQueue *queue = m_pTileDropQueues->at(k);
         if (queue->empty()) continue;
         if (!columnReadyToDropTile(k)) continue;
-        lorafel::Tile* tile = queue->front();
+        lorafel::Tile *tile = queue->front();
         queue->pop_front();
         dropTile(k, tile);
     }
@@ -190,19 +190,19 @@ void SwappyGrid::RemoveDeadTiles() {
     GET_GAME_STATE
     if (state->getName() != "TileRemovedState") return;
 
-    TileQueue* queue = m_pTileRemoveQueue;
+    TileQueue *queue = m_pTileRemoveQueue;
 
     if (queue->empty() && getNumberOfFallingTiles() == 0) {
         setIdleState();
         return;
     }
 
-    std::set<lorafel::Tile*> removed;
+    std::set<lorafel::Tile *> removed;
     while (!queue->empty()) {
-        lorafel::Tile* tile = queue->front();
+        lorafel::Tile *tile = queue->front();
         queue->pop_front();
         auto it = removed.find(tile);
-        if(it != removed.end()) continue;
+        if (it != removed.end()) continue;
         removed.insert(tile);
         removeTile(tile);
     }
@@ -212,7 +212,7 @@ void SwappyGrid::RemoveDeadTiles() {
             auto tile = getTileAt(x, y);
             if (tile == nullptr) {
                 // blank spot. let's fill in the blank
-                    lorafel::Tile* nextTileAbove = getNextTileAbove(x, y);
+                lorafel::Tile *nextTileAbove = getNextTileAbove(x, y);
 
                 if (nextTileAbove == nullptr) continue; // nothing to slide down
                 m_pGrid->at(x)->at(nextTileAbove->getGridPos().y) = nullptr;
@@ -223,7 +223,7 @@ void SwappyGrid::RemoveDeadTiles() {
     }
 }
 
-lorafel::Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
+lorafel::Tile *SwappyGrid::getNextTileAbove(int x, int y) const {
     auto numberOfSlotsToSlideDown = 1;
     auto result = getTileAt(x, y + numberOfSlotsToSlideDown);
     while (result == nullptr && y + numberOfSlotsToSlideDown < NUM_ROWS) {
@@ -235,11 +235,11 @@ lorafel::Tile* SwappyGrid::getNextTileAbove(int x, int y) const {
 
 void SwappyGrid::ReplenishTiles() {
     GET_GAME_STATE
-    if(state->getName() == "WaitForAnimationState") return;
+    if (state->getName() == "WaitForAnimationState") return;
 
-    if(m_pActivePlayerTile == nullptr)
+    if (m_pActivePlayerTile == nullptr)
         m_pActivePlayerTile = LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->getNextPlayerTile();
-    
+
     auto counts = getTileVacancyCounts();
     for (int i = 0; i < counts.size(); ++i) {
         for (int j = 0; j < counts[i]; ++j) {
@@ -248,8 +248,8 @@ void SwappyGrid::ReplenishTiles() {
              * make sure enemy glyphs drop instead of
              * normal tiles.
              */
-            if(m_pActivePlayerTile->getTag() == Tag::ENEMY) {
-                auto tile = static_cast<EnemyTile*>(m_pActivePlayerTile);
+            if (m_pActivePlayerTile->getTag() == Tag::ENEMY) {
+                auto tile = static_cast<EnemyTile *>(m_pActivePlayerTile);
                 addTileToDropQueue(i, tile->getRandomGlyph());
             } else {
                 addRandomTileToDropQueue(i);
@@ -258,10 +258,10 @@ void SwappyGrid::ReplenishTiles() {
     }
 }
 
-void SwappyGrid::dropTile(int column, Tile* tile) {
+void SwappyGrid::dropTile(int column, Tile *tile) {
     // Make sure we're dropping a tile at a valid location
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS);
-    StateMachine* fsm = m_pColumnStateMachines->at((unsigned long) column);
+    StateMachine *fsm = m_pColumnStateMachines->at((unsigned long) column);
     fsm->enterState<ColumnBusyState>();
     m_pGameStateMachine->enterState<TileFallingState>();
     m_numberOfFallingTiles++;
@@ -274,15 +274,15 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
      * If tile being dropped is an enemy,
      * add enemy UI element
      */
-    if(tile->getTag() == Tag::ENEMY) {
+    if (tile->getTag() == Tag::ENEMY) {
         auto eventData = new EventDataTile(tile);
         getEventDispatcher()->dispatchCustomEvent("new_enemy", eventData);
         LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addPlayerTile(tile);
     }
 
-    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        Tile* tile = static_cast<Tile*>(sender);
-        SwappyGrid* obj = static_cast<SwappyGrid*>(tile->getParent());
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node *sender) {
+        Tile *tile = static_cast<Tile *>(sender);
+        SwappyGrid *obj = static_cast<SwappyGrid *>(tile->getParent());
 
         obj->setNumberOfFallingTiles(obj->getNumberOfFallingTiles() - 1);
         if (tileDropQueuesEmpty() && obj->getNumberOfFallingTiles() == 0) {
@@ -295,7 +295,7 @@ void SwappyGrid::dropTile(int column, Tile* tile) {
     tile->runAction(sequence);
 }
 
-void SwappyGrid::insertTile(cocos2d::Vec2 pos, Tile* tile) {
+void SwappyGrid::insertTile(cocos2d::Vec2 pos, Tile *tile) {
 
 }
 
@@ -318,8 +318,8 @@ void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
     auto ease2 = cocos2d::EaseQuadraticActionOut::create(move2->clone());
     auto tile1 = m_pGrid->at(pos1.x)->at(pos1.y);
     auto tile2 = m_pGrid->at(pos2.x)->at(pos2.y);
-    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node* sender) {
-        Tile* tempTile = m_pGrid->at(pos1.x)->at(pos1.y);
+    auto callback = cocos2d::CallFuncN::create([=](cocos2d::Node *sender) {
+        Tile *tempTile = m_pGrid->at(pos1.x)->at(pos1.y);
         m_pGrid->at(pos1.x)->at(pos1.y) = m_pGrid->at(pos2.x)->at(pos2.y);
         m_pGrid->at(pos2.x)->at(pos2.y) = tempTile;
 
@@ -337,7 +337,7 @@ void SwappyGrid::swapTiles(cocos2d::Vec2 pos1, cocos2d::Vec2 pos2) {
     tile2->runAction(ease2);
 }
 
-void SwappyGrid::swapTiles(Tile* pTile, cocos2d::Vec2 vec2) {
+void SwappyGrid::swapTiles(Tile *pTile, cocos2d::Vec2 vec2) {
     cocos2d::Vec2 gridPos1 = screenToGrid(pTile->getPosition());
     cocos2d::Vec2 gridPos2 = gridPos1 + vec2;
     swapTiles(gridPos1, gridPos2);
@@ -358,7 +358,7 @@ const cocos2d::Vec2 SwappyGrid::gridToScreen(int x, int y) const {
 const cocos2d::Vec2 SwappyGrid::screenToGrid(cocos2d::Vec2 pos) const {
     return cocos2d::Vec2(
             clamp<int>(ROUND_2_INT(pos.x / m_tileSize.width), 0, 9),
-            clamp<int>(ROUND_2_INT(pos.y / m_tileSize.height), 0 , 9)
+            clamp<int>(ROUND_2_INT(pos.y / m_tileSize.height), 0, 9)
     );
 }
 
@@ -370,8 +370,8 @@ const int SwappyGrid::getTopOffscreenTileSlot() const {
     return ROUND_2_INT(getTopOfScreen().y / m_tileSize.height);
 }
 
-int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile* tile, bool fromTop) {
-    TileColumn* col = m_pGrid->at(columnNumber);
+int SwappyGrid::insertTileIntoColumn(int columnNumber, Tile *tile, bool fromTop) {
+    TileColumn *col = m_pGrid->at(columnNumber);
     auto lowest = lowestVacancyInColumn(columnNumber);
     col->at(lowest) = tile;
     return lowest;
@@ -409,7 +409,7 @@ std::vector<int> SwappyGrid::getTileVacancyCounts() {
     return counts;
 }
 
-void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
+void SwappyGrid::addTileToDropQueue(int column, Tile *pTile) {
     CC_ASSERT(column >= 0 && column < NUM_COLUMNS && column < m_pTileDropQueues->size());
     pTile->setGrid(this);
 
@@ -431,18 +431,18 @@ void SwappyGrid::addTileToDropQueue(int column, Tile* pTile) {
     // Drop the random tile in the given column
     // using the drop queue to ensure it only
     // drops when allowed
-    TileQueue* q = m_pTileDropQueues->at(column);
+    TileQueue *q = m_pTileDropQueues->at(column);
     q->push_back(pTile);
 
 }
 
 void SwappyGrid::addRandomTileToDropQueue(int column) {
-    Tile* tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
+    Tile *tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
     addTileToDropQueue(column, tile);
 }
 
 bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
-    Tile* tile;
+    Tile *tile;
     std::set<Match *> matches;
 
     auto tries = 0;
@@ -450,7 +450,7 @@ bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
     do {
         tries++;
         tile = LevelManager::getInstance()->getCurrentLevel()->getRandomTile();
-    } while(m_pTileMatcher->isMatchInQueue(col, tile) && tries < 10);
+    } while (m_pTileMatcher->isMatchInQueue(col, tile) && tries < 10);
 
     /**
      * If we tried this many times, then there is
@@ -460,7 +460,7 @@ bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
      * Return false, so the caller knows this state
      * is a failure.
      */
-    if(tries >= 10) {
+    if (tries >= 10) {
         CCLOG("Bad State! Resetting");
         return false;
     }
@@ -474,7 +474,7 @@ bool SwappyGrid::columnReadyToDropTile(int column) {
      * If any are in the top slot, then hold off
      * on dropping any more
      */
-    auto fsm = (StateMachine*) m_pColumnStateMachines->at(column);
+    auto fsm = (StateMachine *) m_pColumnStateMachines->at(column);
     for (int i = 0; i < NUM_COLUMNS; i++) {
         for (int j = 0; j < NUM_ROWS; ++j) {
             auto tile = getTileAt(i, j);
@@ -506,7 +506,7 @@ void SwappyGrid::ProcessMatches() {
         return;
     }
 
-    if(state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
+    if (state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
         onGameOver();
         return;
     }
@@ -528,11 +528,11 @@ void SwappyGrid::ProcessMatches() {
          * continue to TileRemovedState
          */
         auto nextstate = GameStateMachine::getInstance()->getState();
-        if(dynamic_cast<AttackState*>(nextstate) == nullptr) {
+        if (dynamic_cast<AttackState *>(nextstate) == nullptr) {
             GameStateMachine::getInstance()->enterState<TileRemovedState>();
         }
 
-    } else if(!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
+    } else if (!m_pMoveStack->empty() && m_pMoveStack->top()->getTag() == Tag::CONSUMABLE) {
         /**
          * If the player clicked on a consumable, process that
          * as a move here
@@ -547,7 +547,7 @@ void SwappyGrid::ProcessMatches() {
         // Also, now we should check the tile moved to see if it has a
         // property that allows it to move without matches (2/27/16)
         auto playerMove = m_pMoveStack->top();
-        if(!getActivePlayerTile()->freelyMovable()) {
+        if (!getActivePlayerTile()->freelyMovable()) {
             m_pMoveStack->pop();
             playerMove->cancel();
         } else {
@@ -564,7 +564,7 @@ void SwappyGrid::ProcessMatches() {
 }
 
 bool SwappyGrid::isTilePresentAt(cocos2d::Vec2 pos) {
-    Tile* tile = getTileAt(pos);
+    Tile *tile = getTileAt(pos);
     return tile == nullptr ? false : true;
 
 }
@@ -581,7 +581,7 @@ unsigned int SwappyGrid::getNumberOfFallingTiles() const {
     return m_numberOfFallingTiles;
 }
 
-TileSwapEventData* SwappyGrid::getTileSwapEventData() const {
+TileSwapEventData *SwappyGrid::getTileSwapEventData() const {
     return m_pTileSwapEventData;
 }
 
@@ -589,8 +589,8 @@ void SwappyGrid::setNumberOfFallingTiles(unsigned int m_numberOfFallingTiles) {
     SwappyGrid::m_numberOfFallingTiles = m_numberOfFallingTiles;
 }
 
-lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid *pGrid) const {
-    if(pGrid == nullptr) {
+lorafel::Tile *SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid *pGrid) const {
+    if (pGrid == nullptr) {
         pGrid = m_pGrid;
     }
 
@@ -598,7 +598,7 @@ lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid 
         return nullptr;
     }
 
-    TileColumn* col = pGrid->at(pos.x);
+    TileColumn *col = pGrid->at(pos.x);
     if (pos.y >= col->size() || pos.y < 0) {
         return nullptr;
     } else {
@@ -606,8 +606,8 @@ lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos, lorafel::TileGrid 
     }
 }
 
-lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y, lorafel::TileGrid *pGrid) const {
-    if(pGrid == nullptr) {
+lorafel::Tile *SwappyGrid::getTileAt(const int x, const int y, lorafel::TileGrid *pGrid) const {
+    if (pGrid == nullptr) {
         return getTileAt(cocos2d::Vec2(x, y));
 
     } else {
@@ -615,15 +615,15 @@ lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y, lorafel::TileGrid
     }
 }
 
-lorafel::Tile* SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
+lorafel::Tile *SwappyGrid::getTileAt(const cocos2d::Vec2 pos) const {
     return getTileAt(pos, m_pGrid);
 }
 
-lorafel::Tile* SwappyGrid::getTileAt(const int x, const int y) const {
+lorafel::Tile *SwappyGrid::getTileAt(const int x, const int y) const {
     return getTileAt(cocos2d::Vec2(x, y), m_pGrid);
 }
 
-void SwappyGrid::clearVisitStates(TileGrid* pGrid) {
+void SwappyGrid::clearVisitStates(TileGrid *pGrid) {
     for (int i = 0; i < NUM_COLUMNS; ++i) {
         for (int j = 0; j < NUM_ROWS; ++j) {
             auto tile = getTileAt(i, j, pGrid);
@@ -635,7 +635,7 @@ void SwappyGrid::clearVisitStates(TileGrid* pGrid) {
 }
 
 int SwappyGrid::lowestVacancyInColumn(int i) {
-    lorafel::Tile* tile;
+    lorafel::Tile *tile;
     int j = 0;
     do {
         tile = getTileAt(i, j++);
@@ -644,19 +644,19 @@ int SwappyGrid::lowestVacancyInColumn(int i) {
     return j - 1;
 }
 
-void SwappyGrid::removeTile(lorafel::Tile* tile) {
-    if(tile->getTag() != Tag::TILE_DONT_REMOVE_FROM_GRID && tile->getTag() != Tag::HERO) {
+void SwappyGrid::removeTile(lorafel::Tile *tile) {
+    if (tile->getTag() != Tag::TILE_DONT_REMOVE_FROM_GRID && tile->getTag() != Tag::HERO) {
         removeTileFromGrid(tile);
     }
 
-    if(tile->getTag() == Tag::TILE_DONT_REMOVE_FROM_GRID) {
+    if (tile->getTag() == Tag::TILE_DONT_REMOVE_FROM_GRID) {
         tile->setTag(Tag::TILE);
     }
 
     /**
      * Don't remove Hero tile. Causes some shit!
      */
-    if(tile->getTag() != Tag::HERO) {
+    if (tile->getTag() != Tag::HERO) {
         removeChild(tile);
     }
 }
@@ -666,15 +666,14 @@ void SwappyGrid::removeTile(lorafel::Tile* tile) {
  * allows the grid to continue dropping tiles while leaving
  * the sprite hanging around for animations and stuff
  */
-void SwappyGrid::removeTileFromGrid(Tile* tile) {
+void SwappyGrid::removeTileFromGrid(Tile *tile) {
     if (tile == nullptr) return;
     auto pos = tile->getGridPos();
     m_pGrid->at(pos.x)->at(pos.y) = nullptr;
 }
 
 
-
-void SwappyGrid::addTileToRemoveQueue(lorafel::Tile* pTile) {
+void SwappyGrid::addTileToRemoveQueue(lorafel::Tile *pTile) {
     m_pTileRemoveQueue->push_back(pTile);
 }
 
@@ -692,8 +691,8 @@ int SwappyGrid::getNumberOfRemainingEnemies() {
     return (int) getEnemyTiles().size();
 }
 
-std::set<lorafel::Tile*> SwappyGrid::getEnemyTiles() {
-    std::set<lorafel::Tile*> enemies;
+std::set<lorafel::Tile *> SwappyGrid::getEnemyTiles() {
+    std::set<lorafel::Tile *> enemies;
     for (int i = 0; i < NUM_COLUMNS; i++) {
         for (int j = 0; j < NUM_ROWS; j++) {
             auto t = getTileAt(i, j);
@@ -723,7 +722,7 @@ void SwappyGrid::ProcessTurnManager() {
          * If you have no HP left, and game is not yet marked
          * as 'over', then call the onGameOver() method
          */
-        if(state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
+        if (state->getName() != "GameOverState" && PlayerManager::getInstance()->getPlayer()->getHp() == 0) {
             onGameOver();
             return;
         }
@@ -744,7 +743,7 @@ void SwappyGrid::ProcessTurnManager() {
             GameStateMachine::getInstance()->setState<BusyState>();
             auto seq = cocos2d::Sequence::create(
                     cocos2d::DelayTime::create(0.8f),
-                    cocos2d::CallFunc::create([=](){
+                    cocos2d::CallFunc::create([=]() {
                         GameStateMachine::getInstance()->setState<EnemyTurnState>();
                     }),
                     NULL
@@ -769,8 +768,8 @@ void SwappyGrid::ProcessEnemyTurns() {
     // Ok, so it's enemy time!
     // Let's get the active enemy tile
     auto tile = m_pActivePlayerTile;
-    AIStrategy* strategy = tile->getStrategy();
-    PlayerMove* playerMove = strategy->apply(tile);
+    AIStrategy *strategy = tile->getStrategy();
+    PlayerMove *playerMove = strategy->apply(tile);
     /**
      * Need this 'cause the enemy never really 'starts' moving
      * a tile - it should just go to move state
@@ -779,78 +778,78 @@ void SwappyGrid::ProcessEnemyTurns() {
     executePlayerMove(playerMove);
 }
 
-void SwappyGrid::executePlayerMove(PlayerMove* pMove) {
+void SwappyGrid::executePlayerMove(PlayerMove *pMove) {
     getMoveStack()->push(pMove);
     getMoveStack()->top()->run();
     LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->addMove(pMove);
 }
 
-lorafel::Tile* SwappyGrid::getActivePlayerTile() {
+lorafel::Tile *SwappyGrid::getActivePlayerTile() {
     return m_pActivePlayerTile;
 }
 
-void SwappyGrid::setActivePlayerTile(lorafel::Tile* pTile) {
+void SwappyGrid::setActivePlayerTile(lorafel::Tile *pTile) {
     m_pActivePlayerTile = pTile;
 }
 
-void SwappyGrid::highlightTiles(TileSet* pSet) {
+void SwappyGrid::highlightTiles(TileSet *pSet) {
     for (auto tile : *pSet) {
         // Mark tile as valid move distance
         // Not necessarily a valid match though
         tile->setVisitColor(Tile::Color::YELLOW);
 
-        if(tile->getLeft(nullptr) == nullptr || pSet->find(tile->getLeft(nullptr)) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x, tile->getPosition().y + m_tileSize.height/2), 0);
+        if (tile->getLeft(nullptr) == nullptr || pSet->find(tile->getLeft(nullptr)) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x, tile->getPosition().y + m_tileSize.height / 2), 0);
         }
 
-        if(tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width/2, tile->getPosition().y + m_tileSize.height), 90);
+        if (tile->getTop() == nullptr || pSet->find(tile->getTop()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width / 2, tile->getPosition().y + m_tileSize.height), 90);
         }
 
-        if(tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width/2, tile->getPosition().y), 90);
+        if (tile->getBottom() == nullptr || pSet->find(tile->getBottom()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width / 2, tile->getPosition().y), 90);
         }
 
-        if(tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
-            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width, tile->getPosition().y + m_tileSize.height/2), 0);
+        if (tile->getRight() == nullptr || pSet->find(tile->getRight()) == pSet->end()) {
+            addTileBorderHighlight(pSet, tile, cocos2d::Vec2(tile->getPosition().x + m_tileSize.width, tile->getPosition().y + m_tileSize.height / 2), 0);
         }
     }
 }
 
-void SwappyGrid::addTileBorderHighlight(TileSet* pSet, const lorafel::Tile* tile, cocos2d::Vec2 anchorPos, float rotation) {
+void SwappyGrid::addTileBorderHighlight(TileSet *pSet, const lorafel::Tile *tile, cocos2d::Vec2 anchorPos, float rotation) {
     auto p = cocos2d::ParticleSystemQuad::create("glitter_line.plist");
-    p->setAnchorPoint(cocos2d::Vec2(0.5,0.5));
+    p->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
     p->setTag(Tag::PARTICLE);
     p->setPosition(anchorPos);
     p->setRotation(rotation);
     p->setAutoRemoveOnFinish(true);
-    p->setPosVar(cocos2d::Vec2(0, m_tileSize.height-38));
-    addChild(p,lorafel::LayerOrder::PARTICLES);
+    p->setPosVar(cocos2d::Vec2(0, m_tileSize.height - 38));
+    addChild(p, lorafel::LayerOrder::PARTICLES);
 }
 
-cocos2d::DrawNode* SwappyGrid::getDebugDraw() {
+cocos2d::DrawNode *SwappyGrid::getDebugDraw() {
     return m_pDebugDraw;
 }
 
-TileGrid* SwappyGrid::getGrid() {
+TileGrid *SwappyGrid::getGrid() {
     return m_pGrid;
 }
 
-lorafel::Tile* SwappyGrid::getRandomEnemy() {
+lorafel::Tile *SwappyGrid::getRandomEnemy() {
     auto numEnemies = getNumberOfRemainingEnemies();
 
-    if(numEnemies == 0) return nullptr;
+    if (numEnemies == 0) return nullptr;
 
     auto enemies = getEnemyTiles();
     TileSet::const_iterator it(enemies.begin());
 
-    if(numEnemies == 1) return *it;
+    if (numEnemies == 1) return *it;
 
-    std::advance(it,std::rand()%(enemies.size()-1));
+    std::advance(it, std::rand() % (enemies.size() - 1));
     return *it;
 }
 
-lorafel::Tile* SwappyGrid::getHeroTile() {
+lorafel::Tile *SwappyGrid::getHeroTile() {
     return PlayerManager::getInstance()->getPlayer()->getTile();
 }
 
@@ -874,8 +873,8 @@ SwappyGrid::~SwappyGrid() {
     CC_SAFE_DELETE(m_pColumnStateMachines);
 
     NDKHelper::removeSelectorsInGroup("SwappyGridSelectors");
-    
-    for(auto q : *m_pTileDropQueues) {
+
+    for (auto q : *m_pTileDropQueues) {
         CC_SAFE_DELETE(q);
     }
 
@@ -885,7 +884,7 @@ SwappyGrid::~SwappyGrid() {
     CC_SAFE_DELETE(m_pTileMatcher);
 }
 
-GridTransparency* SwappyGrid::getGridTransparency() {
+GridTransparency *SwappyGrid::getGridTransparency() {
     return m_pGridTransparency;
 }
 
@@ -897,14 +896,14 @@ cocos2d::Size SwappyGrid::getTileSize() {
     return m_tileSize;
 }
 
-bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
+bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact &contact) {
     /**
      * Only test for contact when not still
      * moving the arrow
      */
     GET_GAME_STATE;
 
-    if(state->getName() == "HookTouchMoveState" || state->getName() == "HookTouchStartState") return false;
+    if (state->getName() == "HookTouchMoveState" || state->getName() == "HookTouchStartState") return false;
 
     auto b1 = contact.getShapeA()->getBody();
     auto b2 = contact.getShapeB()->getBody();
@@ -914,7 +913,7 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
      * then disable and remove the physics body. Then
      * fire the post-sticky callback
      */
-    if((b1->getTag() == Tag::ARROW && b2->getTag() == Tag::HOOKABLE_BODY) || (b2->getTag() == Tag::ARROW && b1->getTag() == Tag::HOOKABLE_BODY)) {
+    if ((b1->getTag() == Tag::ARROW && b2->getTag() == Tag::HOOKABLE_BODY) || (b2->getTag() == Tag::ARROW && b1->getTag() == Tag::HOOKABLE_BODY)) {
 
         auto item = b1->getTag() == Tag::HOOKABLE_BODY ? b1 : b2;
         auto projectile = b1->getTag() == Tag::HOOKABLE_BODY ? b2 : b1;
@@ -924,10 +923,10 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
         b2->setEnabled(false);
         b2->removeFromWorld();
 
-        Arrow* arrow = static_cast<Arrow*>(projectile->getNode());
+        Arrow *arrow = static_cast<Arrow *>(projectile->getNode());
         arrow->onHooked();
 
-        Tile* tile = static_cast<Tile*>(item->getNode());
+        Tile *tile = static_cast<Tile *>(item->getNode());
         tile->onHooked();
     }
 
@@ -940,7 +939,7 @@ bool SwappyGrid::onContactPostSolve(cocos2d::PhysicsContact& contact) {
  * selected.
  */
 void SwappyGrid::setIdleState() {
-    if(std::strcmp(m_currentSelectedAction,"Hook") == 0) {
+    if (std::strcmp(m_currentSelectedAction, "Hook") == 0) {
         GameStateMachine::getInstance()->setState<IdleHookModeState>();
     } else {
         GameStateMachine::getInstance()->setState<IdleState>();
@@ -953,11 +952,11 @@ void SwappyGrid::ProcessAttackState() {
      * If not in attack state,
      * then just return
      */
-    if(dynamic_cast<AttackState*>(state) == nullptr) {
+    if (dynamic_cast<AttackState *>(state) == nullptr) {
         return;
     }
 
-    if(dynamic_cast<InitAttackState*>(state) != nullptr) {
+    if (dynamic_cast<InitAttackState *>(state) != nullptr) {
         /**
          * Set up the gesture listener
          * if not yet instantiated.
@@ -968,29 +967,28 @@ void SwappyGrid::ProcessAttackState() {
 
             m_pAttackGestureListener->onTouchBegan = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
                 auto _state = (GameState *) GameStateMachine::getInstance()->getState();
-                return dynamic_cast<IdleAttackState*>(_state) != nullptr;
+                return dynamic_cast<IdleAttackState *>(_state) != nullptr;
             };
 
             m_pAttackGestureListener->onTouchMoved = [=](cocos2d::Touch *touch, cocos2d::Event *event) {
-                auto _state = (GameState *) GameStateMachine::getInstance()->getState();
                 auto gridPos = touchToGrid(touch);
                 auto tile = this->getTileAt(gridPos);
 
-                if(dynamic_cast<EnemyTile*>(tile)) {
-                    if(m_startAttack.isZero()) {
+                if (dynamic_cast<EnemyTile *>(tile)) {
+                    if (m_startAttack.isZero()) {
                         m_pActiveEnemyTile = (EnemyTile *) tile;
                         m_startAttack = convertToNodeSpace(touch->getLocation());
                         GameStateMachine::getInstance()->setState<GestureStartAttackState>();
                         return true;
                     }
                 } else {
-                    if(!m_startAttack.isZero() && m_pActiveEnemyTile != nullptr) {
+                    if (!m_startAttack.isZero() && m_pActiveEnemyTile != nullptr) {
                         m_endAttack = convertToNodeSpace(touch->getLocation());
                         m_pGridUI->drawSlash(m_startAttack, m_endAttack);
                         GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                         m_startAttack = cocos2d::Vec2::ZERO;
                         m_endAttack = cocos2d::Vec2::ZERO;
-                        PlayerManager::getInstance()->getPlayer()->attack((EnemyTile*) m_pActiveEnemyTile);
+                        PlayerManager::getInstance()->getPlayer()->attack((EnemyTile *) m_pActiveEnemyTile);
                         m_pActiveEnemyTile = nullptr;
                         return false;
                     }
@@ -999,13 +997,13 @@ void SwappyGrid::ProcessAttackState() {
 
             m_pAttackGestureListener->onTouchEnded = [&](cocos2d::Touch *touch, cocos2d::Event *event) {
                 GET_GAME_STATE
-                if(dynamic_cast<GestureStartAttackState*>(state) != nullptr) {
+                if (dynamic_cast<GestureStartAttackState *>(state) != nullptr) {
                     m_endAttack = convertToNodeSpace(touch->getLocation());
                     m_pGridUI->drawSlash(m_startAttack, m_endAttack);
                     GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
                     m_startAttack = cocos2d::Vec2::ZERO;
                     m_endAttack = cocos2d::Vec2::ZERO;
-                    PlayerManager::getInstance()->getPlayer()->attack((EnemyTile*) m_pActiveEnemyTile);
+                    PlayerManager::getInstance()->getPlayer()->attack((EnemyTile *) m_pActiveEnemyTile);
 
                 }
                 m_pActiveEnemyTile = nullptr;
@@ -1014,11 +1012,11 @@ void SwappyGrid::ProcessAttackState() {
             _eventDispatcher->addEventListenerWithFixedPriority(m_pAttackGestureListener, 1);
         }
 
-        if(m_pCurrentMatch != nullptr) {
+        if (m_pCurrentMatch != nullptr) {
             highlightTiles(m_pCurrentMatch->getTileSet());
         }
 
-        auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140,140,140));
+        auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140, 140, 140));
         m_pGridTransparency->runAction(tint);
 
         /**
@@ -1027,13 +1025,13 @@ void SwappyGrid::ProcessAttackState() {
          */
         m_numEnemiesWithinReach = -1;
 
-        for(int x=0; x<NUM_COLUMNS; x++){
-            for(int y=0; y<NUM_ROWS; y++) {
-                auto tile = getTileAt(x,y);
-                if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
+        for (int x = 0; x < NUM_COLUMNS; x++) {
+            for (int y = 0; y < NUM_ROWS; y++) {
+                auto tile = getTileAt(x, y);
+                if (dynamic_cast<EnemyTile *>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                     // Do something to highlight enemies ?
-                } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
-                    auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140,140,140));
+                } else if (tile->getChildByTag(Tag::PARTICLE) == nullptr) {
+                    auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(140, 140, 140));
                     tile->runAction(tileTint);
                 }
             }
@@ -1043,12 +1041,12 @@ void SwappyGrid::ProcessAttackState() {
         GameStateMachine::getInstance()->setState<IdleAttackState>();
     }
 
-    if(dynamic_cast<IdleAttackState*>(state)) {
+    if (dynamic_cast<IdleAttackState *>(state)) {
         /**
          * For caching result.
          * -1 means it has not been calculated yet.
          */
-        if(m_numEnemiesWithinReach == -1) {
+        if (m_numEnemiesWithinReach == -1) {
             m_numEnemiesWithinReach = numTilesWithinHitDistance();
         }
 
@@ -1057,38 +1055,38 @@ void SwappyGrid::ProcessAttackState() {
          * Make the player sad by letting him/her
          * know and then change state.
          */
-        if(m_numEnemiesWithinReach <= 0) {
+        if (m_numEnemiesWithinReach <= 0) {
             /**
              * TODO: Make sweet drop-down NOPE text
              */
-             GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
+            GameStateMachine::getInstance()->setState<AnimationStartAttackState>();
         }
     }
 
     /**
      * Handle the AnimationStartAttackState
      */
-    if(dynamic_cast<AnimationStartAttackState*>(state)) {
+    if (dynamic_cast<AnimationStartAttackState *>(state)) {
         CCLOG("Doing animation!");
-        if(m_pCurrentMatch != nullptr) {
-            for(int x=0; x<NUM_COLUMNS; x++){
-                for(int y=0; y<NUM_ROWS; y++) {
-                    auto tile = getTileAt(x,y);
-                    if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
+        if (m_pCurrentMatch != nullptr) {
+            for (int x = 0; x < NUM_COLUMNS; x++) {
+                for (int y = 0; y < NUM_ROWS; y++) {
+                    auto tile = getTileAt(x, y);
+                    if (dynamic_cast<EnemyTile *>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                         // Do something to highlight enemies ?
-                    } else if(tile->getChildByTag(Tag::PARTICLE) == nullptr) {
-                        auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255,255,255));
+                    } else if (tile->getChildByTag(Tag::PARTICLE) == nullptr) {
+                        auto tileTint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255, 255, 255));
                         tile->runAction(tileTint);
                     }
                 }
 
             }
-            auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255,255,255));
+            auto tint = cocos2d::TintTo::create(0.35f, cocos2d::Color3B(255, 255, 255));
             m_pGridTransparency->runAction(tint);
 
             unhighlightTiles();
-            for(auto tile : *m_pCurrentMatch->getTileSet()) {
-                if(dynamic_cast<MeleeAttackTile*>(tile)) {
+            for (auto tile : *m_pCurrentMatch->getTileSet()) {
+                if (dynamic_cast<MeleeAttackTile *>(tile)) {
                     tile->remove();
                 }
             }
@@ -1101,9 +1099,9 @@ void SwappyGrid::ProcessAttackState() {
 }
 
 void SwappyGrid::unhighlightTiles() {
-    for(auto node : getChildren()) {
-        if(node->getTag() == Tag::PARTICLE) {
-            auto pe = (cocos2d::ParticleSystem*) node;
+    for (auto node : getChildren()) {
+        if (node->getTag() == Tag::PARTICLE) {
+            auto pe = (cocos2d::ParticleSystem *) node;
             pe->stopSystem();
             pe->setDuration(0.1f);
         }
@@ -1114,8 +1112,8 @@ cocos2d::Vec2 SwappyGrid::touchToGrid(cocos2d::Touch *pTouch) {
     return screenToGrid(
             convertToNodeSpace(
                     cocos2d::Vec2(
-                            pTouch->getLocation().x - m_tileSize.width/2*m_tileScaleFactor,
-                            pTouch->getLocation().y - m_tileSize.height/2*m_tileScaleFactor
+                            pTouch->getLocation().x - m_tileSize.width / 2 * m_tileScaleFactor,
+                            pTouch->getLocation().y - m_tileSize.height / 2 * m_tileScaleFactor
                     )
             )
     );
@@ -1124,10 +1122,10 @@ cocos2d::Vec2 SwappyGrid::touchToGrid(cocos2d::Touch *pTouch) {
 int SwappyGrid::numTilesWithinHitDistance() {
     auto numEnemiesWithinReach = 0;
 
-    for(int x=0; x<NUM_COLUMNS; x++){
-        for(int y=0; y<NUM_ROWS; y++) {
-            auto tile = getTileAt(x,y);
-            if(dynamic_cast<EnemyTile*>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
+    for (int x = 0; x < NUM_COLUMNS; x++) {
+        for (int y = 0; y < NUM_ROWS; y++) {
+            auto tile = getTileAt(x, y);
+            if (dynamic_cast<EnemyTile *>(tile) && PlayerManager::getInstance()->getPlayer()->tileWithinHitDistance(tile)) {
                 numEnemiesWithinReach++;
             }
         }
@@ -1141,7 +1139,7 @@ std::vector<TileQueue *> *SwappyGrid::getDropQueues() {
 }
 
 void SwappyGrid::clearAllDropQueues() {
-    for(auto q : *m_pTileDropQueues) {
+    for (auto q : *m_pTileDropQueues) {
         q->clear();
     }
 }
@@ -1153,7 +1151,7 @@ void SwappyGrid::onExit() {
 
 void SwappyGrid::UpdateProgress() {
     GET_GAME_STATE
-    if(!dynamic_cast<IdleState*>(state)) {
+    if (!dynamic_cast<IdleState *>(state)) {
         return;
     }
 
