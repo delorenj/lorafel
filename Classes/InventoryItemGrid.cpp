@@ -137,20 +137,10 @@ Item* InventoryItemGrid::assignItemToSlot(std::pair<Item*, int>* pItemPair) {
 
 Item* InventoryItemGrid::assignItemToSlot(Item* pItem, PaginatedCoords slotCoords) {
 
-    if(slotCoords.page < 0 && slotCoords.coords == NULL_COORDINATES) {
+    if(slotCoords.page < 0) {
         /**
          * No space left in inventory
          * on any page
-         */
-        return nullptr;
-    }
-
-    if(slotCoords.coords == NULL_COORDINATES) {
-        /**
-         * No space left in inventory
-         * on current page - not sure what
-         * this really means now that there's
-         * pagination. We'll see I guess.
          */
         return nullptr;
     }
@@ -189,7 +179,9 @@ PaginatedCoords InventoryItemGrid::nextEmptySlotCoordinates() {
     }
 
     PaginatedCoords pg;
-    pg.page = -1;
+    pg.page = m_pPages->size()+1;
+    pg.coords = std::make_pair(0, 0);
+    createGrid();
     return pg;
 }
 
