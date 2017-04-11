@@ -30,7 +30,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     initWithFile("modal-inventory-grid-container.png");
 
     m_pPages = new std::vector<std::shared_ptr<ItemSlotPage> >();
-    m_pGridContainerPageMap = new std::map<int, cocos2d::Node*> >();
+    m_pGridContainerPageMap = new std::map<int, cocos2d::Node*>();
 
     /**
      * Now, create and position the grid slots
@@ -41,7 +41,25 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     auto gridContainer = m_pGridContainerPageMap->at(m_currentPage);
     gridContainer->setVisible(true);
 
-	auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
+    m_pNextPage = cocos2d::ui::Button::create("page-arrow.png", "page-arrow.png", "page-arrow.png", cocos2d::ui::Button::TextureResType::PLIST);
+    m_pNextPage->setPosition(cocos2d::Vec2(getContentSize().width/2 + m_pNextPage->getContentSize().width,-m_pNextPage->getContentSize().height));
+    m_pNextPage->setScale(1.0f);
+    m_pNextPage->setRotation(90);
+    m_pNextPage->setGlobalZOrder(LayerOrder::MODAL+10);
+
+    m_pNextPage->addTouchEventListener(CC_CALLBACK_2(InventoryItemGrid::nextPage, this));
+    addChild(m_pNextPage);
+
+    m_pPrevPage = cocos2d::ui::Button::create("page-arrow.png", "page-arrow.png", "page-arrow.png", cocos2d::ui::Button::TextureResType::PLIST);
+    m_pPrevPage->setPosition(cocos2d::Vec2(getContentSize().width/2 - m_pPrevPage->getContentSize().width,-m_pPrevPage->getContentSize().height));
+    m_pPrevPage->setScale(1.0f);
+    m_pPrevPage->setRotation(-90);
+    m_pPrevPage->setGlobalZOrder(LayerOrder::MODAL+10);
+
+    m_pPrevPage->addTouchEventListener(CC_CALLBACK_2(InventoryItemGrid::prevPage, this));
+    addChild(m_pPrevPage);
+
+    auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
 		auto itemData = static_cast<EventDataPair<Item*,int>*>(e->getUserData())->val;
 		Item* pItem = itemData.first;
 		int newQuantity = itemData.second;
@@ -368,7 +386,37 @@ void InventoryItemGrid::setInitialized(bool i) {
     m_initialized = i;
 }
 
+void InventoryItemGrid::nextPage(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
+    if (eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+        auto nextPageNumber = m_currentPage + 1;
+        if (nextPageNumber >= m_pPages->size()) {
+            CCLOG("Current page=%d. No more pages", m_currentPage);
+            return;
+        }
 
+        goToPage(nextPageNumber);
+    }
+}
+void InventoryItemGrid::prevPage(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType) {
+    if (eventType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+        auto nextPageNumber = m_currentPage - 1;
+        if (nextPageNumber < 0) {
+            CCLOG("Current page=%d. No more pages", m_currentPage);
+            return;
+        }
+
+        goToPage(nextPageNumber);
+    }
+}
+
+void InventoryItemGrid::goToPage(int pageNumber) {
+    auto currentGridContainer = m_pGridContainerPageMap->at(m_currentPage);
+    auto nextGridContainer = m_pGridContainerPageMap->at(pageNumber);
+    currentGridContainer->setVisible(false);
+    nextGridContainer->setVisible(true);
+    m_pGrid = m_pPages->at(pageNumber);
+    m_currentPage = pageNumber;
+}
 
 
 

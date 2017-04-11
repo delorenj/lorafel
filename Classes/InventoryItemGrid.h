@@ -5,6 +5,7 @@
 #ifndef LORAFEL_INVENTORYITEMGRID_H
 #define LORAFEL_INVENTORYITEMGRID_H
 
+#include <cocos/ui/UIButton.h>
 #include "Globals.h"
 #include "cocos2d.h"
 #include "Grid.h"
@@ -67,7 +68,8 @@ namespace lorafel {
     protected:
         std::shared_ptr<ItemSlotPage> m_pGrid;
         std::vector<std::shared_ptr<ItemSlotPage> >* m_pPages;
-        std::map<int, cocos2d::Node* >* m_pGridContainerPageMap;
+        std::map<int, cocos2d::Node*>* m_pGridContainerPageMap;
+        cocos2d::ui::Button *m_pPrevPage, *m_pNextPage;
         std::shared_ptr<ItemSlotPage> createGrid();
         bool isStackable(Item* pItem);
         bool m_initialized = 0;
@@ -75,6 +77,10 @@ namespace lorafel {
         PaginatedCoords findNonMaxedSlotCoordinatesOfItem(Item* pItem);
 
         void onCompleteLoadInventoryItemGrid(cocos2d::Node* sender, cocos2d::Value data);
+        void nextPage(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
+        void prevPage(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
+
+        void goToPage(int pageNumber);
     };
 }
 
