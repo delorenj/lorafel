@@ -179,7 +179,7 @@ PaginatedCoords InventoryItemGrid::nextEmptySlotCoordinates() {
     }
 
     PaginatedCoords pg;
-    pg.page = m_pPages->size()+1;
+    pg.page = m_pPages->size();
     pg.coords = std::make_pair(0, 0);
     createGrid();
     return pg;
