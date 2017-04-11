@@ -30,6 +30,7 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     initWithFile("modal-inventory-grid-container.png");
 
     m_pPages = new std::vector<std::shared_ptr<ItemSlotPage> >();
+    m_pGridContainerPageMap = new std::map<int, cocos2d::Node*> >();
 
     /**
      * Now, create and position the grid slots
@@ -37,6 +38,8 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
      * some pre-calculated padding
      */
     m_pGrid = createGrid();
+    auto gridContainer = m_pGridContainerPageMap->at(m_currentPage);
+    gridContainer->setVisible(true);
 
 	auto listener = cocos2d::EventListenerCustom::create("itemQuantityChange", [=](EventCustom* e) {
 		auto itemData = static_cast<EventDataPair<Item*,int>*>(e->getUserData())->val;
@@ -81,6 +84,11 @@ std::shared_ptr<lorafel::InventoryItemGrid::ItemSlotPage> InventoryItemGrid::cre
 
     std::shared_ptr<ItemSlotPage> grid = std::make_shared<ItemSlotPage>();
 
+    cocos2d::Node* gridContainer = new cocos2d::Node();
+    gridContainer->setContentSize(getContentSize());
+    gridContainer->setVisible(false);
+    addChild(gridContainer);
+
     for(int i=0; i<NUM_ROWS; i++) {
         for(int j=0; j<NUM_COLS; j++) {
             auto slot = InventoryItemSlot::create(this);
@@ -88,7 +96,7 @@ std::shared_ptr<lorafel::InventoryItemGrid::ItemSlotPage> InventoryItemGrid::cre
                               hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
                               vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
                               );
-            addChild(slot);
+            gridContainer->addChild(slot);
             /**
              * Also, right here we insert the grid slot
              * into the underlying grid structure
@@ -101,6 +109,7 @@ std::shared_ptr<lorafel::InventoryItemGrid::ItemSlotPage> InventoryItemGrid::cre
         }
     }
 
+    m_pGridContainerPageMap->insert(std::make_pair(m_pPages->size(), gridContainer));
     m_pPages->push_back(grid);
     return grid;
 }

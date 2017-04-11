@@ -330,7 +330,7 @@
                 <key>spriteSourceSize</key>
                 <string>{15,15}</string>
                 <key>textureRect</key>
-                <string>{{449,543},{13,13}}</string>
+                <string>{{302,663},{13,13}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -739,6 +739,21 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>page-arrow.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{15,15}</string>
+                <key>spriteSourceSize</key>
+                <string>{15,15}</string>
+                <key>textureRect</key>
+                <string>{{449,543},{15,15}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>player.png</key>
             <dict>
                 <key>aliases</key>
@@ -1098,7 +1113,7 @@
             <key>size</key>
             <string>{502,1476}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7dcd5461a1d20e14c27fcfeaa8bc12dd:c9cfab2c0febe0ec52e34579488604f9:db71e206b3c010bfb176561963c50b15$</string>
+            <string>$TexturePacker:SmartUpdate:48e173be69c24707eee42c2ff9e38dd5:00997e40a5e3e3b03d2a37e9f985edc3:db71e206b3c010bfb176561963c50b15$</string>
             <key>textureFileName</key>
             <string>sprites.png</string>
         </dict>

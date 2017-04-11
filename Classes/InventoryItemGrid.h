@@ -67,6 +67,7 @@ namespace lorafel {
     protected:
         std::shared_ptr<ItemSlotPage> m_pGrid;
         std::vector<std::shared_ptr<ItemSlotPage> >* m_pPages;
+        std::map<int, cocos2d::Node* >* m_pGridContainerPageMap;
         std::shared_ptr<ItemSlotPage> createGrid();
         bool isStackable(Item* pItem);
         bool m_initialized = 0;

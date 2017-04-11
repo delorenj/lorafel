@@ -739,6 +739,21 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>page-arrow.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{10,10}</string>
+                <key>spriteSourceSize</key>
+                <string>{10,10}</string>
+                <key>textureRect</key>
+                <string>{{70,498},{10,10}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>player.png</key>
             <dict>
                 <key>aliases</key>
@@ -1098,7 +1113,7 @@
             <key>size</key>
             <string>{253,1316}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:573bacb1a110f15eec2fb4cb58fa7b02:429b32bfa9836837a2f10b3ce85c40e9:db71e206b3c010bfb176561963c50b15$</string>
+            <string>$TexturePacker:SmartUpdate:cb097315f6d78fead079197f42261e56:1308228bec39977e0716d1301df62b8f:db71e206b3c010bfb176561963c50b15$</string>
             <key>textureFileName</key>
             <string>sprites.png</string>
         </dict>
