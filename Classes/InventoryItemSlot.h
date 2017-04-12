@@ -40,10 +40,10 @@ namespace lorafel {
 
         virtual void setItem(Item* pItem, int stackSize = 1) override;
 
+        void addEvents() override;
     protected:
         InventoryItemGrid* m_pGrid;
         PaginatedCoords m_coords;
-        void addEvents() override;
 
     };
 }

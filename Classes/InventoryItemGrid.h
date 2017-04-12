@@ -81,6 +81,8 @@ namespace lorafel {
         void prevPage(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType eventType);
 
         void goToPage(int pageNumber);
+
+        void enableEventListenersForAllSlotsOnCurrentPage();
     };
 }
 

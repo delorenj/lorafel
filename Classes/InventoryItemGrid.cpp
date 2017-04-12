@@ -38,12 +38,13 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
      * some pre-calculated padding
      */
     m_pGrid = createGrid();
+    enableEventListenersForAllSlotsOnCurrentPage();
     auto gridContainer = m_pGridContainerPageMap->at(m_currentPage);
     gridContainer->setVisible(true);
 
     m_pNextPage = cocos2d::ui::Button::create("page-arrow.png", "page-arrow.png", "page-arrow.png", cocos2d::ui::Button::TextureResType::PLIST);
-    m_pNextPage->setPosition(cocos2d::Vec2(getContentSize().width/2 + m_pNextPage->getContentSize().width,-m_pNextPage->getContentSize().height));
-    m_pNextPage->setScale(1.0f);
+    m_pNextPage->setPosition(cocos2d::Vec2(getContentSize().width/2 + m_pNextPage->getContentSize().width*5,-m_pNextPage->getContentSize().height));
+    m_pNextPage->setScale(2.0f);
     m_pNextPage->setRotation(90);
     m_pNextPage->setGlobalZOrder(LayerOrder::MODAL+10);
 
@@ -51,8 +52,8 @@ bool InventoryItemGrid::init(cocos2d::Node* container) {
     addChild(m_pNextPage);
 
     m_pPrevPage = cocos2d::ui::Button::create("page-arrow.png", "page-arrow.png", "page-arrow.png", cocos2d::ui::Button::TextureResType::PLIST);
-    m_pPrevPage->setPosition(cocos2d::Vec2(getContentSize().width/2 - m_pPrevPage->getContentSize().width,-m_pPrevPage->getContentSize().height));
-    m_pPrevPage->setScale(1.0f);
+    m_pPrevPage->setPosition(cocos2d::Vec2(getContentSize().width/2 - m_pPrevPage->getContentSize().width*5,-m_pPrevPage->getContentSize().height));
+    m_pPrevPage->setScale(2.0f);
     m_pPrevPage->setRotation(-90);
     m_pPrevPage->setGlobalZOrder(LayerOrder::MODAL+10);
 
@@ -110,6 +111,14 @@ std::shared_ptr<lorafel::InventoryItemGrid::ItemSlotPage> InventoryItemGrid::cre
     for(int i=0; i<NUM_ROWS; i++) {
         for(int j=0; j<NUM_COLS; j++) {
             auto slot = InventoryItemSlot::create(this);
+            /**
+             * Since each slot will be stacked on one another,
+             * we can only have one page worth of event listeners
+             * active at once. Let's disable all slot events
+             * by default and enable them only once the page
+             * is shown.
+             */
+            getEventDispatcher()->removeEventListenersForTarget(slot, true);
             slot->setPosition(
                               hmargin + lorafel::distribute(j, InventoryItemGrid::NUM_COLS, getContentSize().width-hmargin*2),
                               vmargin + lorafel::distribute(NUM_ROWS-1-i, InventoryItemGrid::NUM_ROWS, getContentSize().height-vmargin*2)
@@ -416,6 +425,28 @@ void InventoryItemGrid::goToPage(int pageNumber) {
     nextGridContainer->setVisible(true);
     m_pGrid = m_pPages->at(pageNumber);
     m_currentPage = pageNumber;
+    enableEventListenersForAllSlotsOnCurrentPage();
+}
+
+void InventoryItemGrid::enableEventListenersForAllSlotsOnCurrentPage() {
+    for(int page=0; page<m_pPages->size(); page++) {
+        for(int i=0; i<NUM_ROWS; i++) {
+            for(int j=0; j<NUM_COLS; j++) {
+                PaginatedCoords pg;
+                pg.page = page;
+                pg.coords = std::make_pair(i, j);
+                auto slot = getSlotFromCoords(pg);
+                if(slot == nullptr) {
+                    continue;
+                }
+                if(page == m_currentPage) {
+                    slot->addEvents();
+                } else {
+                    getEventDispatcher()->removeEventListenersForTarget(slot, true);
+                }
+            }
+        }
+    }
 }
 
 
