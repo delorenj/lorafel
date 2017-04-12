@@ -102,3 +102,27 @@ void Level::onLevelCleared() {
             ->setLevelScore(3)
             ->save();
 }
+
+void Level::load() {
+    bool reload = false;
+    for (int i = 0; i < SwappyGrid::NUM_COLUMNS; i++) {
+        for (int j = 0; j < SwappyGrid::NUM_ROWS; j++) {
+            if(auto tile = createTileFromGridPos(i, j)) {
+                m_pSwappyGrid->addTileToDropQueue(i, tile);
+            } else {
+                auto isGoodState = m_pSwappyGrid->addRandomNonMatchingTileToDropQueue(i);
+                if(!isGoodState) {
+                    CCLOG("Bad State at (%d,%d): Resetting...", i, j);
+                    reload = true;
+                    m_pSwappyGrid->clearAllDropQueues();
+                    m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
+                    m_pTurnManager->clearPlayerTiles();
+                    break;
+                }
+            }
+        }
+        if(reload) break;
+    }
+    reload == reload || m_pSwappyGrid->getHeroTile() == nullptr || m_pSwappyGrid->getEnemyTiles().empty();
+    if(reload) load();
+}

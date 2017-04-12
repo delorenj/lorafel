@@ -48,28 +48,7 @@ namespace lorafel {
 
         Tile* createTileFromGridPos(int x, int y);
 
-        virtual void load() {
-            bool reload = false;
-            for (int i = 0; i < SwappyGrid::NUM_COLUMNS; i++) {
-                for (int j = 0; j < SwappyGrid::NUM_ROWS; j++) {
-                    if(auto tile = createTileFromGridPos(i, j)) {
-                        m_pSwappyGrid->addTileToDropQueue(i, tile);
-                    } else {
-                        auto isGoodState = m_pSwappyGrid->addRandomNonMatchingTileToDropQueue(i);
-                        if(!isGoodState) {
-                            CCLOG("Bad State at (%d,%d): Resetting...", i, j);
-                            reload = true;
-                            m_pSwappyGrid->clearAllDropQueues();
-                            m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
-                            m_pTurnManager->clearPlayerTiles();
-                            break;
-                        }
-                    }
-                }
-                if(reload) break;
-            }
-            if(reload) load();
-        }
+        virtual void load();
 
         TurnManager* getTurnManager();
         void setTurnManager(TurnManager* tm) { m_pTurnManager = tm; }
