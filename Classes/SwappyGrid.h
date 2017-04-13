@@ -96,7 +96,7 @@ namespace lorafel {
         void setGridUI(GridUI *pUI) { m_pGridUI = pUI; }
         GridUI* getGridUI() { return m_pGridUI; }
 
-        bool addRandomNonMatchingTileToDropQueue(int col);
+        lorafel::Tile* addRandomNonMatchingTileToDropQueue(int col);
 
         std::vector<TileQueue *> *getDropQueues();
 

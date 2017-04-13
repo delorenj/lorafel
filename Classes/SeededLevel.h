@@ -16,7 +16,7 @@ namespace lorafel {
             addTransparencyGrid();
         };
 
-        virtual void load() override {
+        virtual bool load() override {
             for (int i = 0; i < SwappyGrid::NUM_COLUMNS; ++i) {
                 for (int j = 0; j < SwappyGrid::NUM_ROWS; ++j) {
                     m_pSwappyGrid->addTileToDropQueue(i, m_initialGrid.at(i)->at(j));

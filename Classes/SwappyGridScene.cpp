@@ -1,6 +1,7 @@
 #include "SwappyGridScene.h"
 #include "FirebaseAuth.h"
 #include "AuthStateMachine.h"
+#include "LevelManager.h"
 
 using namespace lorafel;
 
@@ -28,7 +29,23 @@ bool SwappyGridScene::init() {
 
     m_pSwappyGrid->setGridUI(m_pGridUI);
     addChild(m_pSwappyGrid, LayerOrder::TILES);
-    m_pLevel->load();
+
+    bool isOk = 0;
+    int levelId = m_pLevel->getLevelId();
+    isOk = m_pLevel->load();
+
+    int tries = 100;
+    while(tries >=0 && !isOk) {
+        tries--;
+        CC_SAFE_DELETE(m_pLevel);
+        m_pLevel = LevelManager::getInstance()->createLevel(levelId);
+        isOk = m_pLevel->load();
+    }
+
+    if(!isOk) {
+        CCLOG("FUCK");
+        exit(0);
+    }
 
     // Create the grid debug panel
     GridTestUI* gridTestUI = GridTestUI::create(m_pSwappyGrid);

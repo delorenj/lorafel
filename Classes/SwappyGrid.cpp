@@ -441,7 +441,7 @@ void SwappyGrid::addRandomTileToDropQueue(int column) {
     addTileToDropQueue(column, tile);
 }
 
-bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
+lorafel::Tile* SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
     Tile *tile;
     std::set<Match *> matches;
 
@@ -462,10 +462,10 @@ bool SwappyGrid::addRandomNonMatchingTileToDropQueue(int col) {
      */
     if (tries >= 10) {
         CCLOG("Bad State! Resetting");
-        return false;
+        return nullptr;
     }
     addTileToDropQueue(col, tile);
-    return true;
+    return tile;
 }
 
 bool SwappyGrid::columnReadyToDropTile(int column) {

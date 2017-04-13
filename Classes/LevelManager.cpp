@@ -39,6 +39,7 @@ Level* LevelManager::createLevel(int levelId) {
     m_currentLevelId = levelId;
 
     Level* level = new Level();
+    level->setLevelId(levelId);
     level->setSwappyGrid(m_pSwappyGrid);
     level->addTransparencyGrid();
 
@@ -120,6 +121,7 @@ Level* LevelManager::createLevel(int levelId) {
 
         auto args = tileDefs[id].asValueMap();
         level->addStaticTile(std::make_pair(x,y), args);
+
     }
 
     setCurrentLevel(level);

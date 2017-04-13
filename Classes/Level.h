@@ -28,7 +28,7 @@ namespace lorafel {
         };
 
         virtual ~Level() {
-            while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
+//            while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
         };
 
         Level(Tile::TileConfigs* configs) {
@@ -48,7 +48,7 @@ namespace lorafel {
 
         Tile* createTileFromGridPos(int x, int y);
 
-        virtual void load();
+        virtual bool load();
 
         TurnManager* getTurnManager();
         void setTurnManager(TurnManager* tm) { m_pTurnManager = tm; }

@@ -103,26 +103,50 @@ void Level::onLevelCleared() {
             ->save();
 }
 
-void Level::load() {
+bool Level::load() {
     bool reload = false;
+    bool heroPlaced = false;
+    bool enemyPlaced = false;
     for (int i = 0; i < SwappyGrid::NUM_COLUMNS; i++) {
         for (int j = 0; j < SwappyGrid::NUM_ROWS; j++) {
             if(auto tile = createTileFromGridPos(i, j)) {
                 m_pSwappyGrid->addTileToDropQueue(i, tile);
+                if(tile->getTag() == Tag::HERO) {
+                    CCLOG("hero placed!");
+                    heroPlaced = true;
+                }
+                if(tile->getTag() == Tag::ENEMY) {
+                    CCLOG("enemy placed!");
+                    enemyPlaced = true;
+                }
+
             } else {
-                auto isGoodState = m_pSwappyGrid->addRandomNonMatchingTileToDropQueue(i);
-                if(!isGoodState) {
+                tile = m_pSwappyGrid->addRandomNonMatchingTileToDropQueue(i);
+                if(tile == nullptr) {
                     CCLOG("Bad State at (%d,%d): Resetting...", i, j);
                     reload = true;
                     m_pSwappyGrid->clearAllDropQueues();
                     m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
                     m_pTurnManager->clearPlayerTiles();
                     break;
+                } else {
+                    CCLOG("Tile Tag=%d, Tile Name=%s", tile->getTag(), tile->getTileName().c_str());
+                    if(tile->getTag() == Tag::HERO) {
+                        CCLOG("hero placed!");
+                        heroPlaced = true;
+                    }
+                    if(tile->getTag() == Tag::ENEMY) {
+                        CCLOG("enemy placed!");
+                        enemyPlaced = true;
+                    }
+
                 }
             }
         }
         if(reload) break;
     }
-    reload == reload || m_pSwappyGrid->getHeroTile() == nullptr || m_pSwappyGrid->getEnemyTiles().empty();
-    if(reload) load();
+
+    reload == reload || !heroPlaced || !enemyPlaced;
+    return !reload; // return OK == !reload
 }
+
