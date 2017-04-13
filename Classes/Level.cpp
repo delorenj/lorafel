@@ -125,9 +125,6 @@ bool Level::load() {
                 if(tile == nullptr) {
                     CCLOG("Bad State at (%d,%d): Resetting...", i, j);
                     reload = true;
-                    m_pSwappyGrid->clearAllDropQueues();
-                    m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
-                    m_pTurnManager->clearPlayerTiles();
                     break;
                 } else {
                     CCLOG("Tile Tag=%d, Tile Name=%s", tile->getTag(), tile->getTileName().c_str());
@@ -147,6 +144,12 @@ bool Level::load() {
     }
 
     reload == reload || !heroPlaced || !enemyPlaced;
+    if(reload) {
+        m_pSwappyGrid->clearAllDropQueues();
+        m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
+        m_pTurnManager->clearPlayerTiles();
+    }
+
     return !reload; // return OK == !reload
 }
 
