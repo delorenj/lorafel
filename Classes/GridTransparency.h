@@ -45,6 +45,9 @@ namespace lorafel {
         static const GLubyte opacity = 80;
 
         virtual bool init() override;
+        virtual ~GridTransparency() {
+            removeAllChildrenWithCleanup(true);
+        }
         CREATE_FUNC(GridTransparency);
 
         void setColor(cocos2d::Color3B color);

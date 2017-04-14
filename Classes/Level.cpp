@@ -127,7 +127,6 @@ bool Level::load() {
                     reload = true;
                     break;
                 } else {
-                    CCLOG("Tile Tag=%d, Tile Name=%s", tile->getTag(), tile->getTileName().c_str());
                     if(tile->getTag() == Tag::HERO) {
                         CCLOG("hero placed!");
                         heroPlaced = true;
@@ -143,11 +142,22 @@ bool Level::load() {
         if(reload) break;
     }
 
-    reload == reload || !heroPlaced || !enemyPlaced;
+    if(!heroPlaced) {
+        CCLOG("Hero wasn't placed. Reloading...");
+        reload = true;
+    }
+
+    if(!enemyPlaced) {
+        CCLOG("Enemy wasn't placed. Reloading...");
+        reload = true;
+    }
     if(reload) {
+        CCLOG("CLEARING ALL QUEUES!");
         m_pSwappyGrid->clearAllDropQueues();
         m_pSwappyGrid->removeChildByTag(Tag::HERO, true);
         m_pTurnManager->clearPlayerTiles();
+        getSwappyGrid()->getGridTransparency()->removeAllChildrenWithCleanup(true);
+        removeAllChildrenWithCleanup(true);
     }
 
     return !reload; // return OK == !reload

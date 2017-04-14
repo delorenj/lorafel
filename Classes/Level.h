@@ -19,7 +19,7 @@
 #include "PlayerManager.h"
 
 namespace lorafel {
-    class Level : public Ref {
+    class Level : public cocos2d::Node {
 
     public:
         Level() {
@@ -29,6 +29,7 @@ namespace lorafel {
 
         virtual ~Level() {
 //            while(!m_pTileConfigs->empty()) delete m_pTileConfigs->front(), m_pTileConfigs->pop_back();
+            this->removeAllChildrenWithCleanup(true);
         };
 
         Level(Tile::TileConfigs* configs) {
