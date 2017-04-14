@@ -5,6 +5,9 @@
 #include "Match.h"
 #include "GameStateMachine.h"
 #include "Globals.h"
+#include "PlayerManager.h"
+#include "TurnManager.h"
+#include "LevelManager.h"
 
 using namespace lorafel;
 
@@ -57,14 +60,14 @@ void Match::setTileSet(std::set<Tile *>* tileSet) {
 
 }
 
-std::set<Tile *>* Match::getTileSet() const {
+std::set<lorafel::Tile *>* Match::getTileSet() const {
     return m_pTileSet;
 }
 
 void Match::run() {
 
     auto tile = getPrimaryTile();
-
+    auto enemyTurn = LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->getActivePlayerTile()->getTag() == Tag::ENEMY;
     std::set<StatResult*>* results = tile->getStatResults();
 
     // Iterate through all tile stat results
@@ -72,7 +75,7 @@ void Match::run() {
     for(StatResult* mr : *results) {
         mr->setMultiplier((int)m_pTileSet->size());
         mr->setMatch(this);
-        mr->apply();
+        mr->apply(enemyTurn);
     }
 
     // Iterate through each tile in the match
@@ -89,7 +92,7 @@ cocos2d::Vec2 Match::getTileSetCenter() {
     return tile->getGrid()->convertToWorldSpace(center);
 }
 
-Tile* Match::getPrimaryTile() const {
+lorafel::Tile* Match::getPrimaryTile() const {
     return m_pPrimaryTile;
 }
 
@@ -101,7 +104,7 @@ int Match::getNumEnemies() {
     return m_pEnemies->size();
 }
 
-std::set<Tile*>* Match::getEnemies() const {
+std::set<lorafel::Tile*>* Match::getEnemies() const {
     return m_pEnemies;
 }
 

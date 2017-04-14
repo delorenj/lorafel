@@ -12,7 +12,7 @@ namespace lorafel {
     public:
         GoldStatResult(int val) : StatResult(val) { };
 
-        void apply() override;
+        void apply(bool isEnemyTurn = 0) override;
 
     };
 }

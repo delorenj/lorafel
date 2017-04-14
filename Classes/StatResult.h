@@ -14,7 +14,7 @@ namespace lorafel {
     public:
         StatResult(int val) : MatchResult(val) { };
         virtual ~StatResult() { };
-        virtual void apply() = 0;
+        virtual void apply(bool isEnemyTurn = false) = 0;
         void setMultiplier(const int val) { m_multiplier = val; }
         int getMultiplier() const { return m_multiplier; }
         void setMatch(Match* pMatch) { m_pMatch = pMatch; }

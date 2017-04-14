@@ -5,6 +5,7 @@
 #include "Match5.h"
 #include "Globals.h"
 #include "Level.h"
+#include "LevelManager.h"
 
 using namespace lorafel;
 
@@ -34,8 +35,19 @@ void Match5::run() {
 
   auto gridPos = pSwappyGrid->screenToGrid(pSwappyGrid->convertToNodeSpace(getTileSetCenter()));
   auto centerTile = pSwappyGrid->getTileAt(gridPos);
-  auto loot = getPrimaryTile()->generateLootTile();
-  loot->setGrid(pSwappyGrid);
-  m_pTilesToReplace->insert(std::pair<Tile*, Tile*>(centerTile, loot));
+
+  auto enemyTurn = LevelManager::getInstance()->getCurrentLevel()->getTurnManager()->getActivePlayerTile()->getTag() == Tag::ENEMY;
+
+  /**
+   * Only generate loot if the hero matches 5.
+   * Perhaps make a super bad glyph is enemy
+   * matches 5? Awesome!
+   */
+  if(!enemyTurn) {
+    auto loot = getPrimaryTile()->generateLootTile();
+    loot->setGrid(pSwappyGrid);
+    m_pTilesToReplace->insert(std::pair<Tile*, Tile*>(centerTile, loot));
+  }
+
   Match::run();
 }

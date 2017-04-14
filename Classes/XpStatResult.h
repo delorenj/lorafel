@@ -12,7 +12,7 @@ namespace lorafel {
     public:
         XpStatResult(int val) : StatResult(val) { };
 
-        void apply() override;
+        void apply(bool isEnemyTurn) override;
 
     };
 }

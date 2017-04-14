@@ -12,7 +12,7 @@ namespace lorafel {
         MatchResult<T>(T val) : m_val(val) { };
         virtual ~MatchResult() { };
 
-        virtual void apply() = 0;
+        virtual void apply(bool isEnemyTurn) = 0;
 
     public:
         T getVal() const {

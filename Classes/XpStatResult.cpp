@@ -8,7 +8,10 @@
 
 using namespace lorafel;
 
-void XpStatResult::apply() {
+void XpStatResult::apply(bool isEnemyTurn = 0) {
+    if(isEnemyTurn) {
+        return;
+    }
     auto amount = m_multiplier*m_val;
     auto lm = PlayerManager::getInstance()->getPlayer()->getXpManager();
     lm->incrementXpBy(amount, m_pMatch);

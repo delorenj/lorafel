@@ -7,7 +7,10 @@
 
 using namespace lorafel;
 
-void GoldStatResult::apply() {
+void GoldStatResult::apply(bool isEnemyTurn) {
+    if(isEnemyTurn) {
+        return;
+    }
     auto amount = m_multiplier*m_val;
     auto player = PlayerManager::getInstance()->getPlayer();
     player->updateGoldBy(amount, m_pMatch);
