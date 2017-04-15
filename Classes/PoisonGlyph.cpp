@@ -6,6 +6,7 @@
 #include "HeroTile.h"
 #include "Globals.h"
 #include "PlayerManager.h"
+#include "TimedContinuousStatEffect.h"
 
 using namespace lorafel;
 
@@ -13,10 +14,11 @@ void PoisonGlyph::onMatch(Match* pMatch) {
     auto hero = m_pSwappyGrid->getHeroTile();
     if(hero != nullptr) {
         static_cast<HeroTile*>(hero)->applyHit(pMatch);
-        TimedContinuousStatEffect statEffect = TimedContinuousStatEffect::create();
-        statEffect->setDurationInSeconds(5);
-        statEffect->setTotalStatDelta(PlayerManager::getInstance()->getPlayer()->getMaxHp() * -0.25f);
-        statEffect->statSetterCallback(//TODO: Write callback to set stat);
+        TimedContinuousStatEffect* pStatEffect = TimedContinuousStatEffect::create();
+        pStatEffect->setDurationInSeconds(5);
+        pStatEffect->setTotalStatDelta(ROUND_2_INT(PlayerManager::getInstance()->getPlayer()->getMaxHp() * -0.25f));
+        pStatEffect->setStatEvent("update_hp");
+        m_pSwappyGrid->addChild(pStatEffect);
         Tile::onMatch(pMatch);
     }
 }

@@ -7,6 +7,7 @@
 #include "ItemAttribute.h"
 #include "Weapon.h"
 #include "LinearXpManager.h"
+#include "StatGuage.h"
 
 using namespace lorafel;
 
@@ -18,6 +19,15 @@ Player::Player() {
     //m_activeConsumables.reserve(3);
     m_pInventorySlotSerializer = std::make_shared<InventorySlotSerializer>();
     m_pEquipSerializer = std::make_shared<EquipSerializer>();
+
+    auto _listener = cocos2d::EventListenerCustom::create("update_hp", [=](cocos2d::EventCustom* event){
+        auto eventData = static_cast<EventDataInteger*>(event->getUserData());
+        auto amount = eventData->val;
+        this->updateHpBy(amount);
+    });
+
+    m_pDispatcher->addEventListenerWithFixedPriority(_listener, 2);
+
 }
 
 Player::~Player() {
@@ -51,12 +61,14 @@ int Player::updateGoldBy(int amount) {
 
 int Player::updateHpBy(int val) {
     m_hp = clamp<int>(m_hp + val, 0, m_maxHp);
+    m_pDispatcher->dispatchCustomEvent("stat_change");
+
     return m_hp;
 }
 
 int Player::updateMpBy(int val) {
     m_mp = clamp<int>(m_mp + val, 0, m_maxMp);
-    m_pDispatcher->dispatchCustomEvent("stat_change", nullptr);
+    m_pDispatcher->dispatchCustomEvent("stat_change");
     return m_mp;
 }
 

@@ -24,9 +24,6 @@ void HeroTile::applyHit(Match* pMatch) {
 
     player->updateHpBy(-hitAmount);
 
-    // Fire off an Hit event
-    _eventDispatcher->dispatchCustomEvent("stat_change");
-
     auto particle = cocos2d::ParticleSystemQuad::create("green_dust.plist");
     particle->setAutoRemoveOnFinish(true);
     particle->setPosition(TILE_CENTER);
