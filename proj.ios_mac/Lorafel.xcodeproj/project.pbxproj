@@ -513,6 +513,7 @@
 		3167DE78A23A2C4122F283E0 /* AvocadoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvocadoTile.h; sourceTree = "<group>"; };
 		3167DE8C1E9C79420C008807 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
 		3167DE9A13F45A4C040BFEF7 /* Level__TestLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level__TestLevelFour.h; sourceTree = "<group>"; };
+		3167DEA75ED6BB925F0533F0 /* DebuffPoison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebuffPoison.h; sourceTree = "<group>"; };
 		3167DEBE203F35C459B9ACE2 /* MoveActionTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveActionTile.h; sourceTree = "<group>"; };
 		3167DEC39B71DC1E9DD49935 /* ItemNameGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemNameGenerator.cpp; sourceTree = "<group>"; };
 		3167DED2269D21779C04D7A3 /* MatchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchSet.h; sourceTree = "<group>"; };
@@ -1125,6 +1126,7 @@
 				3167DA14A916C049B38359E1 /* TimedContinuousStatEffect.h */,
 				3167D7A3D4642B30DCC7817A /* StatEffect.cpp */,
 				3167DFEF9DC858901169001A /* StatEffect.h */,
+				3167DEA75ED6BB925F0533F0 /* DebuffPoison.h */,
 			);
 			name = Classes;
 			path = ../Classes;

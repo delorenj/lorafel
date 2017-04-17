@@ -26,7 +26,7 @@ void StatEffect::setStatEvent(std::string eventName) {
     m_eventName = eventName;
 }
 
-void StatEffect::start() {
+bool StatEffect::start() {
     scheduleOnce(schedule_selector(StatEffect::fireTrigger), 1.0f);
 }
 

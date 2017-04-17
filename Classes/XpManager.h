@@ -17,6 +17,8 @@ namespace lorafel {
                 m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
         };
 
+        virtual ~XpManager() { };
+
         // Returns amount until next level
         virtual const unsigned long getLevelUpIn() const {
                 return levelToXp(getLevel()+1) - m_xp;

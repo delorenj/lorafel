@@ -13,10 +13,14 @@ namespace lorafel {
 
         void setTotalStatDelta(int delta);
         void setStatEvent(std::string eventName);
-        virtual void start();
+        virtual bool start();
         virtual void fireTrigger(float delta);
 
+        void setStatTag(int tag) { m_buffDebuffTag = tag; }
+        int getBuffDebuffTag() const { return m_buffDebuffTag; }
+
     protected:
+        int m_buffDebuffTag;
         std::string m_eventName;
         int m_delta;
     };

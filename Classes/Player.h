@@ -34,6 +34,12 @@ namespace lorafel {
         static const int ACTIONITEM         = 9;
         static const int CONSUMABLE         = 10;
 
+        bool hasBuffDebuff(int buffDebuffTag);
+
+        void addBuffDebuff(int buffDebuffTag);
+
+        void removeBuffDebuff(int buffDebuffTag);
+
     public:
 
         Player();
@@ -111,6 +117,8 @@ namespace lorafel {
         int m_maxMp;
         int m_maxMoveDistance;
 
+        std::set<int> *m_pBuffs;
+        std::set<int> *m_pDebuffs;
         cocos2d::EventDispatcher* m_pDispatcher;
 
         XpManager* m_pXpManager;

@@ -142,6 +142,11 @@ namespace lorafel {
         static const int YELLOW = 4;
     };
 
+    struct BuffDebuffTag {
+        static const int BLESSED = 1;
+        static const int NONE = 0;
+        static const int POISONED = -1;
+    };
 }
 
 #endif //LORAFEL_GLOBALS_H

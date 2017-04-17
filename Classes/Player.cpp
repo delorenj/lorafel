@@ -15,6 +15,8 @@ Player::Player() {
     m_pXpManager = new LinearXpManager();
     m_pInventory = new Inventory();
     m_pProgress = new Progress();
+    m_pBuffs = new std::set<int>();
+    m_pDebuffs = new std::set<int>();
     m_pDispatcher = cocos2d::Director::getInstance()->getEventDispatcher();
     //m_activeConsumables.reserve(3);
     m_pInventorySlotSerializer = std::make_shared<InventorySlotSerializer>();
@@ -347,4 +349,36 @@ bool Player::tileWithinHitDistance(Tile *pTile) {
 
 void Player::attack(EnemyTile *pTile) {
     pTile->applyHit(getAttackAmount(pTile));
+}
+
+bool Player::hasBuffDebuff(int buffDebuffTag) {
+    if(buffDebuffTag >= 0) {
+        return m_pBuffs->find(buffDebuffTag) != m_pBuffs->end();
+    } else {
+        return m_pDebuffs->find(buffDebuffTag) != m_pDebuffs->end();
+    }
+}
+
+void Player::removeBuffDebuff(int buffDebuffTag) {
+    if(hasBuffDebuff(buffDebuffTag)) {
+        if(buffDebuffTag >= 0) {
+            CCLOG("REMOVING BUFF: %d", buffDebuffTag);
+            m_pBuffs->erase(buffDebuffTag);
+        } else {
+            CCLOG("REMOVING DEBUFF: %d", buffDebuffTag);
+            m_pDebuffs->erase(buffDebuffTag);
+        }
+    }
+}
+
+void Player::addBuffDebuff(int buffDebuffTag) {
+    if(!hasBuffDebuff(buffDebuffTag)) {
+        if(buffDebuffTag >= 0) {
+            CCLOG("ADDING BUFF: %d", buffDebuffTag);
+            m_pBuffs->insert(buffDebuffTag);
+        } else {
+            CCLOG("ADDING DEBUFF: %d", buffDebuffTag);
+            m_pDebuffs->insert(buffDebuffTag);
+        }
+    }
 }
