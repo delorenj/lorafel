@@ -12,7 +12,6 @@ namespace lorafel {
     public:
         CREATE_FUNC(TimedContinuousStatEffect);
         virtual bool init() override;
-
         void setDurationInSeconds(int seconds);
 
     protected:

@@ -18,6 +18,7 @@ void PoisonGlyph::onMatch(Match* pMatch) {
         pStatEffect->setDurationInSeconds(5);
         pStatEffect->setTotalStatDelta(ROUND_2_INT(PlayerManager::getInstance()->getPlayer()->getMaxHp() * -0.25f));
         pStatEffect->setStatEvent("update_hp");
+        pStatEffect->start();
         m_pSwappyGrid->addChild(pStatEffect);
         Tile::onMatch(pMatch);
     }

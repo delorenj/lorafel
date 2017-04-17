@@ -4,6 +4,7 @@
 
 #include "TimedContinuousStatEffect.h"
 #include "StatEffect.h"
+#include "EventDataInteger.h"
 
 using namespace lorafel;
 
@@ -17,4 +18,13 @@ void StatEffect::setTotalStatDelta(int delta) {
 
 void StatEffect::setStatEvent(std::string eventName) {
     m_eventName = eventName;
+}
+
+void StatEffect::start() {
+    schedule(schedule_selector(StatEffect::fireTrigger), 1.0f);
+}
+
+void StatEffect::fireTrigger(float delta) {
+    auto data = new EventDataInteger(-10);
+    getEventDispatcher()->dispatchCustomEvent(m_eventName, data);
 }

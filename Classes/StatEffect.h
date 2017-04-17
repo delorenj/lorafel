@@ -13,6 +13,8 @@ namespace lorafel {
 
         void setTotalStatDelta(int delta);
         void setStatEvent(std::string eventName);
+        void start();
+        void fireTrigger(float delta);
 
     protected:
         std::string m_eventName;
