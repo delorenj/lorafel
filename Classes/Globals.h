@@ -120,6 +120,7 @@ namespace lorafel {
         static const int ARROW = 13;
         static const int TILE_DONT_REMOVE_FROM_GRID = 14;
         static const int CONTENTS = 15;
+        static const int STAT_EFFECT = 16;
     };
 
     struct LayerOrder {

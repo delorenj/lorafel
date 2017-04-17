@@ -2,6 +2,7 @@
 // Created by Jarad DeLorenzo on 4/14/17.
 //
 
+#include "Globals.h"
 #include "TimedContinuousStatEffect.h"
 #include "StatEffect.h"
 #include "EventDataInteger.h"
@@ -9,7 +10,12 @@
 using namespace lorafel;
 
 bool StatEffect::init() {
-    return cocos2d::Node::init();
+    if(!cocos2d::Node::init()) {
+        return false;
+    }
+
+    setTag(Tag::STAT_EFFECT);
+    return true;
 }
 
 void StatEffect::setTotalStatDelta(int delta) {
@@ -21,10 +27,10 @@ void StatEffect::setStatEvent(std::string eventName) {
 }
 
 void StatEffect::start() {
-    schedule(schedule_selector(StatEffect::fireTrigger), 1.0f);
+    scheduleOnce(schedule_selector(StatEffect::fireTrigger), 1.0f);
 }
 
 void StatEffect::fireTrigger(float delta) {
-    auto data = new EventDataInteger(-10);
+    auto data = new EventDataInteger(m_delta);
     getEventDispatcher()->dispatchCustomEvent(m_eventName, data);
 }

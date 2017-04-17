@@ -12,10 +12,14 @@ namespace lorafel {
     public:
         CREATE_FUNC(TimedContinuousStatEffect);
         virtual bool init() override;
+        const float UPDATE_INTERVAL_IN_SECONDS = 1.0f;
         void setDurationInSeconds(int seconds);
-
+        virtual void start() override;
+        virtual void fireTrigger(float delta) override;
     protected:
         int m_durationInSeconds;
+        int m_valFragment = 0;
+        int m_remainingLoops = 0;
     };
 }
 
