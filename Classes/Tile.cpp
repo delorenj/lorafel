@@ -30,6 +30,10 @@ bool lorafel::Tile::init(cocos2d::ValueMap args) {
     std::string image = m_arguments["tile_image"].isNull() ?
             "close-modal-x.png" : m_arguments["tile_image"].asString();
 
+    if(filenameIndicatesMultipleFrames(image)) {
+        setAnimationFrames(image);
+    }
+
     std::string tileName = m_arguments["name"].isNull() ?
             "BaseTile" : m_arguments["name"].asString();
 
@@ -481,6 +485,12 @@ void lorafel::Tile::onHooked() {
     GameStateMachine::getInstance()->setState<WaitForAnimationState>();
     m_pSwappyGrid->removeTileFromGrid(this);
     runAction(sequence);
+}
+
+void lorafel::Tile::setAnimationFrames(std::string initialFrame) {
+    m_frames.clear();
+    m_frames.push_back(initialFrame);
+    cocos2d::SpriteFrameCache::getInstance() 
 }
 
 

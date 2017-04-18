@@ -147,6 +147,14 @@ namespace lorafel {
         static const int NONE = 0;
         static const int POISONED = -1;
     };
+
+    struct AnimationType {
+        static const int NONE = 0;
+        static const int ONCE = 1;
+        static const int CIRCULAR_LOOP = 2;
+        static const int REVERSE_LOOP = 3;
+        static const int ONCE_FORWARD_ONCE_BACK = 4;
+    };
 }
 
 #endif //LORAFEL_GLOBALS_H

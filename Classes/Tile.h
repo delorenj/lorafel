@@ -13,6 +13,7 @@
 #include "StatResult.h"
 #include "AIStrategy.h"
 #include "TrajectoryParticle.h"
+#include "Globals.h"
 
 #define TILE_CENTER cocos2d::Vec2(getPosition().x+getContentSize().width/2, getPosition().y+getContentSize().height/2)
 #define PTILE_CENTER(tile) cocos2d::Vec2(tile->getPosition().x + tile->getContentSize().width/2, tile->getPosition().y + tile->getContentSize().height/2)
@@ -148,6 +149,11 @@ namespace lorafel {
         cocos2d::Vec2 getSwapVec(cocos2d::Touch *pTouch);
         TrajectoryParticle* m_pTrajectoryLine = nullptr;
         TileConfigs* m_pLoot;
+        bool m_animated = false;
+        int m_animationType = AnimationType::NONE;
+
+        void setAnimationFrames(std::string initialFrame);
+        std::vector<std::string> m_frames;
     };
 }
 
